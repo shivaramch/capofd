@@ -9,6 +9,12 @@
 
     <link rel="icon" type="image/png" href="{{ url('img') }}/favicons/favicon-32x32.png" sizes="32x32">
 
+    <title>{{ config('app.name', 'Laravel') }}</title>
+
+
+
+    <!-- CSRF Token -->
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <meta http-equiv="X-UA-Compatible"
           content="IE=edge">
@@ -16,7 +22,7 @@
           name="viewport"/>
     <meta http-equiv="Content-type"
           content="text/html; charset=utf-8">
-
+    <!-- Styles -->
     <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700&subset=all"
           rel="stylesheet"
           type="text/css"/>
@@ -31,7 +37,9 @@
     <link rel="stylesheet" href="{{ url('css') }}/bootstrap-table.min.css"/>
     <link rel="stylesheet" href="{{ url('css') }}/dashboard.css"/>
 
-    <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+
+    <link href="/css/app.css" rel="stylesheet">
+
     <style>
         /*.upload {*/
         /*display:none;*/
@@ -90,6 +98,15 @@
             cursor: pointer;
         }
     </style>
+
+    <!-- Scripts -->
+    <script>
+        window.Laravel = <?php echo json_encode([
+            'csrfToken' => csrf_token(),
+        ]); ?>
+    </script>
+
+    <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
 
     <script>
         $(function () {

@@ -50,5 +50,5 @@ Route::group(['middleware' => 'auth'], function () {// Authentication Routes...
 
 
 
-
 Auth::routes();
+
