@@ -9,6 +9,10 @@ class Accident extends Model
 {
     public $timestamps = false;
 
+    protected $primaryKey = 'ofd6aID';
+
+    protected  $table = 'OFD6A';
+
     protected $fillable = [
         'ofd6aID',
         'accidentDate',
@@ -18,7 +22,9 @@ class Accident extends Model
         'appratus',
         'captainID',
         'battalionChiefID ',
-        'acOnDutyID'
+        'acOnDutyID',
+        'Status'
+
       ];
 
     /**

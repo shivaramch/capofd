@@ -15,10 +15,40 @@ Route::get('/', function () {
     return view('home');
 });
 
-Route::resource('injuries', 'InjuriesController');
+// Authentication Routes...
+$this->get('login', 'Auth\LoginController@showLoginForm')->name('auth.login');
+$this->post('login', 'Auth\LoginController@login')->name('auth.login');
+Route::get('/logout', 'Auth\LoginController@logout');
 
-Route::resource('accidents', 'AccidentsController');
+// Registration Routes...
+Route::get('/register', 'Auth\RegisterController@showRegistrationForm');
+$this->post('register', 'Auth\RegisterController@register')->name('auth.register');
 
-Route::resource('biologicals', 'BiologicalsController');
+// Password Reset Routes...
+$this->get('password/reset', 'Auth\ForgotPasswordController@showLinkRequestForm')->name('auth.password.reset');
+$this->post('password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail')->name('auth.password.reset');
+$this->get('password/reset/{token}', 'Auth\ResetPasswordController@showResetForm')->name('auth.password.email');
+$this->post('password/reset', 'Auth\ResetPasswordController@reset')->name('auth.password.reset');
 
-Route::resource('hazmat', 'HazmatController');
+
+Route::group(['middleware' => 'auth'], function () {// Authentication Routes...
+
+    Route::get('/home', 'HomeController@index');
+
+    Route::get('/', 'HomeController@index');
+
+    Route::resource('injuries', 'InjuriesController');
+
+    Route::resource('accidents', 'AccidentsController');
+
+    Route::resource('biologicals', 'BiologicalsController');
+
+    Route::resource('hazmat', 'HazmatController');
+
+    Route::resource('users', 'UserController');
+});
+
+
+
+Auth::routes();
+
