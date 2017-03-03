@@ -11,6 +11,8 @@ class Accident extends Model
 
     protected $primaryKey = 'ofd6aID';
 
+    protected  $table = 'OFD6A';
+
     protected $fillable = [
         'ofd6aID',
         'accidentDate',
