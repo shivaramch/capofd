@@ -49,7 +49,7 @@
                             <td>{{ $accident->ofd6aID }}</td>
                             <td>{{ $accident->accidentDate }}</td>
                             <td>{{ $accident->assignmentAccident }}</td>
-                            <td>{{ $accident->status }}</td>
+                            <td>{{ $accident->Status }}</td>
                             <td>
                                 <div>
                                     <a href="{{ route('accidents.show',[$accident->ofd6aID]) }}"
@@ -61,6 +61,60 @@
                                 </div>
                             </td>
                         </tr>
+                    @endforeach
+                @else
+                    <tr>
+                        <td colspan="10">No entries in table</td>
+                    </tr>
+                @endif
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="panel panel-default panel-shadow " hidden>
+        <div class="panel-heading">
+            In your Queue For Approval
+        </div>
+        <div class="panel-body">
+            <table data-toolbar="#toolbar"
+                   data-toggle="table"
+                   data-search="true"
+                   data-cookie="true"
+                   data-click-to-select="true"
+                   data-cookie-id-table="station-index-v1.1-1"
+                   data-show-columns="true"
+                   id="table">
+                <thead>
+                <tr>
+                    <th data-sortable="true">OFD 6A ID</th>
+                    <th data-sortable="true">Date of Accident</th>
+                    <th data-sortable="true">Assignment</th>
+                    <th data-sortable="true">Status</th>
+                    <th data-switchable="false" data-searchable="false" data-sortable="false">Action</th>
+                </tr>
+                </thead>
+                <tbody>
+                @if(count($accidents) > 0)
+                    @foreach($accidents as $accident)
+                        @if($accident->Status == 'approval')
+                            <tr>
+                            <td>{{ $accident->ofd6aID }}</td>
+                            <td>{{ $accident->accidentDate }}</td>
+                            <td>{{ $accident->assignmentAccident }}</td>
+                            <td>{{ $accident->Status }}</td>
+                            <td>
+                                <div>
+                                    <a href="{{ route('accidents.show',[$accident->ofd6aID]) }}"
+                                       class="btn btn-xs btn-info btn-block"><i
+                                                class="fa fa-eye" aria-hidden="true"></i> VIEW</a>
+                                    <a href="{{ route('accidents.edit',[$accident->ofd6aID]) }}"
+                                       class="btn btn-xs btn-warning btn-block"><i class="fa fa-pencil-square-o"
+                                                                                   aria-hidden="true"></i> EDIT</a>
+                                </div>
+                            </td>
+                        </tr>
+                        @endif
                     @endforeach
                 @else
                     <tr>

@@ -22,7 +22,9 @@ class Accident extends Model
         'appratus',
         'captainID',
         'battalionChiefID ',
-        'acOnDutyID'
+        'acOnDutyID',
+        'Status'
+
       ];
 
     /**
