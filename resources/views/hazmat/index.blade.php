@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('content')
 
-    {!! Form::open(['method' => 'POST', 'route' => ['injuries.store'], 'files' => true,]) !!}
+    {!! Form::open(['method' => 'POST', 'route' => ['hazmat.store'], 'files' => true,]) !!}
     <div class="panel panel-default">
         <div class="panel-heading">
             <div class="jumbotron" style="margin-bottom: 5px; ">
@@ -50,20 +50,6 @@
                         </div>
                     </div>
                     <div class="col-sm-4 form-group">
-                        {!! Form::label('station_name', 'Primary IDCO #', ['class' => 'col-sm-4 control-label']) !!}
-                        <div class="col-sm-6 ">
-                            {!! Form::text('idconumber', old('station_name'), ['class' => 'form-control','placeholder'=>'Enter IDCO Badge ID'])!!}
-                            <p class="help-block"></p>
-                            @if($errors->has('station_name'))
-                                <p class="help-block">
-                                    {{ $errors->first('station_name') }}
-                                </p>
-                            @endif
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-sm-4 form-group">
                         {!! Form::label('station_name', 'Exposed Employee Name', ['class' => 'col-sm-4 control-label']) !!}
                         <div class="col-sm-6 ">
                             {!! Form::text('exposedEmployeeName', old('station_name'), ['class' => 'form-control'])!!}
@@ -75,6 +61,7 @@
                             @endif
                         </div>
                     </div>
+                <div class="row">
                     <div class="col-sm-4 form-group">
                         {!! Form::label('station_name', 'Date of Exposure', ['class' => 'col-sm-4 control-label']) !!}
                         <div class="col-sm-6 ">
@@ -88,9 +75,25 @@
                         </div>
                     </div>
                     <div class="col-sm-4 form-group">
-                        {!! Form::label('station_name', 'Employee ID#', ['class' => 'col-sm-4 control-label']) !!}
+                        {!! Form::label('station_name', 'Primary IDCO #', ['class' => 'col-sm-4 control-label']) !!}
                         <div class="col-sm-6 ">
-                            {!! Form::text('employeeID_1', old('station_name'), ['class' => 'form-control','placeholder'=>'Enter Badge ID'])!!}
+                            {!! Form::text('idconumber', old('station_name'), ['class' => 'form-control','placeholder'=>'Enter IDCO Badge ID'])!!}
+                            <p class="help-block"></p>
+                            @if($errors->has('station_name'))
+                                <p class="help-block">
+                                    {{ $errors->first('station_name') }}
+                                </p>
+                            @endif
+                        </div>
+                    </div>
+                    <div class="col-sm-4 form-group">
+                        {!! Form::label('station_name', 'Shift', ['class' => 'col-sm-4 control-label']) !!}
+                        <div class="col-sm-6">
+                            {!! Form::select('shift',[
+                          'A' => 'A',
+                          'B' => 'B',
+                          'C' => 'C',
+                          'DIV' => 'DIV'], ['class' => 'form-control'])!!}
                             <p class="help-block"></p>
                             @if($errors->has('station_name'))
                                 <p class="help-block">
@@ -100,28 +103,12 @@
                         </div>
                     </div>
                 </div>
+                </div>
                 <div class="row">
                     <div class="col-sm-4 form-group">
                         {!! Form::label('station_name', 'Assignment', ['class' => 'col-sm-4 control-label']) !!}
                         <div class="col-sm-6 ">
                             {!! Form::text('assignmentBiological', old('station_name'), ['class' => 'form-control'])!!}
-                            <p class="help-block"></p>
-                            @if($errors->has('station_name'))
-                                <p class="help-block">
-                                    {{ $errors->first('station_name') }}
-                                </p>
-                            @endif
-                        </div>
-                    </div>
-
-                    <div class="col-sm-4 form-group">
-                        {!! Form::label('station_name', 'Shift', ['class' => 'col-sm-4 control-label']) !!}
-                        <div class="col-sm-6">
-                            {!! Form::select('shift',[
-                          'A' => 'A',
-                          'B' => 'B',
-                          'C' => 'C',
-                          'DIV' => 'DIV'], ['class' => 'form-control'])!!}
                             <p class="help-block"></p>
                             @if($errors->has('station_name'))
                                 <p class="help-block">
@@ -163,25 +150,52 @@
                 <div class="row">
                     <div class="col-sm-12 form-group">
                         <label class="checkbox-inline col-sm-4"><input type="checkbox">
-                            <strong>Fill out OFD-006d Hazmat Exposure Report form</strong></label>
+                            <strong>Fill out OFD-006d Hazmat Exposure Report form
+                            </strong>
+                        </label>
                         <div class="col-sm-2">
                             <a class="btn btn-success dropdown-toggle col-sm-12" type="button" href="/download/a.txt">
                                 <i class="fa fa-download" aria-hidden="true"></i> Download</a>
                         </div>
-                        <div class="col-sm-2">
-                            <div class="fileUpload upload btn btn-success">
-                                {!! Form::file('attachOFD6d', old('attachOFD6d'), ['id' => 'upload' ,'class' => 'form-control','required'=>'required']) !!}
-                                {!! Form::hidden('attachOFD6d_max_size', 20) !!}
-                                @if($errors->has('attachOFD6d'))
-                                    <p class="help-block">
-                                        {{ $errors->first('attachOFD6d') }}
-                                    </p>
-                                @endif
+                        {{--<div class="col-sm-2">--}}
+                        {{--<div class="fileinput-button btn btn-success col-sm-12">--}}
+                        {{--{!! Form::file('station_document', old('station_document'), ['<i class="glyphicon glyphicon-delete"></i>',array('class' => 'form-control', 'style' => 'display:none;')]) !!}--}}
+                        {{--{!! Form::hidden('station_document_max_size', 20) !!}--}}
+                        {{--@if($errors->has('station_document'))--}}
+                        {{--<p class="help-block">--}}
+                        {{--{{ $errors->first('station_document') }}--}}
+                        {{--</p>--}}
+                        {{--@endif--}}
+                        {{--<span class="btn btn-info fileinput-button col-sm-12">--}}
+                        {{--<i class="fa fa-cloud-upload" aria-hidden="true"></i> <span>Upload</span>--}}
+
+                        {{--<input type="file" class="uploadFile" name="station_document" id="station_document">--}}
+
+                        {{--</span>--}}
+                        {{--<button type="button" class="btn btn-info dropdown-toggle col-sm-12" data-toggle="modal"--}}
+                        {{--data-target="#myModal">--}}
+                        {{--<i class="fa fa-cloud-upload" aria-hidden="true"></i> Upload</button>--}}
+                        {{--</div>--}}
+                        <div class="col-sm-3">
+                            <div class="input-group">
+                                <label class="input-group-btn">
+                    <span class="btn btn-info">
+                        <i class="fa fa-cloud-upload" aria-hidden="true"></i> Upload<input type="file" name="station_document" style="display: none;" multiple>
+                    </span>
+                                </label>
+                                <input type="text" id="upload-file-info" class="form-control" readonly>
                             </div>
-                            <button type="button" class="btn btn-info dropdown-toggle col-sm-12" data-toggle="modal"
-                                    data-target="#myModal">
-                                <i class="fa fa-cloud-upload" aria-hidden="true"></i> Upload</button>
+                            {{--<label class="btn btn-primary" for="my-file-selector">--}}
+                            {{--<input id="my-file-selector" type="file" style="display:none;" onchange="$('#upload-file-info').html($(this).val());">--}}
+                            {{--Button Text Here--}}
+                            {{--</label>--}}
+                            {{--<span class='label label-info' id="upload-file-info"></span>--}}
+                            {{--<div class="col-sm-2">--}}
+                            {{--<span class='label label-info' id="upload-file-info"></span>--}}
+
+                            {{--</div>--}}
                         </div>
+
                     </div>
                 </div>
                 <div class="row">
