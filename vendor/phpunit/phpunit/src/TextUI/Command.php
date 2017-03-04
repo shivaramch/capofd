@@ -644,7 +644,6 @@ class PHPUnit_TextUI_Command
                 default:
                     $optionName = str_replace('--', '', $option[0]);
 
-                    $handler = null;
                     if (isset($this->longOptions[$optionName])) {
                         $handler = $this->longOptions[$optionName];
                     } elseif (isset($this->longOptions[$optionName . '='])) {

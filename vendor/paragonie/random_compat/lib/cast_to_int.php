@@ -40,15 +40,13 @@ if (!is_callable('RandomCompat_intval')) {
      * @param int|float $number    The number we want to convert to an int
      * @param boolean   $fail_open Set to true to not throw an exception
      * 
-     * @return float|int
+     * @return int|float
      *
      * @throws TypeError
      */
     function RandomCompat_intval($number, $fail_open = false)
     {
-        if (is_int($number) || is_float($number)) {
-            $number += 0;
-        } elseif (is_numeric($number)) {
+        if (is_numeric($number)) {
             $number += 0;
         }
 
@@ -64,11 +62,12 @@ if (!is_callable('RandomCompat_intval')) {
 
         if (is_int($number)) {
             return (int) $number;
-        } elseif (!$fail_open) {
-            throw new TypeError(
-                'Expected an integer.'
-            );
+        } elseif ($fail_open) {
+            return (float) $number;
         }
-        return $number;
+
+        throw new TypeError(
+            'Expected an integer.'
+        );
     }
 }

@@ -57,15 +57,11 @@ if (!is_callable('random_bytes')) {
         }
 
         /**
-         * @var string
-         */
-        $buf = '';
-
-        /**
          * \Sodium\randombytes_buf() doesn't allow more than 2147483647 bytes to be
          * generated in one invocation.
          */
         if ($bytes > 2147483647) {
+            $buf = '';
             for ($i = 0; $i < $bytes; $i += 1073741824) {
                 $n = ($bytes - $i) > 1073741824
                     ? 1073741824
@@ -73,7 +69,7 @@ if (!is_callable('random_bytes')) {
                 $buf .= Sodium::randombytes_buf($n);
             }
         } else {
-            $buf .= Sodium::randombytes_buf($bytes);
+            $buf = Sodium::randombytes_buf($bytes);
         }
 
         if (is_string($buf)) {

@@ -14,6 +14,7 @@ class CreateBiologicals1Table extends Migration
     public function up()
     {
         Schema::create('biologicals', function (Blueprint $table) {
+            $table->increments('ofd6bID');
             $table->string('exposedEmployeeName');
             $table->date('dateOfExposure');
             $table->integer('employeeID_1');
@@ -25,7 +26,7 @@ class CreateBiologicals1Table extends Migration
             $table->boolean('decontaminate');
             $table->boolean('callChi');
             $table->boolean('confirmSource');
-            $table->boolean('trueOFD184');
+            $table->string('trueOFD184');
             $table->boolean('bloodReport');
             $table->boolean('exposureTab');
             $table->boolean('trueBagTag');
@@ -34,7 +35,7 @@ class CreateBiologicals1Table extends Migration
             $table->boolean('trueDocumentDayBook');
             $table->boolean('potDecontaminate');
             $table->boolean('potBagTag');
-            $table->boolean('potOFD184');
+            $table->string('potOFD184');
             $table->boolean('potPPE');
             $table->boolean('potDocumentDayBook');
             $table->timestamps();

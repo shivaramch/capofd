@@ -8,8 +8,14 @@
         <directory name="lib" />
     </projectFiles>
     <issueHandlers>
-        <InvalidOperand errorLevel="info" />
+        <DuplicateClass errorLevel="info" />
+        <FailedTypeResolution errorLevel="info" />
         <UndefinedConstant errorLevel="info" />
-        <MissingReturnType errorLevel="info" />
+        <InvalidArgument errorLevel="info" />
+        <InvalidOperand errorLevel="info" />
+        <InvalidPropertyAssignment errorLevel="info" />
+        <TypeCoercion errorLevel="info" />
+        <TypeDoesNotContainType errorLevel="info" />
+        <PossiblyUndefinedVariable errorLevel="info" />
     </issueHandlers>
 </psalm>
