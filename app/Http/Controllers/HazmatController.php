@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 
+use App\hazmat;
+use App\Http\Requests\UpdateHazmatRequest;
 use Illuminate\Http\Request;
 use App\Http\Requests\StoreHazmatRequest;
 use App\Http\Controllers\Traits\FileUploadTrait;
@@ -10,6 +12,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Redirect;
 use Auth;
+
 
 class HazmatController extends Controller
 {
@@ -41,7 +44,58 @@ class HazmatController extends Controller
 
         return redirect()->route('hazmat.index');
     }
-//
+
+
+    public function create()
+    {
+
+        return view('hazmat.create');
+    }
+
+    public function show($id)
+    {
+
+        $hazmat = hazmat::findOrFail($id);
+
+        //show history code start
+        //below one line code is for storing all history related to the $id in variable, which is to be used to display in show page.
+        //show history code end
+        return view('hazmat.show',compact('hazmat'));
+    }
+
+
+    public function edit($id)
+    {
+        $hazmat = hazmat::findOrFail($id);
+        return view('hazmat.edit', compact('hazmat', ''));
+    }
+
+
+    public function update(UpdateHazmatRequest $request, $id)
+    {
+        //$accident = $this->saveFiles($request);
+        $hazmat = hazmat::findOrFail($id);
+
+        \DB::table('ofd6c')->where('ofd6cid', $hazmat->ofd6cid)->update([
+                'todaydate' => $hazmat->todaydate,
+                'corVelID' => $hazmat->corVelID,
+                'attachOFD6d' => $hazmat->attachOFD6d,
+                'contactCorvel' => $hazmat->contactCorvel,
+                'updatedby'=> $hazmat->updatedby,
+                'createdby' => $hazmat->createdby,]
+        );
+
+        //end history code
+        $hazmat->update($request->all());
+
+        return redirect()->route('hazmat.index');
+    }
+
+
+
+
+
+
 //    public function show($id)
 //    {
 //        $relations = [
