@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInit1c24cae9f05a147ab8fe4c0272a62523
+class ComposerStaticInitc6e72da91c061b5728cf159e3ff7ade9
 {
     public static $files = array (
         '0e6d7bf4a5811bfa5cf40c5ccd6fae6a' => __DIR__ . '/..' . '/symfony/polyfill-mbstring/bootstrap.php',
@@ -290,8 +290,10 @@ class ComposerStaticInit1c24cae9f05a147ab8fe4c0272a62523
         'App\\Http\\Controllers\\Api\\V1\\AssetTypesController' => __DIR__ . '/../..' . '/app/Http/Controllers/Api/V1/AssetTypesController.php',
         'App\\Http\\Controllers\\Api\\V1\\AssetsController' => __DIR__ . '/../..' . '/app/Http/Controllers/Api/V1/AssetsController.php',
         'App\\Http\\Controllers\\Api\\V1\\InjuriesController' => __DIR__ . '/../..' . '/app/Http/Controllers/Api/V1/InjuriesController.php',
+        'App\\Http\\Controllers\\Auth\\AuthController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/AuthController-old.php',
         'App\\Http\\Controllers\\Auth\\ForgotPasswordController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/ForgotPasswordController.php',
         'App\\Http\\Controllers\\Auth\\LoginController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/LoginController.php',
+        'App\\Http\\Controllers\\Auth\\PasswordController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/PasswordController-old.php',
         'App\\Http\\Controllers\\Auth\\RegisterController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/RegisterController.php',
         'App\\Http\\Controllers\\Auth\\ResetPasswordController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/ResetPasswordController.php',
         'App\\Http\\Controllers\\BiologicalsController' => __DIR__ . '/../..' . '/app/Http/Controllers/BiologicalsController.php',
@@ -300,7 +302,9 @@ class ComposerStaticInit1c24cae9f05a147ab8fe4c0272a62523
         'App\\Http\\Controllers\\HomeController' => __DIR__ . '/../..' . '/app/Http/Controllers/HomeController.php',
         'App\\Http\\Controllers\\InjuriesController' => __DIR__ . '/../..' . '/app/Http/Controllers/InjuriesController.php',
         'App\\Http\\Controllers\\Traits\\FileUploadTrait' => __DIR__ . '/../..' . '/app/Http/Controllers/Traits/FileUploadTrait.php',
+        'App\\Http\\Controllers\\UserController' => __DIR__ . '/../..' . '/app/Http/Controllers/UserController.php',
         'App\\Http\\Kernel' => __DIR__ . '/../..' . '/app/Http/Kernel.php',
+        'App\\Http\\Middleware\\Authenticate' => __DIR__ . '/../..' . '/app/Http/Middleware/Authenticate.php',
         'App\\Http\\Middleware\\EncryptCookies' => __DIR__ . '/../..' . '/app/Http/Middleware/EncryptCookies.php',
         'App\\Http\\Middleware\\RedirectIfAuthenticated' => __DIR__ . '/../..' . '/app/Http/Middleware/RedirectIfAuthenticated.php',
         'App\\Http\\Middleware\\VerifyCsrfToken' => __DIR__ . '/../..' . '/app/Http/Middleware/VerifyCsrfToken.php',
@@ -308,6 +312,7 @@ class ComposerStaticInit1c24cae9f05a147ab8fe4c0272a62523
         'App\\Http\\Requests\\StoreBiologicalsRequest' => __DIR__ . '/../..' . '/app/Http/Requests/StoreBiologicalsRequest.php',
         'App\\Http\\Requests\\StoreHazmatRequest' => __DIR__ . '/../..' . '/app/Http/Requests/StoreHazmatRequest.php',
         'App\\Http\\Requests\\StoreStationsRequest' => __DIR__ . '/../..' . '/app/Http/Requests/StoreStationsRequest.php',
+        'App\\Http\\Requests\\UpdateAccidentsRequest' => __DIR__ . '/../..' . '/app/Http/Requests/UpdateAccidentsRequest.php',
         'App\\Injury' => __DIR__ . '/../..' . '/app/Injury.php',
         'App\\Providers\\AppServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AppServiceProvider.php',
         'App\\Providers\\AuthServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AuthServiceProvider.php',
@@ -354,7 +359,7 @@ class ComposerStaticInit1c24cae9f05a147ab8fe4c0272a62523
         'Cron\\MinutesField' => __DIR__ . '/..' . '/mtdowling/cron-expression/src/Cron/MinutesField.php',
         'Cron\\MonthField' => __DIR__ . '/..' . '/mtdowling/cron-expression/src/Cron/MonthField.php',
         'Cron\\YearField' => __DIR__ . '/..' . '/mtdowling/cron-expression/src/Cron/YearField.php',
-        'DatabaseSeeder' => __DIR__ . '/../..' . '/database/migrations/2017_03_01_022839_create_hazmat_table.php',
+        'DatabaseSeeder' => __DIR__ . '/../..' . '/database/seeds/DatabaseSeeder.php',
         'DeepCopy\\DeepCopy' => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy/DeepCopy.php',
         'DeepCopy\\Exception\\CloneException' => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy/Exception/CloneException.php',
         'DeepCopy\\Filter\\Doctrine\\DoctrineCollectionFilter' => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy/Filter/Doctrine/DoctrineCollectionFilter.php',
@@ -3130,6 +3135,7 @@ class ComposerStaticInit1c24cae9f05a147ab8fe4c0272a62523
         'Symfony\\Polyfill\\Util\\TestListener' => __DIR__ . '/..' . '/symfony/polyfill-util/TestListener.php',
         'TestCase' => __DIR__ . '/../..' . '/tests/TestCase.php',
         'Text_Template' => __DIR__ . '/..' . '/phpunit/php-text-template/src/Template.php',
+        'UsersTableSeeder' => __DIR__ . '/../..' . '/database/seeds/UsersTableSeeder.php',
         'Webmozart\\Assert\\Assert' => __DIR__ . '/..' . '/webmozart/assert/src/Assert.php',
         'XdgBaseDir\\Xdg' => __DIR__ . '/..' . '/dnoegel/php-xdg-base-dir/src/Xdg.php',
         'phpDocumentor\\Reflection\\DocBlock' => __DIR__ . '/..' . '/phpdocumentor/reflection-docblock/src/DocBlock.php',
@@ -3198,10 +3204,10 @@ class ComposerStaticInit1c24cae9f05a147ab8fe4c0272a62523
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInit1c24cae9f05a147ab8fe4c0272a62523::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInit1c24cae9f05a147ab8fe4c0272a62523::$prefixDirsPsr4;
-            $loader->prefixesPsr0 = ComposerStaticInit1c24cae9f05a147ab8fe4c0272a62523::$prefixesPsr0;
-            $loader->classMap = ComposerStaticInit1c24cae9f05a147ab8fe4c0272a62523::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInitc6e72da91c061b5728cf159e3ff7ade9::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInitc6e72da91c061b5728cf159e3ff7ade9::$prefixDirsPsr4;
+            $loader->prefixesPsr0 = ComposerStaticInitc6e72da91c061b5728cf159e3ff7ade9::$prefixesPsr0;
+            $loader->classMap = ComposerStaticInitc6e72da91c061b5728cf159e3ff7ade9::$classMap;
 
         }, null, ClassLoader::class);
     }

@@ -32,12 +32,12 @@ class Accident extends Model
      * @param $input
      */
     public function setDateAccidentDate($input)
-{
-    if ($input != null) {
-        $this->attributes['accidentDate'] = Carbon::createFromFormat('Y-m-d', $input)->format('Y-m-d');
-    } else {
-        $this->attributes['accidentDate'] = null;
+    {
+        if ($input != null) {
+            $this->attributes['accidentDate'] = Carbon::createFromFormat('Y-m-d', $input)->format('Y-m-d');
+        } else {
+            $this->attributes['accidentDate'] = null;
+        }
     }
-}
 
 }
