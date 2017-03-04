@@ -41,7 +41,12 @@ class BiologicalsController extends Controller
 
     public function show($id)
     {
+
         $biological = Biological::findOrFail($id);
-        return view('biologicals.show', compact('biological', ''));
+
+        //show history code start
+        //below one line code is for storing all history related to the $id in variable, which is to be used to display in show page.
+        //show history code end
+        return view('biologicals.show',compact('biological'));
     }
 }
