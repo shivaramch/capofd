@@ -33,9 +33,9 @@
 
     <link rel="stylesheet" href="https://code.jquery.com/ui/1.11.3/themes/smoothness/jquery-ui.css"/>
 
-    <link rel="stylesheet" href="{{ url('css') }}/bootstrap.min.css"/>
-    <link rel="stylesheet" href="{{ url('css') }}/bootstrap-table.min.css"/>
-    <link rel="stylesheet" href="{{ url('css') }}/dashboard.css"/>
+    <link rel="stylesheet" href="{{ url ('css') }}/bootstrap.min.css"/>
+    <link rel="stylesheet" href="{{ url ('css') }}/bootstrap-table.min.css"/>
+    <link rel="stylesheet" href="{{ url ('css') }}/dashboard.css"/>
 
 
     <link href="/css/app.css" rel="stylesheet">
