@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-
+use App\Attachment;
 use App\Injury;
 use Illuminate\Http\Request;
 use App\Http\Requests\StoreStationsRequest;
@@ -39,10 +39,17 @@ class InjuriesController extends Controller
     {
         $request = $this->saveFiles($request);
         Injury::create($request->all());
+        $last_insert_id = DB::getPdo()->lastInsertId();
 
+        $attachmentName = $request['attachmentName'];
+
+        $attachment = new Attachment();
+
+        $attachment->attachmentName = $attachmentName;
+        $attachment->Injury_ofd6ID = $last_insert_id;
+
+        $attachment->save();
         return redirect()->route('injuries.index');
-
-        
     }
 //
 //    public function show($id)
