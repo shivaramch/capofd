@@ -2,8 +2,8 @@
 @section('crumbs')
     <ol class="breadcrumb">
         <li><a href="{{ url('/') }}">Dashboard</a></li>
-        <li><a href="{{ route('accidents.index') }}">OFD 6B Biologicals</a></li>
-        <li class="active">Edit OFD 6B Form {{ $accident->ofd6bID }}</li>
+        <li><a href="{{ route('biologicals.index') }}">OFD 6B Biologicals</a></li>
+        <li class="active">Edit OFD 6B Form {{ $biological->ofd6bID }}</li>
     </ol>
 @endsection
 
@@ -216,15 +216,7 @@
     </div>
     </div>
     </div>
-    <div class="panel panel-default">
-        <div class="col-sm-12 panel-heading">
-            <label class="col-sm-5"></label>
-            <div class="btn-bottom ">
-                {!! Form::submit('Submit',['class' => 'btn btn-success']) !!}
-                <a href="{{ route('biologicals.index') }}" class="btn btn-default">Cancel</a>
-            </div>
-        </div>
-    </div>
+    
 
     {!! Form::close() !!}
 @stop
