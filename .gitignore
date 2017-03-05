@@ -1,3 +1,4 @@
+/node_modules
 /public/storage
 Homestead.yaml
 Homestead.json
@@ -8,6 +9,7 @@ Homestead.json
 public/storage
 public/hot
 storage/*.key
+node_modules/
 npm-debug.log
 /public/uploads/
 .vscode/
