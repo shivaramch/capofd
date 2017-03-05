@@ -14,3 +14,4 @@ npm-debug.log
 /public/uploads/
 .vscode/
 /vendor/
+/.env
