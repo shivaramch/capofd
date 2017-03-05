@@ -4,8 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Accident;
 use App\Http\Requests\UpdateAccidentsRequest;
+use App\User;
 use Illuminate\Http\Request;
 use App\Http\Requests\StoreAccidentsRequest;
+use Illuminate\Support\Facades\Auth;
 
 class AccidentsController extends Controller
 {
