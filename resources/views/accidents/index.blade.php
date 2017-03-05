@@ -48,6 +48,7 @@
                 <tbody>
                 @if(count($accidents) > 0)
                     @foreach($accidents as $accident)
+                        @if($accident->User_Login_employeeID == Auth::user()->id)
                         <tr>
                             <td>{{ $accident->ofd6aID }}</td>
                             <td>{{ $accident->accidentDate }}</td>
@@ -64,6 +65,7 @@
                                 </div>
                             </td>
                         </tr>
+                        @endif
                     @endforeach
                 @else
                     <tr>
