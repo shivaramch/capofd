@@ -2,12 +2,14 @@
 @section('crumbs')
     <ol class="breadcrumb">
         <li><a href="{{ url('/') }}">Dashboard</a></li>
-        <li><a href="{{ route('hazmat.index') }}">OFD 6C Hazmat Exposure</a></li>
-        <li class="active">New Form</li>
+        <li><a href="{{ route('accidents.index') }}">OFD 6C Hazmat Exposure</a></li>
+        <li class="active">Edit OFD 6C Form {{ $hazmat->ofd6cID }}</li>
     </ol>
 @endsection
+
 @section('content')
-    {!! Form::open(['method' => 'POST', 'route' => ['hazmat.store'], 'files' => true,]) !!}
+    {!! Form::model($hazmat,['method' => 'PUT', 'route' => ['hazmat.update', $hazmat->ofd6cID], 'files' => true,]) !!}
+
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
     <script>
@@ -167,31 +169,25 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-sm-12 form-group">
-                        <label class="checkbox-inline col-sm-4"><input type="checkbox">
-                            <strong>Fill out OFD-025 Hazmat Exposure Report form</strong>
-                        </label>
-                        </label>
-                        <br>
-                        <div class="col-sm-12 form-group well well-sm">
-                            <div class="col-sm-4">
-                                <a class="btn btn-success dropdown-toggle col-sm-12" type="button"
-                                   href="Fillable PDFs\Hazmat Module\(Exposure PDF - Updated OFD 006d) OFD 025 - HazMat Exposure Report.pdf"
-                                   download="(Exposure PDF - Updated OFD 006d) OFD 025 - HazMat Exposure Report">
-                                    <i class="fa fa-download" aria-hidden="true"></i> Download</a>
-                            </div>
-                            <div class="col-sm-3">
-                                <div class="input-group">
-                                    <label class="input-group-btn">
-                    <span class="btn btn-info">
-                        <i class="fa fa-cloud-upload" aria-hidden="true"></i> Upload<input type="file" name="pathOFD6d" style="display: none;" multiple>
-                    </span>
-                                    </label>
-                                    <input type="text" id="upload-file-info" class="form-control" readonly>
-                                </div>
-                            </div>
+                    <label class="checkbox-inline col-sm-12">
+                        <strong>Fill out OFD-025 Hazmat Exposure Report form</strong>
+                    </label>
+                    <br>
+                    <div class="col-sm-12 form-group well well-sm">
+                        <div class="col-sm-4">
+                            <a class="btn btn-success dropdown-toggle col-sm-12" type="button"
+                               href="{{ asset('Fillable PDFs\Hazmat Module\(Exposure PDF - Updated OFD 006d) OFD 025 - HazMat Exposure Report.pdf') }}">
+                                <i class="fa fa-download" aria-hidden="true"></i> Download</a>
+                        </div>
+                        <div class="col-sm-4">
+                            <button type="button" class="btn btn-info dropdown-toggle col-sm-12" data-toggle="modal"
+                                    data-target="#myModal">
+                                <i class="fa fa-cloud-upload" aria-hidden="true"></i> Upload
+                            </button>
                         </div>
                     </div>
+                </div>
+
                     <div class="row">
                         <div class="col-sm-12 form-group">
                             <label class="col-sm-4">Do you have any symptoms of illness or injury and require treatment</label>
@@ -206,14 +202,21 @@
                             </div>
                         </div>
                     </div>
-                    {!! Form::submit('Submit',['class' => 'btn btn-success']) !!}
-                    <a href="{{ route('hazmat.index') }}" class="btn btn-default">Cancel</a>
 
+
+                <div class="panel panel-default">
+                    <div class="col-sm-12 panel-heading">
+                        <label class="col-sm-5"></label>
+                        <div class="btn-bottom ">
+                            {!! Form::submit('Submit',['class' => 'btn btn-success']) !!}
+                            <a href="{{ route('hazmat.index') }}" class="btn btn-default">Cancel</a>
+                        </div>
+                    </div>
                 </div>
                 </div>
-
             </div>
         </div>
+
 
 
 
