@@ -1,4 +1,40 @@
 @extends('layouts.app')
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
+
+	
+	<script>
+        $(document).ready(function () {
+            $(".datepicker1").datepicker({
+                onClose: function () {
+                    var date2 = $('.datepicker1').datepicker('getDate');
+                    date2.setDate(date2.getDate() + 35)
+                    $(".datepicker2").datepicker("setDate", date2);
+					
+					var date3 = $('.datepicker1').datepicker('getDate');
+                    date3.setDate(date3.getDate() + 0)
+                    $(".datepicker3").datepicker("setDate", date3);
+                }
+            });
+            $(".datepicker2").datepicker();
+			$(".datepicker3").datepicker();
+			
+			
+        });
+    </script><script>
+        $(document).ready(function () {
+            $(".datepicker1").datepicker({
+                onClose: function () {
+                    var date3 = $('.datepicker1').datepicker('getDate');
+                    date3.setDate(date3.getDate() + 0)
+                    $(".datepicker3").datepicker("setDate", date3);
+                }
+            });
+            $(".datepicker3").datepicker();
+        });
+    </script>
+	
+	
 @section('crumbs')
     <ol class="breadcrumb">
         <a class="btn btn-default" type="button"
@@ -11,27 +47,12 @@
 @endsection
 @section('content')
     {!! Form::open(['method' => 'POST', 'route' => ['accidents.store'], 'files' => true,]) !!}
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-    <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
-    <script>
-        $(document).ready(function () {
-            $("#datepicker1").datepicker({
-                onClose: function () {
-                    var date2 = $('#datepicker1').datepicker('getDate');
-                    date2.setDate(date2.getDate() + 35)
-                    $("#datepicker2").datepicker("setDate", date2);
-
-                }
-            });
-            $("#datepicker2").datepicker();
-        });
-    </script>
+    
     <style>
         #padtop {
             padding-top: 7px;
         }
     </style>
-
     <div class="panel panel-default">
         <div class="panel-heading">
             <div class="jumbotron" style="margin-bottom: 5px; ">
@@ -75,7 +96,9 @@
                     <div class="col-sm-4 form-group">
                         {!! Form::label('accidentDate', 'Date of Accident:',array('style'=>'padding-top:7px;','class'=> 'col-sm-4 control-label') )!!}
                         <div class="col-sm-6 ">
-                            {!! Form::text('accidentDate', old('accidentDate'), array('id'=>'datepicker1','class' => 'form-control datepicker', 'placeholder' => 'YYYY-MM-DD','required' => 'required'))!!}
+                            {!! Form::text('accidentDate1', old('accidentDate1'), array('id'=>'datepicker12','class' => 'form-control datepicker1', 'placeholder' => 'YYYY-MM-DD','required' => 'required'))!!}
+							
+							{!! Form::text('accidentDate', old('accidentDate'), array('style'=>'display:none;','id'=>'datepicker32','class' => 'form-control datepicker3', 'placeholder' => 'YYYY-MM-DD','required' => 'required'))!!}
                             <p class="help-block"></p>
                             @if($errors->has('accidentDate'))
                                 <p class="help-block">
@@ -134,7 +157,6 @@
                             @endif
                         </div>
                     </div>
-
                 </div>
                 <div class="row">
                     <div class="col-sm-4 form-group">
@@ -176,10 +198,9 @@
                 </div>
                 <div class="alert alert-danger" align="center">
                     <div class="row">
-                        <label>Please submit all the forms by:<input type="text" class="form-control" id="datepicker2"
+                        <label>Please submit all the forms by:<input type="text" class="form-control datepicker2" id="datepicker12"
                                                                      disabled></label>
                     </div>
-
                     <div class="row">
                         <div class="col-md-12">
                             <strong>
@@ -222,7 +243,7 @@
                     <div class="col-sm-4">
                         <a class="btn btn-success dropdown-toggle col-sm-12" type="button"
                            href="Fillable PDFs\Accident Module\(Accident PDF) LRS 101 City of Omaha Vehicle Accident Report.pdf"
-                           download="(Accident PDF) LRS 101 City of Omaha Vehicle Accident Report">
+                           download="(Accident PDF) LRS 101 City of Omaha Vehicle Accident Report.pdf">
                             <i class="fa fa-download" aria-hidden="true"></i> Download</a>
                     </div>
                     <div class="col-sm-3">
@@ -246,7 +267,6 @@
                         only</strong></label>
                 <div class="col-sm-12 form-group well well-sm">
                     <div class="col-sm-4">
-
                         <a class="btn btn-success dropdown-toggle col-sm-12" type="button"
                            href="Fillable PDFs\Accident Module\(Accident PDF) OFD 295 Vehicle Accident Witness Statement.pdf"
                            download="(Accident PDF) OFD 295 Vehicle Accident Witness Statement.pdf">
@@ -272,7 +292,6 @@
                         Intradepartmental Communication</strong>-Driver</label>
                 <div class="col-sm-12 form-group well well-sm">
                     <div class="col-sm-4">
-
                         <a class="btn btn-success dropdown-toggle col-sm-12" type="button"
                            href="Fillable PDFs\Accident Module\(Accident PDF) OFD 025a Accident Intradepartmental Communication - Driver.pdf"
                            download="(Accident PDF) OFD 025a Accident Intradepartmental Communication - Driver.pdf">
@@ -298,7 +317,6 @@
                         Intradepartmental Communication</strong>-Supervisor</label>
                 <div class="col-sm-12 form-group well well-sm">
                     <div class="col-sm-4">
-
                         <a class="btn btn-success dropdown-toggle col-sm-12" type="button"
                            href="Fillable PDFs\Accident Module\(Accident PDF) OFD 025b Accident Intradepartmental Communication - Supervisor.pdf"
                            download="(Accident PDF) OFD 025b Accident Intradepartmental Communication - Supervisor.pdf">
@@ -324,7 +342,6 @@
                         Intradepartmental Communication</strong>-Other Personnel</label>
                 <div class="col-sm-12 form-group well well-sm">
                     <div class="col-sm-4">
-
                         <a class="btn btn-success dropdown-toggle col-sm-12" type="button"
                            href="Fillable PDFs\Accident Module\(Accident PDF) OFD 025c Accident Intradepartmental Communication - Other Personnel.pdf"
                            download="(Accident PDF) OFD 025c Accident Intradepartmental Communication - Other Personnel.pdf">
@@ -350,7 +367,6 @@
                         Damaged, Lost, Stolen Equipment Report</strong></label>
                 <div class="col-sm-12 form-group well well-sm">
                     <div class="col-sm-4">
-
                         <a class="btn btn-success dropdown-toggle col-sm-12" type="button"
                            href="Fillable PDFs\Accident Module\(Accident PDF) OFD 31 Lost, Damaged or Stolen Equipment Report.pdf"
                            download="(Accident PDF) OFD 31 Lost, Damaged or Stolen Equipment Report.pdf">
@@ -374,7 +390,6 @@
             <div class="row">
                 <label class="checkbox-inline col-sm-12"><strong> Complete OFD 127 Request for
                         Services Form</strong></label>
-
                 <div class="col-sm-12 form-group well well-sm">
                     <div class="col-sm-4">
                         <a class="btn btn-success dropdown-toggle col-sm-12" type="button"
@@ -400,10 +415,8 @@
             <div class="row">
                 <label class="checkbox-inline col-sm-12"><strong><strong> Complete DR 41 State
                             of Nebraska DMV Vehicle Accident Report</strong></strong></label>
-
                 <div class="col-sm-12 form-group well well-sm">
                     <div class="col-sm-4">
-
                         <a class="btn btn-success dropdown-toggle col-sm-12" type="button"
                            href="Fillable PDFs\Accident Module\(Accident PDF) DR 41 State of Nebraska DMV Vehicle Accident Report.pdf"
                            download="(Accident PDF) DR 41 State of Nebraska DMV Vehicle Accident Report.pdf">
@@ -433,7 +446,6 @@
                         SWD fax # 444-6378. You can
                         leave a message with rig # address of incident, date, time and
                         RB#</label>
-
                 </div>
             </div>
             <div class="row">
@@ -453,6 +465,5 @@
             </div>
         </div>
     </div>
-
     {!! Form::close() !!}
 @stop
