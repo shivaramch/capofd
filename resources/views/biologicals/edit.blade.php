@@ -148,38 +148,37 @@
             </div>
         </div>
 
-        <h4 style="padding-left:12px;"><u><strong>The following Checklist will follow:</strong></u></h4>
+        <div><h4 style="padding-left:12px;"><u><strong>Please Select the Type of Exposure</strong></u></h4></div>
+
+
         <div class="row">
-            <div class="col-sm-12">
-                <div class="form-group" , style="padding-left:12px;">
-                    {{ Form::checkbox('decontaminate', 1, null, ['id'=>'decontaminate', 'class' => 'className']) }}
-                    {{ Form::label('decontaminate', 'Decontaminate') }}
-                </div>
-            </div>
-            <div class="col-sm-12">
-                <div class="form-group" , style="padding-left:12px;">
-                    {{ Form::checkbox('callChi', 1, null, ['id'=>'callChi', 'class' => 'className' ]) }}
-                    {{ Form::label('callChi', 'Call CHI OUCH Nurse to determine type of exposure') }}
-                </div>
+            <div class="col-sm-12 form-group">
+                <div class="col-sm-6">
+                    {{ Form::radio('exposure', 0 , null, ['id'=>'exposure', 'class' => 'className']) }}
+                    {{ Form::label('exposure', 'True Exposure') }}
+
+
+                {{ Form::radio('exposure',1 , null, ['id'=>'exposure', 'class' => 'className']) }}
+                {{ Form::label('exposure', 'Potential Exposure') }}
+
+               </div>
             </div>
         </div>
 
-        <div class="panel-group" id="accordion">
-            <div class="panel panel-primary">
-                <div class="panel-heading">
-                    <h4 class="panel-title">
-                        <a data-toggle="collapse" data-parent="#accordion" href="#collapse1">Please Click Here In Case
-                            of True Exposure</a>
-                    </h4>
+
+            <div id="Exposure0" class="desc" style="display: none;">
+                <div class="col-sm-12">
+                    <div class="form-group">
+                        {{ Form::checkbox('trueDecontaminate', 1, null, ['id' => 'selfDecontaminate', 'class'=>'className']) }}
+                        {{Form::label('selfDecontaminate','Decontaminate self- wash, flush as soon as possible  ')}}
+                    </div>
                 </div>
-                <div id="collapse1" class="panel-collapse collapse">
-                    <div class="panel-body">
-                        <div class="col-sm-12">
-                            <div class="form-group">
-                                {{ Form::checkbox('confirmSource', 1, null, ['id'=>'confirmSource', 'class' => 'className' ]) }}
-                                {{ Form::label('confirmSource', 'Confirm Source - Patient blood draw with OUCH Nurse') }}
-                            </div>
-                        </div>
+                <div class="col-sm-12">
+                    <div class="form-group">
+                        {{ Form::checkbox('confirmSource', 1, null, ['id'=>'confirmSource', 'class' => 'className' ]) }}
+                        {{ Form::label('confirmSource', 'Confirm Source - Patient blood draw with OUCH Nurse') }}
+                    </div>
+                </div>
 
                         <div class="col-sm-12">
                             <div class="form-group">
@@ -251,54 +250,51 @@
                                 {{ Form::checkbox('trueDocumentDayBook', 1, null, ['id' => 'trueDocumentDayBook', 'class'=>'className']) }}
                                 {{Form::label('trueDocumentDayBook','Document in Company Day Book and on your Personnel Record   ')}}
 
-                            </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-sm-12 form-group">
+                        <label class="col-sm-4">Do you have any symptoms of illness or injury and require
+                            treatment</label>
+                        <div class="col-sm-2">
+                            <form name="cityselect">
+                                <select name="menu">
+
+                                    <option selected="selected">Select One</option>
+                                    <option value="Yes">Yes</option>
+                                    <option value="No">No</option>
+                                </select>
+                            </form>
                         </div>
-                        <div class="row">
-                            <div class="col-sm-12 form-group">
-                                <label class="col-sm-4">Do you have any symptoms of illness or injury and require
-                                    treatment</label>
-                                <div class="col-sm-2">
-                                    <form name="cityselect">
-                                        <select name="menu"
-                                                onChange="window.document.location.href=this.options[this.selectedIndex].value;"
-                                                value="GO">
-                                            <option selected="selected">Select One</option>
-                                            <option value="http://localhost/capofd/public/injuries">Yes</option>
-                                            <option value="No">No</option>
-                                        </select>
-                                    </form>
-                                </div>
-                            </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <label class="col-sm-5"></label>
+                        <div class="btn-bottom">
+                            {!! Form::submit('Submit',['class' => 'btn btn-success']) !!}
+                            <a href="{{ route('biologicals.index') }}" class="btn btn-default">Cancel</a>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="panel panel-primary">
-            <div class="panel-heading">
-                <h4 class="panel-title">
-                    <a data-toggle="collapse" data-parent="#accordion" href="#collapse2">Please Click Here In Case
-                        Of Potential Exposure</a>
-                </h4>
-            </div>
-            <div id="collapse2" class="panel-collapse collapse">
-                <div class="panel-body">
 
-                    <div class="col-sm-12">
-                        <div class="form-group">
-                            {{ Form::checkbox('potDecontaminate', 1, null, ['id' => 'selfDecontaminate', 'class'=>'className']) }}
-                            {{Form::label('selfDecontaminate','Decontaminate self- wash, flush as soon as possible  ')}}
+            <div id="Exposure1" class="desc" style="display: none;">
 
-                        </div>
+                <div class="col-sm-12">
+                    <div class="form-group">
+                        {{ Form::checkbox('potDecontaminate', 1, null, ['id' => 'selfDecontaminate', 'class'=>'className']) }}
+                        {{Form::label('selfDecontaminate','Decontaminate self- wash, flush as soon as possible  ')}}
                     </div>
+                </div>
 
-                    <div class="col-sm-12">
-                        <div class="form-group">
-                            {{ Form::checkbox('potBagTag', 1, null, ['id' => 'potBagTag', 'class'=>'className']) }}
-                            {{Form::label('potBagTag','Bag & Tag clothing if applicable - send email to PSS with pick-up location')}}
-
-                        </div>
+                <div class="col-sm-12">
+                    <div class="form-group">
+                        {{ Form::checkbox('potBagTag', 1, null, ['id' => 'potBagTag', 'class'=>'className']) }}
+                        {{Form::label('potBagTag','Bag & Tag clothing if applicable - send email to PSS with pick-up location')}}
                     </div>
+                </div>
 
                     <div class="col-sm-12">
                         <div class="form-group">
@@ -345,30 +341,28 @@
                                         treatment</label>
                                     <div class="col-sm-2">
                                         <form name="cityselect">
-                                            <select name="menu"
-                                                    onChange="window.document.location.href=this.options[this.selectedIndex].value;"
-                                                    value="GO">
+                                            <select name="menu">
                                                 <option selected="selected">Select One</option>
-                                                <option value="http://localhost/capofd/public/injuries">Yes</option>
+                                                <option value="Yes">Yes</option>
                                                 <option value="No">No</option>
                                             </select>
                                         </form>
                                     </div>
                                 </div>
                             </div>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <label class="col-sm-5"></label>
+                        <div class="btn-bottom">
+                            {!! Form::submit('Submit',['class' => 'btn btn-success']) !!}
+                            <a href="{{ route('biologicals.index') }}" class="btn btn-default">Cancel</a>
+                        </div>
+                    </div>
+                </div>
                         </div>
                     </div>
                 </div>
 
-            </div>
-            <div class="row">
-                <div class="col-sm-12">
-                    <label class="col-sm-5"></label>
-                    <div class="btn-bottom">
-                        {!! Form::submit('Submit',['class' => 'btn btn-success']) !!}
-                        <a href="{{ route('biologicals.index') }}" class="btn btn-default">Cancel</a>
-                    </div>
-                </div>
             </div>
         </div>
     </div>
@@ -376,3 +370,25 @@
     </div>
     {!! Form::close() !!}
 @stop
+
+@section('javascript')
+
+    <script src="{{ ('js/extensions/cookie') }}/bootstrap-table-cookie.js"></script>
+    <script src="{{ ('js/extensions/mobile') }}/bootstrap-table-mobile.js"></script>
+
+    <script src="{{ ('js/export') }}/bootstrap-table-export.js"></script>
+    <script src="{{ ('js/export') }}/tableExport.js"></script>
+    <script src="{{ ('js/export') }}/jquery.base64.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("input[name$='exposure']").click(function () {
+                var test = $(this).val();
+
+                $("div.desc").hide();
+                $("#Exposure" + test).show();
+            });
+        });
+    </script>
+
+@endsection
