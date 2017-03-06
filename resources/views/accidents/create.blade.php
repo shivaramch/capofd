@@ -13,24 +13,13 @@
 					
 					var date3 = $('.datepicker1').datepicker('getDate');
                     date3.setDate(date3.getDate() + 0)
-                    $(".datepicker3").datepicker("setDate", date3);
+                    $("#datepicker32").datepicker("setDate", date3);
                 }
             });
             $(".datepicker2").datepicker();
-			$(".datepicker3").datepicker();
+			$("#datepicker32").datepicker();
 			
 			
-        });
-    </script><script>
-        $(document).ready(function () {
-            $(".datepicker1").datepicker({
-                onClose: function () {
-                    var date3 = $('.datepicker1').datepicker('getDate');
-                    date3.setDate(date3.getDate() + 0)
-                    $(".datepicker3").datepicker("setDate", date3);
-                }
-            });
-            $(".datepicker3").datepicker();
         });
     </script>
 	
@@ -98,7 +87,7 @@
                         <div class="col-sm-6 ">
                             {!! Form::text('accidentDate1', old('accidentDate1'), array('id'=>'datepicker12','class' => 'form-control datepicker1', 'placeholder' => 'YYYY-MM-DD','required' => 'required'))!!}
 							
-							{!! Form::text('accidentDate', old('accidentDate'), array('style'=>'display:none;','id'=>'datepicker32','class' => 'form-control datepicker3', 'placeholder' => 'YYYY-MM-DD','required' => 'required'))!!}
+							{!! Form::text('accidentDate', old('accidentDate'), array('style'=>'display:none;','id'=>'datepicker32','class' => 'form-control datepicker', 'placeholder' => 'YYYY-MM-DD','required' => 'required'))!!}
                             <p class="help-block"></p>
                             @if($errors->has('accidentDate'))
                                 <p class="help-block">
@@ -242,8 +231,7 @@
                 <div class="col-sm-12 form-group well well-sm">
                     <div class="col-sm-4">
                         <a class="btn btn-success dropdown-toggle col-sm-12" type="button"
-                           href="Fillable PDFs\Accident Module\(Accident PDF) LRS 101 City of Omaha Vehicle Accident Report.pdf"
-                           download="(Accident PDF) LRS 101 City of Omaha Vehicle Accident Report.pdf">
+                           href="{{ asset('Fillable PDFs\Accident Module\(Accident PDF) LRS 101 City of Omaha Vehicle Accident Report.pdf') }}"download="(Accident PDF) LRS 101 City of Omaha Vehicle Accident Report.pdf">
                             <i class="fa fa-download" aria-hidden="true"></i> Download</a>
                     </div>
                     <div class="col-sm-3">
@@ -268,8 +256,7 @@
                 <div class="col-sm-12 form-group well well-sm">
                     <div class="col-sm-4">
                         <a class="btn btn-success dropdown-toggle col-sm-12" type="button"
-                           href="Fillable PDFs\Accident Module\(Accident PDF) OFD 295 Vehicle Accident Witness Statement.pdf"
-                           download="(Accident PDF) OFD 295 Vehicle Accident Witness Statement.pdf">
+                           href="{{ asset('Fillable PDFs\Accident Module\(Accident PDF) OFD 295 Vehicle Accident Witness Statement.pdf') }}"download="(Accident PDF) OFD 295 Vehicle Accident Witness Statement.pdf">
                             <i class="fa fa-download" aria-hidden="true"></i> Download</a>
                     </div>
                     <div class="col-sm-3">
@@ -293,8 +280,7 @@
                 <div class="col-sm-12 form-group well well-sm">
                     <div class="col-sm-4">
                         <a class="btn btn-success dropdown-toggle col-sm-12" type="button"
-                           href="Fillable PDFs\Accident Module\(Accident PDF) OFD 025a Accident Intradepartmental Communication - Driver.pdf"
-                           download="(Accident PDF) OFD 025a Accident Intradepartmental Communication - Driver.pdf">
+                           href="{{ asset('Fillable PDFs\Accident Module\(Accident PDF) OFD 025a Accident Intradepartmental Communication - Driver.pdf') }}"download="(Accident PDF) OFD 025a Accident Intradepartmental Communication - Driver.pdf">
                             <i class="fa fa-download" aria-hidden="true"></i> Download</a>
                     </div>
                     <div class="col-sm-3">
@@ -318,8 +304,7 @@
                 <div class="col-sm-12 form-group well well-sm">
                     <div class="col-sm-4">
                         <a class="btn btn-success dropdown-toggle col-sm-12" type="button"
-                           href="Fillable PDFs\Accident Module\(Accident PDF) OFD 025b Accident Intradepartmental Communication - Supervisor.pdf"
-                           download="(Accident PDF) OFD 025b Accident Intradepartmental Communication - Supervisor.pdf">
+                           href="{{ asset('Fillable PDFs\Accident Module\(Accident PDF) OFD 025b Accident Intradepartmental Communication - Supervisor.pdf') }}"download="(Accident PDF) OFD 025b Accident Intradepartmental Communication - Supervisor.pdf">
                             <i class="fa fa-download" aria-hidden="true"></i> Download</a>
                     </div>
                     <div class="col-sm-3">
@@ -343,8 +328,7 @@
                 <div class="col-sm-12 form-group well well-sm">
                     <div class="col-sm-4">
                         <a class="btn btn-success dropdown-toggle col-sm-12" type="button"
-                           href="Fillable PDFs\Accident Module\(Accident PDF) OFD 025c Accident Intradepartmental Communication - Other Personnel.pdf"
-                           download="(Accident PDF) OFD 025c Accident Intradepartmental Communication - Other Personnel.pdf">
+                          href="{{ asset('Fillable PDFs\Accident Module\(Accident PDF) OFD 025c Accident Intradepartmental Communication - Other Personnel.pdf') }}"download="(Accident PDF) OFD 025c Accident Intradepartmental Communication - Other Personnel.pdf">
                             <i class="fa fa-download" aria-hidden="true"></i> Download</a>
                     </div>
                     <div class="col-sm-3">
@@ -368,8 +352,7 @@
                 <div class="col-sm-12 form-group well well-sm">
                     <div class="col-sm-4">
                         <a class="btn btn-success dropdown-toggle col-sm-12" type="button"
-                           href="Fillable PDFs\Accident Module\(Accident PDF) OFD 31 Lost, Damaged or Stolen Equipment Report.pdf"
-                           download="(Accident PDF) OFD 31 Lost, Damaged or Stolen Equipment Report.pdf">
+                           href="{{ asset('Fillable PDFs\Accident Module\(Accident PDF) OFD 31 Lost, Damaged or Stolen Equipment Report.pdf') }}"download="(Accident PDF) OFD 31 Lost, Damaged or Stolen Equipment Report.pdf">
                             <i class="fa fa-download" aria-hidden="true"></i> Download</a>
                     </div>
                     <div class="col-sm-3">
@@ -393,8 +376,7 @@
                 <div class="col-sm-12 form-group well well-sm">
                     <div class="col-sm-4">
                         <a class="btn btn-success dropdown-toggle col-sm-12" type="button"
-                           href="Fillable PDFs\Accident Module\(Accident PDF) OFD 127 Request for Services.pdf"
-                           download="(Accident PDF) OFD 127 Request for Services.pdf">
+                           href="{{ asset('Fillable PDFs\Accident Module\(Accident PDF) OFD 127 Request for Services.pdf') }}"download="(Accident PDF) OFD 127 Request for Services.pdf">
                             <i class="fa fa-download" aria-hidden="true"></i> Download</a>
                     </div>
                     <div class="col-sm-3">
@@ -418,8 +400,7 @@
                 <div class="col-sm-12 form-group well well-sm">
                     <div class="col-sm-4">
                         <a class="btn btn-success dropdown-toggle col-sm-12" type="button"
-                           href="Fillable PDFs\Accident Module\(Accident PDF) DR 41 State of Nebraska DMV Vehicle Accident Report.pdf"
-                           download="(Accident PDF) DR 41 State of Nebraska DMV Vehicle Accident Report.pdf">
+                           href="{{ asset('Fillable PDFs\Accident Module\(Accident PDF) DR 41 State of Nebraska DMV Vehicle Accident Report.pdf') }}"download="(Accident PDF) DR 41 State of Nebraska DMV Vehicle Accident Report.pdf">
                             <i class="fa fa-download" aria-hidden="true"></i> Download</a>
                     </div>
                     <div class="col-sm-3">
