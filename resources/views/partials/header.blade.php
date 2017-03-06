@@ -137,5 +137,24 @@
 
         });
     </script>
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $(".datepicker1").datepicker({
+                onClose: function () {
+                    var date2 = $('.datepicker1').datepicker('getDate');
+                    date2.setDate(date2.getDate() + 35)
+                    $(".datepicker2").datepicker("setDate", date2);
+                }
+            });
+            $(".datepicker2").datepicker();
+			
+			
+        });
+    </script>
+	
+	
+	
 </head>
 <body class="page-header-fixed">
