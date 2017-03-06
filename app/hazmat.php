@@ -8,12 +8,12 @@ class hazmat extends Model
 {
     protected $table='hazmat';
 
-    protected $primaryKey='ofd6cID';
+    protected $primaryKey='ofd6cid';
     protected $fillable = [
 
         'createdby',
         'updatedby',
-        'ofd6cID',
+        'ofd6cid',
         'employeeID',
         'exposedEmployeeName',
         'dateOfExposure',
@@ -24,7 +24,7 @@ class hazmat extends Model
         'contactCorVel',
         'corvelID',
         'attachOFD25',
-        'pathOFD625',
+        'pathOFD25',
 
 
     ];

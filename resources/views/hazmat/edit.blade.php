@@ -2,7 +2,7 @@
 @section('crumbs')
     <ol class="breadcrumb">
         <li><a href="{{ url('/') }}">Dashboard</a></li>
-        <li><a href="{{ route('accidents.index') }}">OFD 6C Hazmat Exposure</a></li>
+        <li><a href="{{ route('hazmat.index') }}">OFD 6C Hazmat Exposure</a></li>
         <li class="active">Edit OFD 6C Form {{ $hazmat->ofd6cID }}</li>
     </ol>
 @endsection

@@ -2,7 +2,7 @@
 
 namespace App\Http\Requests;
 
-use App\Accident;
+use App\hazmat;
 use Illuminate\Foundation\Http\FormRequest;
 
 

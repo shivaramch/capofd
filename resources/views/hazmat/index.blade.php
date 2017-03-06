@@ -38,22 +38,24 @@
                     <th data-sortable="true">OFD 6C ID</th>
                     <th data-sortable="true">Date of Exposure</th>
                     <th data-sortable="true">Assignment</th>
+
                     <th data-switchable="false" data-searchable="false" data-sortable="false">Action</th>
                 </tr>
                 </thead>
                 <tbody>
                 @if(count($hazmat) > 0)
-                    @foreach($hazmat as $hazmat)
+                    @foreach($hazmat as $hazmats)
                         <tr>
-                            <td>{{ $hazmat->ofd6cID }}</td>
-                            <td>{{ $hazmat->dateOfExposure }}</td>                                                                                                                @append
-                            <td>{{ $hazmat->assignmentHazmat }}</td>
+                            <td>{{ $hazmats->ofd6cid }}</td>
+                            <td>{{ $hazmats->dateOfExposure }}</td>
+                            <td>{{ $hazmats->assignmentHazmat }}</td>
+
                             <td>
                                 <div>
-                                    <a href="{{ route('hazmat.show',[$hazmat->ofd6cID]) }}"
+                                    <a href="{{ route('hazmat.show',[$hazmats->ofd6cid]) }}"
                                        class="btn btn-xs btn-info btn-block"><i
                                                 class="fa fa-eye" aria-hidden="true"></i> VIEW</a>
-                                    <a href="{{ route('hazmat.edit',[$hazmat->ofd6cID]) }}"
+                                    <a href="{{ route('hazmat.edit',[$hazmats->ofd6cid]) }}"
                                        class="btn btn-xs btn-warning btn-block"><i class="fa fa-pencil-square-o"
                                                                                    aria-hidden="true"></i> EDIT</a>
                                 </div>
@@ -107,6 +109,7 @@
             },
         });
         $(".panel").fadeIn("fast");
+
     </script>
 
 @endsection

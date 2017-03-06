@@ -196,8 +196,13 @@
                         <div class="col-sm-12 form-group">
                             <label class="col-sm-4">Do you have any symptoms of illness or injury and require treatment</label>
                             <div class="col-sm-2">
+
                                 <form name="cityselect">
-                                    <select name="menu" onChange="window.document.location.href=this.options[this.selectedIndex].value;" value="GO">
+                                    <div id="selection">
+                                        <iframe src="http://localhost/capstoneGR/public/injuries" height="800px" width="950px">
+                                        </iframe>
+                                    </div>
+                                    <select name="menu" onChange="toggle6cForm();" id="ofd6-dd" value="GO">
                                         <option selected="selected">Select One</option>
                                         <option value="http://localhost/capstoneGR/public/injuries">Yes</option>
                                         <option value="No">No</option>
@@ -208,6 +213,29 @@
                     </div>
                     {!! Form::submit('Submit',['class' => 'btn btn-success']) !!}
                     <a href="{{ route('hazmat.index') }}" class="btn btn-default">Cancel</a>
+                    </form>
+                </div>
+            </div>
+
+            <script>
+                var show = 0;
+                if ( show == 0 ) {
+                    //console.log('1234');
+                    document.getElementById('selection').style.display = 'none';
+                }
+            </script>
+            <script>
+                function toggle6cForm() {
+                    var e = document.getElementById('ofd6-dd');
+                    if (e.selectedIndex == 1 ) {
+                        show = 1;
+                        document.getElementById('selection').style.display = 'block';
+                    } else {
+                        show = 0;
+                        document.getElementById('selection').style.display = 'none';
+                    }
+                }
+            </script>
 
                 </div>
                 </div>
