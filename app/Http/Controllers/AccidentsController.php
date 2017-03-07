@@ -52,11 +52,12 @@ class AccidentsController extends Controller
     {
 
         $accident = Accident::findOrFail($id);
+        $attachments = Attachment::all();
 
         //show history code start
         //below one line code is for storing all history related to the $id in variable, which is to be used to display in show page.
         //show history code end
-        return view('accidents.show',compact('accident'));
+        return view('accidents.show',compact('accident', 'attachments'));
     }
 
     public function update(UpdateAccidentsRequest $request, $id)
