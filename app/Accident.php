@@ -24,6 +24,7 @@ class Accident extends Model
     }
 
     protected $fillable = [
+        'ofd6aID',
         'accidentDate',
         'driverName',
         'driverID',
