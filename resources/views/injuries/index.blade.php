@@ -195,7 +195,8 @@
                                 Report</strong>
                             - Only if seeking medical attention. Complete "Employee Section" and sign at bottom.</label>
                         <div class="col-sm-2">
-                            <a class="btn btn-success dropdown-toggle col-sm-12" type="button" href="/download/a.txt">
+                            <a class="btn btn-success dropdown-toggle col-sm-12" type="button" href="Fillable PDFs\Accident Module\(Accident PDF) LRS 101 City of Omaha Vehicle Accident Report.pdf"
+                           download="(Accident PDF) LRS 101 City of Omaha Vehicle Accident Report.pdf">
                                 <i class="fa fa-download" aria-hidden="true"></i> Download</a>
                         </div>
                         {{--<div class="col-sm-2">--}}
