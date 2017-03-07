@@ -174,11 +174,11 @@
                         </label>
                         <br>
                         <div class="col-sm-12 form-group well well-sm">
-                            <div class="col-sm-4">
-                                <a class="btn btn-success dropdown-toggle col-sm-12" type="button"
-                                   href="Fillable PDFs\Hazmat Module\(Exposure PDF - Updated OFD 006d) OFD 025 - HazMat Exposure Report.pdf"
-                                   download="(Exposure PDF - Updated OFD 006d) OFD 025 - HazMat Exposure Report">
-                                    <i class="fa fa-download" aria-hidden="true"></i> Download</a>
+                        <div class="col-sm-4">
+                        <a class="btn btn-success dropdown-toggle col-sm-12" type="button"
+                           href="{{ asset('Fillable PDFs\Hazmat Module\(Exposure PDF - Updated OFD 006d) OFD 025 - HazMat Exposure Report.pdf') }}"
+                           download="(Exposure PDF - Updated OFD 006d) OFD 025 - HazMat Exposure Report">
+                            <i class="fa fa-download" aria-hidden="true"></i> Download</a>
                             </div>
                             <div class="col-sm-3">
                                 <div class="input-group">
@@ -192,25 +192,25 @@
                             </div>
                         </div>
                     </div>
+
                     <div class="row">
                         <div class="col-sm-12 form-group">
-                            <label class="col-sm-4">Do you have any symptoms of illness or injury and require treatment</label>
+                            <label class="col-sm-4">Do you have any symptoms of illness or injury and require
+                                treatment</label>
                             <div class="col-sm-2">
-
                                 <form name="cityselect">
-                                    <div id="selection">
-                                        <iframe src="http://localhost/capstoneGR/public/injuries" height="800px" width="950px">
-                                        </iframe>
-                                    </div>
-                                    <select name="menu" onChange="toggle6cForm();" id="ofd6-dd" value="GO">
+                                    <select name="menu"
+                                            
+                                            value="GO">
                                         <option selected="selected">Select One</option>
-                                        <option value="http://localhost/capstoneGR/public/injuries">Yes</option>
+                                        <option value="yes">Yes</option>
                                         <option value="No">No</option>
                                     </select>
                                 </form>
                             </div>
                         </div>
                     </div>
+
                     {!! Form::submit('Submit',['class' => 'btn btn-success']) !!}
                     <a href="{{ route('hazmat.index') }}" class="btn btn-default">Cancel</a>
                     </form>
