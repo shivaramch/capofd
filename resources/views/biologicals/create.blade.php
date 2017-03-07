@@ -182,8 +182,7 @@
 
             <div class="col-sm-12">
                 <div class="form-group">
-                    {{ Form::checkbox('trueOFD184', 1, null, ['id' => 'trueOFD184', 'class'=>'className']) }}
-                    {{Form::label('trueOFD184','Complete OFD 184')}}
+                 <label class="col-sm-12"><strong>Complete OFD 184</strong></label>   
                 </div>
                 <div class="col-sm-12 form-group well well-sm">
                     <div class="col-sm-4">
@@ -301,8 +300,7 @@
 
             <div class="col-sm-12">
                 <div class="form-group">
-                    {{ Form::checkbox('potOFD184', 1, null, ['id' => 'potOFD184', 'class'=>'className']) }}
-                    {{Form::label('potOFD184','Complete OFD 184')}}
+                <label class="col-sm-12"><strong>Complete OFD 184</strong></label>   
                 </div>
                 <div class="col-sm-12 form-group well well-sm">
                     <div class="col-sm-4">
