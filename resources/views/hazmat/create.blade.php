@@ -200,7 +200,7 @@
                             <div class="col-sm-2">
                                 <form name="cityselect">
                                     <select name="menu"
-                                            
+
                                             value="GO">
                                         <option selected="selected">Select One</option>
                                         <option value="yes">Yes</option>
