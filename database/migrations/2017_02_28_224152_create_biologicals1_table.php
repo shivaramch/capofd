@@ -23,22 +23,22 @@ class CreateBiologicals1Table extends Migration
             $table->integer('idcoNumber');
             $table->string('epcrIncidentNum');
             $table->date('todaysDate');
-            $table->string('trueDecontaminate');
-            $table->string('confirmSource');
-            $table->string('trueOFD184');
-            $table->string('bloodReport');
-            $table->string('exposureTab');
-            $table->string('trueBagTag');
-            $table->string('notifyPSS');
-            $table->string('truePPE');
-            $table->string('trueDocumentDayBook');
-            $table->string('potDecontaminate');
-            $table->string('potBagTag');
-            $table->string('potOFD184');
-            $table->string('potPPE');
-            $table->string('potDocumentDayBook');
-            $table->string('trueInjury');
-            $table->string('potInjury');
+            $table->string('trueDecontaminate',null);
+            $table->string('confirmSource',null);
+            $table->string('trueOFD184',null);
+            $table->string('bloodReport',null);
+            $table->string('exposureTab',null);
+            $table->string('trueBagTag',null);
+            $table->string('notifyPSS',null);
+            $table->string('truePPE',null);
+            $table->string('trueDocumentDayBook',null);
+            $table->string('potDecontaminate',null);
+            $table->string('potBagTag',null);
+            $table->string('potOFD184',null);
+            $table->string('potPPE',null);
+            $table->string('potDocumentDayBook',null);
+            $table->string('trueInjury',null);
+            $table->string('potInjury',null);
             $table->timestamps();
 
         });
@@ -54,3 +54,4 @@ class CreateBiologicals1Table extends Migration
         Schema::drop('biologicals');
     }
 }
+
