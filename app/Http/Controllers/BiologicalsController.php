@@ -50,7 +50,7 @@ class BiologicalsController extends Controller
 
     public function update(UpdateBiologicalsRequest $request, $id)
     {
-        $request = $this->saveFiles($request);
+        //$request = $this->saveFiles($request);
 
         $biological = Biological::findOrFail($id);
 
