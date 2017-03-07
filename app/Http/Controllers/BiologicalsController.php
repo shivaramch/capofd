@@ -4,13 +4,16 @@ namespace App\Http\Controllers;
 
 use App\Biological;
 use Illuminate\Http\Request;
-
+use App\User;
 use App\Http\Requests\StoreBiologicalsRequest;
 use App\Http\Requests\UpdateBiologicalsRequest;
-
+use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\Traits\FileUploadTrait;
 
 class BiologicalsController extends Controller
 {
+    use FileUploadTrait;
+
     public function index()
     {
         $biologicals = Biological::all();

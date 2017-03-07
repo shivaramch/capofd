@@ -25,15 +25,6 @@
                                 <h3><strong>Biological Exposure Tracking Document (OFD-006B)</strong></h3>
                             </div>
                         </div>
-                        <div class="col-md-2">
-                            <h6><i><strong>Issue Date: 8/17/16</strong></i></h6>
-                        </div>
-                        <div class="col-md-2">
-                            <h6><i><strong>Effective Date: 8/17/16</strong></i></h6>
-                        </div>
-                        <div class="col-md-12">
-                            <h6><i><strong>Amends, Replaces, Rescinds: Replaces OFD-006B (Rev. 05-15)</strong></i></h6>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -182,13 +173,12 @@
 
             <div class="col-sm-12">
                 <div class="form-group">
-                    {{ Form::checkbox('trueOFD184', 1, null, ['id' => 'trueOFD184', 'class'=>'className']) }}
                     {{Form::label('trueOFD184','Complete OFD 184')}}
                 </div>
                 <div class="col-sm-12 form-group well well-sm">
                     <div class="col-sm-4">
                         <a class="btn btn-success dropdown-toggle col-sm-12" type="button"
-                           href="Fillable PDFs\Exposure Complete\(Exposure PDF) OFD 184 State Infectious Disease Exposure Report.pdf"
+                           href="{{ asset('Fillable PDFs\Exposure Complete\(Exposure PDF) OFD 184 State Infectious Disease Exposure Report.pdf')}}"
                            download="(Exposure PDF) OFD 184 State Infectious Disease Exposure Report.pdf">
                             <i class="fa fa-download" aria-hidden="true"></i> Download</a>
                     </div>
@@ -206,7 +196,6 @@
                         </div>
                     </div>
                 </div>
-
             </div>
             <div class="col-sm-12">
                 <div class="form-group">
@@ -248,22 +237,21 @@
             <div class="col-sm-12">
                 <div class="form-group">
                     {{ Form::checkbox('trueDocumentDayBook', 1, null, ['id' => 'trueDocumentDayBook', 'class'=>'className']) }}
-                    {{Form::label('trueDocumentDayBook','Document in Company Day Book and on your Personnel Record   ')}}
+                    {{Form::label('trueDocumentDayBook','Document in Company Day Book and on your Personnel Record')}}
 
                 </div>
             </div>
 
             <div class="col-sm-12">
                 <div class="form-group">
-                    {{ Form::checkbox('trueInjury', 1, null, ['id' => 'trueInjury', 'class'=>'className']) }}
+                    {{ Form::checkbox('trueInjury', 0, null, ['id' => 'trueInjury', 'class'=>'className']) }}
                     {{Form::label('trueInjury','Do you have any symptoms of illness or injury and require
-                       treatment? (In case of Injury, please fill OFD - 6 IOD Application)     ')}}
+                       treatment? (In case of Injury, please fill OFD - 6 IOD Application)')}}
 
-                    {!! Form::select('trueInjury',[
-                      'Select One' => 'Select One',
+                    {!! Form::select('Select One',[
                       'Yes' => 'Yes',
                       'No' => 'No'],
-                      array('class' => 'form-control'))!!}
+                    array('class' => 'form-control'))!!}
                     <p class="help-block"></p>
                     @if($errors->has('trueInjury'))
                         <p class="help-block">
@@ -301,13 +289,12 @@
 
             <div class="col-sm-12">
                 <div class="form-group">
-                    {{ Form::checkbox('potOFD184', 1, null, ['id' => 'potOFD184', 'class'=>'className']) }}
                     {{Form::label('potOFD184','Complete OFD 184')}}
                 </div>
                 <div class="col-sm-12 form-group well well-sm">
                     <div class="col-sm-4">
                         <a class="btn btn-success dropdown-toggle col-sm-12" type="button"
-                           href="Fillable PDFs\Exposure Complete\(Exposure PDF) OFD 184 State Infectious Disease Exposure Report"
+                           href="{{ asset('Fillable PDFs\Exposure Complete\(Exposure PDF) OFD 184 State Infectious Disease Exposure Report.pdf')}}"
                            download="(Exposure PDF) OFD 184 State Infectious Disease Exposure Report">
                             <i class="fa fa-download" aria-hidden="true"></i> Download</a>
                     </div>
@@ -340,15 +327,14 @@
             </div>
             <div class="col-sm-12">
                 <div class="form-group">
-                    {{ Form::checkbox('potInjury', 1, null, ['id' => 'potInjury', 'class'=>'className']) }}
+                    {{ Form::checkbox('potInjury', 0, null, ['id' => 'potInjury', 'class'=>'className']) }}
                     {{Form::label('potInjury','Do you have any symptoms of illness or injury and require
                        treatment? (In case of Injury, please fill OFD - 6 IOD Application)     ')}}
 
-                    {!! Form::select('potInjury',[
-                      'Select One' => 'Select One',
-                      'Yes' => 'Yes',
-                      'No' => 'No'],
-                      array('class' => 'form-control'))!!}
+                    {!! Form::select('Select One',[
+                       'Yes' => 'Yes',
+                       'No' => 'No'],
+                     array('class' => 'form-control'))!!}
                     <p class="help-block"></p>
                     @if($errors->has('potInjury'))
                         <p class="help-block">
@@ -368,13 +354,7 @@
             </div>
         </div>
     </div>
-    </div>
 
-    </div>
-    </div>
-    </div>
-    </div>
-    </div>
     {!! Form::close() !!}
 @stop
 

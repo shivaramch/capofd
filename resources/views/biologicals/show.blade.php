@@ -124,99 +124,244 @@
         <div class="panel-body">
             <div class="col-sm-4 form-group">
                 {!! Form::label('decontaminate', 'Decontaminate', array('style'=>'padding-top:7px;','class' => 'col-sm-4 control-label','placeholder'=>'Enter Badge Id')) !!}
-                <div class="col-sm-6 ">
-                    {{ $biological->decontaminate }}
+                <div class="col-sm-6">
+                    <?php
+                        if($biological->decontaminate == 1)
+                            {
+                               echo("true");
+                            }
+                        else
+                            {
+                                echo("false");
+                            }
+                    ?>
                 </div>
             </div>
             <div class="col-sm-4 form-group">
                 {!! Form::label('callChi', 'Call Chi', array('style'=>'padding-top:7px;','class' => 'col-sm-4 control-label','placeholder'=>'Enter Badge Id')) !!}
                 <div class="col-sm-6 ">
-                    {{ $biological->callChi }}
+                    <?php
+                    if($biological->callChi == 1)
+                    {
+                        echo("true");
+                    }
+                    else
+                    {
+                        echo("false");
+                    }
+                    ?>
                 </div>
             </div>
             <div class="col-sm-4 form-group">
                 {!! Form::label('confirmSource', 'Confirm Source', array('style'=>'padding-top:7px;','class' => 'col-sm-4 control-label','placeholder'=>'Enter Badge Id')) !!}
                 <div class="col-sm-6 ">
-                    {{ $biological->confirmSource }}
+                    <?php
+                    if($biological->confirmSource == 1)
+                    {
+                        echo("true");
+
+                    }
+                    else
+                    {
+                        echo("false");
+                    }
+                    ?>
+                        <a href={{$biological->url}}>{{$biological->confirmSource}}</a>
                 </div>
             </div>
             <div class="col-sm-4 form-group">
                 {!! Form::label('trueOFD184', 'True OFD184', array('style'=>'padding-top:7px;','class' => 'col-sm-4 control-label','placeholder'=>'Enter Badge Id')) !!}
                 <div class="col-sm-6 ">
-                    {{ $biological->trueOFD184 }}
+                    <?php
+                    if($biological->trueOFD184 == 1)
+                    {
+                        echo("true");
+                    }
+                    else
+                    {
+                        echo("false");
+                    }
+                    ?>
                 </div>
             </div>
             <div class="col-sm-4 form-group">
                 {!! Form::label('bloodReport', 'Blood Report', array('style'=>'padding-top:7px;','class' => 'col-sm-4 control-label','placeholder'=>'Enter Badge Id')) !!}
                 <div class="col-sm-6 ">
-                    {{ $biological->bloodReport }}
+                    <?php
+                    if($biological->bloodReport == 1)
+                    {
+                        echo("true");
+                    }
+                    else
+                    {
+                        echo("false");
+                    }
+                    ?>
                 </div>
             </div>
             <div class="col-sm-4 form-group">
                 {!! Form::label('exposureTab', 'Exposure Tab', array('style'=>'padding-top:7px;','class' => 'col-sm-4 control-label','placeholder'=>'Enter Badge Id')) !!}
                 <div class="col-sm-6 ">
-                    {{ $biological->exposureTab }}
+                    <?php
+                    if($biological->exposureTab == 1)
+                    {
+                        echo("true");
+                    }
+                    else
+                    {
+                        echo("false");
+                    }
+                    ?>
                 </div>
             </div>
             <div class="col-sm-4 form-group">
                 {!! Form::label('trueBagTag', 'True Bag Tag', array('style'=>'padding-top:7px;','class' => 'col-sm-4 control-label','placeholder'=>'Enter Badge Id')) !!}
                 <div class="col-sm-6 ">
-                    {{ $biological->trueBagTag }}
+                    <?php
+                    if($biological->trueBagTag == 1)
+                    {
+                        echo("true");
+                    }
+                    else
+                    {
+                        echo("false");
+                    }
+                    ?>
                 </div>
             </div>
             <div class="col-sm-4 form-group">
                 {!! Form::label('notifyPSS', 'Notify PSS', array('style'=>'padding-top:7px;','class' => 'col-sm-4 control-label','placeholder'=>'Enter Badge Id')) !!}
                 <div class="col-sm-6 ">
-                    {{ $biological->notifyPSS }}
+                    <?php
+                    if($biological->notifyPSS == 1)
+                    {
+                        echo("true");
+                    }
+                    else
+                    {
+                        echo("false");
+                    }
+                    ?>
                 </div>
             </div>
             <div class="col-sm-4 form-group">
                 {!! Form::label('truePPE', 'True PPE', array('style'=>'padding-top:7px;','class' => 'col-sm-4 control-label','placeholder'=>'Enter Badge Id')) !!}
                 <div class="col-sm-6 ">
-                    {{ $biological->truePPE }}
+                    <?php
+                    if($biological->truePPE == 1)
+                    {
+                        echo("true");
+                    }
+                    else
+                    {
+                        echo("false");
+                    }
+                    ?>
                 </div>
             </div>
             <div class="col-sm-4 form-group">
                 {!! Form::label('trueDocumentDayBook', 'True Document Day Book', array('style'=>'padding-top:7px;','class' => 'col-sm-4 control-label','placeholder'=>'Enter Badge Id')) !!}
                 <div class="col-sm-6 ">
-                    {{ $biological->trueDocumentDayBook }}
+                    <?php
+                    if($biological->trueDocumentDayBook == 1)
+                    {
+                        echo("true");
+                    }
+                    else
+                    {
+                        echo("false");
+                    }
+                    ?>
                 </div>
             </div>
             <div class="col-sm-4 form-group">
                 {!! Form::label('potDecontaminate', 'Pot Decontaminate', array('style'=>'padding-top:7px;','class' => 'col-sm-4 control-label','placeholder'=>'Enter Badge Id')) !!}
                 <div class="col-sm-6 ">
-                    {{ $biological->potDecontaminate }}
+                    <?php
+                    if($biological->potDecontaminate == 1)
+                    {
+                        echo("true");
+                    }
+                    else
+                    {
+                        echo("false");
+                    }
+                    ?>
                 </div>
             </div>
             <div class="col-sm-4 form-group">
                 {!! Form::label('potBagTag', 'Pot Bag Tag', array('style'=>'padding-top:7px;','class' => 'col-sm-4 control-label','placeholder'=>'Enter Badge Id')) !!}
                 <div class="col-sm-6 ">
-                    {{ $biological->potBagTag }}
+                    <?php
+                    if($biological->potBagTag == 1)
+                    {
+                        echo("true");
+                    }
+                    else
+                    {
+                        echo("false");
+                    }
+                    ?>
                 </div>
             </div>
             <div class="col-sm-4 form-group">
                 {!! Form::label('potOFD184', 'Pot OFD184', array('style'=>'padding-top:7px;','class' => 'col-sm-4 control-label','placeholder'=>'Enter Badge Id')) !!}
                 <div class="col-sm-6 ">
-                    {{ $biological->potOFD184 }}
+                    <?php
+                    if($biological->potOFD184 == 1)
+                    {
+                        echo("true");
+                    }
+                    else
+                    {
+                        echo("false");
+                    }
+                    ?>
                 </div>
             </div>
             <div class="col-sm-4 form-group">
                 {!! Form::label('potPPE', 'pot PPE', array('style'=>'padding-top:7px;','class' => 'col-sm-4 control-label','placeholder'=>'Enter Badge Id')) !!}
                 <div class="col-sm-6 ">
-                    {{ $biological->potPPE }}
+                    <?php
+                    if($biological->potPPE == 1)
+                    {
+                        echo("true");
+                    }
+                    else
+                    {
+                        echo("false");
+                    }
+                    ?>
                 </div>
             </div>
             <div class="col-sm-4 form-group">
                 {!! Form::label('potDocumentDayBook', 'Pot Document DayBook', array('style'=>'padding-top:7px;','class' => 'col-sm-4 control-label','placeholder'=>'Enter Badge Id')) !!}
                 <div class="col-sm-6 ">
-                    {{ $biological->potDocumentDayBook }}
+                    <?php
+                    if($biological->potDocumentDayBook == 1)
+                    {
+                        echo("true");
+                    }
+                    else
+                    {
+                        echo("false");
+                    }
+                    ?>
                 </div>
             </div>
         </div>
     </div>
     </div>
     </div>
-    
+    <div class="panel panel-default">
+        <div class="col-sm-12 panel-heading">
+            <label class="col-sm-5"></label>
+            <div class="btn-bottom ">
+                {!! Form::submit('Return',['class' => 'btn btn-success']) !!}
+                <a href="{{ route('biologicals.index') }}" class="btn btn-default">Cancel</a>
+            </div>
+        </div>
+    </div>
 
     {!! Form::close() !!}
 @stop
