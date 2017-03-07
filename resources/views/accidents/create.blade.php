@@ -438,11 +438,32 @@
         </div>
     </div>
     <div class="panel panel-default">
-        <div class="col-sm-12 panel-heading">
+        <div class="col-sm-12 panel-headinzzzzg">
             <label class="col-sm-5"></label>
             <div class="btn-bottom ">
-                {!! Form::submit('Submit',['class' => 'btn btn-success']) !!}
+                <button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal">
+                    Save
+                </button>
+
                 <a href="{{ route('accidents.index') }}" class="btn btn-default">Cancel</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+                </div>
+                <div class="modal-body">
+                    ...
+                </div>
+                <div class="modal-footer">
+                    {!! Form::submit('Submit',['class' => 'btn btn-success']) !!}
+                </div>
             </div>
         </div>
     </div>
