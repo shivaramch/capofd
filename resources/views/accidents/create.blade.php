@@ -30,7 +30,7 @@
            href="{{ route('accidents.index') }}">
             <i class="fa fa-arrow-left" aria-hidden="true"></i> Back</a>
         <li><a href="{{ url('/') }}">Dashboard</a></li>
-        <li><a href="{{ route('accidents.create') }}">OFD 6A Accidents</a></li>
+        <li><a href="{{ route('accidents.index') }}">OFD 6A Accidents</a></li>
         <li class="active">New Form</li>
     </ol>
 @endsection
@@ -241,9 +241,8 @@
                             <label class="input-group-btn">
                     <span class="btn btn-info">
                         <i class="fa fa-cloud-upload" aria-hidden="true"></i> Upload<input type="file"
-                                                                                           name="station_document"
-                                                                                           style="display: none;"
-                                                                                           multiple>
+                                                                                           name="LRS101"
+                                                                                           style="display: none;">
                     </span>
                             </label>
                             <input type="text" id="upload-file-info" class="form-control" readonly>
@@ -267,9 +266,8 @@
                             <label class="input-group-btn">
                     <span class="btn btn-info">
                         <i class="fa fa-cloud-upload" aria-hidden="true"></i> Upload<input type="file"
-                                                                                           name="station_document"
-                                                                                           style="display: none;"
-                                                                                           multiple>
+                                                                                           name="OFD295"
+                                                                                           style="display: none;">
                     </span>
                             </label>
                             <input type="text" id="upload-file-info" class="form-control" readonly>
@@ -292,9 +290,8 @@
                             <label class="input-group-btn">
                     <span class="btn btn-info">
                         <i class="fa fa-cloud-upload" aria-hidden="true"></i> Upload<input type="file"
-                                                                                           name="station_document"
-                                                                                           style="display: none;"
-                                                                                           multiple>
+                                                                                           name="OFD025a"
+                                                                                           style="display: none;">
                     </span>
                             </label>
                             <input type="text" id="upload-file-info" class="form-control" readonly>
@@ -316,10 +313,8 @@
                         <div class="input-group">
                             <label class="input-group-btn">
                     <span class="btn btn-info">
-                        <i class="fa fa-cloud-upload" aria-hidden="true"></i> Upload<input type="file"
-                                                                                           name="station_document"
-                                                                                           style="display: none;"
-                                                                                           multiple>
+                        <i class="fa fa-cloud-upload" aria-hidden="true"></i> Upload<input type="file" name="OFD025b"
+                                                                                           style="display: none;">
                     </span>
                             </label>
                             <input type="text" id="upload-file-info" class="form-control" readonly>
@@ -341,10 +336,8 @@
                         <div class="input-group">
                             <label class="input-group-btn">
                     <span class="btn btn-info">
-                        <i class="fa fa-cloud-upload" aria-hidden="true"></i> Upload<input type="file"
-                                                                                           name="station_document"
-                                                                                           style="display: none;"
-                                                                                           multiple>
+                        <i class="fa fa-cloud-upload" aria-hidden="true"></i> Upload<input type="file" name="OFD025c"
+                                                                                           style="display: none;">
                     </span>
                             </label>
                             <input type="text" id="upload-file-info" class="form-control" readonly>
@@ -366,10 +359,8 @@
                         <div class="input-group">
                             <label class="input-group-btn">
                     <span class="btn btn-info">
-                        <i class="fa fa-cloud-upload" aria-hidden="true"></i> Upload<input type="file"
-                                                                                           name="station_document"
-                                                                                           style="display: none;"
-                                                                                           multiple>
+                        <i class="fa fa-cloud-upload" aria-hidden="true"></i> Upload<input type="file" name="OFD31"
+                                                                                           style="display: none;">
                     </span>
                             </label>
                             <input type="text" id="upload-file-info" class="form-control" readonly>
@@ -391,10 +382,8 @@
                         <div class="input-group">
                             <label class="input-group-btn">
                     <span class="btn btn-info">
-                        <i class="fa fa-cloud-upload" aria-hidden="true"></i> Upload<input type="file"
-                                                                                           name="station_document"
-                                                                                           style="display: none;"
-                                                                                           multiple>
+                        <i class="fa fa-cloud-upload" aria-hidden="true"></i> Upload<input type="file" name="OFD127"
+                                                                                           style="display: none;">
                     </span>
                             </label>
                             <input type="text" id="upload-file-info" class="form-control" readonly>
@@ -416,14 +405,11 @@
                         <div class="input-group">
                             <label class="input-group-btn">
                     <span class="btn btn-info">
-                        <i class="fa fa-cloud-upload" aria-hidden="true"></i> Upload<input type="file"
-                                                                                           name="station_document"
-                                                                                           style="display: none;"
-                                                                                           multiple>
+                        <i class="fa fa-cloud-upload" aria-hidden="true"></i> Upload<input type="file" name="DR41"
+                                                                                           style="display: none;">
                     </span>
                             </label>
-                            <input type="text" id="upload-file-info" class="form-control"
-                                   readonly>
+                            <input type="text" id="upload-file-info" class="form-control" readonly>
                         </div>
                     </div>
                 </div>

@@ -1,6 +1,9 @@
 @extends('layouts.app')
 @section('crumbs')
     <ol class="breadcrumb">
+        <a class="btn btn-default" type="button"
+           href="{{ route('accidents.index') }}">
+            <i class="fa fa-arrow-left" aria-hidden="true"></i> Back</a>
         <li><a href="{{ url('/') }}">Dashboard</a></li>
         <li><a href="{{ route('accidents.index') }}">OFD 6A Accidents</a></li>
         <li class="active">Edit OFD 6A Form {{ $accident->ofd6aID }}</li>
@@ -29,6 +32,15 @@
         #padtop {
             padding-top: 7px;
         }
+
+        table {
+            border-collapse: collapse;
+        }
+
+        table, td, th {
+            border: 1px solid black;
+        }
+
     </style>
 
     <div class="panel panel-default">
@@ -220,53 +232,161 @@
                 <div class="col-sm-12 form-group well well-sm">
                     <div class="col-sm-4">
                         <a class="btn btn-success dropdown-toggle col-sm-12" type="button"
-                           href="{{ asset('Fillable PDFs/Accident Module/(Accident PDF) LRS 101 City of Omaha Vehicle Accident Report.pdf') }}">
+                           href="{{ asset('Fillable PDFs\Accident Module\(Accident PDF) LRS 101 City of Omaha Vehicle Accident Report.pdf') }}"
+                           download="(Accident PDF) LRS 101 City of Omaha Vehicle Accident Report.pdf">
                             <i class="fa fa-download" aria-hidden="true"></i> Download</a>
                     </div>
+                    <div class="col-sm-3">
+                        <div class="input-group">
+                            <label class="input-group-btn">
+                    <span class="btn btn-info">
+                        <i class="fa fa-cloud-upload" aria-hidden="true"></i> Upload<input type="file"
+                                                                                           name="LRS101"
+                                                                                           style="display: none;">
+                    </span>
+                            </label>
+                            <input type="text" id="upload-file-info" class="form-control" readonly>
+                        </div>
+                    </div>
                     <div class="col-sm-4">
-                        <button type="button" class="btn btn-info dropdown-toggle col-sm-12" data-toggle="modal"
-                                data-target="#myModal">
-                            <i class="fa fa-cloud-upload" aria-hidden="true"></i> Upload
-                        </button>
+                        <a class="btn btn-primary dropdown-toggle col-sm-12" data-toggle="collapse"
+                           data-target="#611"><i class="fa fa-eye" aria-hidden="true"></i> View Previously uploaded
+                            file(s)
+                        </a>
+
+                        <div id="611" class="collapse">
+
+                            <table class="table table-striped">
+                                <tr>
+                                    <th> File Name</th>
+                                    <th> File Uploaded At</th>
+                                </tr>
+
+                                @if(count($attachments) > 0)
+                                    @foreach($attachments as $attachment)
+                                        @if($attachment->attachmentType == 611 && $attachment->createdBy ==  Auth::user()->id && $attachment->Injury_ofd6ID == $accident->ofd6aID )
+                                            <tr>
+                                                <td>
+                                                    <a href="{{ asset('uploads/'.$attachment->attachmentName) }}"> {{$attachment->attachmentName}}</a>
+                                                </td>
+                                                <td>
+                                                    {{$attachment->created_At}}</a>
+                                                </td>
+                                            <tr>@endif
+                                    @endforeach
+                                @endif
+
+                            </table>
+                        </div>
                     </div>
                 </div>
             </div>
             <div class="row">
-                <label class="checkbox-inline col-sm-12"><strong><strong>Complete OFD 295
+                <label class="col-sm-12"><strong><strong>Complete OFD 295
                             Vehicle Accident Witness Statement</strong>-This Report is for civilian statements
                         only</strong></label>
                 <div class="col-sm-12 form-group well well-sm">
                     <div class="col-sm-4">
-
                         <a class="btn btn-success dropdown-toggle col-sm-12" type="button"
-                           href="Fillable PDFs\Accident Module\(Accident PDF) OFD 295 Vehicle Accident Witness Statement.pdf"
+                           href="{{ asset('Fillable PDFs\Accident Module\(Accident PDF) OFD 295 Vehicle Accident Witness Statement.pdf') }}"
                            download="(Accident PDF) OFD 295 Vehicle Accident Witness Statement.pdf">
                             <i class="fa fa-download" aria-hidden="true"></i> Download</a>
                     </div>
+                    <div class="col-sm-3">
+                        <div class="input-group">
+                            <label class="input-group-btn">
+                    <span class="btn btn-info">
+                        <i class="fa fa-cloud-upload" aria-hidden="true"></i> Upload<input type="file"
+                                                                                           name="OFD295"
+                                                                                           style="display: none;">
+                    </span>
+                            </label>
+                            <input type="text" id="upload-file-info" class="form-control" readonly>
+                        </div>
+                    </div>
                     <div class="col-sm-4">
-                        <button type="button" class="btn btn-info dropdown-toggle col-sm-12" data-toggle="modal"
-                                data-target="#myModal">
-                            <i class="fa fa-cloud-upload" aria-hidden="true"></i> Upload
-                        </button>
+                        <a class="btn btn-primary dropdown-toggle col-sm-12" data-toggle="collapse"
+                           data-target="#612"><i class="fa fa-eye" aria-hidden="true"></i> View Previously uploaded
+                            file(s)
+                        </a>
+
+                        <div id="612" class="collapse">
+
+                            <tr class="table table-striped">
+                                <tr>
+                                    <th> File Name</th>
+                                    <th> File Uploaded At</th>
+                                </tr>
+
+                                    @if(count($attachments) > 0)
+                                        @foreach($attachments as $attachment)
+                                            @if($attachment->attachmentType == 612 && $attachment->createdBy ==  Auth::user()->id && $attachment->Injury_ofd6ID == $accident->ofd6aID )
+                                              <tr><td>
+                                                    <a href="{{ asset('uploads/'.$attachment->attachmentName) }}"> {{$attachment->attachmentName}}</a>
+                                                </td>
+                                                <td>
+                                                    {{$attachment->created_At}}</a>
+                                                </td></tr>@endif
+                                        @endforeach
+                                    @endif
+
+                            </table>
+                        </div>
                     </div>
                 </div>
             </div>
             <div class="row">
-                <label class="checkbox-inline col-sm-12"><strong>Complete OFD 25a Accident
+                <label class="col-sm-12"><strong>Complete OFD 25a Accident
                         Intradepartmental Communication</strong>-Driver</label>
                 <div class="col-sm-12 form-group well well-sm">
                     <div class="col-sm-4">
-
                         <a class="btn btn-success dropdown-toggle col-sm-12" type="button"
-                           href="Fillable_PDFs\Accident Module\(Accident PDF) OFD 025a Accident Intradepartmental Communication - Driver.pdf"
+                           href="{{ asset('Fillable PDFs\Accident Module\(Accident PDF) OFD 025a Accident Intradepartmental Communication - Driver.pdf') }}"
                            download="(Accident PDF) OFD 025a Accident Intradepartmental Communication - Driver.pdf">
                             <i class="fa fa-download" aria-hidden="true"></i> Download</a>
                     </div>
+                    <div class="col-sm-3">
+                        <div class="input-group">
+                            <label class="input-group-btn">
+                    <span class="btn btn-info">
+                        <i class="fa fa-cloud-upload" aria-hidden="true"></i> Upload<input type="file"
+                                                                                           name="OFD025a"
+                                                                                           style="display: none;">
+                    </span>
+                            </label>
+                            <input type="text" id="upload-file-info" class="form-control" readonly>
+                        </div>
+                    </div>
                     <div class="col-sm-4">
-                        <button type="button" class="btn btn-info dropdown-toggle col-sm-12" data-toggle="modal"
-                                data-target="#myModal">
-                            <i class="fa fa-cloud-upload" aria-hidden="true"></i> Upload
-                        </button>
+                        <a class="btn btn-primary dropdown-toggle col-sm-12" data-toggle="collapse"
+                           data-target="#613"><i class="fa fa-eye" aria-hidden="true"></i> View Previously uploaded
+                            file(s)
+                        </a>
+
+                        <div id="613" class="collapse">
+
+                            <table class="table table-striped">
+                                <tr>
+                                    <th> File Name</th>
+                                    <th> File Uploaded At</th>
+                                </tr>
+
+                                @if(count($attachments) > 0)
+                                    @foreach($attachments as $attachment)
+                                        @if($attachment->attachmentType == 613 && $attachment->createdBy ==  Auth::user()->id && $attachment->Injury_ofd6ID == $accident->ofd6aID )
+                                            <tr>
+                                                <td>
+                                                    <a href="{{ asset('uploads/'.$attachment->attachmentName) }}"> {{$attachment->attachmentName}}</a>
+                                                </td>
+                                                <td>
+                                                    {{$attachment->created_At}}</a>
+                                                </td>
+                                            </tr>
+                                        @endif
+                                    @endforeach
+                                @endif
+                            </table>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -275,17 +395,50 @@
                         Intradepartmental Communication</strong>-Supervisor</label>
                 <div class="col-sm-12 form-group well well-sm">
                     <div class="col-sm-4">
-
                         <a class="btn btn-success dropdown-toggle col-sm-12" type="button"
-                           href="Fillable_PDFs\Accident Module\(Accident PDF) OFD 025b Accident Intradepartmental Communication - Supervisor.pdf"
+                           href="{{ asset('Fillable PDFs\Accident Module\(Accident PDF) OFD 025b Accident Intradepartmental Communication - Supervisor.pdf') }}"
                            download="(Accident PDF) OFD 025b Accident Intradepartmental Communication - Supervisor.pdf">
                             <i class="fa fa-download" aria-hidden="true"></i> Download</a>
                     </div>
+                    <div class="col-sm-3">
+                        <div class="input-group">
+                            <label class="input-group-btn">
+                    <span class="btn btn-info">
+                        <i class="fa fa-cloud-upload" aria-hidden="true"></i> Upload<input type="file" name="OFD025b"
+                                                                                           style="display: none;">
+                    </span>
+                            </label>
+                            <input type="text" id="upload-file-info" class="form-control" readonly>
+                        </div>
+                    </div>
                     <div class="col-sm-4">
-                        <button type="button" class="btn btn-info dropdown-toggle col-sm-12" data-toggle="modal"
-                                data-target="#myModal">
-                            <i class="fa fa-cloud-upload" aria-hidden="true"></i> Upload
-                        </button>
+                        <a class="btn btn-primary dropdown-toggle col-sm-12" data-toggle="collapse"
+                           data-target="#614"><i class="fa fa-eye" aria-hidden="true"></i> View Previously uploaded
+                            file(s)
+                        </a>
+
+                        <div id="614" class="collapse">
+
+                            <table class="table table-striped">
+                                <tr>
+                                    <th> File Name</th>
+                                    <th> File Uploaded At</th>
+                                </tr>
+
+                                    @if(count($attachments) > 0)
+                                        @foreach($attachments as $attachment)
+                                            @if($attachment->attachmentType == 614 && $attachment->createdBy ==  Auth::user()->id && $attachment->Injury_ofd6ID == $accident->ofd6aID )
+                                               <tr></tr> <td>
+                                                    <a href="{{ asset('uploads/'.$attachment->attachmentName) }}"> {{$attachment->attachmentName}}</a>
+                                                </td>
+                                                <td>
+                                                    {{$attachment->created_At}}</a>
+                                                </td></tr>@endif
+                                        @endforeach
+                                    @endif
+
+                            </table>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -294,17 +447,50 @@
                         Intradepartmental Communication</strong>-Other Personnel</label>
                 <div class="col-sm-12 form-group well well-sm">
                     <div class="col-sm-4">
-
                         <a class="btn btn-success dropdown-toggle col-sm-12" type="button"
-                           href="Fillable_PDFs\Accident Module\(Accident PDF) OFD 025c Accident Intradepartmental Communication - Other Personnel.pdf"
+                           href="{{ asset('Fillable PDFs\Accident Module\(Accident PDF) OFD 025c Accident Intradepartmental Communication - Other Personnel.pdf') }}"
                            download="(Accident PDF) OFD 025c Accident Intradepartmental Communication - Other Personnel.pdf">
                             <i class="fa fa-download" aria-hidden="true"></i> Download</a>
                     </div>
+                    <div class="col-sm-3">
+                        <div class="input-group">
+                            <label class="input-group-btn">
+                    <span class="btn btn-info">
+                        <i class="fa fa-cloud-upload" aria-hidden="true"></i> Upload<input type="file" name="OFD025c"
+                                                                                           style="display: none;">
+                    </span>
+                            </label>
+                            <input type="text" id="upload-file-info" class="form-control" readonly>
+                        </div>
+                    </div>
                     <div class="col-sm-4">
-                        <button type="button" class="btn btn-info dropdown-toggle col-sm-12" data-toggle="modal"
-                                data-target="#myModal">
-                            <i class="fa fa-cloud-upload" aria-hidden="true"></i> Upload
-                        </button>
+                        <a class="btn btn-primary dropdown-toggle col-sm-12" data-toggle="collapse"
+                           data-target="#615"><i class="fa fa-eye" aria-hidden="true"></i> View Previously uploaded
+                            file(s)
+                        </a>
+
+                        <div id="615" class="collapse">
+
+                            <table class="table table-striped">
+                                <tr>
+                                    <th> File Name</th>
+                                    <th> File Uploaded At</th>
+                                </tr>
+                                <tr>
+                                    @if(count($attachments) > 0)
+                                        @foreach($attachments as $attachment)
+                                            @if($attachment->attachmentType == 615 && $attachment->createdBy ==  Auth::user()->id && $attachment->Injury_ofd6ID == $accident->ofd6aID )
+                                                <tr><td>
+                                                    <a href="{{ asset('uploads/'.$attachment->attachmentName) }}"> {{$attachment->attachmentName}}</a>
+                                                </td>
+                                                <td>
+                                                    {{$attachment->created_At}}</a>
+                                                </td></tr>@endif
+                                        @endforeach
+                                    @endif
+                                </tr>
+                            </table>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -313,70 +499,171 @@
                         Damaged, Lost, Stolen Equipment Report</strong></label>
                 <div class="col-sm-12 form-group well well-sm">
                     <div class="col-sm-4">
-
                         <a class="btn btn-success dropdown-toggle col-sm-12" type="button"
-                           href="Fillable_PDFs\Accident Module\(Accident PDF) OFD 31 Lost, Damaged or Stolen Equipment Report.pdf"
+                           href="{{ asset('Fillable PDFs\Accident Module\(Accident PDF) OFD 31 Lost, Damaged or Stolen Equipment Report.pdf') }}"
                            download="(Accident PDF) OFD 31 Lost, Damaged or Stolen Equipment Report.pdf">
                             <i class="fa fa-download" aria-hidden="true"></i> Download</a>
                     </div>
+                    <div class="col-sm-3">
+                        <div class="input-group">
+                            <label class="input-group-btn">
+                    <span class="btn btn-info">
+                        <i class="fa fa-cloud-upload" aria-hidden="true"></i> Upload<input type="file" name="OFD31"
+                                                                                           style="display: none;">
+                    </span>
+                            </label>
+                            <input type="text" id="upload-file-info" class="form-control" readonly>
+                        </div>
+                    </div>
                     <div class="col-sm-4">
-                        <button type="button" class="btn btn-info dropdown-toggle col-sm-12" data-toggle="modal"
-                                data-target="#myModal">
-                            <i class="fa fa-cloud-upload" aria-hidden="true"></i> Upload
-                        </button>
+                        <a class="btn btn-primary dropdown-toggle col-sm-12" data-toggle="collapse"
+                           data-target="#616"><i class="fa fa-eye" aria-hidden="true"></i> View Previously uploaded
+                            file(s)
+                        </a>
+
+                        <div id="616" class="collapse">
+
+                            <table class="table table-striped">
+                                <tr>
+                                    <th> File Name</th>
+                                    <th> File Uploaded At</th>
+                                </tr>
+                                <tr>
+                                    @if(count($attachments) > 0)
+                                        @foreach($attachments as $attachment)
+                                            @if($attachment->attachmentType == 616 && $attachment->createdBy ==  Auth::user()->id && $attachment->Injury_ofd6ID == $accident->ofd6aID )
+                                                <tr><td>
+                                                    <a href="{{ asset('uploads/'.$attachment->attachmentName) }}"> {{$attachment->attachmentName}}</a>
+                                                </td>
+                                                <td>
+                                                    {{$attachment->created_At}}</a>
+                                                </td></tr>@endif
+                                        @endforeach
+                                    @endif
+                                </tr>
+                            </table>
+                        </div>
                     </div>
                 </div>
             </div>
             <div class="row">
                 <label class="checkbox-inline col-sm-12"><strong> Complete OFD 127 Request for
                         Services Form</strong></label>
-
                 <div class="col-sm-12 form-group well well-sm">
                     <div class="col-sm-4">
                         <a class="btn btn-success dropdown-toggle col-sm-12" type="button"
-                           href="Fillable_PDFs\Accident Module\(Accident PDF) OFD 127 Request for Services.pdf"
+                           href="{{ asset('Fillable PDFs\Accident Module\(Accident PDF) OFD 127 Request for Services.pdf') }}"
                            download="(Accident PDF) OFD 127 Request for Services.pdf">
                             <i class="fa fa-download" aria-hidden="true"></i> Download</a>
                     </div>
+                    <div class="col-sm-3">
+                        <div class="input-group">
+                            <label class="input-group-btn">
+                    <span class="btn btn-info">
+                        <i class="fa fa-cloud-upload" aria-hidden="true"></i> Upload<input type="file" name="OFD127"
+                                                                                           style="display: none;">
+                    </span>
+                            </label>
+                            <input type="text" id="upload-file-info" class="form-control" readonly>
+                        </div>
+                    </div>
                     <div class="col-sm-4">
-                        <button type="button" class="btn btn-info dropdown-toggle col-sm-12" data-toggle="modal"
-                                data-target="#myModal">
-                            <i class="fa fa-cloud-upload" aria-hidden="true"></i> Upload
-                        </button>
+                        <a class="btn btn-primary dropdown-toggle col-sm-12" data-toggle="collapse"
+                           data-target="#617"><i class="fa fa-eye" aria-hidden="true"></i> View Previously uploaded
+                            file(s)
+                        </a>
+
+                        <div id="617" class="collapse">
+
+                            <table class="table table-striped">
+                                <tr>
+                                    <th> File Name</th>
+                                    <th> File Uploaded At</th>
+                                </tr>
+                                <tr>
+                                    @if(count($attachments) > 0)
+                                        @foreach($attachments as $attachment)
+                                            @if($attachment->attachmentType == 617 && $attachment->createdBy ==  Auth::user()->id && $attachment->Injury_ofd6ID == $accident->ofd6aID )
+                                                <tr><td>
+                                                    <a href="{{ asset('uploads/'.$attachment->attachmentName) }}"> {{$attachment->attachmentName}}</a>
+                                                </td>
+                                                <td>
+                                                    {{$attachment->created_At}}</a>
+                                                </td></tr>@endif
+                                        @endforeach
+                                    @endif
+                                </tr>
+                            </table>
+                        </div>
                     </div>
                 </div>
             </div>
             <div class="row">
                 <label class="checkbox-inline col-sm-12"><strong><strong> Complete DR 41 State
                             of Nebraska DMV Vehicle Accident Report</strong></strong></label>
-
                 <div class="col-sm-12 form-group well well-sm">
                     <div class="col-sm-4">
-
                         <a class="btn btn-success dropdown-toggle col-sm-12" type="button"
-                           href="Fillable_PDFs\Accident Module\(Accident PDF) DR 41 State of Nebraska DMV Vehicle Accident Report.pdf"
+                           href="{{ asset('Fillable PDFs\Accident Module\(Accident PDF) DR 41 State of Nebraska DMV Vehicle Accident Report.pdf') }}"
                            download="(Accident PDF) DR 41 State of Nebraska DMV Vehicle Accident Report.pdf">
                             <i class="fa fa-download" aria-hidden="true"></i> Download</a>
                     </div>
+                    <div class="col-sm-3">
+                        <div class="input-group">
+                            <label class="input-group-btn">
+                    <span class="btn btn-info">
+                        <i class="fa fa-cloud-upload" aria-hidden="true"></i> Upload<input type="file" name="DR41"
+                                                                                           style="display: none;">
+                    </span>
+                            </label>
+                            <input type="text" id="upload-file-info" class="form-control" readonly>
+                        </div>
+                    </div>
                     <div class="col-sm-4">
-                        <button type="button" class="btn btn-info dropdown-toggle col-sm-12" data-toggle="modal"
-                                data-target="#myModal">
-                            <i class="fa fa-cloud-upload" aria-hidden="true"></i> Upload
-                        </button>
+                        <a class="btn btn-primary dropdown-toggle col-sm-12" data-toggle="collapse"
+                           data-target="#618"><i class="fa fa-eye" aria-hidden="true"></i> View Previously uploaded
+                            file(s)
+                        </a>
+
+                        <div id="618" class="collapse">
+
+                            <table class="table table-striped">
+                                <tr>
+                                    <th> File Name</th>
+                                    <th> File Uploaded At</th>
+                                </tr>
+                                <tr>
+                                    @if(count($attachments) > 0)
+                                        @foreach($attachments as $attachment)
+                                            @if($attachment->attachmentType == 618 && $attachment->createdBy ==  Auth::user()->id && $attachment->Injury_ofd6ID == $accident->ofd6aID )
+                                               <tr> <td>
+                                                    <a href="{{ asset('uploads/'.$attachment->attachmentName) }}"> {{$attachment->attachmentName}}</a>
+                                                </td>
+                                                <td>
+                                                    {{$attachment->created_At}}</a>
+                                                </td></tr>@endif
+                                        @endforeach
+                                    @endif
+                                </tr>
+                            </table>
+                        </div>
                     </div>
                 </div>
             </div>
             <div class="row">
                 <div class="col-sm-12 form-group">
-                    <label class="checkbox-inline col-sm-12"><input type="checkbox"><strong> Call Law Department
-                            Investigator</strong>- Call 444-5131- Request report be faxed to SWD fax # 444-6378. You can
-                        leave a message with rig # address of incident, date, time and RB#</label>
-
+                    <label class="checkbox-inline col-sm-12"><input type="checkbox"><strong>
+                            Call Law Department
+                            Investigator</strong>- Call 444-5131- Request report be faxed to
+                        SWD fax # 444-6378. You can
+                        leave a message with rig # address of incident, date, time and
+                        RB#</label>
                 </div>
             </div>
             <div class="row">
                 <div class="col-sm-12 form-group">
-                    <label class="checkbox-inline col-sm-4"><input type="checkbox"><strong> Enter in Company Day
+                    <label class="checkbox-inline col-sm-4"><input type="checkbox"><strong>
+                            Enter in Company Day
                             Book</strong></label></div>
             </div>
         </div>
