@@ -199,45 +199,16 @@
                            download="(Accident PDF) LRS 101 City of Omaha Vehicle Accident Report.pdf">
                                 <i class="fa fa-download" aria-hidden="true"></i> Download</a>
                         </div>
-                        {{--<div class="col-sm-2">--}}
-                        {{--<div class="fileinput-button btn btn-success col-sm-12">--}}
-                        {{--{!! Form::file('station_document', old('station_document'), ['<i class="glyphicon glyphicon-delete"></i>',array('class' => 'form-control', 'style' => 'display:none;')]) !!}--}}
-                        {{--{!! Form::hidden('station_document_max_size', 20) !!}--}}
-                        {{--@if($errors->has('station_document'))--}}
-                        {{--<p class="help-block">--}}
-                        {{--{{ $errors->first('station_document') }}--}}
-                        {{--</p>--}}
-                        {{--@endif--}}
-                        {{--<span class="btn btn-info fileinput-button col-sm-12">--}}
-                        {{--<i class="fa fa-cloud-upload" aria-hidden="true"></i> <span>Upload</span>--}}
-
-                        {{--<input type="file" class="uploadFile" name="station_document" id="station_document">--}}
-
-                        {{--</span>--}}
-                        {{--<button type="button" class="btn btn-info dropdown-toggle col-sm-12" data-toggle="modal"--}}
-                        {{--data-target="#myModal">--}}
-                        {{--<i class="fa fa-cloud-upload" aria-hidden="true"></i> Upload</button>--}}
-                        {{--</div>--}}
                         <div class="col-sm-3">
                             <div class="input-group">
                                 <label class="input-group-btn">
                     <span class="btn btn-info">
-                        <i class="fa fa-cloud-upload" aria-hidden="true"></i> Upload<input type="file" name="attachmentName" style="display: none;" multiple>
+                        <i class="fa fa-cloud-upload" aria-hidden="true"></i> Upload<input type="file" name="CorvelAttachmentName" style="display: none;" >
                     </span>
                                 </label>
                                 <input type="text" id="upload-file-info" class="form-control" readonly>
                             </div>
-                            {{--<label class="btn btn-primary" for="my-file-selector">--}}
-                            {{--<input id="my-file-selector" type="file" style="display:none;" onchange="$('#upload-file-info').html($(this).val());">--}}
-                            {{--Button Text Here--}}
-                            {{--</label>--}}
-                            {{--<span class='label label-info' id="upload-file-info"></span>--}}
-                            {{--<div class="col-sm-2">--}}
-                            {{--<span class='label label-info' id="upload-file-info"></span>--}}
-
-                            {{--</div>--}}
                         </div>
-
                     </div>
                 </div>
                 <div class="row">
@@ -250,14 +221,15 @@
                             <a class="btn btn-success dropdown-toggle col-sm-12" type="button" href="/download/a.txt">
                                 <i class="fa fa-download" aria-hidden="true"></i> Download</a>
                         </div>
-                        <div class="col-sm-2">
-                            <button type="button" class="btn btn-info dropdown-toggle col-sm-12" data-toggle="modal"
-                                    data-target="#myModal">
-                                <i class="fa fa-cloud-upload" aria-hidden="true"></i> Upload</button>
-                        </div>
-                        <div class="col-sm-2">
-                            <button class="btn btn-primary dropdown-toggle col-sm-12" type="button" data-toggle="dropdown">
-                                <i class="fa fa-search" aria-hidden="true"></i> Retrieve</button>
+                        <div class="col-sm-3">
+                            <div class="input-group">
+                                <label class="input-group-btn">
+                    <span class="btn btn-info">
+                        <i class="fa fa-cloud-upload" aria-hidden="true"></i> Upload<input type="file" name="InvestigationAttachment" style="display: none;" >
+                    </span>
+                                </label>
+                                <input type="text" id="upload-file-info" class="form-control" readonly>
+                            </div>
                         </div>
                     </div>
                 </div>
