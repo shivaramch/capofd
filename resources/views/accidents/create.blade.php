@@ -30,7 +30,7 @@
            href="{{ route('accidents.index') }}">
             <i class="fa fa-arrow-left" aria-hidden="true"></i> Back</a>
         <li><a href="{{ url('/') }}">Dashboard</a></li>
-        <li><a href="{{ route('accidents.index') }}">OFD 6A Accidents</a></li>
+        <li><a href="{{ route('accidents.create') }}">OFD 6A Accidents</a></li>
         <li class="active">New Form</li>
     </ol>
 @endsection
