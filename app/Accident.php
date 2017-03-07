@@ -50,4 +50,8 @@ class Accident extends Model
         }
     }
 
+    public function attachment(){
+        return $this->hasMany(\App\Attachment::class);
+    }
+
 }
