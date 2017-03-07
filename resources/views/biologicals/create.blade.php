@@ -3,15 +3,15 @@
     <ol class="breadcrumb">
         <li><a href="{{ url('/') }}">Dashboard</a></li>
         <li><a href="{{ route('biologicals.index') }}">OFD 6B Biologicals</a></li>
-        <li class="active">Edit OFD 6B Form {{ $biological->ofd6bID }}</li>
+        <li class="active">New Form</li>
     </ol>
 @endsection
 
 @section('content')
-    {!! Form::model($biological,['method' => 'PUT', 'route' => ['biologicals.update', $biological->ofd6bID], 'files' => true,]) !!}
+    {!! Form::open(['method' => 'POST', 'route' => ['biologicals.store'], 'files' => true,]) !!}
 
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-    <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <div class="panel panel-default">
         <div class="panel-heading">
             <div class="jumbotron" style="margin-bottom: 5px; ">
@@ -196,147 +196,59 @@
                                 <div class="col-sm-3">
                                     <div class="input-group">
                                         <label class="input-group-btn">
-                                            <span class="btn btn-info"><i class="fa fa-cloud-upload"
-                                                                          aria-hidden="true"></i> Upload<input
-                                                        type="file" name="trueOFD184"
-                                                        style="display: none;"
-                                                        multiple>
+                                            <span class="btn btn-info"><i class="fa fa-cloud-upload" aria-hidden="true"></i> Upload<input type="file" name="trueOFD184"
+                                                                                           style="display: none;"
+                                                                                           multiple>
                                             </span>
                                         </label>
                                         <input type="text" id="upload-file-info" class="form-control" readonly>
                                     </div>
-                                </div>
-                            </div>
-
-                        </div>
-                        <div class="col-sm-12">
-                            <div class="form-group">
-                                {{ Form::checkbox('bloodReport', 1, null, ['id' => 'bloodReport', 'class'=>'className']) }}
-                                {{Form::label('bloodReport','Report for blood draw as directed by OUCH Nurse')}}
-
-                            </div>
-                        </div>
-
-                        <div class="col-sm-12">
-                            <div class="form-group">
-                                {{ Form::checkbox('exposureTab', 1, null, ['id' => 'exposureTab', 'class'=>'className']) }}
-                                {{Form::label('exposureTab','Complete Exposure tab in ePCR ')}}
-
-                            </div>
-                        </div>
-
-                        <div class="col-sm-12">
-                            <div class="form-group">
-                                {{ Form::checkbox('trueBagTag', 1, null, ['id' => 'trueBagTag', 'class'=>'className']) }}
-                                {{Form::label('trueBagTag','Bag & Tag clothing if applicable - send email to PSS with pick-up location ')}}
-
-                            </div>
-                        </div>
-                        <div class="col-sm-12">
-                            <div class="form-group">
-                                {{ Form::checkbox('notifyPSS', 1, null, ['id' => 'notifyPSS', 'class'=>'className']) }}
-                                {{Form::label('notifyPSS','Notify the on-duty PSS via phone at 402-660-1060 ')}}
-
-                            </div>
-                        </div>
-                        <div class="col-sm-12">
-                            <div class="form-group">
-                                {{ Form::checkbox('truePPE', 1, null, ['id' => 'truePPE', 'class'=>'className']) }}
-                                {{Form::label('truePPE','PPE has been cleaned per SOP SWD 1-0  ')}}
-
-                            </div>
-                        </div>
-                        <div class="col-sm-12">
-                            <div class="form-group">
-                                {{ Form::checkbox('trueDocumentDayBook', 1, null, ['id' => 'trueDocumentDayBook', 'class'=>'className']) }}
-                                {{Form::label('trueDocumentDayBook','Document in Company Day Book and on your Personnel Record   ')}}
-
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-sm-12 form-group">
-                                <label class="col-sm-4">Do you have any symptoms of illness or injury and require
-                                    treatment</label>
-                                <div class="col-sm-2">
-                                    <form name="cityselect">
-                                        <select name="menu"
-                                                onChange="window.document.location.href=this.options[this.selectedIndex].value;"
-                                                value="GO">
-                                            <option selected="selected">Select One</option>
-                                            <option value="http://localhost/capofd/public/injuries">Yes</option>
-                                            <option value="No">No</option>
-                                        </select>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="panel panel-primary">
-            <div class="panel-heading">
-                <h4 class="panel-title">
-                    <a data-toggle="collapse" data-parent="#accordion" href="#collapse2">Please Click Here In Case
-                        Of Potential Exposure</a>
-                </h4>
-            </div>
-            <div id="collapse2" class="panel-collapse collapse">
-                <div class="panel-body">
-
-                    <div class="col-sm-12">
-                        <div class="form-group">
-                            {{ Form::checkbox('potDecontaminate', 1, null, ['id' => 'selfDecontaminate', 'class'=>'className']) }}
-                            {{Form::label('selfDecontaminate','Decontaminate self- wash, flush as soon as possible  ')}}
-
-                        </div>
-                    </div>
-
-                    <div class="col-sm-12">
-                        <div class="form-group">
-                            {{ Form::checkbox('potBagTag', 1, null, ['id' => 'potBagTag', 'class'=>'className']) }}
-                            {{Form::label('potBagTag','Bag & Tag clothing if applicable - send email to PSS with pick-up location')}}
-
-                        </div>
-                    </div>
-
-                    <div class="col-sm-12">
-                        <div class="form-group">
-                            {{ Form::checkbox('potOFD184', 1, null, ['id' => 'potOFD184', 'class'=>'className']) }}
-                            {{Form::label('potOFD184','Complete OFD 184')}}
-                        </div>
-                        <div class="col-sm-12 form-group well well-sm">
-                            <div class="col-sm-4">
-                                <a class="btn btn-success dropdown-toggle col-sm-12" type="button"
-                                   href="Fillable PDFs\Exposure Complete\(Exposure PDF) OFD 184 State Infectious Disease Exposure Report"
-                                   download="(Exposure PDF) OFD 184 State Infectious Disease Exposure Report">
-                                    <i class="fa fa-download" aria-hidden="true"></i> Download</a>
-                            </div>
-                            <div class="col-sm-3">
-                                <div class="input-group">
-                                    <label class="input-group-btn">
-                    <span class="btn btn-info">
-                        <i class="fa fa-cloud-upload" aria-hidden="true"></i> Upload<input type="file" name="postOFD184"
-                                                                                           style="display: none;"
-                                                                                           multiple>
-                    </span>
-                                        </label>
-                                        <input type="text" id="upload-file-info" class="form-control" readonly>
                                     </div>
                                 </div>
-                                </div>
-                            </div>
+
+                        </div>
                             <div class="col-sm-12">
                                 <div class="form-group">
-                                    {{ Form::checkbox('potPPE', 1, null, ['id' => 'potPPE', 'class'=>'className']) }}
-                                    {{Form::label('potPPE','PPE has been cleaned per SOP SWD 1-0')}}
+                                    {{ Form::checkbox('bloodReport', 1, null, ['id' => 'bloodReport', 'class'=>'className']) }}
+                                    {{Form::label('bloodReport','Report for blood draw as directed by OUCH Nurse')}}
+
+                                </div>
+                            </div>
+
+                            <div class="col-sm-12">
+                                <div class="form-group">
+                                    {{ Form::checkbox('exposureTab', 1, null, ['id' => 'exposureTab', 'class'=>'className']) }}
+                                    {{Form::label('exposureTab','Complete Exposure tab in ePCR ')}}
+
+                                </div>
+                            </div>
+
+                            <div class="col-sm-12">
+                                <div class="form-group">
+                                    {{ Form::checkbox('trueBagTag', 1, null, ['id' => 'trueBagTag', 'class'=>'className']) }}
+                                    {{Form::label('trueBagTag','Bag & Tag clothing if applicable - send email to PSS with pick-up location ')}}
 
                                 </div>
                             </div>
                             <div class="col-sm-12">
                                 <div class="form-group">
-                                    {{ Form::checkbox('potDocumentDayBook', 1, null, ['id' => 'potDocumentDayBook', 'class'=>'className']) }}
-                                    {{Form::label('potDocumentDayBook','Document in Company Day Book and on your Personnel Record   ')}}
+                                    {{ Form::checkbox('notifyPSS', 1, null, ['id' => 'notifyPSS', 'class'=>'className']) }}
+                                    {{Form::label('notifyPSS','Notify the on-duty PSS via phone at 402-660-1060 ')}}
+
+                                </div>
+                            </div>
+                            <div class="col-sm-12">
+                                <div class="form-group">
+                                    {{ Form::checkbox('truePPE', 1, null, ['id' => 'truePPE', 'class'=>'className']) }}
+                                    {{Form::label('truePPE','PPE has been cleaned per SOP SWD 1-0  ')}}
+
+                                </div>
+                            </div>
+                            <div class="col-sm-12">
+                                <div class="form-group">
+                                    {{ Form::checkbox('trueDocumentDayBook', 1, null, ['id' => 'trueDocumentDayBook', 'class'=>'className']) }}
+                                    {{Form::label('trueDocumentDayBook','Document in Company Day Book and on your Personnel Record   ')}}
+
                                 </div>
                             </div>
                             <div class="row">
@@ -359,19 +271,105 @@
                         </div>
                     </div>
                 </div>
-
             </div>
-            <div class="row">
-                <div class="col-sm-12">
-                    <label class="col-sm-5"></label>
-                    <div class="btn-bottom">
-                        {!! Form::submit('Submit',['class' => 'btn btn-success']) !!}
-                        <a href="{{ route('biologicals.index') }}" class="btn btn-default">Cancel</a>
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <a data-toggle="collapse" data-parent="#accordion" href="#collapse2">Please Click Here In Case
+                            Of Potential Exposure</a>
+                    </h4>
+                </div>
+                <div id="collapse2" class="panel-collapse collapse">
+                    <div class="panel-body">
+
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                                {{ Form::checkbox('potDecontaminate', 1, null, ['id' => 'selfDecontaminate', 'class'=>'className']) }}
+                                {{Form::label('selfDecontaminate','Decontaminate self- wash, flush as soon as possible  ')}}
+
+                            </div>
+                        </div>
+
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                                {{ Form::checkbox('potBagTag', 1, null, ['id' => 'potBagTag', 'class'=>'className']) }}
+                                {{Form::label('potBagTag','Bag & Tag clothing if applicable - send email to PSS with pick-up location')}}
+
+                            </div>
+                        </div>
+
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                                {{ Form::checkbox('potOFD184', 1, null, ['id' => 'potOFD184', 'class'=>'className']) }}
+                                {{Form::label('potOFD184','Complete OFD 184')}}
+                            </div>
+                            <div class="col-sm-12 form-group well well-sm">
+                                <div class="col-sm-4">
+                                    <a class="btn btn-success dropdown-toggle col-sm-12" type="button"
+                                       href="Fillable PDFs\Exposure Complete\(Exposure PDF) OFD 184 State Infectious Disease Exposure Report.pdf"
+                                       download="(Exposure PDF) OFD 184 State Infectious Disease Exposure Report.pdf">
+                                        <i class="fa fa-download" aria-hidden="true"></i> Download</a>
+                                </div>
+                                <div class="col-sm-3">
+                                    <div class="input-group">
+                                        <label class="input-group-btn">
+                    <span class="btn btn-info">
+                        <i class="fa fa-cloud-upload" aria-hidden="true"></i> Upload<input type="file" name="postOFD184"
+                                                                                           style="display: none;"
+                                                                                           multiple>
+                    </span>
+                                        </label>
+                                        <input type="text" id="upload-file-info" class="form-control" readonly>
+                                    </div>
+                                </div>
+                                </div>
+                            </div>
+                                <div class="col-sm-12">
+                                    <div class="form-group">
+                                        {{ Form::checkbox('potPPE', 1, null, ['id' => 'potPPE', 'class'=>'className']) }}
+                                        {{Form::label('potPPE','PPE has been cleaned per SOP SWD 1-0')}}
+
+                                    </div>
+                                </div>
+                                <div class="col-sm-12">
+                                    <div class="form-group">
+                                        {{ Form::checkbox('potDocumentDayBook', 1, null, ['id' => 'potDocumentDayBook', 'class'=>'className']) }}
+                                        {{Form::label('potDocumentDayBook','Document in Company Day Book and on your Personnel Record   ')}}
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-12 form-group">
+                                        <label class="col-sm-4">Do you have any symptoms of illness or injury and
+                                            require treatment</label>
+                                        <div class="col-sm-2">
+                                            <form name="cityselect">
+                                                <select name="menu"
+                                                        onChange="window.document.location.href=this.options[this.selectedIndex].value;"
+                                                        value="GO">
+                                                    <option selected="selected">Select One</option>
+                                                    <option value="http://localhost/capofd/public/injuries">Yes</option>
+                                                    <option value="No">No</option>
+                                                </select>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <label class="col-sm-5"></label>
+                        <div class="btn-bottom">
+                            {!! Form::submit('Submit',['class' => 'btn btn-success']) !!}
+                            <a href="{{ route('biologicals.index') }}" class="btn btn-default">Cancel</a>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
     </div>
     </div>
     {!! Form::close() !!}

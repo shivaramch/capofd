@@ -8,27 +8,29 @@ class Injury extends Model
 {
     protected $fillable = [
 
+        'reportNum',
         'createDate',
         'injuryDate',
         'injuredEmployeeName',
         'injuredEmployeeID',
         'assignmentInjury',
         'shift',
-        'corVelID',
         'frmsIncidentNum',
-        'epcrNumber',
-        'docIOD_isChecked',
-        'docOpDayBook_isChecked',
-        'callFireSupervisor_isChecked',
-        'policeOfficer_isChecked',
-        'station_document',
-        'attachInvestigationReport',
-        'attachStmtWitness',
-        'attachEmpPhyscian',
-        'attachOFD25IOJ',
-        'trainingAssigned',
+        'callFSupSwdBC',
+        'User_Login_ID',
+        'policeOfficerCompleteSign',
+        'callFireSupervisor',
         'createdby',
         'updatedby',
-
+        'corVelID',
+        'captainID',
+        'battalionChiefID',
+        'acOnDutyID',
+        'status1',
     ];
+
+
+    public function attachment(){
+        return $this->hasMany(\App\Attachment::class);
+    }
 }

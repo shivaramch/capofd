@@ -1,112 +1,222 @@
 @extends('layouts.app')
+@section('crumbs')
+    <ol class="breadcrumb">
+        <li><a href="{{ url('/') }}">Dashboard</a></li>
+        <li><a href="{{ route('biologicals.index') }}">OFD 6B Biologicals</a></li>
+        <li class="active">Edit OFD 6B Form {{ $biological->ofd6bID }}</li>
+    </ol>
+@endsection
+
 @section('content')
+    {!! Form::model($biological,['method' => 'PUT', 'route' => ['biologicals.update', $biological->ofd6bID], 'files' => true,]) !!}
 
-    <div class="container-fluid">
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("#datepicker1").datepicker({
+                onClose: function () {
+                    var date2 = $('#datepicker1').datepicker('getDate');
+                    date2.setDate(date2.getDate() + 35)
+                    $("#datepicker2").datepicker("setDate", date2);
 
-        <div class="jumbotron" style="margin-bottom: 5px; ">
+                }
+            });
+            $("#datepicker2").datepicker();
+        });
+    </script>
 
-            <h1>Biological Exposure</h1>
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <div class="jumbotron" style="margin-bottom: 5px; ">
+                <div class="row">
+                    <div class="col-md-2">
+                        <img src="{{asset('img/login.png')}}">
+                    </div>
+                    <div class="col-md-10">
+                        <div class="col-md-12">
+                            <div class="page-header1">
+                                <h3><strong>Biological Exposure Reporting Instructions (OFD-6B)</strong></h3>
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <h5><i><strong>Issue Date: 9/1/16</strong></i></h5>
+                        </div>
+                        <div class="col-md-2">
+                            <h5><i><strong>Effective Date: 9/1/16</strong></i></h5>
+                        </div>
+                        <div class="col-md-12">
+                            <h5><i><strong>Amends, Replaces, Rescinds: Replaces OFD-6B (July 2016) </strong></i></h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="panel-body">
+            <div class="form-horizontal">
 
-            <div class="row">
-                <table class="col-sm-12 form-group">
-                    <tbody>
-                    <tr class="bg-info">
-                    <tr>
-                        <td>Exposed Employee Name</td>
-                        <td><?php echo ($biologicals['exposedEmployeeName']); ?></td>
-                    </tr>
-                    <tr>
-                        <td>Date Of Exposure</td>
-                        <td><?php echo ($biologicals['dateOfExposure']); ?></td>
-                    </tr>
-                    <tr>
-                        <td>Employee ID</td>
-                        <td><?php echo ($biologicals['employeeID_1']); ?></td>
-                    </tr>
-                    <tr>
-                        <td>Assignment Biological </td>
-                        <td><?php echo ($biologicals['assignmentBiological']); ?></td>
-                    </tr>
-                    <tr>
-                        <td>shift</td>
-                        <td><?php echo ($biologicals['shift']); ?></td>
-                    </tr>
-                    <tr>
-                        <td>idco Number </td>
-                        <td><?php echo ($biologicals['idcoNumber']); ?></td>
-                    </tr>
-                    <tr>
-                        <td>epcr Incident Number</td>
-                        <td><?php echo ($biologicals['epcrIncidentNum']); ?></td>
-                    </tr>
-                    <tr>
-                        <td>Todays Date</td>
-                        <td><?php echo ($biologicals['todaysDate']); ?></td>
-                    </tr>
-                    <tr>
-                        <td>Decontaminate</td>
-                        <td><?php echo ($biologicals['decontaminate']); ?></td>
-                    </tr>
-                    <tr>
-                        <td>callChi</td>
-                        <td><?php echo ($biologicals['callChi']); ?></td>
-                    </tr>
-                    <tr>
-                        <td>confirmSource</td>
-                        <td><?php echo ($biologicals['confirmSource']); ?></td>
-                    </tr>
-                    <tr>
-                        <td>trueOFD184</td>
-                        <td><?php echo ($biologicals['trueOFD184']); ?></td>
-                    </tr>
-                    <tr>
-                        <td>blood Report</td>
-                        <td><?php echo ($biologicals['bloodReport']); ?></td>
-                    </tr>
-                    <tr>
-                        <td>Exposure Tab</td>
-                        <td><?php echo ($biologicals['exposureTab']); ?></td>
-                    </tr>
-                    <tr>
-                        <td>trueBag Tag</td>
-                        <td><?php echo ($biologicals['trueBagTag']); ?></td>
-                    </tr>
-                    <tr>
-                        <td>notifyPSS</td>
-                        <td><?php echo ($biologicals['notifyPSS']); ?></td>
-                    </tr>
-                    <tr>
-                        <td>truePPE</td>
-                        <td><?php echo ($biologicals['truePPE']); ?></td>
-                    </tr>
-                    <tr>
-                        <td>trueDocumentDayBook</td>
-                        <td><?php echo ($biologicals['trueDocumentDayBook']); ?></td>
-                    </tr>
-                    <tr>
-                        <td>pot Decontaminate</td>
-                        <td><?php echo ($biologicals['potDecontaminate']); ?></td>
-                    </tr>
-                    <tr>
-                        <td>potBag Tag</td>
-                        <td><?php echo ($biologicals['potBagTag']); ?></td>
-                    </tr>
-                    <tr>
-                        <td>potOFD184</td>
-                        <td><?php echo ($biologicals['potOFD184']); ?></td>
-                    </tr>
-                    <tr>
-                        <td>potPPE</td>
-                        <td><?php echo ($biologicals['potPPE']); ?></td>
-                    </tr>
-                    <tr>
-                        <td>potDocumentDayBook</td>
-                        <td><?php echo ($biologicals['potDocumentDayBook']); ?></td>
-                    </tr>
+                <div class="row">
+                    <div class="col-sm-4 form-group">
+                        {!! Form::label('exposedEmployeeName', 'Exposed Employee Name:',array('style'=>'padding-top:7px;','class'=> 'col-sm-4 control-label') )!!}
+                        <div class="col-sm-6 ">
+                            {{ $biological->exposedEmployeeName }}
+                        </div>
+                    </div>
+                    <div class="col-sm-4 form-group">
+                        {!! Form::label('dateOfExposure', 'Date Of Exposure', array('style'=>'padding-top:7px;','class' => 'col-sm-4 control-label')) !!}
+                        <div class="col-sm-6 ">
+                            {{ $biological->dateOfExposure }}
+                        </div>
+                    </div>
+                    <div class="col-sm-4 form-group">
+                        {!! Form::label('employeeID_1', 'EmployeeID',array( 'style'=>'padding-top:7px;','class' => 'col-sm-4 control-label')) !!}
+                        <div class="col-sm-6 ">
+                            {{ $biological->employeeID_1 }}
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-4 form-group">
+                        {!! Form::label('assignmentBiological', 'Assignment Biological', array('style'=>'padding-top:7px;','class' => 'col-sm-4 control-label')) !!}
+                        <div class="col-sm-6 ">
+                            {{ $biological->assignmentBiological }}
+                        </div>
+                    </div>
+                    <div class="col-sm-4 form-group">
+                        {!! Form::label('shift', 'Shift', array('style'=>'padding-top:7px;','class' => 'col-sm-4 control-label')) !!}
+                        <div class="col-sm-6 ">
+                            {{ $biological->shift }}
+                        </div>
+                    </div>
 
-                    </tbody>
-                </table>
+                </div>
+                <div class="row">
+                    <div class="col-sm-4 form-group">
+                        {!! Form::label('idcoNumber', 'Idco Number', array('style'=>'padding-top:7px;','class' => 'col-sm-4 control-label')) !!}
+                        <div class="col-sm-6 ">
+                            {{ $biological->idcoNumber }}
+                        </div>
+                    </div>
+                    <div class="col-sm-4 form-group">
+                        {!! Form::label('epcrIncidentNum', 'Epcr Incident Num', array('style'=>'padding-top:7px;','class' => 'col-sm-4 control-label','placeholder'=>'Enter Badge Id')) !!}
+                        <div class="col-sm-6 ">
+                            {{ $biological->epcrIncidentNum }}
+                        </div>
+                    </div>
+                    <div class="col-sm-4 form-group">
+                        {!! Form::label('todaysDate', 'Todays Date', array('style'=>'padding-top:7px;','class' => 'col-sm-4 control-label','placeholder'=>'Enter Badge Id')) !!}
+                        <div class="col-sm-6 ">
+                            {{ $biological->todaysDate }}
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <div class="row">
+                <div class="col-sm-12" form-group>
+                    <h4 style="text-align:left;"><u><strong>BIOLOGICAL CHECKLIST :</strong></u></h4>
+                </div>
+            </div>
+        </div>
+        <div class="panel-body">
+            <div class="col-sm-4 form-group">
+                {!! Form::label('decontaminate', 'Decontaminate', array('style'=>'padding-top:7px;','class' => 'col-sm-4 control-label','placeholder'=>'Enter Badge Id')) !!}
+                <div class="col-sm-6 ">
+                    {{ $biological->decontaminate }}
+                </div>
+            </div>
+            <div class="col-sm-4 form-group">
+                {!! Form::label('callChi', 'Call Chi', array('style'=>'padding-top:7px;','class' => 'col-sm-4 control-label','placeholder'=>'Enter Badge Id')) !!}
+                <div class="col-sm-6 ">
+                    {{ $biological->callChi }}
+                </div>
+            </div>
+            <div class="col-sm-4 form-group">
+                {!! Form::label('confirmSource', 'Confirm Source', array('style'=>'padding-top:7px;','class' => 'col-sm-4 control-label','placeholder'=>'Enter Badge Id')) !!}
+                <div class="col-sm-6 ">
+                    {{ $biological->confirmSource }}
+                </div>
+            </div>
+            <div class="col-sm-4 form-group">
+                {!! Form::label('trueOFD184', 'True OFD184', array('style'=>'padding-top:7px;','class' => 'col-sm-4 control-label','placeholder'=>'Enter Badge Id')) !!}
+                <div class="col-sm-6 ">
+                    {{ $biological->trueOFD184 }}
+                </div>
+            </div>
+            <div class="col-sm-4 form-group">
+                {!! Form::label('bloodReport', 'Blood Report', array('style'=>'padding-top:7px;','class' => 'col-sm-4 control-label','placeholder'=>'Enter Badge Id')) !!}
+                <div class="col-sm-6 ">
+                    {{ $biological->bloodReport }}
+                </div>
+            </div>
+            <div class="col-sm-4 form-group">
+                {!! Form::label('exposureTab', 'Exposure Tab', array('style'=>'padding-top:7px;','class' => 'col-sm-4 control-label','placeholder'=>'Enter Badge Id')) !!}
+                <div class="col-sm-6 ">
+                    {{ $biological->exposureTab }}
+                </div>
+            </div>
+            <div class="col-sm-4 form-group">
+                {!! Form::label('trueBagTag', 'True Bag Tag', array('style'=>'padding-top:7px;','class' => 'col-sm-4 control-label','placeholder'=>'Enter Badge Id')) !!}
+                <div class="col-sm-6 ">
+                    {{ $biological->trueBagTag }}
+                </div>
+            </div>
+            <div class="col-sm-4 form-group">
+                {!! Form::label('notifyPSS', 'Notify PSS', array('style'=>'padding-top:7px;','class' => 'col-sm-4 control-label','placeholder'=>'Enter Badge Id')) !!}
+                <div class="col-sm-6 ">
+                    {{ $biological->notifyPSS }}
+                </div>
+            </div>
+            <div class="col-sm-4 form-group">
+                {!! Form::label('truePPE', 'True PPE', array('style'=>'padding-top:7px;','class' => 'col-sm-4 control-label','placeholder'=>'Enter Badge Id')) !!}
+                <div class="col-sm-6 ">
+                    {{ $biological->truePPE }}
+                </div>
+            </div>
+            <div class="col-sm-4 form-group">
+                {!! Form::label('trueDocumentDayBook', 'True Document Day Book', array('style'=>'padding-top:7px;','class' => 'col-sm-4 control-label','placeholder'=>'Enter Badge Id')) !!}
+                <div class="col-sm-6 ">
+                    {{ $biological->trueDocumentDayBook }}
+                </div>
+            </div>
+            <div class="col-sm-4 form-group">
+                {!! Form::label('potDecontaminate', 'Pot Decontaminate', array('style'=>'padding-top:7px;','class' => 'col-sm-4 control-label','placeholder'=>'Enter Badge Id')) !!}
+                <div class="col-sm-6 ">
+                    {{ $biological->potDecontaminate }}
+                </div>
+            </div>
+            <div class="col-sm-4 form-group">
+                {!! Form::label('potBagTag', 'Pot Bag Tag', array('style'=>'padding-top:7px;','class' => 'col-sm-4 control-label','placeholder'=>'Enter Badge Id')) !!}
+                <div class="col-sm-6 ">
+                    {{ $biological->potBagTag }}
+                </div>
+            </div>
+            <div class="col-sm-4 form-group">
+                {!! Form::label('potOFD184', 'Pot OFD184', array('style'=>'padding-top:7px;','class' => 'col-sm-4 control-label','placeholder'=>'Enter Badge Id')) !!}
+                <div class="col-sm-6 ">
+                    {{ $biological->potOFD184 }}
+                </div>
+            </div>
+            <div class="col-sm-4 form-group">
+                {!! Form::label('potPPE', 'pot PPE', array('style'=>'padding-top:7px;','class' => 'col-sm-4 control-label','placeholder'=>'Enter Badge Id')) !!}
+                <div class="col-sm-6 ">
+                    {{ $biological->potPPE }}
+                </div>
+            </div>
+            <div class="col-sm-4 form-group">
+                {!! Form::label('potDocumentDayBook', 'Pot Document DayBook', array('style'=>'padding-top:7px;','class' => 'col-sm-4 control-label','placeholder'=>'Enter Badge Id')) !!}
+                <div class="col-sm-6 ">
+                    {{ $biological->potDocumentDayBook }}
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    </div>
+    
+
+    {!! Form::close() !!}
 @stop
