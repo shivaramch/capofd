@@ -1,6 +1,4 @@
 @include('partials.header')
-<link rel="stylesheet" href="{{ url('css') }}/login.css"/>
-
 <body>
 <div class="wrapper">
 
