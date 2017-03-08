@@ -50,201 +50,178 @@
             </div>
         </div>
         <div class="panel-body">
-            <div class="form-horizontal">
-                <div class="row">
-                    <div class="col-sm-4 form-group">
-                        {!! Form::label('employeeID', 'Employee ID #', array('style'=>'padding-top:7px;','class' => 'col-sm-4 control-label')) !!}
-                        <div class="col-sm-6 ">
-                            {!! Form::text('employeeID', old('employeeID'), ['class' => 'form-control', 'placeholder'=>'Enter Employee ID', 'required'=>'required'])!!}
-                            <p class="help-block"></p>
-                            @if($errors->has('employeeID'))
-                                <p class="help-block">
-                                    {{ $errors->first('employeeID') }}
-                                </p>
-                            @endif
-                        </div>
-                    </div>
-                    <div class="col-sm-4 form-group">
-                        {!! Form::label('exposedEmployeeName', 'Exposed Employee Name', array('style'=>'padding-top:7px;','class' => 'col-sm-4 control-label')) !!}
-                        <div class="col-sm-6 ">
-                            {!! Form::text('exposedEmployeeName', old('exposedEmployeeName'), ['class' => 'form-control', 'placeholder'=>'Enter Driver ID', 'required'=>'required'])!!}
-                            <p class="help-block"></p>
-                            @if($errors->has('exposedEmployeeName'))
-                                <p class="help-block">
-                                    {{ $errors->first('exposedEmployeeName') }}
-                                </p>
-                            @endif
-                        </div>
-                    </div>
-                    <div class="col-sm-4 form-group">
-                        {!! Form::label('dateOfExposure', 'Date of Exposure', array('style'=>'padding-top:7px;','class' => 'col-sm-4 control-label')) !!}
-                        <div class="col-sm-6 ">
-                            {!! Form::text('dateOfExposure', old('dateOfExposure'), array('class'=>'datepicker form-control','placeholder'=>'MM/DD/YYYY', 'required'=>'required'))!!}
-                            <p class="help-block"></p>
-                            @if($errors->has('dateOfExposure'))
-                                <p class="help-block">
-                                    {{ $errors->first('dateOfExposure') }}
-                                </p>
-                            @endif
-                        </div>
+            <div class="row">
+                <div class="col-sm-4 form-group">
+                    {!! Form::label('employeeID', 'Employee ID #', array('style'=>'padding-top:7px;','class' => 'col-sm-4 control-label')) !!}
+                    <div class="col-sm-6 ">
+                        {!! Form::text('employeeID', old('employeeID'), ['class' => 'form-control', 'placeholder'=>'Enter Employee ID', 'required'=>'required'])!!}
+                        <p class="help-block"></p>
+                        @if($errors->has('employeeID'))
+                            <p class="help-block">
+                                {{ $errors->first('employeeID') }}
+                            </p>
+                        @endif
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-sm-4 form-group">
-                        {!! Form::label('idconumber', 'Primary IDCO #', array('style'=>'padding-top:7px;','class' => 'col-sm-4 control-label')) !!}
-                        <div class="col-sm-6 ">
-                            {!! Form::text('idconumber', old('idconumber'), ['class' => 'form-control','placeholder'=>'Enter IDCO Badge ID', 'required'=>'required'])!!}
-                            <p class="help-block"></p>
-                            @if($errors->has('idconumber'))
-                                <p class="help-block">
-                                    {{ $errors->first('idconumber') }}
-                                </p>
-                            @endif
-                        </div>
-                    </div>
-                    <div class="col-sm-4 form-group">
-                        {!! Form::label('epcrIncidentNum', 'EPCR Incident#', array('style'=>'padding-top:7px;','class' => 'col-sm-4 control-label')) !!}
-                        <div class="col-sm-6 ">
-                            {!! Form::text('epcrIncidentNum', old('epcrIncidentNum'), ['class' => 'form-control','placeholder'=>'Enter Incident Num', 'required'=>'required'])!!}
-                            <p class="help-block"></p>
-                            @if($errors->has('epcrIncidentNum'))
-                                <p class="help-block">
-                                    {{ $errors->first('epcrIncidentNum') }}
-                                </p>
-                            @endif
-                        </div>
+                <div class="col-sm-4 form-group">
+                    {!! Form::label('exposedEmployeeName', 'Exposed Employee Name', array('style'=>'padding-top:7px;','class' => 'col-sm-4 control-label')) !!}
+                    <div class="col-sm-6 ">
+                        {!! Form::text('exposedEmployeeName', old('exposedEmployeeName'), ['class' => 'form-control', 'placeholder'=>'Enter Driver ID', 'required'=>'required'])!!}
+                        <p class="help-block"></p>
+                        @if($errors->has('exposedEmployeeName'))
+                            <p class="help-block">
+                                {{ $errors->first('exposedEmployeeName') }}
+                            </p>
+                        @endif
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-sm-4 form-group">
-                        {!! Form::label('assignmentHazmat', 'Assignment', array('style'=>'padding-top:7px;','class' => 'col-sm-4 control-label')) !!}
-                        <div class="col-sm-6 ">
-                            {!! Form::text('assignmentHazmat', old('assignmentHazmat'), ['class' => 'form-control', 'required'=>'required'])!!}
-                            <p class="help-block"></p>
-                            @if($errors->has('assignmentHazmat'))
-                                <p class="help-block">
-                                    {{ $errors->first('assignmentHazmat') }}
-                                </p>
-                            @endif
-                        </div>
-                    </div>
-                    <div class="col-sm-4 form-group">
-                        {!! Form::label('shift', 'Shift', array('style'=>'padding-top:7px;','class' => 'col-sm-4 control-label')) !!}
-                        <div class="col-sm-6">
-                            {!! Form::select('shift',
-                            ['A' => 'A',
-                             'B' => 'B',
-                             'C' => 'C',
-                             'DIV' => 'DIV'],
-                             ['class' => 'form-control', 'required'=>'required'])!!}
-                            <p class="help-block"></p>
-                            @if($errors->has('shift'))
-                                <p class="help-block">
-                                    {{ $errors->first('shift') }}
-                                </p>
-                            @endif
-                        </div>
+                <div class="col-sm-4 form-group">
+                    {!! Form::label('dateOfExposure', 'Date of Exposure',array('style'=>'padding-top:7px;','class'=> 'col-sm-4 control-label') )!!}
+                    <div class="col-sm-6 ">
+                        {!! Form::text('dateOfExposure', old('dateOfExposure'), array('id'=>'datepicker12','class' => 'form-control datepicker1', 'placeholder' => 'YYYY-MM-DD','required' => 'required'))!!}
+
+                        {!! Form::text('dateOfExposure', old('dateOfExposure'), array('style'=>'display:none;','id'=>'datepicker32','class' => 'form-control datepicker3', 'placeholder' => 'YYYY-MM-DD','required' => 'required'))!!}
+                        <p class="help-block"></p>
+                        @if($errors->has('dateOfExposure'))
+                            <p class="help-block">
+                                {{ $errors->first('dateOfExposure') }}
+                            </p>
+                        @endif
                     </div>
                 </div>
-                <br>
-                <div class="row">
-                    <div class="col-sm-12 form-group">
-                        <label class="checkbox-inline col-sm-4"><input type="checkbox" >
-                            <strong>Contact CorVel Enterprise Comp @ 877-764-3574.
-                                Tell them you have a Hazardous Material Exposure and the call is for reporting ONLY.
-                            </strong>
-                        </label>
+            </div>
+            <div class="row">
+                <div class="col-sm-4 form-group">
+                    {!! Form::label('idconumber', 'Primary IDCO #', array('style'=>'padding-top:7px;','class' => 'col-sm-4 control-label')) !!}
+                    <div class="col-sm-6 ">
+                        {!! Form::text('idconumber', old('idconumber'), ['class' => 'form-control','placeholder'=>'Enter IDCO Badge ID', 'required'=>'required'])!!}
+                        <p class="help-block"></p>
+                        @if($errors->has('idconumber'))
+                            <p class="help-block">
+                                {{ $errors->first('idconumber') }}
+                            </p>
+                        @endif
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-sm-12 form-group">
-                        <label class="checkbox-inline col-sm-4"><input type="checkbox">
-                            <strong>Once you have completed the call, record CorVel Claim #</strong>
-                        </label>
+                <div class="col-sm-4 form-group">
+                    {!! Form::label('epcrIncidentNum', 'EPCR Incident#', array('style'=>'padding-top:7px;','class' => 'col-sm-4 control-label')) !!}
+                    <div class="col-sm-6 ">
+                        {!! Form::text('epcrIncidentNum', old('epcrIncidentNum'), ['class' => 'form-control','placeholder'=>'Enter Incident Num', 'required'=>'required'])!!}
+                        <p class="help-block"></p>
+                        @if($errors->has('epcrIncidentNum'))
+                            <p class="help-block">
+                                {{ $errors->first('epcrIncidentNum') }}
+                            </p>
+                        @endif
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-4 form-group">
+                    {!! Form::label('assignmentHazmat', 'Assignment', array('style'=>'padding-top:7px;','class' => 'col-sm-4 control-label')) !!}
+                    <div class="col-sm-6 ">
+                        {!! Form::text('assignmentHazmat', old('assignmentHazmat'), ['class' => 'form-control', 'required'=>'required'])!!}
+                        <p class="help-block"></p>
+                        @if($errors->has('assignmentHazmat'))
+                            <p class="help-block">
+                                {{ $errors->first('assignmentHazmat') }}
+                            </p>
+                        @endif
+                    </div>
+                </div>
+                <div class="col-sm-4 form-group">
+                    {!! Form::label('shift', 'Shift', array('style'=>'padding-top:7px;','class' => 'col-sm-4 control-label')) !!}
+                    <div class="col-sm-6">
+                        {!! Form::select('shift',
+                        ['A' => 'A',
+                         'B' => 'B',
+                         'C' => 'C',
+                         'DIV' => 'DIV'],
+                         ['class' => 'form-control', 'required'=>'required'])!!}
+                        <p class="help-block"></p>
+                        @if($errors->has('shift'))
+                            <p class="help-block">
+                                {{ $errors->first('shift') }}
+                            </p>
+                        @endif
+                    </div>
+                </div>
+            </div>
+            <br>
+            <div class="row">
+                <div class="col-sm-12 form-group">
+                    <label class="checkbox-inline col-sm-4"><input type="checkbox" >
+                        <strong>Contact CorVel Enterprise Comp @ 877-764-3574.
+                            Tell them you have a Hazardous Material Exposure and the call is for reporting ONLY.
+                        </strong>
+                    </label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12 form-group">
+                    <label class="col-sm-4">
+                        <strong>Once you have completed the call, record CorVel Claim #</strong>
+                    </label>
+                    <div class="col-sm-4">
+                        {!! Form::text('corvelID', '', array('class'=>'form-control', 'required'=>'required'))!!}
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12 form-group">
+                    <label class="col-sm-4">
+                        <strong>Fill out OFD-025 Hazmat Exposure Report form</strong>
+                    </label>
+                    </label>
+                    <br>
+                    <div class="col-sm-12 form-group well well-sm">
                         <div class="col-sm-4">
-                            {!! Form::text('corvelID', '', array('class'=>'form-control', 'required'=>'required'))!!}
+                            <a class="btn btn-success dropdown-toggle col-sm-12" type="button"
+                               href="Fillable PDFs\Hazmat Module\(Exposure PDF - Updated OFD 006d) OFD 025 - HazMat Exposure Report.pdf"
+                               download="(Exposure PDF - Updated OFD 006d) OFD 025 - HazMat Exposure Report">
+                                <i class="fa fa-download" aria-hidden="true"></i> Download</a>
                         </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-sm-12 form-group">
-                        <label class="checkbox-inline col-sm-4"><input type="checkbox">
-                            <strong>Fill out OFD-025 Hazmat Exposure Report form</strong>
-                        </label>
-                        </label>
-                        <br>
-                        <div class="col-sm-12 form-group well well-sm">
-                        <div class="col-sm-4">
-                        <a class="btn btn-success dropdown-toggle col-sm-12" type="button"
-                           href="{{ asset('Fillable PDFs\Hazmat Module\(Exposure PDF - Updated OFD 006d) OFD 025 - HazMat Exposure Report.pdf') }}"
-                           download="(Exposure PDF - Updated OFD 006d) OFD 025 - HazMat Exposure Report">
-                            <i class="fa fa-download" aria-hidden="true"></i> Download</a>
-                            </div>
-                            <div class="col-sm-3">
-                                <div class="input-group">
-                                    <label class="input-group-btn">
+                        <div class="col-sm-3">
+                            <div class="input-group">
+                                <label class="input-group-btn">
                     <span class="btn btn-info">
                         <i class="fa fa-cloud-upload" aria-hidden="true"></i> Upload<input type="file" name="pathOFD6d" style="display: none;" multiple>
                     </span>
-                                    </label>
-                                    <input type="text" id="upload-file-info" class="form-control" readonly>
-                                </div>
+                                </label>
+                                <input type="text" id="upload-file-info" class="form-control" readonly>
                             </div>
                         </div>
                     </div>
-
-                    <div class="row">
-                        <div class="col-sm-12 form-group">
-                            <label class="col-sm-4">Do you have any symptoms of illness or injury and require
-                                treatment</label>
-                            <div class="col-sm-2">
-                                <form name="cityselect">
-                                    <select name="menu"
-
-                                            value="GO">
-                                        <option selected="selected">Select One</option>
-                                        <option value="yes">Yes</option>
-                                        <option value="No">No</option>
-                                    </select>
-                                </form>
-                            </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12 form-group">
+                        <label class="col-sm-4">Do you have any symptoms of illness or injury and require
+                            treatment</label>
+                        <div class="col-sm-2">
+                            <form name="cityselect">
+                                <select name="menu">
+                                    <option selected="selected">Select One</option>
+                                    <option value="yes">Yes</option>
+                                    <option value="No">No</option>
+                                </select>
+                            </form>
                         </div>
                     </div>
-
-                    {!! Form::submit('Submit',['class' => 'btn btn-success']) !!}
-                    <a href="{{ route('hazmat.index') }}" class="btn btn-default">Cancel</a>
-                    </form>
                 </div>
-            </div>
-
-            <script>
-                var show = 0;
-                if ( show == 0 ) {
-                    //console.log('1234');
-                    document.getElementById('selection').style.display = 'none';
-                }
-            </script>
-            <script>
-                function toggle6cForm() {
-                    var e = document.getElementById('ofd6-dd');
-                    if (e.selectedIndex == 1 ) {
-                        show = 1;
-                        document.getElementById('selection').style.display = 'block';
-                    } else {
-                        show = 0;
-                        document.getElementById('selection').style.display = 'none';
-                    }
-                }
-            </script>
-
-                </div>
-                </div>
-
             </div>
         </div>
 
+                <div class="panel panel-default">
+                    <div class="col-sm-12 panel-heading">
+                        <label class="col-sm-5"></label>
+                        <div class="btn-bottom ">
+                            {!! Form::submit('Submit',['class' => 'btn btn-success']) !!}
+                            <a href="{{ route('hazmat.index') }}" class="btn btn-default">Cancel</a>
+                        </div>
+                    </div>
+                </div>
 
-
+        </div>
 
     {!! Form::close() !!}
 @stop

@@ -156,8 +156,6 @@
 			
         });
     </script>
-	
-	
-	
+
 </head>
 <body class="page-header-fixed">

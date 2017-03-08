@@ -9,7 +9,6 @@
     </ol>
 @endsection
 
-
 @section('content')
 
     <div class="panel panel-default panel-shadow ">

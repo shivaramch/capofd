@@ -1,6 +1,12 @@
 @extends('layouts.app')
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
 @section('crumbs')
     <ol class="breadcrumb">
+        <a class="btn btn-default" type="button"
+           href="{{ route('biologicals.index') }}">
+            <i class="fa fa-arrow-left" aria-hidden="true"></i> Back</a>
         <li><a href="{{ url('/') }}">Dashboard</a></li>
         <li><a href="{{ route('biologicals.index') }}">OFD 6B Biologicals</a></li>
         <li class="active">New Form</li>
@@ -10,8 +16,11 @@
 @section('content')
     {!! Form::open(['method' => 'POST', 'route' => ['biologicals.store'], 'files' => true,]) !!}
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <style>
+        #padtop {
+            padding-top: 7px;
+        }
+    </style>
     <div class="panel panel-default">
         <div class="panel-heading">
             <div class="jumbotron" style="margin-bottom: 5px; ">
@@ -25,21 +34,13 @@
                                 <h3><strong>Biological Exposure Tracking Document (OFD-006B)</strong></h3>
                             </div>
                         </div>
-                        <div class="col-md-2">
-                            <h6><i><strong>Issue Date: 8/17/16</strong></i></h6>
-                        </div>
-                        <div class="col-md-2">
-                            <h6><i><strong>Effective Date: 8/17/16</strong></i></h6>
-                        </div>
-                        <div class="col-md-12">
-                            <h6><i><strong>Amends, Replaces, Rescinds: Replaces OFD-006B (Rev. 05-15)</strong></i></h6>
-                        </div>
                     </div>
                 </div>
             </div>
         </div>
         <br>
         <br>
+
         <div class="row">
             <div class="col-sm-4 form-group">
                 {!! Form::label('exposedEmployeeName', 'Exposed Employee Name',array('style'=>'padding-top:7px;','class'=> 'col-sm-4 control-label') ) !!}
@@ -164,8 +165,6 @@
                 </div>
             </div>
         </div>
-
-
         <div id="Exposure0" class="desc" style="display: none;">
             <div class="col-sm-12">
                 <div class="form-group">
@@ -182,12 +181,12 @@
 
             <div class="col-sm-12">
                 <div class="form-group">
-                 <label class="col-sm-12"><strong>Complete OFD 184</strong></label>   
+                    {{Form::label('trueOFD184','Complete OFD 184')}}
                 </div>
                 <div class="col-sm-12 form-group well well-sm">
                     <div class="col-sm-4">
                         <a class="btn btn-success dropdown-toggle col-sm-12" type="button"
-                           href="Fillable PDFs\Exposure Complete\(Exposure PDF) OFD 184 State Infectious Disease Exposure Report.pdf"
+                           href="{{ asset('Fillable PDFs\Exposure Complete\(Exposure PDF) OFD 184 State Infectious Disease Exposure Report.pdf')}}"
                            download="(Exposure PDF) OFD 184 State Infectious Disease Exposure Report.pdf">
                             <i class="fa fa-download" aria-hidden="true"></i> Download</a>
                     </div>
@@ -253,15 +252,14 @@
 
             <div class="col-sm-12">
                 <div class="form-group">
-                    {{ Form::checkbox('trueInjury', 1, null, ['id' => 'trueInjury', 'class'=>'className']) }}
-                    {{Form::label('trueInjury','Do you have any symptoms of illness or injury and require
+                   {{ Form::checkbox('potInjury', 1, null, ['id' => 'potInjury', 'class'=>'className']) }}
+                   {{Form::label('trueInjury','Do you have any symptoms of illness or injury and require
                        treatment? (In case of Injury, please fill OFD - 6 IOD Application)     ')}}
 
-                    {!! Form::select('trueInjury',[
-                      'Select One' => 'Select One',
+                    {!! Form::select('potInjury',[
                       'Yes' => 'Yes',
                       'No' => 'No'],
-                      array('class' => 'form-control'))!!}
+                    array('class' => 'form-control'))!!}
                     <p class="help-block"></p>
                     @if($errors->has('trueInjury'))
                         <p class="help-block">
@@ -270,7 +268,6 @@
                     @endif
                 </div>
             </div>
-
             <div class="row">
                 <div class="col-sm-12">
                     <label class="col-sm-5"></label>
@@ -287,7 +284,7 @@
             <div class="col-sm-12">
                 <div class="form-group">
                     {{ Form::checkbox('potDecontaminate', 1, null, ['id' => 'selfDecontaminate', 'class'=>'className']) }}
-                    {{Form::label('selfDecontaminate','Decontaminate self- wash, flush as soon as possible  ')}}
+                    {{Form::label('selfDecontaminate','Decontaminate self- wash, flush as soon as possible')}}
                 </div>
             </div>
 
@@ -300,13 +297,13 @@
 
             <div class="col-sm-12">
                 <div class="form-group">
-                <label class="col-sm-12"><strong>Complete OFD 184</strong></label>   
+                   {{Form::label('potOFD184','Complete OFD 184')}}
                 </div>
                 <div class="col-sm-12 form-group well well-sm">
                     <div class="col-sm-4">
                         <a class="btn btn-success dropdown-toggle col-sm-12" type="button"
-                           href="Fillable PDFs\Exposure Complete\(Exposure PDF) OFD 184 State Infectious Disease Exposure Report.pdf"
-                           download="(Exposure PDF) OFD 184 State Infectious Disease Exposure Report.pdf">
+                           href="{{ asset('Fillable PDFs\Exposure Complete\(Exposure PDF) OFD 184 State Infectious Disease Exposure Report.pdf')}}"
+                           download="(Exposure PDF) OFD 184 State Infectious Disease Exposure Report">
                             <i class="fa fa-download" aria-hidden="true"></i> Download</a>
                     </div>
                     <div class="col-sm-3">
@@ -342,11 +339,10 @@
                     {{Form::label('potInjury','Do you have any symptoms of illness or injury and require
                        treatment? (In case of Injury, please fill OFD - 6 IOD Application)     ')}}
 
-                    {!! Form::select('potInjury',[
-                      'Select One' => 'Select One',
+                    {!! Form::select('Select One',[
                       'Yes' => 'Yes',
                       'No' => 'No'],
-                      array('class' => 'form-control'))!!}
+                    array('class' => 'form-control'))!!}
                     <p class="help-block"></p>
                     @if($errors->has('potInjury'))
                         <p class="help-block">
@@ -366,8 +362,9 @@
             </div>
         </div>
     </div>
-    </div>
+
     {!! Form::close() !!}
+
 @stop
 
 @section('javascript')

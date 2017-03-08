@@ -25,7 +25,7 @@ class CreateBiologicals1Table extends Migration
             $table->date('todaysDate');
             $table->string('trueDecontaminate',null);
             $table->string('confirmSource',null);
-            $table->string('trueOFD184',null);
+
             $table->string('bloodReport',null);
             $table->string('exposureTab',null);
             $table->string('trueBagTag',null);
@@ -34,11 +34,13 @@ class CreateBiologicals1Table extends Migration
             $table->string('trueDocumentDayBook',null);
             $table->string('potDecontaminate',null);
             $table->string('potBagTag',null);
-            $table->string('potOFD184',null);
+
             $table->string('potPPE',null);
             $table->string('potDocumentDayBook',null);
             $table->string('trueInjury',null);
             $table->string('potInjury',null);
+            $table->string('createdBy');
+            $table->string('updatedBy');
             $table->timestamps();
 
         });
@@ -54,4 +56,3 @@ class CreateBiologicals1Table extends Migration
         Schema::drop('biologicals');
     }
 }
-
