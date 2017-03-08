@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 
 use App\Attachment;
 use App\Injury;
+use App\Biological;
 use App\Http\Requests\StoreStationsRequest;
 use App\Http\Controllers\Traits\FileUploadTrait;
 use Illuminate\Support\Facades\DB;
@@ -122,6 +123,25 @@ trait FormFileUploadTrait
             $attachment->attachmentName = $attachmentName;
             $attachment->Injury_ofd6ID = $id;
             $attachment->attachmentType = '618';
+            $attachment->save();
+        }
+    }
+
+    public function BiologicalUpload(Request $request, $id)
+    {
+        if ($attachmentName = $request['trueOFD184']) {
+            $attachment = new Attachment();
+            $attachment->attachmentName = $attachmentName;
+            $attachment->ofd6bID = $id;
+            $attachment->attachmentType = 'True Exposure OFD 184';
+            $attachment->save();
+        }
+
+        if ($attachmentName = $request['potOFD184']) {
+            $attachment = new Attachment();
+            $attachment->attachmentName = $attachmentName;
+            $attachment->ofd6bID = $id;
+            $attachment->attachmentType = 'Potential Exposure OFD 184';
             $attachment->save();
         }
     }

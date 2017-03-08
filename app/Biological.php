@@ -12,6 +12,7 @@ class Biological extends Model
 
     protected $primaryKey = 'ofd6bID';
 
+    protected  $table = 'biologicals';
 
     //public static function boot()
     //{
@@ -31,6 +32,7 @@ class Biological extends Model
         'shift',
         'idcoNumber',
         'epcrIncidentNum',
+        'exposureInjury',
         'todaysDate',
         'trueDecontaminate',
         'confirmSource',
@@ -44,8 +46,8 @@ class Biological extends Model
         'potBagTag',
         'potPPE',
         'potDocumentDayBook',
-        'trueInjury',
-        'potInjury'
+        //'trueInjury',
+        //'potInjury'
 
     ];
 
@@ -62,5 +64,11 @@ public function setDateAccidentDate($input)
         $this->attributes['todaysDate'] = null;
     }
 }
+    public function attachment(){
+        return $this->hasMany(\App\Attachment::class);
+    }
+    public function injury(){
+        return $this->hasOne(\App\Injury::class);
+    }
 
 }

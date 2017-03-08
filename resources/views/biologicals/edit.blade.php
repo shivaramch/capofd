@@ -1,6 +1,9 @@
 @extends('layouts.app')
 @section('crumbs')
     <ol class="breadcrumb">
+        <a class="btn btn-default" type="button"
+           href="{{ route('biologicals.index') }}">
+            <i class="fa fa-arrow-left" aria-hidden="true"></i> Back</a>
         <li><a href="{{ url('/') }}">Dashboard</a></li>
         <li><a href="{{ route('biologicals.index') }}">OFD 6B Biologicals</a></li>
         <li class="active">Edit OFD 6B Form {{ $biological->ofd6bID }}</li>
@@ -155,8 +158,6 @@
                 </div>
             </div>
         </div>
-
-
         <div id="Exposure0" class="desc" style="display: none;">
             <div class="col-sm-12">
                 <div class="form-group">
@@ -242,33 +243,6 @@
                 </div>
             </div>
 
-            <div class="col-sm-12">
-                <div class="form-group">
-                    {{ Form::checkbox('trueInjury', 0, null, ['id' => 'trueInjury', 'class'=>'className']) }}
-                    {{Form::label('trueInjury','Do you have any symptoms of illness or injury and require
-                       treatment? (In case of Injury, please fill OFD - 6 IOD Application)')}}
-
-                    {!! Form::select('Select One',[
-                      'Yes' => 'Yes',
-                      'No' => 'No'],
-                    array('class' => 'form-control'))!!}
-                    <p class="help-block"></p>
-                    @if($errors->has('trueInjury'))
-                        <p class="help-block">
-                            {{ $errors->first('trueInjury') }}
-                        </p>
-                    @endif
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-sm-12">
-                    <label class="col-sm-5"></label>
-                    <div class="btn-bottom">
-                        {!! Form::submit('Submit',['class' => 'btn btn-success']) !!}
-                        <a href="{{ route('biologicals.index') }}" class="btn btn-default">Cancel</a>
-                    </div>
-                </div>
-            </div>
         </div>
 
         <div id="Exposure1" class="desc" style="display: none;">
@@ -325,57 +299,64 @@
                     {{Form::label('potDocumentDayBook','Document in Company Day Book and on your Personnel Record   ')}}
                 </div>
             </div>
-            <div class="col-sm-12">
-                <div class="form-group">
-                    {{ Form::checkbox('potInjury', 0, null, ['id' => 'potInjury', 'class'=>'className']) }}
-                    {{Form::label('potInjury','Do you have any symptoms of illness or injury and require
-                       treatment? (In case of Injury, please fill OFD - 6 IOD Application)     ')}}
+        </div>
 
-                    {!! Form::select('Select One',[
-                       'Yes' => 'Yes',
-                       'No' => 'No'],
-                     array('class' => 'form-control'))!!}
-                    <p class="help-block"></p>
-                    @if($errors->has('potInjury'))
-                        <p class="help-block">
-                            {{ $errors->first('potInjury') }}
-                        </p>
-                    @endif
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-sm-12">
-                    <label class="col-sm-5"></label>
-                    <div class="btn-bottom">
-                        {!! Form::submit('Submit',['class' => 'btn btn-success']) !!}
-                        <a href="{{ route('biologicals.index') }}" class="btn btn-default">Cancel</a>
+
+        <div class="panel-body">
+            <div class="form-horizontal">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="alert alert-danger" align="left">
+                            {{Form::label('exposureInjury','Do you have any symptoms of illness or injury and require
+                               treatment? (In case of Injury, please fill OFD - 6 IOD Application)     ')}}
+
+                            {!! Form::select('exposureInjury',[
+                              'Yes' => 'Yes',
+                              'No' => 'No'],
+                            array('class' => 'form-control'))!!}
+                            <p class="help-block"></p>
+                            @if($errors->has('exposureInjury'))
+                                <p class="help-block">
+                                    {{ $errors->first('exposureInjury') }}
+                                </p>
+                            @endif
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
+
+        <div class="row">
+            <div class="col-sm-12">
+                <label class="col-sm-5"></label>
+                <div class="btn-bottom">
+                    {!! Form::submit('Submit',['class' => 'btn btn-success']) !!}
+                    <a href="{{ route('biologicals.index') }}" class="btn btn-default">Cancel</a>
+                </div>
+            </div>
+        </div>
+
+        {!! Form::close() !!}
+        @stop
+
+        @section('javascript')
+
+            <script src="{{ ('js/extensions/cookie') }}/bootstrap-table-cookie.js"></script>
+            <script src="{{ ('js/extensions/mobile') }}/bootstrap-table-mobile.js"></script>
+
+            <script src="{{ ('js/export') }}/bootstrap-table-export.js"></script>
+            <script src="{{ ('js/export') }}/tableExport.js"></script>
+            <script src="{{ ('js/export') }}/jquery.base64.js"></script>
+
+            <script type="text/javascript">
+                $(document).ready(function () {
+                    $("input[name$='exposure']").click(function () {
+                        var test = $(this).val();
+
+                        $("div.desc").hide();
+                        $("#Exposure" + test).show();
+                    });
+                });
+            </script>
     </div>
-
-    {!! Form::close() !!}
-@stop
-
-@section('javascript')
-
-    <script src="{{ ('js/extensions/cookie') }}/bootstrap-table-cookie.js"></script>
-    <script src="{{ ('js/extensions/mobile') }}/bootstrap-table-mobile.js"></script>
-
-    <script src="{{ ('js/export') }}/bootstrap-table-export.js"></script>
-    <script src="{{ ('js/export') }}/tableExport.js"></script>
-    <script src="{{ ('js/export') }}/jquery.base64.js"></script>
-
-    <script type="text/javascript">
-        $(document).ready(function () {
-            $("input[name$='exposure']").click(function () {
-                var test = $(this).val();
-
-                $("div.desc").hide();
-                $("#Exposure" + test).show();
-            });
-        });
-    </script>
-
 @endsection
