@@ -312,23 +312,25 @@
 
                         <div id="612" class="collapse">
 
-                            <tr class="table table-striped">
+                            <table class="table table-striped">
                                 <tr>
                                     <th> File Name</th>
                                     <th> File Uploaded At</th>
                                 </tr>
 
-                                    @if(count($attachments) > 0)
-                                        @foreach($attachments as $attachment)
-                                            @if($attachment->attachmentType == 612 && $attachment->createdBy ==  Auth::user()->id && $attachment->Injury_ofd6ID == $accident->ofd6aID )
-                                              <tr><td>
+                                @if(count($attachments) > 0)
+                                    @foreach($attachments as $attachment)
+                                        @if($attachment->attachmentType == 612 && $attachment->createdBy ==  Auth::user()->id && $attachment->Injury_ofd6ID == $accident->ofd6aID )
+                                            <tr>
+                                                <td>
                                                     <a href="{{ asset('uploads/'.$attachment->attachmentName) }}"> {{$attachment->attachmentName}}</a>
                                                 </td>
                                                 <td>
                                                     {{$attachment->created_At}}</a>
-                                                </td></tr>@endif
-                                        @endforeach
-                                    @endif
+                                                </td>
+                                            <tr>@endif
+                                    @endforeach
+                                @endif
 
                             </table>
                         </div>
@@ -425,17 +427,18 @@
                                     <th> File Uploaded At</th>
                                 </tr>
 
-                                    @if(count($attachments) > 0)
-                                        @foreach($attachments as $attachment)
-                                            @if($attachment->attachmentType == 614 && $attachment->createdBy ==  Auth::user()->id && $attachment->Injury_ofd6ID == $accident->ofd6aID )
-                                               <tr></tr> <td>
-                                                    <a href="{{ asset('uploads/'.$attachment->attachmentName) }}"> {{$attachment->attachmentName}}</a>
-                                                </td>
-                                                <td>
-                                                    {{$attachment->created_At}}</a>
-                                                </td></tr>@endif
-                                        @endforeach
-                                    @endif
+                                @if(count($attachments) > 0)
+                                    @foreach($attachments as $attachment)
+                                        @if($attachment->attachmentType == 614 && $attachment->createdBy ==  Auth::user()->id && $attachment->Injury_ofd6ID == $accident->ofd6aID )
+                                            <tr></tr>
+                                            <td>
+                                                <a href="{{ asset('uploads/'.$attachment->attachmentName) }}"> {{$attachment->attachmentName}}</a>
+                                            </td>
+                                            <td>
+                                                {{$attachment->created_At}}</a>
+                                            </td></tr>@endif
+                                    @endforeach
+                                @endif
 
                             </table>
                         </div>
@@ -477,18 +480,20 @@
                                     <th> File Uploaded At</th>
                                 </tr>
                                 <tr>
-                                    @if(count($attachments) > 0)
-                                        @foreach($attachments as $attachment)
-                                            @if($attachment->attachmentType == 615 && $attachment->createdBy ==  Auth::user()->id && $attachment->Injury_ofd6ID == $accident->ofd6aID )
-                                                <tr><td>
+                                @if(count($attachments) > 0)
+                                    @foreach($attachments as $attachment)
+                                        @if($attachment->attachmentType == 615 && $attachment->createdBy ==  Auth::user()->id && $attachment->Injury_ofd6ID == $accident->ofd6aID )
+                                            <tr>
+                                                <td>
                                                     <a href="{{ asset('uploads/'.$attachment->attachmentName) }}"> {{$attachment->attachmentName}}</a>
                                                 </td>
                                                 <td>
                                                     {{$attachment->created_At}}</a>
-                                                </td></tr>@endif
-                                        @endforeach
-                                    @endif
-                                </tr>
+                                                </td>
+                                            </tr>@endif
+                                            @endforeach
+                                            @endif
+                                            </tr>
                             </table>
                         </div>
                     </div>
@@ -529,18 +534,20 @@
                                     <th> File Uploaded At</th>
                                 </tr>
                                 <tr>
-                                    @if(count($attachments) > 0)
-                                        @foreach($attachments as $attachment)
-                                            @if($attachment->attachmentType == 616 && $attachment->createdBy ==  Auth::user()->id && $attachment->Injury_ofd6ID == $accident->ofd6aID )
-                                                <tr><td>
+                                @if(count($attachments) > 0)
+                                    @foreach($attachments as $attachment)
+                                        @if($attachment->attachmentType == 616 && $attachment->createdBy ==  Auth::user()->id && $attachment->Injury_ofd6ID == $accident->ofd6aID )
+                                            <tr>
+                                                <td>
                                                     <a href="{{ asset('uploads/'.$attachment->attachmentName) }}"> {{$attachment->attachmentName}}</a>
                                                 </td>
                                                 <td>
                                                     {{$attachment->created_At}}</a>
-                                                </td></tr>@endif
-                                        @endforeach
-                                    @endif
-                                </tr>
+                                                </td>
+                                            </tr>@endif
+                                            @endforeach
+                                            @endif
+                                            </tr>
                             </table>
                         </div>
                     </div>
@@ -581,18 +588,20 @@
                                     <th> File Uploaded At</th>
                                 </tr>
                                 <tr>
-                                    @if(count($attachments) > 0)
-                                        @foreach($attachments as $attachment)
-                                            @if($attachment->attachmentType == 617 && $attachment->createdBy ==  Auth::user()->id && $attachment->Injury_ofd6ID == $accident->ofd6aID )
-                                                <tr><td>
+                                @if(count($attachments) > 0)
+                                    @foreach($attachments as $attachment)
+                                        @if($attachment->attachmentType == 617 && $attachment->createdBy ==  Auth::user()->id && $attachment->Injury_ofd6ID == $accident->ofd6aID )
+                                            <tr>
+                                                <td>
                                                     <a href="{{ asset('uploads/'.$attachment->attachmentName) }}"> {{$attachment->attachmentName}}</a>
                                                 </td>
                                                 <td>
                                                     {{$attachment->created_At}}</a>
-                                                </td></tr>@endif
-                                        @endforeach
-                                    @endif
-                                </tr>
+                                                </td>
+                                            </tr>@endif
+                                            @endforeach
+                                            @endif
+                                            </tr>
                             </table>
                         </div>
                     </div>
@@ -633,18 +642,20 @@
                                     <th> File Uploaded At</th>
                                 </tr>
                                 <tr>
-                                    @if(count($attachments) > 0)
-                                        @foreach($attachments as $attachment)
-                                            @if($attachment->attachmentType == 618 && $attachment->createdBy ==  Auth::user()->id && $attachment->Injury_ofd6ID == $accident->ofd6aID )
-                                               <tr> <td>
+                                @if(count($attachments) > 0)
+                                    @foreach($attachments as $attachment)
+                                        @if($attachment->attachmentType == 618 && $attachment->createdBy ==  Auth::user()->id && $attachment->Injury_ofd6ID == $accident->ofd6aID )
+                                            <tr>
+                                                <td>
                                                     <a href="{{ asset('uploads/'.$attachment->attachmentName) }}"> {{$attachment->attachmentName}}</a>
                                                 </td>
                                                 <td>
                                                     {{$attachment->created_At}}</a>
-                                                </td></tr>@endif
-                                        @endforeach
-                                    @endif
-                                </tr>
+                                                </td>
+                                            </tr>@endif
+                                            @endforeach
+                                            @endif
+                                            </tr>
                             </table>
                         </div>
                     </div>
