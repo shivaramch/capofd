@@ -38,6 +38,12 @@ class AccidentsController extends Controller
         $last_insert_id = DB::getPdo()->lastInsertId();
         $this->AccidentUpload($request, $last_insert_id);
 
+
+
+        $link=$request->url()."/$last_insert_id";
+//write code for email notification here
+        $numsent=(new EmailController)-> Email($request,$link);
+
         return redirect()->route('accidents.index');
     }
 
@@ -81,6 +87,12 @@ class AccidentsController extends Controller
         $accident->update($request->all());
 
         $this->AccidentUpload($request, $id);
+
+        $link=$request->url();
+
+        //add email code here
+        $numsent=(new EmailController)-> Email($request,$link);
+
 
         return redirect()->route('accidents.index');
     }
