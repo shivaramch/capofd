@@ -3,7 +3,7 @@
     <ol class="breadcrumb">
         <li><a href="{{ url('/') }}">Dashboard</a></li>
         <li><a href="{{ route('biologicals.index') }}">OFD 6B Biologicals</a></li>
-        <li class="active">Edit OFD 6B Form {{ $biological->ofd6bID }}</li>
+        <li class="active">Show OFD 6B Form {{ $biological->ofd6bID }}</li>
     </ol>
 @endsection
 
@@ -25,15 +25,6 @@
                                 <h3><strong>Biological Exposure Tracking Document (OFD-006B)</strong></h3>
                             </div>
                         </div>
-                        <div class="col-md-2">
-                            <h6><i><strong>Issue Date: 8/17/16</strong></i></h6>
-                        </div>
-                        <div class="col-md-2">
-                            <h6><i><strong>Effective Date: 8/17/16</strong></i></h6>
-                        </div>
-                        <div class="col-md-12">
-                            <h6><i><strong>Amends, Replaces, Rescinds: Replaces OFD-006B (Rev. 05-15)</strong></i></h6>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -44,37 +35,20 @@
             <div class="col-sm-4 form-group">
                 {!! Form::label('exposedEmployeeName', 'Exposed Employee Name',array('style'=>'padding-top:7px;','class'=> 'col-sm-4 control-label') ) !!}
                 <div class="col-sm-6 ">
-                    {!! Form::text('exposedEmployeeName', old('exposedEmployeeName'), array('class'=>'form-control'))!!}
-                    <p class="help-block"></p>
-                    @if($errors->has('exposedEmployeeName'))
-                        <p class="help-block">
-                            {{ $errors->first('exposedEmployeeName') }}
-                        </p>
-                    @endif
+                    {!! Form::text('exposedEmployeeName', old('exposedEmployeeName'), array('class'=>'form-control','readonly' => 'true'))!!}
                 </div>
             </div>
             <div class="col-sm-4 form-group">
                 {!! Form::label('dateOfExposure', 'Date of Exposure', array('style'=>'padding-top:7px;','class'=> 'col-sm-4 control-label') ) !!}
                 <div class="col-sm-6 ">
-                    {!! Form::text('dateOfExposure', old('dateOfExposure'), array('id'=>'datepicker','class' => 'form-control datepicker', 'placeholder' => 'YYYY-MM-DD','required' => 'required'))!!}
-                    <p class="help-block"></p>
-                    @if($errors->has('dateOfExposure'))
-                        <p class="help-block">
-                            {{ $errors->first('dateOfExposure') }}
-                        </p>
-                    @endif
+                    {!! Form::text('dateOfExposure', old('dateOfExposure'), array('class' => 'form-control datepicker', 'placeholder' => 'YYYY-MM-DD','required' => 'required','readonly' => 'true'))!!}
                 </div>
             </div>
             <div class="col-sm-4 form-group">
                 {!! Form::label('employeeID_1', 'Employee ID#', array('style'=>'padding-top:7px;','class'=> 'col-sm-4 control-label') ) !!}
                 <div class="col-sm-6 ">
-                    {!! Form::text('employeeID_1', old('employeeID_1'), array('class'=> 'form-control','placeholder'=>'Enter Badge ID'))!!}
-                    <p class="help-block"></p>
-                    @if($errors->has('employeeID_1'))
-                        <p class="help-block">
-                            {{ $errors->first('employeeID_1') }}
-                        </p>
-                    @endif
+                    {!! Form::text('employeeID_1', old('employeeID_1'), array('class'=> 'form-control','placeholder'=>'Enter Badge ID','readonly' => 'true'))!!}
+                    
                 </div>
             </div>
         </div>
@@ -82,13 +56,8 @@
             <div class="col-sm-4 form-group">
                 {!! Form::label('assignmentBiological', 'Assignment', array('style'=>'padding-top:7px;','class'=> 'col-sm-4 control-label') ) !!}
                 <div class="col-sm-6 ">
-                    {!! Form::text('assignmentBiological', old('assignmentBiological'), array('class' => 'form-control'))!!}
-                    <p class="help-block"></p>
-                    @if($errors->has('assignmentBiological'))
-                        <p class="help-block">
-                            {{ $errors->first('assignmentBiological') }}
-                        </p>
-                    @endif
+                    {!! Form::text('assignmentBiological', old('assignmentBiological'), array('class' => 'form-control','readonly' => 'true'))!!}
+                   
                 </div>
             </div>
 
@@ -99,25 +68,14 @@
                   'A' => 'A',
                   'B' => 'B',
                   'C' => 'C',
-                  'DIV' => 'DIV'], array('class' => 'form-control'))!!}
-                    <p class="help-block"></p>
-                    @if($errors->has('shift'))
-                        <p class="help-block">
-                            {{ $errors->first('shift') }}
-                        </p>
-                    @endif
+                  'DIV' => 'DIV'], array('class' => 'form-control','readonly' => 'true'))!!}
+                    
                 </div>
             </div>
             <div class="col-sm-4 form-group">
                 {!! Form::label('epcrIncidentNum', 'EPCR Incident#', array('style'=>'padding-top:7px;','class'=> 'col-sm-4 control-label') ) !!}
                 <div class="col-sm-6 ">
-                    {!! Form::text('epcrIncidentNum', old('epcrIncidentNum'), array('class' => 'form-control','placeholder'=>'Enter Incident Num'))!!}
-                    <p class="help-block"></p>
-                    @if($errors->has('epcrIncidentNum'))
-                        <p class="help-block">
-                            {{ $errors->first('epcrIncidentNum') }}
-                        </p>
-                    @endif
+                    {!! Form::text('epcrIncidentNum', old('epcrIncidentNum'), array('class' => 'form-control','placeholder'=>'Enter Incident Num','readonly' => 'true'))!!}
                 </div>
             </div>
         </div>
@@ -125,25 +83,15 @@
             <div class="col-sm-4 form-group">
                 {!! Form::label('idcoNumber', 'Primary IDCO #', array('style'=>'padding-top:7px;','class'=> 'col-sm-4 control-label') ) !!}
                 <div class="col-sm-6 ">
-                    {!! Form::text('idcoNumber', old('idcoNumber'), array('class' => 'form-control','placeholder'=>'Enter IDCO Badge ID'))!!}
-                    <p class="help-block"></p>
-                    @if($errors->has('idcoNumber'))
-                        <p class="help-block">
-                            {{ $errors->first('idcoNumber') }}
-                        </p>
-                    @endif
+                    {!! Form::text('idcoNumber', old('idcoNumber'), array('class' => 'form-control','placeholder'=>'Enter IDCO Badge ID','readonly' => 'true'))!!}
+                   
                 </div>
             </div>
             <div class="col-sm-4 form-group">
                 {!! Form::label('todaysDate', 'Date', array('style'=>'padding-top:7px;','class'=> 'col-sm-4 control-label') ) !!}
                 <div class="col-sm-6 ">
-                    {!! Form::text('todaysDate', old('todaysDate'), array('class'=>'datepicker form-control','placeholder'=>'MM/DD/YYYY'))!!}
-                    <p class="help-block"></p>
-                    @if($errors->has('todaysDate'))
-                        <p class="help-block">
-                            {{ $errors->first('todaysDate') }}
-                        </p>
-                    @endif
+                    {!! Form::text('todaysDate', old('todaysDate'), array('class'=>'datepicker form-control','placeholder'=>'MM/DD/YYYY','readonly' => 'true'))!!}
+                    
                 </div>
             </div>
         </div>
