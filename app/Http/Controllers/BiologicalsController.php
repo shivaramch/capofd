@@ -36,7 +36,7 @@ class BiologicalsController extends Controller
         $request = $this->saveFiles($request);
         Biological::create($request->all());
         $last_insert_id = DB::getPdo()->lastInsertId();
-        $this->BiologicalUpload($request,$last_insert_id);
+        $this->BiologicalUpload($request, $last_insert_id);
 
         return redirect()->route('biologicals.index');
     }
@@ -57,7 +57,7 @@ class BiologicalsController extends Controller
         //show history code start
         //below one line code is for storing all history related to the $id in variable, which is to be used to display in show page.
         //show history code end
-        return view('biologicals.show',compact('biological','attachments'));
+        return view('biologicals.show', compact('biological', 'attachments'));
     }
 
     public function update(UpdateBiologicalsRequest $request, $id)
@@ -73,7 +73,7 @@ class BiologicalsController extends Controller
                 'shift' => $biological->shift,
                 'idcoNumber' => $biological->idcoNumber,
                 'epcrIncidentNum' => $biological->epcrIncidentNum,
-                'todaysDate' => $biological->todaysDate ]
+                'todaysDate' => $biological->todaysDate]
         );
 
         $request = $this->saveFiles($request);
@@ -82,8 +82,6 @@ class BiologicalsController extends Controller
         $this->BiologicalUpload($request, $id);
 
         return redirect()->route('biologicals.index');
-
-
 
 
     }

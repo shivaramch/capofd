@@ -133,7 +133,7 @@ trait FormFileUploadTrait
             $attachment = new Attachment();
             $attachment->attachmentName = $attachmentName;
             $attachment->ofd6bID = $id;
-            $attachment->attachmentType = 'True Exposure OFD 184';
+            $attachment->attachmentType = '619';
             $attachment->save();
         }
 
@@ -141,7 +141,7 @@ trait FormFileUploadTrait
             $attachment = new Attachment();
             $attachment->attachmentName = $attachmentName;
             $attachment->ofd6bID = $id;
-            $attachment->attachmentType = 'Potential Exposure OFD 184';
+            $attachment->attachmentType = '620';
             $attachment->save();
         }
     }
