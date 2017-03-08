@@ -3,7 +3,7 @@
     <ol class="breadcrumb">
         <li><a href="{{ url('/') }}">Dashboard</a></li>
         <li><a href="{{ route('biologicals.index') }}">OFD 6B Biologicals</a></li>
-        <li class="active">Edit OFD 6B Form {{ $biological->ofd6bID }}</li>
+        <li class="active">Show OFD 6B Form {{ $biological->ofd6bID }}</li>
     </ol>
 @endsection
 
@@ -12,21 +12,7 @@
 
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
-    <script>
-        $(document).ready(function () {
-            $("#datepicker1").datepicker({
-                onClose: function () {
-                    var date2 = $('#datepicker1').datepicker('getDate');
-                    date2.setDate(date2.getDate() + 35)
-                    $("#datepicker2").datepicker("setDate", date2);
-
-                }
-            });
-            $("#datepicker2").datepicker();
-        });
-    </script>
-
-    <div class="panel panel-default">
+   <div class="panel panel-default">
         <div class="panel-heading">
             <div class="jumbotron" style="margin-bottom: 5px; ">
                 <div class="row">
@@ -36,332 +22,320 @@
                     <div class="col-md-10">
                         <div class="col-md-12">
                             <div class="page-header1">
-                                <h3><strong>Biological Exposure Reporting Instructions (OFD-6B)</strong></h3>
+                                <h3><strong>Biological Exposure Tracking Document (OFD-006B)</strong></h3>
                             </div>
                         </div>
-                        <div class="col-md-2">
-                            <h5><i><strong>Issue Date: 9/1/16</strong></i></h5>
-                        </div>
-                        <div class="col-md-2">
-                            <h5><i><strong>Effective Date: 9/1/16</strong></i></h5>
-                        </div>
-                        <div class="col-md-12">
-                            <h5><i><strong>Amends, Replaces, Rescinds: Replaces OFD-6B (July 2016) </strong></i></h5>
-                        </div>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="panel-body">
-            <div class="form-horizontal">
-
-                <div class="row">
-                    <div class="col-sm-4 form-group">
-                        {!! Form::label('exposedEmployeeName', 'Exposed Employee Name:',array('style'=>'padding-top:7px;','class'=> 'col-sm-4 control-label') )!!}
-                        <div class="col-sm-6 ">
-                            {{ $biological->exposedEmployeeName }}
-                        </div>
-                    </div>
-                    <div class="col-sm-4 form-group">
-                        {!! Form::label('dateOfExposure', 'Date Of Exposure', array('style'=>'padding-top:7px;','class' => 'col-sm-4 control-label')) !!}
-                        <div class="col-sm-6 ">
-                            {{ $biological->dateOfExposure }}
-                        </div>
-                    </div>
-                    <div class="col-sm-4 form-group">
-                        {!! Form::label('employeeID_1', 'EmployeeID',array( 'style'=>'padding-top:7px;','class' => 'col-sm-4 control-label')) !!}
-                        <div class="col-sm-6 ">
-                            {{ $biological->employeeID_1 }}
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-sm-4 form-group">
-                        {!! Form::label('assignmentBiological', 'Assignment Biological', array('style'=>'padding-top:7px;','class' => 'col-sm-4 control-label')) !!}
-                        <div class="col-sm-6 ">
-                            {{ $biological->assignmentBiological }}
-                        </div>
-                    </div>
-                    <div class="col-sm-4 form-group">
-                        {!! Form::label('shift', 'Shift', array('style'=>'padding-top:7px;','class' => 'col-sm-4 control-label')) !!}
-                        <div class="col-sm-6 ">
-                            {{ $biological->shift }}
-                        </div>
-                    </div>
-
-                </div>
-                <div class="row">
-                    <div class="col-sm-4 form-group">
-                        {!! Form::label('idcoNumber', 'Idco Number', array('style'=>'padding-top:7px;','class' => 'col-sm-4 control-label')) !!}
-                        <div class="col-sm-6 ">
-                            {{ $biological->idcoNumber }}
-                        </div>
-                    </div>
-                    <div class="col-sm-4 form-group">
-                        {!! Form::label('epcrIncidentNum', 'Epcr Incident Num', array('style'=>'padding-top:7px;','class' => 'col-sm-4 control-label','placeholder'=>'Enter Badge Id')) !!}
-                        <div class="col-sm-6 ">
-                            {{ $biological->epcrIncidentNum }}
-                        </div>
-                    </div>
-                    <div class="col-sm-4 form-group">
-                        {!! Form::label('todaysDate', 'Todays Date', array('style'=>'padding-top:7px;','class' => 'col-sm-4 control-label','placeholder'=>'Enter Badge Id')) !!}
-                        <div class="col-sm-6 ">
-                            {{ $biological->todaysDate }}
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="panel panel-default">
-        <div class="panel-heading">
-            <div class="row">
-                <div class="col-sm-12" form-group>
-                    <h4 style="text-align:left;"><u><strong>BIOLOGICAL CHECKLIST :</strong></u></h4>
-                </div>
-            </div>
-        </div>
-        <div class="panel-body">
+        <br>
+        <br>
+        <div class="row">
             <div class="col-sm-4 form-group">
-                {!! Form::label('decontaminate', 'Decontaminate', array('style'=>'padding-top:7px;','class' => 'col-sm-4 control-label','placeholder'=>'Enter Badge Id')) !!}
+                {!! Form::label('exposedEmployeeName', 'Exposed Employee Name',array('style'=>'padding-top:7px;','class'=> 'col-sm-4 control-label') ) !!}
+                <div class="col-sm-6 ">
+                    {!! Form::text('exposedEmployeeName', old('exposedEmployeeName'), array('class'=>'form-control','readonly' => 'true'))!!}
+                </div>
+            </div>
+            <div class="col-sm-4 form-group">
+                {!! Form::label('dateOfExposure', 'Date of Exposure', array('style'=>'padding-top:7px;','class'=> 'col-sm-4 control-label') ) !!}
+                <div class="col-sm-6 ">
+                    {!! Form::text('dateOfExposure', old('dateOfExposure'), array('class' => 'form-control datepicker', 'placeholder' => 'YYYY-MM-DD','required' => 'required','readonly' => 'true'))!!}
+                </div>
+            </div>
+            <div class="col-sm-4 form-group">
+                {!! Form::label('employeeID_1', 'Employee ID#', array('style'=>'padding-top:7px;','class'=> 'col-sm-4 control-label') ) !!}
+                <div class="col-sm-6 ">
+                    {!! Form::text('employeeID_1', old('employeeID_1'), array('class'=> 'form-control','placeholder'=>'Enter Badge ID','readonly' => 'true'))!!}
+                    
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-4 form-group">
+                {!! Form::label('assignmentBiological', 'Assignment', array('style'=>'padding-top:7px;','class'=> 'col-sm-4 control-label') ) !!}
+                <div class="col-sm-6 ">
+                    {!! Form::text('assignmentBiological', old('assignmentBiological'), array('class' => 'form-control','readonly' => 'true'))!!}
+                   
+                </div>
+            </div>
+
+            <div class="col-sm-4 form-group">
+                {!! Form::label('shift', 'Shift', array('style'=>'padding-top:7px;','class'=> 'col-sm-4 control-label') ) !!}
                 <div class="col-sm-6">
-                    <?php
-                        if($biological->decontaminate == 1)
-                            {
-                               echo("true");
-                            }
-                        else
-                            {
-                                echo("false");
-                            }
-                    ?>
+                    {!! Form::select('shift',[
+                  'A' => 'A',
+                  'B' => 'B',
+                  'C' => 'C',
+                  'DIV' => 'DIV'], array('class' => 'form-control','readonly' => 'true'))!!}
+                    
                 </div>
             </div>
             <div class="col-sm-4 form-group">
-                {!! Form::label('callChi', 'Call Chi', array('style'=>'padding-top:7px;','class' => 'col-sm-4 control-label','placeholder'=>'Enter Badge Id')) !!}
+                {!! Form::label('epcrIncidentNum', 'EPCR Incident#', array('style'=>'padding-top:7px;','class'=> 'col-sm-4 control-label') ) !!}
                 <div class="col-sm-6 ">
-                    <?php
-                    if($biological->callChi == 1)
-                    {
-                        echo("true");
-                    }
-                    else
-                    {
-                        echo("false");
-                    }
-                    ?>
+                    {!! Form::text('epcrIncidentNum', old('epcrIncidentNum'), array('class' => 'form-control','placeholder'=>'Enter Incident Num','readonly' => 'true'))!!}
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-4 form-group">
+                {!! Form::label('idcoNumber', 'Primary IDCO #', array('style'=>'padding-top:7px;','class'=> 'col-sm-4 control-label') ) !!}
+                <div class="col-sm-6 ">
+                    {!! Form::text('idcoNumber', old('idcoNumber'), array('class' => 'form-control','placeholder'=>'Enter IDCO Badge ID','readonly' => 'true'))!!}
+                   
                 </div>
             </div>
             <div class="col-sm-4 form-group">
-                {!! Form::label('confirmSource', 'Confirm Source', array('style'=>'padding-top:7px;','class' => 'col-sm-4 control-label','placeholder'=>'Enter Badge Id')) !!}
+                {!! Form::label('todaysDate', 'Date', array('style'=>'padding-top:7px;','class'=> 'col-sm-4 control-label') ) !!}
                 <div class="col-sm-6 ">
-                    <?php
-                    if($biological->confirmSource == 1)
-                    {
-                        echo("true");
+                    {!! Form::text('todaysDate', old('todaysDate'), array('class'=>'datepicker form-control','placeholder'=>'MM/DD/YYYY','readonly' => 'true'))!!}
+                    
+                </div>
+            </div>
+        </div>
 
-                    }
-                    else
-                    {
-                        echo("false");
-                    }
-                    ?>
-                        <a href={{$biological->url}}>{{$biological->confirmSource}}</a>
+        <div><h4 style="padding-left:12px;"><u><strong>Please Select the Type of Exposure</strong></u></h4></div>
+
+
+        <div class="row">
+            <div class="col-sm-12 form-group">
+                <div class="col-sm-6">
+                    {{ Form::radio('exposure', 0 , null, ['id'=>'exposure', 'class' => 'className']) }}
+                    {{ Form::label('exposure', 'True Exposure') }}
+
+
+                    {{ Form::radio('exposure',1 , null, ['id'=>'exposure', 'class' => 'className']) }}
+                    {{ Form::label('exposure', 'Potential Exposure') }}
+
                 </div>
             </div>
-            <div class="col-sm-4 form-group">
-                {!! Form::label('trueOFD184', 'True OFD184', array('style'=>'padding-top:7px;','class' => 'col-sm-4 control-label','placeholder'=>'Enter Badge Id')) !!}
-                <div class="col-sm-6 ">
-                    <?php
-                    if($biological->trueOFD184 == 1)
-                    {
-                        echo("true");
-                    }
-                    else
-                    {
-                        echo("false");
-                    }
-                    ?>
+        </div>
+
+
+        <div id="Exposure0" class="desc" style="display: none;">
+            <div class="col-sm-12">
+                <div class="form-group">
+                    {{ Form::checkbox('trueDecontaminate', 1, null, ['id' => 'selfDecontaminate', 'class'=>'className']) }}
+                    {{Form::label('selfDecontaminate','Decontaminate self- wash, flush as soon as possible  ')}}
                 </div>
             </div>
-            <div class="col-sm-4 form-group">
-                {!! Form::label('bloodReport', 'Blood Report', array('style'=>'padding-top:7px;','class' => 'col-sm-4 control-label','placeholder'=>'Enter Badge Id')) !!}
-                <div class="col-sm-6 ">
-                    <?php
-                    if($biological->bloodReport == 1)
-                    {
-                        echo("true");
-                    }
-                    else
-                    {
-                        echo("false");
-                    }
-                    ?>
+            <div class="col-sm-12">
+                <div class="form-group">
+                    {{ Form::checkbox('confirmSource', 1, null, ['id'=>'confirmSource', 'class' => 'className' ]) }}
+                    {{ Form::label('confirmSource', 'Confirm Source - Patient blood draw with OUCH Nurse') }}
                 </div>
             </div>
-            <div class="col-sm-4 form-group">
-                {!! Form::label('exposureTab', 'Exposure Tab', array('style'=>'padding-top:7px;','class' => 'col-sm-4 control-label','placeholder'=>'Enter Badge Id')) !!}
-                <div class="col-sm-6 ">
-                    <?php
-                    if($biological->exposureTab == 1)
-                    {
-                        echo("true");
-                    }
-                    else
-                    {
-                        echo("false");
-                    }
-                    ?>
+
+            <div class="col-sm-12">
+                <div class="form-group">
+                 <label class="col-sm-12"><strong>Complete OFD 184</strong></label>   
+                </div>
+                <div class="col-sm-12 form-group well well-sm">
+                    <div class="col-sm-4">
+                        <a class="btn btn-success dropdown-toggle col-sm-12" type="button"
+                           href="Fillable PDFs\Exposure Complete\(Exposure PDF) OFD 184 State Infectious Disease Exposure Report.pdf"
+                           download="(Exposure PDF) OFD 184 State Infectious Disease Exposure Report.pdf">
+                            <i class="fa fa-download" aria-hidden="true"></i> Download</a>
+                    </div>
+                    <div class="col-sm-3">
+                        <div class="input-group">
+                            <label class="input-group-btn">
+                                            <span class="btn btn-info"><i class="fa fa-cloud-upload"
+                                                                          aria-hidden="true"></i> Upload<input
+                                                        type="file" name="trueOFD184"
+                                                        style="display: none;"
+                                                        multiple>
+                                            </span>
+                            </label>
+                            <input type="text" id="upload-file-info" class="form-control" readonly>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div class="col-sm-4 form-group">
-                {!! Form::label('trueBagTag', 'True Bag Tag', array('style'=>'padding-top:7px;','class' => 'col-sm-4 control-label','placeholder'=>'Enter Badge Id')) !!}
-                <div class="col-sm-6 ">
-                    <?php
-                    if($biological->trueBagTag == 1)
-                    {
-                        echo("true");
-                    }
-                    else
-                    {
-                        echo("false");
-                    }
-                    ?>
+            <div class="col-sm-12">
+                <div class="form-group">
+                    {{ Form::checkbox('bloodReport', 1, null, ['id' => 'bloodReport', 'class'=>'className']) }}
+                    {{Form::label('bloodReport','Report for blood draw as directed by OUCH Nurse')}}
+
                 </div>
             </div>
-            <div class="col-sm-4 form-group">
-                {!! Form::label('notifyPSS', 'Notify PSS', array('style'=>'padding-top:7px;','class' => 'col-sm-4 control-label','placeholder'=>'Enter Badge Id')) !!}
-                <div class="col-sm-6 ">
-                    <?php
-                    if($biological->notifyPSS == 1)
-                    {
-                        echo("true");
-                    }
-                    else
-                    {
-                        echo("false");
-                    }
-                    ?>
+
+            <div class="col-sm-12">
+                <div class="form-group">
+                    {{ Form::checkbox('exposureTab', 1, null, ['id' => 'exposureTab', 'class'=>'className']) }}
+                    {{Form::label('exposureTab','Complete Exposure tab in ePCR ')}}
+
                 </div>
             </div>
-            <div class="col-sm-4 form-group">
-                {!! Form::label('truePPE', 'True PPE', array('style'=>'padding-top:7px;','class' => 'col-sm-4 control-label','placeholder'=>'Enter Badge Id')) !!}
-                <div class="col-sm-6 ">
-                    <?php
-                    if($biological->truePPE == 1)
-                    {
-                        echo("true");
-                    }
-                    else
-                    {
-                        echo("false");
-                    }
-                    ?>
+
+            <div class="col-sm-12">
+                <div class="form-group">
+                    {{ Form::checkbox('trueBagTag', 1, null, ['id' => 'trueBagTag', 'class'=>'className']) }}
+                    {{Form::label('trueBagTag','Bag & Tag clothing if applicable - send email to PSS with pick-up location ')}}
+
                 </div>
             </div>
-            <div class="col-sm-4 form-group">
-                {!! Form::label('trueDocumentDayBook', 'True Document Day Book', array('style'=>'padding-top:7px;','class' => 'col-sm-4 control-label','placeholder'=>'Enter Badge Id')) !!}
-                <div class="col-sm-6 ">
-                    <?php
-                    if($biological->trueDocumentDayBook == 1)
-                    {
-                        echo("true");
-                    }
-                    else
-                    {
-                        echo("false");
-                    }
-                    ?>
+            <div class="col-sm-12">
+                <div class="form-group">
+                    {{ Form::checkbox('notifyPSS', 1, null, ['id' => 'notifyPSS', 'class'=>'className']) }}
+                    {{Form::label('notifyPSS','Notify the on-duty PSS via phone at 402-660-1060 ')}}
+
                 </div>
             </div>
-            <div class="col-sm-4 form-group">
-                {!! Form::label('potDecontaminate', 'Pot Decontaminate', array('style'=>'padding-top:7px;','class' => 'col-sm-4 control-label','placeholder'=>'Enter Badge Id')) !!}
-                <div class="col-sm-6 ">
-                    <?php
-                    if($biological->potDecontaminate == 1)
-                    {
-                        echo("true");
-                    }
-                    else
-                    {
-                        echo("false");
-                    }
-                    ?>
+            <div class="col-sm-12">
+                <div class="form-group">
+                    {{ Form::checkbox('truePPE', 1, null, ['id' => 'truePPE', 'class'=>'className']) }}
+                    {{Form::label('truePPE','PPE has been cleaned per SOP SWD 1-0  ')}}
+
                 </div>
             </div>
-            <div class="col-sm-4 form-group">
-                {!! Form::label('potBagTag', 'Pot Bag Tag', array('style'=>'padding-top:7px;','class' => 'col-sm-4 control-label','placeholder'=>'Enter Badge Id')) !!}
-                <div class="col-sm-6 ">
-                    <?php
-                    if($biological->potBagTag == 1)
-                    {
-                        echo("true");
-                    }
-                    else
-                    {
-                        echo("false");
-                    }
-                    ?>
+            <div class="col-sm-12">
+                <div class="form-group">
+                    {{ Form::checkbox('trueDocumentDayBook', 1, null, ['id' => 'trueDocumentDayBook', 'class'=>'className']) }}
+                    {{Form::label('trueDocumentDayBook','Document in Company Day Book and on your Personnel Record')}}
+
                 </div>
             </div>
-            <div class="col-sm-4 form-group">
-                {!! Form::label('potOFD184', 'Pot OFD184', array('style'=>'padding-top:7px;','class' => 'col-sm-4 control-label','placeholder'=>'Enter Badge Id')) !!}
-                <div class="col-sm-6 ">
-                    <?php
-                    if($biological->potOFD184 == 1)
-                    {
-                        echo("true");
-                    }
-                    else
-                    {
-                        echo("false");
-                    }
-                    ?>
+
+            <div class="col-sm-12">
+                <div class="form-group">
+                    {{ Form::checkbox('trueInjury', 1, null, ['id' => 'trueInjury', 'class'=>'className']) }}
+                    {{Form::label('trueInjury','Do you have any symptoms of illness or injury and require
+                       treatment? (In case of Injury, please fill OFD - 6 IOD Application)     ')}}
+
+                    {!! Form::select('trueInjury',[
+                      'Select One' => 'Select One',
+                      'Yes' => 'Yes',
+                      'No' => 'No'],
+                      array('class' => 'form-control'))!!}
+                    <p class="help-block"></p>
+                    @if($errors->has('trueInjury'))
+                        <p class="help-block">
+                            {{ $errors->first('trueInjury') }}
+                        </p>
+                    @endif
                 </div>
             </div>
-            <div class="col-sm-4 form-group">
-                {!! Form::label('potPPE', 'pot PPE', array('style'=>'padding-top:7px;','class' => 'col-sm-4 control-label','placeholder'=>'Enter Badge Id')) !!}
-                <div class="col-sm-6 ">
-                    <?php
-                    if($biological->potPPE == 1)
-                    {
-                        echo("true");
-                    }
-                    else
-                    {
-                        echo("false");
-                    }
-                    ?>
+
+            <div class="row">
+                <div class="col-sm-12">
+                    <label class="col-sm-5"></label>
+                    <div class="btn-bottom">
+                        {!! Form::submit('Submit',['class' => 'btn btn-success']) !!}
+                        <a href="{{ route('biologicals.index') }}" class="btn btn-default">Cancel</a>
+                    </div>
                 </div>
             </div>
-            <div class="col-sm-4 form-group">
-                {!! Form::label('potDocumentDayBook', 'Pot Document DayBook', array('style'=>'padding-top:7px;','class' => 'col-sm-4 control-label','placeholder'=>'Enter Badge Id')) !!}
-                <div class="col-sm-6 ">
-                    <?php
-                    if($biological->potDocumentDayBook == 1)
-                    {
-                        echo("true");
-                    }
-                    else
-                    {
-                        echo("false");
-                    }
-                    ?>
+        </div>
+
+        <div id="Exposure1" class="desc" style="display: none;">
+
+            <div class="col-sm-12">
+                <div class="form-group">
+                    {{ Form::checkbox('potDecontaminate', 1, null, ['id' => 'selfDecontaminate', 'class'=>'className']) }}
+                    {{Form::label('selfDecontaminate','Decontaminate self- wash, flush as soon as possible  ')}}
+                </div>
+            </div>
+
+            <div class="col-sm-12">
+                <div class="form-group">
+                    {{ Form::checkbox('potBagTag', 1, null, ['id' => 'potBagTag', 'class'=>'className']) }}
+                    {{Form::label('potBagTag','Bag & Tag clothing if applicable - send email to PSS with pick-up location')}}
+                </div>
+            </div>
+
+            <div class="col-sm-12">
+                <div class="form-group">
+                <label class="col-sm-12"><strong>Complete OFD 184</strong></label>   
+                </div>
+                <div class="col-sm-12 form-group well well-sm">
+                    <div class="col-sm-4">
+                        <a class="btn btn-success dropdown-toggle col-sm-12" type="button"
+                           href="Fillable PDFs\Exposure Complete\(Exposure PDF) OFD 184 State Infectious Disease Exposure Report.pdf"
+                           download="(Exposure PDF) OFD 184 State Infectious Disease Exposure Report.pdf">
+                            <i class="fa fa-download" aria-hidden="true"></i> Download</a>
+                    </div>
+                    <div class="col-sm-3">
+                        <div class="input-group">
+                            <label class="input-group-btn">
+                    <span class="btn btn-info">
+                        <i class="fa fa-cloud-upload" aria-hidden="true"></i> Upload<input type="file" name="postOFD184"
+                                                                                           style="display: none;"
+                                                                                           multiple>
+                    </span>
+                            </label>
+                            <input type="text" id="upload-file-info" class="form-control" readonly>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-12">
+                <div class="form-group">
+                    {{ Form::checkbox('potPPE', 1, null, ['id' => 'potPPE', 'class'=>'className']) }}
+                    {{Form::label('potPPE','PPE has been cleaned per SOP SWD 1-0')}}
+
+                </div>
+            </div>
+            <div class="col-sm-12">
+                <div class="form-group">
+                    {{ Form::checkbox('potDocumentDayBook', 1, null, ['id' => 'potDocumentDayBook', 'class'=>'className']) }}
+                    {{Form::label('potDocumentDayBook','Document in Company Day Book and on your Personnel Record   ')}}
+                </div>
+            </div>
+            <div class="col-sm-12">
+                <div class="form-group">
+                    {{ Form::checkbox('potInjury', 1, null, ['id' => 'potInjury', 'class'=>'className']) }}
+                    {{Form::label('potInjury','Do you have any symptoms of illness or injury and require
+                       treatment? (In case of Injury, please fill OFD - 6 IOD Application)     ')}}
+
+                    {!! Form::select('potInjury',[
+                      'Select One' => 'Select One',
+                      'Yes' => 'Yes',
+                      'No' => 'No'],
+                      array('class' => 'form-control'))!!}
+                    <p class="help-block"></p>
+                    @if($errors->has('potInjury'))
+                        <p class="help-block">
+                            {{ $errors->first('potInjury') }}
+                        </p>
+                    @endif
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12">
+                    <label class="col-sm-5"></label>
+                    <div class="btn-bottom">
+                        {!! Form::submit('Submit',['class' => 'btn btn-success']) !!}
+                        <a href="{{ route('biologicals.index') }}" class="btn btn-default">Cancel</a>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
     </div>
-    </div>
-    <div class="panel panel-default">
-        <div class="col-sm-12 panel-heading">
-            <label class="col-sm-5"></label>
-            <div class="btn-bottom ">
-                {!! Form::submit('Return',['class' => 'btn btn-success']) !!}
-                <a href="{{ route('biologicals.index') }}" class="btn btn-default">Cancel</a>
-            </div>
-        </div>
-    </div>
-
     {!! Form::close() !!}
 @stop
+
+@section('javascript')
+
+    <script src="{{ ('js/extensions/cookie') }}/bootstrap-table-cookie.js"></script>
+    <script src="{{ ('js/extensions/mobile') }}/bootstrap-table-mobile.js"></script>
+
+    <script src="{{ ('js/export') }}/bootstrap-table-export.js"></script>
+    <script src="{{ ('js/export') }}/tableExport.js"></script>
+    <script src="{{ ('js/export') }}/jquery.base64.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("input[name$='exposure']").click(function () {
+                var test = $(this).val();
+
+                $("div.desc").hide();
+                $("#Exposure" + test).show();
+            });
+        });
+    </script>
+
+@endsection

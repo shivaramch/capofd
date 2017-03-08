@@ -30,4 +30,7 @@ class Attachment extends Model
     public function accident(){
         return $this->belongsTo(\App\Accident::class);
     }
+    public function biological(){
+        return $this->belongsTo(\App\Biological::class);
+    }
 }
