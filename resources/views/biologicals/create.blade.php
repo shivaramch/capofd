@@ -15,7 +15,7 @@
 
 @section('content')
     {!! Form::open(['method' => 'POST', 'route' => ['biologicals.store'], 'files' => true,]) !!}
-
+    {{ csrf_field() }}
     <style>
         #padtop {
             padding-top: 7px;
@@ -359,7 +359,7 @@
                     </div>
                 </div>
             </div>
-
+        </div>
             {!! Form::close() !!}
             @stop
 

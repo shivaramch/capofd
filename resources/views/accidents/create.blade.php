@@ -36,7 +36,7 @@
 @endsection
 @section('content')
     {!! Form::open(['method' => 'POST', 'route' => ['accidents.store'], 'files' => true,]) !!}
-
+    {{ csrf_field() }}
     <style>
         #padtop {
             padding-top: 7px;
