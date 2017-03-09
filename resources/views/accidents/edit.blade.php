@@ -161,7 +161,7 @@
                         </div>
                     </div>
                     <div class="col-sm-4 form-group">
-                        {!! Form::label('battalionChiefID', 'Battalion Chief #', array('style'=>'padding-top:7px;','class' => 'col-sm-4 control-label','placeholder'=>'Enter Badge Id')) !!}
+                        {!! Form::label('battalionChiefID', 'Battalion Chief #', array('style'=>'padding-top:7px;','class' => 'col-sm-4 control-label')) !!}
                         <div class="col-sm-6 ">
                             {!! Form::text('battalionChiefID', old('battalionChiefID'), array('class' => 'form-control','placeholder'=>'Enter Badge Id'))!!}
                             <p class="help-block"></p>
@@ -173,13 +173,13 @@
                         </div>
                     </div>
                     <div class="col-sm-4 form-group">
-                        {!! Form::label('assitantChiefID', 'Assistant Chief #', array('style'=>'padding-top:7px;','class' => 'col-sm-4 control-label','placeholder'=>'Enter Badge Id')) !!}
+                        {!! Form::label('acOnDutyID', 'Assistant Chief #', array('style'=>'padding-top:7px;','class' => 'col-sm-4 control-label')) !!}
                         <div class="col-sm-6 ">
-                            {!! Form::text('assitantChiefID', old('assitantChiefID'), array('class' => 'form-control','placeholder'=>'Enter Badge Id'))!!}
+                            {!! Form::text('acOnDutyID', old('acOnDutyID'), array('class' => 'form-control','placeholder'=>'Enter Badge Id'))!!}
                             <p class="help-block"></p>
-                            @if($errors->has('assitantChiefID'))
+                            @if($errors->has('acOnDutyID'))
                                 <p class="help-block">
-                                    {{ $errors->first('assitantChiefID') }}
+                                    {{ $errors->first('acOnDutyID') }}
                                 </p>
                             @endif
                         </div>

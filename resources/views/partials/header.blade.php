@@ -155,8 +155,8 @@
                 }
             });
             $(".datepicker2").datepicker();
-			
-			
+
+
         });
     </script>
 

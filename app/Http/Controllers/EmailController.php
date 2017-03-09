@@ -62,19 +62,19 @@ class EmailController extends Controller
 
         //Add superadmin email
         $superAdmin = new Collection();
-        $superAdmin=DB::table('users')
-
-            ->Join('user_role', 'User_Role_roleID', '=', 'user_role.RoleID')
-            ->where('User_Role_roleID',1)->pluck('Email','Name');
-
-
-        foreach ($superAdmin as $item=>$value){
-            //$allemails->push([""=>""]);
-            $allemails->push(["$value" => "$item"]);
-            //   var_dump(["$value" => "$item"]);
-
-        }
-        var_dump($allemails);
+//        $superAdmin=DB::table('users')
+//
+//            ->Join('user_role', 'User_Role_roleID', '=', 'user_role.RoleID')
+//            ->where('User_Role_roleID',1)->pluck('Email','Name');
+//
+//
+//        foreach ($superAdmin as $item=>$value){
+//            //$allemails->push([""=>""]);
+//            $allemails->push(["$value" => "$item"]);
+//            //   var_dump(["$value" => "$item"]);
+//
+//        }
+//        var_dump($allemails);
 
         //Add superadmin email end
 
