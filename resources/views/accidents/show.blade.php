@@ -126,9 +126,9 @@
                         </div>
                     </div>
                     <div class="col-sm-4 form-group">
-                        {!! Form::label('assitantChiefID', 'Assistant Chief #', array('style'=>'padding-top:7px;','class' => 'col-sm-4 control-label','placeholder'=>'Enter Badge Id')) !!}
+                        {!! Form::label('acOnDutyID', 'Assistant Chief #', array('style'=>'padding-top:7px;','class' => 'col-sm-4 control-label','placeholder'=>'Enter Badge Id')) !!}
                         <div class="col-sm-6 ">
-                            {{ $accident->assitantChiefID }}
+                            {{ $accident->acOnDutyID }}
                         </div>
                     </div>
                 </div>
