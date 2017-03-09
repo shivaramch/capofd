@@ -15,6 +15,20 @@
 
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
+    <style>
+        #padtop {
+            padding-top: 7px;
+        }
+
+        table {
+            border-collapse: collapse;
+        }
+
+        table, td, th {
+            border: 1px solid black;
+        }
+
+    </style>
     <div class="panel panel-default">
         <div class="panel-heading">
             <div class="jumbotron" style="margin-bottom: 5px; ">
@@ -89,7 +103,7 @@
             <div class="col-sm-4 form-group">
                 {!! Form::label('shift', 'Shift', ['class'=> 'col-sm-4 control-label'] ) !!}
                 <div class="col-sm-6">
-                   {{ $biological->shift}}
+                    {{ $biological->shift}}
                 </div>
             </div>
             <div class="col-sm-4 form-group">
@@ -114,6 +128,18 @@
                     @if($errors->has('idcoNumber'))
                         <p class="help-block">
                             {{ $errors->first('idcoNumber') }}
+                        </p>
+                    @endif
+                </div>
+            </div>
+            <div class="col-sm-4 form-group">
+                {!! Form::label('frmsincidentnum', 'FRMS Incident #', array('style'=>'padding-top:7px;','class'=> 'col-sm-4 control-label') ) !!}
+                <div class="col-sm-6 ">
+                    {!! Form::text('frmsincidentnum', old('frmsincidentnum'), array('class' => 'form-control','placeholder'=>'Enter FRMS Num', 'readonly' => 'true'))!!}
+                    <p class="help-block"></p>
+                    @if($errors->has('frmsincidentnumr'))
+                        <p class="help-block">
+                            {{ $errors->first('frmsincidentnum') }}
                         </p>
                     @endif
                 </div>
@@ -189,7 +215,7 @@
                         </div>
                         <div class="col-sm-4">
                             <a class="btn btn-primary dropdown-toggle col-sm-12" data-toggle="collapse"
-                               data-target="#trueOFD184"><i class="fa fa-eye" aria-hidden="true"></i> View
+                               data-target="#619"><i class="fa fa-eye" aria-hidden="true"></i> View
                                 Previously
                                 uploaded
                                 file(s)
@@ -310,7 +336,7 @@
                         </div>
                         <div class="col-sm-4">
                             <a class="btn btn-primary dropdown-toggle col-sm-12" data-toggle="collapse"
-                               data-target="#potOFD184"><i class="fa fa-eye" aria-hidden="true"></i> View Previously
+                               data-target="#620"><i class="fa fa-eye" aria-hidden="true"></i> View Previously
                                 uploaded
                                 file(s)
                             </a>
@@ -366,15 +392,20 @@
                         <div class="alert alert-danger" align="left">
                             {{Form::label('exposureInjury','Do you have any symptoms of illness or injury and require
                                treatment? (In case of Injury, please fill OFD - 6 IOD Application)  :  ')}}
-                        
-                           <strong> {{ $biological->exposureInjury}} </strong>
-                       
+
+                            <strong> {{ $biological->exposureInjury}} </strong>
+
                         </div>
                     </div>
                 </div>
             </div>
+            <div class="col-sm-12 panel-heading">
+                <label class="col-sm-5"></label>
+                <div class="btn-bottom ">
+                    <a href="{{ route('biologicals.index') }}" class="btn btn-primary">Return</a>
+                </div>
+            </div>
         </div>
-
 
 
         {!! Form::close() !!}
@@ -399,4 +430,6 @@
                     });
                 });
             </script>
+    </div>
+
 @endsection

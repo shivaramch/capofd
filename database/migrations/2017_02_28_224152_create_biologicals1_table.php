@@ -22,7 +22,9 @@ class CreateBiologicals1Table extends Migration
             $table->string('shift');
             $table->integer('idcoNumber');
             $table->string('epcrIncidentNum');
+            $table->string('frmsincidentnum');
             $table->date('todaysDate');
+            $table->string('exposure');
             $table->string('exposureInjury');
             $table->string('trueDecontaminate')->nullable();
             $table->string('confirmSource')->nullable();
@@ -36,7 +38,6 @@ class CreateBiologicals1Table extends Migration
             $table->string('potBagTag')->nullable();
             $table->string('potPPE')->nullable();
             $table->string('potDocumentDayBook')->nullable();
-            $table->string('shift');
             //$table->string('trueInjury',null);
             //$table->string('potInjury',null);
             $table->string('createdBy')->nullable();
