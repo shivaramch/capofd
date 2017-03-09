@@ -39,10 +39,9 @@ class AccidentsController extends Controller
         $this->AccidentUpload($request, $last_insert_id);
 
 
-
-        $link=$request->url()."/$last_insert_id";
+        $link = $request->url() . "/$last_insert_id";
 //write code for email notification here
-        $numsent=(new EmailController)-> Email($request,$link);
+        $numsent = (new EmailController)->Email($request, $link);
 
         return redirect()->route('accidents.index');
     }
@@ -63,7 +62,7 @@ class AccidentsController extends Controller
         //show history code start
         //below one line code is for storing all history related to the $id in variable, which is to be used to display in show page.
         //show history code end
-        return view('accidents.show',compact('accident', 'attachments'));
+        return view('accidents.show', compact('accident', 'attachments'));
     }
 
     public function update(UpdateAccidentsRequest $request, $id)
@@ -71,15 +70,20 @@ class AccidentsController extends Controller
         $accident = Accident::findOrFail($id);
 
 
-        \DB::table('ofd6a')->where('ofd6aID', $accident->ofd6aID)->update([
-                'accidentDate' => $accident->accidentDate,
-                'driverName' => $accident->driverName,
-                'driverID' => $accident->driverID,
-                'assignmentAccident' => $accident->assignmentAccident,
-                'appratus' => $accident->appratus,
-                'captainID' => $accident->captainID,
-                'battalionChiefID' => $accident->battalionChiefID,
-                'acOnDutyID' => $accident->acOnDutyID ]
+        \DB::table('accident')->where('ofd6aid', $accident->ofd6aid)->update([
+                'accidentdate' => $accident->accidentdate,
+                'drivername' => $accident->drivername,
+                'driverid' => $accident->driverid,
+                'assignmentaccident' => $accident->assignmentaccident,
+                'apparatus' => $accident->apparatus,
+                'captainid' => $accident->captainid,
+                'battalionchiefid' => $accident->battalionchiefid,
+                'aconduty' => $accident->aconduty,
+                'applicationstatus' => $accident->applicationstatus,
+                'frmsincidentnum' => $accident->frmsincidentnum,
+                'calllaw' => $accident->calllaw,
+                'daybook' => $accident->daybook,
+                'commemail' => $accident->commemail ]
         );
 
         //end history code
@@ -88,10 +92,10 @@ class AccidentsController extends Controller
 
         $this->AccidentUpload($request, $id);
 
-        $link=$request->url();
+        $link = $request->url();
 
         //add email code here
-        $numsent=(new EmailController)-> Email($request,$link);
+        $numsent = (new EmailController)->Email($request, $link);
 
 
         return redirect()->route('accidents.index');

@@ -38,6 +38,7 @@
                 <thead>
                 <tr>
                     <th data-sortable="true">OFD 6A ID</th>
+                    <th data-sortable="true">Driver Name</th>
                     <th data-sortable="true">Date of Accident</th>
                     <th data-sortable="true">Assignment</th>
                     <th data-sortable="true">Status</th>
@@ -47,18 +48,19 @@
                 <tbody>
                 @if(count($accidents) > 0)
                     @foreach($accidents as $accident)
-                        @if($accident->User_Login_employeeID == Auth::user()->id)
+                        @if($accident->createdby == Auth::user()->id)
                         <tr>
-                            <td>{{ $accident->ofd6aID }}</td>
-                            <td>{{ $accident->accidentDate }}</td>
-                            <td>{{ $accident->assignmentAccident }}</td>
-                            <td>{{ $accident->Status }}</td>
+                            <td>{{ $accident->ofd6aid }}</td>
+                            <td>{{ $accident->drivername }}</td>
+                            <td>{{ $accident->accidentdate }}</td>
+                            <td>{{ $accident->assignmentaccident }}</td>
+                            <td>{{ $accident->applicationstatus }}</td>
                             <td>
                                 <div>
-                                    <a href="{{ route('accidents.show',[$accident->ofd6aID]) }}"
+                                    <a href="{{ route('accidents.show',[$accident->ofd6aid]) }}"
                                        class="btn btn-xs btn-info btn-block"><i
                                                 class="fa fa-eye" aria-hidden="true"></i> VIEW</a>
-                                    <a href="{{ route('accidents.edit',[$accident->ofd6aID]) }}"
+                                    <a href="{{ route('accidents.edit',[$accident->ofd6aid]) }}"
                                        class="btn btn-xs btn-warning btn-block"><i class="fa fa-pencil-square-o"
                                                                                    aria-hidden="true"></i> EDIT</a>
                                 </div>
@@ -92,6 +94,7 @@
                 <thead>
                 <tr>
                     <th data-sortable="true">OFD 6A ID</th>
+                    <th data-sortable="true">Driver Name</th>
                     <th data-sortable="true">Date of Accident</th>
                     <th data-sortable="true">Assignment</th>
                     <th data-sortable="true">Status</th>
@@ -101,18 +104,19 @@
                 <tbody>
                 @if(count($accidents) > 0)
                     @foreach($accidents as $accident)
-                        @if($accident->Status == 'approval')
+                        @if($accident->applicationstatus == 'approval')
                             <tr>
-                                <td>{{ $accident->ofd6aID }}</td>
-                                <td>{{ $accident->accidentDate }}</td>
-                                <td>{{ $accident->assignmentAccident }}</td>
-                                <td>{{ $accident->Status }}</td>
+                                <td>{{ $accident->ofd6aid }}</td>
+                                <td>{{ $accident->drivername }}</td>
+                                <td>{{ $accident->accidentdate }}</td>
+                                <td>{{ $accident->assignmentaccident }}</td>
+                                <td>{{ $accident->applicationstatus }}</td>
                                 <td>
                                     <div>
-                                        <a href="{{ route('accidents.show',[$accident->ofd6aID]) }}"
+                                        <a href="{{ route('accidents.show',[$accident->ofd6aid]) }}"
                                            class="btn btn-xs btn-info btn-block"><i
                                                     class="fa fa-eye" aria-hidden="true"></i> VIEW</a>
-                                        <a href="{{ route('accidents.edit',[$accident->ofd6aID]) }}"
+                                        <a href="{{ route('accidents.edit',[$accident->ofd6aid]) }}"
                                            class="btn btn-xs btn-warning btn-block"><i class="fa fa-pencil-square-o"
                                                                                        aria-hidden="true"></i> EDIT</a>
                                     </div>
