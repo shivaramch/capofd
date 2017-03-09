@@ -89,17 +89,7 @@
             <div class="col-sm-4 form-group">
                 {!! Form::label('shift', 'Shift', ['class'=> 'col-sm-4 control-label'] ) !!}
                 <div class="col-sm-6">
-                    {!! Form::select('shift',[
-                  'A' => 'A',
-                  'B' => 'B',
-                  'C' => 'C',
-                  'DIV' => 'DIV'], ['class' => 'form-control'])!!}
-                    <p class="help-block"></p>
-                    @if($errors->has('shift'))
-                        <p class="help-block">
-                            {{ $errors->first('shift') }}
-                        </p>
-                    @endif
+                   {{ $biological->shift}}
                 </div>
             </div>
             <div class="col-sm-4 form-group">
@@ -151,26 +141,24 @@
             <div class="row">
                 <div class="col-sm-12 form-group">
                     <div class="col-sm-6">
-                        {{ Form::radio('exposure', 0 , null, ['id'=>'exposure', 'class' => 'className']) }}
+                        {{ Form::radio('exposure', 0 , null, ['id'=>'exposure', 'class' => 'className' ]) }}
                         {{ Form::label('exposure', 'True Exposure') }}
 
-
-                        {{ Form::radio('exposure',1 , null, ['id'=>'exposure', 'class' => 'className']) }}
+                        {{ Form::radio('exposure',1 , null, ['id'=>'exposure', 'class' => 'className' ]) }}
                         {{ Form::label('exposure', 'Potential Exposure') }}
-
                     </div>
                 </div>
             </div>
             <div id="Exposure0" class="desc" style="display: none;">
                 <div class="col-sm-12">
                     <div class="form-group">
-                        {{ Form::checkbox('trueDecontaminate', 1, null, ['id' => 'trueDecontaminate', 'class'=>'className']) }}
+                        {{ Form::checkbox('trueDecontaminate', 1, null, ['id' => 'trueDecontaminate', 'class'=>'className' , 'disabled' => "disabled"]) }}
                         {{Form::label('trueDecontaminate','Decontaminate self- wash, flush as soon as possible  ')}}
                     </div>
                 </div>
                 <div class="col-sm-12">
                     <div class="form-group">
-                        {{ Form::checkbox('confirmSource', 1, null, ['id'=>'confirmSource', 'class' => 'className' ]) }}
+                        {{ Form::checkbox('confirmSource', 1, null, ['id'=>'confirmSource', 'class' => 'className','disabled' => "disabled" ]) }}
                         {{ Form::label('confirmSource', 'Confirm Source - Patient blood draw with OUCH Nurse') }}
                     </div>
                 </div>
@@ -236,7 +224,7 @@
                 </div>
                 <div class="col-sm-12">
                     <div class="form-group">
-                        {{ Form::checkbox('bloodReport', 1, null, ['id' => 'bloodReport', 'class'=>'className']) }}
+                        {{ Form::checkbox('bloodReport', 1, null, ['id' => 'bloodReport', 'class'=>'className','disabled' => "disabled" ]) }}
                         {{Form::label('bloodReport','Report for blood draw as directed by OUCH Nurse')}}
 
                     </div>
@@ -244,7 +232,7 @@
 
                 <div class="col-sm-12">
                     <div class="form-group">
-                        {{ Form::checkbox('exposureTab', 1, null, ['id' => 'exposureTab', 'class'=>'className']) }}
+                        {{ Form::checkbox('exposureTab', 1, null, ['id' => 'exposureTab', 'class'=>'className','disabled' => "disabled" ]) }}
                         {{Form::label('exposureTab','Complete Exposure tab in ePCR ')}}
 
                     </div>
@@ -252,28 +240,28 @@
 
                 <div class="col-sm-12">
                     <div class="form-group">
-                        {{ Form::checkbox('trueBagTag', 1, null, ['id' => 'trueBagTag', 'class'=>'className']) }}
+                        {{ Form::checkbox('trueBagTag', 1, null, ['id' => 'trueBagTag', 'class'=>'className','disabled' => "disabled" ]) }}
                         {{Form::label('trueBagTag','Bag & Tag clothing if applicable - send email to PSS with pick-up location ')}}
 
                     </div>
                 </div>
                 <div class="col-sm-12">
                     <div class="form-group">
-                        {{ Form::checkbox('notifyPSS', 1, null, ['id' => 'notifyPSS', 'class'=>'className']) }}
+                        {{ Form::checkbox('notifyPSS', 1, null, ['id' => 'notifyPSS', 'class'=>'className','disabled' => "disabled" ]) }}
                         {{Form::label('notifyPSS','Notify the on-duty PSS via phone at 402-660-1060 ')}}
 
                     </div>
                 </div>
                 <div class="col-sm-12">
                     <div class="form-group">
-                        {{ Form::checkbox('truePPE', 1, null, ['id' => 'truePPE', 'class'=>'className']) }}
+                        {{ Form::checkbox('truePPE', 1, null, ['id' => 'truePPE', 'class'=>'className','disabled' => "disabled" ]) }}
                         {{Form::label('truePPE','PPE has been cleaned per SOP SWD 1-0  ')}}
 
                     </div>
                 </div>
                 <div class="col-sm-12">
                     <div class="form-group">
-                        {{ Form::checkbox('trueDocumentDayBook', 1, null, ['id' => 'trueDocumentDayBook', 'class'=>'className']) }}
+                        {{ Form::checkbox('trueDocumentDayBook', 1, null, ['id' => 'trueDocumentDayBook', 'class'=>'className','disabled' => "disabled" ]) }}
                         {{Form::label('trueDocumentDayBook','Document in Company Day Book and on your Personnel Record')}}
 
                     </div>
@@ -285,14 +273,14 @@
 
                 <div class="col-sm-12">
                     <div class="form-group">
-                        {{ Form::checkbox('potDecontaminate', 1, null, ['id' => 'potDecontaminate', 'class'=>'className']) }}
+                        {{ Form::checkbox('potDecontaminate', 1, null, ['id' => 'potDecontaminate', 'class'=>'className','disabled' => "disabled" ]) }}
                         {{Form::label('potDecontaminate','Decontaminate self- wash, flush as soon as possible  ')}}
                     </div>
                 </div>
 
                 <div class="col-sm-12">
                     <div class="form-group">
-                        {{ Form::checkbox('potBagTag', 1, null, ['id' => 'potBagTag', 'class'=>'className']) }}
+                        {{ Form::checkbox('potBagTag', 1, null, ['id' => 'potBagTag', 'class'=>'className','disabled' => "disabled" ]) }}
                         {{Form::label('potBagTag','Bag & Tag clothing if applicable - send email to PSS with pick-up location')}}
                     </div>
                 </div>
@@ -357,14 +345,14 @@
 
                 <div class="col-sm-12">
                     <div class="form-group">
-                        {{ Form::checkbox('potPPE', 1, null, ['id' => 'potPPE', 'class'=>'className']) }}
+                        {{ Form::checkbox('potPPE', 1, null, ['id' => 'potPPE', 'class'=>'className','disabled' => "disabled" ]) }}
                         {{Form::label('potPPE','PPE has been cleaned per SOP SWD 1-0')}}
 
                     </div>
                 </div>
                 <div class="col-sm-12">
                     <div class="form-group">
-                        {{ Form::checkbox('potDocumentDayBook', 1, null, ['id' => 'potDocumentDayBook', 'class'=>'className']) }}
+                        {{ Form::checkbox('potDocumentDayBook', 1, null, ['id' => 'potDocumentDayBook', 'class'=>'className','disabled' => "disabled" ]) }}
                         {{Form::label('potDocumentDayBook','Document in Company Day Book and on your Personnel Record   ')}}
                     </div>
                 </div>
@@ -377,33 +365,16 @@
                     <div class="col-md-12">
                         <div class="alert alert-danger" align="left">
                             {{Form::label('exposureInjury','Do you have any symptoms of illness or injury and require
-                               treatment? (In case of Injury, please fill OFD - 6 IOD Application)     ')}}
-
-                            {!! Form::select('exposureInjury',[
-                              'Yes' => 'Yes',
-                              'No' => 'No'],
-                            array('class' => 'form-control'))!!}
-                            <p class="help-block"></p>
-                            @if($errors->has('exposureInjury'))
-                                <p class="help-block">
-                                    {{ $errors->first('exposureInjury') }}
-                                </p>
-                            @endif
+                               treatment? (In case of Injury, please fill OFD - 6 IOD Application)  :  ')}}
+                        
+                           <strong> {{ $biological->exposureInjury}} </strong>
+                       
                         </div>
                     </div>
                 </div>
             </div>
         </div>
 
-        <div class="row">
-            <div class="col-sm-12">
-                <label class="col-sm-5"></label>
-                <div class="btn-bottom">
-                    {!! Form::submit('Save',['class' => 'btn btn-success']) !!}
-                    <a href="{{ route('biologicals.index') }}" class="btn btn-danger">Cancel</a>
-                </div>
-            </div>
-        </div>
 
 
         {!! Form::close() !!}
