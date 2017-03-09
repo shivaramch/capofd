@@ -46,6 +46,7 @@ class Biological extends Model
         'potBagTag',
         'potPPE',
         'potDocumentDayBook',
+        'exposureInjury',
         //'trueInjury',
         //'potInjury'
 
