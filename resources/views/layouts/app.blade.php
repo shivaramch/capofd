@@ -5,6 +5,7 @@
     <div class="col-md-12">
         <span class="nav-view">@yield('crumbs')</span>
         <span class="nav-user">
+
     </span>
     </div>
 </div>
@@ -37,8 +38,7 @@
 @yield('content')
 
 @include('partials.javascripts')
-
-@yield('javascript');
+@yield('javascript')
 
 @include('partials.footer')
 

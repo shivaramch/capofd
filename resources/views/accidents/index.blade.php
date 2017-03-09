@@ -137,12 +137,14 @@
 
 @section('javascript')
 
-    <script src="{{ ('js/extensions/cookie') }}/bootstrap-table-cookie.js"></script>
-    <script src="{{ ('js/extensions/mobile') }}/bootstrap-table-mobile.js"></script>
+@section('javascript')
 
-    <script src="{{ ('js/export') }}/bootstrap-table-export.js"></script>
-    <script src="{{ ('js/export') }}/tableExport.js"></script>
-    <script src="{{ ('js/export') }}/jquery.base64.js"></script>
+    <script src="{{ url('js/extensions/cookie') }}/bootstrap-table-cookie.js"></script>
+    <script src="{{ url('js/extensions/mobile') }}/bootstrap-table-mobile.js"></script>
+
+    <script src="{{ url('js/export') }}/bootstrap-table-export.js"></script>
+    <script src="{{ url('js/export') }}/tableExport.js"></script>
+    <script src="{{ url('js/export') }}/jquery.base64.js"></script>
 
     <script type="text/javascript">
 
@@ -153,12 +155,13 @@
             cookieExpire: '2y',
             mobileResponsive: true,
             sortable: true,
+            pagination: true,
             showExport: true,
             showColumns: true,
             exportTypes: ['csv', 'excel'],
-            pageList: ['10', '25', '50', '100', '150', '200', '500', '1000'],
+            pageList: ['10','25','50','100','150','200','500','1000'],
             exportOptions: {
-                fileName: 'assets-export-' + (new Date()).toISOString().slice(0, 10),
+                fileName: 'assets-export-' + (new Date()).toISOString().slice(0,10),
             },
             icons: {
                 paginationSwitchDown: 'fa-caret-square-o-down',
@@ -174,4 +177,5 @@
 
     </script>
 
+@endsection
 @endsection
