@@ -191,7 +191,7 @@
                 </div>
                 <div class="row">
                     <div class="col-sm-12 form-group">
-                        <label class="checkbox-inline col-sm-4"><input type="checkbox"><strong>CorVel Work Ability
+                        <label class="col-sm-4"><strong>CorVel Work Ability
                                 Report</strong>
                             - Only if seeking medical attention. Complete "Employee Section" and sign at bottom.</label>
                         <div class="col-sm-2">
@@ -213,7 +213,7 @@
                 </div>
                 <div class="row">
                     <div class="col-sm-12 form-group">
-                        <label class="checkbox-inline col-sm-4"><input type="checkbox"><strong>Investigation Report for
+                        <label class="col-sm-4"><strong>Investigation Report for
                                 Occupational Injury or Illness</strong>
                             - Both employee and supervisor must complete and sign.</label>
                         <div class="col-sm-2">
@@ -235,27 +235,28 @@
                 </div>
                 <div class="row">
                     <div class="col-sm-12 form-group">
-                        <label class="checkbox-inline col-sm-4"><input type="checkbox"><strong>Statement of Witness of
+                        <label class="col-sm-4"><strong>Statement of Witness of
                                 Accident</strong></label>
                         <div class="col-sm-2">
 
                             <a class="btn btn-success dropdown-toggle col-sm-12" type="button" href="/download/a.txt">
                                 <i class="fa fa-download" aria-hidden="true"></i> Download</a>
                         </div>
-                        <div class="col-sm-2">
-                            <button type="button" class="btn btn-info dropdown-toggle col-sm-12" data-toggle="modal"
-                                    data-target="#myModal">
-                                <i class="fa fa-cloud-upload" aria-hidden="true"></i> Upload</button>
-                        </div>
-                        <div class="col-sm-2">
-                            <button class="btn btn-primary dropdown-toggle col-sm-12" type="button" data-toggle="dropdown">
-                                <i class="fa fa-search" aria-hidden="true"></i> Retrieve</button>
+                        <div class="col-sm-3">
+                            <div class="input-group">
+                                <label class="input-group-btn">
+                    <span class="btn btn-info">
+                        <i class="fa fa-cloud-upload" aria-hidden="true"></i> Upload<input type="file" name="StatementAttachment" style="display: none;" >
+                    </span>
+                                </label>
+                                <input type="text" id="upload-file-info" class="form-control" readonly>
+                            </div>
                         </div>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-sm-12 form-group">
-                        <label class="checkbox-inline col-sm-4"><input type="checkbox"><strong>Employee's Choice of
+                        <label class="col-sm-4"><strong>Employee's Choice of
                                 Physician or Doctor Form</strong>
                             - Two signatures required - both section A & B.</label>
                         <div class="col-sm-2">
@@ -263,20 +264,21 @@
                             <a class="btn btn-success dropdown-toggle col-sm-12" type="button" href="/download/a.txt">
                                 <i class="fa fa-download" aria-hidden="true"></i> Download</a>
                         </div>
-                        <div class="col-sm-2">
-                            <button type="button" class="btn btn-info dropdown-toggle col-sm-12" data-toggle="modal"
-                                    data-target="#myModal">
-                                <i class="fa fa-cloud-upload" aria-hidden="true"></i> Upload</button>
-                        </div>
-                        <div class="col-sm-2">
-                            <button class="btn btn-primary dropdown-toggle col-sm-12" type="button" data-toggle="dropdown">
-                                <i class="fa fa-search" aria-hidden="true"></i> Retrieve</button>
+                        <div class="col-sm-3">
+                            <div class="input-group">
+                                <label class="input-group-btn">
+                    <span class="btn btn-info">
+                        <i class="fa fa-cloud-upload" aria-hidden="true"></i> Upload<input type="file" name="EmployeeAttachment" style="display: none;" >
+                    </span>
+                                </label>
+                                <input type="text" id="upload-file-info" class="form-control" readonly>
+                            </div>
                         </div>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-sm-12 form-group">
-                        <label class="checkbox-inline col-sm-4"><input type="checkbox"><strong>OFD - 25 Injury on
+                        <label class="col-sm-4"><strong>OFD - 25 Injury on
                                 Job</strong>
                             - Send an attachment electronically to OmafIOD@cityofomaha.org</label>
                         <div class="col-sm-2">
@@ -284,20 +286,21 @@
                             <a class="btn btn-success dropdown-toggle col-sm-12" type="button" href="/download/a.txt">
                                 <i class="fa fa-download" aria-hidden="true"></i> Download</a>
                         </div>
-                        <div class="col-sm-2">
-                            <button type="button" class="btn btn-info dropdown-toggle col-sm-12" data-toggle="modal"
-                                    data-target="#myModal">
-                                <i class="fa fa-cloud-upload" aria-hidden="true"></i> Upload</button>
-                        </div>
-                        <div class="col-sm-2">
-                            <button class="btn btn-primary dropdown-toggle col-sm-12" type="button" data-toggle="dropdown">
-                                <i class="fa fa-search" aria-hidden="true"></i> Retrieve</button>
+                        <div class="col-sm-3">
+                            <div class="input-group">
+                                <label class="input-group-btn">
+                    <span class="btn btn-info">
+                        <i class="fa fa-cloud-upload" aria-hidden="true"></i> Upload<input type="file" name="Ofd25Attachment" style="display: none;" >
+                    </span>
+                                </label>
+                                <input type="text" id="upload-file-info" class="form-control" readonly>
+                            </div>
                         </div>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-sm-12 form-group">
-                        <label class="checkbox-inline col-sm-4 num"><input type="checkbox"><strong>Complete FRMS Casuality &
+                        <label class="col-sm-4 num"><strong>Complete FRMS Casuality &
                                 Narrative Tab</strong>
                             - Fire Service and Fire Service Injury.</label>
                         <div class="col-sm-4">
@@ -307,7 +310,7 @@
                 </div>
                 <div class="row">
                     <div class="col-sm-12 form-group">
-                        <label class="checkbox-inline col-sm-4"><input type="checkbox"><strong>Complete in EPCR</strong>
+                        <label class="col-sm-4"><strong>Complete in EPCR</strong>
                             - All cases.</label>
                         <div class="col-sm-4">
                             {!! Form::text('FrmsCas', '', array('class'=>'form-control'))!!}
@@ -319,18 +322,12 @@
                         <label class="checkbox-inline col-sm-4"><input type="checkbox"><strong>Document IOD in
                                 Workforce</strong>
                             - Only if seeking medical attention.</label>
-                        <div class="col-sm-4">
-                            {!! Form::text('FrmsCas', '', array('class'=>'form-control'))!!}
-                        </div>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-sm-12 form-group">
                         <label class="checkbox-inline col-sm-4"><input type="checkbox"><strong>Document in Operational Day
                                 Book and Personnel Record</strong></label>
-                        <div class="col-sm-4">
-                            {!! Form::text('FrmsCas', '', array('class'=>'form-control'))!!}
-                        </div>
                     </div>
                 </div>
                 <div class="row">
@@ -351,16 +348,16 @@
                 </div>
                 <div class="row">
                     <div class="col-sm-12 form-group">
-                        <label class="checkbox-inline"><input type="checkbox">Have Police Supervisor Complete and Sign
+                        <label class="checkbox-inline"><input type="checkbox"><strong>Have Police Supervisor Complete and Sign
                             Supervisor section on Investigation Report
-                            and Witness Statement</label>
+                            and Witness Statement</strong></label>
 
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-sm-12 form-group">
-                        <label class="checkbox-inline"><input type="checkbox">Call Fire Supervisor or SWD B/C immediately
-                            and notify CorVel by phone</label>
+                        <label class="checkbox-inline"><input type="checkbox"><strong>Call Fire Supervisor or SWD B/C immediately
+                            and notify CorVel by phone</strong></label>
                     </div>
                 </div>
                 {!! Form::submit('Submit',['class' => 'btn btn-success']) !!}

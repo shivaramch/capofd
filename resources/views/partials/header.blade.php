@@ -23,6 +23,9 @@
     <meta http-equiv="Content-type"
           content="text/html; charset=utf-8">
     <!-- Styles -->
+
+    <link rel="stylesheet" href="{{ url('css') }}/login.css"/>
+
     <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700&subset=all"
           rel="stylesheet"
           type="text/css"/>
@@ -152,12 +155,10 @@
                 }
             });
             $(".datepicker2").datepicker();
-			
-			
+
+
         });
     </script>
-	
-	
-	
+
 </head>
 <body class="page-header-fixed">

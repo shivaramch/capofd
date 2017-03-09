@@ -23,22 +23,24 @@ class CreateBiologicals1Table extends Migration
             $table->integer('idcoNumber');
             $table->string('epcrIncidentNum');
             $table->date('todaysDate');
-            $table->string('trueDecontaminate',null);
-            $table->string('confirmSource',null);
-            $table->string('trueOFD184',null);
-            $table->string('bloodReport',null);
-            $table->string('exposureTab',null);
-            $table->string('trueBagTag',null);
-            $table->string('notifyPSS',null);
-            $table->string('truePPE',null);
-            $table->string('trueDocumentDayBook',null);
-            $table->string('potDecontaminate',null);
-            $table->string('potBagTag',null);
-            $table->string('potOFD184',null);
-            $table->string('potPPE',null);
-            $table->string('potDocumentDayBook',null);
-            $table->string('trueInjury',null);
-            $table->string('potInjury',null);
+            $table->string('exposureInjury');
+            $table->string('trueDecontaminate')->nullable();
+            $table->string('confirmSource')->nullable();
+            $table->string('bloodReport')->nullable();
+            $table->string('exposureTab')->nullable();
+            $table->string('trueBagTag')->nullable();
+            $table->string('notifyPSS')->nullable();
+            $table->string('truePPE')->nullable();
+            $table->string('trueDocumentDayBook')->nullable();
+            $table->string('potDecontaminate')->nullable();
+            $table->string('potBagTag')->nullable();
+            $table->string('potPPE')->nullable();
+            $table->string('potDocumentDayBook')->nullable();
+            $table->string('shift');
+            //$table->string('trueInjury',null);
+            //$table->string('potInjury',null);
+            $table->string('createdBy')->nullable();
+            $table->string('updatedBy')->nullable();
             $table->timestamps();
 
         });
@@ -54,4 +56,3 @@ class CreateBiologicals1Table extends Migration
         Schema::drop('biologicals');
     }
 }
-
