@@ -37,7 +37,8 @@
 @yield('content')
 
 @include('partials.javascripts')
-@yield('javascript')
+
+@yield('javascript');
 
 @include('partials.footer')
 

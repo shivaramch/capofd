@@ -3,15 +3,15 @@
     <ol class="breadcrumb">
         <li><a href="{{ url('/') }}">Dashboard</a></li>
         <li><a href="{{ route('biologicals.index') }}">OFD 6B Biologicals</a></li>
-        <li class="active">Edit OFD 6B Form {{ $biological->ofd6bID }}</li>
+        <li class="active">New Form</li>
     </ol>
 @endsection
 
 @section('content')
-    {!! Form::model($biological,['method' => 'PUT', 'route' => ['biologicals.update', $biological->ofd6bID], 'files' => true,]) !!}
+    {!! Form::open(['method' => 'POST', 'route' => ['biologicals.store'], 'files' => true,]) !!}
 
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-    <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <div class="panel panel-default">
         <div class="panel-heading">
             <div class="jumbotron" style="margin-bottom: 5px; ">
@@ -182,8 +182,7 @@
 
             <div class="col-sm-12">
                 <div class="form-group">
-                    {{ Form::checkbox('trueOFD184', 1, null, ['id' => 'trueOFD184', 'class'=>'className']) }}
-                    {{Form::label('trueOFD184','Complete OFD 184')}}
+                 <label class="col-sm-12"><strong>Complete OFD 184</strong></label>   
                 </div>
                 <div class="col-sm-12 form-group well well-sm">
                     <div class="col-sm-4">
@@ -206,7 +205,6 @@
                         </div>
                     </div>
                 </div>
-
             </div>
             <div class="col-sm-12">
                 <div class="form-group">
@@ -248,7 +246,7 @@
             <div class="col-sm-12">
                 <div class="form-group">
                     {{ Form::checkbox('trueDocumentDayBook', 1, null, ['id' => 'trueDocumentDayBook', 'class'=>'className']) }}
-                    {{Form::label('trueDocumentDayBook','Document in Company Day Book and on your Personnel Record   ')}}
+                    {{Form::label('trueDocumentDayBook','Document in Company Day Book and on your Personnel Record')}}
 
                 </div>
             </div>
@@ -272,6 +270,7 @@
                     @endif
                 </div>
             </div>
+
             <div class="row">
                 <div class="col-sm-12">
                     <label class="col-sm-5"></label>
@@ -301,14 +300,13 @@
 
             <div class="col-sm-12">
                 <div class="form-group">
-                    {{ Form::checkbox('potOFD184', 1, null, ['id' => 'potOFD184', 'class'=>'className']) }}
-                    {{Form::label('potOFD184','Complete OFD 184')}}
+                <label class="col-sm-12"><strong>Complete OFD 184</strong></label>   
                 </div>
                 <div class="col-sm-12 form-group well well-sm">
                     <div class="col-sm-4">
                         <a class="btn btn-success dropdown-toggle col-sm-12" type="button"
-                           href="Fillable PDFs\Exposure Complete\(Exposure PDF) OFD 184 State Infectious Disease Exposure Report"
-                           download="(Exposure PDF) OFD 184 State Infectious Disease Exposure Report">
+                           href="Fillable PDFs\Exposure Complete\(Exposure PDF) OFD 184 State Infectious Disease Exposure Report.pdf"
+                           download="(Exposure PDF) OFD 184 State Infectious Disease Exposure Report.pdf">
                             <i class="fa fa-download" aria-hidden="true"></i> Download</a>
                     </div>
                     <div class="col-sm-3">
@@ -367,12 +365,6 @@
                 </div>
             </div>
         </div>
-    </div>
-    </div>
-
-    </div>
-    </div>
-    </div>
     </div>
     </div>
     {!! Form::close() !!}

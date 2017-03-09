@@ -4,22 +4,42 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-
 class hazmat extends Model
 {
-    protected $table = 'ofd6c';
+    protected $table='hazmat';
+
     protected $primaryKey='ofd6cid';
     protected $fillable = [
 
-
         'createdby',
         'updatedby',
-        'ofd6cID',
+        'ofd6cid',
+        'employeeID',
+        'exposedEmployeeName',
+        'dateOfExposure',
+        'idconumber',
+        'epcrIncidentNum',
+        'assignmentHazmat',
+        'shift',
         'contactCorVel',
-        'corVelID',
-        'attachOFD6d',
-        'pathOFD6d'
+        'corvelID',
+        'attachOFD25',
+        'pathOFD25',
 
 
     ];
+
+    /**
+     * Set attribute to date format
+     * @param $input
+     */
+
+    public function setDatedateOfExposure($input)
+    {
+        if ($input != null) {
+            $this->attributes['dateOfExposure'] = Carbon::createFromFormat('Y-m-d', $input)->format('Y-m-d');
+        } else {
+            $this->attributes['dateOfExposure'] = null;
+        }
+    }
 }

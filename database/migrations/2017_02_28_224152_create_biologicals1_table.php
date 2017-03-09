@@ -14,6 +14,7 @@ class CreateBiologicals1Table extends Migration
     public function up()
     {
         Schema::create('biologicals', function (Blueprint $table) {
+            $table->increments('ofd6bID');
             $table->string('exposedEmployeeName');
             $table->date('dateOfExposure');
             $table->integer('employeeID_1');
@@ -22,21 +23,22 @@ class CreateBiologicals1Table extends Migration
             $table->integer('idcoNumber');
             $table->string('epcrIncidentNum');
             $table->date('todaysDate');
-            $table->boolean('decontaminate');
-            $table->boolean('callChi');
-            $table->boolean('confirmSource');
-            $table->boolean('trueOFD184');
-            $table->boolean('bloodReport');
-            $table->boolean('exposureTab');
-            $table->boolean('trueBagTag');
-            $table->boolean('notifyPSS');
-            $table->boolean('truePPE');
-            $table->boolean('trueDocumentDayBook');
-            $table->boolean('potDecontaminate');
-            $table->boolean('potBagTag');
-            $table->boolean('potOFD184');
-            $table->boolean('potPPE');
-            $table->boolean('potDocumentDayBook');
+            $table->string('trueDecontaminate',null);
+            $table->string('confirmSource',null);
+            $table->string('trueOFD184',null);
+            $table->string('bloodReport',null);
+            $table->string('exposureTab',null);
+            $table->string('trueBagTag',null);
+            $table->string('notifyPSS',null);
+            $table->string('truePPE',null);
+            $table->string('trueDocumentDayBook',null);
+            $table->string('potDecontaminate',null);
+            $table->string('potBagTag',null);
+            $table->string('potOFD184',null);
+            $table->string('potPPE',null);
+            $table->string('potDocumentDayBook',null);
+            $table->string('trueInjury',null);
+            $table->string('potInjury',null);
             $table->timestamps();
 
         });
@@ -52,3 +54,4 @@ class CreateBiologicals1Table extends Migration
         Schema::drop('biologicals');
     }
 }
+

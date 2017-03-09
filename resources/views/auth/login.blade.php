@@ -10,7 +10,7 @@
         <div>
             <img src="img/login.png" height="125" width="125" style="display:block; margin: auto;" >
         </div>
-        <h2 class="form-signin-heading" style="text-align:center;">OFD AMS</h2>
+        <h2 class="form-signin-heading" style="text-align:center;">OFD Wellness</h2>
 
         @if (count($errors) > 0)
             <div class="alert alert-danger">

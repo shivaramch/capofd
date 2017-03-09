@@ -24,8 +24,7 @@ class UpdateHazmatRequest extends FormRequest
     public function rules()
     {
         return [
-            'hazmat_document' => 'max:20480',
-            'createDate' => 'string:hazmat,createDate,'.$this->route('hazmat'),
+            'employeeID' => 'required|max:255',
         ];
     }
 }

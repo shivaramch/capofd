@@ -33,9 +33,9 @@
 
     <link rel="stylesheet" href="https://code.jquery.com/ui/1.11.3/themes/smoothness/jquery-ui.css"/>
 
-    <link rel="stylesheet" href="{{ url('css') }}/bootstrap.min.css"/>
-    <link rel="stylesheet" href="{{ url('css') }}/bootstrap-table.min.css"/>
-    <link rel="stylesheet" href="{{ url('css') }}/dashboard.css"/>
+    <link rel="stylesheet" href="{{ url ('css') }}/bootstrap.min.css"/>
+    <link rel="stylesheet" href="{{ url ('css') }}/bootstrap-table.min.css"/>
+    <link rel="stylesheet" href="{{ url ('css') }}/dashboard.css"/>
 
 
     <link href="/css/app.css" rel="stylesheet">
@@ -107,6 +107,9 @@
     </script>
 
     <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
     <script>
         $(function () {
@@ -137,5 +140,24 @@
 
         });
     </script>
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $(".datepicker1").datepicker({
+                onClose: function () {
+                    var date2 = $('.datepicker1').datepicker('getDate');
+                    date2.setDate(date2.getDate() + 35)
+                    $(".datepicker2").datepicker("setDate", date2);
+                }
+            });
+            $(".datepicker2").datepicker();
+			
+			
+        });
+    </script>
+	
+	
+	
 </head>
 <body class="page-header-fixed">
