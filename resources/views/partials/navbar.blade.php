@@ -40,7 +40,7 @@
                 <ul class="dropdown-menu">
                 <li><a href="{{ route('users.index') }}">Manage</a></li>
                 <li role="separator" class="divider"></li>
-                <li><a href="logout" onclick="$('#logout').submit();">Logout</a></li>
+                <li><a href="{{ url('logout') }}">Logout</a></li>
                 </ul>
                 </li>
             </ul>
