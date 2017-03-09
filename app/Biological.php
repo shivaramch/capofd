@@ -33,6 +33,7 @@ class Biological extends Model
         'idcoNumber',
         'epcrIncidentNum',
         'exposureInjury',
+        'frmsincidentnum',
         'todaysDate',
         'trueDecontaminate',
         'confirmSource',
@@ -46,6 +47,7 @@ class Biological extends Model
         'potBagTag',
         'potPPE',
         'potDocumentDayBook',
+        'exposure'
         //'trueInjury',
         //'potInjury'
 

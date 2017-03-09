@@ -29,7 +29,7 @@ class Accident extends Model
         'assignmentAccident',
         'Apparatus',
         'captainID',
-        'battalionChiefID ',
+        'battalionChiefID',
         'acOnDutyID',
         'CommEmail',
         'CallLaw',
