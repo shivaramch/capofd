@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers;
 
-
+use App\Attachment;
 use App\Injury;
 use Illuminate\Http\Request;
 use App\Http\Requests\StoreStationsRequest;
 use App\Http\Controllers\Traits\FileUploadTrait;
+use App\Http\Controllers\Traits\FormFileUploadTrait;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Redirect;
@@ -15,6 +16,7 @@ use Auth;
 class InjuriesController extends Controller
 {
     use FileUploadTrait;
+    use FormFileUploadTrait;
 
     public function index()
     {
@@ -39,10 +41,16 @@ class InjuriesController extends Controller
     {
         $request = $this->saveFiles($request);
         Injury::create($request->all());
+        $last_insert_id = DB::getPdo()->lastInsertId();
+        $this->InjuriesUpload($request, $last_insert_id);
+
+//                $attachmentName = $request['attachmentName'];
+//                $attachment = new Attachment();
+//                $attachment->attachmentName = $attachmentName;
+//                $attachment->Injury_ofd6ID = $last_insert_id;
+//                $attachment->save();
 
         return redirect()->route('injuries.index');
-
-        
     }
 //
 //    public function show($id)

@@ -14,6 +14,7 @@ class CreateBiologicals1Table extends Migration
     public function up()
     {
         Schema::create('biologicals', function (Blueprint $table) {
+            $table->increments('ofd6bID');
             $table->string('exposedEmployeeName');
             $table->date('dateOfExposure');
             $table->integer('employeeID_1');
@@ -22,21 +23,23 @@ class CreateBiologicals1Table extends Migration
             $table->integer('idcoNumber');
             $table->string('epcrIncidentNum');
             $table->date('todaysDate');
-            $table->boolean('decontaminate');
-            $table->boolean('callChi');
-            $table->boolean('confirmSource');
-            $table->boolean('trueOFD184');
-            $table->boolean('bloodReport');
-            $table->boolean('exposureTab');
-            $table->boolean('trueBagTag');
-            $table->boolean('notifyPSS');
-            $table->boolean('truePPE');
-            $table->boolean('trueDocumentDayBook');
-            $table->boolean('potDecontaminate');
-            $table->boolean('potBagTag');
-            $table->boolean('potOFD184');
-            $table->boolean('potPPE');
-            $table->boolean('potDocumentDayBook');
+            $table->string('exposureInjury');
+            $table->string('trueDecontaminate')->nullable();
+            $table->string('confirmSource')->nullable();
+            $table->string('bloodReport')->nullable();
+            $table->string('exposureTab')->nullable();
+            $table->string('trueBagTag')->nullable();
+            $table->string('notifyPSS')->nullable();
+            $table->string('truePPE')->nullable();
+            $table->string('trueDocumentDayBook')->nullable();
+            $table->string('potDecontaminate')->nullable();
+            $table->string('potBagTag')->nullable();
+            $table->string('potPPE')->nullable();
+            $table->string('potDocumentDayBook')->nullable();
+            //$table->string('trueInjury',null);
+            //$table->string('potInjury',null);
+            $table->string('createdBy')->nullable();
+            $table->string('updatedBy')->nullable();
             $table->timestamps();
 
         });

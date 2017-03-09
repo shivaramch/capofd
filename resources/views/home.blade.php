@@ -74,7 +74,7 @@
     </div>
     <!-- top navigation icons ends here-->
 
-
+    @if(Auth::user()->role == 1)
     <!-- bottom navigation icons start here-->
     <div class="col-md-12">
         <div class="row" style="margin: inherit">
@@ -121,6 +121,7 @@
         </div>
     </div>
     <!-- Bottom navigation icons ends here-->
+    @endif
 
 @endsection
 

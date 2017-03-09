@@ -1,4 +1,7 @@
 @extends('layouts.app')
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
 @section('crumbs')
     <ol class="breadcrumb">
         <a class="btn btn-default" type="button"
@@ -6,15 +9,18 @@
             <i class="fa fa-arrow-left" aria-hidden="true"></i> Back</a>
         <li><a href="{{ url('/') }}">Dashboard</a></li>
         <li><a href="{{ route('biologicals.index') }}">OFD 6B Biologicals</a></li>
-        <li class="active">Edit OFD 6B Form {{ $biological->ofd6bID }}</li>
+        <li class="active">New Form</li>
     </ol>
 @endsection
 
 @section('content')
-    {!! Form::model($biological,['method' => 'PUT', 'route' => ['biologicals.update', $biological->ofd6bID], 'files' => true,]) !!}
+    {!! Form::open(['method' => 'POST', 'route' => ['biologicals.store'], 'files' => true,]) !!}
 
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-    <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
+    <style>
+        #padtop {
+            padding-top: 7px;
+        }
+    </style>
     <div class="panel panel-default">
         <div class="panel-heading">
             <div class="jumbotron" style="margin-bottom: 5px; ">
@@ -199,39 +205,6 @@
                                 <input type="text" id="upload-file-info" class="form-control" readonly>
                             </div>
                         </div>
-                        <div class="col-sm-4">
-                            <a class="btn btn-primary dropdown-toggle col-sm-12" data-toggle="collapse"
-                               data-target="#trueOFD184"><i class="fa fa-eye" aria-hidden="true"></i> View
-                                Previously
-                                uploaded
-                                file(s)
-                            </a>
-
-                            <div id="619" class="collapse">
-
-                                <table class="table table-striped">
-                                    <tr>
-                                        <th> File Name</th>
-                                        <th> File Uploaded At</th>
-                                    </tr>
-
-                                    @if(count($attachments) > 0)
-                                        @foreach($attachments as $attachment)
-                                            @if($attachment->attachmentType == 619 && $attachment->createdBy ==  Auth::user()->id && $attachment->ofd6bID == $biological->ofd6bID )
-                                                <tr>
-                                                    <td>
-                                                        <a href="{{ asset('uploads/'.$attachment->attachmentName) }}"> {{$attachment->attachmentName}}</a>
-                                                    </td>
-                                                    <td>
-                                                        {{$attachment->created_At}}</a>
-                                                    </td>
-                                                </tr>@endif
-                                        @endforeach
-                                    @endif
-
-                                </table>
-                            </div>
-                        </div>
                     </div>
                 </div>
                 <div class="col-sm-12">
@@ -286,7 +259,7 @@
                 <div class="col-sm-12">
                     <div class="form-group">
                         {{ Form::checkbox('potDecontaminate', 1, null, ['id' => 'potDecontaminate', 'class'=>'className']) }}
-                        {{Form::label('potDecontaminate','Decontaminate self- wash, flush as soon as possible  ')}}
+                        {{Form::label('potDecontaminate','Decontaminate self- wash, flush as soon as possible')}}
                     </div>
                 </div>
 
@@ -320,41 +293,8 @@
                                 <input type="text" id="upload-file-info" class="form-control" readonly>
                             </div>
                         </div>
-                        <div class="col-sm-4">
-                            <a class="btn btn-primary dropdown-toggle col-sm-12" data-toggle="collapse"
-                               data-target="#potOFD184"><i class="fa fa-eye" aria-hidden="true"></i> View Previously
-                                uploaded
-                                file(s)
-                            </a>
-
-                            <div id="620" class="collapse">
-
-                                <table class="table table-striped">
-                                    <tr>
-                                        <th> File Name</th>
-                                        <th> File Uploaded At</th>
-                                    </tr>
-
-                                    @if(count($attachments) > 0)
-                                        @foreach($attachments as $attachment)
-                                            @if($attachment->attachmentType == 620 && $attachment->createdBy ==  Auth::user()->id && $attachment->ofd6bID == $biological->ofd6bID )
-                                                <tr>
-                                                    <td>
-                                                        <a href="{{ asset('uploads/'.$attachment->attachmentName) }}"> {{$attachment->attachmentName}}</a>
-                                                    </td>
-                                                    <td>
-                                                        {{$attachment->created_At}}</a>
-                                                    </td>
-                                                </tr>@endif
-                                        @endforeach
-                                    @endif
-
-                                </table>
-                            </div>
-                        </div>
                     </div>
                 </div>
-
                 <div class="col-sm-12">
                     <div class="form-group">
                         {{ Form::checkbox('potPPE', 1, null, ['id' => 'potPPE', 'class'=>'className']) }}
@@ -369,63 +309,63 @@
                     </div>
                 </div>
             </div>
-        </div>
 
-        <div class="panel-body">
-            <div class="form-horizontal">
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="alert alert-danger" align="left">
-                            {{Form::label('exposureInjury','Do you have any symptoms of illness or injury and require
-                               treatment? (In case of Injury, please fill OFD - 6 IOD Application)     ')}}
 
-                            {!! Form::select('exposureInjury',[
-                              'Yes' => 'Yes',
-                              'No' => 'No'],
-                            array('class' => 'form-control'))!!}
-                            <p class="help-block"></p>
-                            @if($errors->has('exposureInjury'))
-                                <p class="help-block">
-                                    {{ $errors->first('exposureInjury') }}
-                                </p>
-                            @endif
+            <div class="panel-body">
+                <div class="form-horizontal">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="alert alert-danger" align="left">
+                                {{Form::label('exposureInjury','Do you have any symptoms of illness or injury and require
+                                   treatment? (In case of Injury, please fill OFD - 6 IOD Application)     ')}}
+
+                                {!! Form::select('exposureInjury',[
+                                  'Yes' => 'Yes',
+                                  'No' => 'No'],
+                                array('class' => 'form-control'))!!}
+                                <p class="help-block"></p>
+                                @if($errors->has('exposureInjury'))
+                                    <p class="help-block">
+                                        {{ $errors->first('exposureInjury') }}
+                                    </p>
+                                @endif
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
 
-        <div class="row">
-            <div class="col-sm-12">
-                <label class="col-sm-5"></label>
-                <div class="btn-bottom">
-                    {!! Form::submit('Save',['class' => 'btn btn-success']) !!}
-                    <a href="{{ route('biologicals.index') }}" class="btn btn-danger">Cancel</a>
+            <div class="row">
+                <div class="col-sm-12">
+                    <label class="col-sm-5"></label>
+                    <div class="btn-bottom">
+                        {!! Form::submit('Submit',['class' => 'btn btn-success']) !!}
+                        <a href="{{ route('biologicals.index') }}" class="btn btn-danger">Cancel</a>
+                    </div>
                 </div>
             </div>
-        </div>
 
+            {!! Form::close() !!}
+            @stop
 
-        {!! Form::close() !!}
-        @stop
+            @section('javascript')
 
-        @section('javascript')
+                <script src="{{ ('js/extensions/cookie') }}/bootstrap-table-cookie.js"></script>
+                <script src="{{ ('js/extensions/mobile') }}/bootstrap-table-mobile.js"></script>
 
-            <script src="{{ ('js/extensions/cookie') }}/bootstrap-table-cookie.js"></script>
-            <script src="{{ ('js/extensions/mobile') }}/bootstrap-table-mobile.js"></script>
+                <script src="{{ ('js/export') }}/bootstrap-table-export.js"></script>
+                <script src="{{ ('js/export') }}/tableExport.js"></script>
+                <script src="{{ ('js/export') }}/jquery.base64.js"></script>
 
-            <script src="{{ ('js/export') }}/bootstrap-table-export.js"></script>
-            <script src="{{ ('js/export') }}/tableExport.js"></script>
-            <script src="{{ ('js/export') }}/jquery.base64.js"></script>
+                <script type="text/javascript">
+                    $(document).ready(function () {
+                        $("input[name$='exposure']").click(function () {
+                            var test = $(this).val();
 
-            <script type="text/javascript">
-                $(document).ready(function () {
-                    $("input[name$='exposure']").click(function () {
-                        var test = $(this).val();
-
-                        $("div.desc").hide();
-                        $("#Exposure" + test).show();
+                            $("div.desc").hide();
+                            $("#Exposure" + test).show();
+                        });
                     });
-                });
-            </script>
+                </script>
+        </div>
 @endsection

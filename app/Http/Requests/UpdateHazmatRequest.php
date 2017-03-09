@@ -1,10 +1,10 @@
 <?php
+
 namespace App\Http\Requests;
 
-use App\Biological;
 use Illuminate\Foundation\Http\FormRequest;
 
-class StoreBiologicalsRequest extends FormRequest
+class UpdateHazmatRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,11 +24,7 @@ class StoreBiologicalsRequest extends FormRequest
     public function rules()
     {
         return [
-            'trueOFD184' => 'max:20480',
-            'potOFD184' => 'max:20480',
-            'createDate' => 'string:biologicals,createDate,'.$this->route('biological'),
+            'employeeID' => 'required|max:255',
         ];
-
     }
-
 }

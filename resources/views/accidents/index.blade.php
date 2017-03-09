@@ -1,11 +1,13 @@
 @extends('layouts.app')
 @section('crumbs')
     <ol class="breadcrumb">
+        <a class="btn btn-default" type="button"
+           href="{{ url('/') }}">
+            <i class="fa fa-arrow-left" aria-hidden="true"></i> Back</a>
         <li><a href="{{ url('/') }}">Dashboard</a></li>
         <li class="active">OFD 6A Accidents</li>
     </ol>
 @endsection
-
 
 @section('content')
 
@@ -45,6 +47,7 @@
                 <tbody>
                 @if(count($accidents) > 0)
                     @foreach($accidents as $accident)
+                        @if($accident->User_Login_employeeID == Auth::user()->id)
                         <tr>
                             <td>{{ $accident->ofd6aID }}</td>
                             <td>{{ $accident->accidentDate }}</td>
@@ -61,6 +64,7 @@
                                 </div>
                             </td>
                         </tr>
+                        @endif
                     @endforeach
                 @else
                     <tr>
@@ -99,21 +103,21 @@
                     @foreach($accidents as $accident)
                         @if($accident->Status == 'approval')
                             <tr>
-                            <td>{{ $accident->ofd6aID }}</td>
-                            <td>{{ $accident->accidentDate }}</td>
-                            <td>{{ $accident->assignmentAccident }}</td>
-                            <td>{{ $accident->Status }}</td>
-                            <td>
-                                <div>
-                                    <a href="{{ route('accidents.show',[$accident->ofd6aID]) }}"
-                                       class="btn btn-xs btn-info btn-block"><i
-                                                class="fa fa-eye" aria-hidden="true"></i> VIEW</a>
-                                    <a href="{{ route('accidents.edit',[$accident->ofd6aID]) }}"
-                                       class="btn btn-xs btn-warning btn-block"><i class="fa fa-pencil-square-o"
-                                                                                   aria-hidden="true"></i> EDIT</a>
-                                </div>
-                            </td>
-                        </tr>
+                                <td>{{ $accident->ofd6aID }}</td>
+                                <td>{{ $accident->accidentDate }}</td>
+                                <td>{{ $accident->assignmentAccident }}</td>
+                                <td>{{ $accident->Status }}</td>
+                                <td>
+                                    <div>
+                                        <a href="{{ route('accidents.show',[$accident->ofd6aID]) }}"
+                                           class="btn btn-xs btn-info btn-block"><i
+                                                    class="fa fa-eye" aria-hidden="true"></i> VIEW</a>
+                                        <a href="{{ route('accidents.edit',[$accident->ofd6aID]) }}"
+                                           class="btn btn-xs btn-warning btn-block"><i class="fa fa-pencil-square-o"
+                                                                                       aria-hidden="true"></i> EDIT</a>
+                                    </div>
+                                </td>
+                            </tr>
                         @endif
                     @endforeach
                 @else
@@ -129,12 +133,12 @@
 
 @section('javascript')
 
-    <script src="{{ url('js/extensions/cookie') }}/bootstrap-table-cookie.js"></script>
-    <script src="{{ url('js/extensions/mobile') }}/bootstrap-table-mobile.js"></script>
+    <script src="{{ ('js/extensions/cookie') }}/bootstrap-table-cookie.js"></script>
+    <script src="{{ ('js/extensions/mobile') }}/bootstrap-table-mobile.js"></script>
 
-    <script src="{{ url('js/export') }}/bootstrap-table-export.js"></script>
-    <script src="{{ url('js/export') }}/tableExport.js"></script>
-    <script src="{{ url('js/export') }}/jquery.base64.js"></script>
+    <script src="{{ ('js/export') }}/bootstrap-table-export.js"></script>
+    <script src="{{ ('js/export') }}/tableExport.js"></script>
+    <script src="{{ ('js/export') }}/jquery.base64.js"></script>
 
     <script type="text/javascript">
 
