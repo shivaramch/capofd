@@ -24,7 +24,7 @@ trait FormFileUploadTrait
             $attachment = new Attachment();
             $attachment->attachmentName = $attachmentName;
             $attachment->Injury_ofd6ID = $id;
-            $attachment->attachmentType = 'Corvel Work Ability Report';
+            $attachment->attachmentType = '611';
             $attachment->save();
         }
 
@@ -32,7 +32,7 @@ trait FormFileUploadTrait
             $attachment = new Attachment();
             $attachment->attachmentName = $attachmentName;
             $attachment->Injury_ofd6ID = $id;
-            $attachment->attachmentType = 'Investigation Report for Occupational Injury or Illness';
+            $attachment->attachmentType = '612';
             $attachment->save();
         }
 
@@ -40,7 +40,7 @@ trait FormFileUploadTrait
             $attachment = new Attachment();
             $attachment->attachmentName = $attachmentName;
             $attachment->Injury_ofd6ID = $id;
-            $attachment->attachmentType = 'Statement of Witness of Accident';
+            $attachment->attachmentType = '613';
             $attachment->save();
         }
 
@@ -48,7 +48,7 @@ trait FormFileUploadTrait
             $attachment = new Attachment();
             $attachment->attachmentName = $attachmentName;
             $attachment->Injury_ofd6ID = $id;
-            $attachment->attachmentType = 'Employee\'s Choice of Physician or Doctor Form';
+            $attachment->attachmentType = '614';
             $attachment->save();
         }
 
@@ -56,7 +56,7 @@ trait FormFileUploadTrait
             $attachment = new Attachment();
             $attachment->attachmentName = $attachmentName;
             $attachment->Injury_ofd6ID = $id;
-            $attachment->attachmentType = 'OFD - 25 Injury on Job';
+            $attachment->attachmentType = '615';
             $attachment->save();
         }
     }
