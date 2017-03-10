@@ -36,7 +36,6 @@ class CreateBiologicals1Table extends Migration
             $table->string('potBagTag')->nullable();
             $table->string('potPPE')->nullable();
             $table->string('potDocumentDayBook')->nullable();
-            $table->string('shift');
             //$table->string('trueInjury',null);
             //$table->string('potInjury',null);
             $table->string('createdBy')->nullable();
