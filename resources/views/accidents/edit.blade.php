@@ -11,20 +11,9 @@
 @endsection
 @section('content')
     {!! Form::model($accident,['method' => 'PUT', 'route' => ['accidents.update', $accident->ofd6aid], 'files' => true,]) !!}
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-    <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
-    <script>
-        $(document).ready(function () {
-            $("#datepicker1").datepicker({
-                onClose: function () {
-                    var date2 = $('#datepicker1').datepicker('getDate');
-                    date2.setDate(date2.getDate() + 35)
-                    $("#datepicker2").datepicker("setDate", date2);
-                }
-            });
-            $("#datepicker2").datepicker();
-        });
-    </script>
+    <input type="hidden" name="_token" value="{!!  'csrf_token()' !!}">
+    {{ csrf_field() }}
+
     <style>
         #padtop {
             padding-top: 7px;

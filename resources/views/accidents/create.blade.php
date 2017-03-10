@@ -12,6 +12,8 @@
 @endsection
 @section('content')
     {!! Form::open(['method' => 'POST', 'route' => ['accidents.store'], 'files' => true,]) !!}
+    <input type="hidden" name="_token" value="{!!  'csrf_token()' !!}">
+    {{ csrf_field() }}
 
     <style>
         #padtop {
