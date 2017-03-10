@@ -12,7 +12,8 @@
     </ol>
 @endsection
     {!! Form::open(['method' => 'POST', 'route' => ['injuries.store'], 'files' => true,]) !!}
-    <div class="panel panel-default">
+{{ csrf_field() }}
+<div class="panel panel-default">
         <div class="panel-heading">
             <div class="jumbotron" style="margin-bottom: 5px; ">
                 <div class="row">
