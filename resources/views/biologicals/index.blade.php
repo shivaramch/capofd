@@ -48,16 +48,16 @@
                 @if(count($biologicals) > 0)
                     @foreach($biologicals as $biological)
                         <tr>
-                            <td>{{ $biological->ofd6bID }}</td>
-                            <td>{{ $biological->dateOfExposure }}</td>
-                            <td>{{ $biological->assignmentBiological }}</td>
+                            <td>{{ $biological->ofd6bid }}</td>
+                            <td>{{ $biological->dateofexposure }}</td>
+                            <td>{{ $biological->assignmentbiological }}</td>
                             <td>{{ $biological->status }}</td>
                             <td>
                                 <div>
-                                    <a href="{{ route('biologicals.show',[$biological->ofd6bID]) }}"
+                                    <a href="{{ route('biologicals.show',[$biological->ofd6bid]) }}"
                                        class="btn btn-xs btn-info btn-block"><i
                                                 class="fa fa-eye" aria-hidden="true"></i> VIEW</a>
-                                    <a href="{{ route('biologicals.edit',[$biological->ofd6bID]) }}"
+                                    <a href="{{ route('biologicals.edit',[$biological->ofd6bid]) }}"
                                        class="btn btn-xs btn-warning btn-block"><i class="fa fa-pencil-square-o"
                                                                                    aria-hidden="true"></i> EDIT</a>
                                 </div>
@@ -100,16 +100,16 @@
                     @if(count($biologicals) > 0)
                         @foreach($biologicals as $biological)
                             <tr>
-                                <td>{{ $biological->ofd6bID }}</td>
-                                <td>{{ $biological->dateOfExposure }}</td>
-                                <td>{{ $biological->assignmentBiological }}</td>
+                                <td>{{ $biological->ofd6bid }}</td>
+                                <td>{{ $biological->dateofexposure }}</td>
+                                <td>{{ $biological->assignmentbiological }}</td>
                                 <td>{{ $biological->status }}</td>
                                 <td>
                                     <div>
-                                        <a href="{{ route('biologicals.show',[$biological->ofd6bID]) }}"
+                                        <a href="{{ route('biologicals.show',[$biological->ofd6bid]) }}"
                                            class="btn btn-xs btn-info btn-block"><i
                                                     class="fa fa-eye" aria-hidden="true"></i> VIEW</a>
-                                        <a href="{{ route('biologicals.edit',[$biological->ofd6bID]) }}"
+                                        <a href="{{ route('biologicals.edit',[$biological->ofd6bid]) }}"
                                            class="btn btn-xs btn-warning btn-block"><i class="fa fa-pencil-square-o"
                                                                                        aria-hidden="true"></i> EDIT</a>
                                     </div>

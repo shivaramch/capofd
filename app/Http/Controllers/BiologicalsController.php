@@ -38,6 +38,10 @@ class BiologicalsController extends Controller
         $last_insert_id = DB::getPdo()->lastInsertId();
         $this->BiologicalUpload($request, $last_insert_id);
 
+        //$link = $request->url() . "/$last_insert_id";
+        //write code for email notification here
+        //$numsent = (new EmailController)->Email($request, $link);
+
         return redirect()->route('biologicals.index');
     }
 
@@ -65,17 +69,18 @@ class BiologicalsController extends Controller
         $biological = Biological::findOrFail($id);
 
 
-        \DB::table('biologicals')->where('ofd6bID', $biological->ofd6bID)->update([
-                'exposedEmployeeName' => $biological->exposedEmployeeName,
-                'dateOfExposure' => $biological->dateOfExposure,
-                'employeeID_1' => $biological->employeeID_1,
-                'assignmentBiological' => $biological->assignmentBiological,
+        \DB::table('biological')->where('ofd6bid', $biological->ofd6bid)->update([
+                'exposedemployeename' => $biological->exposedemployeename,
+                'dateofexposure' => $biological->dateofexposure,
+                'employeeid' => $biological->employeeid,
+                'assignmentbiological' => $biological->assignmentbiological,
                 'shift' => $biological->shift,
-                'idcoNumber' => $biological->idcoNumber,
-                'epcrIncidentNum' => $biological->epcrIncidentNum,
-                'todaysDate' => $biological->todaysDate,
+                'primaryidconumber' => $biological->primaryidconumber,
+                'epcrincidentnum' => $biological->epcrincidentnum,
+                'todaysdate' => $biological->todaysdate,
                 'exposure'=>$biological->exposure,
-                'frmsincidentnum'=>$biological->frmsincidentnum]
+                'frmsincidentnum'=>$biological->frmsincidentnum,
+                'exposureinjury'=>$biological->exposureinjury]
         );
 
         $request = $this->saveFiles($request);
@@ -84,6 +89,12 @@ class BiologicalsController extends Controller
         $this->BiologicalUpload($request, $id);
 
         return redirect()->route('biologicals.index');
+
+        //add email code here
+        //$numsent = (new EmailController)->Email($request, $link);
+
+
+        //return redirect()->route('biologicals.index');
 
 
     }
