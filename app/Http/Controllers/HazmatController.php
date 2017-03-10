@@ -2,18 +2,22 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\hazmat;
-use App\Http\Requests\StoreHazmatRequest;
+use App\Attachment;
 use App\Http\Requests\UpdateHazmatRequest;
+use App\Http\Requests\StoreStationsRequest;
 use App\Http\Controllers\Traits\FileUploadTrait;
+use App\Http\Controllers\Traits\FormFileUploadTrait;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Input;
-use Illuminate\Support\Facades\Redirect;
-use Auth;
+use App\User;
+use Illuminate\Http\Request;
+use App\Http\Requests\StoreHazmatRequest;
+use Illuminate\Support\Facades\Auth;
 
 class HazmatController extends Controller
 {
+    use FileUploadTrait;
+    use FormFileUploadTrait;
 
     public function index()
     {
@@ -29,9 +33,12 @@ class HazmatController extends Controller
 
     public function store(StoreHazmatRequest $request)
     {
-        //$request = $this->saveFiles($request);
-
+        $request = $this->saveFiles($request);
         hazmat::create($request->all());
+        $last_insert_id = DB::getPdo()->lastInsertId();
+        $this->HazmatUpload($request, $last_insert_id);
+
+        //write code for email notification here
 
         return redirect()->route('hazmat.index');
     }
@@ -39,19 +46,21 @@ class HazmatController extends Controller
     public function edit($id)
     {
 
-      $hazmat = hazmat::findOrFail($id);
-      return view('hazmat.edit', compact('hazmat', ''));
+        $attachments = Attachment::all();
+        $hazmat = hazmat::findOrFail($id);
+        return view('hazmat.edit', compact('hazmat', 'attachments'));
     }
 
     public function show($id)
     {
 
         $hazmat = hazmat::findOrFail($id);
+        $attachments = Attachment::all();
 
         //show history code start
         //below one line code is for storing all history related to the $id in variable, which is to be used to display in show page.
         //show history code end
-        return view('hazmat.show',compact('hazmat'));
+        return view('hazmat.show',compact('hazmat', 'attachments'));
     }
 
     public function update(UpdateHazmatRequest $request, $id)
@@ -59,19 +68,30 @@ class HazmatController extends Controller
         //$accident = $this->saveFiles($request);
         $hazmat = hazmat::findOrFail($id);
 
-        \DB::table('hazmat')->where('ofd6cID', $hazmat->ofd6cID)->update([
-                'employeeID' => $hazmat->employeeID,
-                'exposedEmployeeName' => $hazmat->exposedEmployeeName,
-                'dateOfExposure' => $hazmat->dateOfExposure,
-                'idconumber' => $hazmat->idconumber,
-                'epcrIncidentNum' => $hazmat->epcrIncidentNum,
-                'assignmentHazmat' => $hazmat->assignmentHazmat,
+        \DB::table('hazmat')->where('ofd6cid', $hazmat->ofd6cid)->update([
+                'employeeid' => $hazmat->employeeid,
+                'employeename' => $hazmat->employeename,
+                'dateofexposure' => $hazmat->dateofexposure,
+                'primaryidconumber' => $hazmat->primaryidconumber,
+                'epcrincidentnum' => $hazmat->epcrincidentnum,
+                'frmsincidentnum' => $hazmat->frmsincidentnum,
+                'assignment' => $hazmat->assignment,
                 'shift' => $hazmat->shift,
-                'corvelID' => $hazmat->corvelID ]
+                'corvelid' => $hazmat->corvelid,
+                'exposurehazmat' => $hazmat->exposurehazmat]
         );
 
         //end history code
+        $request = $this->saveFiles($request);
         $hazmat->update($request->all());
+
+        $this->HazmatUpload($request, $id);
+
+        $link=$request->url();
+
+        //add email code here
+
+
 
         return redirect()->route('hazmat.index');
     }

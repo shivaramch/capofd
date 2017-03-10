@@ -26,7 +26,7 @@ class StoreHazmatRequest extends FormRequest
     public function rules()
     {
         return [
-            'employeeID' => 'required|max:255',
+            'employeeid' => 'required|max:255',
         ];
     }
 }

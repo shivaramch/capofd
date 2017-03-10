@@ -1,14 +1,17 @@
 @extends('layouts.app')
 @section('crumbs')
     <ol class="breadcrumb">
+        <a class="btn btn-default" type="button"
+           href="{{ route('hazmat.index') }}">
+            <i class="fa fa-arrow-left" aria-hidden="true"></i> Back</a>
         <li><a href="{{ url('/') }}">Dashboard</a></li>
-        <li><a href="{{ route('hazmat.index') }}">OFD 6C Hazmat Exposure</a></li>
-        <li class="active">Edit OFD 6C Form {{ $hazmat->ofd6cID }}</li>
+        <li><a href="{{ route('hazmat.index') }}">OFD 6C Hazmat</a></li>
+        <li class="active">Edit OFD 6C Form {{ $hazmat->ofd6cid }}</li>
     </ol>
 @endsection
 
 @section('content')
-    {!! Form::model($hazmat,['method' => 'PUT', 'route' => ['hazmat.update', $hazmat->ofd6cID ], 'files' => true,]) !!}
+    {!! Form::model($hazmat,['method' => 'PUT', 'route' => ['hazmat.update', $hazmat->ofd6cid], 'files' => true,]) !!}
 
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
@@ -25,7 +28,15 @@
             $("#datepicker2").datepicker();
         });
     </script>
+    <style>
+        table {
+            border-collapse: collapse;
+        }
 
+        table, td, th {
+            border: 1px solid black;
+        }
+    </style>
 
     <div class="panel panel-default">
         <div class="panel-heading">
@@ -51,43 +62,49 @@
         <div class="form-horizontal">
             <div class="row">
                 <div class="col-sm-4 form-group">
-                    {!! Form::label('employeeID', 'Employee ID #', array('style'=>'padding-top:7px;', 'class' => 'col-sm-4 control-label') ) !!}
+                    {!! Form::label('employeeid', 'Employee ID#', array('style'=>'padding-top:7px;', 'class' => 'col-sm-4 control-label') ) !!}
                     <div class="col-sm-6 ">
-                        {{ $hazmat->employeeID }}
+                        {{ $hazmat->employeeid }}
                     </div>
                 </div>
                 <div class="col-sm-4 form-group">
-                    {!! Form::label('exposedEmployeeName', 'Exposed Employee Name', array('style'=>'padding-top:7px;', 'class' => 'col-sm-4 control-label') ) !!}
+                    {!! Form::label('employeename', 'Exposed Employee Name', array('style'=>'padding-top:7px;', 'class' => 'col-sm-4 control-label') ) !!}
                     <div class="col-sm-6 ">
-                        {{ $hazmat->exposedEmployeeName }}
+                        {{ $hazmat->employeename }}
                     </div>
                 </div>
                 <div class="col-sm-4 form-group">
-                    {!! Form::label('dateOfExposure', 'Date of Exposure', array('style'=>'padding-top:7px;', 'class' => 'col-sm-4 control-label') ) !!}
+                    {!! Form::label('dateofexposure', 'Date of Exposure', array('style'=>'padding-top:7px;', 'class' => 'col-sm-4 control-label') ) !!}
                     <div class="col-sm-6 ">
-                        {{ $hazmat->dateOfExposure }}
+                        {{ $hazmat->dateofexposure }}
                     </div>
                 </div>
             </div>
             <div class="row">
                  <div class="col-sm-4 form-group">
-                     {!! Form::label('idconumber', 'Primary IDCO #', array('style'=>'padding-top:7px;', 'class' => 'col-sm-4 control-label') ) !!}
+                     {!! Form::label('primaryidconumber', 'Primary IDCO OFD ID#', array('style'=>'padding-top:7px;', 'class' => 'col-sm-4 control-label') ) !!}
                      <div class="col-sm-6 ">
-                         {{ $hazmat->idconumber }}
+                         {{ $hazmat->primaryidconumber }}
                     </div>
                  </div>
                  <div class="col-sm-4 form-group">
-                    {!! Form::label('epcrIncidentNum', 'EPCR Incident#', array('style'=>'padding-top:7px;', 'class' => 'col-sm-4 control-label') ) !!}
+                    {!! Form::label('epcrincidentnum', 'EPCR Incident#', array('style'=>'padding-top:7px;', 'class' => 'col-sm-4 control-label') ) !!}
                      <div class="col-sm-6 ">
-                         {{ $hazmat->epcrIncidentNum }}
+                         {{ $hazmat->epcrincidentnum }}
                      </div>
                  </div>
+                <div class="col-sm-4 form-group">
+                    {!! Form::label('frmsincidentnum', 'FRMS Incident#', array('style'=>'padding-top:7px;','class' => 'col-sm-4 control-label')) !!}
+                    <div class="col-sm-6 ">
+                        {{ $hazmat->frmsincidentnum }}
+                    </div>
+                </div>
             </div>
             <div class="row">
                 <div class="col-sm-4 form-group">
-                    {!! Form::label('assignmentHazmat', 'Assignment', array('style'=>'padding-top:7px;', 'class' => 'col-sm-4 control-label') ) !!}
+                    {!! Form::label('assignment', 'Assignment', array('style'=>'padding-top:7px;', 'class' => 'col-sm-4 control-label') ) !!}
                     <div class="col-sm-6 ">
-                        {{ $hazmat->assignmentHazmat }}
+                        {{ $hazmat->assignment }}
                     </div>
                 </div>
                 <div class="col-sm-4 form-group">
@@ -113,10 +130,11 @@
                         <strong>Once you have completed the call, record CorVel Claim #</strong>
                     </label>
                 <div class="col-sm-4">
-                    {{ $hazmat->corvelID }}
+                    {{ $hazmat->corvelid }}
                 </div>
                 </div>
             </div>
+
             <div class="row">
                 <label class="checkbox-inline col-sm-12">
                     <strong>Fill out OFD-025 Hazmat Exposure Report form</strong>
@@ -124,32 +142,61 @@
                 <br>
                 <div class="col-sm-12 form-group well well-sm">
                     <div class="col-sm-4">
-                        <a class="btn btn-success dropdown-toggle col-sm-12" type="button"
-                           href="{{ asset('Fillable PDFs\Hazmat Module\(Exposure PDF - Updated OFD 006d) OFD 025 - HazMat Exposure Report.pdf') }}">
-                            <i class="fa fa-download" aria-hidden="true"></i> Download</a>
-                    </div>
-                    <div class="col-sm-4">
-                        <button type="button" class="btn btn-info dropdown-toggle col-sm-12" data-toggle="modal"
-                                data-target="#myModal">
-                            <i class="fa fa-cloud-upload" aria-hidden="true"></i> Upload
-                        </button>
+                        <a class="btn btn-primary dropdown-toggle col-sm-12" data-toggle="collapse"
+                           data-target="#6c"><i class="fa fa-eye" aria-hidden="true"></i> View Previously uploaded
+                            file(s)
+                        </a>
+
+                        <div id="6c" class="collapse">
+
+                            <table class="table table-striped">
+                                <tr>
+                                    <th> File Name</th>
+                                    <th> File Uploaded At</th>
+                                </tr>
+
+                                @if(count($attachments) > 0)
+                                    @foreach($attachments as $attachment)
+                                        @if($attachment->attachmentType == '6c' && $attachment->createdBy ==  Auth::user()->id && $attachment->ofd6cid == $accident->ofd6cid)
+                                            <tr>
+                                                <td>
+                                                    <a href="{{ asset('uploads/'.$attachment->attachmentName) }}"> {{$attachment->attachmentName}}</a>
+                                                </td>
+                                                <td>
+                                                    {{$attachment->created_At}}</a>
+                                                </td>
+                                            <tr>@endif
+                                    @endforeach
+                                @endif
+
+                            </table>
+                        </div>
                     </div>
                 </div>
             </div>
-        <div class="row">
-            <div class="col-sm-12 form-group">
-                <label class="col-sm-4">Do you have any symptoms of illness or injury and require treatment</label>
-                <div class="col-sm-2">
-                    <form name="cityselect">
-                        <select name="menu" onChange="window.document.location.href=this.options[this.selectedIndex].value;" value="GO">
-                            <option selected="selected">Select One</option>
-                            <option value="http://localhost/capstoneGR/public/injuries">Yes</option>
-                            <option value="No">No</option>
-                        </select>
-                    </form>
+            <div class="panel-body">
+                <div class="form-horizontal">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="alert alert-danger" align="left">
+                                {{Form::label('exposurehazmat','Do you have any symptoms of illness or injury and require
+                                   treatment? (In case of Injury, please fill OFD - 6 IOD Application)     ')}}
+
+                                {!! Form::select('exposurehazmat',[
+                                  'Yes' => 'Yes',
+                                  'No' => 'No'],
+                                array('class' => 'form-control'))!!}
+                                <p class="help-block"></p>
+                                @if($errors->has('exposurehazmat'))
+                                    <p class="help-block">
+                                        {{ $errors->first('exposurehazmat') }}
+                                    </p>
+                                @endif
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
         <div class="panel panel-default">
             <div class="col-sm-12 panel-heading">
                 <label class="col-sm-5"></label>
