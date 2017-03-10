@@ -36,7 +36,7 @@
 @endsection
 @section('content')
     {!! Form::open(['method' => 'POST', 'route' => ['accidents.store'], 'files' => true,]) !!}
-
+    {{ csrf_field() }}
     <style>
         #padtop {
             padding-top: 7px;
@@ -83,65 +83,39 @@
                 </div>
                 <div class="row">
                     <div class="col-sm-4 form-group">
-                        {!! Form::label('accidentDate', 'Date of Accident:',array('style'=>'padding-top:7px;','class'=> 'col-sm-4 control-label') )!!}
+                        {!! Form::label('accidentdate', 'Date of Accident:',array('style'=>'padding-top:7px;','class'=> 'col-sm-4 control-label') )!!}
                         <div class="col-sm-6 ">
-                            {!! Form::text('accidentDate1', old('accidentDate1'), array('id'=>'datepicker12','class' => 'form-control datepicker1', 'placeholder' => 'YYYY-MM-DD','required' => 'required'))!!}
+                            {!! Form::text('accidentdate', old('accidentdate'), array('id'=>'datepicker12','class' => 'form-control datepicker1', 'placeholder' => 'YYYY-MM-DD','required' => 'required'))!!}
 
-                            {!! Form::text('accidentDate', old('accidentDate'), array('style'=>'display:none;','id'=>'datepicker32','class' => 'form-control datepicker', 'placeholder' => 'YYYY-MM-DD','required' => 'required'))!!}
+                            {!! Form::text('accidentdate', old('accidentdate'), array('style'=>'display:none;','id'=>'datepicker32','class' => 'form-control datepicker', 'placeholder' => 'YYYY-MM-DD','required' => 'required'))!!}
                             <p class="help-block"></p>
-                            @if($errors->has('accidentDate'))
+                            @if($errors->has('accidentdate'))
                                 <p class="help-block">
-                                    {{ $errors->first('accidentDate') }}
+                                    {{ $errors->first('accidentdate') }}
                                 </p>
                             @endif
                         </div>
                     </div>
                     <div class="col-sm-4 form-group">
-                        {!! Form::label('driverID', 'Driver ID#', array('style'=>'padding-top:7px;','class' => 'col-sm-4 control-label')) !!}
+                        {!! Form::label('driverid', 'Driver ID#', array('style'=>'padding-top:7px;','class' => 'col-sm-4 control-label')) !!}
                         <div class="col-sm-6 ">
-                            {!! Form::text('driverID', old('driverID'), array('class'=>'form-control','placeholder'=>'Enter Driver ID'))!!}
+                            {!! Form::text('driverid', old('driverid'), array('class'=>'form-control','placeholder'=>'Enter Driver ID'))!!}
                             <p class="help-block"></p>
-                            @if($errors->has('driverID'))
+                            @if($errors->has('driverid'))
                                 <p class="help-block">
-                                    {{ $errors->first('driverID') }}
+                                    {{ $errors->first('driverid') }}
                                 </p>
                             @endif
                         </div>
                     </div>
                     <div class="col-sm-4 form-group">
-                        {!! Form::label('driverName', 'Driver Name',array( 'style'=>'padding-top:7px;','class' => 'col-sm-4 control-label')) !!}
+                        {!! Form::label('drivername', 'Driver Name',array( 'style'=>'padding-top:7px;','class' => 'col-sm-4 control-label')) !!}
                         <div class="col-sm-6 ">
-                            {!! Form::text('driverName', old('driverName'), array('class'=>'form-control','placeholder'=>'Enter Driver Name'))!!}
+                            {!! Form::text('drivername', old('drivername'), array('class'=>'form-control','placeholder'=>'Enter Driver Name'))!!}
                             <p class="help-block"></p>
-                            @if($errors->has('driverName'))
+                            @if($errors->has('drivername'))
                                 <p class="help-block">
-                                    {{ $errors->first('driverName') }}
-                                </p>
-                            @endif
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-sm-4 form-group">
-                        {!! Form::label('assignmentAccident', 'Assignment', array('style'=>'padding-top:7px;','class' => 'col-sm-4 control-label')) !!}
-                        <div class="col-sm-6 ">
-                            {!! Form::text('assignmentAccident', old('station_name'), ['class' => 'form-control'])!!}
-                            <p class="help-block"></p>
-                            @if($errors->has('assignmentAccident'))
-                                <p class="help-block">
-                                    {{ $errors->first('assignmentAccident') }}
-                                </p>
-                            @endif
-                        </div>
-                    </div>
-                    <div class="col-sm-4 form-group">
-                        {!! Form::label('appratus', 'Apparatus', array('style'=>'padding-top:7px;','class' => 'col-sm-4 control-label')) !!}
-                        <div class="col-sm-6 ">
-                            {!! Form::text('appratus', old('station_name'), ['class' => 'form-control'])!!}
-                            <p class="help-block"></p>
-                            @if($errors->has('appratus'))
-                                <p class="help-block">
-                                    {{ $errors->first('appratus') }}
+                                    {{ $errors->first('drivername') }}
                                 </p>
                             @endif
                         </div>
@@ -149,37 +123,75 @@
                 </div>
                 <div class="row">
                     <div class="col-sm-4 form-group">
-                        {!! Form::label('captainID', 'Captain #', array('style'=>'padding-top:7px;','class' => 'col-sm-4 control-label')) !!}
+                        {!! Form::label('frmsincidentnum', 'FRMS Incident #', array('style'=>'padding-top:7px;','class' => 'col-sm-4 control-label')) !!}
                         <div class="col-sm-6 ">
-                            {!! Form::text('captainID', old('captainID'), array('class' => 'form-control','placeholder'=>'Enter Badge Id'))!!}
+                            {!! Form::text('frmsincidentnum', old('frmsincidentnum'), ['class' => 'form-control'])!!}
                             <p class="help-block"></p>
-                            @if($errors->has('captainID'))
+                            @if($errors->has('frmsincidentnum'))
                                 <p class="help-block">
-                                    {{ $errors->first('captainID') }}
+                                    {{ $errors->first('frmsincidentnum') }}
                                 </p>
                             @endif
                         </div>
                     </div>
                     <div class="col-sm-4 form-group">
-                        {!! Form::label('battalionChiefID', 'Battalion Chief #', array('style'=>'padding-top:7px;','class' => 'col-sm-4 control-label','placeholder'=>'Enter Badge Id')) !!}
+                        {!! Form::label('assignmentaccident', 'Assignment', array('style'=>'padding-top:7px;','class' => 'col-sm-4 control-label')) !!}
                         <div class="col-sm-6 ">
-                            {!! Form::text('battalionChiefID', old('battalionChiefID'), array('class' => 'form-control','placeholder'=>'Enter Badge Id'))!!}
+                            {!! Form::text('assignmentaccident', old('assignmentaccident'), ['class' => 'form-control'])!!}
                             <p class="help-block"></p>
-                            @if($errors->has('battalionChiefID'))
+                            @if($errors->has('assignmentaccident'))
                                 <p class="help-block">
-                                    {{ $errors->first('battalionChiefID') }}
+                                    {{ $errors->first('assignmentaccident') }}
                                 </p>
                             @endif
                         </div>
                     </div>
                     <div class="col-sm-4 form-group">
-                        {!! Form::label('acOnDutyID', 'Assistant Chief #', array('style'=>'padding-top:7px;','class' => 'col-sm-4 control-label','placeholder'=>'Enter Badge Id')) !!}
+                        {!! Form::label('apparatus', 'Apparatus', array('style'=>'padding-top:7px;','class' => 'col-sm-4 control-label')) !!}
                         <div class="col-sm-6 ">
-                            {!! Form::text('acOnDutyID', old('assitantChiefID'), array('class' => 'form-control','placeholder'=>'Enter Badge Id'))!!}
+                            {!! Form::text('apparatus', old('apparatus'), ['class' => 'form-control'])!!}
                             <p class="help-block"></p>
-                            @if($errors->has('acOnDutyID'))
+                            @if($errors->has('apparatus'))
                                 <p class="help-block">
-                                    {{ $errors->first('acOnDutyID') }}
+                                    {{ $errors->first('apparatus') }}
+                                </p>
+                            @endif
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-4 form-group">
+                        {!! Form::label('captainid', 'Captain #', array('style'=>'padding-top:7px;','class' => 'col-sm-4 control-label')) !!}
+                        <div class="col-sm-6 ">
+                            {!! Form::text('captainid', old('captainid'), array('class' => 'form-control','placeholder'=>'Enter Badge Id'))!!}
+                            <p class="help-block"></p>
+                            @if($errors->has('captainid'))
+                                <p class="help-block">
+                                    {{ $errors->first('captainid') }}
+                                </p>
+                            @endif
+                        </div>
+                    </div>
+                    <div class="col-sm-4 form-group">
+                        {!! Form::label('battalionchiefid', 'Battalion Chief #', array('style'=>'padding-top:7px;','class' => 'col-sm-4 control-label','placeholder'=>'Enter Badge Id')) !!}
+                        <div class="col-sm-6 ">
+                            {!! Form::text('battalionchiefid', old('battalionchiefid'), array('class' => 'form-control','placeholder'=>'Enter Badge Id'))!!}
+                            <p class="help-block"></p>
+                            @if($errors->has('battalionchiefid'))
+                                <p class="help-block">
+                                    {{ $errors->first('battalionchiefid') }}
+                                </p>
+                            @endif
+                        </div>
+                    </div>
+                    <div class="col-sm-4 form-group">
+                        {!! Form::label('aconduty', 'Assistant Chief #', array('style'=>'padding-top:7px;','class' => 'col-sm-4 control-label','placeholder'=>'Enter Badge Id')) !!}
+                        <div class="col-sm-6 ">
+                            {!! Form::text('aconduty', old('aconduty'), array('class' => 'form-control','placeholder'=>'Enter Badge Id'))!!}
+                            <p class="help-block"></p>
+                            @if($errors->has('aconduty'))
+                                <p class="help-block">
+                                    {{ $errors->first('aconduty') }}
                                 </p>
                             @endif
                         </div>
@@ -216,14 +228,16 @@
         </div>
         <div class="panel-body">
             <div class="row">
-                <div class="col-sm-12" form-group>
-                    <label class="checkbox-inline col-sm-8"><input type="checkbox"><strong>Generate OFD 025
-                            Intradepartmental Communication</strong>-Email to <a
-                                href="omafaccident_ofd25@cityofomaha.org"> omafaccident_ofd25@cityofomaha.org </a>
-                    </label>
+                <div class="col-sm-12">
+                    <div class="form-group">
+                        {{ Form::checkbox('commemail', 1, null, ['id' => 'commemail', 'class'=>'className']) }}
+                        <label><strong>Generate OFD 025
+                                Intradepartmental Communication</strong>-Email to <a
+                                    href="omafaccident_ofd25@cityofomaha.org"> omafaccident_ofd25@cityofomaha.org </a>
+                        </label>
+                    </div>
                 </div>
             </div>
-            <br>
             <div class="row">
                 <label class="checkbox-inline col-sm-12">
                     <strong>Complete LRS 101 City of Omaha Accident Report-Include RB#, Officer Name, Badge#</strong>
@@ -416,7 +430,8 @@
             </div>
             <div class="row">
                 <div class="col-sm-12 form-group">
-                    <label class="checkbox-inline col-sm-12"><input type="checkbox"><strong>
+                    {{ Form::checkbox('calllaw', 1, null, ['id' => 'calllaw', 'class'=>'className']) }}
+                    <label><strong>
                             Call Law Department
                             Investigator</strong>- Call 444-5131- Request report be faxed to
                         SWD fax # 444-6378. You can
@@ -426,9 +441,11 @@
             </div>
             <div class="row">
                 <div class="col-sm-12 form-group">
-                    <label class="checkbox-inline col-sm-4"><input type="checkbox"><strong>
+                    {{ Form::checkbox('daybook', 1, null, ['id' => 'daybook', 'class'=>'className']) }}
+                    <label><strong>
                             Enter in Company Day
-                            Book</strong></label></div>
+                            Book</strong></label>
+                </div>
             </div>
         </div>
     </div>
@@ -436,10 +453,7 @@
         <div class="col-sm-12 panel-headinzzzzg">
             <label class="col-sm-5"></label>
             <div class="btn-bottom ">
-                <button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal">
-                    Save
-                </button>
-
+                {!! Form::submit('Submit',['class' => 'btn btn-success']) !!}
                 <a href="{{ route('accidents.index') }}" class="btn btn-default">Cancel</a>
             </div>
         </div>

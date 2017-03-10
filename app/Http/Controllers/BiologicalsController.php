@@ -73,7 +73,9 @@ class BiologicalsController extends Controller
                 'shift' => $biological->shift,
                 'idcoNumber' => $biological->idcoNumber,
                 'epcrIncidentNum' => $biological->epcrIncidentNum,
-                'todaysDate' => $biological->todaysDate]
+                'todaysDate' => $biological->todaysDate,
+                'exposure'=>$biological->exposure,
+                'frmsincidentnum'=>$biological->frmsincidentnum]
         );
 
         $request = $this->saveFiles($request);

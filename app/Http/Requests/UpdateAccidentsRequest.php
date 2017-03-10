@@ -24,7 +24,14 @@ class UpdateAccidentsRequest extends FormRequest
     public function rules()
     {
         return [
-            'driverID' => 'required|max:255',
+            'accidentdate' => 'required|date:accidents,accidentdate,'. $this->route('accident'),
+            'driverid' => 'required|integer:accidents,driverid,' . $this->route('accident'),
+            'drivername' => 'required|string:accidents,drivername,'. $this->route('accident'),
+            'assignmentaccident' => 'required|string:accidents,assignmentaccident'. $this->route('accident'),
+            'apparatus' => 'required|string:accidents,apparatus'. $this->route('accident'),
+            'captainid' => 'required|integer:accidents,captainid'. $this->route('accident'),
+            'battalionchiefid' => 'required|integer:accidents,battalionchiefid'. $this->route('accident'),
+            'aconduty' => 'required|integer:accidents,aconduty'. $this->route('accident'),
         ];
     }
 }

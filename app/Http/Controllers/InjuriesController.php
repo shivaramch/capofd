@@ -1,7 +1,5 @@
 <?php
-
 namespace App\Http\Controllers;
-
 use App\Attachment;
 use App\Injury;
 use Illuminate\Http\Request;
@@ -12,47 +10,84 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Redirect;
 use Auth;
-
 class InjuriesController extends Controller
 {
     use FileUploadTrait;
     use FormFileUploadTrait;
-
     public function index()
     {
+        $injuries = Injury::all();
+        $attachments = Attachment::all();
         return view('injuries.index', compact('injuries'));
     }
+	
+	public function create()
+    {
 
-//    public function create()
-//    {
-//        $relations = [
-//            'unittypes' => \App\UnitType::get()->pluck('name', 'id')->prepend('Please select', ''),
-//            'grants' => \App\Grant::get()->pluck('grant_name', 'id')->prepend('Please select', ''),
-//            'statuses' => \App\Status::get()->pluck('status', 'id')->prepend('Please select', ''),
-//            'stations' => \App\Station::get()->pluck('station_number', 'id')->prepend('Please select', ''),
-//            'vendors' => \App\Vendor::get()->pluck('vendor_name', 'id')->prepend('Please select', ''),
-//            'vehicles' => \App\Vehicle::get()->pluck('van', 'id')->prepend('Please select', ''),
-//        ];
-//
-//        return view('stations.create', $relations);
-//    }
-//
+        return view('injuries.create');
+    }
+
     public function store(StoreStationsRequest $request)
     {
         $request = $this->saveFiles($request);
         Injury::create($request->all());
         $last_insert_id = DB::getPdo()->lastInsertId();
         $this->InjuriesUpload($request, $last_insert_id);
+        //$request->session()->flash('alert-success', 'Form was successfully Submitted!');
+        return redirect()->route('injuries.index');
+    }
+	
+	 public function edit($id)
+    {
+        $injury = Injury::findOrFail($id);
+        return view('injuries.edit', compact('injury', ''));
+    }
 
-//                $attachmentName = $request['attachmentName'];
-//                $attachment = new Attachment();
-//                $attachment->attachmentName = $attachmentName;
-//                $attachment->Injury_ofd6ID = $last_insert_id;
-//                $attachment->save();
+    public function show($id)
+    {
+
+        $injury = Injury::findOrFail($id);
+        $attachments = Attachment::all();
+
+        //show history code start
+        //below one line code is for storing all history related to the $id in variable, which is to be used to display in show page.
+        //show history code end
+        return view('injuries.show',compact('injury','attachments'));
+    }
+
+	
+	public function update(UpdateInjuriesRequest $request, $id)
+    {
+        //$accident = $this->saveFiles($request);
+        $injury = Injury::findOrFail($id);
+
+        \DB::table('injuries')->where('ofd6ID', $injury->ofd6ID)->update([
+        'reportNum'=> $injury->reportNum,
+        'createDate'=>$injury->createDate,
+        'injuryDate'=>$injury->injuryDate,
+        'injuredEmployeeName'=>$injury->injuredEmployeeName,
+        'injuredEmployeeID'=>$injury->injuredEmployeeID,
+        'assignmentInjury'=>$injury->assignmentInjury,
+        'shift'=>$injury->shift,
+        'frmsIncidentNum'=>$injury->frmsIncidentNum,
+        'callFSupSwdBC'=>$injury->callFSupSwdBC,
+        'User_Login_ID'=>$injury->User_Login_ID,
+        'policeOfficerCompleteSign'=>$injury->policeOfficerCompleteSign,
+        'callFireSupervisor'=>$injury->callFireSupervisor,
+        'createdby'=>$injury->createdby,
+        'updatedby'=>$injury->updatedby,
+        'corVelID'=>$injury->corVelID,
+        'captainID'=>$injury->captainID,
+        'battalionChiefID'=>$injury->battalionChiefID,
+        'acOnDutyID'=>$injury->acOnDutyID]
+        );
+
+        //end history code
+        $injury->update($request->all());
 
         return redirect()->route('injuries.index');
     }
-//
+	
 //    public function show($id)
 //    {
 //        $relations = [
@@ -190,5 +225,4 @@ class InjuriesController extends Controller
 //
 //        return redirect()->route('stations.index');
 //    }
-
 }

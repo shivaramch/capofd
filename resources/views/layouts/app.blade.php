@@ -1,7 +1,7 @@
 @include('partials.header')
 @include('partials.navbar')
 
-<div class="sub-nav row" style="margin-top: 50px;">
+<div class="sub-nav row" style="margin-top: 50px; margin-bottom: 50px;">
     <div class="col-md-12">
         <span class="nav-view">@yield('crumbs')</span>
         <span class="nav-user">

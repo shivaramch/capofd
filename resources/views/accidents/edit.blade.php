@@ -6,13 +6,13 @@
             <i class="fa fa-arrow-left" aria-hidden="true"></i> Back</a>
         <li><a href="{{ url('/') }}">Dashboard</a></li>
         <li><a href="{{ route('accidents.index') }}">OFD 6A Accidents</a></li>
-        <li class="active">Edit OFD 6A Form {{ $accident->ofd6aID }}</li>
+        <li class="active">Edit OFD 6A Form {{ $accident->ofd6aid }}</li>
     </ol>
 @endsection
 
 @section('content')
-    {!! Form::model($accident,['method' => 'PUT', 'route' => ['accidents.update', $accident->ofd6aID], 'files' => true,]) !!}
-
+    {!! Form::model($accident,['method' => 'PUT', 'route' => ['accidents.update', $accident->ofd6aid], 'files' => true,]) !!}
+    {{ csrf_field() }}
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
     <script>
@@ -84,37 +84,37 @@
                 </div>
                 <div class="row">
                     <div class="col-sm-4 form-group">
-                        {!! Form::label('accidentDate', 'Date of Accident:',array('style'=>'padding-top:7px;','class'=> 'col-sm-4 control-label') )!!}
+                        {!! Form::label('accidentdate', 'Date of Accident:',array('style'=>'padding-top:7px;','class'=> 'col-sm-4 control-label') )!!}
                         <div class="col-sm-6 ">
-                            {!! Form::text('accidentDate', old('accidentDate'), array('id'=>'datepicker1','class' => 'form-control datepicker', 'placeholder' => 'YYYY-MM-DD'))!!}
+                            {!! Form::text('accidentdate', old('accidentdate'), array('id'=>'datepicker1','class' => 'form-control datepicker', 'placeholder' => 'YYYY-MM-DD'))!!}
                             <p class="help-block"></p>
-                            @if($errors->has('accidentDate'))
+                            @if($errors->has('accidentdate'))
                                 <p class="help-block">
-                                    {{ $errors->first('accidentDate') }}
+                                    {{ $errors->first('accidentdate') }}
                                 </p>
                             @endif
                         </div>
                     </div>
                     <div class="col-sm-4 form-group">
-                        {!! Form::label('driverID', 'Driver ID#', array('style'=>'padding-top:7px;','class' => 'col-sm-4 control-label')) !!}
+                        {!! Form::label('driverid', 'Driver ID#', array('style'=>'padding-top:7px;','class' => 'col-sm-4 control-label')) !!}
                         <div class="col-sm-6 ">
-                            {!! Form::text('driverID', old('driverID'), array('class'=>'form-control','placeholder'=>'Enter Driver ID'))!!}
+                            {!! Form::text('driverid', old('driverid'), array('class'=>'form-control','placeholder'=>'Enter Driver ID'))!!}
                             <p class="help-block"></p>
-                            @if($errors->has('driverID'))
+                            @if($errors->has('driverid'))
                                 <p class="help-block">
-                                    {{ $errors->first('driverID') }}
+                                    {{ $errors->first('driverid') }}
                                 </p>
                             @endif
                         </div>
                     </div>
                     <div class="col-sm-4 form-group">
-                        {!! Form::label('driverName', 'Driver Name',array( 'style'=>'padding-top:7px;','class' => 'col-sm-4 control-label')) !!}
+                        {!! Form::label('drivername', 'Driver Name',array( 'style'=>'padding-top:7px;','class' => 'col-sm-4 control-label')) !!}
                         <div class="col-sm-6 ">
-                            {!! Form::text('driverName', old('driverName'), array('class'=>'form-control','placeholder'=>'Enter Driver Name'))!!}
+                            {!! Form::text('drivername', old('drivername'), array('class'=>'form-control','placeholder'=>'Enter Driver Name'))!!}
                             <p class="help-block"></p>
-                            @if($errors->has('driverName'))
+                            @if($errors->has('drivername'))
                                 <p class="help-block">
-                                    {{ $errors->first('driverName') }}
+                                    {{ $errors->first('drivername') }}
                                 </p>
                             @endif
                         </div>
@@ -122,25 +122,37 @@
                 </div>
                 <div class="row">
                     <div class="col-sm-4 form-group">
-                        {!! Form::label('assignmentAccident', 'Assignment', array('style'=>'padding-top:7px;','class' => 'col-sm-4 control-label')) !!}
+                        {!! Form::label('frmsincidentnum', 'FRMS Incident #', array('style'=>'padding-top:7px;','class' => 'col-sm-4 control-label')) !!}
                         <div class="col-sm-6 ">
-                            {!! Form::text('assignmentAccident', old('station_name'), ['class' => 'form-control'])!!}
+                            {!! Form::text('frmsincidentnum', old('frmsincidentnum'), ['class' => 'form-control'])!!}
                             <p class="help-block"></p>
-                            @if($errors->has('assignmentAccident'))
+                            @if($errors->has('frmsincidentnum'))
                                 <p class="help-block">
-                                    {{ $errors->first('assignmentAccident') }}
+                                    {{ $errors->first('frmsincidentnum') }}
                                 </p>
                             @endif
                         </div>
                     </div>
                     <div class="col-sm-4 form-group">
-                        {!! Form::label('appratus', 'Apparatus', array('style'=>'padding-top:7px;','class' => 'col-sm-4 control-label')) !!}
+                        {!! Form::label('assignmentaccident', 'Assignment', array('style'=>'padding-top:7px;','class' => 'col-sm-4 control-label')) !!}
                         <div class="col-sm-6 ">
-                            {!! Form::text('appratus', old('station_name'), ['class' => 'form-control'])!!}
+                            {!! Form::text('assignmentaccident', old('assignmentaccident'), ['class' => 'form-control'])!!}
                             <p class="help-block"></p>
-                            @if($errors->has('appratus'))
+                            @if($errors->has('assignmentaccident'))
                                 <p class="help-block">
-                                    {{ $errors->first('appratus') }}
+                                    {{ $errors->first('assignmentaccident') }}
+                                </p>
+                            @endif
+                        </div>
+                    </div>
+                    <div class="col-sm-4 form-group">
+                        {!! Form::label('apparatus', 'Apparatus', array('style'=>'padding-top:7px;','class' => 'col-sm-4 control-label')) !!}
+                        <div class="col-sm-6 ">
+                            {!! Form::text('apparatus', old('apparatus'), ['class' => 'form-control'])!!}
+                            <p class="help-block"></p>
+                            @if($errors->has('apparatus'))
+                                <p class="help-block">
+                                    {{ $errors->first('apparatus') }}
                                 </p>
                             @endif
                         </div>
@@ -149,48 +161,43 @@
                 </div>
                 <div class="row">
                     <div class="col-sm-4 form-group">
-                        {!! Form::label('captainID', 'Captain #', array('style'=>'padding-top:7px;','class' => 'col-sm-4 control-label')) !!}
+                        {!! Form::label('captainid', 'Captain #', array('style'=>'padding-top:7px;','class' => 'col-sm-4 control-label')) !!}
                         <div class="col-sm-6 ">
-                            {!! Form::text('captainID', old('captainID'), array('class' => 'form-control','placeholder'=>'Enter Badge Id'))!!}
+                            {!! Form::text('captainid', old('captainid'), array('class' => 'form-control','placeholder'=>'Enter Badge Id'))!!}
                             <p class="help-block"></p>
-                            @if($errors->has('captainID'))
+                            @if($errors->has('captainid'))
                                 <p class="help-block">
-                                    {{ $errors->first('captainID') }}
+                                    {{ $errors->first('captainid') }}
                                 </p>
                             @endif
                         </div>
                     </div>
                     <div class="col-sm-4 form-group">
-                        {!! Form::label('battalionChiefID', 'Battalion Chief #', array('style'=>'padding-top:7px;','class' => 'col-sm-4 control-label')) !!}
+                        {!! Form::label('battalionchiefid', 'Battalion Chief #', array('style'=>'padding-top:7px;','class' => 'col-sm-4 control-label')) !!}
                         <div class="col-sm-6 ">
-                            {!! Form::text('battalionChiefID', old('battalionChiefID'), array('class' => 'form-control','placeholder'=>'Enter Badge Id'))!!}
+                            {!! Form::text('battalionchiefid', old('battalionchiefid'), array('class' => 'form-control','placeholder'=>'Enter Badge Id'))!!}
                             <p class="help-block"></p>
-                            @if($errors->has('battalionChiefID'))
+                            @if($errors->has('battalionchiefid'))
                                 <p class="help-block">
-                                    {{ $errors->first('battalionChiefID') }}
+                                    {{ $errors->first('battalionchiefid') }}
                                 </p>
                             @endif
                         </div>
                     </div>
                     <div class="col-sm-4 form-group">
-                        {!! Form::label('acOnDutyID', 'Assistant Chief #', array('style'=>'padding-top:7px;','class' => 'col-sm-4 control-label')) !!}
+                        {!! Form::label('aconduty', 'Assistant Chief #', array('style'=>'padding-top:7px;','class' => 'col-sm-4 control-label')) !!}
                         <div class="col-sm-6 ">
-                            {!! Form::text('acOnDutyID', old('acOnDutyID'), array('class' => 'form-control','placeholder'=>'Enter Badge Id'))!!}
+                            {!! Form::text('aconduty', old('aconduty'), array('class' => 'form-control','placeholder'=>'Enter Badge Id'))!!}
                             <p class="help-block"></p>
-                            @if($errors->has('acOnDutyID'))
+                            @if($errors->has('aconduty'))
                                 <p class="help-block">
-                                    {{ $errors->first('acOnDutyID') }}
+                                    {{ $errors->first('aconduty') }}
                                 </p>
                             @endif
                         </div>
                     </div>
                 </div>
                 <div class="alert alert-danger" align="center">
-                    <div class="row">
-                        <label>Please submit all the forms by:<input type="text" class="form-control" id="datepicker2"
-                                                                     disabled></label>
-                    </div>
-                    <br>
                     <div class="row">
                         <div class="col-md-12">
                             <strong>
@@ -216,11 +223,14 @@
         </div>
         <div class="panel-body">
             <div class="row">
-                <div class="col-sm-12" form-group>
-                    <label class="checkbox-inline col-sm-8"><input type="checkbox"><strong>Generate OFD 025
-                            Intradepartmental Communication</strong>-Email to <a
-                                href="omafaccident_ofd25@cityofomaha.org"> omafaccident_ofd25@cityofomaha.org </a>
-                    </label>
+                <div class="col-sm-12">
+                    <div class="form-group">
+                        {{ Form::checkbox('commemail', 1, null, ['id' => 'commemail', 'class'=>'className']) }}
+                        <label><strong>Generate OFD 025
+                                Intradepartmental Communication</strong>-Email to <a
+                                    href="omafaccident_ofd25@cityofomaha.org"> omafaccident_ofd25@cityofomaha.org </a>
+                        </label>
+                    </div>
                 </div>
             </div>
             <br>
@@ -250,11 +260,11 @@
                     </div>
                     <div class="col-sm-4">
                         <a class="btn btn-primary dropdown-toggle col-sm-12" data-toggle="collapse"
-                           data-target="#611"><i class="fa fa-eye" aria-hidden="true"></i> View Previously uploaded
+                           data-target="#6a1"><i class="fa fa-eye" aria-hidden="true"></i> View Previously uploaded
                             file(s)
                         </a>
 
-                        <div id="611" class="collapse">
+                        <div id="6a1" class="collapse">
 
                             <table class="table table-striped">
                                 <tr>
@@ -264,13 +274,13 @@
 
                                 @if(count($attachments) > 0)
                                     @foreach($attachments as $attachment)
-                                        @if($attachment->attachmentType == 611 && $attachment->createdBy ==  Auth::user()->id && $attachment->Injury_ofd6ID == $accident->ofd6aID )
+                                        @if($attachment->attachmenttype == '6a1' && $attachment->createdby ==  Auth::user()->id && $attachment->ofd6aid == $accident->ofd6aid )
                                             <tr>
                                                 <td>
-                                                    <a href="{{ asset('uploads/'.$attachment->attachmentName) }}"> {{$attachment->attachmentName}}</a>
+                                                    <a href="{{ asset('uploads/'.$attachment->attachmentname) }}"> {{$attachment->attachmentname}}</a>
                                                 </td>
                                                 <td>
-                                                    {{$attachment->created_At}}</a>
+                                                    {{$attachment->created_at}}</a>
                                                 </td>
                                             <tr>@endif
                                     @endforeach
@@ -306,11 +316,11 @@
                     </div>
                     <div class="col-sm-4">
                         <a class="btn btn-primary dropdown-toggle col-sm-12" data-toggle="collapse"
-                           data-target="#612"><i class="fa fa-eye" aria-hidden="true"></i> View Previously uploaded
+                           data-target="#6a2"><i class="fa fa-eye" aria-hidden="true"></i> View Previously uploaded
                             file(s)
                         </a>
 
-                        <div id="612" class="collapse">
+                        <div id="6a2" class="collapse">
 
                             <table class="table table-striped">
                                 <tr>
@@ -320,13 +330,13 @@
 
                                 @if(count($attachments) > 0)
                                     @foreach($attachments as $attachment)
-                                        @if($attachment->attachmentType == 612 && $attachment->createdBy ==  Auth::user()->id && $attachment->Injury_ofd6ID == $accident->ofd6aID )
+                                        @if($attachment->attachmenttype == '6a2' && $attachment->createdby ==  Auth::user()->id && $attachment->ofd6aid == $accident->ofd6aid )
                                             <tr>
                                                 <td>
-                                                    <a href="{{ asset('uploads/'.$attachment->attachmentName) }}"> {{$attachment->attachmentName}}</a>
+                                                    <a href="{{ asset('uploads/'.$attachment->attachmentname) }}"> {{$attachment->attachmentname}}</a>
                                                 </td>
                                                 <td>
-                                                    {{$attachment->created_At}}</a>
+                                                    {{$attachment->created_at}}</a>
                                                 </td>
                                             <tr>@endif
                                     @endforeach
@@ -361,11 +371,11 @@
                     </div>
                     <div class="col-sm-4">
                         <a class="btn btn-primary dropdown-toggle col-sm-12" data-toggle="collapse"
-                           data-target="#613"><i class="fa fa-eye" aria-hidden="true"></i> View Previously uploaded
+                           data-target="#6a3"><i class="fa fa-eye" aria-hidden="true"></i> View Previously uploaded
                             file(s)
                         </a>
 
-                        <div id="613" class="collapse">
+                        <div id="6a3" class="collapse">
 
                             <table class="table table-striped">
                                 <tr>
@@ -375,16 +385,15 @@
 
                                 @if(count($attachments) > 0)
                                     @foreach($attachments as $attachment)
-                                        @if($attachment->attachmentType == 613 && $attachment->createdBy ==  Auth::user()->id && $attachment->Injury_ofd6ID == $accident->ofd6aID )
+                                        @if($attachment->attachmenttype == '6a3' && $attachment->createdby ==  Auth::user()->id && $attachment->ofd6aid == $accident->ofd6aid )
                                             <tr>
                                                 <td>
-                                                    <a href="{{ asset('uploads/'.$attachment->attachmentName) }}"> {{$attachment->attachmentName}}</a>
+                                                    <a href="{{ asset('uploads/'.$attachment->attachmentname) }}"> {{$attachment->attachmentname}}</a>
                                                 </td>
                                                 <td>
-                                                    {{$attachment->created_At}}</a>
+                                                    {{$attachment->created_at}}</a>
                                                 </td>
-                                            </tr>
-                                        @endif
+                                            <tr>@endif
                                     @endforeach
                                 @endif
                             </table>
@@ -415,11 +424,11 @@
                     </div>
                     <div class="col-sm-4">
                         <a class="btn btn-primary dropdown-toggle col-sm-12" data-toggle="collapse"
-                           data-target="#614"><i class="fa fa-eye" aria-hidden="true"></i> View Previously uploaded
+                           data-target="#6a4"><i class="fa fa-eye" aria-hidden="true"></i> View Previously uploaded
                             file(s)
                         </a>
 
-                        <div id="614" class="collapse">
+                        <div id="6a4" class="collapse">
 
                             <table class="table table-striped">
                                 <tr>
@@ -429,14 +438,15 @@
 
                                 @if(count($attachments) > 0)
                                     @foreach($attachments as $attachment)
-                                        @if($attachment->attachmentType == 614 && $attachment->createdBy ==  Auth::user()->id && $attachment->Injury_ofd6ID == $accident->ofd6aID )
-                                            <tr></tr>
-                                            <td>
-                                                <a href="{{ asset('uploads/'.$attachment->attachmentName) }}"> {{$attachment->attachmentName}}</a>
-                                            </td>
-                                            <td>
-                                                {{$attachment->created_At}}</a>
-                                            </td></tr>@endif
+                                        @if($attachment->attachmenttype == '6a4' && $attachment->createdby ==  Auth::user()->id && $attachment->ofd6aid == $accident->ofd6aid )
+                                            <tr>
+                                                <td>
+                                                    <a href="{{ asset('uploads/'.$attachment->attachmentname) }}"> {{$attachment->attachmentname}}</a>
+                                                </td>
+                                                <td>
+                                                    {{$attachment->created_at}}</a>
+                                                </td>
+                                            <tr>@endif
                                     @endforeach
                                 @endif
 
@@ -468,11 +478,11 @@
                     </div>
                     <div class="col-sm-4">
                         <a class="btn btn-primary dropdown-toggle col-sm-12" data-toggle="collapse"
-                           data-target="#615"><i class="fa fa-eye" aria-hidden="true"></i> View Previously uploaded
+                           data-target="#6a5"><i class="fa fa-eye" aria-hidden="true"></i> View Previously uploaded
                             file(s)
                         </a>
 
-                        <div id="615" class="collapse">
+                        <div id="6a5" class="collapse">
 
                             <table class="table table-striped">
                                 <tr>
@@ -482,17 +492,17 @@
                                 <tr>
                                 @if(count($attachments) > 0)
                                     @foreach($attachments as $attachment)
-                                        @if($attachment->attachmentType == 615 && $attachment->createdBy ==  Auth::user()->id && $attachment->Injury_ofd6ID == $accident->ofd6aID )
+                                        @if($attachment->attachmenttype == '6a5' && $attachment->createdby ==  Auth::user()->id && $attachment->ofd6aid == $accident->ofd6aid )
                                             <tr>
                                                 <td>
-                                                    <a href="{{ asset('uploads/'.$attachment->attachmentName) }}"> {{$attachment->attachmentName}}</a>
+                                                    <a href="{{ asset('uploads/'.$attachment->attachmentname) }}"> {{$attachment->attachmentname}}</a>
                                                 </td>
                                                 <td>
-                                                    {{$attachment->created_At}}</a>
+                                                    {{$attachment->created_at}}</a>
                                                 </td>
-                                            </tr>@endif
-                                            @endforeach
-                                            @endif
+                                            <tr>@endif
+                                                @endforeach
+                                                @endif
                                             </tr>
                             </table>
                         </div>
@@ -522,11 +532,11 @@
                     </div>
                     <div class="col-sm-4">
                         <a class="btn btn-primary dropdown-toggle col-sm-12" data-toggle="collapse"
-                           data-target="#616"><i class="fa fa-eye" aria-hidden="true"></i> View Previously uploaded
+                           data-target="#6a6"><i class="fa fa-eye" aria-hidden="true"></i> View Previously uploaded
                             file(s)
                         </a>
 
-                        <div id="616" class="collapse">
+                        <div id="6a6" class="collapse">
 
                             <table class="table table-striped">
                                 <tr>
@@ -536,17 +546,17 @@
                                 <tr>
                                 @if(count($attachments) > 0)
                                     @foreach($attachments as $attachment)
-                                        @if($attachment->attachmentType == 616 && $attachment->createdBy ==  Auth::user()->id && $attachment->Injury_ofd6ID == $accident->ofd6aID )
+                                        @if($attachment->attachmenttype == '6a6' && $attachment->createdby ==  Auth::user()->id && $attachment->ofd6aid == $accident->ofd6aid )
                                             <tr>
                                                 <td>
-                                                    <a href="{{ asset('uploads/'.$attachment->attachmentName) }}"> {{$attachment->attachmentName}}</a>
+                                                    <a href="{{ asset('uploads/'.$attachment->attachmentname) }}"> {{$attachment->attachmentname}}</a>
                                                 </td>
                                                 <td>
-                                                    {{$attachment->created_At}}</a>
+                                                    {{$attachment->created_at}}</a>
                                                 </td>
-                                            </tr>@endif
-                                            @endforeach
-                                            @endif
+                                            <tr>@endif
+                                                @endforeach
+                                                @endif
                                             </tr>
                             </table>
                         </div>
@@ -576,11 +586,11 @@
                     </div>
                     <div class="col-sm-4">
                         <a class="btn btn-primary dropdown-toggle col-sm-12" data-toggle="collapse"
-                           data-target="#617"><i class="fa fa-eye" aria-hidden="true"></i> View Previously uploaded
+                           data-target="#6a7"><i class="fa fa-eye" aria-hidden="true"></i> View Previously uploaded
                             file(s)
                         </a>
 
-                        <div id="617" class="collapse">
+                        <div id="6a7" class="collapse">
 
                             <table class="table table-striped">
                                 <tr>
@@ -590,17 +600,17 @@
                                 <tr>
                                 @if(count($attachments) > 0)
                                     @foreach($attachments as $attachment)
-                                        @if($attachment->attachmentType == 617 && $attachment->createdBy ==  Auth::user()->id && $attachment->Injury_ofd6ID == $accident->ofd6aID )
+                                        @if($attachment->attachmenttype == '6a7' && $attachment->createdby ==  Auth::user()->id && $attachment->ofd6aid == $accident->ofd6aid )
                                             <tr>
                                                 <td>
-                                                    <a href="{{ asset('uploads/'.$attachment->attachmentName) }}"> {{$attachment->attachmentName}}</a>
+                                                    <a href="{{ asset('uploads/'.$attachment->attachmentname) }}"> {{$attachment->attachmentname}}</a>
                                                 </td>
                                                 <td>
-                                                    {{$attachment->created_At}}</a>
+                                                    {{$attachment->created_at}}</a>
                                                 </td>
-                                            </tr>@endif
-                                            @endforeach
-                                            @endif
+                                            <tr>@endif
+                                                @endforeach
+                                                @endif
                                             </tr>
                             </table>
                         </div>
@@ -630,11 +640,11 @@
                     </div>
                     <div class="col-sm-4">
                         <a class="btn btn-primary dropdown-toggle col-sm-12" data-toggle="collapse"
-                           data-target="#618"><i class="fa fa-eye" aria-hidden="true"></i> View Previously uploaded
+                           data-target="#6a8"><i class="fa fa-eye" aria-hidden="true"></i> View Previously uploaded
                             file(s)
                         </a>
 
-                        <div id="618" class="collapse">
+                        <div id="6a8" class="collapse">
 
                             <table class="table table-striped">
                                 <tr>
@@ -644,17 +654,18 @@
                                 <tr>
                                 @if(count($attachments) > 0)
                                     @foreach($attachments as $attachment)
-                                        @if($attachment->attachmentType == 618 && $attachment->createdBy ==  Auth::user()->id && $attachment->Injury_ofd6ID == $accident->ofd6aID )
+                                        @if($attachment->attachmenttype == '6a8' && $attachment->createdby ==  Auth::user()->id && $attachment->ofd6aid == $accident->ofd6aid )
                                             <tr>
                                                 <td>
-                                                    <a href="{{ asset('uploads/'.$attachment->attachmentName) }}"> {{$attachment->attachmentName}}</a>
+                                                    <a href="{{ asset('uploads/'.$attachment->attachmentname) }}"> {{$attachment->attachmentname}}</a>
                                                 </td>
                                                 <td>
-                                                    {{$attachment->created_At}}</a>
+                                                    {{$attachment->created_at}}</a>
                                                 </td>
-                                            </tr>@endif
-                                            @endforeach
-                                            @endif
+                                            <tr>
+                                                @endif
+                                                @endforeach
+                                                @endif
                                             </tr>
                             </table>
                         </div>
@@ -663,7 +674,8 @@
             </div>
             <div class="row">
                 <div class="col-sm-12 form-group">
-                    <label class="checkbox-inline col-sm-12"><input type="checkbox"><strong>
+                    {{ Form::checkbox('calllaw', 1, null, ['id' => 'calllaw', 'class'=>'className']) }}
+                    <label><strong>
                             Call Law Department
                             Investigator</strong>- Call 444-5131- Request report be faxed to
                         SWD fax # 444-6378. You can
@@ -673,9 +685,11 @@
             </div>
             <div class="row">
                 <div class="col-sm-12 form-group">
-                    <label class="checkbox-inline col-sm-4"><input type="checkbox"><strong>
+                    {{ Form::checkbox('daybook', 1, null, ['id' => 'daybook', 'class'=>'className']) }}
+                    <label><strong>
                             Enter in Company Day
-                            Book</strong></label></div>
+                            Book</strong></label>
+                </div>
             </div>
         </div>
     </div>

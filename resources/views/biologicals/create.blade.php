@@ -15,7 +15,7 @@
 
 @section('content')
     {!! Form::open(['method' => 'POST', 'route' => ['biologicals.store'], 'files' => true,]) !!}
-
+    {{ csrf_field() }}
     <style>
         #padtop {
             padding-top: 7px;
@@ -135,6 +135,19 @@
                 </div>
             </div>
             <div class="col-sm-4 form-group">
+                {!! Form::label('frmsincidentnum', 'FRMS Incident #', array('style'=>'padding-top:7px;','class'=> 'col-sm-4 control-label') ) !!}
+                <div class="col-sm-6 ">
+                    {!! Form::text('frmsincidentnum', old('frmsincidentnum'), array('class' => 'form-control','placeholder'=>'Enter FRMS Num'))!!}
+                    <p class="help-block"></p>
+                    @if($errors->has('frmsincidentnum'))
+                        <p class="help-block">
+                            {{ $errors->first('frmsincidentnum') }}
+                        </p>
+                    @endif
+                </div>
+            </div>
+
+            <div class="col-sm-4 form-group">
                 {!! Form::label('todaysDate', 'Date', array('style'=>'padding-top:7px;','class'=> 'col-sm-4 control-label') ) !!}
                 <div class="col-sm-6 ">
                     {!! Form::text('todaysDate', old('todaysDate'), array('class'=>'datepicker form-control','placeholder'=>'MM/DD/YYYY'))!!}
@@ -183,6 +196,7 @@
 
                 <div class="col-sm-12">
                     <div class="form-group">
+                        {{ Form::checkbox('trueOFD184', 1, null, ['id'=>'trueOFD184', 'class' => 'className' ]) }}
                         {{Form::label('trueOFD184','Complete OFD 184')}}
                     </div>
                     <div class="col-sm-12 form-group well well-sm">
@@ -272,6 +286,7 @@
 
                 <div class="col-sm-12">
                     <div class="form-group">
+                        {{ Form::checkbox('potOFD184', 1, null, ['id'=>'potOFD184', 'class' => 'className' ]) }}
                         {{Form::label('potOFD184','Complete OFD 184')}}
                     </div>
                     <div class="col-sm-12 form-group well well-sm">
@@ -344,7 +359,7 @@
                     </div>
                 </div>
             </div>
-
+        </div>
             {!! Form::close() !!}
             @stop
 

@@ -12,9 +12,23 @@
 
 @section('content')
     {!! Form::model($biological,['method' => 'PUT', 'route' => ['biologicals.update', $biological->ofd6bID], 'files' => true,]) !!}
-
+    {{ csrf_field() }}
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
+    <style>
+        #padtop {
+            padding-top: 7px;
+        }
+
+        table {
+            border-collapse: collapse;
+        }
+
+        table, td, th {
+            border: 1px solid black;
+        }
+
+    </style>
     <div class="panel panel-default">
         <div class="panel-heading">
             <div class="jumbotron" style="margin-bottom: 5px; ">
@@ -129,6 +143,18 @@
                 </div>
             </div>
             <div class="col-sm-4 form-group">
+                {!! Form::label('frmsincidentnum', 'FRMS Incident #', array('style'=>'padding-top:7px;','class'=> 'col-sm-4 control-label') ) !!}
+                <div class="col-sm-6 ">
+                    {!! Form::text('frmsincidentnum', old('frmsincidentnum'), array('class' => 'form-control','placeholder'=>'Enter FRMS Num'))!!}
+                    <p class="help-block"></p>
+                    @if($errors->has('frmsincidentnum'))
+                        <p class="help-block">
+                            {{ $errors->first('frmsincidentnum') }}
+                        </p>
+                    @endif
+                </div>
+            </div>
+            <div class="col-sm-4 form-group">
                 {!! Form::label('todaysDate', 'Date', array('style'=>'padding-top:7px;','class'=> 'col-sm-4 control-label') ) !!}
                 <div class="col-sm-6 ">
                     {!! Form::text('todaysDate', old('todaysDate'), array('class'=>'datepicker form-control','placeholder'=>'MM/DD/YYYY'))!!}
@@ -154,10 +180,8 @@
                         {{ Form::radio('exposure', 0 , null, ['id'=>'exposure', 'class' => 'className']) }}
                         {{ Form::label('exposure', 'True Exposure') }}
 
-
                         {{ Form::radio('exposure',1 , null, ['id'=>'exposure', 'class' => 'className']) }}
                         {{ Form::label('exposure', 'Potential Exposure') }}
-
                     </div>
                 </div>
             </div>
@@ -177,6 +201,7 @@
 
                 <div class="col-sm-12">
                     <div class="form-group">
+                        {{ Form::checkbox('trueOFD184', 1, null, ['id'=>'trueOFD184', 'class' => 'className' ]) }}
                         {{Form::label('trueOFD184','Complete OFD 184')}}
                     </div>
                     <div class="col-sm-12 form-group well well-sm">
@@ -201,7 +226,7 @@
                         </div>
                         <div class="col-sm-4">
                             <a class="btn btn-primary dropdown-toggle col-sm-12" data-toggle="collapse"
-                               data-target="#trueOFD184"><i class="fa fa-eye" aria-hidden="true"></i> View
+                               data-target="#619"><i class="fa fa-eye" aria-hidden="true"></i> View
                                 Previously
                                 uploaded
                                 file(s)
@@ -299,6 +324,7 @@
 
                 <div class="col-sm-12">
                     <div class="form-group">
+                        {{ Form::checkbox('potOFD184', 1, null, ['id'=>'potOFD184', 'class' => 'className' ]) }}
                         {{Form::label('potOFD184','Complete OFD 184')}}
                     </div>
                     <div class="col-sm-12 form-group well well-sm">
@@ -322,7 +348,7 @@
                         </div>
                         <div class="col-sm-4">
                             <a class="btn btn-primary dropdown-toggle col-sm-12" data-toggle="collapse"
-                               data-target="#potOFD184"><i class="fa fa-eye" aria-hidden="true"></i> View Previously
+                               data-target="#620"><i class="fa fa-eye" aria-hidden="true"></i> View Previously
                                 uploaded
                                 file(s)
                             </a>
@@ -404,6 +430,7 @@
                 </div>
             </div>
         </div>
+    </div>
 
 
         {!! Form::close() !!}
