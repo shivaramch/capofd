@@ -9,40 +9,22 @@
         <li class="active">Edit OFD 6A Form {{ $accident->ofd6aid }}</li>
     </ol>
 @endsection
-
 @section('content')
     {!! Form::model($accident,['method' => 'PUT', 'route' => ['accidents.update', $accident->ofd6aid], 'files' => true,]) !!}
+    <input type="hidden" name="_token" value="{!!  'csrf_token()' !!}">
     {{ csrf_field() }}
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-    <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
-    <script>
-        $(document).ready(function () {
-            $("#datepicker1").datepicker({
-                onClose: function () {
-                    var date2 = $('#datepicker1').datepicker('getDate');
-                    date2.setDate(date2.getDate() + 35)
-                    $("#datepicker2").datepicker("setDate", date2);
 
-                }
-            });
-            $("#datepicker2").datepicker();
-        });
-    </script>
     <style>
         #padtop {
             padding-top: 7px;
         }
-
         table {
             border-collapse: collapse;
         }
-
         table, td, th {
             border: 1px solid black;
         }
-
     </style>
-
     <div class="panel panel-default">
         <div class="panel-heading">
             <div class="jumbotron" style="margin-bottom: 5px; ">
@@ -157,7 +139,6 @@
                             @endif
                         </div>
                     </div>
-
                 </div>
                 <div class="row">
                     <div class="col-sm-4 form-group">
@@ -263,15 +244,12 @@
                            data-target="#6a1"><i class="fa fa-eye" aria-hidden="true"></i> View Previously uploaded
                             file(s)
                         </a>
-
                         <div id="6a1" class="collapse">
-
                             <table class="table table-striped">
                                 <tr>
                                     <th> File Name</th>
                                     <th> File Uploaded At</th>
                                 </tr>
-
                                 @if(count($attachments) > 0)
                                     @foreach($attachments as $attachment)
                                         @if($attachment->attachmenttype == '6a1' && $attachment->createdby ==  Auth::user()->id && $attachment->ofd6aid == $accident->ofd6aid )
@@ -285,7 +263,6 @@
                                             <tr>@endif
                                     @endforeach
                                 @endif
-
                             </table>
                         </div>
                     </div>
@@ -319,15 +296,12 @@
                            data-target="#6a2"><i class="fa fa-eye" aria-hidden="true"></i> View Previously uploaded
                             file(s)
                         </a>
-
                         <div id="6a2" class="collapse">
-
                             <table class="table table-striped">
                                 <tr>
                                     <th> File Name</th>
                                     <th> File Uploaded At</th>
                                 </tr>
-
                                 @if(count($attachments) > 0)
                                     @foreach($attachments as $attachment)
                                         @if($attachment->attachmenttype == '6a2' && $attachment->createdby ==  Auth::user()->id && $attachment->ofd6aid == $accident->ofd6aid )
@@ -341,7 +315,6 @@
                                             <tr>@endif
                                     @endforeach
                                 @endif
-
                             </table>
                         </div>
                     </div>
@@ -374,15 +347,12 @@
                            data-target="#6a3"><i class="fa fa-eye" aria-hidden="true"></i> View Previously uploaded
                             file(s)
                         </a>
-
                         <div id="6a3" class="collapse">
-
                             <table class="table table-striped">
                                 <tr>
                                     <th> File Name</th>
                                     <th> File Uploaded At</th>
                                 </tr>
-
                                 @if(count($attachments) > 0)
                                     @foreach($attachments as $attachment)
                                         @if($attachment->attachmenttype == '6a3' && $attachment->createdby ==  Auth::user()->id && $attachment->ofd6aid == $accident->ofd6aid )
@@ -427,15 +397,12 @@
                            data-target="#6a4"><i class="fa fa-eye" aria-hidden="true"></i> View Previously uploaded
                             file(s)
                         </a>
-
                         <div id="6a4" class="collapse">
-
                             <table class="table table-striped">
                                 <tr>
                                     <th> File Name</th>
                                     <th> File Uploaded At</th>
                                 </tr>
-
                                 @if(count($attachments) > 0)
                                     @foreach($attachments as $attachment)
                                         @if($attachment->attachmenttype == '6a4' && $attachment->createdby ==  Auth::user()->id && $attachment->ofd6aid == $accident->ofd6aid )
@@ -449,7 +416,6 @@
                                             <tr>@endif
                                     @endforeach
                                 @endif
-
                             </table>
                         </div>
                     </div>
@@ -481,9 +447,7 @@
                            data-target="#6a5"><i class="fa fa-eye" aria-hidden="true"></i> View Previously uploaded
                             file(s)
                         </a>
-
                         <div id="6a5" class="collapse">
-
                             <table class="table table-striped">
                                 <tr>
                                     <th> File Name</th>
@@ -535,9 +499,7 @@
                            data-target="#6a6"><i class="fa fa-eye" aria-hidden="true"></i> View Previously uploaded
                             file(s)
                         </a>
-
                         <div id="6a6" class="collapse">
-
                             <table class="table table-striped">
                                 <tr>
                                     <th> File Name</th>
@@ -589,9 +551,7 @@
                            data-target="#6a7"><i class="fa fa-eye" aria-hidden="true"></i> View Previously uploaded
                             file(s)
                         </a>
-
                         <div id="6a7" class="collapse">
-
                             <table class="table table-striped">
                                 <tr>
                                     <th> File Name</th>
@@ -643,9 +603,7 @@
                            data-target="#6a8"><i class="fa fa-eye" aria-hidden="true"></i> View Previously uploaded
                             file(s)
                         </a>
-
                         <div id="6a8" class="collapse">
-
                             <table class="table table-striped">
                                 <tr>
                                     <th> File Name</th>
@@ -702,6 +660,5 @@
             </div>
         </div>
     </div>
-
     {!! Form::close() !!}
 @stop

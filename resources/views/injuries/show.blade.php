@@ -11,7 +11,7 @@
 @endsection
 
 @section('content')
-    {!! Form::model($injury,['method' => 'PUT', 'route' => ['injuries.show', $injury->ofd6ID], 'files' => true,]) !!}
+    {!! Form::model($injury,['method' => 'PUT', 'route' => ['injuries.update', $injury->ofd6ID], 'files' => true,]) !!}
 
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
@@ -238,18 +238,34 @@
 
                 <div class="col-sm-12 form-group well well-sm">
                     <div class="col-sm-4">
-                        <a class="btn btn-success dropdown-toggle col-sm-12" type="button"
-                           href="{{ asset('Fillable PDFs\Injury Module\(Injury PDF) CorVel Work Ability Report.pdf') }}"download="(Injury PDF) CorVel Work Ability Report.pdf">
-                            <i class="fa fa-download" aria-hidden="true"></i> Download</a>
-                    </div>
-                    <div class="col-sm-3">
-                        <div class="input-group">
-                            <label class="input-group-btn">
-                    <span class="btn btn-info">
-                        <i class="fa fa-cloud-upload" aria-hidden="true"></i> Upload<input type="file" name="CorvelAttachmentName" style="display: none;" >
-                    </span>
-                            </label>
-                            <input type="text" id="upload-file-info" class="form-control" readonly>
+                        <a class="btn btn-primary dropdown-toggle col-sm-12" data-toggle="collapse"
+                           data-target="#611"><i class="fa fa-eye" aria-hidden="true"></i> View Previously uploaded
+                            file(s)
+                        </a>
+
+                        <div id="611" class="collapse">
+
+                            <table class="table table-striped">
+                                <tr>
+                                    <th> File Name</th>
+                                    <th> File Uploaded At</th>
+                                </tr>
+
+                                @if(count($attachments) > 0)
+                                    @foreach($attachments as $attachment)
+                                        @if($attachment->attachmentType == 'Corvel Work Ability Report' && $attachment->createdBy ==  Auth::user()->id && $attachment->Injury_ofd6ID == $injury->ofd6ID )
+                                            <tr>
+                                                <td>
+                                                    <a href="{{ asset('uploads/'.$attachment->attachmentName) }}"> {{$attachment->attachmentName}}</a>
+                                                </td>
+                                                <td>
+                                                    {{$attachment->created_At}}</a>
+                                                </td>
+                                            <tr>@endif
+                                    @endforeach
+                                @endif
+
+                            </table>
                         </div>
                     </div>
                 </div>

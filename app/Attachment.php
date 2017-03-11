@@ -6,17 +6,13 @@ use Illuminate\Database\Eloquent\Model;
 
 class Attachment extends Model
 {
-    protected $table = 'Attachment';
-
     protected $fillable = [
-        'attachmentid',
-        'attachmentname',
-        'attachmenttype',
-        'createdby',
-        'ofd6cid',
-        'ofd6id',
-        'ofd6bid',
-        'ofd6aid'
+        'attachmentID',
+        'attachmentName',
+        'attachmentPath',
+        'updatedBy',
+        'createdBy',
+        'attachmentType',
     ];
     public static function boot()
     {

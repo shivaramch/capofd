@@ -1,10 +1,6 @@
 <?php
-
 namespace App\Http\Controllers\Traits;
-
 use Illuminate\Http\Request;
-
-
 use App\Attachment;
 use App\Injury;
 use App\Biological;
@@ -14,12 +10,10 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Redirect;
 use Auth;
-
 trait FormFileUploadTrait
 {
     public function InjuriesUpload(Request $request, $id)
     {
-
         if ($attachmentName = $request['CorvelAttachmentName']) {
             $attachment = new Attachment();
             $attachment->attachmentname = $attachmentName;
@@ -27,7 +21,6 @@ trait FormFileUploadTrait
             $attachment->attachmenttype = 'Corvel Work Ability Report';
             $attachment->save();
         }
-
         if ($attachmentName = $request['InvestigationAttachment']) {
             $attachment = new Attachment();
             $attachment->attachmentname = $attachmentName;
@@ -35,7 +28,6 @@ trait FormFileUploadTrait
             $attachment->attachmenttype = 'Investigation Report for Occupational Injury or Illness';
             $attachment->save();
         }
-
         if ($attachmentName = $request['StatementAttachment']) {
             $attachment = new Attachment();
             $attachment->attachmentname = $attachmentName;
@@ -43,7 +35,6 @@ trait FormFileUploadTrait
             $attachment->attachmenttype = 'Statement of Witness of Accident';
             $attachment->save();
         }
-
         if ($attachmentName = $request['EmployeeAttachment']) {
             $attachment = new Attachment();
             $attachment->attachmentname = $attachmentName;
@@ -51,7 +42,6 @@ trait FormFileUploadTrait
             $attachment->attachmenttype = 'Employee\'s Choice of Physician or Doctor Form';
             $attachment->save();
         }
-
         if ($attachmentName = $request['Ofd25Attachment']) {
             $attachment = new Attachment();
             $attachment->attachmentname = $attachmentName;
@@ -60,7 +50,6 @@ trait FormFileUploadTrait
             $attachment->save();
         }
     }
-
     public function AccidentUpload(Request $request, $id)
     {
         if ($attachmentName = $request['LRS101']) {
@@ -70,7 +59,6 @@ trait FormFileUploadTrait
             $attachment->attachmenttype = '6a1';
             $attachment->save();
         }
-
         if ($attachmentName = $request['OFD295']) {
             $attachment = new Attachment();
             $attachment->attachmentname = $attachmentName;
@@ -78,7 +66,6 @@ trait FormFileUploadTrait
             $attachment->attachmenttype = '6a2';
             $attachment->save();
         }
-
         if ($attachmentName = $request['OFD025a']) {
             $attachment = new Attachment();
             $attachment->attachmentname = $attachmentName;
@@ -86,7 +73,6 @@ trait FormFileUploadTrait
             $attachment->attachmenttype = '6a3';
             $attachment->save();
         }
-
         if ($attachmentName = $request['OFD025b']) {
             $attachment = new Attachment();
             $attachment->attachmentname = $attachmentName;
@@ -101,7 +87,6 @@ trait FormFileUploadTrait
             $attachment->attachmenttype = '6a5';
             $attachment->save();
         }
-
         if ($attachmentName = $request['OFD31']) {
             $attachment = new Attachment();
             $attachment->attachmentname = $attachmentName;
@@ -109,7 +94,6 @@ trait FormFileUploadTrait
             $attachment->attachmenttype = '6a6';
             $attachment->save();
         }
-
         if ($attachmentName = $request['OFD127']) {
             $attachment = new Attachment();
             $attachment->attachmentname = $attachmentName;
@@ -117,7 +101,6 @@ trait FormFileUploadTrait
             $attachment->attachmenttype = '6a7';
             $attachment->save();
         }
-
         if ($attachmentName = $request['DR41']) {
             $attachment = new Attachment();
             $attachment->attachmentname = $attachmentName;
@@ -126,22 +109,20 @@ trait FormFileUploadTrait
             $attachment->save();
         }
     }
-
     public function BiologicalUpload(Request $request, $id)
     {
-        if ($attachmentName = $request['trueOFD184']) {
+        if ($attachmentName = $request['trueofd184']) {
             $attachment = new Attachment();
             $attachment->attachmentname = $attachmentName;
-            $attachment->ofd6bID = $id;
-            $attachment->attachmenttype = '619';
+            $attachment->ofd6bid = $id;
+            $attachment->attachmenttype = '6b1';
             $attachment->save();
         }
-
-        if ($attachmentName = $request['potOFD184']) {
+        if ($attachmentName = $request['potofd184']) {
             $attachment = new Attachment();
             $attachment->attachmentname = $attachmentName;
-            $attachment->ofd6bID = $id;
-            $attachment->attachmenttype = '620';
+            $attachment->ofd6bid = $id;
+            $attachment->attachmenttype = '6b2';
             $attachment->save();
         }
     }

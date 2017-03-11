@@ -1,5 +1,4 @@
 <?php
-
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
@@ -14,11 +13,11 @@ class CreateBiologicalTable extends Migration
     public function up()
     {
         Schema::create('biological', function (Blueprint $table) {
-            $table->increments('ofd6bID');
+            $table->increments('ofd6bid');
             $table->string('exposedemployeename',256);
             $table->date('dateofexposure');
             $table->string('employeeid',256);
-            $table->string('assignment',256);
+            $table->string('assignmentbiological',256);
             $table->string('shift',256);
             $table->string('primaryidconumber',256);
             $table->string('epcrincidentnum',256);
@@ -38,15 +37,11 @@ class CreateBiologicalTable extends Migration
             $table->string('potbagtag')->nullable();
             $table->string('potppe')->nullable();
             $table->string('potdocumentdaybook')->nullable();
-
             $table->string('createdby')->nullable();
             $table->string('updatedby')->nullable();
             $table->timestamps();
-
         });
-
     }
-
     /**
      * Reverse the migrations.
      *

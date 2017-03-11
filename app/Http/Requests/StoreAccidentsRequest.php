@@ -1,11 +1,7 @@
 <?php
-
 namespace App\Http\Requests;
-
 use App\Accident;
 use Illuminate\Foundation\Http\FormRequest;
-
-
 class StoreAccidentsRequest extends FormRequest
 {
     /**
@@ -17,7 +13,6 @@ class StoreAccidentsRequest extends FormRequest
     {
         return true;
     }
-
     /**
      * Get the validation rules that apply to the request.
      *
