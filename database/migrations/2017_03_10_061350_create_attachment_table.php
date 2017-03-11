@@ -18,7 +18,7 @@ class CreateAttachmentTable extends Migration
             $table->string('attachmentname', 256);
             $table->string('createdby', 256);
             $table->string('attachmenttype', 256);
-            //$table->string('updatedby', 256);
+            $table->string('updatedby', 256);
             $table->integer('ofd6cid')->nullable();
             $table->integer('ofd6id')->nullable();
             $table->integer('ofd6bid')->nullable();

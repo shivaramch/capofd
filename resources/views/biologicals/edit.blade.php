@@ -242,13 +242,13 @@
 
                                     @if(count($attachments) > 0)
                                         @foreach($attachments as $attachment)
-                                            @if($attachment->attachmentType == '6b1' && $attachment->createdBy ==  Auth::user()->id && $attachment->ofd6bid == $biological->ofd6bid )
+                                            @if($attachment->attachmenttype == '6b1' && $attachment->createdby ==  Auth::user()->id && $attachment->ofd6bid == $biological->ofd6bid )
                                                 <tr>
                                                     <td>
-                                                        <a href="{{ asset('uploads/'.$attachment->attachmentName) }}"> {{$attachment->attachmentName}}</a>
+                                                        <a href="{{ asset('uploads/'.$attachment->attachmentname) }}"> {{$attachment->attachmentname}}</a>
                                                     </td>
                                                     <td>
-                                                        {{$attachment->created_At}}</a>
+                                                        <a>{{$attachment->created_at}}</a>
                                                     </td>
                                                 </tr>@endif
                                         @endforeach
@@ -363,13 +363,13 @@
 
                                     @if(count($attachments) > 0)
                                         @foreach($attachments as $attachment)
-                                            @if($attachment->attachmentType == '6b2' && $attachment->createdBy ==  Auth::user()->id && $attachment->ofd6bid == $biological->ofd6bid )
+                                            @if($attachment->attachmenttype == '6b2' && $attachment->createdby ==  Auth::user()->id && $attachment->ofd6bid == $biological->ofd6bid )
                                                 <tr>
                                                     <td>
-                                                        <a href="{{ asset('uploads/'.$attachment->attachmentName) }}"> {{$attachment->attachmentName}}</a>
+                                                        <a href="{{ asset('uploads/'.$attachment->attachmentname) }}"> {{$attachment->attachmentname}}</a>
                                                     </td>
                                                     <td>
-                                                        {{$attachment->created_At}}</a>
+                                                        <a>{{$attachment->created_at}}</a>
                                                     </td>
                                                 </tr>@endif
                                         @endforeach
