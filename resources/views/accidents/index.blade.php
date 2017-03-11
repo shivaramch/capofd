@@ -8,9 +8,7 @@
         <li class="active">OFD 6A Accidents</li>
     </ol>
 @endsection
-
 @section('content')
-
     <div class="panel panel-default panel-shadow ">
         <div class="panel-heading">
             <div class="row">
@@ -21,7 +19,6 @@
             </div>
         </div>
     </div>
-
     <div class="panel panel-default panel-shadow " hidden>
         <div class="panel-heading">
             Search Previously filled
@@ -38,6 +35,7 @@
                 <thead>
                 <tr>
                     <th data-sortable="true">OFD 6A ID</th>
+                    <th data-sortable="true">Driver Name</th>
                     <th data-sortable="true">Date of Accident</th>
                     <th data-sortable="true">Assignment</th>
                     <th data-sortable="true">Status</th>
@@ -47,23 +45,24 @@
                 <tbody>
                 @if(count($accidents) > 0)
                     @foreach($accidents as $accident)
-                        @if($accident->User_Login_employeeID == Auth::user()->id)
-                        <tr>
-                            <td>{{ $accident->ofd6aID }}</td>
-                            <td>{{ $accident->accidentDate }}</td>
-                            <td>{{ $accident->assignmentAccident }}</td>
-                            <td>{{ $accident->Status }}</td>
-                            <td>
-                                <div>
-                                    <a href="{{ route('accidents.show',[$accident->ofd6aID]) }}"
-                                       class="btn btn-xs btn-info btn-block"><i
-                                                class="fa fa-eye" aria-hidden="true"></i> VIEW</a>
-                                    <a href="{{ route('accidents.edit',[$accident->ofd6aID]) }}"
-                                       class="btn btn-xs btn-warning btn-block"><i class="fa fa-pencil-square-o"
-                                                                                   aria-hidden="true"></i> EDIT</a>
-                                </div>
-                            </td>
-                        </tr>
+                        @if($accident->createdby == Auth::user()->id)
+                            <tr>
+                                <td>{{ $accident->ofd6aid }}</td>
+                                <td>{{ $accident->drivername }}</td>
+                                <td>{{ $accident->accidentdate }}</td>
+                                <td>{{ $accident->assignmentaccident }}</td>
+                                <td>{{ $accident->applicationstatus }}</td>
+                                <td>
+                                    <div>
+                                        <a href="{{ route('accidents.show',[$accident->ofd6aid]) }}"
+                                           class="btn btn-xs btn-info btn-block"><i
+                                                    class="fa fa-eye" aria-hidden="true"></i> VIEW</a>
+                                        <a href="{{ route('accidents.edit',[$accident->ofd6aid]) }}"
+                                           class="btn btn-xs btn-warning btn-block"><i class="fa fa-pencil-square-o"
+                                                                                       aria-hidden="true"></i> EDIT</a>
+                                    </div>
+                                </td>
+                            </tr>
                         @endif
                     @endforeach
                 @else
@@ -75,7 +74,6 @@
             </table>
         </div>
     </div>
-
     <div class="panel panel-default panel-shadow " hidden>
         <div class="panel-heading">
             In your Queue For Approval
@@ -92,6 +90,7 @@
                 <thead>
                 <tr>
                     <th data-sortable="true">OFD 6A ID</th>
+                    <th data-sortable="true">Driver Name</th>
                     <th data-sortable="true">Date of Accident</th>
                     <th data-sortable="true">Assignment</th>
                     <th data-sortable="true">Status</th>
@@ -101,18 +100,19 @@
                 <tbody>
                 @if(count($accidents) > 0)
                     @foreach($accidents as $accident)
-                        @if($accident->Status == 'approval')
+                        @if($accident->applicationstatus == 'approval')
                             <tr>
-                                <td>{{ $accident->ofd6aID }}</td>
-                                <td>{{ $accident->accidentDate }}</td>
-                                <td>{{ $accident->assignmentAccident }}</td>
-                                <td>{{ $accident->Status }}</td>
+                                <td>{{ $accident->ofd6aid }}</td>
+                                <td>{{ $accident->drivername }}</td>
+                                <td>{{ $accident->accidentdate }}</td>
+                                <td>{{ $accident->assignmentaccident }}</td>
+                                <td>{{ $accident->applicationstatus }}</td>
                                 <td>
                                     <div>
-                                        <a href="{{ route('accidents.show',[$accident->ofd6aID]) }}"
+                                        <a href="{{ route('accidents.show',[$accident->ofd6aid]) }}"
                                            class="btn btn-xs btn-info btn-block"><i
                                                     class="fa fa-eye" aria-hidden="true"></i> VIEW</a>
-                                        <a href="{{ route('accidents.edit',[$accident->ofd6aID]) }}"
+                                        <a href="{{ route('accidents.edit',[$accident->ofd6aid]) }}"
                                            class="btn btn-xs btn-warning btn-block"><i class="fa fa-pencil-square-o"
                                                                                        aria-hidden="true"></i> EDIT</a>
                                     </div>
@@ -130,18 +130,13 @@
         </div>
     </div>
 @stop
-
 @section('javascript')
-
     <script src="{{ ('js/extensions/cookie') }}/bootstrap-table-cookie.js"></script>
     <script src="{{ ('js/extensions/mobile') }}/bootstrap-table-mobile.js"></script>
-
     <script src="{{ ('js/export') }}/bootstrap-table-export.js"></script>
     <script src="{{ ('js/export') }}/tableExport.js"></script>
     <script src="{{ ('js/export') }}/jquery.base64.js"></script>
-
     <script type="text/javascript">
-
         $('#table').bootstrapTable({
             classes: 'table table-responsive table-no-bordered table-striped table-hover',
             iconsPrefix: 'fa',
@@ -167,7 +162,5 @@
             },
         });
         $(".panel").fadeIn("fast");
-
     </script>
-
 @endsection

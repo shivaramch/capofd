@@ -12,10 +12,10 @@ class UsersTableSeeder extends Seeder
     public function run()
     {
         \App\User::create([
-            'name'     => 'OFDEMP',
-            'username' => 'OFDEMP',
+            'name'     => 'test',
+            'username' => 'test',
             'email'    => 'aorgodol@unomaha.edu',
-            'password' => bcrypt('devcap')
+            'password' => bcrypt('tester')
         ]);
     }
 }
