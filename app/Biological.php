@@ -12,7 +12,7 @@ class Biological extends Model
 
     protected $primaryKey = 'ofd6bID';
 
-    protected $table = 'biologicals';
+    protected $table = 'biological';
 
     //public static function boot()
     //{

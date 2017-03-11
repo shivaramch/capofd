@@ -1,6 +1,9 @@
 @extends('layouts.app')
 @section('crumbs')
     <ol class="breadcrumb">
+        <a class="btn btn-default" type="button"
+           href="{{ route('hazmat.index') }}">
+            <i class="fa fa-arrow-left" aria-hidden="true"></i> Back</a>
         <li><a href="{{ url('/') }}">Dashboard</a></li>
         <li><a href="{{ route('hazmat.index') }}">OFD 6C Hazmat Exposure</a></li>
         <li class="active">Edit OFD 6C Form {{ $hazmat->ofd6cid }}</li>
@@ -81,7 +84,7 @@
                     <div class="col-sm-4 form-group">
                         {!! Form::label('dateofexposure', 'Date of Exposure', array('style'=>'padding-top:7px;','class' => 'col-sm-4 control-label')) !!}
                         <div class="col-sm-6 ">
-                            {!! Form::text('dateofexposure', old('dateofexposure'), array('class'=>'datepicker form-control','placeholder'=>'MM/DD/YYYY', 'required'=>'required'))!!}
+                            {!! Form::text('dateofexposure', old('dateofexposure'), array('id'=>'datepicker1','class' => 'form-control datepicker','placeholder'=>'YYYY-MM-DD', 'required'=>'required'))!!}
                             <p class="help-block"></p>
                             @if($errors->has('dateofexposure'))
                                 <p class="help-block">
@@ -143,14 +146,13 @@
                         </div>
                     </div>
                     <div class="col-sm-4 form-group">
-                        {!! Form::label('shift', 'Shift', array('style'=>'padding-top:7px;','class' => 'col-sm-4 control-label')) !!}
+                        {!! Form::label('shift', 'Shift', ['class'=> 'col-sm-4 control-label'] ) !!}
                         <div class="col-sm-6">
-                            {!! Form::select('shift',
-                            ['A' => 'A',
-                             'B' => 'B',
-                             'C' => 'C',
-                             'DIV' => 'DIV'],
-                             ['class' => 'form-control', 'required'=>'required'])!!}
+                            {!! Form::select('shift',[
+                          'A' => 'A',
+                          'B' => 'B',
+                          'C' => 'C',
+                          'DIV' => 'DIV'], ['class' => 'form-control'])!!}
                             <p class="help-block"></p>
                             @if($errors->has('shift'))
                                 <p class="help-block">
@@ -163,7 +165,8 @@
                 <br>
                 <div class="row">
                     <div class="col-sm-12 form-group">
-                        <label class="checkbox-inline col-sm-4"><input type="checkbox" >
+                        {{ Form::checkbox('contactcorvel', 1, null, ['id' => 'contactcorvel', 'class'=>'className']) }}
+                        <label>
                             <strong>Contact CorVel Enterprise Comp @ 877-764-3574.
                                 Tell them you have a Hazardous Material Exposure and the call is for reporting ONLY.
                             </strong>
@@ -172,11 +175,15 @@
                 </div>
                 <div class="row">
                     <div class="col-sm-12 form-group">
-                        <label class="checkbox-inline col-sm-4"><input type="checkbox">
-                            <strong>Once you have completed the call, record CorVel Claim #</strong>
-                        </label>
+                        {!! Form::label('corvelid', 'Once you have completed the call, record CorVel Claim #', array('style'=>'padding-top:7px;','class' => 'col-sm-4 control-label')) !!}
                         <div class="col-sm-4">
-                            {!! Form::text('corvelid', '', array('class'=>'form-control', 'required'=>'required'))!!}
+                            {!! Form::text('corvelid', old('corvelid'), ['class' => 'form-control','placeholder'=>'Enter Corvel Claim ID', 'required'=>'required'])!!}
+                            <p class="help-block"></p>
+                            @if($errors->has('corvelid'))
+                                <p class="help-block">
+                                    {{ $errors->first('corvelid') }}
+                                </p>
+                            @endif
                         </div>
                     </div>
                 </div>
@@ -186,7 +193,7 @@
                     <div class="col-sm-12 form-group well well-sm">
                         <div class="col-sm-4">
                             <a class="btn btn-success dropdown-toggle col-sm-12" type="button"
-                               href="{{ asset('Fillable PDFs\Hazmat Module\(Exposure PDF - Updated OFD 006d) OFD 025 - HazMat Exposure Report.pdf') }}">
+                               href="{{ asset('Fillable PDFs\Hazmat Module\(Exposure PDF - Updated OFD 006d) OFD 025 - HazMat Exposure Report.pdf') }}"
                                download="(Exposure PDF - Updated OFD 006d) OFD 025 - HazMat Exposure Report.pdf">
                                 <i class="fa fa-download" aria-hidden="true"></i> Download</a>
                         </div>
@@ -218,13 +225,13 @@
 
                                     @if(count($attachments) > 0)
                                         @foreach($attachments as $attachment)
-                                            @if($attachment->attachmentType == '6c' && $attachment->createdBy ==  Auth::user()->id && $attachment->ofd6cid == $hazmat->ofd6cid )
+                                            @if($attachment->attachmenttype == '6c' && $attachment->createdby ==  Auth::user()->id && $attachment->ofd6cid == $hazmat->ofd6cid )
                                                 <tr>
                                                     <td>
-                                                        <a href="{{ asset('uploads/'.$attachment->attachmentName) }}"> {{$attachment->attachmentName}}</a>
+                                                        <a href="{{ asset('uploads/'.$attachment->attachmentname) }}"> {{$attachment->attachmentname}}</a>
                                                     </td>
                                                     <td>
-                                                        {{$attachment->created_At}}</a>
+                                                        {{$attachment->created_at}}</a>
                                                     </td>
                                                 </tr>
                                             @endif

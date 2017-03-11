@@ -31,7 +31,7 @@
            href="{{ route('hazmat.index') }}">
             <i class="fa fa-arrow-left" aria-hidden="true"></i> Back</a>
         <li><a href="{{ url('/') }}">Dashboard</a></li>
-        <li><a href="{{ route('accidents.create') }}">OFD 6C Hazmat</a></li>
+        <li><a href="{{ route('hazmat.create') }}">OFD 6C Hazmat</a></li>
         <li class="active">New Form</li>
     </ol>
 @endsection
@@ -96,7 +96,7 @@
                         <div class="col-sm-6 ">
                             {!! Form::text('dateofexposure', old('dateofexposure'), array('id'=>'datepicker12','class' => 'form-control datepicker1', 'placeholder' => 'YYYY-MM-DD','required' => 'required'))!!}
 
-                            {!! Form::text('dateofexposure', old('dateofexposure'), array('style'=>'display:none;','id'=>'datepicker32','class' => 'form-control datepicker3', 'placeholder' => 'YYYY-MM-DD','required' => 'required'))!!}
+                            {!! Form::text('dateofexposure', old('dateofexposure'), array('style'=>'display:none;','id'=>'datepicker32','class' => 'form-control datepicker', 'placeholder' => 'YYYY-MM-DD','required' => 'required'))!!}
                             <p class="help-block"></p>
                             @if($errors->has('dateofexposure'))
                                 <p class="help-block">
@@ -182,8 +182,9 @@
         <div class="panel-body">
             <div class="row">
                 <div class="col-sm-12 form-group">
-                    <label class="checkbox-inline col-sm-4"><input type="checkbox" >
-                        <strong>Contact CorVel Enterprise Comp @ 877-764-3574.
+                    {{ Form::checkbox('contactcorvel', 1, null, ['id' => 'contactcorvel', 'class'=>'className']) }}
+                    <label>
+                    <strong>Contact CorVel Enterprise Comp @ 877-764-3574.
                             Tell them you have a Hazardous Material Exposure and the call is for reporting ONLY.
                         </strong>
                     </label>
@@ -191,11 +192,15 @@
             </div>
             <div class="row">
                 <div class="col-sm-12 form-group">
-                    <label class="col-sm-4">
-                        <strong>Once you have completed the call, record CorVel Claim #</strong>
-                    </label>
+                        {!! Form::label('corvelid', 'Once you have completed the call, record CorVel Claim #', array('style'=>'padding-top:7px;','class' => 'col-sm-4 control-label')) !!}
                     <div class="col-sm-4">
-                        {!! Form::text('corvelid', '', array('class'=>'form-control', 'required'=>'required'))!!}
+                        {!! Form::text('corvelid', old('corvelid'), ['class' => 'form-control','placeholder'=>'Enter Corvel Claim ID', 'required'=>'required'])!!}
+                        <p class="help-block"></p>
+                        @if($errors->has('corvelid'))
+                            <p class="help-block">
+                                {{ $errors->first('corvelid') }}
+                            </p>
+                        @endif
                     </div>
                 </div>
             </div>

@@ -37,4 +37,8 @@ class Attachment extends Model
     public function biological(){
         return $this->belongsTo(\App\Biological::class);
     }
+    public function hazmat(){
+        return $this->belongsTo(\App\hazmat::class);
+    }
+
 }

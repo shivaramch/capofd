@@ -14,16 +14,16 @@ class CreateHazmatTable extends Migration
             $table->string('contactcorvel',256);
             $table->string('corvelid', 256);
             $table->string('frmsincidentnum', 256);
-            $table->string('personnelid', 256);
+            $table->string('employeeid', 256);
             $table->string('employeename', 256);
             $table->date('dateofexposure');
             $table->string('primaryidconumber',256);
             $table->string('epcrincidentnum', 256);
             $table->string('assignment', 256);
             $table->string('shift',256);
-            $table->string('applicationstatus', 256);
-
-            $table->string('updatedby', 256);
+            $table->string('applicationstatus', 256)->nullable() ;
+            $table->string('exposurehazmat', 256) ->nullable();
+            $table->string('updatedby', 256)->nullable();
             $table->string('createdby', 256);
             $table->timestamps();
         });

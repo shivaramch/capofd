@@ -11,23 +11,7 @@
 @endsection
 
 @section('content')
-    {!! Form::model($hazmat,['method' => 'PUT', 'route' => ['hazmat.update', $hazmat->ofd6cid], 'files' => true,]) !!}
-
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-    <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
-    <script>
-        $(document).ready(function () {
-            $("#datepicker1").datepicker({
-                onClose: function () {
-                    var date2 = $('#datepicker1').datepicker('getDate');
-                    date2.setDate(date2.getDate() + 35)
-                    $("#datepicker2").datepicker("setDate", date2);
-
-                }
-            });
-            $("#datepicker2").datepicker();
-        });
-    </script>
+    {!! Form::model($hazmat,['method' => 'PUT']) !!}
     <style>
         table {
             border-collapse: collapse;
@@ -37,6 +21,7 @@
             border: 1px solid black;
         }
     </style>
+
 
     <div class="panel panel-default">
         <div class="panel-heading">
@@ -64,19 +49,37 @@
                 <div class="col-sm-4 form-group">
                     {!! Form::label('employeeid', 'Employee ID#', array('style'=>'padding-top:7px;', 'class' => 'col-sm-4 control-label') ) !!}
                     <div class="col-sm-6 ">
-                        {{ $hazmat->employeeid }}
+                        {!! Form::text('employeeid', old('employeeid'), ['disabled'],array('class'=>'form-control'))!!}
+                        <p class="help-block"></p>
+                        @if($errors->has('employeeid'))
+                            <p class="help-block">
+                                {{ $errors->first('employeeid') }}
+                            </p>
+                        @endif
                     </div>
                 </div>
                 <div class="col-sm-4 form-group">
                     {!! Form::label('employeename', 'Exposed Employee Name', array('style'=>'padding-top:7px;', 'class' => 'col-sm-4 control-label') ) !!}
                     <div class="col-sm-6 ">
-                        {{ $hazmat->employeename }}
+                        {!! Form::text('employeename', old('employeename'), ['disabled'],array('class'=>'form-control'))!!}
+                        <p class="help-block"></p>
+                        @if($errors->has('employeename'))
+                            <p class="help-block">
+                                {{ $errors->first('employeename') }}
+                            </p>
+                        @endif
                     </div>
                 </div>
                 <div class="col-sm-4 form-group">
                     {!! Form::label('dateofexposure', 'Date of Exposure', array('style'=>'padding-top:7px;', 'class' => 'col-sm-4 control-label') ) !!}
                     <div class="col-sm-6 ">
-                        {{ $hazmat->dateofexposure }}
+                        {!! Form::text('dateofexposure', old('dateofexposure'), ['disabled'],array('id'=>'datepicker1','class' => 'form-control datepicker', 'placeholder' => 'YYYY-MM-DD'))!!}
+                        <p class="help-block"></p>
+                        @if($errors->has('dateofexposure'))
+                            <p class="help-block">
+                                {{ $errors->first('dateofexposure') }}
+                            </p>
+                        @endif
                     </div>
                 </div>
             </div>
@@ -84,19 +87,37 @@
                  <div class="col-sm-4 form-group">
                      {!! Form::label('primaryidconumber', 'Primary IDCO OFD ID#', array('style'=>'padding-top:7px;', 'class' => 'col-sm-4 control-label') ) !!}
                      <div class="col-sm-6 ">
-                         {{ $hazmat->primaryidconumber }}
+                         {!! Form::text('primaryidconumber', old('primaryidconumber'), ['disabled'],array('class'=>'form-control'))!!}
+                         <p class="help-block"></p>
+                         @if($errors->has('primaryidconumber'))
+                             <p class="help-block">
+                                 {{ $errors->first('primaryidconumber') }}
+                             </p>
+                         @endif
                     </div>
                  </div>
                  <div class="col-sm-4 form-group">
                     {!! Form::label('epcrincidentnum', 'EPCR Incident#', array('style'=>'padding-top:7px;', 'class' => 'col-sm-4 control-label') ) !!}
                      <div class="col-sm-6 ">
-                         {{ $hazmat->epcrincidentnum }}
+                         {!! Form::text('epcrincidentnum', old('epcrincidentnum'), ['disabled'],array('class'=>'form-control'))!!}
+                         <p class="help-block"></p>
+                         @if($errors->has('epcrincidentnum'))
+                             <p class="help-block">
+                                 {{ $errors->first('epcrincidentnum') }}
+                             </p>
+                         @endif
                      </div>
                  </div>
                 <div class="col-sm-4 form-group">
                     {!! Form::label('frmsincidentnum', 'FRMS Incident#', array('style'=>'padding-top:7px;','class' => 'col-sm-4 control-label')) !!}
                     <div class="col-sm-6 ">
-                        {{ $hazmat->frmsincidentnum }}
+                        {!! Form::text('frmsincidentnum', old('frmsincidentnum'), ['disabled'],array('class'=>'form-control'))!!}
+                        <p class="help-block"></p>
+                        @if($errors->has('frmsincidentnum'))
+                            <p class="help-block">
+                                {{ $errors->first('frmsincidentnum') }}
+                            </p>
+                        @endif
                     </div>
                 </div>
             </div>
@@ -104,20 +125,33 @@
                 <div class="col-sm-4 form-group">
                     {!! Form::label('assignment', 'Assignment', array('style'=>'padding-top:7px;', 'class' => 'col-sm-4 control-label') ) !!}
                     <div class="col-sm-6 ">
-                        {{ $hazmat->assignment }}
+                        {!! Form::text('assignment', old('assignment'), ['disabled'],array('class'=>'form-control'))!!}
+                        <p class="help-block"></p>
+                        @if($errors->has('assignment'))
+                            <p class="help-block">
+                                {{ $errors->first('assignment') }}
+                            </p>
+                        @endif
                     </div>
                 </div>
                 <div class="col-sm-4 form-group">
-                    {!! Form::label('shift', 'Shift', array('style'=>'padding-top:7px;', 'class' => 'col-sm-4 control-label') ) !!}
+                    {!! Form::label('shift', 'Shift', ['class'=> 'col-sm-4 control-label'] ) !!}
                     <div class="col-sm-6">
-                        {{ $hazmat->shift }}
+                        {!! Form::text('shift', old('shift'), ['disabled'],array('class'=>'form-control'))!!}
+                        <p class="help-block"></p>
+                        @if($errors->has('shift'))
+                            <p class="help-block">
+                                {{ $errors->first('shift') }}
+                            </p>
+                        @endif
                     </div>
                 </div>
             </div>
             <br>
             <div class="row">
                 <div class="col-sm-12 form-group">
-                    <label class="checkbox-inline col-sm-4"><input type="checkbox" >
+                    {{ Form::checkbox('contactcorvel', 1, null,['disabled'], ['id' => 'contactcorvel', 'class'=>'className','readonly' => 'true']) }}
+                    <label>
                         <strong>Contact CorVel Enterprise Comp @ 877-764-3574.
                                 Tell them you have a Hazardous Material Exposure and the call is for reporting ONLY.
                         </strong>
@@ -126,12 +160,16 @@
             </div>
             <div class="row">
                 <div class="col-sm-12 form-group">
-                    <label class="checkbox-inline col-sm-4"><input type="checkbox">
-                        <strong>Once you have completed the call, record CorVel Claim #</strong>
-                    </label>
-                <div class="col-sm-4">
-                    {{ $hazmat->corvelid }}
-                </div>
+                    {!! Form::label('corvelid', 'Once you have completed the call, record CorVel Claim #', array('style'=>'padding-top:7px;','class' => 'col-sm-4 control-label')) !!}
+                    <div class="col-sm-4">
+                        {!! Form::text('corvelid', old('corvelid'), ['disabled'], array('class'=>'form-control'))!!}
+                        <p class="help-block"></p>
+                        @if($errors->has('corvelid'))
+                            <p class="help-block">
+                                {{ $errors->first('corvelid') }}
+                            </p>
+                        @endif
+                    </div>
                 </div>
             </div>
 
@@ -157,13 +195,13 @@
 
                                 @if(count($attachments) > 0)
                                     @foreach($attachments as $attachment)
-                                        @if($attachment->attachmentType == '6c' && $attachment->createdBy ==  Auth::user()->id && $attachment->ofd6cid == $accident->ofd6cid)
+                                        @if($attachment->attachmenttype == '6c' && $attachment->createdby ==  Auth::user()->id && $attachment->ofd6cid == $hazmat->ofd6cid)
                                             <tr>
                                                 <td>
-                                                    <a href="{{ asset('uploads/'.$attachment->attachmentName) }}"> {{$attachment->attachmentName}}</a>
+                                                    <a href="{{ asset('uploads/'.$attachment->attachmentname) }}"> {{$attachment->attachmentname}}</a>
                                                 </td>
                                                 <td>
-                                                    {{$attachment->created_At}}</a>
+                                                    {{$attachment->created_at}}</a>
                                                 </td>
                                             <tr>@endif
                                     @endforeach
@@ -182,10 +220,7 @@
                                 {{Form::label('exposurehazmat','Do you have any symptoms of illness or injury and require
                                    treatment? (In case of Injury, please fill OFD - 6 IOD Application)     ')}}
 
-                                {!! Form::select('exposurehazmat',[
-                                  'Yes' => 'Yes',
-                                  'No' => 'No'],
-                                array('class' => 'form-control'))!!}
+                                {!! Form::text('exposurehazmat', old('exposurehazmat'), ['disabled'], array('class'=>'form-control'))!!}
                                 <p class="help-block"></p>
                                 @if($errors->has('exposurehazmat'))
                                     <p class="help-block">
@@ -197,15 +232,14 @@
                     </div>
                 </div>
             </div>
-        <div class="panel panel-default">
-            <div class="col-sm-12 panel-heading">
-                <label class="col-sm-5"></label>
-                <div class="btn-bottom ">
-                    {!! Form::submit('Submit',['class' => 'btn btn-success']) !!}
-                    <a href="{{ route('hazmat.index') }}" class="btn btn-default">Cancel</a>
+            <div class="panel panel-default">
+                <div class="col-sm-12 panel-heading">
+                    <label class="col-sm-5"></label>
+                    <div class="btn-bottom ">
+                        <a href="{{ route('hazmat.index') }}" class="btn btn-default">Return</a>
+                    </div>
                 </div>
             </div>
-        </div>
         </div>
         </div>
     </div>

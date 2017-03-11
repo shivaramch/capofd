@@ -26,7 +26,16 @@ class StoreHazmatRequest extends FormRequest
     public function rules()
     {
         return [
-            'employeeid' => 'required|max:255',
+            'employeeid' => 'required|integer:hazmat,employeeid,'. $this->route('hazmat'),
+            'employeename' => 'required|string:hazmat,employeename,' . $this->route('hazmat'),
+            'dateofexposure' => 'required|date:hazmat,dateofexposure,'. $this->route('hazmat'),
+            'primaryidconumber' => 'required|integer:hazmat,primaryidconumber'. $this->route('hazmat'),
+            'contactcorvel' => 'required|string:hazmat,contactcorvel'. $this->route('hazmat'),
+            'corvelid' => 'required|integer:hazmat,corvelid'. $this->route('hazmat'),
+            'epcrincidentnum' => 'required|integer:hazmat,epcrincidentnum'. $this->route('hazmat'),
+            'assignment' => 'required|string:hazmat,assignment'. $this->route('hazmat'),
+            'frmsincidentnum' => 'required|integer:hazmat,frmsincidentnum'. $this->route('hazmat'),
+            //'applicationstatus' =>'required|string:hazmat,applicationstatus'. $this->route('hazmat'),
         ];
     }
 }
