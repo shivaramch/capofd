@@ -52,9 +52,9 @@
                 </div>
                 <div class="row">
                     <div class="col-sm-4 form-group">
-                        {!! Form::label('createDate', 'Todays Date:', ['class' => 'col-sm-4 control-label']) !!}
+                        {!! Form::label('createdate', 'Todays Date:', ['class' => 'col-sm-4 control-label']) !!}
                         <div class="col-sm-6 ">
-                            {!! Form::text('createDate', old('createDate'), array('class'=>'datepicker form-control','placeholder'=>'MM/DD/YYYY','required' => 'required'))!!}
+                            {!! Form::text('createdate', old('createdate'), array('class'=>'datepicker form-control','placeholder'=>'MM/DD/YYYY','required' => 'required'))!!}
                             <p class="help-block"></p>
                             @if($errors->has('createDate'))
                                 <p class="help-block">
@@ -66,7 +66,7 @@
                     <div class="col-sm-4 form-group">
                         {!! Form::label('injuryDate', 'Date of Injury:', ['class' => 'col-sm-4 control-label']) !!}
                         <div class="col-sm-6 ">
-                            {!! Form::text('injuryDate', old('injuryDate'), array('class'=>'datepicker form-control','placeholder'=>'MM/DD/YYYY','required' => 'required'))!!}
+                            {!! Form::text('injurydate', old('injurydate'), array('class'=>'datepicker form-control','placeholder'=>'MM/DD/YYYY','required' => 'required'))!!}
                             <p class="help-block"></p>
                             @if($errors->has('injuryDate'))
                                 <p class="help-block">
@@ -78,7 +78,7 @@
                     <div class="col-sm-4 form-group">
                         {!! Form::label('assignmentInjury', 'Assignment', ['class' => 'col-sm-4 control-label']) !!}
                         <div class="col-sm-6 ">
-                            {!! Form::text('assignmentInjury', old('assignmentInjury'), array('class' => 'form-control','required' => 'required'))!!}
+                            {!! Form::text('assignmentinjury', old('assignmentinjury'), array('class' => 'form-control','required' => 'required'))!!}
                             <p class="help-block"></p>
                             @if($errors->has('assignmentInjury'))
                                 <p class="help-block">
@@ -92,7 +92,7 @@
                     <div class="col-sm-4 form-group">
                         {!! Form::label('injuredEmployeeName', 'Injured Name', ['class' => 'col-sm-4 control-label']) !!}
                         <div class="col-sm-6 ">
-                            {!! Form::text('injuredEmployeeName', old('injuredEmployeeName'), array('class' => 'form-control','placeholder'=>'Enter Injured Name','required' => 'required'))!!}
+                            {!! Form::text('injuredemployeename', old('injuredemployeename'), array('class' => 'form-control','placeholder'=>'Enter Injured Name','required' => 'required'))!!}
                             <p class="help-block"></p>
                             @if($errors->has('injuredEmployeeName'))
                                 <p class="help-block">
@@ -104,7 +104,7 @@
                     <div class="col-sm-4 form-group">
                         {!! Form::label('injuredEmployeeID', 'Personnel ID #', ['class' => 'col-sm-4 control-label']) !!}
                         <div class="col-sm-6 ">
-                            {!! Form::text('injuredEmployeeID', old('injuredEmployeeID'), array('class' => 'form-control','placeholder'=>'Enter Badge Id','required' => 'required'))!!}
+                            {!! Form::text('injuredemployeeid', old('injuredemployeeid'), array('class' => 'form-control','placeholder'=>'Enter Badge Id','required' => 'required'))!!}
                             <p class="help-block"></p>
                             @if($errors->has('injuredEmployeeID'))
                                 <p class="help-block">
@@ -134,7 +134,7 @@
                     <div class="col-sm-4 form-group">
                         {!! Form::label('captainID', 'Captain #', ['class' => 'col-sm-4 control-label']) !!}
                         <div class="col-sm-6 ">
-                            {!! Form::text('captainID', old('captainID'), array('class' => 'form-control','placeholder'=>'Enter Badge Id','required' => 'required'))!!}
+                            {!! Form::text('captainid', old('captainid'), array('class' => 'form-control','placeholder'=>'Enter Badge Id','required' => 'required'))!!}
                             <p class="help-block"></p>
                             @if($errors->has('captainID'))
                                 <p class="help-block">
@@ -144,24 +144,24 @@
                         </div>
                     </div>
 					<div class="col-sm-4 form-group">
-                        {!! Form::label('battalionChiefID', 'Battalion Chief #', ['class' => 'col-sm-4 control-label']) !!}
+                        {!! Form::label('battalionchiefid', 'Battalion Chief #', ['class' => 'col-sm-4 control-label']) !!}
                         <div class="col-sm-6 ">
-                            {!! Form::text('battalionChiefID', old('battalionChiefID'), array('class' => 'form-control','placeholder'=>'Enter Badge Id','required' => 'required'))!!}
+                            {!! Form::text('battalionchiefid', old('battalionchiefid'), array('class' => 'form-control','placeholder'=>'Enter Badge Id','required' => 'required'))!!}
                             <p class="help-block"></p>
-                            @if($errors->has('battalionChiefID'))
+                            @if($errors->has('battalionchiefid'))
                                 <p class="help-block">
-                                    {{ $errors->first('battalionChiefID') }}
+                                    {{ $errors->first('battalionchiefid') }}
                                 </p>
                             @endif
                         </div>
                     </div><div class="col-sm-4 form-group">
-                        {!! Form::label('acOnDutyID', 'Assistant Chief #', ['class' => 'col-sm-4 control-label']) !!}
+                        {!! Form::label('acondutyid', 'Assistant Chief #', ['class' => 'col-sm-4 control-label']) !!}
                         <div class="col-sm-6 ">
-                            {!! Form::text('acOnDutyID', old('acOnDutyID'), array('class' => 'form-control','placeholder'=>'Enter Badge Id','required' => 'required'))!!}
+                            {!! Form::text('acondutyid', old('acondutyid'), array('class' => 'form-control','placeholder'=>'Enter Badge Id','required' => 'required'))!!}
                             <p class="help-block"></p>
-                            @if($errors->has('acOnDutyID'))
+                            @if($errors->has('acondutyid'))
                                 <p class="help-block">
-                                    {{ $errors->first('acOnDutyID') }}
+                                    {{ $errors->first('acondutyid') }}
                                 </p>
                             @endif
                         </div>
@@ -169,25 +169,25 @@
                 </div>
                 <div class="row">
                     <div class="col-sm-4 form-group">
-                        {!! Form::label('frmsIncidentNum', 'FRMS Incident #', ['class' => 'col-sm-4 control-label']) !!}
+                        {!! Form::label('frmsincidentnum', 'FRMS Incident #', ['class' => 'col-sm-4 control-label']) !!}
                         <div class="col-sm-6 ">
-                            {!! Form::text('frmsIncidentNum', old('frmsIncidentNum'), array('class' => 'form-control','required' => 'required'))!!}
+                            {!! Form::text('frmsincidentnum', old('frmsincidentnum'), array('class' => 'form-control','required' => 'required'))!!}
                             <p class="help-block"></p>
-                            @if($errors->has('frmsIncidentNum'))
+                            @if($errors->has('frmsincidentnum'))
                                 <p class="help-block">
-                                    {{ $errors->first('frmsIncidentNum') }}
+                                    {{ $errors->first('frmsincidentnum') }}
                                 </p>
                             @endif
                         </div>
                     </div>
                     <div class="col-sm-8 form-group">
-                        {!! Form::label('corVelID', 'CorVel ID #', ['class' => 'col-sm-2 control-label']) !!}
+                        {!! Form::label('corvelid', 'CorVel ID #', ['class' => 'col-sm-2 control-label']) !!}
                         <div class="col-sm-3">
-                            {!! Form::text('corVelID', old('corVelID'), array('class' => 'form-control','required' => 'required','style' =>'margin-left:-7px;'))!!}
+                            {!! Form::text('corvelid', old('corvelid'), array('class' => 'form-control','required' => 'required','style' =>'margin-left:-7px;'))!!}
                             <p class="help-block"></p>
-                            @if($errors->has('corVelID'))
+                            @if($errors->has('corvelid'))
                                 <p class="help-block">
-                                    {{ $errors->first('corVelID') }}
+                                    {{ $errors->first('corvelid') }}
                                 </p>
                             @endif
                         </div>
