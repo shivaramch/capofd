@@ -14,16 +14,16 @@ class CreateAttachmentTable extends Migration
     public function up()
     {
         Schema::create('attachment', function (Blueprint $table) {
-            $table->increments('attachmentid');
-            $table->string('attachmentname', 256);
-            $table->string('createdby', 256);
-            $table->string('attachmenttype', 256);
+            $table->increments('attachmentid')->nullable();
+            $table->string('attachmentname', 256)->nullable();
+            $table->string('createdby', 256)->nullable();
+            $table->string('attachmenttype', 256)->nullable();
             $table->integer('ofd6cid')->nullable();
             $table->integer('ofd6id')->nullable();
             $table->integer('ofd6bid')->nullable();
             $table->integer('ofd6aid')->nullable();
-
-            $table->timestamps();
+            
+            $table->timestamps()->nullable();
 
         });
 

@@ -14,26 +14,27 @@ class CreateAccidentTable extends Migration
     public function up()
     {
         Schema::create('accident', function (Blueprint $table) {
-            $table->increments('ofd6aid');
+            $table->increments('ofd6aid')->nullable();
 
-            $table->date('accidentdate');
+            $table->date('accidentdate')->nullable();
 
-            $table->string('drivername', 256);
-            $table->string('driverid', 256);
-            $table->string('assignmentaccident', 256);
-            $table->string('apparatus', 256);
+            $table->string('drivername', 256)->nullable();
+            $table->string('driverid', 256)->nullable();
+            $table->string('assignmentaccident', 256)->nullable();
+            $table->string('apparatus', 256)->nullable();
 
-            $table->string('captainid', 256);
-            $table->string('battalionchiefid', 256);
-            $table->string('aconduty', 256);
+            $table->string('captainid', 256)->nullable();
+            $table->string('battalionchiefid', 256)->nullable();
+            $table->string('aconduty', 256)->nullable();
             $table->string('applicationstatus', 256)->nullable();
-            $table->string('frmsincidentnum', 256);
-            $table->string('calllaw', 256);
-            $table->string('daybook', 256);
-            $table->string('commemail', 256);
-            $table->string('createdby', 256);
-            $table->string('updatedby', 256);
+            $table->string('frmsincidentnum', 256)->nullable();
+            $table->string('calllaw', 256)->nullable();
+            $table->string('daybook', 256)->nullable();
+            $table->string('commemail', 256)->nullable();
+            $table->string('createdby', 256)->nullable();
+            $table->string('updatedby', 256)->nullable();
             $table->string('applicationstatus', 256)->nullable();
+            $table->ipAddress('ip_address', 45)->nullable();
 // application status nullable
             $table->timestamps();
         });

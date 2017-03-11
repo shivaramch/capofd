@@ -14,17 +14,17 @@ class CreateBiologicalTable extends Migration
     {
         Schema::create('biological', function (Blueprint $table) {
             $table->increments('ofd6bid');
-            $table->string('exposedemployeename',256);
-            $table->date('dateofexposure');
-            $table->string('employeeid',256);
-            $table->string('assignmentbiological',256);
-            $table->string('shift',256);
-            $table->string('primaryidconumber',256);
-            $table->string('epcrincidentnum',256);
-            $table->string('frmsincidentnum',256);
-            $table->date('todaysdate');
-            $table->string('exposure',256);
-            $table->string('exposureinjury',256);
+            $table->string('exposedemployeename',256)->nullable();
+            $table->date('dateofexposure')->nullable();
+            $table->string('employeeid',256)->nullable();
+            $table->string('assignmentbiological',256)->nullable();
+            $table->string('shift',256)->nullable();
+            $table->string('primaryidconumber',256)->nullable();
+            $table->string('epcrincidentnum',256)->nullable();
+            $table->string('frmsincidentnum',256)->nullable();
+            $table->date('todaysdate')->nullable();
+            $table->string('exposure',256)->nullable();
+            $table->string('exposureinjury',256)->nullable();
             $table->string('truedecontaminate')->nullable();
             $table->string('confirmsource')->nullable();
             $table->string('bloodreport')->nullable();
@@ -41,6 +41,8 @@ class CreateBiologicalTable extends Migration
             $table->string('updatedby')->nullable();
             $table->string('applicationstatus', 256)->nullable();
             $table->timestamps();
+            $table->ipAddress('ip_address', 45)->nullable();
+
         });
     }
     /**

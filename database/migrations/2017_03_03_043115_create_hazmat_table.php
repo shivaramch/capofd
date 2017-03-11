@@ -27,6 +27,7 @@ class CreateHazmatTable extends Migration
             $table->string('updatedby', 256)->nullable();
             $table->string('createdby', 256);
             $table->timestamps();
+            $table->ipAddress('ip_address', 45)->nullable();
         });
     }
 
