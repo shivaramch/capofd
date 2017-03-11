@@ -208,7 +208,7 @@
                                 <label class="input-group-btn">
                                             <span class="btn btn-info"><i class="fa fa-cloud-upload"
                                                                           aria-hidden="true"></i> Upload<input
-                                                        type="file" name="trueOFD184"
+                                                        type="file" name="trueofd184"
                                                         style="display: none;"
                                                         multiple>
                                             </span>
@@ -297,7 +297,7 @@
                             <div class="input-group">
                                 <label class="input-group-btn">
                     <span class="btn btn-info">
-                        <i class="fa fa-cloud-upload" aria-hidden="true"></i> Upload<input type="file" name="postOFD184"
+                        <i class="fa fa-cloud-upload" aria-hidden="true"></i> Upload<input type="file" name="postofd184"
                                                                                            style="display: none;"
                                                                                            multiple>
                     </span>

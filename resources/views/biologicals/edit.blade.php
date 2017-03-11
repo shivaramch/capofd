@@ -226,13 +226,13 @@
                         </div>
                         <div class="col-sm-4">
                             <a class="btn btn-primary dropdown-toggle col-sm-12" data-toggle="collapse"
-                               data-target="#619"><i class="fa fa-eye" aria-hidden="true"></i> View
+                               data-target="#6b1"><i class="fa fa-eye" aria-hidden="true"></i> View
                                 Previously
                                 uploaded
                                 file(s)
                             </a>
 
-                            <div id="619" class="collapse">
+                            <div id="6b1" class="collapse">
 
                                 <table class="table table-striped">
                                     <tr>
@@ -242,7 +242,7 @@
 
                                     @if(count($attachments) > 0)
                                         @foreach($attachments as $attachment)
-                                            @if($attachment->attachmentType == 619 && $attachment->createdBy ==  Auth::user()->id && $attachment->ofd6bid == $biological->ofd6bid )
+                                            @if($attachment->attachmentType == '6b1' && $attachment->createdBy ==  Auth::user()->id && $attachment->ofd6bid == $biological->ofd6bid )
                                                 <tr>
                                                     <td>
                                                         <a href="{{ asset('uploads/'.$attachment->attachmentName) }}"> {{$attachment->attachmentName}}</a>
@@ -348,12 +348,12 @@
                         </div>
                         <div class="col-sm-4">
                             <a class="btn btn-primary dropdown-toggle col-sm-12" data-toggle="collapse"
-                               data-target="#620"><i class="fa fa-eye" aria-hidden="true"></i> View Previously
+                               data-target="#6b2"><i class="fa fa-eye" aria-hidden="true"></i> View Previously
                                 uploaded
                                 file(s)
                             </a>
 
-                            <div id="620" class="collapse">
+                            <div id="6b2" class="collapse">
 
                                 <table class="table table-striped">
                                     <tr>
@@ -363,7 +363,7 @@
 
                                     @if(count($attachments) > 0)
                                         @foreach($attachments as $attachment)
-                                            @if($attachment->attachmentType == 620 && $attachment->createdBy ==  Auth::user()->id && $attachment->ofd6bid == $biological->ofd6bid )
+                                            @if($attachment->attachmentType == '6b2' && $attachment->createdBy ==  Auth::user()->id && $attachment->ofd6bid == $biological->ofd6bid )
                                                 <tr>
                                                     <td>
                                                         <a href="{{ asset('uploads/'.$attachment->attachmentName) }}"> {{$attachment->attachmentName}}</a>
