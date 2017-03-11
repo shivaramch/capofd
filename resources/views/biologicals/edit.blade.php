@@ -6,29 +6,15 @@
             <i class="fa fa-arrow-left" aria-hidden="true"></i> Back</a>
         <li><a href="{{ url('/') }}">Dashboard</a></li>
         <li><a href="{{ route('biologicals.index') }}">OFD 6B Biologicals</a></li>
-        <li class="active">Edit OFD 6B Form {{ $biological->ofd6bid }}</li>
+        <li class="active">Edit OFD 6B Form {{ $biological->ofd6bID }}</li>
     </ol>
 @endsection
 
 @section('content')
-    {!! Form::model($biological,['method' => 'PUT', 'route' => ['biologicals.update', $biological->ofd6bid], 'files' => true,]) !!}
-    {{ csrf_field() }}
+    {!! Form::model($biological,['method' => 'PUT', 'route' => ['biologicals.update', $biological->ofd6bID], 'files' => true,]) !!}
+
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
-    <style>
-        #padtop {
-            padding-top: 7px;
-        }
-
-        table {
-            border-collapse: collapse;
-        }
-
-        table, td, th {
-            border: 1px solid black;
-        }
-
-    </style>
     <div class="panel panel-default">
         <div class="panel-heading">
             <div class="jumbotron" style="margin-bottom: 5px; ">
@@ -50,37 +36,37 @@
         <br>
         <div class="row">
             <div class="col-sm-4 form-group">
-                {!! Form::label('exposedemployeename', 'Exposed Employee Name',array('style'=>'padding-top:7px;','class'=> 'col-sm-4 control-label') ) !!}
+                {!! Form::label('exposedEmployeeName', 'Exposed Employee Name',array('style'=>'padding-top:7px;','class'=> 'col-sm-4 control-label') ) !!}
                 <div class="col-sm-6 ">
-                    {!! Form::text('exposedemployeename', old('exposedemployeename'), array('class'=>'form-control'))!!}
+                    {!! Form::text('exposedEmployeeName', old('exposedEmployeeName'), array('class'=>'form-control'))!!}
                     <p class="help-block"></p>
-                    @if($errors->has('exposedemployeename'))
+                    @if($errors->has('exposedEmployeeName'))
                         <p class="help-block">
-                            {{ $errors->first('exposedemployeename') }}
+                            {{ $errors->first('exposedEmployeeName') }}
                         </p>
                     @endif
                 </div>
             </div>
             <div class="col-sm-4 form-group">
-                {!! Form::label('dateofexposure', 'Date of Exposure', array('style'=>'padding-top:7px;','class'=> 'col-sm-4 control-label') ) !!}
+                {!! Form::label('dateOfExposure', 'Date of Exposure', array('style'=>'padding-top:7px;','class'=> 'col-sm-4 control-label') ) !!}
                 <div class="col-sm-6 ">
-                    {!! Form::text('dateofexposure', old('dateofexposure'), array('id'=>'datepicker','class' => 'form-control datepicker', 'placeholder' => 'YYYY-MM-DD','required' => 'required'))!!}
+                    {!! Form::text('dateOfExposure', old('dateOfExposure'), array('id'=>'datepicker','class' => 'form-control datepicker', 'placeholder' => 'YYYY-MM-DD','required' => 'required'))!!}
                     <p class="help-block"></p>
-                    @if($errors->has('dateofexposure'))
+                    @if($errors->has('dateOfExposure'))
                         <p class="help-block">
-                            {{ $errors->first('dateofexposure') }}
+                            {{ $errors->first('dateOfExposure') }}
                         </p>
                     @endif
                 </div>
             </div>
             <div class="col-sm-4 form-group">
-                {!! Form::label('employeeid', 'Employee ID#', array('style'=>'padding-top:7px;','class'=> 'col-sm-4 control-label') ) !!}
+                {!! Form::label('employeeID_1', 'Employee ID#', array('style'=>'padding-top:7px;','class'=> 'col-sm-4 control-label') ) !!}
                 <div class="col-sm-6 ">
-                    {!! Form::text('employeeid', old('employeeid'), array('class'=> 'form-control','placeholder'=>'Enter Badge ID'))!!}
+                    {!! Form::text('employeeID_1', old('employeeID_1'), array('class'=> 'form-control','placeholder'=>'Enter Badge ID'))!!}
                     <p class="help-block"></p>
-                    @if($errors->has('employeeid'))
+                    @if($errors->has('employeeID_1'))
                         <p class="help-block">
-                            {{ $errors->first('employeeid') }}
+                            {{ $errors->first('employeeID_1') }}
                         </p>
                     @endif
                 </div>
@@ -88,13 +74,13 @@
         </div>
         <div class="row">
             <div class="col-sm-4 form-group">
-                {!! Form::label('assignmentbiological', 'Assignment', array('style'=>'padding-top:7px;','class'=> 'col-sm-4 control-label') ) !!}
+                {!! Form::label('assignmentBiological', 'Assignment', array('style'=>'padding-top:7px;','class'=> 'col-sm-4 control-label') ) !!}
                 <div class="col-sm-6 ">
-                    {!! Form::text('assignmentbiological', old('assignmentbiological'), array('class' => 'form-control'))!!}
+                    {!! Form::text('assignmentBiological', old('assignmentBiological'), array('class' => 'form-control'))!!}
                     <p class="help-block"></p>
-                    @if($errors->has('assignmentbiological'))
+                    @if($errors->has('assignmentBiological'))
                         <p class="help-block">
-                            {{ $errors->first('assignmentbiological') }}
+                            {{ $errors->first('assignmentBiological') }}
                         </p>
                     @endif
                 </div>
@@ -117,13 +103,13 @@
                 </div>
             </div>
             <div class="col-sm-4 form-group">
-                {!! Form::label('epcrincidentnum', 'EPCR Incident#', array('style'=>'padding-top:7px;','class'=> 'col-sm-4 control-label') ) !!}
+                {!! Form::label('epcrIncidentNum', 'EPCR Incident#', array('style'=>'padding-top:7px;','class'=> 'col-sm-4 control-label') ) !!}
                 <div class="col-sm-6 ">
-                    {!! Form::text('epcrincidentnum', old('epcrincidentnum'), array('class' => 'form-control','placeholder'=>'Enter Incident Num'))!!}
+                    {!! Form::text('epcrIncidentNum', old('epcrIncidentNum'), array('class' => 'form-control','placeholder'=>'Enter Incident Num'))!!}
                     <p class="help-block"></p>
-                    @if($errors->has('epcrincidentnum'))
+                    @if($errors->has('epcrIncidentNum'))
                         <p class="help-block">
-                            {{ $errors->first('epcrincidentnum') }}
+                            {{ $errors->first('epcrIncidentNum') }}
                         </p>
                     @endif
                 </div>
@@ -131,37 +117,25 @@
         </div>
         <div class="row">
             <div class="col-sm-4 form-group">
-                {!! Form::label('primaryidconumber', 'Primary IDCO #', array('style'=>'padding-top:7px;','class'=> 'col-sm-4 control-label') ) !!}
+                {!! Form::label('idcoNumber', 'Primary IDCO #', array('style'=>'padding-top:7px;','class'=> 'col-sm-4 control-label') ) !!}
                 <div class="col-sm-6 ">
-                    {!! Form::text('primaryidconumber', old('primaryidconumber'), array('class' => 'form-control','placeholder'=>'Enter IDCO Badge ID'))!!}
+                    {!! Form::text('idcoNumber', old('idcoNumber'), array('class' => 'form-control','placeholder'=>'Enter IDCO Badge ID'))!!}
                     <p class="help-block"></p>
-                    @if($errors->has('primaryidconumber'))
+                    @if($errors->has('idcoNumber'))
                         <p class="help-block">
-                            {{ $errors->first('primaryidconumber') }}
+                            {{ $errors->first('idcoNumber') }}
                         </p>
                     @endif
                 </div>
             </div>
             <div class="col-sm-4 form-group">
-                {!! Form::label('frmsincidentnum', 'FRMS Incident #', array('style'=>'padding-top:7px;','class'=> 'col-sm-4 control-label') ) !!}
+                {!! Form::label('todaysDate', 'Date', array('style'=>'padding-top:7px;','class'=> 'col-sm-4 control-label') ) !!}
                 <div class="col-sm-6 ">
-                    {!! Form::text('frmsincidentnum', old('frmsincidentnum'), array('class' => 'form-control','placeholder'=>'Enter FRMS Num'))!!}
+                    {!! Form::text('todaysDate', old('todaysDate'), array('class'=>'datepicker form-control','placeholder'=>'MM/DD/YYYY'))!!}
                     <p class="help-block"></p>
-                    @if($errors->has('frmsincidentnum'))
+                    @if($errors->has('todaysDate'))
                         <p class="help-block">
-                            {{ $errors->first('frmsincidentnum') }}
-                        </p>
-                    @endif
-                </div>
-            </div>
-            <div class="col-sm-4 form-group">
-                {!! Form::label('todaysdate', 'Date', array('style'=>'padding-top:7px;','class'=> 'col-sm-4 control-label') ) !!}
-                <div class="col-sm-6 ">
-                    {!! Form::text('todaysdate', old('todaysdate'), array('class'=>'datepicker form-control','placeholder'=>'MM/DD/YYYY'))!!}
-                    <p class="help-block"></p>
-                    @if($errors->has('todaysdate'))
-                        <p class="help-block">
-                            {{ $errors->first('todaysdate') }}
+                            {{ $errors->first('todaysDate') }}
                         </p>
                     @endif
                 </div>
@@ -180,29 +154,30 @@
                         {{ Form::radio('exposure', 0 , null, ['id'=>'exposure', 'class' => 'className']) }}
                         {{ Form::label('exposure', 'True Exposure') }}
 
+
                         {{ Form::radio('exposure',1 , null, ['id'=>'exposure', 'class' => 'className']) }}
                         {{ Form::label('exposure', 'Potential Exposure') }}
+
                     </div>
                 </div>
             </div>
             <div id="Exposure0" class="desc" style="display: none;">
                 <div class="col-sm-12">
                     <div class="form-group">
-                        {{ Form::checkbox('truedecontaminate', 1, null, ['id' => 'truedecontaminate', 'class'=>'className']) }}
-                        {{Form::label('truedecontaminate','Decontaminate self- wash, flush as soon as possible  ')}}
+                        {{ Form::checkbox('trueDecontaminate', 1, null, ['id' => 'trueDecontaminate', 'class'=>'className']) }}
+                        {{Form::label('trueDecontaminate','Decontaminate self- wash, flush as soon as possible  ')}}
                     </div>
                 </div>
                 <div class="col-sm-12">
                     <div class="form-group">
-                        {{ Form::checkbox('confirmsource', 1, null, ['id'=>'confirmsource', 'class' => 'className' ]) }}
-                        {{ Form::label('confirmsource', 'Confirm Source - Patient blood draw with OUCH Nurse') }}
+                        {{ Form::checkbox('confirmSource', 1, null, ['id'=>'confirmSource', 'class' => 'className' ]) }}
+                        {{ Form::label('confirmSource', 'Confirm Source - Patient blood draw with OUCH Nurse') }}
                     </div>
                 </div>
 
                 <div class="col-sm-12">
                     <div class="form-group">
-                        {{ Form::checkbox('trueofd184', 1, null, ['id'=>'trueofd184', 'class' => 'className' ]) }}
-                        {{Form::label('trueofd184','Complete OFD 184')}}
+                        {{Form::label('trueOFD184','Complete OFD 184')}}
                     </div>
                     <div class="col-sm-12 form-group well well-sm">
                         <div class="col-sm-4">
@@ -216,7 +191,7 @@
                                 <label class="input-group-btn">
                                             <span class="btn btn-info"><i class="fa fa-cloud-upload"
                                                                           aria-hidden="true"></i> Upload<input
-                                                        type="file" name="trueofd184"
+                                                        type="file" name="trueOFD184"
                                                         style="display: none;"
                                                         multiple>
                                             </span>
@@ -226,7 +201,7 @@
                         </div>
                         <div class="col-sm-4">
                             <a class="btn btn-primary dropdown-toggle col-sm-12" data-toggle="collapse"
-                               data-target="#619"><i class="fa fa-eye" aria-hidden="true"></i> View
+                               data-target="#trueOFD184"><i class="fa fa-eye" aria-hidden="true"></i> View
                                 Previously
                                 uploaded
                                 file(s)
@@ -242,13 +217,13 @@
 
                                     @if(count($attachments) > 0)
                                         @foreach($attachments as $attachment)
-                                            @if($attachment->attachmenttype == 619 && $attachment->createdby ==  Auth::user()->id && $attachment->ofd6bid == $biological->ofd6bid )
+                                            @if($attachment->attachmentType == 619 && $attachment->createdBy ==  Auth::user()->id && $attachment->ofd6bID == $biological->ofd6bID )
                                                 <tr>
                                                     <td>
-                                                        <a href="{{ asset('uploads/'.$attachment->attachmentname) }}"> {{$attachment->attachmentname}}</a>
+                                                        <a href="{{ asset('uploads/'.$attachment->attachmentName) }}"> {{$attachment->attachmentName}}</a>
                                                     </td>
                                                     <td>
-                                                        {{$attachment->created_at}}</a>
+                                                        {{$attachment->created_At}}</a>
                                                     </td>
                                                 </tr>@endif
                                         @endforeach
@@ -261,45 +236,45 @@
                 </div>
                 <div class="col-sm-12">
                     <div class="form-group">
-                        {{ Form::checkbox('bloodreport', 1, null, ['id' => 'bloodreport', 'class'=>'className']) }}
-                        {{Form::label('bloodreport','Report for blood draw as directed by OUCH Nurse')}}
+                        {{ Form::checkbox('bloodReport', 1, null, ['id' => 'bloodReport', 'class'=>'className']) }}
+                        {{Form::label('bloodReport','Report for blood draw as directed by OUCH Nurse')}}
 
                     </div>
                 </div>
 
                 <div class="col-sm-12">
                     <div class="form-group">
-                        {{ Form::checkbox('exposuretab', 1, null, ['id' => 'exposuretab', 'class'=>'className']) }}
-                        {{Form::label('exposuretab','Complete Exposure tab in ePCR ')}}
+                        {{ Form::checkbox('exposureTab', 1, null, ['id' => 'exposureTab', 'class'=>'className']) }}
+                        {{Form::label('exposureTab','Complete Exposure tab in ePCR ')}}
 
                     </div>
                 </div>
 
                 <div class="col-sm-12">
                     <div class="form-group">
-                        {{ Form::checkbox('truebagtag', 1, null, ['id' => 'truebagtag', 'class'=>'className']) }}
-                        {{Form::label('truebagtag','Bag & Tag clothing if applicable - send email to PSS with pick-up location ')}}
+                        {{ Form::checkbox('trueBagTag', 1, null, ['id' => 'trueBagTag', 'class'=>'className']) }}
+                        {{Form::label('trueBagTag','Bag & Tag clothing if applicable - send email to PSS with pick-up location ')}}
 
                     </div>
                 </div>
                 <div class="col-sm-12">
                     <div class="form-group">
-                        {{ Form::checkbox('notifypss', 1, null, ['id' => 'notifypss', 'class'=>'className']) }}
-                        {{Form::label('notifypss','Notify the on-duty PSS via phone at 402-660-1060 ')}}
+                        {{ Form::checkbox('notifyPSS', 1, null, ['id' => 'notifyPSS', 'class'=>'className']) }}
+                        {{Form::label('notifyPSS','Notify the on-duty PSS via phone at 402-660-1060 ')}}
 
                     </div>
                 </div>
                 <div class="col-sm-12">
                     <div class="form-group">
-                        {{ Form::checkbox('trueppe', 1, null, ['id' => 'trueppe', 'class'=>'className']) }}
-                        {{Form::label('trueppe','PPE has been cleaned per SOP SWD 1-0  ')}}
+                        {{ Form::checkbox('truePPE', 1, null, ['id' => 'truePPE', 'class'=>'className']) }}
+                        {{Form::label('truePPE','PPE has been cleaned per SOP SWD 1-0  ')}}
 
                     </div>
                 </div>
                 <div class="col-sm-12">
                     <div class="form-group">
-                        {{ Form::checkbox('truedocumentdaybook', 1, null, ['id' => 'truedocumentdaybook', 'class'=>'className']) }}
-                        {{Form::label('truedocumentdaybook','Document in Company Day Book and on your Personnel Record')}}
+                        {{ Form::checkbox('trueDocumentDayBook', 1, null, ['id' => 'trueDocumentDayBook', 'class'=>'className']) }}
+                        {{Form::label('trueDocumentDayBook','Document in Company Day Book and on your Personnel Record')}}
 
                     </div>
                 </div>
@@ -310,22 +285,21 @@
 
                 <div class="col-sm-12">
                     <div class="form-group">
-                        {{ Form::checkbox('potdecontaminate', 1, null, ['id' => 'potdecontaminate', 'class'=>'className']) }}
-                        {{Form::label('potdecontaminate','Decontaminate self- wash, flush as soon as possible')}}
+                        {{ Form::checkbox('potDecontaminate', 1, null, ['id' => 'potDecontaminate', 'class'=>'className']) }}
+                        {{Form::label('potDecontaminate','Decontaminate self- wash, flush as soon as possible  ')}}
                     </div>
                 </div>
 
                 <div class="col-sm-12">
                     <div class="form-group">
-                        {{ Form::checkbox('potbagtag', 1, null, ['id' => 'potbagtag', 'class'=>'className']) }}
-                        {{Form::label('potbagtag','Bag & Tag clothing if applicable - send email to PSS with pick-up location')}}
+                        {{ Form::checkbox('potBagTag', 1, null, ['id' => 'potBagTag', 'class'=>'className']) }}
+                        {{Form::label('potBagTag','Bag & Tag clothing if applicable - send email to PSS with pick-up location')}}
                     </div>
                 </div>
 
                 <div class="col-sm-12">
                     <div class="form-group">
-                        {{ Form::checkbox('potofd184', 1, null, ['id'=>'potofd184', 'class' => 'className' ]) }}
-                        {{Form::label('potofd184','Complete OFD 184')}}
+                        {{Form::label('potOFD184','Complete OFD 184')}}
                     </div>
                     <div class="col-sm-12 form-group well well-sm">
                         <div class="col-sm-4">
@@ -338,7 +312,7 @@
                             <div class="input-group">
                                 <label class="input-group-btn">
                     <span class="btn btn-info">
-                        <i class="fa fa-cloud-upload" aria-hidden="true"></i> Upload<input type="file" name="potofd184"
+                        <i class="fa fa-cloud-upload" aria-hidden="true"></i> Upload<input type="file" name="postOFD184"
                                                                                            style="display: none;"
                                                                                            multiple>
                     </span>
@@ -348,7 +322,7 @@
                         </div>
                         <div class="col-sm-4">
                             <a class="btn btn-primary dropdown-toggle col-sm-12" data-toggle="collapse"
-                               data-target="#620"><i class="fa fa-eye" aria-hidden="true"></i> View Previously
+                               data-target="#potOFD184"><i class="fa fa-eye" aria-hidden="true"></i> View Previously
                                 uploaded
                                 file(s)
                             </a>
@@ -363,13 +337,13 @@
 
                                     @if(count($attachments) > 0)
                                         @foreach($attachments as $attachment)
-                                            @if($attachment->attachmenttype == 620 && $attachment->createdby ==  Auth::user()->id && $attachment->ofd6bid == $biological->ofd6bid )
+                                            @if($attachment->attachmentType == 620 && $attachment->createdBy ==  Auth::user()->id && $attachment->ofd6bID == $biological->ofd6bID )
                                                 <tr>
                                                     <td>
-                                                        <a href="{{ asset('uploads/'.$attachment->attachmentname) }}"> {{$attachment->attachmentname}}</a>
+                                                        <a href="{{ asset('uploads/'.$attachment->attachmentName) }}"> {{$attachment->attachmentName}}</a>
                                                     </td>
                                                     <td>
-                                                        {{$attachment->created_at}}</a>
+                                                        {{$attachment->created_At}}</a>
                                                     </td>
                                                 </tr>@endif
                                         @endforeach
@@ -380,17 +354,18 @@
                         </div>
                     </div>
                 </div>
+
                 <div class="col-sm-12">
                     <div class="form-group">
-                        {{ Form::checkbox('potppe', 1, null, ['id' => 'potppe', 'class'=>'className']) }}
-                        {{Form::label('potppe','PPE has been cleaned per SOP SWD 1-0')}}
+                        {{ Form::checkbox('potPPE', 1, null, ['id' => 'potPPE', 'class'=>'className']) }}
+                        {{Form::label('potPPE','PPE has been cleaned per SOP SWD 1-0')}}
 
                     </div>
                 </div>
                 <div class="col-sm-12">
                     <div class="form-group">
-                        {{ Form::checkbox('potdocumentdaybook', 1, null, ['id' => 'potdocumentdaybook', 'class'=>'className']) }}
-                        {{Form::label('potdocumentdaybook','Document in Company Day Book and on your Personnel Record   ')}}
+                        {{ Form::checkbox('potDocumentDayBook', 1, null, ['id' => 'potDocumentDayBook', 'class'=>'className']) }}
+                        {{Form::label('potDocumentDayBook','Document in Company Day Book and on your Personnel Record   ')}}
                     </div>
                 </div>
             </div>
@@ -401,17 +376,17 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="alert alert-danger" align="left">
-                            {{Form::label('exposureinjury','Do you have any symptoms of illness or injury and require
+                            {{Form::label('exposureInjury','Do you have any symptoms of illness or injury and require
                                treatment? (In case of Injury, please fill OFD - 6 IOD Application)     ')}}
 
-                            {!! Form::select('exposureinjury',[
+                            {!! Form::select('exposureInjury',[
                               'Yes' => 'Yes',
                               'No' => 'No'],
                             array('class' => 'form-control'))!!}
                             <p class="help-block"></p>
-                            @if($errors->has('exposureinjury'))
+                            @if($errors->has('exposureInjury'))
                                 <p class="help-block">
-                                    {{ $errors->first('exposureinjury') }}
+                                    {{ $errors->first('exposureInjury') }}
                                 </p>
                             @endif
                         </div>
@@ -429,29 +404,28 @@
                 </div>
             </div>
         </div>
-    </div>
 
 
-    {!! Form::close() !!}
-@stop
+        {!! Form::close() !!}
+        @stop
 
-@section('javascript')
+        @section('javascript')
 
-    <script src="{{ ('js/extensions/cookie') }}/bootstrap-table-cookie.js"></script>
-    <script src="{{ ('js/extensions/mobile') }}/bootstrap-table-mobile.js"></script>
+            <script src="{{ ('js/extensions/cookie') }}/bootstrap-table-cookie.js"></script>
+            <script src="{{ ('js/extensions/mobile') }}/bootstrap-table-mobile.js"></script>
 
-    <script src="{{ ('js/export') }}/bootstrap-table-export.js"></script>
-    <script src="{{ ('js/export') }}/tableExport.js"></script>
-    <script src="{{ ('js/export') }}/jquery.base64.js"></script>
+            <script src="{{ ('js/export') }}/bootstrap-table-export.js"></script>
+            <script src="{{ ('js/export') }}/tableExport.js"></script>
+            <script src="{{ ('js/export') }}/jquery.base64.js"></script>
 
-    <script type="text/javascript">
-        $(document).ready(function () {
-            $("input[name$='exposure']").click(function () {
-                var test = $(this).val();
+            <script type="text/javascript">
+                $(document).ready(function () {
+                    $("input[name$='exposure']").click(function () {
+                        var test = $(this).val();
 
-                $("div.desc").hide();
-                $("#Exposure" + test).show();
-            });
-        });
-    </script>
+                        $("div.desc").hide();
+                        $("#Exposure" + test).show();
+                    });
+                });
+            </script>
 @endsection

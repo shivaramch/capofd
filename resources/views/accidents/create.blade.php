@@ -1,28 +1,4 @@
 @extends('layouts.app')
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
-
-
-<script>
-    $(document).ready(function () {
-        $(".datepicker1").datepicker({
-            onClose: function () {
-                var date2 = $('.datepicker1').datepicker('getDate');
-                date2.setDate(date2.getDate() + 35)
-                $(".datepicker2").datepicker("setDate", date2);
-
-                var date3 = $('.datepicker1').datepicker('getDate');
-                date3.setDate(date3.getDate() + 0)
-                $("#datepicker32").datepicker("setDate", date3);
-            }
-        });
-        $(".datepicker2").datepicker();
-        $("#datepicker32").datepicker();
-
-
-    });
-</script>
-
 
 @section('crumbs')
     <ol class="breadcrumb">
@@ -36,7 +12,9 @@
 @endsection
 @section('content')
     {!! Form::open(['method' => 'POST', 'route' => ['accidents.store'], 'files' => true,]) !!}
+    <input type="hidden" name="_token" value="{!!  'csrf_token()' !!}">
     {{ csrf_field() }}
+
     <style>
         #padtop {
             padding-top: 7px;
@@ -86,7 +64,6 @@
                         {!! Form::label('accidentdate', 'Date of Accident:',array('style'=>'padding-top:7px;','class'=> 'col-sm-4 control-label') )!!}
                         <div class="col-sm-6 ">
                             {!! Form::text('accidentdate', old('accidentdate'), array('id'=>'datepicker12','class' => 'form-control datepicker1', 'placeholder' => 'YYYY-MM-DD','required' => 'required'))!!}
-
                             {!! Form::text('accidentdate', old('accidentdate'), array('style'=>'display:none;','id'=>'datepicker32','class' => 'form-control datepicker', 'placeholder' => 'YYYY-MM-DD','required' => 'required'))!!}
                             <p class="help-block"></p>
                             @if($errors->has('accidentdate'))
@@ -458,7 +435,6 @@
             </div>
         </div>
     </div>
-
     <!-- Modal -->
     <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
         <div class="modal-dialog" role="document">

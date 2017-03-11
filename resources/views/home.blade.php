@@ -124,3 +124,44 @@
     @endif
 
 @endsection
+
+@section('javascript')
+
+    <script src="{{ url('js/extensions/cookie') }}/bootstrap-table-cookie.js"></script>
+    <script src="{{ url('js/extensions/mobile') }}/bootstrap-table-mobile.js"></script>
+
+    <script src="{{ url('js/export') }}/bootstrap-table-export.js"></script>
+    <script src="{{ url('js/export') }}/tableExport.js"></script>
+    <script src="{{ url('js/export') }}/jquery.base64.js"></script>
+
+    <script type="text/javascript">
+
+        $('#table').bootstrapTable({
+            classes: 'table table-responsive table-no-bordered table-striped table-hover',
+            iconsPrefix: 'fa',
+            cookie: true,
+            cookieExpire: '2y',
+            mobileResponsive: true,
+            sortable: true,
+            showExport: true,
+            showColumns: true,
+            exportTypes: ['csv', 'excel'],
+            pageList: ['10','25','50','100','150','200','500','1000'],
+            exportOptions: {
+                fileName: 'assets-export-' + (new Date()).toISOString().slice(0,10),
+            },
+            icons: {
+                paginationSwitchDown: 'fa-caret-square-o-down',
+                paginationSwitchUp: 'fa-caret-square-o-up',
+                sort: 'fa fa-sort-amount-desc',
+                plus: 'fa fa-plus',
+                minus: 'fa fa-minus',
+                columns: 'fa-columns',
+                refresh: 'fa-refresh'
+            },
+        });
+        $(".panel").fadeIn("fast");
+
+    </script>
+
+@endsection
