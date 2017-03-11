@@ -7,11 +7,11 @@ use Illuminate\Database\Eloquent\Model;
 class Attachment extends Model
 {
     protected $table = 'attachment';
-
+     protected  $primaryKey  = 'attachmentid';
     protected $fillable = [
         'attachmentid',
         'attachmentname',
-        'attachmentpath',
+       
         'createdby',
         'attachmenttype',
     ];
