@@ -126,4 +126,15 @@ trait FormFileUploadTrait
             $attachment->save();
         }
     }
+
+    public function HazmatUpload(Request $request, $id)
+    {
+        if ($attachmentName = $request['OFD025']) {
+            $attachment = new Attachment();
+            $attachment->attachmentName = $attachmentName;
+            $attachment->ofd6cid = $id;
+            $attachment->attachmentType = '6c';
+            $attachment->save();
+        }
+    }
 }

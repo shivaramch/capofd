@@ -1,11 +1,13 @@
 @extends('layouts.app')
 @section('crumbs')
     <ol class="breadcrumb">
+        <a class="btn btn-default" type="button"
+           href="{{ url('/') }}">
+            <i class="fa fa-arrow-left" aria-hidden="true"></i> Back</a>
         <li><a href="{{ url('/') }}">Dashboard</a></li>
         <li class="active">OFD 6C Hazmat</li>
     </ol>
 @endsection
-
 
 @section('content')
 
@@ -47,8 +49,8 @@
                     @foreach($hazmat as $hazmats)
                         <tr>
                             <td>{{ $hazmats->ofd6cid }}</td>
-                            <td>{{ $hazmats->dateOfExposure }}</td>
-                            <td>{{ $hazmats->assignmentHazmat }}</td>
+                            <td>{{ $hazmats->dateofexposure }}</td>
+                            <td>{{ $hazmats->assignment }}</td>
 
                             <td>
                                 <div>
