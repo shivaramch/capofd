@@ -111,18 +111,18 @@ trait FormFileUploadTrait
     }
     public function BiologicalUpload(Request $request, $id)
     {
-        if ($attachmentName = $request['trueOFD184']) {
+        if ($attachmentName = $request['trueofd184']) {
             $attachment = new Attachment();
             $attachment->attachmentname = $attachmentName;
-            $attachment->ofd6bID = $id;
-            $attachment->attachmenttype = '619';
+            $attachment->ofd6bid = $id;
+            $attachment->attachmenttype = '6b1';
             $attachment->save();
         }
-        if ($attachmentName = $request['potOFD184']) {
+        if ($attachmentName = $request['potofd184']) {
             $attachment = new Attachment();
             $attachment->attachmentname = $attachmentName;
-            $attachment->ofd6bID = $id;
-            $attachment->attachmenttype = '620';
+            $attachment->ofd6bid = $id;
+            $attachment->attachmenttype = '6b2';
             $attachment->save();
         }
     }
