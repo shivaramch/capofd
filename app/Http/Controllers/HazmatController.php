@@ -40,8 +40,11 @@ class HazmatController extends Controller
 
         $link = $request->url() . "/$last_insert_id";
 //write code for email notification here
-        $numsent = (new EmailController)->Email($request, $link);
-
+        //email notification-start
+        $formname="hazmat";
+        $link = $request->url() . "/$last_insert_id";
+        $numsent = (new EmailController)->Email($request, $link,$formname);
+        //email notification-end
         return redirect()->route('hazmat.index');
     }
 
@@ -91,8 +94,11 @@ class HazmatController extends Controller
 
         $link=$request->url();
 
-        //add email code here
-      //  $numsent = (new EmailController)->Email($request, $link);
+        //email notification-start
+        $formname="hazmat";
+        $link = $request->url();
+        $numsent = (new EmailController)->Email($request, $link,$formname);
+        //email notification-end
 
 
         return redirect()->route('hazmat.index');
