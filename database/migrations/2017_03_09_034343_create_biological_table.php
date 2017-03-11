@@ -39,6 +39,7 @@ class CreateBiologicalTable extends Migration
             $table->string('potdocumentdaybook')->nullable();
             $table->string('createdby')->nullable();
             $table->string('updatedby')->nullable();
+            $table->string('applicationstatus', 256)->nullable();
             $table->timestamps();
         });
     }

@@ -31,6 +31,7 @@ class CreateInjuriesTable extends Migration
             $table->string('callsupervisor', 256);
             $table->string('createdby', 256);
             $table->string('updatedby', 256);
+            $table->string('applicationstatus', 256)->nullable();
             $table->timestamps();
 
         });

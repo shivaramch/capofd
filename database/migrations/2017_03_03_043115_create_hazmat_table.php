@@ -22,7 +22,7 @@ class CreateHazmatTable extends Migration
             $table->string('assignment', 256);
             $table->string('personnelid', 256);
             $table->string('shift',256);
-            $table->string('applicationstatus', 256)->nullable() ;
+            $table->string('applicationstatus', 256)->nullable();
             $table->string('exposurehazmat', 256) ->nullable();
             $table->string('updatedby', 256)->nullable();
             $table->string('createdby', 256);

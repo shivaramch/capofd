@@ -26,14 +26,15 @@ class CreateAccidentTable extends Migration
             $table->string('captainid', 256);
             $table->string('battalionchiefid', 256);
             $table->string('aconduty', 256);
-            $table->string('applicationstatus', 256);
+            $table->string('applicationstatus', 256)->nullable();
             $table->string('frmsincidentnum', 256);
             $table->string('calllaw', 256);
             $table->string('daybook', 256);
             $table->string('commemail', 256);
             $table->string('createdby', 256);
             $table->string('updatedby', 256);
-
+            $table->string('applicationstatus', 256)->nullable();
+// application status nullable
             $table->timestamps();
         });
     }
