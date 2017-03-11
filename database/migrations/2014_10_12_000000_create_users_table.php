@@ -22,6 +22,7 @@ class CreateUsersTable extends Migration
             $table->rememberToken();
             $table->string('roleid',256)->nullable();
             $table->timestamps();
+            $table->ipAddress('ip_address', 45)->nullable();
         });
     }
 
