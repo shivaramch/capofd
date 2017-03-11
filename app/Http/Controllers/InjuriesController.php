@@ -1,27 +1,32 @@
 <?php
 namespace App\Http\Controllers;
+
 use App\Attachment;
 use App\Injury;
 use Illuminate\Http\Request;
 use App\Http\Requests\StoreStationsRequest;
+use App\Http\Requests\UpdateInjuriesRequest;
 use App\Http\Controllers\Traits\FileUploadTrait;
 use App\Http\Controllers\Traits\FormFileUploadTrait;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Redirect;
 use Auth;
+use App\User;
+
 class InjuriesController extends Controller
 {
     use FileUploadTrait;
     use FormFileUploadTrait;
+
     public function index()
     {
         $injuries = Injury::all();
         $attachments = Attachment::all();
-        return view('injuries.index', compact('injuries'));
+        return view('injuries.index', compact('injuries', 'attachments'));
     }
-	
-	public function create()
+
+    public function create()
     {
 
         return view('injuries.create');
@@ -36,11 +41,13 @@ class InjuriesController extends Controller
         //$request->session()->flash('alert-success', 'Form was successfully Submitted!');
         return redirect()->route('injuries.index');
     }
-	
-	 public function edit($id)
+
+    public function edit($id)
     {
+        $attachments = Attachment::all();
         $injury = Injury::findOrFail($id);
-        return view('injuries.edit', compact('injury', ''));
+        return view('injuries.edit', compact('injury', 'attachments'));
+
     }
 
     public function show($id)
@@ -52,42 +59,42 @@ class InjuriesController extends Controller
         //show history code start
         //below one line code is for storing all history related to the $id in variable, which is to be used to display in show page.
         //show history code end
-        return view('injuries.show',compact('injury','attachments'));
+        return view('injuries.show', compact('injury', 'attachments'));
     }
 
-	
-	public function update(UpdateInjuriesRequest $request, $id)
+
+    public function update(UpdateInjuriesRequest $request, $id)
     {
         //$accident = $this->saveFiles($request);
         $injury = Injury::findOrFail($id);
 
-        \DB::table('injuries')->where('ofd6ID', $injury->ofd6ID)->update([
-        'reportNum'=> $injury->reportNum,
-        'createDate'=>$injury->createDate,
-        'injuryDate'=>$injury->injuryDate,
-        'injuredEmployeeName'=>$injury->injuredEmployeeName,
-        'injuredEmployeeID'=>$injury->injuredEmployeeID,
-        'assignmentInjury'=>$injury->assignmentInjury,
-        'shift'=>$injury->shift,
-        'frmsIncidentNum'=>$injury->frmsIncidentNum,
-        'callFSupSwdBC'=>$injury->callFSupSwdBC,
-        'User_Login_ID'=>$injury->User_Login_ID,
-        'policeOfficerCompleteSign'=>$injury->policeOfficerCompleteSign,
-        'callFireSupervisor'=>$injury->callFireSupervisor,
-        'createdby'=>$injury->createdby,
-        'updatedby'=>$injury->updatedby,
-        'corVelID'=>$injury->corVelID,
-        'captainID'=>$injury->captainID,
-        'battalionChiefID'=>$injury->battalionChiefID,
-        'acOnDutyID'=>$injury->acOnDutyID]
+        \DB::table('injuries')->where('ofd6id', $injury->ofd6id)->update([
+                'reportnum' => $injury->reportnum,
+                'createdate' => $injury->createdate,
+                'injurydate' => $injury->injurydate,
+                'injuredemployeename' => $injury->injuredemployeename,
+                'injuredemployeeid' => $injury->injuredemployeeid,
+                'assignmentinjury' => $injury->assignmentinjury,
+                'corvelid' => $injury->corvelid,
+                'captainid' => $injury->captainid,
+                'battalionchiefid' => $injury->battalionchiefid,
+                'acondutyid' => $injury->acondutyid,
+                'shift' => $injury->shift,
+                'frmsincidentnum' => $injury->frmsincidentnum,
+                'policeofficercompletesign' => $injury->policeofficercompletesign,
+                'callsupervisor' => $injury->callsupervisor,
+                'createdby' => $injury->createdby,
+                'updatedby' => $injury->updatedby]
         );
+        $request = $this->saveFiles($request);
 
-        //end history code
         $injury->update($request->all());
 
+        $this->InjuriesUpload($request, $id);
+        //$request->session()->flash('alert-success', 'Form was successfully Submitted!');
         return redirect()->route('injuries.index');
     }
-	
+
 //    public function show($id)
 //    {
 //        $relations = [
