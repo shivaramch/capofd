@@ -36,13 +36,13 @@ class EmailController extends Controller
         //Make collection which will store emails of all people for whom email is to be sent
         $allemails = new Collection();
 
-        $captainemail = DB::table('users')->where('ID', $request->captainID)->pluck('Email');
-        $captainame = DB::table('users')->where('ID', $request->captainID)->pluck('Name');
-        $BCemail = DB::table('users')->where('ID', $request->battalionChiefID)->pluck('Email');
-        $BCname = DB::table('users')->where('ID', $request->battalionChiefID)->pluck('Name');
-        $ACemail = DB::table('users')->where('ID', $request->acOnDutyID)->pluck('Email');
+        $captainemail = DB::table('users')->where('id', $request->captainid)->pluck('email');
+        $captainame = DB::table('users')->where('id', $request->captainid)->pluck('name');
+        $BCemail = DB::table('users')->where('id', $request->battalionchiefid)->pluck('email');
+        $BCname = DB::table('users')->where('id', $request->battalionchiefid)->pluck('name');
+        $ACemail = DB::table('users')->where('id', $request->aconduty)->pluck('email');
 
-        $ACname = DB::table('users')->where('ID', $request->acOnDutyID)->pluck('Name');
+        $ACname = DB::table('users')->where('id', $request->aconduty)->pluck('name');
         $persons = [];
 
         $allemails = collect();

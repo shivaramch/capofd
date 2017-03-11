@@ -11,7 +11,7 @@ class Attachment extends Model
     protected $fillable = [
         'attachmentid',
         'attachmentname',
-       
+
         'createdby',
         'attachmenttype',
     ];
