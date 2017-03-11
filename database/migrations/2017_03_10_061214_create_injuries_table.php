@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateInjuryTable extends Migration
+class CreateInjuriesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,11 @@ class CreateInjuryTable extends Migration
      */
     public function up()
     {
-        Schema::create('injury', function (Blueprint $table) {
+        Schema::create('injuries', function (Blueprint $table) {
             $table->increments('ofd6id');
-            $table->string('reportnum', 256);
+            $table->string('reportnum', 256)->nullable();
             $table->date('injurydate');
+            $table->date('createdate');
             $table->string('injuredemployeename', 256);
             $table->string('injuredemployeeid', 256);
             $table->string('assignmentinjury', 256);

@@ -24,7 +24,7 @@ class UpdateInjuriesRequest extends FormRequest
     public function rules()
     {
         return [
-            'driverID' => 'required|max:255',
+            'injuredemployeeid' => 'required|integer:injuries,injuredemployeeid,' . $this->route('injury'),
         ];
     }
 }
