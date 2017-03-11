@@ -32,6 +32,12 @@ class BiologicalsController extends Controller
         //$link = $request->url() . "/$last_insert_id";
         //write code for email notification here
         //$numsent = (new EmailController)->Email($request, $link);
+
+        //email notification-start
+        $formname="biologicals";
+        $link = $request->url() . "/$last_insert_id";
+        $numsent = (new EmailController)->Email($request, $link,$formname);
+        //email notification-end
         return redirect()->route('biologicals.index');
     }
     public function edit($id)
@@ -68,6 +74,15 @@ class BiologicalsController extends Controller
         $request = $this->saveFiles($request);
         $biological->update($request->all());
         $this->BiologicalUpload($request, $id);
+
+
+        //email notification-start
+        $formname="biologicals";
+        $link = $request->url();
+        $numsent = (new EmailController)->Email($request, $link,$formname);
+        //email notification-end
+
+
         return redirect()->route('biologicals.index');
         //add email code here
         //$numsent = (new EmailController)->Email($request, $link);

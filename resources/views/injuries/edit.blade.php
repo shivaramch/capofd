@@ -161,13 +161,13 @@
                             @endif
                         </div>
                     </div><div class="col-sm-4 form-group">
-                        {!! Form::label('acondutyid', 'Assistant Chief #', ['class' => 'col-sm-4 control-label']) !!}
+                        {!! Form::label('aconduty', 'Assistant Chief #', ['class' => 'col-sm-4 control-label']) !!}
                         <div class="col-sm-6 ">
-                            {!! Form::text('acondutyid', old('acondutyid'), array('class' => 'form-control','placeholder'=>'Enter Badge Id','required' => 'required'))!!}
+                            {!! Form::text('aconduty', old('aconduty'), array('class' => 'form-control','placeholder'=>'Enter Badge Id','required' => 'required'))!!}
                             <p class="help-block"></p>
-                            @if($errors->has('acondutyid'))
+                            @if($errors->has('aconduty'))
                                 <p class="help-block">
-                                    {{ $errors->first('acondutyid') }}
+                                    {{ $errors->first('aconduty') }}
                                 </p>
                             @endif
                         </div>

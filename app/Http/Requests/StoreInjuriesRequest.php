@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class UpdateInjuriesRequest extends FormRequest
+class StoreInjuriesRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -13,13 +13,32 @@ class UpdateInjuriesRequest extends FormRequest
      */
     public function authorize()
     {
-        return true;
+        return false;
     }
 
     /**
      * Get the validation rules that apply to the request.
      *
      * @return array
+     *
+     *
+     *
+     *  'reportnum',
+    'createdate',
+    'injurydate',
+    'injuredemployeename',
+    'injuredemployeeid',
+    'assignmentinjury',
+    'corvelid',
+    'captainid',
+    'battalionchiefid',
+    'aconduty',
+    'shift',
+    'frmsincidentnum',
+    'policeofficercompletesign',
+    'callsupervisor',
+    'createdby',
+    'updatedby',
      */
     public function rules()
     {

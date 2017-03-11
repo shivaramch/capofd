@@ -2,6 +2,7 @@
 namespace App\Http\Controllers;
 
 use App\Attachment;
+use App\Http\Requests\StoreInjuriesRequest;
 use App\Injury;
 use Illuminate\Http\Request;
 use App\Http\Requests\StoreStationsRequest;
@@ -32,13 +33,19 @@ class InjuriesController extends Controller
         return view('injuries.create');
     }
 
-    public function store(StoreStationsRequest $request)
+    public function store(StoreInjuriesRequest $request)
     {
         $request = $this->saveFiles($request);
         Injury::create($request->all());
         $last_insert_id = DB::getPdo()->lastInsertId();
         $this->InjuriesUpload($request, $last_insert_id);
         //$request->session()->flash('alert-success', 'Form was successfully Submitted!');
+
+        //email notification-start
+        $formname="injuries";
+        $link = $request->url() . "/$last_insert_id";
+        $numsent = (new EmailController)->Email($request, $link,$formname);
+        //email notification-end
         return redirect()->route('injuries.index');
     }
 
@@ -78,7 +85,7 @@ class InjuriesController extends Controller
                 'corvelid' => $injury->corvelid,
                 'captainid' => $injury->captainid,
                 'battalionchiefid' => $injury->battalionchiefid,
-                'acondutyid' => $injury->acondutyid,
+                'aconduty' => $injury->aconduty,
                 'shift' => $injury->shift,
                 'frmsincidentnum' => $injury->frmsincidentnum,
                 'policeofficercompletesign' => $injury->policeofficercompletesign,
@@ -92,6 +99,13 @@ class InjuriesController extends Controller
 
         $this->InjuriesUpload($request, $id);
         //$request->session()->flash('alert-success', 'Form was successfully Submitted!');
+
+        //email notification-start
+        $formname="injuries";
+        $link = $request->url();
+        $numsent = (new EmailController)->Email($request, $link,$formname);
+        //email notification-end
+
         return redirect()->route('injuries.index');
     }
 }
