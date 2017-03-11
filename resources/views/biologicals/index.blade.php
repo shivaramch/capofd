@@ -48,9 +48,9 @@
                 @if(count($biologicals) > 0)
                     @foreach($biologicals as $biological)
                         <tr>
-                            <td>{{ $biological->ofd6bID }}</td>
-                            <td>{{ $biological->dateOfExposure }}</td>
-                            <td>{{ $biological->assignmentBiological }}</td>
+                            <td>{{ $biological->ofd6bid }}</td>
+                            <td>{{ $biological->dateofexposure }}</td>
+                            <td>{{ $biological->assignmentbiological }}</td>
                             <td>{{ $biological->status }}</td>
                             <td>
                                 <div>
@@ -100,9 +100,9 @@
                     @if(count($biologicals) > 0)
                         @foreach($biologicals as $biological)
                             <tr>
-                                <td>{{ $biological->ofd6bID }}</td>
-                                <td>{{ $biological->dateOfExposure }}</td>
-                                <td>{{ $biological->assignmentBiological }}</td>
+                                <td>{{ $biological->ofd6bid }}</td>
+                                <td>{{ $biological->dateofexposure }}</td>
+                                <td>{{ $biological->assignmentbiological }}</td>
                                 <td>{{ $biological->status }}</td>
                                 <td>
                                     <div>
