@@ -32,7 +32,7 @@ class AccidentsController extends Controller
         $this->AccidentUpload($request, $last_insert_id);
         $link = $request->url() . "/$last_insert_id";
 //write code for email notification here
-        $numsent = (new EmailController)->Email($request, $link);
+        //$numsent = (new EmailController)->Email($request, $link);
         return redirect()->route('accidents.index');
     }
     public function edit($id)
@@ -74,7 +74,7 @@ class AccidentsController extends Controller
         $this->AccidentUpload($request, $id);
         $link = $request->url();
         //add email code here
-        $numsent = (new EmailController)->Email($request, $link);
+        //$numsent = (new EmailController)->Email($request, $link);
         return redirect()->route('accidents.index');
     }
 }
