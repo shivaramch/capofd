@@ -10,7 +10,7 @@ class Accident extends Model
 {
     public $timestamps = false;
 
-    protected $primaryKey = 'ofd6aID';
+    protected $primaryKey = 'ofd6aid';
 
     protected $table = 'accident';
 
@@ -32,21 +32,21 @@ class Accident extends Model
 
     protected $fillable = [
 
-        'accidentDate',
-        'driverName',
-        'driverID',
-        'assignmentAccident',
-        'Apparatus',
-        'captainID',
-        'battalionChiefID',
-        'acOnDutyID',
-        'CommEmail',
-        'CallLaw',
-        'DayBook',
-        'Status'
 
-      ];
-
+        'accidentdate',
+        'drivername',
+        'driverid',
+        'assignmentaccident',
+        'apparatus',
+        'captainid',
+        'battalionchiefid',
+        'aconduty',
+        'commemail',
+        'calllaw',
+        'daybook',
+        'status',
+        'frmsincidentnum'
+    ];
     /**
      * Set attribute to date format
      * @param $input
@@ -54,9 +54,9 @@ class Accident extends Model
     public function setDateAccidentDate($input)
     {
         if ($input != null) {
-            $this->attributes['accidentDate'] = Carbon::createFromFormat('Y-m-d', $input)->format('Y-m-d');
+            $this->attributes['accidentdate'] = Carbon::createFromFormat('Y-m-d', $input)->format('Y-m-d');
         } else {
-            $this->attributes['accidentDate'] = null;
+            $this->attributes['accidentdate'] = null;
         }
     }
 
