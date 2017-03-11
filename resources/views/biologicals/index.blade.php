@@ -54,10 +54,10 @@
                             <td>{{ $biological->status }}</td>
                             <td>
                                 <div>
-                                    <a href="{{ route('biologicals.show',[$biological->ofd6bID]) }}"
+                                    <a href="{{ route('biologicals.show',[$biological->ofd6bid]) }}"
                                        class="btn btn-xs btn-info btn-block"><i
                                                 class="fa fa-eye" aria-hidden="true"></i> VIEW</a>
-                                    <a href="{{ route('biologicals.edit',[$biological->ofd6bID]) }}"
+                                    <a href="{{ route('biologicals.edit',[$biological->ofd6bid]) }}"
                                        class="btn btn-xs btn-warning btn-block"><i class="fa fa-pencil-square-o"
                                                                                    aria-hidden="true"></i> EDIT</a>
                                 </div>
@@ -106,10 +106,10 @@
                                 <td>{{ $biological->status }}</td>
                                 <td>
                                     <div>
-                                        <a href="{{ route('biologicals.show',[$biological->ofd6bID]) }}"
+                                        <a href="{{ route('biologicals.show',[$biological->ofd6bid]) }}"
                                            class="btn btn-xs btn-info btn-block"><i
                                                     class="fa fa-eye" aria-hidden="true"></i> VIEW</a>
-                                        <a href="{{ route('biologicals.edit',[$biological->ofd6bID]) }}"
+                                        <a href="{{ route('biologicals.edit',[$biological->ofd6bid]) }}"
                                            class="btn btn-xs btn-warning btn-block"><i class="fa fa-pencil-square-o"
                                                                                        aria-hidden="true"></i> EDIT</a>
                                     </div>
