@@ -24,7 +24,7 @@ class StoreStationsRequest extends FormRequest
     {
         return [
             'station_document' => 'max:20480',
-            'createDate' => 'string:injuries,createDate,'.$this->route('injury'),
+            'createdate' => 'string:injury,createdate,'.$this->route('injury'),
         ];
     }
 }
