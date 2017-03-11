@@ -248,7 +248,7 @@
                                                         <a href="{{ asset('uploads/'.$attachment->attachmentname) }}"> {{$attachment->attachmentname}}</a>
                                                     </td>
                                                     <td>
-                                                        {{$attachment->created_At}}</a>
+                                                        <a>{{$attachment->created_at}}</a>
                                                     </td>
                                                 </tr>@endif
                                         @endforeach
@@ -369,7 +369,7 @@
                                                         <a href="{{ asset('uploads/'.$attachment->attachmentname) }}"> {{$attachment->attachmentname}}</a>
                                                     </td>
                                                     <td>
-                                                        {{$attachment->created_At}}</a>
+                                                        <a>{{$attachment->created_at}}</a>
                                                     </td>
                                                 </tr>@endif
                                         @endforeach
