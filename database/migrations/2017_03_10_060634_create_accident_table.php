@@ -14,7 +14,7 @@ class CreateAccidentTable extends Migration
     public function up()
     {
         Schema::create('accident', function (Blueprint $table) {
-            $table->increments('ofd6aid')->nullable();
+            $table->increments('ofd6aid');
 
             $table->date('accidentdate')->nullable();
 
@@ -33,7 +33,7 @@ class CreateAccidentTable extends Migration
             $table->string('commemail', 256)->nullable();
             $table->string('createdby', 256)->nullable();
             $table->string('updatedby', 256)->nullable();
-            $table->string('applicationstatus', 256)->nullable();
+
             $table->ipAddress('ip_address', 45)->nullable();
 // application status nullable
             $table->timestamps();
