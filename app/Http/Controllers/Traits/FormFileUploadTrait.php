@@ -131,9 +131,9 @@ trait FormFileUploadTrait
     {
         if ($attachmentName = $request['OFD025']) {
             $attachment = new Attachment();
-            $attachment->attachmentName = $attachmentName;
+            $attachment->attachmentname = $attachmentName;
             $attachment->ofd6cid = $id;
-            $attachment->attachmentType = '6c';
+            $attachment->attachmenttype = '6c';
             $attachment->save();
         }
     }
