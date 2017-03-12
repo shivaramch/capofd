@@ -61,7 +61,7 @@ class BiologicalsController extends Controller
     public function update(UpdateBiologicalsRequest $request, $id)
     {
         $biological = Biological::findOrFail($id);
-        \DB::table('biological')->where('ofd6bid', $biological->ofd6bid)->update([
+        \DB::table('biologicals')->where('ofd6bid', $biological->ofd6bid)->update([
                 'exposedemployeename' => $biological->exposedemployeename,
                 'dateofexposure' => $biological->dateofexposure,
                 'employeeid' => $biological->employeeid,

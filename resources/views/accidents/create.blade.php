@@ -102,7 +102,7 @@
                     <div class="col-sm-4 form-group">
                         {!! Form::label('frmsincidentnum', 'FRMS Incident #', array('style'=>'padding-top:7px;','class' => 'col-sm-4 control-label')) !!}
                         <div class="col-sm-6 ">
-                            {!! Form::text('frmsincidentnum', old('frmsincidentnum'), ['class' => 'form-control'])!!}
+                            {!! Form::text('frmsincidentnum', old('frmsincidentnum'), array('class' => 'form-control','placeholder'=>'Enter FRMS number'))!!}
                             <p class="help-block"></p>
                             @if($errors->has('frmsincidentnum'))
                                 <p class="help-block">
@@ -424,17 +424,20 @@
                             Book</strong></label>
                 </div>
             </div>
-        </div>
-    </div>
-    <div class="panel panel-default">
-        <div class="col-sm-12 panel-headinzzzzg">
+            <br>
             <label class="col-sm-5"></label>
-            <div class="btn-bottom ">
-                {!! Form::submit('Submit',['class' => 'btn btn-success']) !!}
-                <a href="{{ route('accidents.index') }}" class="btn btn-default">Cancel</a>
-            </div>
+            <button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal">
+                Submit
+            </button>
+
+            <a href="{{ route('accidents.index') }}" class="btn btn-danger">Cancel</a>
+            <br>
+
         </div>
     </div>
+
+
+
     <!-- Modal -->
     <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
         <div class="modal-dialog" role="document">
@@ -442,14 +445,18 @@
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
                                 aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+                    <h4 class="modal-title" id="myModalLabel"></h4>
                 </div>
                 <div class="modal-body">
-                    ...
+                    Are you sure you want to Submit?
                 </div>
                 <div class="modal-footer">
-                    {!! Form::submit('Submit',['class' => 'btn btn-success']) !!}
+                    {!! Form::submit('Yes',['class' => 'btn btn-success']) !!}
+                    <button type="button" class=" btn btn-danger" data-dismiss="modal" aria-label="">No</button>
+
+
                 </div>
+
             </div>
         </div>
     </div>

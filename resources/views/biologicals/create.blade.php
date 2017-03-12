@@ -15,6 +15,8 @@
 
 @section('content')
     {!! Form::open(['method' => 'POST', 'route' => ['biologicals.store'], 'files' => true,]) !!}
+    <input type="hidden" name="_token" value="{!!  'csrf_token()' !!}">
+    {{ csrf_field() }}
 
     <style>
         #padtop {
@@ -356,7 +358,25 @@
                     </div>
                 </div>
             </div>
+            <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                        aria-hidden="true">&times;</span></button>
+                            <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+                        </div>
+                        <div class="modal-body">
+                            ...
+                        </div>
+                        <div class="modal-footer">
+                            {!! Form::submit('Submit',['class' => 'btn btn-success']) !!}
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
+
             {!! Form::close() !!}
             @stop
 

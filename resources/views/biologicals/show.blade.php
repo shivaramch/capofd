@@ -13,10 +13,6 @@
     @section('content')
     {!! Form::model($biological,['method' => 'PUT', 'route' => ['biologicals.update', $biological->ofd6bid], 'files' => true,])!!}
 
-
-
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-    <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
     <style>
         #padtop {
             padding-top: 7px;
@@ -54,7 +50,7 @@
             <div class="col-sm-4 form-group">
                 {!! Form::label('exposedemployeename', 'Exposed Employee Name',array('style'=>'padding-top:7px;','class'=> 'col-sm-4 control-label') ) !!}
                 <div class="col-sm-6 ">
-                    {!! Form::text('exposedemployeename', old('exposedemployeename'), array('class'=>'form-control', 'readonly' => 'true'))!!}
+                    {!! Form::text('exposedemployeename', old('exposedemployeename'),['disabled'], array('class'=>'form-control', 'readonly' => 'true'))!!}
                     <p class="help-block"></p>
                     @if($errors->has('exposedemployeename'))
                         <p class="help-block">
@@ -66,7 +62,7 @@
             <div class="col-sm-4 form-group">
                 {!! Form::label('dateofexposure', 'Date of Exposure', array('style'=>'padding-top:7px;','class'=> 'col-sm-4 control-label') ) !!}
                 <div class="col-sm-6 ">
-                    {!! Form::text('dateofexposure', old('dateofexposure'), array('id'=>'datepicker', 'placeholder' => 'YYYY-MM-DD','required' => 'required'))!!}
+                    {!! Form::text('dateofexposure', old('dateofexposure'),['disabled'], array('id'=>'datepicker', 'placeholder' => 'YYYY-MM-DD','required' => 'required'))!!}
                     <p class="help-block"></p>
                     @if($errors->has('dateofexposure'))
                         <p class="help-block">
@@ -78,7 +74,7 @@
             <div class="col-sm-4 form-group">
                 {!! Form::label('employeeid', 'Employee ID#', array('style'=>'padding-top:7px;','class'=> 'col-sm-4 control-label') ) !!}
                 <div class="col-sm-6 ">
-                    {!! Form::text('employeeid', old('employeeid'), array('class'=> 'form-control','placeholder'=>'Enter Badge ID', 'readonly' => 'true'))!!}
+                    {!! Form::text('employeeid', old('employeeid'), ['disabled'], array('class'=> 'form-control','placeholder'=>'Enter Badge ID', 'readonly' => 'true'))!!}
                     <p class="help-block"></p>
                     @if($errors->has('employeeid'))
                         <p class="help-block">
@@ -92,7 +88,7 @@
             <div class="col-sm-4 form-group">
                 {!! Form::label('assignmentbiological', 'Assignment', array('style'=>'padding-top:7px;','class'=> 'col-sm-4 control-label') ) !!}
                 <div class="col-sm-6 ">
-                    {!! Form::text('assignmentbiological', old('assignmentbiological'), array('class' => 'form-control', 'readonly' => 'true'))!!}
+                    {!! Form::text('assignmentbiological', old('assignmentbiological'),['disabled'],array('class' => 'form-control', 'readonly' => 'true'))!!}
                     <p class="help-block"></p>
                     @if($errors->has('assignmentbiological'))
                         <p class="help-block">
@@ -105,13 +101,14 @@
             <div class="col-sm-4 form-group">
                 {!! Form::label('shift', 'Shift', ['class'=> 'col-sm-4 control-label'] ) !!}
                 <div class="col-sm-6">
-                    {{ $biological->shift}}
+                    {!! Form::text('shift', old('shift'),['disabled'],array('class' => 'form-control', 'readonly' => 'true'))!!}
+
                 </div>
             </div>
             <div class="col-sm-4 form-group">
                 {!! Form::label('epcrincidentnum', 'EPCR Incident#', array('style'=>'padding-top:7px;','class'=> 'col-sm-4 control-label') ) !!}
                 <div class="col-sm-6 ">
-                    {!! Form::text('epcrincidentnum', old('epcrincidentnum'), array('class' => 'form-control','placeholder'=>'Enter Incident Num', 'readonly' => 'true'))!!}
+                    {!! Form::text('epcrincidentnum', old('epcrincidentnum'),['disabled'], array('class' => 'form-control','placeholder'=>'Enter Incident Num', 'readonly' => 'true'))!!}
                     <p class="help-block"></p>
                     @if($errors->has('epcrincidentnum'))
                         <p class="help-block">
@@ -125,7 +122,7 @@
             <div class="col-sm-4 form-group">
                 {!! Form::label('primaryidconumber', 'Primary IDCO #', array('style'=>'padding-top:7px;','class'=> 'col-sm-4 control-label') ) !!}
                 <div class="col-sm-6 ">
-                    {!! Form::text('primaryidconumber', old('primaryidconumber'), array('class' => 'form-control','placeholder'=>'Enter IDCO Badge ID', 'readonly' => 'true'))!!}
+                    {!! Form::text('primaryidconumber', old('primaryidconumber'),['disabled'], array('class' => 'form-control','placeholder'=>'Enter IDCO Badge ID', 'readonly' => 'true'))!!}
                     <p class="help-block"></p>
                     @if($errors->has('primaryidconumber'))
                         <p class="help-block">
@@ -137,7 +134,7 @@
             <div class="col-sm-4 form-group">
                 {!! Form::label('frmsincidentnum', 'FRMS Incident #', array('style'=>'padding-top:7px;','class'=> 'col-sm-4 control-label') ) !!}
                 <div class="col-sm-6 ">
-                    {!! Form::text('frmsincidentnum', old('frmsincidentnum'), array('class' => 'form-control','placeholder'=>'Enter FRMS Num', 'readonly' => 'true'))!!}
+                    {!! Form::text('frmsincidentnum', old('frmsincidentnum'),['disabled'], array('class' => 'form-control','placeholder'=>'Enter FRMS Num', 'readonly' => 'true'))!!}
                     <p class="help-block"></p>
                     @if($errors->has('frmsincidentnum'))
                         <p class="help-block">
@@ -149,7 +146,7 @@
             <div class="col-sm-4 form-group">
                 {!! Form::label('todaysdate', 'Date', array('style'=>'padding-top:7px;','class'=> 'col-sm-4 control-label') ) !!}
                 <div class="col-sm-6 ">
-                    {!! Form::text('todaysdate', old('todaysdate'), array('placeholder'=>'MM/DD/YYYY'))!!}
+                    {!! Form::text('todaysdate', old('todaysdate'),['disabled'], array('placeholder'=>'MM/DD/YYYY'))!!}
                     <p class="help-block"></p>
                     @if($errors->has('todaysdate'))
                         <p class="help-block">

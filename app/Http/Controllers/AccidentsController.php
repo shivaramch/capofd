@@ -57,7 +57,7 @@ class AccidentsController extends Controller
     public function update(UpdateAccidentsRequest $request, $id)
     {
         $accident = Accident::findOrFail($id);
-        \DB::table('accident')->where('ofd6aid', $accident->ofd6aid)->update([
+        \DB::table('accidents')->where('ofd6aid', $accident->ofd6aid)->update([
                 'accidentdate' => $accident->accidentdate,
                 'drivername' => $accident->drivername,
                 'driverid' => $accident->driverid,

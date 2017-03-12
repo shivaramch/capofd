@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Auth;
 
 class Injury extends Model
 {
-    protected $primaryKey = 'ofd6ID';
+    protected $primaryKey = 'ofd6id';
 
     public static function boot()
     {

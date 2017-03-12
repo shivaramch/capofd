@@ -12,6 +12,7 @@
 
 @section('content')
     {!! Form::model($injury,['method' => 'PUT', 'route' => ['injuries.update', $injury->ofd6id], 'files' => true,]) !!}
+    <input type="hidden" name="_token" value="{!!  'csrf_token()' !!}">
     {{ csrf_field() }}
     <style>
         #padtop {
@@ -160,7 +161,8 @@
                                 </p>
                             @endif
                         </div>
-                    </div><div class="col-sm-4 form-group">
+                    </div>
+                    <div class="col-sm-4 form-group">
                         {!! Form::label('aconduty', 'Assistant Chief #', ['class' => 'col-sm-4 control-label']) !!}
                         <div class="col-sm-6 ">
                             {!! Form::text('aconduty', old('aconduty'), array('class' => 'form-control','placeholder'=>'Enter Badge Id','required' => 'required'))!!}
@@ -229,14 +231,17 @@
                 <div class="col-sm-12 form-group well well-sm">
                     <div class="col-sm-4">
                         <a class="btn btn-success dropdown-toggle col-sm-12" type="button"
-                           href="{{ asset('Fillable PDFs\Injury Module\(Injury PDF) CorVel Work Ability Report.pdf') }}"download="(Injury PDF) CorVel Work Ability Report.pdf">
+                           href="{{ asset('Fillable PDFs\Injury Module\(Injury PDF) CorVel Work Ability Report.pdf') }}"
+                           download="(Injury PDF) CorVel Work Ability Report.pdf">
                             <i class="fa fa-download" aria-hidden="true"></i> Download</a>
                     </div>
                     <div class="col-sm-4">
                         <div class="input-group">
                             <label class="input-group-btn">
                     <span class="btn btn-info">
-                        <i class="fa fa-cloud-upload" aria-hidden="true"></i> Upload<input type="file" name="CorvelAttachmentName" style="display: none;" >
+                        <i class="fa fa-cloud-upload" aria-hidden="true"></i> Upload<input type="file"
+                                                                                           name="CorvelAttachmentName"
+                                                                                           style="display: none;">
                     </span>
                             </label>
                             <input type="text" id="upload-file-info" class="form-control" readonly>
@@ -282,14 +287,17 @@
                 <div class="col-sm-12 form-group well well-sm">
                     <div class="col-sm-4">
                         <a class="btn btn-success dropdown-toggle col-sm-12" type="button"
-                           href="{{ asset('Fillable PDFs\Injury Module\(Injury PDF) OFD Investigation Report for Occupational Injury or Illness.pdf') }}"download="(Injury PDF) OFD Investigation Report for Occupational Injury or Illness.pdf">
+                           href="{{ asset('Fillable PDFs\Injury Module\(Injury PDF) OFD Investigation Report for Occupational Injury or Illness.pdf') }}"
+                           download="(Injury PDF) OFD Investigation Report for Occupational Injury or Illness.pdf">
                             <i class="fa fa-download" aria-hidden="true"></i> Download</a>
                     </div>
                     <div class="col-sm-4">
                         <div class="input-group">
                             <label class="input-group-btn">
                     <span class="btn btn-info">
-                        <i class="fa fa-cloud-upload" aria-hidden="true"></i> Upload<input type="file" name="InvestigationAttachment" style="display: none;" >
+                        <i class="fa fa-cloud-upload" aria-hidden="true"></i> Upload<input type="file"
+                                                                                           name="InvestigationAttachment"
+                                                                                           style="display: none;">
                     </span>
                             </label>
                             <input type="text" id="upload-file-info" class="form-control" readonly>
@@ -333,7 +341,8 @@
                 <div class="col-sm-12 form-group well well-sm">
                     <div class="col-sm-4">
                         <a class="btn btn-success dropdown-toggle col-sm-12" type="button"
-                           href="{{ asset('Fillable PDFs\Injury Module\(Injury PDF) OFD 295a Injury Witness Statement.pdf') }}"download="(Injury PDF) OFD 295a Injury Witness Statement.pdf">
+                           href="{{ asset('Fillable PDFs\Injury Module\(Injury PDF) OFD 295a Injury Witness Statement.pdf') }}"
+                           download="(Injury PDF) OFD 295a Injury Witness Statement.pdf">
                             <i class="fa fa-download" aria-hidden="true"></i> Download</a>
                     </div>
 
@@ -341,7 +350,9 @@
                         <div class="input-group">
                             <label class="input-group-btn">
                     <span class="btn btn-info">
-                        <i class="fa fa-cloud-upload" aria-hidden="true"></i> Upload<input type="file" name="StatementAttachment" style="display: none;" >
+                        <i class="fa fa-cloud-upload" aria-hidden="true"></i> Upload<input type="file"
+                                                                                           name="StatementAttachment"
+                                                                                           style="display: none;">
                     </span>
                             </label>
                             <input type="text" id="upload-file-info" class="form-control" readonly>
@@ -386,14 +397,17 @@
                 <div class="col-sm-12 form-group well well-sm">
                     <div class="col-sm-4">
                         <a class="btn btn-success dropdown-toggle col-sm-12" type="button"
-                           href="{{ asset('Fillable PDFs\Injury Module\(Injury PDF) OFD Employee Choice of Physician or Doctor.pdf') }}"download="(Injury PDF) OFD Employee Choice of Physician or Doctor.pdf">
+                           href="{{ asset('Fillable PDFs\Injury Module\(Injury PDF) OFD Employee Choice of Physician or Doctor.pdf') }}"
+                           download="(Injury PDF) OFD Employee Choice of Physician or Doctor.pdf">
                             <i class="fa fa-download" aria-hidden="true"></i> Download</a>
                     </div>
                     <div class="col-sm-4">
                         <div class="input-group">
                             <label class="input-group-btn">
                     <span class="btn btn-info">
-                        <i class="fa fa-cloud-upload" aria-hidden="true"></i> Upload<input type="file" name="EmployeeAttachment" style="display: none;" >
+                        <i class="fa fa-cloud-upload" aria-hidden="true"></i> Upload<input type="file"
+                                                                                           name="EmployeeAttachment"
+                                                                                           style="display: none;">
                     </span>
                             </label>
                             <input type="text" id="upload-file-info" class="form-control" readonly>
@@ -438,14 +452,17 @@
                 <div class="col-sm-12 form-group well well-sm">
                     <div class="col-sm-4">
                         <a class="btn btn-success dropdown-toggle col-sm-12" type="button"
-                           href="{{ asset('Fillable PDFs\Injury Module\(Injury PDF) OFD 025 Injury Intradepartmental Communication.pdf') }}"download="(Injury PDF) OFD 025 Injury Intradepartmental Communication.pdf">
+                           href="{{ asset('Fillable PDFs\Injury Module\(Injury PDF) OFD 025 Injury Intradepartmental Communication.pdf') }}"
+                           download="(Injury PDF) OFD 025 Injury Intradepartmental Communication.pdf">
                             <i class="fa fa-download" aria-hidden="true"></i> Download</a>
                     </div>
                     <div class="col-sm-4">
                         <div class="input-group">
                             <label class="input-group-btn">
                     <span class="btn btn-info">
-                        <i class="fa fa-cloud-upload" aria-hidden="true"></i> Upload<input type="file" name="Ofd25Attachment" style="display: none;" >
+                        <i class="fa fa-cloud-upload" aria-hidden="true"></i> Upload<input type="file"
+                                                                                           name="Ofd25Attachment"
+                                                                                           style="display: none;">
                     </span>
                             </label>
                             <input type="text" id="upload-file-info" class="form-control" readonly>
@@ -539,20 +556,23 @@
             </div>
             <div class="row">
                 <div class="col-sm-12 form-group">
-                    <label class="checkbox-inline col-sm-12"><u>For Fire Omaha Police Recruits: Use normal Chain-of-Command for Tracking
+                    <label class="checkbox-inline col-sm-12"><u>For Fire Omaha Police Recruits: Use normal
+                            Chain-of-Command for Tracking
                             Document</u></label>
                 </div>
             </div>
             <div class="row">
                 <div class="col-sm-12 form-group">
-                    <label class="checkbox-inline col-sm-12"><input type="checkbox"><strong>Have Police Supervisor Complete and Sign
+                    <label class="checkbox-inline col-sm-12"><input type="checkbox"><strong>Have Police Supervisor
+                            Complete and Sign
                             Supervisor section on Investigation Report
                             and Witness Statement</strong></label>
                 </div>
             </div>
             <div class="row">
                 <div class="col-sm-12 form-group">
-                    <label class="checkbox-inline col-sm-12"><input type="checkbox"><strong>Call Fire Supervisor or SWD B/C immediately
+                    <label class="checkbox-inline col-sm-12"><input type="checkbox"><strong>Call Fire Supervisor or SWD
+                            B/C immediately
                             and notify CorVel by phone</strong></label>
                 </div>
             </div>
@@ -572,45 +592,44 @@
                             Enter in Company Day
                             Book</strong></label></div>
             </div>
+            <div class="row">
+                <div class="col-sm-12 panel-headinzzzzg">
+                    <br>
+                    <label class="col-sm-5"></label>
+                    <div class="btn-bottom ">
 
-        </div>
-
-
-    </div>
-
-    <div class="panel panel-default">
-
-        <div class="col-sm-12 panel-headinzzzzg">
-            <br>
-            <label class="col-sm-5"></label>
-            <div class="btn-bottom ">
-
-                <button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal">
-                    Save
-                </button>
-
-                <a href="{{ route('injuries.index') }}" class="btn btn-default">Cancel</a>
+                        <button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal">
+                            Submit
+                        </button>
+                        <a href="{{ route('injuries.index') }}" class="btn btn-danger">Cancel</a>
+                    </div>
+                    <br>
+                </div>
             </div>
-            <br>
-        </div>
-    </div>
 
+        </div>
+
+
+    </div>
 
     <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                aria-hidden="true">&times;</span></button>
                     <h4 class="modal-title" id="myModalLabel"></h4>
                 </div>
                 <div class="modal-body">
+                    <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
                     Are you sure want to submit the form?
                 </div>
                 <div class="modal-footer">
-                    {!! Form::submit('Submit',['class' => 'btn btn-success']) !!}
+                    {!! Form::submit('Yes',['class' => 'btn btn-success']) !!}
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">No</button>
                 </div>
             </div>
         </div>
     </div>
     {!! Form::close() !!}
-    @stop
+@stop
