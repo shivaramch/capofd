@@ -8,10 +8,6 @@ use Illuminate\Support\Facades\Auth;
 
 class hazmat extends Model
 {
-    protected $table='hazmat';
-
-    //public $timestamps = false;
-
     protected $primaryKey = 'ofd6cid';
 
     public static function boot()

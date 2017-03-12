@@ -40,13 +40,12 @@ class EmailController extends Controller
         {
 
 
-            $captainemail = DB::table('users')->where('ID', $request->captainid)->pluck('email');
-            $captainame = DB::table('users')->where('ID', $request->captainid)->pluck('name');
-            $BCemail = DB::table('users')->where('ID', $request->battalionChiefid)->pluck('email');
-            $BCname = DB::table('users')->where('ID', $request->battalionChiefid)->pluck('name');
-            $ACemail = DB::table('users')->where('ID', $request->acOnDuty)->pluck('email');
-
-            $ACname = DB::table('users')->where('ID', $request->acOnDuty)->pluck('name');
+            $captainemail = DB::table('users')->where('id', $request->captainid)->pluck('email');
+            $captainame = DB::table('users')->where('id', $request->captainid)->pluck('name');
+            $BCemail = DB::table('users')->where('id', $request->battalionchiefid)->pluck('email');
+            $BCname = DB::table('users')->where('id', $request->battalionchiefid)->pluck('name');
+            $ACemail = DB::table('users')->where('id', $request->aconduty)->pluck('email');
+            $ACname = DB::table('users')->where('id', $request->aconduty)->pluck('name');
             $persons = [];
 
 

@@ -73,7 +73,7 @@ class HazmatController extends Controller
         //$accident = $this->saveFiles($request);
         $hazmat = hazmat::findOrFail($id);
 
-        \DB::table('hazmat')->where('ofd6cid', $hazmat->ofd6cid)->update([
+        \DB::table('hazmats')->where('ofd6cid', $hazmat->ofd6cid)->update([
                 'employeeid' => $hazmat->employeeid,
                 'employeename' => $hazmat->employeename,
                 'dateofexposure' => $hazmat->dateofexposure,

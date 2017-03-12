@@ -172,8 +172,7 @@
                     </div>
                 </div>
             </div>
-
-            <div class="row">
+            <div class="col-sm-12">
                 <label class="checkbox-inline col-sm-12">
                     <strong>Fill out OFD-025 Hazmat Exposure Report form</strong>
                 </label>
@@ -232,14 +231,14 @@
                     </div>
                 </div>
             </div>
-            <div class="panel panel-default">
+
                 <div class="col-sm-12 panel-heading">
                     <label class="col-sm-5"></label>
                     <div class="btn-bottom ">
                         <a href="{{ route('hazmat.index') }}" class="btn btn-default">Return</a>
                     </div>
                 </div>
-            </div>
+
         </div>
         </div>
     </div>

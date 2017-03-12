@@ -13,21 +13,6 @@
 @section('content')
     {!! Form::model($hazmat,['method' => 'PUT', 'route' => ['hazmat.update', $hazmat->ofd6cid], 'files' => true,]) !!}
 
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-    <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
-    <script>
-        $(document).ready(function () {
-            $("#datepicker1").datepicker({
-                onClose: function () {
-                    var date2 = $('#datepicker1').datepicker('getDate');
-                    date2.setDate(date2.getDate() + 35)
-                    $("#datepicker2").datepicker("setDate", date2);
-
-                }
-            });
-            $("#datepicker2").datepicker();
-        });
-    </script>
     <style>
         #padtop {
             padding-top: 7px;
@@ -163,8 +148,8 @@
                     </div>
                 </div>
                 <br>
-                <div class="row">
-                    <div class="col-sm-12 form-group">
+
+                    <div class="form-group">
                         {{ Form::checkbox('contactcorvel', 1, null, ['id' => 'contactcorvel', 'class'=>'className']) }}
                         <label>
                             <strong>Contact CorVel Enterprise Comp @ 877-764-3574.
@@ -172,7 +157,7 @@
                             </strong>
                         </label>
                     </div>
-                </div>
+
                 <div class="row">
                     <div class="col-sm-12 form-group">
                         {!! Form::label('corvelid', 'Once you have completed the call, record CorVel Claim #', array('style'=>'padding-top:7px;','class' => 'col-sm-4 control-label')) !!}
@@ -188,7 +173,7 @@
                     </div>
                 </div>
 
-                <div class="row">
+                <div class="col-sm-12">
                     <label class="col-sm-12"><strong>Fill out OFD-025 Hazmat Exposure Report form</strong></label>
                     <div class="col-sm-12 form-group well well-sm">
                         <div class="col-sm-4">
@@ -197,7 +182,7 @@
                                download="(Exposure PDF - Updated OFD 006d) OFD 025 - HazMat Exposure Report.pdf">
                                 <i class="fa fa-download" aria-hidden="true"></i> Download</a>
                         </div>
-                        <div class="col-sm-3">
+                        <div class="col-sm-4">
                             <div class="input-group">
                                 <label class="input-group-btn">
                     <span class="btn btn-info">
@@ -268,7 +253,7 @@
             </div>
 
 
-                <div class="panel panel-default">
+
                     <div class="col-sm-12 panel-heading">
                         <label class="col-sm-5"></label>
                         <div class="btn-bottom ">
@@ -276,7 +261,7 @@
                             <a href="{{ route('hazmat.index') }}" class="btn btn-default">Cancel</a>
                         </div>
                     </div>
-                </div>
+
                 </div>
             </div>
 
