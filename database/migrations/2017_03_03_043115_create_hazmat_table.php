@@ -9,7 +9,7 @@ class CreateHazmatTable extends Migration
 
     public function up()
     {
-        Schema::create('hazmat', function (Blueprint $table) {
+        Schema::create('hazmats', function (Blueprint $table) {
             $table->increments('ofd6cid');
             $table->string('contactcorvel',256);
             $table->string('corvelid', 256);

@@ -5,9 +5,7 @@ use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 class Biological extends Model
 {
-    public $timestamps = false;
     protected $primaryKey = 'ofd6bid';
-    protected $table = 'biological';
     public static function boot()
     {
         parent::boot();

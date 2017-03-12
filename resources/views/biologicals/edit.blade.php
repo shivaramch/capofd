@@ -12,6 +12,7 @@
 
 @section('content')
     {!! Form::model($biological,['method' => 'PUT', 'route' => ['biologicals.update', $biological->ofd6bid], 'files' => true,]) !!}
+    <input type="hidden" name="_token" value="{!!  'csrf_token()' !!}">
     {{ csrf_field() }}
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
@@ -430,8 +431,6 @@
             </div>
         </div>
     </div>
-
-
     {!! Form::close() !!}
 @stop
 

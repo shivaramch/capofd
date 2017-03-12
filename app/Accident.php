@@ -8,11 +8,7 @@ use Illuminate\Support\Facades\Auth;
 
 class Accident extends Model
 {
-    public $timestamps = false;
-
     protected $primaryKey = 'ofd6aid';
-
-    protected $table = 'accident';
 
     public static function boot()
     {

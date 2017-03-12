@@ -30,52 +30,91 @@ use Auth;
 class EmailController extends Controller
 {
     //
-    public  function Email(Request $request, $link  ){
+    public  function Email(Request $request, $link ,$formname ){
 
         //Get id of the form submitted
 
-        //Make collection which will store emails of all people for whom email is to be sent
         $allemails = new Collection();
+        if($formname=="accidents" || $formname=="injuries")
 
-        $captainemail = DB::table('users')->where('id', $request->captainid)->pluck('email');
-        $captainame = DB::table('users')->where('id', $request->captainid)->pluck('name');
-        $BCemail = DB::table('users')->where('id', $request->battalionchiefid)->pluck('email');
-        $BCname = DB::table('users')->where('id', $request->battalionchiefid)->pluck('name');
-        $ACemail = DB::table('users')->where('id', $request->aconduty)->pluck('email');
+        {
 
-        $ACname = DB::table('users')->where('id', $request->aconduty)->pluck('name');
-        $persons = [];
 
-        $allemails = collect();
-        if(!isEmptyOrNullString($captainemail)) {
-            $allemails->push(["$captainemail" => "$captainame"]);
+            $captainemail = DB::table('users')->where('id', $request->captainid)->pluck('email');
+            $captainame = DB::table('users')->where('id', $request->captainid)->pluck('name');
+            $BCemail = DB::table('users')->where('id', $request->battalionchiefid)->pluck('email');
+            $BCname = DB::table('users')->where('id', $request->battalionchiefid)->pluck('name');
+            $ACemail = DB::table('users')->where('id', $request->aconduty)->pluck('email');
+            $ACname = DB::table('users')->where('id', $request->aconduty)->pluck('name');
+            $persons = [];
+
+
+
+
+            if(count($captainemail)) {
+                $allemails->push(["$captainemail" => "$captainame"]);
+                var_dump("in cp");
+
+            }
+            if(count($BCemail)) {
+                $allemails->push(["$BCemail" => "$BCname"]);
+
+            }
+            if(count($ACemail)) {
+
+                $allemails->push(["$ACemail" => "$ACname"]);
+
+
+            }
+
+
         }
-        if(!isEmptyOrNullString($BCemail)) {
-            $allemails->push(["$BCemail" => "$BCname"]);
-        }
-        var_dump($ACemail);
-        if(!isEmptyOrNullString($ACemail)) {
 
-            $allemails->push(["$ACemail" => "$ACname"]);
+
+
+
+
+        if($formname=="biologicals" ||$formname=="hazmat"){
+
+
+            $primaryidconame=DB::table('users')->where('id', $request->primaryidconumber)->pluck('name');
+            $primaryidcoemail = DB::table('users')->where('id', $request->primaryidconumber)->pluck('email');
+
+            if(count($primaryidcoemail)) {
+
+                $allemails->push(["$primaryidcoemail" => "$primaryidconame"]);
+            }
         }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         //   var_dump($allemails);
-
-
-        //Add superadmin email
         $superAdmin = new Collection();
-//        $superAdmin=DB::table('users')
-//
-//            ->Join('user_role', 'User_Role_roleID', '=', 'user_role.RoleID')
-//            ->where('User_Role_roleID',1)->pluck('Email','Name');
-//
-//
-//        foreach ($superAdmin as $item=>$value){
-//            //$allemails->push([""=>""]);
-//            $allemails->push(["$value" => "$item"]);
-//            //   var_dump(["$value" => "$item"]);
-//
-//        }
-//        var_dump($allemails);
+        $superAdmin=DB::table('users')->where('roleid',1)->pluck('email','name');
+
+        if(count($superAdmin)!=0) {
+            foreach ($superAdmin as $item => $value) {
+
+                $allemails->push(["$value" => "$item"]);
+            }
+
+        }
 
         //Add superadmin email end
 

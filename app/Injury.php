@@ -28,7 +28,7 @@ class Injury extends Model
         'corvelid',
         'captainid',
         'battalionchiefid',
-        'acondutyid',
+        'aconduty',
         'shift',
         'frmsincidentnum',
         'policeofficercompletesign',
