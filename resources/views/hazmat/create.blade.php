@@ -218,7 +218,7 @@
                                download="(Exposure PDF - Updated OFD 006d) OFD 025 - HazMat Exposure Report">
                                 <i class="fa fa-download" aria-hidden="true"></i> Download</a>
                         </div>
-                        <div class="col-sm-3">
+                        <div class="col-sm-4">
                             <div class="input-group">
                                 <label class="input-group-btn">
                     <span class="btn btn-info">
@@ -256,19 +256,20 @@
             </div>
         </div>
 
-    </div>
-<div class="panel panel-default">
-    <br>
-    <label class="col-sm-5"></label>
-    <div class="btn-bottom ">
-        <button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal">
-            Save
-        </button>
+        <br>
+        <label class="col-sm-5"></label>
+        <div class="btn-bottom ">
+            <button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal">
+                Submit
+            </button>
 
-        <a href="{{ route('hazmat.index') }}" class="btn btn-default">Cancel</a>
+            <a href="{{ route('hazmat.index') }}" class="btn btn-danger">Cancel</a>
+        </div>
+
+        <br>
     </div>
 
-    <br>
+
 </div>
     <!-- Modal -->
     <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
@@ -276,17 +277,22 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+                    <h4 class="modal-title" id="myModalLabel"></h4>
                 </div>
                 <div class="modal-body">
-                    ...
+                    Are you sure you want to Submit?
                 </div>
                 <div class="modal-footer">
-                    {!! Form::submit('Submit',['class' => 'btn btn-success']) !!}
+                    {!! Form::submit('Yes',['class' => 'btn btn-success']) !!}
+                    <button type="button" class=" btn btn-danger" data-dismiss="modal" aria-label="">No</button>
+
+
+                </div>
+
                 </div>
             </div>
         </div>
-    </div>
-</div>
+
+
 {!! Form::close() !!}
 @stop
