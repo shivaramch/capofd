@@ -13,7 +13,7 @@ class CreateAccidentTable extends Migration
      */
     public function up()
     {
-        Schema::create('accident', function (Blueprint $table) {
+        Schema::create('accidents', function (Blueprint $table) {
             $table->increments('ofd6aid');
 
             $table->date('accidentdate')->nullable();
