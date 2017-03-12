@@ -1,15 +1,26 @@
-<!--
-    /resources/views/email_template.blade.php
--->
-<html>
-{{ $message }}
+@extends('beautymail::templates.sunny')
 
-<br>
+@section('content')
 
+    @include ('beautymail::templates.sunny.heading' , [
+        'heading' => 'Omaha Fire Department',
+        'level' => 'h1',
+    ])
 
+    @include('beautymail::templates.sunny.contentStart')
 
+    <p>Hello  {{$officername}} ,</p>
+        <br>
+    <p>
+    {{$firefighter}} has just submitted  {{$formname}} application and pending for your approval.Please review carefully as part of approval
+    process and make a decision.
+    </p>
 
-<a href="{{$link}}"}}>{{$link}}</a><br>
+    @include('beautymail::templates.sunny.contentEnd')
 
+    @include('beautymail::templates.sunny.button', [
+            'title' => 'Click to access Application',
+            'link' => $link
+    ])
 
-</html>
+@stop

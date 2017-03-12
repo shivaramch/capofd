@@ -43,7 +43,9 @@ class InjuriesController extends Controller
 
         //email notification-start
         $formname="injuries";
-        $link = $request->url() . "/$last_insert_id";
+        $rawlink=request()->headers->get('referer');
+        $link=preg_replace('#\/[^/]*$#', '', $rawlink)."/$last_insert_id";
+
         $numsent = (new EmailController)->Email($request, $link,$formname);
         //email notification-end
         return redirect()->route('injuries.index');
@@ -102,7 +104,8 @@ class InjuriesController extends Controller
 
         //email notification-start
         $formname="injuries";
-        $link = $request->url();
+        $rawlink=request()->headers->get('referer');
+        $link=preg_replace('#\/[^/]*$#', '', $rawlink);
         $numsent = (new EmailController)->Email($request, $link,$formname);
         //email notification-end
 

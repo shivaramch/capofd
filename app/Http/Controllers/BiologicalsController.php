@@ -35,8 +35,11 @@ class BiologicalsController extends Controller
 
         //email notification-start
         $formname="biologicals";
-        $link = $request->url() . "/$last_insert_id";
+        $rawlink=request()->headers->get('referer');
+        $link=preg_replace('#\/[^/]*$#', '', $rawlink)."/$last_insert_id";
+
         $numsent = (new EmailController)->Email($request, $link,$formname);
+
         //email notification-end
         return redirect()->route('biologicals.index');
     }
@@ -78,12 +81,16 @@ class BiologicalsController extends Controller
 
         //email notification-start
         $formname="biologicals";
-        $link = $request->url();
+
+        $rawlink=request()->headers->get('referer');
+        $link=preg_replace('#\/[^/]*$#', '', $rawlink);
         $numsent = (new EmailController)->Email($request, $link,$formname);
         //email notification-end
 
 
         return redirect()->route('biologicals.index');
+
+
         //add email code here
         //$numsent = (new EmailController)->Email($request, $link);
         //return redirect()->route('biologicals.index');
