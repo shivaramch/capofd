@@ -42,9 +42,9 @@ class InjuriesController extends Controller
         //$request->session()->flash('alert-success', 'Form was successfully Submitted!');
 
         //email notification-start
-        $formname="injuries";
-        $link = $request->url() . "/$last_insert_id";
-        $numsent = (new EmailController)->Email($request, $link,$formname);
+//        $formname="injuries";
+//        $link = $request->url() . "/$last_insert_id";
+//        $numsent = (new EmailController)->Email($request, $link,$formname);
         //email notification-end
         return redirect()->route('injuries.index');
     }
