@@ -7,8 +7,6 @@
 <br>
 
 
-
-
 <a href="{{$link}}"}}>{{$link}}</a><br>
 
 
