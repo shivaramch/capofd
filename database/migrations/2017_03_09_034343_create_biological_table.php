@@ -12,7 +12,7 @@ class CreateBiologicalTable extends Migration
      */
     public function up()
     {
-        Schema::create('biological', function (Blueprint $table) {
+        Schema::create('biologicals', function (Blueprint $table) {
             $table->increments('ofd6bid');
             $table->string('exposedemployeename',256)->nullable();
             $table->date('dateofexposure')->nullable();
