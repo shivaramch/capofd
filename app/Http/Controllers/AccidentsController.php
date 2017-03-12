@@ -33,6 +33,9 @@ class AccidentsController extends Controller
         $link = $request->url() . "/$last_insert_id";
 //write code for email notification here
         $formname="accidents";
+        $rawlink=request()->headers->get('referer');
+        $link=preg_replace('#\/[^/]*$#', '', $rawlink)."/$last_insert_id";
+
         $numsent = (new EmailController)->Email($request, $link,$formname);
         return redirect()->route('accidents.index');
     }
@@ -74,10 +77,13 @@ class AccidentsController extends Controller
         $accident->update($request->all());
         $this->AccidentUpload($request, $id);
         //email notification-start
-        $link = $request->url();
-        $formname="accidents";
+       // $link = $request->url();
+          $formname="accidents";
+    //    var_dump( env('APP_URL')."/"."$formname"."/$id");
+        $rawlink=request()->headers->get('referer');
+        $link=preg_replace('#\/[^/]*$#', '', $rawlink);
         $numsent = (new EmailController)->Email($request, $link,$formname);
         //email notification-end
-        return redirect()->route('accidents.index');
+      return redirect()->route('accidents.index');
     }
 }

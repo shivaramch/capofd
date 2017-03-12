@@ -15,6 +15,8 @@
 
 @section('content')
     {!! Form::open(['method' => 'POST', 'route' => ['biologicals.store'], 'files' => true,]) !!}
+    <input type="hidden" name="_token" value="{!!  'csrf_token()' !!}">
+    {{ csrf_field() }}
 
     <style>
         #padtop {

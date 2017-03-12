@@ -12,6 +12,9 @@
 @section('content')
     {!! Form::open(['method' => 'POST', 'route' => ['hazmat.store'], 'files' => true,]) !!}
 
+    <input type="hidden" name="_token" value="{!!  'csrf_token()' !!}">
+    {{ csrf_field() }}
+
     <style>
         #padtop {
             padding-top: 7px;

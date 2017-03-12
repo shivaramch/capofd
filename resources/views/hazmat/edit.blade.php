@@ -12,6 +12,8 @@
 
 @section('content')
     {!! Form::model($hazmat,['method' => 'PUT', 'route' => ['hazmat.update', $hazmat->ofd6cid], 'files' => true,]) !!}
+    <input type="hidden" name="_token" value="{!!  'csrf_token()' !!}">
+    {{ csrf_field() }}
 
     <style>
         #padtop {
