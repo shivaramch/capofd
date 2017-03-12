@@ -572,29 +572,25 @@
                             Enter in Company Day
                             Book</strong></label></div>
             </div>
+            <div class="row">
+                <div class="col-sm-12 panel-headinzzzzg">
+                    <br>
+                    <label class="col-sm-5"></label>
+                    <div class="btn-bottom ">
 
-        </div>
-
-
-    </div>
-
-    <div class="panel panel-default">
-
-        <div class="col-sm-12 panel-headinzzzzg">
-            <br>
-            <label class="col-sm-5"></label>
-            <div class="btn-bottom ">
-
-                <button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal">
-                    Save
-                </button>
-
-                <a href="{{ route('injuries.index') }}" class="btn btn-default">Cancel</a>
+                        <button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal">
+                            Submit
+                        </button>
+                        <a href="{{ route('injuries.index') }}" class="btn btn-danger">Cancel</a>
+                    </div>
+                    <br>
+                </div>
             </div>
-            <br>
-        </div>
-    </div>
 
+        </div>
+
+
+    </div>
 
     <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
         <div class="modal-dialog" role="document">
@@ -604,13 +600,15 @@
                     <h4 class="modal-title" id="myModalLabel"></h4>
                 </div>
                 <div class="modal-body">
+                    <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
                     Are you sure want to submit the form?
                 </div>
                 <div class="modal-footer">
-                    {!! Form::submit('Submit',['class' => 'btn btn-success']) !!}
+                    {!! Form::submit('Yes',['class' => 'btn btn-success']) !!}
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">No</button>
                 </div>
             </div>
         </div>
-    </div>
+        </div>
     {!! Form::close() !!}
     @stop

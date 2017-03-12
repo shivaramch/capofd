@@ -449,10 +449,13 @@
             </div>
 
             <div class="row">
-                <div class="col-sm-12 form-group">
-                    <label class="checkbox-inline col-sm-12"><input type="checkbox"><strong>Document IOD in
-                            Workforce</strong>
-                        - Only if seeking medical attention.</label>
+                <div class="col-sm-12">
+                    <div class="form-group">
+                        {{ Form::checkbox('commemail', 1, null, ['id' => 'commemail', 'class'=>'className']) }}
+                        <label><strong>Document IOD in
+                                Workforce</strong>
+                            - Only if seeking medical attention.</label>
+                    </div>
                 </div>
             </div>
             <div class="row">
@@ -479,56 +482,35 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-sm-12 form-group">
-                    <label class="checkbox-inline col-sm-12"><input type="checkbox"><strong>Have Police Supervisor Complete and Sign
-                            Supervisor section on Investigation Report
-                            and Witness Statement</strong></label>
+                <div class="col-sm-12">
+                    <div class="form-group">
+                        {{ Form::checkbox('policeofficercompletesign', 1, null, ['id' => 'policeofficercompletesign', 'class'=>'className', 'readonly' => 'true']) }}
+                        <label><strong>Have Police Supervisor Complete and Sign
+                                Supervisor section on Investigation Report
+                                and Witness Statement</strong></label>
+                    </div>
                 </div>
             </div>
             <div class="row">
-                <div class="col-sm-12 form-group">
-                    <label class="checkbox-inline col-sm-12"><input type="checkbox"><strong>Call Fire Supervisor or SWD B/C immediately
-                            and notify CorVel by phone</strong></label>
+                <div class="col-sm-12">
+                    <div class="form-group">
+                        {{ Form::checkbox('callsupervisor', 1, null, ['id' => 'callsupervisor', 'class'=>'className', 'readonly' => 'true']) }}
+                        <label><strong>Call Fire Supervisor or SWD B/C immediately
+                                and notify CorVel by phone</strong></label>
+                    </div>
                 </div>
             </div>
             <div class="row">
-                <div class="col-sm-12 form-group">
-                    <label class="checkbox-inline col-sm-12"><input type="checkbox"><strong>
-                            Call Law Department
-                            Investigator</strong>- Call 444-5131- Request report be faxed to
-                        SWD fax # 444-6378. You can
-                        leave a message with rig # address of incident, date, time and
-                        RB#</label>
+                <div class="col-sm-12 panel-headinzzzzg">
+                    <br>
+                    <label class="col-sm-5"></label>
+                    <div class="btn-bottom ">
+                        <a href="{{ route('injuries.index') }}" class="btn btn-success">Back</a>
+                    </div>
+                    <br>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-sm-12 form-group">
-                    <label class="checkbox-inline col-sm-4"><input type="checkbox"><strong>
-                            Enter in Company Day
-                            Book</strong></label></div>
-            </div>
-
-        </div>
-
-
     </div>
-
-    <div class="panel panel-default">
-
-        <div class="col-sm-12 panel-headinzzzzg">
-            <br>
-            <label class="col-sm-5"></label>
-            <div class="btn-bottom ">
-
-                
-
-                <a href="{{ route('injuries.index') }}" class="btn btn-default">Back</a>
-            </div>
-            <br>
-        </div>
-    </div>
-
-
     <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
         <div class="modal-dialog" role="document">
             <div class="modal-content">

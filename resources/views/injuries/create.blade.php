@@ -146,7 +146,7 @@
 					<div class="col-sm-4 form-group">
                         {!! Form::label('battalionchiefid', 'Battalion Chief #', ['class' => 'col-sm-4 control-label']) !!}
                         <div class="col-sm-6 ">
-                            {!! Form::text('battalionchiefid', old('battalionchiefid'), array('class' => 'form-control','placeholder'=>'Enter Badge Id','required' => 'required'))!!}
+                            {!! Form::text('battalionchiefid', old('battalionchiefid'), array('class' => 'form-control','placeholder'=>'Enter Badge Id'))!!}
                             <p class="help-block"></p>
                             @if($errors->has('battalionchiefid'))
                                 <p class="help-block">
@@ -157,7 +157,7 @@
                     </div><div class="col-sm-4 form-group">
                         {!! Form::label('aconduty', 'Assistant Chief #', ['class' => 'col-sm-4 control-label']) !!}
                         <div class="col-sm-6 ">
-                            {!! Form::text('aconduty', old('aconduty'), array('class' => 'form-control','placeholder'=>'Enter Badge Id','required' => 'required'))!!}
+                            {!! Form::text('aconduty', old('aconduty'), array('class' => 'form-control','placeholder'=>'Enter Badge Id'))!!}
                             <p class="help-block"></p>
                             @if($errors->has('aconduty'))
                                 <p class="help-block">
@@ -171,7 +171,7 @@
                     <div class="col-sm-4 form-group">
                         {!! Form::label('frmsincidentnum', 'FRMS Incident #', ['class' => 'col-sm-4 control-label']) !!}
                         <div class="col-sm-6 ">
-                            {!! Form::text('frmsincidentnum', old('frmsincidentnum'), array('class' => 'form-control','required' => 'required'))!!}
+                            {!! Form::text('frmsincidentnum', old('frmsincidentnum'), array('class' => 'form-control'))!!}
                             <p class="help-block"></p>
                             @if($errors->has('frmsincidentnum'))
                                 <p class="help-block">
@@ -183,7 +183,7 @@
                     <div class="col-sm-8 form-group">
                         {!! Form::label('corvelid', 'CorVel ID #', ['class' => 'col-sm-2 control-label']) !!}
                         <div class="col-sm-3">
-                            {!! Form::text('corvelid', old('corvelid'), array('class' => 'form-control','required' => 'required','style' =>'margin-left:-7px;'))!!}
+                            {!! Form::text('corvelid', old('corvelid'), array('class' => 'form-control','style' =>'margin-left:-7px;'))!!}
                             <p class="help-block"></p>
                             @if($errors->has('corvelid'))
                                 <p class="help-block">
@@ -226,7 +226,7 @@
                            href="{{ asset('Fillable PDFs\Injury Module\(Injury PDF) CorVel Work Ability Report.pdf') }}"download="(Injury PDF) CorVel Work Ability Report.pdf">
                             <i class="fa fa-download" aria-hidden="true"></i> Download</a>
                     </div>
-                        <div class="col-sm-3">
+                        <div class="col-sm-4">
                             <div class="input-group">
                                 <label class="input-group-btn">
                     <span class="btn btn-info">
@@ -250,7 +250,7 @@
                            href="{{ asset('Fillable PDFs\Injury Module\(Injury PDF) OFD Investigation Report for Occupational Injury or Illness.pdf') }}"download="(Injury PDF) OFD Investigation Report for Occupational Injury or Illness.pdf">
                             <i class="fa fa-download" aria-hidden="true"></i> Download</a>
                     </div>
-                        <div class="col-sm-3">
+                        <div class="col-sm-4">
                             <div class="input-group">
                                 <label class="input-group-btn">
                     <span class="btn btn-info">
@@ -273,7 +273,7 @@
                             <i class="fa fa-download" aria-hidden="true"></i> Download</a>
                     </div>
 						 
-                        <div class="col-sm-3">
+                        <div class="col-sm-4">
                             <div class="input-group">
                                 <label class="input-group-btn">
                     <span class="btn btn-info">
@@ -296,7 +296,7 @@
                            href="{{ asset('Fillable PDFs\Injury Module\(Injury PDF) OFD Employee Choice of Physician or Doctor.pdf') }}"download="(Injury PDF) OFD Employee Choice of Physician or Doctor.pdf">
                             <i class="fa fa-download" aria-hidden="true"></i> Download</a>
                     </div>
-                        <div class="col-sm-3">
+                        <div class="col-sm-4">
                             <div class="input-group">
                                 <label class="input-group-btn">
                     <span class="btn btn-info">
@@ -319,7 +319,7 @@
                            href="{{ asset('Fillable PDFs\Injury Module\(Injury PDF) OFD 025 Injury Intradepartmental Communication.pdf') }}"download="(Injury PDF) OFD 025 Injury Intradepartmental Communication.pdf">
                             <i class="fa fa-download" aria-hidden="true"></i> Download</a>
                     </div>
-                        <div class="col-sm-3">
+                        <div class="col-sm-4">
                             <div class="input-group">
                                 <label class="input-group-btn">
                     <span class="btn btn-info">
@@ -363,10 +363,13 @@
 					</div>
                 
                 <div class="row">
-                    <div class="col-sm-12 form-group">
-                        <label class="checkbox-inline col-sm-12"><input type="checkbox"><strong>Document IOD in
-                                Workforce</strong>
-                            - Only if seeking medical attention.</label>
+                    <div class="col-sm-12">
+                        <div class="form-group">
+                            {{ Form::checkbox('commemail', 1, null, ['id' => 'commemail', 'class'=>'className']) }}
+                            <label><strong>Document IOD in
+                                    Workforce</strong>
+                                - Only if seeking medical attention.</label>
+                        </div>
                     </div>
                 </div>
                 <div class="row">
@@ -393,58 +396,40 @@
 								</div>
                 </div>
                 <div class="row">
-                    <div class="col-sm-12 form-group">
-                        <label class="checkbox-inline col-sm-12"><input type="checkbox"><strong>Have Police Supervisor Complete and Sign
-                            Supervisor section on Investigation Report
-                            and Witness Statement</strong></label>
+                    <div class="col-sm-12">
+                        <div class="form-group">
+                            {{ Form::checkbox('policeofficercompletesign', 1, null, ['id' => 'policeofficercompletesign', 'class'=>'className']) }}
+                            <label><strong>Have Police Supervisor Complete and Sign
+                                    Supervisor section on Investigation Report
+                                    and Witness Statement</strong></label>
+                        </div>
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-sm-12 form-group">
-                        <label class="checkbox-inline col-sm-12"><input type="checkbox"><strong>Call Fire Supervisor or SWD B/C immediately
-                            and notify CorVel by phone</strong></label>
+                    <div class="col-sm-12">
+                        <div class="form-group">
+                            {{ Form::checkbox('callsupervisor', 1, null, ['id' => 'callsupervisor', 'class'=>'className']) }}
+                            <label><strong>Call Fire Supervisor or SWD B/C immediately
+                                    and notify CorVel by phone</strong></label>
+                        </div>
                     </div>
                 </div>
-				<div class="row">
-                <div class="col-sm-12 form-group">
-                    <label class="checkbox-inline col-sm-12"><input type="checkbox"><strong>
-                            Call Law Department
-                            Investigator</strong>- Call 444-5131- Request report be faxed to
-                        SWD fax # 444-6378. You can
-                        leave a message with rig # address of incident, date, time and
-                        RB#</label>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-sm-12 form-group">
-                    <label class="checkbox-inline col-sm-4"><input type="checkbox"><strong>
-                            Enter in Company Day
-                            Book</strong></label></div>
-            </div>
-                
+                    <div class="row">
+                                                    <div class="col-sm-12 panel-headinzzzzg">
+                                <br>
+                                <label class="col-sm-5"></label>
+                                <div class="btn-bottom ">
+
+                                    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal">
+                                        Submit
+                                    </button>
+                                    <a href="{{ route('injuries.index') }}" class="btn btn-danger">Cancel</a>
+                                </div>
+                                <br>
+                            </div>
+                    </div>
 			</div>
-        
-    
     </div>
-    
-	<div class="panel panel-default">
-	
-        <div class="col-sm-12 panel-headinzzzzg">
-		<br>
-            <label class="col-sm-5"></label>
-            <div class="btn-bottom ">
-			
-                <button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal">
-                    Save
-                </button>
-
-                <a href="{{ route('accidents.index') }}" class="btn btn-default">Cancel</a>
-            </div>
-			<br>
-        </div>
-    </div>
-
-	
 	<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -453,10 +438,12 @@
                     <h4 class="modal-title" id="myModalLabel"></h4>
                 </div>
                 <div class="modal-body">
+                    <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
                     Are you sure want to submit the form?
                 </div>
                 <div class="modal-footer">
-                    {!! Form::submit('Submit',['class' => 'btn btn-success']) !!}
+                    {!! Form::submit('Yes',['class' => 'btn btn-success']) !!}
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">No</button>
                 </div>
             </div>
         </div>
