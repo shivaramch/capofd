@@ -44,6 +44,6 @@ class CreateInjuriesTable extends Migration
      */
     public function down()
     {
-        Schema::drop('injury');
+        Schema::drop('injuries');
     }
 }

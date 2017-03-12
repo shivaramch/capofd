@@ -20,6 +20,15 @@
         #padtop {
             padding-top: 7px;
         }
+
+        table {
+            border-collapse: collapse;
+        }
+
+        table, td, th {
+            border: 1px solid black;
+        }
+
     </style>
     <div class="panel panel-default">
         <div class="panel-heading">
@@ -34,128 +43,121 @@
                                 <h3><strong>Biological Exposure Tracking Document (OFD-006B)</strong></h3>
                             </div>
                         </div>
+                        <div class="col-md-12">
+                            <h6><i><strong>Used for future tracking purposes only</strong></i></h6>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-        <br>
-        <br>
-        <div class="row">
-            <div class="col-sm-4 form-group">
-                {!! Form::label('exposedemployeename', 'Exposed Employee Name',array('style'=>'padding-top:7px;','class'=> 'col-sm-4 control-label') ) !!}
-                <div class="col-sm-6 ">
-                    {!! Form::text('exposedemployeename', old('exposedemployeename'), array('class'=>'form-control'))!!}
-                    <p class="help-block"></p>
-                    @if($errors->has('exposedemployeename'))
-                        <p class="help-block">
-                            {{ $errors->first('exposedemployeename') }}
-                        </p>
-                    @endif
+        <div class="panel-body">
+            <div class="form-horizontal">
+                <div class="row">
+                    <div class="col-sm-4 form-group">
+                        {!! Form::label('exposedemployeename', 'Exposed Employee Name',array('style'=>'padding-top:7px;','class'=> 'col-sm-4 control-label') ) !!}
+                        <div class="col-sm-6 ">
+                            {!! Form::text('exposedemployeename', old('exposedemployeename'), array('class'=>'form-control'))!!}
+                            <p class="help-block"></p>
+                            @if($errors->has('exposedemployeename'))
+                                <p class="help-block">
+                                    {{ $errors->first('exposedemployeename') }}
+                                </p>
+                            @endif
+                        </div>
+                    </div>
+                    <div class="col-sm-4 form-group">
+                        {!! Form::label('dateofexposure', 'Date of Exposure', array('style'=>'padding-top:7px;','class'=> 'col-sm-4 control-label') ) !!}
+                        <div class="col-sm-6 ">
+                            {!! Form::text('dateofexposure', old('dateofexposure'), array('id'=>'datepicker','class' => 'form-control datepicker', 'placeholder' => 'YYYY-MM-DD','required' => 'required'))!!}
+                            <p class="help-block"></p>
+                            @if($errors->has('dateofexposure'))
+                                <p class="help-block">
+                                    {{ $errors->first('dateofexposure') }}
+                                </p>
+                            @endif
+                        </div>
+                    </div>
+                    <div class="col-sm-4 form-group">
+                        {!! Form::label('employeeid', 'Employee ID#', array('style'=>'padding-top:7px;','class'=> 'col-sm-4 control-label') ) !!}
+                        <div class="col-sm-6 ">
+                            {!! Form::text('employeeid', old('employeeid'), array('class'=> 'form-control','placeholder'=>'Enter Badge ID'))!!}
+                            <p class="help-block"></p>
+                            @if($errors->has('employeeid'))
+                                <p class="help-block">
+                                    {{ $errors->first('employeeid') }}
+                                </p>
+                            @endif
+                        </div>
+                    </div>
                 </div>
-            </div>
-            <div class="col-sm-4 form-group">
-                {!! Form::label('dateofexposure', 'Date of Exposure', array('style'=>'padding-top:7px;','class'=> 'col-sm-4 control-label') ) !!}
-                <div class="col-sm-6 ">
-                    {!! Form::text('dateofexposure', old('dateofexposure'), array('id'=>'datepicker','class' => 'form-control datepicker', 'placeholder' => 'YYYY-MM-DD','required' => 'required'))!!}
-                    <p class="help-block"></p>
-                    @if($errors->has('dateofexposure'))
-                        <p class="help-block">
-                            {{ $errors->first('dateofexposure') }}
-                        </p>
-                    @endif
-                </div>
-            </div>
-            <div class="col-sm-4 form-group">
-                {!! Form::label('employeeid', 'Employee ID#', array('style'=>'padding-top:7px;','class'=> 'col-sm-4 control-label') ) !!}
-                <div class="col-sm-6 ">
-                    {!! Form::text('employeeid', old('employeeid'), array('class'=> 'form-control','placeholder'=>'Enter Badge ID'))!!}
-                    <p class="help-block"></p>
-                    @if($errors->has('employeeid'))
-                        <p class="help-block">
-                            {{ $errors->first('employeeid') }}
-                        </p>
-                    @endif
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-sm-4 form-group">
-                {!! Form::label('assignmentbiological', 'Assignment', array('style'=>'padding-top:7px;','class'=> 'col-sm-4 control-label') ) !!}
-                <div class="col-sm-6 ">
-                    {!! Form::text('assignmentbiological', old('assignmentbiological'), array('class' => 'form-control'))!!}
-                    <p class="help-block"></p>
-                    @if($errors->has('assignmentbiological'))
-                        <p class="help-block">
-                            {{ $errors->first('assignmentbiological') }}
-                        </p>
-                    @endif
-                </div>
-            </div>
+                <div class="row">
+                    <div class="col-sm-4 form-group">
+                        {!! Form::label('assignmentbiological', 'Assignment', array('style'=>'padding-top:7px;','class'=> 'col-sm-4 control-label') ) !!}
+                        <div class="col-sm-6 ">
+                            {!! Form::text('assignmentbiological', old('assignmentbiological'), array('class' => 'form-control'))!!}
+                            <p class="help-block"></p>
+                            @if($errors->has('assignmentbiological'))
+                                <p class="help-block">
+                                    {{ $errors->first('assignmentbiological') }}
+                                </p>
+                            @endif
+                        </div>
+                    </div>
 
-            <div class="col-sm-4 form-group">
-                {!! Form::label('shift', 'Shift', ['class'=> 'col-sm-4 control-label'] ) !!}
-                <div class="col-sm-6">
-                    {!! Form::select('shift',[
-                  'A' => 'A',
-                  'B' => 'B',
-                  'C' => 'C',
-                  'DIV' => 'DIV'], ['class' => 'form-control'])!!}
-                    <p class="help-block"></p>
-                    @if($errors->has('shift'))
-                        <p class="help-block">
-                            {{ $errors->first('shift') }}
-                        </p>
-                    @endif
+                    <div class="col-sm-4 form-group">
+                        {!! Form::label('shift', 'Shift', ['class'=> 'col-sm-4 control-label'] ) !!}
+                        <div class="col-sm-6">
+                            {!! Form::select('shift',[
+                          'A' => 'A',
+                          'B' => 'B',
+                          'C' => 'C',
+                          'DIV' => 'DIV'], ['class' => 'form-control'])!!}
+                            <p class="help-block"></p>
+                            @if($errors->has('shift'))
+                                <p class="help-block">
+                                    {{ $errors->first('shift') }}
+                                </p>
+                            @endif
+                        </div>
+                    </div>
+                    <div class="col-sm-4 form-group">
+                        {!! Form::label('epcrincidentnum', 'EPCR Incident#', array('style'=>'padding-top:7px;','class'=> 'col-sm-4 control-label') ) !!}
+                        <div class="col-sm-6 ">
+                            {!! Form::text('epcrincidentnum', old('epcrincidentnum'), array('class' => 'form-control','placeholder'=>'Enter Incident Num'))!!}
+                            <p class="help-block"></p>
+                            @if($errors->has('epcrincidentnum'))
+                                <p class="help-block">
+                                    {{ $errors->first('epcrincidentnum') }}
+                                </p>
+                            @endif
+                        </div>
+                    </div>
                 </div>
-            </div>
-            <div class="col-sm-4 form-group">
-                {!! Form::label('epcrincidentnum', 'EPCR Incident#', array('style'=>'padding-top:7px;','class'=> 'col-sm-4 control-label') ) !!}
-                <div class="col-sm-6 ">
-                    {!! Form::text('epcrincidentnum', old('epcrincidentnum'), array('class' => 'form-control','placeholder'=>'Enter Incident Num'))!!}
-                    <p class="help-block"></p>
-                    @if($errors->has('epcrincidentnum'))
-                        <p class="help-block">
-                            {{ $errors->first('epcrincidentnum') }}
-                        </p>
-                    @endif
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-sm-4 form-group">
-                {!! Form::label('primaryidconumber', 'Primary IDCO #', array('style'=>'padding-top:7px;','class'=> 'col-sm-4 control-label') ) !!}
-                <div class="col-sm-6 ">
-                    {!! Form::text('primaryidconumber', old('primaryidconumber'), array('class' => 'form-control','placeholder'=>'Enter IDCO Badge ID'))!!}
-                    <p class="help-block"></p>
-                    @if($errors->has('primaryidconumber'))
-                        <p class="help-block">
-                            {{ $errors->first('primaryidconumber') }}
-                        </p>
-                    @endif
-                </div>
-            </div>
-            <div class="col-sm-4 form-group">
-                {!! Form::label('frmsincidentnum', 'FRMS Incident #', array('style'=>'padding-top:7px;','class'=> 'col-sm-4 control-label') ) !!}
-                <div class="col-sm-6 ">
-                    {!! Form::text('frmsincidentnum', old('frmsincidentnum'), array('class' => 'form-control','placeholder'=>'Enter FRMS Num'))!!}
-                    <p class="help-block"></p>
-                    @if($errors->has('frmsincidentnum'))
-                        <p class="help-block">
-                            {{ $errors->first('frmsincidentnum') }}
-                        </p>
-                    @endif
-                </div>
-            </div>
-            <div class="col-sm-4 form-group">
-                {!! Form::label('todaysdate', 'Date', array('style'=>'padding-top:7px;','class'=> 'col-sm-4 control-label') ) !!}
-                <div class="col-sm-6 ">
-                    {!! Form::text('todaysdate', old('todaysdate'), array('class'=>'datepicker form-control','placeholder'=>'MM/DD/YYYY'))!!}
-                    <p class="help-block"></p>
-                    @if($errors->has('todaysdate'))
-                        <p class="help-block">
-                            {{ $errors->first('todaysdate') }}
-                        </p>
-                    @endif
+                <div class="row">
+                    <div class="col-sm-4 form-group">
+                        {!! Form::label('primaryidconumber', 'Primary IDCO #', array('style'=>'padding-top:7px;','class'=> 'col-sm-4 control-label') ) !!}
+                        <div class="col-sm-6 ">
+                            {!! Form::text('primaryidconumber', old('primaryidconumber'), array('class' => 'form-control','placeholder'=>'Enter IDCO Badge ID'))!!}
+                            <p class="help-block"></p>
+                            @if($errors->has('primaryidconumber'))
+                                <p class="help-block">
+                                    {{ $errors->first('primaryidconumber') }}
+                                </p>
+                            @endif
+                        </div>
+                    </div>
+                    <div class="col-sm-4 form-group">
+                        {!! Form::label('frmsincidentnum', 'FRMS Incident #', array('style'=>'padding-top:7px;','class'=> 'col-sm-4 control-label') ) !!}
+                        <div class="col-sm-6 ">
+                            {!! Form::text('frmsincidentnum', old('frmsincidentnum'), array('class' => 'form-control','placeholder'=>'Enter FRMS Num'))!!}
+                            <p class="help-block"></p>
+                            @if($errors->has('frmsincidentnum'))
+                                <p class="help-block">
+                                    {{ $errors->first('frmsincidentnum') }}
+                                </p>
+                            @endif
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -203,7 +205,7 @@
                                download="(Exposure PDF) OFD 184 State Infectious Disease Exposure Report.pdf">
                                 <i class="fa fa-download" aria-hidden="true"></i> Download</a>
                         </div>
-                        <div class="col-sm-3">
+                        <div class="col-sm-4">
                             <div class="input-group">
                                 <label class="input-group-btn">
                                             <span class="btn btn-info"><i class="fa fa-cloud-upload"
@@ -293,7 +295,7 @@
                                download="(Exposure PDF) OFD 184 State Infectious Disease Exposure Report">
                                 <i class="fa fa-download" aria-hidden="true"></i> Download</a>
                         </div>
-                        <div class="col-sm-3">
+                        <div class="col-sm-4">
                             <div class="input-group">
                                 <label class="input-group-btn">
                     <span class="btn btn-info">
@@ -351,51 +353,59 @@
                 <div class="col-sm-12">
                     <label class="col-sm-5"></label>
                     <div class="btn-bottom">
-                        {!! Form::submit('Submit',['class' => 'btn btn-success']) !!}
+                        <button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal">
+                            Submit
+                        </button>
                         <a href="{{ route('biologicals.index') }}" class="btn btn-danger">Cancel</a>
                     </div>
                 </div>
             </div>
-            <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-                <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
-                                        aria-hidden="true">&times;</span></button>
-                            <h4 class="modal-title" id="myModalLabel">Modal title</h4>
-                        </div>
-                        <div class="modal-body">
-                            ...
-                        </div>
-                        <div class="modal-footer">
-                            {!! Form::submit('Submit',['class' => 'btn btn-success']) !!}
-                        </div>
+        </div>
+
+        <!-- Modal -->
+        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                    aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="myModalLabel"></h4>
                     </div>
+                    <div class="modal-body">
+                        Are you sure you want to Submit?
+                    </div>
+                    <div class="modal-footer">
+                        {!! Form::submit('Yes',['class' => 'btn btn-success']) !!}
+                        <button type="button" class=" btn btn-danger" data-dismiss="modal" aria-label="">No</button>
+
+
+                    </div>
+
                 </div>
             </div>
         </div>
 
-            {!! Form::close() !!}
-            @stop
+        {!! Form::close() !!}
+        @stop
 
-            @section('javascript')
+        @section('javascript')
 
-                <script src="{{ ('js/extensions/cookie') }}/bootstrap-table-cookie.js"></script>
-                <script src="{{ ('js/extensions/mobile') }}/bootstrap-table-mobile.js"></script>
+            <script src="{{ ('js/extensions/cookie') }}/bootstrap-table-cookie.js"></script>
+            <script src="{{ ('js/extensions/mobile') }}/bootstrap-table-mobile.js"></script>
 
-                <script src="{{ ('js/export') }}/bootstrap-table-export.js"></script>
-                <script src="{{ ('js/export') }}/tableExport.js"></script>
-                <script src="{{ ('js/export') }}/jquery.base64.js"></script>
+            <script src="{{ ('js/export') }}/bootstrap-table-export.js"></script>
+            <script src="{{ ('js/export') }}/tableExport.js"></script>
+            <script src="{{ ('js/export') }}/jquery.base64.js"></script>
 
-                <script type="text/javascript">
-                    $(document).ready(function () {
-                        $("input[name$='exposure']").click(function () {
-                            var test = $(this).val();
+            <script type="text/javascript">
+                $(document).ready(function () {
+                    $("input[name$='exposure']").click(function () {
+                        var test = $(this).val();
 
-                            $("div.desc").hide();
-                            $("#Exposure" + test).show();
-                        });
+                        $("div.desc").hide();
+                        $("#Exposure" + test).show();
                     });
-                </script>
-        </div>
+                });
+            </script>
+    </div>
 @endsection
