@@ -15,6 +15,7 @@
         table {
             border-collapse: collapse;
         }
+
         table, td, th {
             border: 1px solid black;
         }
@@ -108,7 +109,8 @@
                                 </p>
                             @endif
                         </div>
-                    </div><div class="col-sm-4 form-group">
+                    </div>
+                    <div class="col-sm-4 form-group">
                         {!! Form::label('assignmentaccident', 'Assignment', array('style'=>'padding-top:7px;','class' => 'col-sm-4 control-label')) !!}
                         <div class="col-sm-6 ">
                             {!! Form::text('assignmentaccident', old('assignmentaccident'),['disabled'], ['class' => 'form-control'])!!}
@@ -502,15 +504,12 @@
                             Book</strong></label>
                 </div>
             </div>
-        </div>
-    </div>
-    <div class="panel panel-default">
-        <div class="col-sm-12 panel-heading">
             <label class="col-sm-5"></label>
             <div class="btn-bottom ">
                 <a href="{{ route('accidents.index') }}" class="btn btn-default">Return</a>
             </div>
         </div>
     </div>
+
     {!! Form::close() !!}
 @stop
