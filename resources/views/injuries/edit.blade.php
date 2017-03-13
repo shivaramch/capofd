@@ -572,7 +572,7 @@
                 <div class="col-sm-12 form-group">
                     <label class="col-sm-4">In case attend Omaha Police Academy - Training Assigned</label>
                     <div class="col-sm-3">
-                        {{ Form::select('shift', [
+                        {{ Form::select('trainingassigned', [
                         'yes' => 'YES',
                         'no' => 'NO']
                         ), array('class'=>'btn btn-primary dropdown-toggle col-sm-12') }}

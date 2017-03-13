@@ -133,13 +133,14 @@
                     </div>
                 </div>
                 <div class="col-sm-4 form-group">
-                    {!! Form::label('shift', 'Shift', ['class' => 'col-sm-4 control-label']) !!}
+                    <label class="col-sm-4 control-label">Shift</label>
                     <div class="col-sm-6">
                         {!! Form::select('shift',[
                       'A' => 'A',
                       'B' => 'B',
                       'C' => 'C',
-                      'DIV' => 'DIV'], array('class' => 'form-control','required' => 'required'))!!}
+                      'DIV' => 'DIV'],null,
+                                ['placeholder' => 'Choose one'], array('class' => 'form-control','required' => 'required'))!!}
                         <p class="help-block"></p>
                         @if($errors->has('shift'))
                             <p class="help-block">
@@ -419,10 +420,11 @@
             <div class="col-sm-12 form-group">
                 <label class="col-sm-4">In case attend Omaha Police Academy - Training Assigned</label>
                 <div class="col-sm-3">
-                    {{ Form::select('shift', [
+                    {{ Form::select('trainingassigned', [
                     'yes' => 'YES',
-                    'no' => 'NO']
-                    ), array('class'=>'btn btn-primary dropdown-toggle col-sm-12') }}
+                    'no' => 'NO'],null,
+                                ['placeholder' => 'Choose one'],
+                     array('class'=>'btn btn-primary dropdown-toggle col-sm-12')) }}
                 </div>
             </div>
         </div>
