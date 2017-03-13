@@ -137,7 +137,7 @@
                           'A' => 'A',
                           'B' => 'B',
                           'C' => 'C',
-                          'DIV' => 'DIV'], ['class' => 'form-control'])!!}
+                          'DIV' => 'DIV'],old('shift'), ['class' => 'form-control'])!!}
                             <p class="help-block"></p>
                             @if($errors->has('shift'))
                                 <p class="help-block">
@@ -237,7 +237,7 @@
 
                                 {!! Form::select('exposurehazmat',[
                                   'Yes' => 'Yes',
-                                  'No' => 'No'],
+                                  'No' => 'No'],old('exposurehazmat'),
                                 array('class' => 'form-control'))!!}
                                 <p class="help-block"></p>
                                 @if($errors->has('exposurehazmat'))
