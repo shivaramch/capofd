@@ -128,7 +128,7 @@ class EmailController extends Controller
             $primaryidcoemail = DB::table('users')->where('id', $request->primaryidconumber)->pluck('email');
 
             if(count($primaryidcoemail)) {
-
+var_dump($primaryidconame);
                 $allemails->push(["$primaryidcoemail" => "$primaryidconame"]);
             }
         }
@@ -171,7 +171,7 @@ var_dump($personname);
                 //     var_dump($testemail);
                 $testname=str_replace (array('["', '"]'), '' ,$name);
         $view = View::make('email_template', [
-           'message'=>'hello',
+           'message'=>'Omaha Fire Department',
             'link'=>$link,'firefighter'=>str_replace (array('["', '"]'), '', $personname),
             'formname'=>$templateform,'officername'=>$testname
         ]);

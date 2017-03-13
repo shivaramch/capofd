@@ -100,7 +100,7 @@ class HazmatController extends Controller
         $formname="hazmat";
         $rawlink=request()->headers->get('referer');
         $link=preg_replace('#\/[^/]*$#', '', $rawlink);
-        $numsent = (new EmailController)->Email($request, $link,$formname);
+     $numsent = (new EmailController)->Email($request, $link,$formname);
 
         //email notification-end
 
