@@ -59,6 +59,23 @@
                     </div>
                 </div>
                 <div class="row">
+                    <div class="col-sm-8 form-group">
+                        {!! Form::label('reportnum', 'Report #', ['class' => 'col-sm-2 control-label']) !!}
+                        <div class="col-sm-3">
+                            {!! Form::text('reportnum', old('reportnum'), array('class' => 'form-control','style' =>'margin-left:-7px;','placeholder'=>'Enter Report Number','required' => 'required','disabled'=>'disabled'))!!}
+                            <p class="help-block"></p>
+                            @if($errors->has('reportnum'))
+                                <p class="help-block">
+                                    {{ $errors->first('reportnum') }}
+                                </p>
+                            @endif
+                        </div>
+                        <div class='col-sm-7'>
+                            {!! Form::label('reportnum ', '(Obtain from SWD Office)', array('class' => 'col-sm-8 control-label','style' =>'margin-left:-50px;')) !!}
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
                     <div class="col-sm-4 form-group">
                         {!! Form::label('createdate', 'Todays Date:', ['class' => 'col-sm-4 control-label']) !!}
                         <div class="col-sm-6 ">
@@ -476,7 +493,7 @@
             <div class="row">
                 <div class="col-sm-12">
                     <div class="form-group">
-                        {{ Form::checkbox('policeofficercompletesign', 1, null, ['id' => 'policeofficercompletesign', 'class'=>'className', 'readonly' => 'true']) }}
+                        {{ Form::checkbox('policeofficercompletesign', 1, null, ['id' => 'policeofficercompletesign', 'class'=>'className', 'readonly' => 'true','disabled'=>'disabled' ]) }}
                         <label><strong>Have Police Supervisor Complete and Sign
                                 Supervisor section on Investigation Report
                                 and Witness Statement</strong></label>
@@ -486,7 +503,7 @@
             <div class="row">
                 <div class="col-sm-12">
                     <div class="form-group">
-                        {{ Form::checkbox('callsupervisor', 1, null, ['id' => 'callsupervisor', 'class'=>'className', 'readonly' => 'true']) }}
+                        {{ Form::checkbox('callsupervisor', 1, null, ['id' => 'callsupervisor', 'class'=>'className', 'readonly' => 'true','disabled'=>'disabled']) }}
                         <label><strong>Call Fire Supervisor or SWD B/C immediately
                                 and notify CorVel by phone</strong></label>
                     </div>

@@ -15,9 +15,6 @@
     <input type="hidden" name="_token" value="{!!  'csrf_token()' !!}">
     {{ csrf_field() }}
     <style>
-        #padtop {
-            padding-top: 7px;
-        }
         table {
             border-collapse: collapse;
         }
@@ -60,6 +57,23 @@
                         <div class="alert alert-danger" align="center">
                             <strong>COMPLETE ALL FORMS AND FORWARD VIA CHAIN-OF-COMMAND WITHIN 48 HOURS
                             </strong>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-8 form-group">
+                        {!! Form::label('reportnum', 'Report #', ['class' => 'col-sm-2 control-label']) !!}
+                        <div class="col-sm-3">
+                            {!! Form::text('reportnum', old('reportnum'), array('class' => 'form-control','style' =>'margin-left:-7px;','placeholder'=>'Enter Report Number'))!!}
+                            <p class="help-block"></p>
+                            @if($errors->has('reportnum'))
+                                <p class="help-block">
+                                    {{ $errors->first('reportnum') }}
+                                </p>
+                            @endif
+                        </div>
+                        <div class='col-sm-7'>
+                            {!! Form::label('reportnum ', '(Obtain from SWD Office)', array('class' => 'col-sm-8 control-label','style' =>'margin-left:-50px;')) !!}
                         </div>
                     </div>
                 </div>
@@ -568,35 +582,23 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-sm-12 form-group">
-                    <label class="checkbox-inline col-sm-12"><input type="checkbox"><strong>Have Police Supervisor
-                            Complete and Sign
-                            Supervisor section on Investigation Report
-                            and Witness Statement</strong></label>
+                <div class="col-sm-12">
+                    <div class="form-group">
+                        {{ Form::checkbox('policeofficercompletesign', 1, null, ['id' => 'policeofficercompletesign', 'class'=>'className']) }}
+                        <label><strong>Have Police Supervisor Complete and Sign
+                                Supervisor section on Investigation Report
+                                and Witness Statement</strong></label>
+                    </div>
                 </div>
             </div>
             <div class="row">
-                <div class="col-sm-12 form-group">
-                    <label class="checkbox-inline col-sm-12"><input type="checkbox"><strong>Call Fire Supervisor or SWD
-                            B/C immediately
-                            and notify CorVel by phone</strong></label>
+                <div class="col-sm-12">
+                    <div class="form-group">
+                        {{ Form::checkbox('callsupervisor', 1, null, ['id' => 'callsupervisor', 'class'=>'className']) }}
+                        <label><strong>Call Fire Supervisor or SWD B/C immediately
+                                and notify CorVel by phone</strong></label>
+                    </div>
                 </div>
-            </div>
-            <div class="row">
-                <div class="col-sm-12 form-group">
-                    <label class="checkbox-inline col-sm-12"><input type="checkbox"><strong>
-                            Call Law Department
-                            Investigator</strong>- Call 444-5131- Request report be faxed to
-                        SWD fax # 444-6378. You can
-                        leave a message with rig # address of incident, date, time and
-                        RB#</label>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-sm-12 form-group">
-                    <label class="checkbox-inline col-sm-4"><input type="checkbox"><strong>
-                            Enter in Company Day
-                            Book</strong></label></div>
             </div>
             <div class="row">
                 <div class="col-sm-12 panel-headinzzzzg">
