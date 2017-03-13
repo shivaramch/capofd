@@ -456,21 +456,23 @@
                     </div>
                 </div>
             </div>
-
             <div class="row">
                 <div class="col-sm-12">
                     <div class="form-group">
-                        {{ Form::checkbox('commemail', 1, null, ['id' => 'commemail', 'class'=>'className']) }}
+                        {{ Form::checkbox('documentworkforce', 1, null, ['id' => 'documentworkforce', 'class'=>'className', 'readonly' => 'true','disabled'=>'disabled']) }}
                         <label><strong>Document IOD in
-                                Workforce</strong>
-                            - Only if seeking medical attention.</label>
+                                Workforce
+                                - Only if seeking medical attention.</strong></label>
                     </div>
                 </div>
             </div>
             <div class="row">
-                <div class="col-sm-12 form-group">
-                    <label class="checkbox-inline col-sm-12"><input type="checkbox"><strong>Document in Operational Day
-                            Book and Personnel Record</strong></label>
+                <div class="col-sm-12">
+                    <div class="form-group">
+                        {{ Form::checkbox('documentoperationalday', 1, null, ['id' => 'documentoperationalday', 'class'=>'className', 'readonly' => 'true','disabled'=>'disabled']) }}
+                        <label><strong>Document in Operational Day
+                                Book and Personnel Record</strong></label>
+                    </div>
                 </div>
             </div>
             <div class="row">
