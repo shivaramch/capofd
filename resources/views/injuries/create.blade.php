@@ -53,6 +53,23 @@
                 </div>
             </div>
             <div class="row">
+                <div class="col-sm-8 form-group">
+                    {!! Form::label('reportnum', 'Report #', ['class' => 'col-sm-2 control-label']) !!}
+                    <div class="col-sm-3">
+                        {!! Form::text('reportnum', old('reportnum'), array('class' => 'form-control','style' =>'margin-left:-7px;','placeholder'=>'Enter Report Number'))!!}
+                        <p class="help-block"></p>
+                        @if($errors->has('reportnum'))
+                            <p class="help-block">
+                                {{ $errors->first('reportnum') }}
+                            </p>
+                        @endif
+                    </div>
+                    <div class='col-sm-7'>
+                        {!! Form::label('reportnum ', '(Obtain from SWD Office)', array('class' => 'col-sm-6 control-label','style' =>'margin-left:-70px;')) !!}
+                    </div>
+                </div>
+            </div>
+            <div class="row">
                 <div class="col-sm-4 form-group">
                     {!! Form::label('createdate', 'Todays Date:', ['class' => 'col-sm-4 control-label']) !!}
                     <div class="col-sm-6 ">
@@ -116,13 +133,14 @@
                     </div>
                 </div>
                 <div class="col-sm-4 form-group">
-                    {!! Form::label('shift', 'Shift', ['class' => 'col-sm-4 control-label']) !!}
+                    <label class="col-sm-4 control-label">Shift</label>
                     <div class="col-sm-6">
                         {!! Form::select('shift',[
                       'A' => 'A',
                       'B' => 'B',
                       'C' => 'C',
-                      'DIV' => 'DIV'], array('class' => 'form-control','required' => 'required'))!!}
+                      'DIV' => 'DIV'],null,
+                                ['placeholder' => 'Choose one'], array('class' => 'form-control','required' => 'required'))!!}
                         <p class="help-block"></p>
                         @if($errors->has('shift'))
                             <p class="help-block">
@@ -379,31 +397,34 @@
                 </div>
             </div>
         </div>
-
         <div class="row">
             <div class="col-sm-12">
                 <div class="form-group">
-                    {{ Form::checkbox('commemail', 1, null, ['id' => 'commemail', 'class'=>'className']) }}
+                    {{ Form::checkbox('documentworkforce', 1, null, ['id' => 'documentworkforce', 'class'=>'className','required' => 'required']) }}
                     <label><strong>Document IOD in
-                            Workforce</strong>
-                        - Only if seeking medical attention.</label>
+                            Workforce
+                        - Only if seeking medical attention.</strong></label>
                 </div>
             </div>
         </div>
         <div class="row">
-            <div class="col-sm-12 form-group">
-                <label class="checkbox-inline col-sm-12"><input type="checkbox"><strong>Document in Operational Day
-                        Book and Personnel Record</strong></label>
+            <div class="col-sm-12">
+                <div class="form-group">
+                    {{ Form::checkbox('documentoperationalday', 1, null, ['id' => 'documentoperationalday', 'class'=>'className','required' => 'required']) }}
+                    <label><strong>Document in Operational Day
+                            Book and Personnel Record</strong></label>
+                </div>
             </div>
         </div>
         <div class="row">
             <div class="col-sm-12 form-group">
                 <label class="col-sm-4">In case attend Omaha Police Academy - Training Assigned</label>
                 <div class="col-sm-3">
-                    {{ Form::select('shift', [
+                    {{ Form::select('trainingassigned', [
                     'yes' => 'YES',
-                    'no' => 'NO']
-                    ), array('class'=>'btn btn-primary dropdown-toggle col-sm-12') }}
+                    'no' => 'NO'],null,
+                                ['placeholder' => 'Choose one'],
+                     array('class'=>'btn btn-primary dropdown-toggle col-sm-12')) }}
                 </div>
             </div>
         </div>
@@ -417,7 +438,7 @@
         <div class="row">
             <div class="col-sm-12">
                 <div class="form-group">
-                    {{ Form::checkbox('policeofficercompletesign', 1, null, ['id' => 'policeofficercompletesign', 'class'=>'className']) }}
+                    {{ Form::checkbox('policeofficercompletesign', 1, null, ['id' => 'policeofficercompletesign', 'class'=>'className','required' => 'required']) }}
                     <label><strong>Have Police Supervisor Complete and Sign
                             Supervisor section on Investigation Report
                             and Witness Statement</strong></label>
@@ -427,7 +448,7 @@
         <div class="row">
             <div class="col-sm-12">
                 <div class="form-group">
-                    {{ Form::checkbox('callsupervisor', 1, null, ['id' => 'callsupervisor', 'class'=>'className']) }}
+                    {{ Form::checkbox('callsupervisor', 1, null, ['id' => 'callsupervisor', 'class'=>'className','required' => 'required']) }}
                     <label><strong>Call Fire Supervisor or SWD B/C immediately
                             and notify CorVel by phone</strong></label>
                 </div>
