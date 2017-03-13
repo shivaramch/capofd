@@ -37,6 +37,7 @@ class UpdateInjuriesRequest extends FormRequest
             'documentworkforce' => 'required',
             'documentoperationalday' => 'required',
             'shift' => 'required|string:injury,shift,'. $this->route('injury'),
+            'trainingassigned' => 'required|string:injury,shift,'. $this->route('injury'),
             'frmsincidentnum' => 'required|string:injury,frmsincidentnum'. $this->route('injury'),
             'policeofficercompletesign' => 'required',
             'callsupervisor' => 'required',
