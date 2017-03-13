@@ -63,7 +63,7 @@
                     <div class="col-sm-4 form-group">
                         {!! Form::label('accidentdate', 'Date of Accident:',array('style'=>'padding-top:7px;','class'=> 'col-sm-4 control-label') )!!}
                         <div class="col-sm-6 ">
-                            {!! Form::text('accidentdate', old('accidentdate'), array('id'=>'datepicker12','class' => 'form-control datepicker1', 'placeholder' => 'YYYY-MM-DD','required' => 'required'))!!}
+                            {!! Form::text('accidentdate', old('accidentdate'), array('id'=>'datepicker12','class' => 'form-control datepicker1', 'placeholder' => 'MM-DD-YYYY','required' => 'required'))!!}
                             {!! Form::text('accidentdate', old('accidentdate'), array('style'=>'display:none;','id'=>'datepicker32','class' => 'form-control datepicker', 'placeholder' => 'YYYY-MM-DD','required' => 'required'))!!}
                             <p class="help-block"></p>
                             @if($errors->has('accidentdate'))
@@ -163,7 +163,7 @@
                     </div>
                     <div class="col-sm-4 form-group">
                         {!! Form::label('aconduty', 'Assistant Chief #', array('style'=>'padding-top:7px;','class' => 'col-sm-4 control-label','placeholder'=>'Enter Badge Id')) !!}
-                        <div class="col-sm-6 ">
+                        <div class="col-sm-7 ">
                             {!! Form::text('aconduty', old('aconduty'), array('class' => 'form-control','placeholder'=>'Enter Badge Id'))!!}
                             <p class="help-block"></p>
                             @if($errors->has('aconduty'))
@@ -208,6 +208,7 @@
                 <div class="col-sm-12">
                     <div class="form-group">
                         {{ Form::checkbox('commemail', 1, null, ['id' => 'commemail', 'class'=>'className']) }}
+						
                         <label><strong>Generate OFD 025
                                 Intradepartmental Communication</strong>-Email to <a
                                     href="omafaccident_ofd25@cityofomaha.org"> omafaccident_ofd25@cityofomaha.org </a>
