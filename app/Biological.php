@@ -30,7 +30,7 @@ class Biological extends Model
         'epcrincidentnum',
         'exposureinjury',
         'frmsincidentnum',
-        'todaysdate',
+        //'todaysdate',
         'truedecontaminate',
         'confirmsource',
         'bloodreport',
@@ -44,8 +44,8 @@ class Biological extends Model
         'potppe',
         'potdocumentdaybook',
         'exposure',
-        //'trueofd184',
-        //'potofd184'
+        'trueofd184',
+        'potofd184'
         //'trueInjury',
         //'potInjury'
     ];
@@ -56,11 +56,7 @@ class Biological extends Model
         } else {
             $this->attributes['dateofexposure'] = null;
         }
-        if ($input != null) {
-            $this->attributes['todaysdate'] = Carbon::createFromFormat('Y-m-d', $input)->format('Y-m-d');
-        } else {
-            $this->attributes['todaysdate'] = null;
-        }
+
     }
     public function attachment()
     {

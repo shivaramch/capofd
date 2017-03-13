@@ -47,6 +47,6 @@ class CreateAccidentTable extends Migration
      */
     public function down()
     {
-        Schema::drop('accident');
+        Schema::drop('accidents');
     }
 }

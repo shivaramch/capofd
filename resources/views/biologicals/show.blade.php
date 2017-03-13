@@ -13,6 +13,8 @@
     @section('content')
     {!! Form::model($biological,['method' => 'PUT', 'route' => ['biologicals.update', $biological->ofd6bid], 'files' => true,])!!}
 
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
     <style>
         #padtop {
             padding-top: 7px;
@@ -143,18 +145,7 @@
                     @endif
                 </div>
             </div>
-            <div class="col-sm-4 form-group">
-                {!! Form::label('todaysdate', 'Date', array('style'=>'padding-top:7px;','class'=> 'col-sm-4 control-label') ) !!}
-                <div class="col-sm-6 ">
-                    {!! Form::text('todaysdate', old('todaysdate'),['disabled'], array('placeholder'=>'MM/DD/YYYY'))!!}
-                    <p class="help-block"></p>
-                    @if($errors->has('todaysdate'))
-                        <p class="help-block">
-                            {{ $errors->first('todaysdate') }}
-                        </p>
-                    @endif
-                </div>
-            </div>
+
         </div>
     </div>
     <div class="panel panel-default">
@@ -210,7 +201,7 @@
                                     </tr>
                                     @if(count($attachments) > 0)
                                         @foreach($attachments as $attachment)
-                                            @if($attachment->attachmenttype == '6b1' && $attachment->createdBy ==  Auth::user()->id && $attachment->ofd6bid == $biological->ofd6bid )
+                                            @if($attachment->attachmenttype == '6b1' && $attachment->createdby ==  Auth::user()->id && $attachment->ofd6bid == $biological->ofd6bid )
                                                 <tr>
                                                     <td>
                                                         <a href="{{ asset('uploads/'.$attachment->attachmentname) }}"> {{$attachment->attachmentname}}</a>
