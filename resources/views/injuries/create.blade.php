@@ -194,7 +194,7 @@
                             </p>
                         @endif
                     </div>
-                    <div class='col-sm-8'>
+                    <div class='col-sm-7'>
                         {!! Form::label('corVelID ', '(Corvel TMC will initiate at time of call)', array('class' => 'col-sm-8 control-label','style' =>'margin-left:-50px;')) !!}
                     </div>
                 </div>
