@@ -38,12 +38,15 @@ class EmailController extends Controller
         $templateform=null;
         $allemails = new Collection();
         $numSent = 0;
+        $extracontent=null;
+        $personid=null;
         if($formname=="accidents" || $formname=="injuries") {
 
 
             if ($formname == "accidents") {
                 $personemail = DB::table('users')->where('id', $request->driverid)->pluck('email');
                 $personname = DB::table('users')->where('id', $request->driverid)->pluck('name');
+                $personid=$request->driverid;
 
                 $templateform = "OFD 6A";
                 if (count($personemail)) {
@@ -52,13 +55,14 @@ class EmailController extends Controller
                     //        var_dump($allemails);
                 }
 
+
             }
 
             if ($formname == "injuries") {
                 $templateform = "OFD 6";
                 $personemail = DB::table('users')->where('id', $request->injuredemployeeid)->pluck('email');
                 $personname = DB::table('users')->where('id', $request->injuredemployeeid)->pluck('name');
-
+                $personid=$request->injuredemployeeid;
                 if (count($personemail)) {
 
                     $allemails->push(["$personemail" => "$personname"]);
@@ -91,7 +95,8 @@ class EmailController extends Controller
 
 
             }
-
+            $extracontent="Please review carefully as part of approval
+    process and make a decision.";
 
         }
 
@@ -105,16 +110,20 @@ class EmailController extends Controller
             if($formname=="biologicals" ){
                 $personemail =DB::table('users')->where('id', $request->employeeid)->pluck('email');
                 $personname= DB::table('users')->where('id', $request->employeeid)->pluck('name');
+                $personid=$request->employeeid;
                 $templateform="OFD 6B";
                 if(count($personemail)){
 
                     $allemails->push(["$personemail" => "$personname"]);
                 }
+                $extracontent="Please review carefully as part of approval
+    process and make a decision.";
             }
 
             if($formname=="hazmat" ){
                 $personemail=DB::table('users')->where('id', $request->employeeid)->pluck('email');
                 $personname= DB::table('users')->where('id', $request->employeeid)->pluck('name');
+                $personid=$request->employeeid;
                 $templateform="OFD 6C";
 
                 if(count($personemail)){
@@ -171,9 +180,9 @@ var_dump($personname);
                 //     var_dump($testemail);
                 $testname=str_replace (array('["', '"]'), '' ,$name);
         $view = View::make('email_template', [
-           'message'=>'Omaha Fire Department',
+           'message'=>$templateform.'Report Tracking Document Submitted',
             'link'=>$link,'firefighter'=>str_replace (array('["', '"]'), '', $personname),
-            'formname'=>$templateform,'officername'=>$testname
+            'formname'=>$templateform,'officername'=>$testname,'content'=>$extracontent,'personid'=>$personid
         ]);
 
 
@@ -182,8 +191,8 @@ var_dump($personname);
 
 
 
-        $message = \Swift_Message::newInstance('Omaha Fire Department')
-            ->setFrom(['ofdservicedesk@gmail.com' => 'Omaha Fire Department'])
+        $message = \Swift_Message::newInstance($templateform.'Report Tracking Document Submitted')
+            ->setFrom(['ofdservicedesk@gmail.com' =>'Omaha Fire Department' ])
             ->setBody($html, 'text/html');
 
 

@@ -118,7 +118,10 @@ Responsive Email Template by @keenthemes
 					</span></font>
                                                     </div>
                                                     <!-- padding --><div style="height: 40px; line-height: 40px; font-size: 10px;"></div>
-                                                </td></tr><img src="https://pbs.twimg.com/profile_images/804047647963160576/EHPIu4oV.jpg" alt="W3Schools.com" style="width:142px;height:142px;">
+                                                </td></tr>
+                                            <tr><td align="center">
+                                                   <img src="http://i65.tinypic.com/20pzmur.png" border="0" >
+                                                </td></tr>
 
                                             <tr><td align="center">
                                                     <div style="line-height: 24px;">
@@ -127,8 +130,7 @@ Responsive Email Template by @keenthemes
 					 <p>Hello  {{$officername}} ,</p>
         <br>
     <p>
-    {{$firefighter}} has just submitted  {{$formname}} application and pending for your approval.Please review carefully as part of approval
-    process and make a decision.
+    {{$firefighter}}({{$personid}}) has just submitted  {{$formname}} application and pending for your approval.{{$content}}
     </p>
 					</span></font>
                                                     </div>
