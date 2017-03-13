@@ -399,7 +399,7 @@
         <div class="row">
             <div class="col-sm-12">
                 <div class="form-group">
-                    {{ Form::checkbox('documentworkforce', 1, null, ['id' => 'documentworkforce', 'class'=>'className']) }}
+                    {{ Form::checkbox('documentworkforce', 1, null, ['id' => 'documentworkforce', 'class'=>'className','required' => 'required']) }}
                     <label><strong>Document IOD in
                             Workforce
                         - Only if seeking medical attention.</strong></label>
@@ -409,7 +409,7 @@
         <div class="row">
             <div class="col-sm-12">
                 <div class="form-group">
-                    {{ Form::checkbox('documentoperationalday', 1, null, ['id' => 'documentoperationalday', 'class'=>'className']) }}
+                    {{ Form::checkbox('documentoperationalday', 1, null, ['id' => 'documentoperationalday', 'class'=>'className','required' => 'required']) }}
                     <label><strong>Document in Operational Day
                             Book and Personnel Record</strong></label>
                 </div>
@@ -436,7 +436,7 @@
         <div class="row">
             <div class="col-sm-12">
                 <div class="form-group">
-                    {{ Form::checkbox('policeofficercompletesign', 1, null, ['id' => 'policeofficercompletesign', 'class'=>'className']) }}
+                    {{ Form::checkbox('policeofficercompletesign', 1, null, ['id' => 'policeofficercompletesign', 'class'=>'className','required' => 'required']) }}
                     <label><strong>Have Police Supervisor Complete and Sign
                             Supervisor section on Investigation Report
                             and Witness Statement</strong></label>
@@ -446,7 +446,7 @@
         <div class="row">
             <div class="col-sm-12">
                 <div class="form-group">
-                    {{ Form::checkbox('callsupervisor', 1, null, ['id' => 'callsupervisor', 'class'=>'className']) }}
+                    {{ Form::checkbox('callsupervisor', 1, null, ['id' => 'callsupervisor', 'class'=>'className','required' => 'required']) }}
                     <label><strong>Call Fire Supervisor or SWD B/C immediately
                             and notify CorVel by phone</strong></label>
                 </div>
