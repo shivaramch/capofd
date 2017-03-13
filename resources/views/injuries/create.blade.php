@@ -174,7 +174,7 @@
                 <div class="col-sm-4 form-group">
                     {!! Form::label('frmsincidentnum', 'FRMS Incident #', ['class' => 'col-sm-4 control-label']) !!}
                     <div class="col-sm-6 ">
-                        {!! Form::text('frmsincidentnum', old('frmsincidentnum'), array('class' => 'form-control'))!!}
+                        {!! Form::text('frmsincidentnum', old('frmsincidentnum'), array('class' => 'form-control','placeholder'=>'Enter FRMS Number'))!!}
                         <p class="help-block"></p>
                         @if($errors->has('frmsincidentnum'))
                             <p class="help-block">
@@ -186,7 +186,7 @@
                 <div class="col-sm-8 form-group">
                     {!! Form::label('corvelid', 'CorVel ID #', ['class' => 'col-sm-2 control-label']) !!}
                     <div class="col-sm-3">
-                        {!! Form::text('corvelid', old('corvelid'), array('class' => 'form-control','style' =>'margin-left:-7px;'))!!}
+                        {!! Form::text('corvelid', old('corvelid'), array('class' => 'form-control','style' =>'margin-left:-7px;','placeholder'=>'Enter Corvel ID'))!!}
                         <p class="help-block"></p>
                         @if($errors->has('corvelid'))
                             <p class="help-block">
@@ -194,8 +194,8 @@
                             </p>
                         @endif
                     </div>
-                    <div class='col-sm-7'>
-                        {!! Form::label('corVelID ', '(Corvel TMC will initiate at time of call)', array('class' => 'col-sm-7 control-label','style' =>'margin-left:-50px;')) !!}
+                    <div class='col-sm-8'>
+                        {!! Form::label('corVelID ', '(Corvel TMC will initiate at time of call)', array('class' => 'col-sm-8 control-label','style' =>'margin-left:-50px;')) !!}
                     </div>
                 </div>
             </div>
