@@ -65,7 +65,7 @@
                         @endif
                     </div>
                     <div class='col-sm-7'>
-                        {!! Form::label('reportnum ', '(Obtain from SWD Office)', array('class' => 'col-sm-8 control-label','style' =>'margin-left:-50px;')) !!}
+                        {!! Form::label('reportnum ', '(Obtain from SWD Office)', array('class' => 'col-sm-6 control-label','style' =>'margin-left:-70px;')) !!}
                     </div>
                 </div>
             </div>
