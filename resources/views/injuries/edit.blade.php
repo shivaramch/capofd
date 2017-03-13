@@ -18,8 +18,14 @@
         #padtop {
             padding-top: 7px;
         }
-    </style>
+        table {
+            border-collapse: collapse;
+        }
 
+        table, td, th {
+            border: 1px solid black;
+        }
+    </style>
     <div class="panel panel-default">
         <div class="panel-heading">
             <div class="jumbotron" style="margin-bottom: 5px; ">

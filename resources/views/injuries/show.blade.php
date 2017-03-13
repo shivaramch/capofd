@@ -12,7 +12,15 @@
 
 @section('content')
     {!! Form::model($injury,['method' => 'PUT', 'route' => ['injuries.update', $injury->ofd6ID], 'files' => true,]) !!}
+    <style>
+        table {
+            border-collapse: collapse;
+        }
 
+        table, td, th {
+            border: 1px solid black;
+        }
+    </style>
     <div class="panel panel-default">
         <div class="panel-heading">
             <div class="jumbotron" style="margin-bottom: 5px; ">
@@ -511,5 +519,5 @@
             </div>
         </div>
     </div>
-
+</div>
 @stop
