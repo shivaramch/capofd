@@ -1,10 +1,6 @@
 @extends('layouts.app')
 
-<script>
-setTimeout(function() {
-    $('.flash-message').fadeOut('fast');
-}, 4000); // <-- time in milliseconds
-</script>
+
 @section('crumbs')
     <ol class="breadcrumb">
         <a class="btn btn-default" type="button"
@@ -18,14 +14,7 @@ setTimeout(function() {
 
 @section('content')
 
-<div class="flash-message" style="font-size:20px; text-align:center">
-    @foreach (['danger', 'warning', 'success', 'info'] as $msg)
-      @if(Session::has('alert-' . $msg))
 
-      <p class="alert alert-{{ $msg }}">{{ Session::get('alert-' . $msg) }} <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a></p>
-      @endif
-    @endforeach
-   </div>
 
 
     <div class="panel panel-default panel-shadow ">
