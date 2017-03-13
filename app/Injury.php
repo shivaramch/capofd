@@ -31,6 +31,8 @@ class Injury extends Model
         'aconduty',
         'shift',
         'frmsincidentnum',
+        'documentworkforce',
+        'documentoperationalday',
         'policeofficercompletesign',
         'callsupervisor',
         'createdby',
