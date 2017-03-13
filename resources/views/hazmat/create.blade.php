@@ -223,17 +223,18 @@
                     <div class="row">
                         <div class="col-md-12">
                             <div class="alert alert-danger" align="left">
-                                {{Form::label('exposurehazmat','Do you have any symptoms of illness or injury and require
+                                {{Form::label('exposureinjury','Do you have any symptoms of illness or injury and require
                                    treatment? (In case of Injury, please fill OFD - 6 IOD Application)     ')}}
 
-                                {!! Form::select('exposurehazmat',[
-                                  'No' => 'No',
-                                  'Yes' => 'Yes'],
+                                {!! Form::select('exposureinjury',[
+                                  'Yes' => 'Yes',
+                                  'No' => 'No'],null,
+                                ['placeholder' => 'Choose one'],
                                 array('class' => 'form-control'))!!}
                                 <p class="help-block"></p>
-                                @if($errors->has('exposurehazmat'))
+                                @if($errors->has('exposureinjury'))
                                     <p class="help-block">
-                                        {{ $errors->first('exposurehazmat') }}
+                                        {{ $errors->first('exposureinjury') }}
                                     </p>
                                 @endif
                             </div>
