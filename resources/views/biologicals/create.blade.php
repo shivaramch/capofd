@@ -109,11 +109,12 @@
                     <div class="col-sm-4 form-group">
                         {!! Form::label('shift', 'Shift', ['class'=> 'col-sm-4 control-label'] ) !!}
                         <div class="col-sm-6">
-                            {!! Form::select('shift',[
-                          'A' => 'A',
-                          'B' => 'B',
-                          'C' => 'C',
-                          'DIV' => 'DIV'], ['class' => 'form-control'])!!}
+                            {!! Form::select('shift', ['A' => 'A',
+                            'B' => 'B',
+                            'C' => 'C',
+                            'DIV' => 'DIV'], null,
+                            ['placeholder' => 'Select your Shift'],
+                            ['class' => 'form-control']) !!}
                             <p class="help-block"></p>
                             @if($errors->has('shift'))
                                 <p class="help-block">
@@ -301,7 +302,7 @@
                             <div class="input-group">
                                 <label class="input-group-btn">
                     <span class="btn btn-info">
-                        <i class="fa fa-cloud-upload" aria-hidden="true"></i> Upload<input type="file" name="postofd184"
+                        <i class="fa fa-cloud-upload" aria-hidden="true"></i> Upload<input type="file" name="potofd184"
                                                                                            style="display: none;"
                                                                                            multiple>
                     </span>

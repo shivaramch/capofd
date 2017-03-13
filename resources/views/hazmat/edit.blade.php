@@ -19,6 +19,15 @@
         #padtop {
             padding-top: 7px;
         }
+
+        table {
+            border-collapse: collapse;
+        }
+
+        table, td, th {
+            border: 1px solid black;
+        }
+
     </style>
 
     <div class="panel panel-default">
@@ -135,11 +144,11 @@
                     <div class="col-sm-4 form-group">
                         {!! Form::label('shift', 'Shift', ['class'=> 'col-sm-4 control-label'] ) !!}
                         <div class="col-sm-6">
-                            {!! Form::select('shift',[
-                          'A' => 'A',
-                          'B' => 'B',
-                          'C' => 'C',
-                          'DIV' => 'DIV'], ['class' => 'form-control'])!!}
+                            {!! Form::select('shift', ['A' => 'A',
+                            'B' => 'B',
+                            'C' => 'C',
+                            'DIV' => 'DIV'], old('shift'),
+                            ['class' => 'form-control']) !!}
                             <p class="help-block"></p>
                             @if($errors->has('shift'))
                                 <p class="help-block">
@@ -149,128 +158,160 @@
                         </div>
                     </div>
                 </div>
-                <br>
+            </div>
+        </div>
+    </div>
 
-                    <div class="form-group">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <div><h4 style="padding-left:12px;"><strong>Please perform following steps in case of Exposure</strong>
+                </h4>
+            </div>
+        </div>
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-sm-12 form-group">
+                    <div class="col-sm-12">
                         {{ Form::checkbox('contactcorvel', 1, null, ['id' => 'contactcorvel', 'class'=>'className']) }}
-                        <label>
-                            <strong>Contact CorVel Enterprise Comp @ 877-764-3574.
-                                Tell them you have a Hazardous Material Exposure and the call is for reporting ONLY.
-                            </strong>
-                        </label>
-                    </div>
-
-                <div class="row">
-                    <div class="col-sm-12 form-group">
-                        {!! Form::label('corvelid', 'Once you have completed the call, record CorVel Claim #', array('style'=>'padding-top:7px;','class' => 'col-sm-4 control-label')) !!}
-                        <div class="col-sm-4">
-                            {!! Form::text('corvelid', old('corvelid'), ['class' => 'form-control','placeholder'=>'Enter Corvel Claim ID', 'required'=>'required'])!!}
-                            <p class="help-block"></p>
-                            @if($errors->has('corvelid'))
-                                <p class="help-block">
-                                    {{ $errors->first('corvelid') }}
-                                </p>
-                            @endif
-                        </div>
+                        {{Form::label('contactcorvel','Contact CorVel Enterprise Comp @ 877-764-3574.
+                                Tell them you have a Hazardous Material Exposure and the call is for reporting ONLY.')}}
                     </div>
                 </div>
+            </div>
+            <div class="col-sm-12 form-group">
+                {!! Form::label('corvelid', 'Once you have completed the call, record CorVel Claim #', array('style'=>'padding-top:7px;','class' => 'col-sm-4 control-label')) !!}
+                <div class="col-sm-4">
+                    {!! Form::text('corvelid', old('corvelid'), ['class' => 'form-control','placeholder'=>'Enter Corvel Claim ID', 'required'=>'required'])!!}
+                    <p class="help-block"></p>
+                    @if($errors->has('corvelid'))
+                        <p class="help-block">
+                            {{ $errors->first('corvelid') }}
+                        </p>
+                    @endif
+                </div>
+            </div>
 
-                <div class="col-sm-12">
-                    <label class="col-sm-12"><strong>Fill out OFD-025 Hazmat Exposure Report form</strong></label>
-                    <div class="col-sm-12 form-group well well-sm">
-                        <div class="col-sm-4">
-                            <a class="btn btn-success dropdown-toggle col-sm-12" type="button"
-                               href="{{ asset('Fillable PDFs\Hazmat Module\(Exposure PDF - Updated OFD 006d) OFD 025 - HazMat Exposure Report.pdf') }}"
-                               download="(Exposure PDF - Updated OFD 006d) OFD 025 - HazMat Exposure Report.pdf">
-                                <i class="fa fa-download" aria-hidden="true"></i> Download</a>
-                        </div>
-                        <div class="col-sm-4">
-                            <div class="input-group">
-                                <label class="input-group-btn">
+
+            <div class="col-sm-12 form-group">
+                <label class="col-sm-4">
+                    <strong>Fill out OFD-025 Hazmat Exposure Report form</strong></label>
+                <div class="col-sm-12 form-group well well-sm">
+                    <div class="col-sm-4">
+                        <a class="btn btn-success dropdown-toggle col-sm-12" type="button"
+                           href="{{ asset('Fillable PDFs\Hazmat Module\(Exposure PDF - Updated OFD 006d) OFD 025 - HazMat Exposure Report.pdf') }}"
+                           download="(Exposure PDF - Updated OFD 006d) OFD 025 - HazMat Exposure Report.pdf">
+                            <i class="fa fa-download" aria-hidden="true"></i> Download</a>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="input-group">
+                            <label class="input-group-btn">
                     <span class="btn btn-info">
-                        <i class="fa fa-cloud-upload" aria-hidden="true"></i> Upload<input type="file"
-                                                                                           name="OFD025"
+                        <i class="fa fa-cloud-upload" aria-hidden="true"></i> Upload<input type="file" name="OFD025"
                                                                                            style="display: none;">
                     </span>
-                                </label>
-                                <input type="text" id="upload-file-info" class="form-control" readonly>
-                            </div>
+                            </label>
+                            <input type="text" id="upload-file-info" class="form-control" readonly>
                         </div>
-                        <div class="col-sm-4">
-                            <a class="btn btn-primary dropdown-toggle col-sm-12" data-toggle="collapse"
-                               data-target="#6c"><i class="fa fa-eye" aria-hidden="true"></i> View Previously uploaded
-                                file(s)
-                            </a>
+                    </div>
+                    <div class="col-sm-4">
+                        <a class="btn btn-primary dropdown-toggle col-sm-12" data-toggle="collapse"
+                           data-target="#6c"><i class="fa fa-eye" aria-hidden="true"></i> View Previously
+                            uploaded
+                            file(s)
+                        </a>
 
-                            <div id="6c" class="collapse">
+                        <div id="6c" class="collapse">
 
-                                <table class="table table-striped">
-                                    <tr>
-                                        <th> File Name</th>
-                                        <th> File Uploaded At</th>
-                                    </tr>
+                            <table class="table table-striped">
+                                <tr>
+                                    <th> File Name</th>
+                                    <th> File Uploaded At</th>
+                                </tr>
 
-                                    @if(count($attachments) > 0)
-                                        @foreach($attachments as $attachment)
-                                            @if($attachment->attachmenttype == '6c' && $attachment->createdby ==  Auth::user()->id && $attachment->ofd6cid == $hazmat->ofd6cid )
-                                                <tr>
-                                                    <td>
-                                                        <a href="{{ asset('uploads/'.$attachment->attachmentname) }}"> {{$attachment->attachmentname}}</a>
-                                                    </td>
-                                                    <td>
-                                                        {{$attachment->created_at}}</a>
-                                                    </td>
-                                                </tr>
-                                            @endif
-                                        @endforeach
-                                    @endif
-                                </table>
-                            </div>
+                                @if(count($attachments) > 0)
+                                    @foreach($attachments as $attachment)
+                                        @if($attachment->attachmenttype == '6c' && $attachment->createdby ==  Auth::user()->id && $attachment->ofd6cid == $hazmat->ofd6cid )
+                                            <tr>
+                                                <td>
+                                                    <a href="{{ asset('uploads/'.$attachment->attachmentname) }}"> {{$attachment->attachmentname}}</a>
+                                                </td>
+                                                <td>
+                                                    {{$attachment->created_at}}</a>
+                                                </td>
+                                            </tr>
+                                        @endif
+                                    @endforeach
+                                @endif
+                            </table>
                         </div>
                     </div>
                 </div>
-                <div class="panel-body">
+            </div>
+            <div class="panel-body">
                 <div class="form-horizontal">
                     <div class="row">
                         <div class="col-md-12">
-                            <div class="alert alert-danger" align="left">
-                                {{Form::label('exposureInjury','Do you have any symptoms of illness or injury and require
-                                   treatment? (In case of Injury, please fill OFD - 6 IOD Application)     ')}}
-
-                                {!! Form::select('exposurehazmat',[
-                                  'Yes' => 'Yes',
-                                  'No' => 'No'],
-                                array('class' => 'form-control'))!!}
-                                <p class="help-block"></p>
-                                @if($errors->has('exposurehazmat'))
-                                    <p class="help-block">
-                                        {{ $errors->first('exposurehazmat') }}
-                                    </p>
-                                @endif
+                            <div class="alert alert-danger form-group" align="left">
+                                <div class="col-md-9">
+                                    {{Form::label('exposurehazmat','Do you have any symptoms of illness or injury and require
+                                       treatment? (In case of Injury, please fill OFD - 6 IOD Application)     ')}}
+                                </div>
+                                <div class="col-md-1">
+                                    {!! Form::select('exposurehazmat',
+                                    ['Yes' => 'Yes',
+                                    'No' => 'No'], old('exposurehazmat'),
+                                    ['class' => 'form-control']) !!}
+                                    <p class="help-block"></p>
+                                    @if($errors->has('exposurehazmat'))
+                                        <p class="help-block">
+                                            {{ $errors->first('exposurehazmat') }}
+                                        </p>
+                                    @endif
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+        </div>
+
+
+        <div class="row">
+            <div class="col-sm-12">
+                <label class="col-sm-5"></label>
+                <div class="btn-bottom">
+                    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal">
+                        Save
+                    </button>
+                    <a href="{{ route('hazmat.index') }}" class="btn btn-danger">Cancel</a>
+                </div>
             </div>
+        </div>
+
+        <!-- Modal -->
+        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                    aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="myModalLabel"></h4>
+                    </div>
+                    <div class="modal-body">
+                        Are you sure you want to Submit?
+                    </div>
+                    <div class="modal-footer">
+                        {!! Form::submit('Yes',['class' => 'btn btn-success']) !!}
+                        <button type="button" class=" btn btn-danger" data-dismiss="modal" aria-label="">No</button>
 
 
-
-                    <div class="col-sm-12 panel-heading">
-                        <label class="col-sm-5"></label>
-                        <div class="btn-bottom ">
-                            {!! Form::submit('Submit',['class' => 'btn btn-success']) !!}
-                            <a href="{{ route('hazmat.index') }}" class="btn btn-default">Cancel</a>
-                        </div>
                     </div>
 
                 </div>
             </div>
+        </div>
+        {!! Form::close() !!}
 
 
-
-
-
-
-    {!! Form::close() !!}
-@stop
+        @stop
+    </div>

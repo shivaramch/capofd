@@ -106,11 +106,11 @@
                     <div class="col-sm-4 form-group">
                         {!! Form::label('shift', 'Shift', ['class'=> 'col-sm-4 control-label'] ) !!}
                         <div class="col-sm-6">
-                            {!! Form::select('shift',old('shift'),[
-                          'A' => 'A',
-                          'B' => 'B',
-                          'C' => 'C',
-                          'DIV' => 'DIV'], ['class' => 'form-control'])!!}
+                            {!! Form::select('shift', ['A' => 'A',
+                            'B' => 'B',
+                            'C' => 'C',
+                            'DIV' => 'DIV'], old('shift'),
+                            ['class' => 'form-control']) !!}
                             <p class="help-block"></p>
                             @if($errors->has('shift'))
                                 <p class="help-block">
@@ -293,12 +293,9 @@
                     <div class="form-group">
                         {{ Form::checkbox('truedocumentdaybook', 1, null, ['id' => 'truedocumentdaybook', 'class'=>'className']) }}
                         {{Form::label('truedocumentdaybook','Document in Company Day Book and on your Personnel Record')}}
-
                     </div>
                 </div>
-
             </div>
-
             <div id="Exposure1" class="desc" style="display: none;">
 
                 <div class="col-sm-12">
@@ -387,44 +384,47 @@
                     </div>
                 </div>
             </div>
-
-
             <div class="panel-body">
                 <div class="form-horizontal">
                     <div class="row">
                         <div class="col-md-12">
-                            <div class="alert alert-danger" align="left">
-                                {{Form::label('exposureinjury','Do you have any symptoms of illness or injury and require
-                                   treatment? (In case of Injury, please fill OFD - 6 IOD Application)     ')}}
-
-                                {!! Form::select('exposureinjury',old('exposureinjury'),[
-                                  'Yes' => 'Yes',
-                                  'No' => 'No'],
-                                array('class' => 'form-control'))!!}
-                                <p class="help-block"></p>
-                                @if($errors->has('exposureinjury'))
-                                    <p class="help-block">
-                                        {{ $errors->first('exposureinjury') }}
-                                    </p>
-                                @endif
+                            <div class="alert alert-danger form-group" align="left">
+                                <div class="col-md-9">
+                                    {{Form::label('exposureinjury','Do you have any symptoms of illness or injury and require
+                                       treatment? (In case of Injury, please fill OFD - 6 IOD Application)     ')}}
+                                </div>
+                                <div class="col-md-1">
+                                    {!! Form::select('exposureinjury',
+                                    ['Yes' => 'Yes',
+                                    'No' => 'No'], old('exposureinjury'),
+                                    ['class' => 'form-control']) !!}
+                                    <p class="help-block"></p>
+                                    @if($errors->has('exposureinjury'))
+                                        <p class="help-block">
+                                            {{ $errors->first('exposureinjury') }}
+                                        </p>
+                                    @endif
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+        </div>
 
-            <div class="row">
-                <div class="col-sm-12">
-                    <label class="col-sm-5"></label>
-                    <div class="btn-bottom">
-                        <button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal">
-                            Save
-                        </button>
-                        <a href="{{ route('biologicals.index') }}" class="btn btn-danger">Cancel</a>
-                    </div>
+        <div class="row">
+            <div class="col-sm-12">
+                <label class="col-sm-5"></label>
+                <div class="btn-bottom">
+                    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal">
+                        Save
+                    </button>
+                    <a href="{{ route('biologicals.index') }}" class="btn btn-danger">Cancel</a>
                 </div>
             </div>
         </div>
+
+
         <!-- Modal -->
         <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
             <div class="modal-dialog" role="document">
@@ -450,25 +450,24 @@
 
         {!! Form::close() !!}
         @stop
-
-        @section('javascript')
-
-            <script src="{{ ('js/extensions/cookie') }}/bootstrap-table-cookie.js"></script>
-            <script src="{{ ('js/extensions/mobile') }}/bootstrap-table-mobile.js"></script>
-
-            <script src="{{ ('js/export') }}/bootstrap-table-export.js"></script>
-            <script src="{{ ('js/export') }}/tableExport.js"></script>
-            <script src="{{ ('js/export') }}/jquery.base64.js"></script>
-
-            <script type="text/javascript">
-                $(document).ready(function () {
-                    $("input[name$='exposure']").click(function () {
-                        var test = $(this).val();
-
-                        $("div.desc").hide();
-                        $("#Exposure" + test).show();
-                    });
-                });
-            </script>
     </div>
+@section('javascript')
+
+    <script src="{{ ('js/extensions/cookie') }}/bootstrap-table-cookie.js"></script>
+    <script src="{{ ('js/extensions/mobile') }}/bootstrap-table-mobile.js"></script>
+
+    <script src="{{ ('js/export') }}/bootstrap-table-export.js"></script>
+    <script src="{{ ('js/export') }}/tableExport.js"></script>
+    <script src="{{ ('js/export') }}/jquery.base64.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("input[name$='exposure']").click(function () {
+                var test = $(this).val();
+
+                $("div.desc").hide();
+                $("#Exposure" + test).show();
+            });
+        });
+    </script>
 @endsection

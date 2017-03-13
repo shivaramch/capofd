@@ -19,6 +19,15 @@
         #padtop {
             padding-top: 7px;
         }
+
+        table {
+            border-collapse: collapse;
+        }
+
+        table, td, th {
+            border: 1px solid black;
+        }
+
     </style>
     <div class="navya">
         <div class="panel panel-default">
@@ -72,7 +81,6 @@
                             {!! Form::label('dateofexposure', 'Date of Exposure',array('style'=>'padding-top:7px;','class'=> 'col-sm-4 control-label') )!!}
                             <div class="col-sm-6 ">
                                 {!! Form::text('dateofexposure', old('dateofexposure'), array('id'=>'datepicker12','class' => 'form-control datepicker1', 'placeholder' => 'YYYY-MM-DD','required' => 'required'))!!}
-
                                 {!! Form::text('dateofexposure', old('dateofexposure'), array('style'=>'display:none;','id'=>'datepicker32','class' => 'form-control datepicker', 'placeholder' => 'YYYY-MM-DD','required' => 'required'))!!}
                                 <p class="help-block"></p>
                                 @if($errors->has('dateofexposure'))
@@ -154,87 +162,86 @@
                     </div>
                 </div>
             </div>
-
-
-            <div class="panel-body">
-                <div class="row">
-                    <div class="col-sm-12 form-group">
+        </div>
+    </div>
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <div><h4 style="padding-left:12px;"><strong>Please perform following steps in case of Exposure</strong></h4>
+            </div>
+        </div>
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-sm-12 form-group">
+                    <div class="col-sm-12">
                         {{ Form::checkbox('contactcorvel', 1, null, ['id' => 'contactcorvel', 'class'=>'className']) }}
-                        <label>
-                            <strong>Contact CorVel Enterprise Comp @ 877-764-3574.
-                                Tell them you have a Hazardous Material Exposure and the call is for reporting ONLY.
-                            </strong>
-                        </label>
+                        {{Form::label('contactcorvel','Contact CorVel Enterprise Comp @ 877-764-3574.
+                                Tell them you have a Hazardous Material Exposure and the call is for reporting ONLY.')}}
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-sm-12 form-group">
-                        {!! Form::label('corvelid', 'Once you have completed the call, record CorVel Claim #', array('style'=>'padding-top:7px;','class' => 'col-sm-4 control-label')) !!}
-                        <div class="col-sm-4">
-                            {!! Form::text('corvelid', old('corvelid'), ['class' => 'form-control','placeholder'=>'Enter Corvel Claim ID', 'required'=>'required'])!!}
-                            <p class="help-block"></p>
-                            @if($errors->has('corvelid'))
-                                <p class="help-block">
-                                    {{ $errors->first('corvelid') }}
-                                </p>
-                            @endif
-                        </div>
-                    </div>
+            </div>
+            <div class="col-sm-12 form-group">
+                {!! Form::label('corvelid', 'Once you have completed the call, record CorVel Claim #', array('style'=>'padding-top:7px;','class' => 'col-sm-4 control-label')) !!}
+                <div class="col-sm-4">
+                    {!! Form::text('corvelid', old('corvelid'), ['class' => 'form-control','placeholder'=>'Enter Corvel Claim ID', 'required'=>'required'])!!}
+                    <p class="help-block"></p>
+                    @if($errors->has('corvelid'))
+                        <p class="help-block">
+                            {{ $errors->first('corvelid') }}
+                        </p>
+                    @endif
                 </div>
-                <div class="row">
-                    <div class="col-sm-12 form-group">
-                        <label class="col-sm-4">
-                            <strong>Fill out OFD-025 Hazmat Exposure Report form</strong>
-                        </label>
-                        </label>
-                        <br>
-                        <div class="col-sm-12 form-group well well-sm">
-                            <div class="col-sm-4">
-                                <a class="btn btn-success dropdown-toggle col-sm-12" type="button"
-                                   href="{{asset('Fillable PDFs\Hazmat Module\(Exposure PDF - Updated OFD 006d) OFD 025 - HazMat Exposure Report.pdf')}}"
-                                   download="(Exposure PDF - Updated OFD 006d) OFD 025 - HazMat Exposure Report">
-                                    <i class="fa fa-download" aria-hidden="true"></i> Download</a>
-                            </div>
-                            <div class="col-sm-4">
-                                <div class="input-group">
-                                    <label class="input-group-btn">
+            </div>
+
+
+            <div class="col-sm-12 form-group">
+                <label class="col-sm-4">
+                    <strong>Fill out OFD-025 Hazmat Exposure Report form</strong>
+                </label>
+                <div class="col-sm-12 form-group well well-sm">
+                    <div class="col-sm-4">
+                        <a class="btn btn-success dropdown-toggle col-sm-12" type="button"
+                           href="{{asset('Fillable PDFs\Hazmat Module\(Exposure PDF - Updated OFD 006d) OFD 025 - HazMat Exposure Report.pdf')}}"
+                           download="(Exposure PDF - Updated OFD 006d) OFD 025 - HazMat Exposure Report">
+                            <i class="fa fa-download" aria-hidden="true"></i> Download</a>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="input-group">
+                            <label class="input-group-btn">
                     <span class="btn btn-info">
                         <i class="fa fa-cloud-upload" aria-hidden="true"></i> Upload<input type="file" name="OFD025"
                                                                                            style="display: none;">
                     </span>
-                                    </label>
-                                    <input type="text" id="upload-file-info" class="form-control" readonly>
-                                </div>
-                            </div>
+                            </label>
+                            <input type="text" id="upload-file-info" class="form-control" readonly>
                         </div>
                     </div>
                 </div>
-                <div class="panel-body">
-                    <div class="form-horizontal">
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div class="alert alert-danger" align="left">
-                                    {{Form::label('exposurehazmat','Do you have any symptoms of illness or injury and require
-                                       treatment? (In case of Injury, please fill OFD - 6 IOD Application)     ')}}
+            </div>
 
-                                    {!! Form::select('exposurehazmat',[
-                                      'No' => 'No',
-                                      'Yes' => 'Yes'],
-                                    array('class' => 'form-control'))!!}
-                                    <p class="help-block"></p>
-                                    @if($errors->has('exposurehazmat'))
-                                        <p class="help-block">
-                                            {{ $errors->first('exposurehazmat') }}
-                                        </p>
-                                    @endif
-                                </div>
+            <div class="panel-body">
+                <div class="form-horizontal">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="alert alert-danger" align="left">
+                                {{Form::label('exposurehazmat','Do you have any symptoms of illness or injury and require
+                                   treatment? (In case of Injury, please fill OFD - 6 IOD Application)     ')}}
+
+                                {!! Form::select('exposurehazmat',[
+                                  'No' => 'No',
+                                  'Yes' => 'Yes'],
+                                array('class' => 'form-control'))!!}
+                                <p class="help-block"></p>
+                                @if($errors->has('exposurehazmat'))
+                                    <p class="help-block">
+                                        {{ $errors->first('exposurehazmat') }}
+                                    </p>
+                                @endif
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <br>
             <label class="col-sm-5"></label>
             <div class="btn-bottom ">
                 <button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal">
@@ -243,12 +250,11 @@
 
                 <a href="{{ route('hazmat.index') }}" class="btn btn-danger">Cancel</a>
             </div>
-
-            <br>
         </div>
 
-
     </div>
+
+
     <!-- Modal -->
     <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
         <div class="modal-dialog" role="document">
@@ -271,7 +277,5 @@
             </div>
         </div>
     </div>
-
-
     {!! Form::close() !!}
 @stop
