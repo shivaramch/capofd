@@ -24,9 +24,12 @@ class CreateInjuriesTable extends Migration
             $table->string('corvelid', 256)->nullable();
             $table->string('captainid', 256)->nullable();
             $table->string('battalionchiefid', 256)->nullable();
-            $table->string('acondutyid', 256)->nullable();
+            $table->string('aconduty', 256)->nullable();
             $table->string('shift', 256)->nullable();
             $table->string('frmsincidentnum', 256)->nullable();
+            $table->string('documentworkforce', 256)->nullable();
+            $table->string('documentoperationalday', 256)->nullable();
+            $table->string('trainingassigned', 256)->nullable();
             $table->string('policeofficercompletesign', 256)->nullable();
             $table->string('callsupervisor', 256)->nullable();
             $table->string('createdby', 256)->nullable();
@@ -44,6 +47,6 @@ class CreateInjuriesTable extends Migration
      */
     public function down()
     {
-        Schema::drop('injury');
+        Schema::drop('injuries');
     }
 }

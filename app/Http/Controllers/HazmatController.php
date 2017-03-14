@@ -42,7 +42,9 @@ class HazmatController extends Controller
 //write code for email notification here
         //email notification-start
         $formname="hazmat";
-        $link = $request->url() . "/$last_insert_id";
+        $rawlink=request()->headers->get('referer');
+        $link=preg_replace('#\/[^/]*$#', '', $rawlink)."/$last_insert_id";
+
         $numsent = (new EmailController)->Email($request, $link,$formname);
         //email notification-end
         return redirect()->route('hazmat.index');
@@ -96,8 +98,10 @@ class HazmatController extends Controller
 
         //email notification-start
         $formname="hazmat";
-        $link = $request->url();
-        $numsent = (new EmailController)->Email($request, $link,$formname);
+        $rawlink=request()->headers->get('referer');
+        $link=preg_replace('#\/[^/]*$#', '', $rawlink);
+     $numsent = (new EmailController)->Email($request, $link,$formname);
+
         //email notification-end
 
 

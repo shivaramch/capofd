@@ -12,23 +12,15 @@
 
 @section('content')
     {!! Form::model($injury,['method' => 'PUT', 'route' => ['injuries.update', $injury->ofd6ID], 'files' => true,]) !!}
+    <style>
+        table {
+            border-collapse: collapse;
+        }
 
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-    <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
-    <script>
-        $(document).ready(function () {
-            $("#datepicker1").datepicker({
-                onClose: function () {
-                    var date2 = $('#datepicker1').datepicker('getDate');
-                    date2.setDate(date2.getDate() + 35)
-                    $("#datepicker2").datepicker("setDate", date2);
-
-                }
-            });
-            $("#datepicker2").datepicker();
-        });
-    </script>
-
+        table, td, th {
+            border: 1px solid black;
+        }
+    </style>
     <div class="panel panel-default">
         <div class="panel-heading">
             <div class="jumbotron" style="margin-bottom: 5px; ">
@@ -63,6 +55,23 @@
                         <div class="alert alert-danger" align="center">
                             <strong>COMPLETE ALL FORMS AND FORWARD VIA CHAIN-OF-COMMAND WITHIN 48 HOURS
                             </strong>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-8 form-group">
+                        {!! Form::label('reportnum', 'Report #', ['class' => 'col-sm-2 control-label']) !!}
+                        <div class="col-sm-3">
+                            {!! Form::text('reportnum', old('reportnum'), array('class' => 'form-control','style' =>'margin-left:-7px;','placeholder'=>'Enter Report Number','required' => 'required','disabled'=>'disabled'))!!}
+                            <p class="help-block"></p>
+                            @if($errors->has('reportnum'))
+                                <p class="help-block">
+                                    {{ $errors->first('reportnum') }}
+                                </p>
+                            @endif
+                        </div>
+                        <div class='col-sm-6'>
+                            {!! Form::label('reportnum ', '(Obtain from SWD Office)', array('class' => 'col-sm-8 control-label','style' =>'margin-left:-70px;')) !!}
                         </div>
                     </div>
                 </div>
@@ -132,17 +141,7 @@
                     <div class="col-sm-4 form-group">
                         {!! Form::label('shift', 'Shift', array('class' => 'col-sm-4 control-label','disabled'=>'disabled')) !!}
                         <div class="col-sm-6">
-                            {!! Form::select('shift',[
-                          'A' => 'A',
-                          'B' => 'B',
-                          'C' => 'C',
-                          'DIV' => 'DIV'], array('class' => 'form-control','required' => 'required','disabled'=>'disabled'))!!}
-                            <p class="help-block"></p>
-                            @if($errors->has('shift'))
-                                <p class="help-block">
-                                    {{ $errors->first('shift') }}
-                                </p>
-                            @endif
+                            {!! Form::text('shift',$injury->shift ,['disabled'],array('class' => 'form-control'))!!}
                         </div>
                     </div>
                 </div>
@@ -447,34 +446,39 @@
                     </div>
                 </div>
             </div>
-
             <div class="row">
                 <div class="col-sm-12">
                     <div class="form-group">
-                        {{ Form::checkbox('commemail', 1, null, ['id' => 'commemail', 'class'=>'className']) }}
+                        {{ Form::checkbox('documentworkforce', 1, null, ['id' => 'documentworkforce', 'class'=>'className', 'readonly' => 'true','disabled'=>'disabled']) }}
                         <label><strong>Document IOD in
-                                Workforce</strong>
-                            - Only if seeking medical attention.</label>
+                                Workforce
+                                - Only if seeking medical attention.</strong></label>
                     </div>
                 </div>
             </div>
             <div class="row">
-                <div class="col-sm-12 form-group">
-                    <label class="checkbox-inline col-sm-12"><input type="checkbox"><strong>Document in Operational Day
-                            Book and Personnel Record</strong></label>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-sm-12 form-group">
-                    <label class="col-sm-4">In case attend Omaha Police Academy - Training Assigned</label>
-                    <div class="col-sm-3">
-                        {{ Form::select('shift', [
-                        'yes' => 'YES',
-                        'no' => 'NO']
-                        ), array('class'=>'btn btn-primary dropdown-toggle col-sm-12') }}
+                <div class="col-sm-12">
+                    <div class="form-group">
+                        {{ Form::checkbox('documentoperationalday', 1, null, ['id' => 'documentoperationalday', 'class'=>'className', 'readonly' => 'true','disabled'=>'disabled']) }}
+                        <label><strong>Document in Operational Day
+                                Book and Personnel Record</strong></label>
                     </div>
                 </div>
             </div>
+            <div class="row">
+            <div class="col-sm-12 form-group">
+                {!! Form::label('trainingassigned', 'In case attend Omaha Police Academy - Training Assigned', array('class' => 'col-sm-4 control-label','disabled'=>'disabled')) !!}
+                <div class="col-sm-6">
+                    {!! Form::text('trainingassigned',$injury->trainingassigned ,['disabled'],array('class' => 'form-control'))!!}
+                    <p class="help-block"></p>
+                    @if($errors->has('shift'))
+                        <p class="help-block">
+                            {{ $errors->first('shift') }}
+                        </p>
+                    @endif
+                </div>
+            </div>
+                </div>
             <div class="row">
                 <div class="col-sm-12 form-group">
                     <label class="checkbox-inline col-sm-12"><u>For Fire Omaha Police Recruits: Use normal Chain-of-Command for Tracking
@@ -484,7 +488,7 @@
             <div class="row">
                 <div class="col-sm-12">
                     <div class="form-group">
-                        {{ Form::checkbox('policeofficercompletesign', 1, null, ['id' => 'policeofficercompletesign', 'class'=>'className', 'readonly' => 'true']) }}
+                        {{ Form::checkbox('policeofficercompletesign', 1, null, ['id' => 'policeofficercompletesign', 'class'=>'className', 'readonly' => 'true','disabled'=>'disabled' ]) }}
                         <label><strong>Have Police Supervisor Complete and Sign
                                 Supervisor section on Investigation Report
                                 and Witness Statement</strong></label>
@@ -494,7 +498,7 @@
             <div class="row">
                 <div class="col-sm-12">
                     <div class="form-group">
-                        {{ Form::checkbox('callsupervisor', 1, null, ['id' => 'callsupervisor', 'class'=>'className', 'readonly' => 'true']) }}
+                        {{ Form::checkbox('callsupervisor', 1, null, ['id' => 'callsupervisor', 'class'=>'className', 'readonly' => 'true','disabled'=>'disabled']) }}
                         <label><strong>Call Fire Supervisor or SWD B/C immediately
                                 and notify CorVel by phone</strong></label>
                     </div>
@@ -527,5 +531,5 @@
             </div>
         </div>
     </div>
-
+</div>
 @stop

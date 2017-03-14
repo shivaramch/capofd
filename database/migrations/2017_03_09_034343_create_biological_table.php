@@ -22,7 +22,7 @@ class CreateBiologicalTable extends Migration
             $table->string('primaryidconumber',256)->nullable();
             $table->string('epcrincidentnum',256)->nullable();
             $table->string('frmsincidentnum',256)->nullable();
-            $table->date('todaysdate')->nullable();
+            //$table->date('todaysdate')->nullable();
             $table->string('exposure',256)->nullable();
             $table->string('exposureinjury',256)->nullable();
             $table->string('truedecontaminate')->nullable();
@@ -40,6 +40,8 @@ class CreateBiologicalTable extends Migration
             $table->string('createdby')->nullable();
             $table->string('updatedby')->nullable();
             $table->string('applicationstatus', 256)->nullable();
+            $table->string('trueofd184')->nullable();
+            $table->string('potofd184')->nullable();
             $table->timestamps();
             $table->ipAddress('ip_address', 45)->nullable();
 
@@ -52,6 +54,6 @@ class CreateBiologicalTable extends Migration
      */
     public function down()
     {
-        Schema::drop('biological');
+        Schema::drop('biologicals');
     }
 }

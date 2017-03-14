@@ -29,15 +29,10 @@ class BiologicalsController extends Controller
         Biological::create($request->all());
         $last_insert_id = DB::getPdo()->lastInsertId();
         $this->BiologicalUpload($request, $last_insert_id);
-        //$link = $request->url() . "/$last_insert_id";
-        //write code for email notification here
-        //$numsent = (new EmailController)->Email($request, $link);
-
-        //email notification-start
-        $formname="biologicals";
         $link = $request->url() . "/$last_insert_id";
+        //write code for email notification here
+        $formname="biologicals";
         $numsent = (new EmailController)->Email($request, $link,$formname);
-        //email notification-end
         return redirect()->route('biologicals.index');
     }
     public function edit($id)
@@ -66,26 +61,20 @@ class BiologicalsController extends Controller
                 'shift' => $biological->shift,
                 'primaryidconumber' => $biological->primaryidconumber,
                 'epcrincidentnum' => $biological->epcrincidentnum,
-                'todaysdate' => $biological->todaysdate,
+                //'todaysdate' => $biological->todaysdate,
                 'exposure'=>$biological->exposure,
                 'frmsincidentnum'=>$biological->frmsincidentnum,
                 'exposureinjury'=>$biological->exposureinjury]
         );
+        //end history code
         $request = $this->saveFiles($request);
         $biological->update($request->all());
         $this->BiologicalUpload($request, $id);
-
-
         //email notification-start
-        $formname="biologicals";
         $link = $request->url();
+        $formname="biologicals";
         $numsent = (new EmailController)->Email($request, $link,$formname);
         //email notification-end
-
-
         return redirect()->route('biologicals.index');
-        //add email code here
-        //$numsent = (new EmailController)->Email($request, $link);
-        //return redirect()->route('biologicals.index');
     }
 }
