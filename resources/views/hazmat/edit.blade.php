@@ -147,7 +147,7 @@
                             {!! Form::select('shift', ['A' => 'A',
                             'B' => 'B',
                             'C' => 'C',
-                            'DIV' => 'DIV'], old('shift'),
+                            'DIV' => 'DIV'], old('shift'),'required',
                             ['class' => 'form-control']) !!}
                             <p class="help-block"></p>
                             @if($errors->has('shift'))
@@ -259,7 +259,7 @@
                                 <div class="col-md-1">
                                     {!! Form::select('exposurehazmat',
                                     ['Yes' => 'Yes',
-                                    'No' => 'No'], old('exposurehazmat'),
+                                    'No' => 'No'], old('exposurehazmat'),'required',
                                     ['class' => 'form-control']) !!}
                                     <p class="help-block"></p>
                                     @if($errors->has('exposurehazmat'))
