@@ -396,7 +396,7 @@
                                 <div class="col-md-1">
                                     {!! Form::select('exposureinjury',
                                     ['Yes' => 'Yes',
-                                    'No' => 'No'], old('exposureinjury'),
+                                    'No' => 'No'], old('exposureinjury'),'required',
                                     ['class' => 'form-control']) !!}
                                     <p class="help-block"></p>
                                     @if($errors->has('exposureinjury'))

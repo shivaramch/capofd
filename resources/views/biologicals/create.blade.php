@@ -113,7 +113,7 @@
                             'B' => 'B',
                             'C' => 'C',
                             'DIV' => 'DIV'], null,
-                            ['placeholder' => 'Select your Shift'],
+                            ['placeholder' => 'Select your Shift'],'required',
                             ['class' => 'form-control']) !!}
                             <p class="help-block"></p>
                             @if($errors->has('shift'))
@@ -198,7 +198,7 @@
 
                 <div class="col-sm-12">
                     <div class="form-group">
-                        {{ Form::checkbox('trueofd184', 1, null, ['id'=>'trueofd184', 'class' => 'className' ]) }}
+                        {{--{{ Form::checkbox('trueofd184', 1, null, ['id'=>'trueofd184', 'class' => 'className' ]) }}--}}
                         {{Form::label('trueofd184','Complete OFD 184')}}
                     </div>
                     <div class="col-sm-12 form-group well well-sm">
@@ -288,7 +288,7 @@
 
                 <div class="col-sm-12">
                     <div class="form-group">
-                        {{ Form::checkbox('potofd184', 1, null, ['id'=>'potofd184', 'class' => 'className' ]) }}
+                        {{--{{ Form::checkbox('potofd184', 1, null, ['id'=>'potofd184', 'class' => 'className' ]) }}--}}
                         {{Form::label('potofd184','Complete OFD 184')}}
                     </div>
                     <div class="col-sm-12 form-group well well-sm">
@@ -339,7 +339,7 @@
                                 {!! Form::select('exposureinjury',[
                                   'Yes' => 'Yes',
                                   'No' => 'No'],null,
-                                ['placeholder' => 'Choose one'],
+                                ['placeholder' => 'Choose one'],'required',
                                 array('class' => 'form-control'))!!}
                                 <p class="help-block"></p>
                                 @if($errors->has('exposureinjury'))
