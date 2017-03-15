@@ -30,8 +30,11 @@ class BiologicalsController extends Controller
         $last_insert_id = DB::getPdo()->lastInsertId();
         $this->BiologicalUpload($request, $last_insert_id);
         $link = $request->url() . "/$last_insert_id";
-        //write code for email notification here
+//write code for email notification here
         $formname="biologicals";
+        $rawlink=request()->headers->get('referer');
+        $link=preg_replace('#\/[^/]*$#', '', $rawlink)."/$last_insert_id";
+
         $numsent = (new EmailController)->Email($request, $link,$formname);
         return redirect()->route('biologicals.index');
     }
