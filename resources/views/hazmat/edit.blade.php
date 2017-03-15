@@ -147,7 +147,7 @@
                             {!! Form::select('shift', ['A' => 'A',
                             'B' => 'B',
                             'C' => 'C',
-                            'DIV' => 'DIV'], old('shift'),'required',
+                            'DIV' => 'DIV'], old('shift'),
                             ['class' => 'form-control']) !!}
                             <p class="help-block"></p>
                             @if($errors->has('shift'))
