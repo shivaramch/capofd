@@ -53,7 +53,7 @@
                 <tbody>
                 @if(count($injuries) > 0)
                     @foreach($injuries as $injury)
-                        @if($injury->createdby == Auth::user()->id)
+                        @if($injury->injuredemployeeid == Auth::user()->id)
                         <tr>
                             <td>{{ $injury->ofd6id }}</td>
                             <td>{{ $injury->injurydate }}</td>
