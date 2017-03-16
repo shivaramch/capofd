@@ -28,7 +28,9 @@ class BiologicalsController extends Controller
     public function create()
     {
 
+
         return view('biologicals.create');
+
     }
 
     public function store(StoreBiologicalsRequest $request)
