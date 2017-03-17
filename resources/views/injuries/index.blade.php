@@ -1,10 +1,6 @@
 @extends('layouts.app')
 
-<script>
-setTimeout(function() {
-    $('.flash-message').fadeOut('fast');
-}, 4000); // <-- time in milliseconds
-</script>
+
 @section('crumbs')
     <ol class="breadcrumb">
         <a class="btn btn-default" type="button"
@@ -18,14 +14,7 @@ setTimeout(function() {
 
 @section('content')
 
-<div class="flash-message" style="font-size:20px; text-align:center">
-    @foreach (['danger', 'warning', 'success', 'info'] as $msg)
-      @if(Session::has('alert-' . $msg))
 
-      <p class="alert alert-{{ $msg }}">{{ Session::get('alert-' . $msg) }} <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a></p>
-      @endif
-    @endforeach
-   </div>
 
 
     <div class="panel panel-default panel-shadow ">
@@ -64,18 +53,18 @@ setTimeout(function() {
                 <tbody>
                 @if(count($injuries) > 0)
                     @foreach($injuries as $injury)
-                        @if($injury->User_Login_ID == Auth::user()->id)
+                        @if($injury->injuredemployeeid == Auth::user()->id)
                         <tr>
-                            <td>{{ $injury->ofd6ID }}</td>
-                            <td>{{ $injury->injuryDate }}</td>
-                            <td>{{ $injury->assignmentInjury }}</td>
+                            <td>{{ $injury->ofd6id }}</td>
+                            <td>{{ $injury->injurydate }}</td>
+                            <td>{{ $injury->assignmentinjury }}</td>
                             <td>{{ $injury->status1 }}</td>
                             <td>
                                 <div>
-                                    <a href="{{ route('injuries.show',[$injury->ofd6ID]) }}"
+                                    <a href="{{ route('injuries.show',[$injury->ofd6id]) }}"
                                        class="btn btn-xs btn-info btn-block"><i
                                                 class="fa fa-eye" aria-hidden="true"></i> VIEW</a>
-                                    <a href="{{ route('injuries.edit',[$injury->ofd6ID]) }}"
+                                    <a href="{{ route('injuries.edit',[$injury->ofd6id]) }}"
                                        class="btn btn-xs btn-warning btn-block"><i class="fa fa-pencil-square-o"
                                                                                    aria-hidden="true"></i> EDIT</a>
                                 </div>
@@ -108,7 +97,7 @@ setTimeout(function() {
                    id="table">
                 <thead>
                 <tr>
-                    <th data-sortable="true">OFD 6A ID</th>
+                    <th data-sortable="true">OFD 6 ID</th>
                     <th data-sortable="true">Date of Injury</th>
                     <th data-sortable="true">Assignment</th>
                     <th data-sortable="true">Status</th>
@@ -120,16 +109,16 @@ setTimeout(function() {
                     @foreach($injuries as $injury)
                         @if($injury->status1 == 'approval')
                             <tr>
-                                <td>{{ $injury->ofd6ID }}</td>
-                                <td>{{ $injury->injuryDate }}</td>
-                                <td>{{ $injury->assignmentInjury }}</td>
+                                <td>{{ $injury->ofd6id }}</td>
+                                <td>{{ $injury->injurydate }}</td>
+                                <td>{{ $injury->assignmentinjury }}</td>
                                 <td>{{ $injury->status1 }}</td>
                                 <td>
                                     <div>
-                                        <a href="{{ route('injuries.show',[$injury->ofd6ID]) }}"
+                                        <a href="{{ route('injuries.show',[$injury->ofd6id]) }}"
                                            class="btn btn-xs btn-info btn-block"><i
                                                     class="fa fa-eye" aria-hidden="true"></i> VIEW</a>
-                                        <a href="{{ route('injuries.edit',[$injury->ofd6ID]) }}"
+                                        <a href="{{ route('injuries.edit',[$injury->ofd6id]) }}"
                                            class="btn btn-xs btn-warning btn-block"><i class="fa fa-pencil-square-o"
                                                                                        aria-hidden="true"></i> EDIT</a>
                                     </div>

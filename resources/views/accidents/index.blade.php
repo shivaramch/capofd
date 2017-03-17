@@ -45,7 +45,7 @@
                 <tbody>
                 @if(count($accidents) > 0)
                     @foreach($accidents as $accident)
-                        @if($accident->createdby == Auth::user()->id)
+                        @if($accident->driverid == Auth::user()->id)
                             <tr>
                                 <td>{{ $accident->ofd6aid }}</td>
                                 <td>{{ $accident->drivername }}</td>

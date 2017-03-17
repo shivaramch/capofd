@@ -17,36 +17,36 @@ trait FormFileUploadTrait
         if ($attachmentName = $request['CorvelAttachmentName']) {
             $attachment = new Attachment();
             $attachment->attachmentname = $attachmentName;
-            $attachment->Injury_ofd6ID = $id;
-            $attachment->attachmenttype = 'Corvel Work Ability Report';
+            $attachment->ofd6id = $id;
+            $attachment->attachmenttype = '611';
             $attachment->save();
         }
         if ($attachmentName = $request['InvestigationAttachment']) {
             $attachment = new Attachment();
             $attachment->attachmentname = $attachmentName;
-            $attachment->Injury_ofd6ID = $id;
-            $attachment->attachmenttype = 'Investigation Report for Occupational Injury or Illness';
+            $attachment->ofd6id = $id;
+            $attachment->attachmenttype = '612';
             $attachment->save();
         }
         if ($attachmentName = $request['StatementAttachment']) {
             $attachment = new Attachment();
             $attachment->attachmentname = $attachmentName;
-            $attachment->Injury_ofd6ID = $id;
-            $attachment->attachmenttype = 'Statement of Witness of Accident';
+            $attachment->ofd6id = $id;
+            $attachment->attachmenttype = '613';
             $attachment->save();
         }
         if ($attachmentName = $request['EmployeeAttachment']) {
             $attachment = new Attachment();
             $attachment->attachmentname = $attachmentName;
-            $attachment->Injury_ofd6ID = $id;
-            $attachment->attachmenttype = 'Employee\'s Choice of Physician or Doctor Form';
+            $attachment->ofd6id = $id;
+            $attachment->attachmenttype = '614';
             $attachment->save();
         }
         if ($attachmentName = $request['Ofd25Attachment']) {
             $attachment = new Attachment();
             $attachment->attachmentname = $attachmentName;
-            $attachment->Injury_ofd6ID = $id;
-            $attachment->attachmenttype = 'OFD - 25 Injury on Job';
+            $attachment->ofd6id = $id;
+            $attachment->attachmenttype = '615';
             $attachment->save();
         }
     }
@@ -111,18 +111,29 @@ trait FormFileUploadTrait
     }
     public function BiologicalUpload(Request $request, $id)
     {
-        if ($attachmentName = $request['trueOFD184']) {
+        if ($attachmentName = $request['trueofd184']) {
             $attachment = new Attachment();
             $attachment->attachmentname = $attachmentName;
-            $attachment->ofd6bID = $id;
-            $attachment->attachmenttype = '619';
+            $attachment->ofd6bid = $id;
+            $attachment->attachmenttype = '6b1';
             $attachment->save();
         }
-        if ($attachmentName = $request['potOFD184']) {
+        if ($attachmentName = $request['potofd184']) {
             $attachment = new Attachment();
             $attachment->attachmentname = $attachmentName;
-            $attachment->ofd6bID = $id;
-            $attachment->attachmenttype = '620';
+            $attachment->ofd6bid = $id;
+            $attachment->attachmenttype = '6b2';
+            $attachment->save();
+        }
+    }
+
+    public function HazmatUpload(Request $request, $id)
+    {
+        if ($attachmentName = $request['OFD025']) {
+            $attachment = new Attachment();
+            $attachment->attachmentname = $attachmentName;
+            $attachment->ofd6cid = $id;
+            $attachment->attachmenttype = '6c';
             $attachment->save();
         }
     }

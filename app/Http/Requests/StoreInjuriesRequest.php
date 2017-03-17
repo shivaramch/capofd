@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class UpdateInjuriesRequest extends FormRequest
+class StoreInjuriesRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -20,6 +20,25 @@ class UpdateInjuriesRequest extends FormRequest
      * Get the validation rules that apply to the request.
      *
      * @return array
+     *
+     *
+     *
+     *  'reportnum',
+    'createdate',
+    'injurydate',
+    'injuredemployeename',
+    'injuredemployeeid',
+    'assignmentinjury',
+    'corvelid',
+    'captainid',
+    'battalionchiefid',
+    'aconduty',
+    'shift',
+    'frmsincidentnum',
+    'policeofficercompletesign',
+    'callsupervisor',
+    'createdby',
+    'updatedby',
      */
     public function rules()
     {
@@ -27,7 +46,7 @@ class UpdateInjuriesRequest extends FormRequest
             'reportnum' => 'required|integer:injury,reportnum,'. $this->route('injury'),
             'injurydate' => 'required|date:injury,injurydate,'. $this->route('injury'),
             'createdate' => 'required|date:injury,createdate,'. $this->route('injury'),
-            'injuredemployeename' => 'required|string:injury,injuredemployeename,'. $this->route('injury'),
+            'injuredemployeename' => 'required|string:injuries,injuredemployeename,'. $this->route('injury'),
             'injuredemployeeid' => 'required|integer:injury,injuredemployeeid,' . $this->route('injury'),
             'assignmentinjury' => 'required|string:injury,assignmentinjury,'. $this->route('injury'),
             'corvelid' => 'required|integer:injury,corvelid,' . $this->route('injury'),

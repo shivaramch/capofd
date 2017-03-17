@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Mail;
 use View;
-
+use Snowfire\Beautymail\Beautymail;
 
 
 use App\user_role;
@@ -23,58 +23,136 @@ use Illuminate\Support\Facades\Redirect;
 use Illuminate\Database\Eloquent\Collection;
 
 
+
 use Auth;
 
 
 class EmailController extends Controller
 {
     //
-    public  function Email(Request $request, $link  ){
+    public  function Email(Request $request, $link ,$formname ){
 
         //Get id of the form submitted
-
-        //Make collection which will store emails of all people for whom email is to be sent
+        $personname=null;
+        $personemail=null;
+        $templateform=null;
         $allemails = new Collection();
+        $numSent = 0;
+        $extracontent=null;
+        $personid=null;
+        if($formname=="accidents" || $formname=="injuries") {
 
-        $captainemail = DB::table('users')->where('ID', $request->captainID)->pluck('Email');
-        $captainame = DB::table('users')->where('ID', $request->captainID)->pluck('Name');
-        $BCemail = DB::table('users')->where('ID', $request->battalionChiefID)->pluck('Email');
-        $BCname = DB::table('users')->where('ID', $request->battalionChiefID)->pluck('Name');
-        $ACemail = DB::table('users')->where('ID', $request->acOnDutyID)->pluck('Email');
 
-        $ACname = DB::table('users')->where('ID', $request->acOnDutyID)->pluck('Name');
-        $persons = [];
+            if ($formname == "accidents") {
+                $personemail = DB::table('users')->where('id', $request->driverid)->pluck('email');
+                $personname = DB::table('users')->where('id', $request->driverid)->pluck('name');
+                $personid=$request->driverid;
 
-        $allemails = collect();
-        if(!isEmptyOrNullString($captainemail)) {
-            $allemails->push(["$captainemail" => "$captainame"]);
+                $templateform = "OFD 6A";
+                if (count($personemail)) {
+
+                    $allemails->push(["$personemail" => "$personname"]);
+                    //        var_dump($allemails);
+                }
+
+
+            }
+
+            if ($formname == "injuries") {
+                $templateform = "OFD 6";
+                $personemail = DB::table('users')->where('id', $request->injuredemployeeid)->pluck('email');
+                $personname = DB::table('users')->where('id', $request->injuredemployeeid)->pluck('name');
+                $personid=$request->injuredemployeeid;
+                if (count($personemail)) {
+
+                    $allemails->push(["$personemail" => "$personname"]);
+                }
+            }
+
+
+            $captainemail = DB::table('users')->where('id', $request->captainid)->pluck('email');
+            $captainame = DB::table('users')->where('id', $request->captainid)->pluck('name');
+            $BCemail = DB::table('users')->where('id', $request->battalionchiefid)->pluck('email');
+            $BCname = DB::table('users')->where('id', $request->battalionchiefid)->pluck('name');
+            $ACemail = DB::table('users')->where('id', $request->acncuty)->pluck('email');
+
+            $ACname = DB::table('users')->where('id', $request->aconduty)->pluck('name');
+            $persons = [];
+
+
+            if (count($captainemail)) {
+                $allemails->push(["$captainemail" => "$captainame"]);
+                //     var_dump("in cp");
+
+            }
+            if (count($BCemail)) {
+                $allemails->push(["$BCemail" => "$BCname"]);
+
+            }
+            if (count($ACemail)) {
+
+                $allemails->push(["$ACemail" => "$ACname"]);
+
+
+            }
+            $extracontent="Please review carefully as part of approval
+    process and make a decision.";
+
         }
-        if(!isEmptyOrNullString($BCemail)) {
-            $allemails->push(["$BCemail" => "$BCname"]);
-        }
-        var_dump($ACemail);
-        if(!isEmptyOrNullString($ACemail)) {
 
-            $allemails->push(["$ACemail" => "$ACname"]);
+
+
+
+
+        if($formname=="biologicals" ||$formname=="hazmat"){
+
+
+            if($formname=="biologicals" ){
+                $personemail =DB::table('users')->where('id', $request->employeeid)->pluck('email');
+                $personname= DB::table('users')->where('id', $request->employeeid)->pluck('name');
+                $personid=$request->employeeid;
+                $templateform="OFD 6B";
+                if(count($personemail)){
+
+                    $allemails->push(["$personemail" => "$personname"]);
+                }
+                $extracontent="Please review carefully as part of approval
+    process and make a decision.";
+            }
+
+            if($formname=="hazmat" ){
+                $personemail=DB::table('users')->where('id', $request->employeeid)->pluck('email');
+                $personname= DB::table('users')->where('id', $request->employeeid)->pluck('name');
+                $personid=$request->employeeid;
+                $templateform="OFD 6C";
+
+                if(count($personemail)){
+
+                    $allemails->push(["$personemail" => "$personname"]);
+                }
+            }
+
+
+            $primaryidconame=DB::table('users')->where('id', $request->primaryidconumber)->pluck('name');
+            $primaryidcoemail = DB::table('users')->where('id', $request->primaryidconumber)->pluck('email');
+
+            if(count($primaryidcoemail)) {
+var_dump($primaryidconame);
+                $allemails->push(["$primaryidcoemail" => "$primaryidconame"]);
+            }
         }
+
         //   var_dump($allemails);
-
-
-        //Add superadmin email
         $superAdmin = new Collection();
-//        $superAdmin=DB::table('users')
-//
-//            ->Join('user_role', 'User_Role_roleID', '=', 'user_role.RoleID')
-//            ->where('User_Role_roleID',1)->pluck('Email','Name');
-//
-//
-//        foreach ($superAdmin as $item=>$value){
-//            //$allemails->push([""=>""]);
-//            $allemails->push(["$value" => "$item"]);
-//            //   var_dump(["$value" => "$item"]);
-//
-//        }
-//        var_dump($allemails);
+        $superAdmin=DB::table('users')->where('roleid',1)->pluck('email','name');
+
+        if(count($superAdmin)!=0) {
+            foreach ($superAdmin as $item => $value) {
+
+                $allemails->push(["$value" => "$item"]);
+            }
+
+        }
 
         //Add superadmin email end
 
@@ -89,23 +167,11 @@ class EmailController extends Controller
         $transport = \Swift_SmtpTransport::newInstance($smtpAddress, $port, $encryption)
             ->setUsername($yourEmail)
             ->setPassword($yourPassword);
+
         $mailer = \Swift_Mailer::newInstance($transport);
 
+var_dump($personname);
         // Prepare content
-
-        $view = View::make('email_template', [
-            'message' => 'Please review the application submitted !','link'=>$link
-        ]);
-
-        $html = $view->render();
-        $numSent = 0;
-
-
-
-        $message = \Swift_Message::newInstance('Omaha Fire Department')
-            ->setFrom(['ofdservicedesk@gmail.com' => 'Omaha Fire Department'])
-            ->setBody($html, 'text/html');
-
         foreach ($allemails as $index => $item) {
 
 
@@ -113,6 +179,23 @@ class EmailController extends Controller
                 $testemail=str_replace (array('["', '"]'), '', $email);
                 //     var_dump($testemail);
                 $testname=str_replace (array('["', '"]'), '' ,$name);
+        $view = View::make('email_template', [
+           'message'=>$templateform.'Report Tracking Document Submitted',
+            'link'=>$link,'firefighter'=>str_replace (array('["', '"]'), '', $personname),
+            'formname'=>$templateform,'officername'=>$testname,'content'=>$extracontent,'personid'=>$personid
+        ]);
+
+
+        $html = $view->render();
+        $numSent = 0;
+
+
+
+        $message = \Swift_Message::newInstance($templateform.'Report Tracking Document Submitted')
+            ->setFrom(['ofdservicedesk@gmail.com' =>'Omaha Fire Department' ])
+            ->setBody($html, 'text/html');
+
+
                 //     var_dump($testname);
                 //
                 //
@@ -122,9 +205,10 @@ class EmailController extends Controller
                     $message->setTo($name);
                 } else {
                     $message->setTo(array($testemail => $testname));
+
                 }
 
-                $numSent += $mailer->send($message, $failedRecipients);
+               $numSent += $mailer->send($message, $failedRecipients);
             }
 
             printf("Sent %d messages\n", $numSent);

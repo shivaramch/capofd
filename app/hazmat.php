@@ -3,28 +3,44 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Carbon\Carbon;
+use Illuminate\Support\Facades\Auth;
 
 class hazmat extends Model
 {
-    protected $table='ofd6c';
+    protected $primaryKey = 'ofd6cid';
 
-    protected $primaryKey='ofd6cid';
+    public static function boot()
+    {
+        parent::boot();
+
+        static::creating(function($model)
+        {
+            $model->createdby = Auth::user()->id;
+            $model->updatedby = Auth::user()->id;
+        });
+
+        static::updating(function($model)
+        {
+            $model->updatedby = Auth::user()->id;
+        });
+    }
+
     protected $fillable = [
 
-        'createdby',
-        'updatedby',
         'ofd6cid',
-        'employeeID',
-        'exposedEmployeeName',
-        'dateOfExposure',
-        'idconumber',
-        'epcrIncidentNum',
-        'assignmentHazmat',
+        'employeeid',
+        'employeename',
+        'dateofexposure',
+        'primaryidconumber',
+        'epcrincidentnum',
+        'frmsincidentnum',
+        'assignment',
         'shift',
-        'contactCorVel',
-        'corvelID',
-        'attachOFD25',
-        'pathOFD25',
+        'contactcorvel',
+        'corvelid',
+        'applicationstatus',
+        'exposurehazmat'
 
 
     ];
@@ -34,12 +50,15 @@ class hazmat extends Model
      * @param $input
      */
 
-    public function setDatedateOfExposure($input)
+    public function setDatedateofexposure($input)
     {
         if ($input != null) {
-            $this->attributes['dateOfExposure'] = Carbon::createFromFormat('Y-m-d', $input)->format('Y-m-d');
+           $this->attributes['dateofexposure'] = Carbon::createFromFormat('Y-m-d', $input)->format('Y-m-d');
         } else {
-            $this->attributes['dateOfExposure'] = null;
+            $this->attributes['dateofexposure'] = null;
         }
+    }
+    public function attachment(){
+        return $this->hasMany(\App\Attachment::class);
     }
 }

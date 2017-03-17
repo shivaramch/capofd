@@ -63,7 +63,7 @@
                     <div class="col-sm-4 form-group">
                         {!! Form::label('accidentdate', 'Date of Accident:',array('style'=>'padding-top:7px;','class'=> 'col-sm-4 control-label') )!!}
                         <div class="col-sm-6 ">
-                            {!! Form::text('accidentdate', old('accidentdate'), array('id'=>'datepicker12','class' => 'form-control datepicker1', 'placeholder' => 'YYYY-MM-DD','required' => 'required'))!!}
+                            {!! Form::text('accidentdate', old('accidentdate'), array('id'=>'datepicker12','class' => 'form-control datepicker1', 'placeholder' => 'MM-DD-YYYY','required' => 'required'))!!}
                             {!! Form::text('accidentdate', old('accidentdate'), array('style'=>'display:none;','id'=>'datepicker32','class' => 'form-control datepicker', 'placeholder' => 'YYYY-MM-DD','required' => 'required'))!!}
                             <p class="help-block"></p>
                             @if($errors->has('accidentdate'))
@@ -102,7 +102,7 @@
                     <div class="col-sm-4 form-group">
                         {!! Form::label('frmsincidentnum', 'FRMS Incident #', array('style'=>'padding-top:7px;','class' => 'col-sm-4 control-label')) !!}
                         <div class="col-sm-6 ">
-                            {!! Form::text('frmsincidentnum', old('frmsincidentnum'), ['class' => 'form-control'])!!}
+                            {!! Form::text('frmsincidentnum', old('frmsincidentnum'), array('class' => 'form-control','placeholder'=>'Enter FRMS number'))!!}
                             <p class="help-block"></p>
                             @if($errors->has('frmsincidentnum'))
                                 <p class="help-block">
@@ -163,7 +163,7 @@
                     </div>
                     <div class="col-sm-4 form-group">
                         {!! Form::label('aconduty', 'Assistant Chief #', array('style'=>'padding-top:7px;','class' => 'col-sm-4 control-label','placeholder'=>'Enter Badge Id')) !!}
-                        <div class="col-sm-6 ">
+                        <div class="col-sm-7 ">
                             {!! Form::text('aconduty', old('aconduty'), array('class' => 'form-control','placeholder'=>'Enter Badge Id'))!!}
                             <p class="help-block"></p>
                             @if($errors->has('aconduty'))
@@ -208,6 +208,7 @@
                 <div class="col-sm-12">
                     <div class="form-group">
                         {{ Form::checkbox('commemail', 1, null, ['id' => 'commemail', 'class'=>'className']) }}
+						
                         <label><strong>Generate OFD 025
                                 Intradepartmental Communication</strong>-Email to <a
                                     href="omafaccident_ofd25@cityofomaha.org"> omafaccident_ofd25@cityofomaha.org </a>
@@ -424,17 +425,20 @@
                             Book</strong></label>
                 </div>
             </div>
-        </div>
-    </div>
-    <div class="panel panel-default">
-        <div class="col-sm-12 panel-headinzzzzg">
+            <br>
             <label class="col-sm-5"></label>
-            <div class="btn-bottom ">
-                {!! Form::submit('Submit',['class' => 'btn btn-success']) !!}
-                <a href="{{ route('accidents.index') }}" class="btn btn-default">Cancel</a>
-            </div>
+            <button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal">
+                Submit
+            </button>
+
+            <a href="{{ route('accidents.index') }}" class="btn btn-danger">Cancel</a>
+            <br>
+
         </div>
     </div>
+
+
+
     <!-- Modal -->
     <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
         <div class="modal-dialog" role="document">
@@ -442,14 +446,18 @@
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
                                 aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+                    <h4 class="modal-title" id="myModalLabel"></h4>
                 </div>
                 <div class="modal-body">
-                    ...
+                    Are you sure you want to Submit?
                 </div>
                 <div class="modal-footer">
-                    {!! Form::submit('Submit',['class' => 'btn btn-success']) !!}
+                    {!! Form::submit('Yes',['class' => 'btn btn-success']) !!}
+                    <button type="button" class=" btn btn-danger" data-dismiss="modal" aria-label="">No</button>
+
+
                 </div>
+
             </div>
         </div>
     </div>

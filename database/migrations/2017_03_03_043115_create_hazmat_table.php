@@ -6,30 +6,27 @@ use Illuminate\Database\Migrations\Migration;
 
 class CreateHazmatTable extends Migration
 {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
+
     public function up()
     {
-        Schema::create('hazmat', function (Blueprint $table) {
+        Schema::create('hazmats', function (Blueprint $table) {
             $table->increments('ofd6cid');
-            $table->string('employeeID',256);
-            $table->string('exposedEmployeeName', 256);
-            $table->date('dateOfExposure');
-            $table->string('idconumber',256);
-            $table->string('epcrIncidentNum', 256);
-            $table->string('assignmentHazmat', 256);
+            $table->string('contactcorvel',256);
+            $table->string('corvelid', 256);
+            $table->string('frmsincidentnum', 256);
+            $table->string('employeeid', 256);
+            $table->string('employeename', 256);
+            $table->date('dateofexposure');
+            $table->string('primaryidconumber',256);
+            $table->string('epcrincidentnum', 256);
+            $table->string('assignment', 256);
             $table->string('shift',256);
-
-            $table->string('contactCorvel',256);
-            $table->string('corvelID', 256);
-            $table->string('attachOFD25', 256);
-            $table->string('pathOFD25', 256);
-            $table->string('updatedby', 256);
+            $table->string('applicationstatus', 256)->nullable();
+            $table->string('exposurehazmat', 256) ->nullable();
+            $table->string('updatedby', 256)->nullable();
             $table->string('createdby', 256);
             $table->timestamps();
+            $table->ipAddress('ip_address', 45)->nullable();
         });
     }
 

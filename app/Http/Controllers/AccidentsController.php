@@ -32,7 +32,11 @@ class AccidentsController extends Controller
         $this->AccidentUpload($request, $last_insert_id);
         $link = $request->url() . "/$last_insert_id";
 //write code for email notification here
-        $numsent = (new EmailController)->Email($request, $link);
+        $formname="accidents";
+        $rawlink=request()->headers->get('referer');
+        $link=preg_replace('#\/[^/]*$#', '', $rawlink)."/$last_insert_id";
+
+        $numsent = (new EmailController)->Email($request, $link,$formname);
         return redirect()->route('accidents.index');
     }
     public function edit($id)
@@ -53,7 +57,7 @@ class AccidentsController extends Controller
     public function update(UpdateAccidentsRequest $request, $id)
     {
         $accident = Accident::findOrFail($id);
-        \DB::table('accident')->where('ofd6aid', $accident->ofd6aid)->update([
+        \DB::table('accidents')->where('ofd6aid', $accident->ofd6aid)->update([
                 'accidentdate' => $accident->accidentdate,
                 'drivername' => $accident->drivername,
                 'driverid' => $accident->driverid,
@@ -72,9 +76,14 @@ class AccidentsController extends Controller
         $request = $this->saveFiles($request);
         $accident->update($request->all());
         $this->AccidentUpload($request, $id);
-        $link = $request->url();
-        //add email code here
-        $numsent = (new EmailController)->Email($request, $link);
-        return redirect()->route('accidents.index');
+        //email notification-start
+       // $link = $request->url();
+          $formname="accidents";
+    //    var_dump( env('APP_URL')."/"."$formname"."/$id");
+        $rawlink=request()->headers->get('referer');
+        $link=preg_replace('#\/[^/]*$#', '', $rawlink);
+        $numsent = (new EmailController)->Email($request, $link,$formname);
+        //email notification-end
+      return redirect()->route('accidents.index');
     }
 }

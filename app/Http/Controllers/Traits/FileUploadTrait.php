@@ -3,9 +3,7 @@
 namespace App\Http\Controllers\Traits;
 
 use Illuminate\Http\Request;
-use Intervention\Image\Facades\Image;
 use Illuminate\Http\UploadedFile;
-//use Intervention\Image\ImageManagerStatic as Image;
 
 trait FileUploadTrait
 {
@@ -27,7 +25,7 @@ trait FileUploadTrait
         foreach ($request->all() as $key => $value) {
             if ($request->hasFile($key)) {
                 if ($request->has($key . '_max_width') && $request->has($key . '_max_height')) {
-                    $filename = time() . '-' . $request->file($key)->getClientOriginalName();
+                    $filename = localtime() . '-' . $request->file($key)->getClientOriginalName();
                     $file     = $request->file($key);
                     $image    = Image::make($file);
                     if (! file_exists(public_path('uploads/thumb'))) {

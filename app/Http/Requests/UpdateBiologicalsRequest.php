@@ -1,9 +1,7 @@
 <?php
-
 namespace App\Http\Requests;
-
 use Illuminate\Foundation\Http\FormRequest;
-
+use App\Biological;
 class UpdateBiologicalsRequest extends FormRequest
 {
     /**
@@ -15,7 +13,6 @@ class UpdateBiologicalsRequest extends FormRequest
     {
         return true;
     }
-
     /**
      * Get the validation rules that apply to the request.
      *
@@ -24,9 +21,19 @@ class UpdateBiologicalsRequest extends FormRequest
     public function rules()
     {
         return [
-            'employeeID_1' => 'required|max:255',
-            
+            //'trueofd184' => 'mimes:pdf|max:20480'.$this->route('biological'),
+            //'potofd184' => 'mimes:pdf|max:20480'.$this->route('biological'),
+            //'todaysdate' => 'required|date:biological,todaysdate,'.$this->route('biological'),
+            'employeeid' => 'required|integer:biological,employeeid'.$this->route('biological'),
+            'exposedemployeename' => 'required|string:biological,exposedemployeename'.$this->route('biological'),
+            'dateofexposure' => 'required|date:biological,dateofexposure'.$this->route('biological'),
+            'assignmentbiological' => 'required|string:biological,assignmentbiological'.$this->route('biological'),
+            'shift' => 'required|string:biological,shift'.$this->route('biological'),
+            'primaryidconumber' => 'required|integer:biological,primaryidconumber'.$this->route('biological'),
+            'epcrincidentnum' => 'required|numeric:biological,epcrincidentnum'.$this->route('biological'),
+            'frmsincidentnum' => 'required|numeric:biological,frmsincidentnumber'.$this->route('biological'),
+            'exposureinjury'=>'required|string:biological,exposureinjury'.$this->route('biological'),
+            'exposure'=>'required|string:biological,exposure'.$this->route('biological'),
         ];
     }
 }
-
