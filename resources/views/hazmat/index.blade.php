@@ -23,8 +23,7 @@
     </div>
 
     @if(count($hazmat) > 0)
-        @foreach($hazmat as $hazmats)
-            @if($hazmats->employeeid == Auth::user()->id)
+
                 <div class="panel panel-default panel-shadow " hidden>
                     <div class="panel-heading">
                         Search Previously filled
@@ -48,7 +47,8 @@
                             </tr>
                             </thead>
                             <tbody>
-                            <tr>
+                            @if(count($hazmat) > 0)
+                                @foreach($hazmat as $hazmats)<tr>
                                 <td>{{ $hazmats->ofd6cid }}</td>
                                 <td>{{ $hazmats->dateofexposure }}</td>
                                 <td>{{ $hazmats->assignment }}</td>
@@ -65,12 +65,12 @@
                                 </td>
                             </tr>
 
+                                @endforeach @endif
                             </tbody>
                         </table>
                     </div>
                 </div>
-            @endif
-        @endforeach
+
     @endif
 @stop
 
