@@ -78,8 +78,9 @@
     <!-- bottom navigation icons start here-->
     <div class="col-md-12">
         <div class="row" style="margin: inherit">
+
             {{--<a href="{{ route('repairs.index') }}">--}}
-            <div class="col-md-4 large-category">
+            <div class="col-md-3 large-category">
                 <div class="thumbnail">
                     <div class="thumbnail-dash">
                         <i class="fa fa-upload fa-4x" aria-hidden="true"></i>
@@ -92,7 +93,7 @@
             </a>
 
             {{--<a href="{{ route('repairs.index') }}">--}}
-            <div class="col-md-4 large-category">
+            <div class="col-md-3 large-category">
                 <div class="thumbnail">
                     <div class="thumbnail-dash">
                         <i class="fa fa-upload fa-4x" aria-hidden="true"></i>
@@ -105,10 +106,10 @@
             </a>
 
             {{--<a href="{{ route('repairs.index') }}">--}}
-            <div class="col-md-4 large-category">
+            <div class="col-md-3 large-category">
                 <div class="thumbnail">
                     <div class="thumbnail-dash">
-                        <i class="fa fa-upload fa-4x" aria-hidden="true"></i>
+                        <i class="fa fa-calendar fa-4x" aria-hidden="true"></i>
                     </div>
                     <div class="caption">
                         <h3>Limited Duty</h3>
@@ -116,6 +117,20 @@
                 </div>
             </div>
             </a>
+
+            {{--<a href="{{ route('repairs.index') }}">--}}
+            <div class="col-md-3 large-category">
+                <div class="thumbnail">
+                    <div class="thumbnail-dash">
+                        <i class="fa fa-search fa-4x" aria-hidden="true"></i>
+                    </div>
+                    <div class="caption">
+                        <h3>Admin Search</h3>
+                    </div>
+                </div>
+            </div>
+            </a>
+
 
 
         </div>

@@ -22,32 +22,32 @@
         </div>
     </div>
 
-    <div class="panel panel-default panel-shadow " hidden>
-        <div class="panel-heading">
-            Search Previously filled
-        </div>
-        <div class="panel-body">
-            <table data-toolbar="#toolbar"
-                   data-toggle="table"
-                   data-search="true"
-                   data-cookie="true"
-                   data-click-to-select="true"
-                   data-cookie-id-table="station-index-v1.1-1"
-                   data-show-columns="true"
-                   id="table">
-                <thead>
-                <tr>
-                    <th data-sortable="true">OFD 6C ID</th>
-                    <th data-sortable="true">Date of Exposure</th>
-                    <th data-sortable="true">Assignment</th>
+    @if(count($hazmat) > 0)
+        @foreach($hazmat as $hazmats)
+            @if($hazmats->employeeid == Auth::user()->id)
+                <div class="panel panel-default panel-shadow " hidden>
+                    <div class="panel-heading">
+                        Search Previously filled
+                    </div>
+                    <div class="panel-body">
+                        <table data-toolbar="#toolbar"
+                               data-toggle="table"
+                               data-search="true"
+                               data-cookie="true"
+                               data-click-to-select="true"
+                               data-cookie-id-table="station-index-v1.1-1"
+                               data-show-columns="true"
+                               id="table">
+                            <thead>
+                            <tr>
+                                <th data-sortable="true">OFD 6C ID</th>
+                                <th data-sortable="true">Date of Exposure</th>
+                                <th data-sortable="true">Assignment</th>
 
-                    <th data-switchable="false" data-searchable="false" data-sortable="false">Action</th>
-                </tr>
-                </thead>
-                <tbody>
-                @if(count($hazmat) > 0)
-                    @foreach($hazmat as $hazmats)
-                        @if($hazmats->employeeid == Auth::user()->id)
+                                <th data-switchable="false" data-searchable="false" data-sortable="false">Action</th>
+                            </tr>
+                            </thead>
+                            <tbody>
                             <tr>
                                 <td>{{ $hazmats->ofd6cid }}</td>
                                 <td>{{ $hazmats->dateofexposure }}</td>
@@ -64,17 +64,14 @@
                                     </div>
                                 </td>
                             </tr>
-                        @endif
-                    @endforeach
-                @else
-                    <tr>
-                        <td colspan="10">No entries in table</td>
-                    </tr>
-                @endif
-                </tbody>
-            </table>
-        </div>
-    </div>
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            @endif
+        @endforeach
+    @endif
 @stop
 
 @section('javascript')

@@ -19,32 +19,33 @@
             </div>
         </div>
     </div>
-    <div class="panel panel-default panel-shadow " hidden>
-        <div class="panel-heading">
-            Search Previously filled
-        </div>
-        <div class="panel-body">
-            <table data-toolbar="#toolbar"
-                   data-toggle="table"
-                   data-search="true"
-                   data-cookie="true"
-                   data-click-to-select="true"
-                   data-cookie-id-table="station-index-v1.1-1"
-                   data-show-columns="true"
-                   id="table">
-                <thead>
-                <tr>
-                    <th data-sortable="true">OFD 6B ID</th>
-                    <th data-sortable="true">Date of Exposure</th>
-                    <th data-sortable="true">Assignment</th>
-                    <th data-sortable="true">Status</th>
-                    <th data-switchable="false" data-searchable="false" data-sortable="false">Action</th>
-                </tr>
-                </thead>
-                <tbody>
-                @if(count($biologicals) > 0)
-                    @foreach($biologicals as $biological)
-                        @if($biological->employeeid == Auth::user()->id)
+    @if(count($biologicals) > 0)
+        @foreach($biologicals as $biological)
+            @if($biological->employeeid == Auth::user()->id)
+
+                <div class="panel panel-default panel-shadow " hidden>
+                    <div class="panel-heading">
+                        Search Previously filled
+                    </div>
+                    <div class="panel-body">
+                        <table data-toolbar="#toolbar"
+                               data-toggle="table"
+                               data-search="true"
+                               data-cookie="true"
+                               data-click-to-select="true"
+                               data-cookie-id-table="station-index-v1.1-1"
+                               data-show-columns="true"
+                               id="table">
+                            <thead>
+                            <tr>
+                                <th data-sortable="true">OFD 6B ID</th>
+                                <th data-sortable="true">Date of Exposure</th>
+                                <th data-sortable="true">Assignment</th>
+                                <th data-sortable="true">Status</th>
+                                <th data-switchable="false" data-searchable="false" data-sortable="false">Action</th>
+                            </tr>
+                            </thead>
+                            <tbody>
                             <tr>
                                 <td>{{ $biological->ofd6bid }}</td>
                                 <td>{{ $biological->dateofexposure }}</td>
@@ -61,43 +62,40 @@
                                     </div>
                                 </td>
                             </tr>
-                        @endif
-                    @endforeach
-                @else
-                    <tr>
-                        <td colspan="10">No entries in table</td>
-                    </tr>
-                @endif
-                </tbody>
-            </table>
-        </div>
-    </div>
-    <div class="panel panel-default panel-shadow " hidden>
-        <div class="panel-heading">
-            In your Queue For Approval
-        </div>
-        <div class="panel-body">
-            <table data-toolbar="#toolbar"
-                   data-toggle="table"
-                   data-search="true"
-                   data-cookie="true"
-                   data-click-to-select="true"
-                   data-cookie-id-table="station-index-v1.1-1"
-                   data-show-columns="true"
-                   id="table">
-                <thead>
-                <tr>
-                    <th data-sortable="true">OFD 6B ID</th>
-                    <th data-sortable="true">Date of Exposure</th>
-                    <th data-sortable="true">Assignment</th>
-                    <th data-sortable="true">Status</th>
-                    <th data-switchable="false" data-searchable="false" data-sortable="false">Action</th>
-                </tr>
-                </thead>
-                <tbody>
-                @if(count($biologicals) > 0)
-                    @foreach($biologicals as $biological)
-                        @if($biological->applicationstatus == 'approval')
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            @endif
+        @endforeach
+    @endif
+
+    @if(count($biologicals) > 0)
+        @foreach($biologicals as $biological)
+            @if($biological->primaryidconumber == Auth::user()->id && $biological->applicationstatus == 2)
+                <div class="panel panel-default panel-shadow " hidden>
+                    <div class="panel-heading">
+                        In your Queue For Approval
+                    </div>
+                    <div class="panel-body">
+                        <table data-toolbar="#toolbar"
+                               data-toggle="table"
+                               data-search="true"
+                               data-cookie="true"
+                               data-click-to-select="true"
+                               data-cookie-id-table="station-index-v1.1-1"
+                               data-show-columns="true"
+                               id="table">
+                            <thead>
+                            <tr>
+                                <th data-sortable="true">OFD 6B ID</th>
+                                <th data-sortable="true">Date of Exposure</th>
+                                <th data-sortable="true">Assignment</th>
+                                <th data-sortable="true">Status</th>
+                                <th data-switchable="false" data-searchable="false" data-sortable="false">Action</th>
+                            </tr>
+                            </thead>
+                            <tbody>
                             <tr>
                                 <td>{{ $biological->ofd6bid }}</td>
                                 <td>{{ $biological->dateofexposure }}</td>
@@ -108,23 +106,17 @@
                                         <a href="{{ route('biologicals.show',[$biological->ofd6bid]) }}"
                                            class="btn btn-xs btn-info btn-block"><i
                                                     class="fa fa-eye" aria-hidden="true"></i> VIEW</a>
-                                        <a href="{{ route('biologicals.edit',[$biological->ofd6bid]) }}"
-                                           class="btn btn-xs btn-warning btn-block"><i class="fa fa-pencil-square-o"
-                                                                                       aria-hidden="true"></i> EDIT</a>
-                                    </div>
+                                        </div>
                                 </td>
                             </tr>
-                        @endif
-                    @endforeach
-                @else
-                    <tr>
-                        <td colspan="10">No entries in table</td>
-                    </tr>
-                @endif
-                </tbody>
-            </table>
-        </div>
-    </div>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            @endif
+        @endforeach
+    @endif
+
 @stop
 @section('javascript')
     <script src="{{ url('js/extensions/cookie') }}/bootstrap-table-cookie.js"></script>
