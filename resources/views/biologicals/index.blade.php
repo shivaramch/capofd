@@ -44,7 +44,7 @@
                 <tbody>
                 @if(count($biologicals) > 0)
                     @foreach($biologicals as $biological)
-                        @if($biological->createdby == Auth::user()->id)
+                        @if($biological->employeeid == Auth::user()->id)
                             <tr>
                                 <td>{{ $biological->ofd6bid }}</td>
                                 <td>{{ $biological->dateofexposure }}</td>

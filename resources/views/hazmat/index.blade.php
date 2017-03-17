@@ -47,22 +47,24 @@
                 <tbody>
                 @if(count($hazmat) > 0)
                     @foreach($hazmat as $hazmats)
-                        <tr>
-                            <td>{{ $hazmats->ofd6cid }}</td>
-                            <td>{{ $hazmats->dateofexposure }}</td>
-                            <td>{{ $hazmats->assignment }}</td>
+                        @if($hazmats->employeeid == Auth::user()->id)
+                            <tr>
+                                <td>{{ $hazmats->ofd6cid }}</td>
+                                <td>{{ $hazmats->dateofexposure }}</td>
+                                <td>{{ $hazmats->assignment }}</td>
 
-                            <td>
-                                <div>
-                                    <a href="{{ route('hazmat.show',[$hazmats->ofd6cid]) }}"
-                                       class="btn btn-xs btn-info btn-block"><i
-                                                class="fa fa-eye" aria-hidden="true"></i> VIEW</a>
-                                    <a href="{{ route('hazmat.edit',[$hazmats->ofd6cid]) }}"
-                                       class="btn btn-xs btn-warning btn-block"><i class="fa fa-pencil-square-o"
-                                                                                   aria-hidden="true"></i> EDIT</a>
-                                </div>
-                            </td>
-                        </tr>
+                                <td>
+                                    <div>
+                                        <a href="{{ route('hazmat.show',[$hazmats->ofd6cid]) }}"
+                                           class="btn btn-xs btn-info btn-block"><i
+                                                    class="fa fa-eye" aria-hidden="true"></i> VIEW</a>
+                                        <a href="{{ route('hazmat.edit',[$hazmats->ofd6cid]) }}"
+                                           class="btn btn-xs btn-warning btn-block"><i class="fa fa-pencil-square-o"
+                                                                                       aria-hidden="true"></i> EDIT</a>
+                                    </div>
+                                </td>
+                            </tr>
+                        @endif
                     @endforeach
                 @else
                     <tr>

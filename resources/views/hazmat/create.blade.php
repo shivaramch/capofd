@@ -143,14 +143,14 @@
                             </div>
                         </div>
                         <div class="col-sm-4 form-group">
-                            {!! Form::label('shift', 'Shift', array('style'=>'padding-top:7px;','class' => 'col-sm-4 control-label')) !!}
+                            {!! Form::label('shift', 'Shift', ['class'=> 'col-sm-4 control-label'] ) !!}
                             <div class="col-sm-6">
-                                {!! Form::select('shift',
-                                ['A' => 'A',
-                                 'B' => 'B',
-                                 'C' => 'C',
-                                 'DIV' => 'DIV'],
-                                 ['class' => 'form-control', 'required'=>'required'])!!}
+                                {!! Form::select('shift', ['A' => 'A',
+                                'B' => 'B',
+                                'C' => 'C',
+                                'DIV' => 'DIV'], null,
+                                ['placeholder' => 'Select your Shift'],'required',
+                                ['class' => 'form-control']) !!}
                                 <p class="help-block"></p>
                                 @if($errors->has('shift'))
                                     <p class="help-block">
@@ -229,7 +229,7 @@
                                 {!! Form::select('exposureinjury',[
                                   'Yes' => 'Yes',
                                   'No' => 'No'],null,
-                                ['placeholder' => 'Choose one'],
+                                ['placeholder' => 'Choose one'],'required',
                                 array('class' => 'form-control'))!!}
                                 <p class="help-block"></p>
                                 @if($errors->has('exposureinjury'))
