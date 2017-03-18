@@ -35,6 +35,11 @@ class CreateInjuriesTable extends Migration
             $table->string('createdby', 256)->nullable();
             $table->string('updatedby', 256)->nullable();
             $table->string('applicationstatus', 256)->nullable();
+            $table->string('checkbox1')->nullable();
+            $table->string('checkbox2')->nullable();
+            $table->string('checkbox3')->nullable();
+            $table->string('checkbox4')->nullable();
+            $table->string('checkbox5')->nullable();
             $table->timestamps();
             $table->ipAddress('ip_address', 45)->nullable();
         });
