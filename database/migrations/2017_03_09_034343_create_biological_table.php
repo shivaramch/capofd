@@ -42,6 +42,8 @@ class CreateBiologicalTable extends Migration
             $table->string('applicationstatus', 256)->nullable();
             $table->string('trueofd184')->nullable();
             $table->string('potofd184')->nullable();
+            $table->string('checkbox1')->nullable();
+            $table->string('checkbox2')->nullable();
             $table->timestamps();
             $table->ipAddress('ip_address', 45)->nullable();
 
