@@ -29,7 +29,8 @@
     </div>
 
 
-    @if($injury->injuredemployeeid == Auth::user()->id)
+    @foreach($injuries as $injury)
+        @if($injury->injuredemployeeid == Auth::user()->id)
         <div class="panel panel-default panel-shadow " hidden>
             <div class="panel-heading">
                 Search Previously filled
@@ -54,7 +55,6 @@
                     </thead>
                     <tbody>
                     @if(count($injuries) > 0)
-                        @foreach($injuries as $injury)
                             <tr>
                                 <td>{{ $injury->ofd6id }}</td>
                                 <td>{{ $injury->injurydate }}</td>
@@ -71,7 +71,6 @@
                                     </div>
                                 </td>
                             </tr>
-                        @endforeach
                     @endif
 
                     </tbody>
@@ -107,7 +106,7 @@
                     </thead>
                     <tbody>
                     @if(count($injuries) > 0)
-                        @foreach($injuries as $injury)
+                        @if($injury->applicationstatus == 2)
                             <tr>
                                 <td>{{ $injury->ofd6id }}</td>
                                 <td>{{ $injury->injurydate }}</td>
@@ -121,7 +120,7 @@
                                     </div>
                                 </td>
                             </tr>
-                        @endforeach
+                        @endif
                     @endif
                     </tbody>
                 </table>
@@ -156,7 +155,7 @@
                     </thead>
                     <tbody>
                     @if(count($injuries) > 0)
-                        @foreach($injuries as $injury)
+                        @if($injury->applicationstatus == 3)
                             <tr>
                                 <td>{{ $injury->ofd6id }}</td>
                                 <td>{{ $injury->injurydate }}</td>
@@ -170,7 +169,7 @@
                                     </div>
                                 </td>
                             </tr>
-                        @endforeach
+                        @endif
                     @endif
 
                     </tbody>
@@ -204,7 +203,7 @@
                     </thead>
                     <tbody>
                     @if(count($injuries) > 0)
-                        @foreach($injuries as $injury)
+                        @if($injury->applicationstatus == 4)
                             <tr>
                                 <td>{{ $injury->ofd6id }}</td>
                                 <td>{{ $injury->injurydate }}</td>
@@ -218,13 +217,14 @@
                                     </div>
                                 </td>
                             </tr>
-                        @endforeach
+                        @endif
                     @endif
                     </tbody>
                 </table>
             </div>
         </div>
     @endif
+    @endforeach
 
 @stop
 

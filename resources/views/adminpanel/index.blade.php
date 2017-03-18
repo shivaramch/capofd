@@ -18,7 +18,7 @@
             <div class="panel-body">
                 <div class="form-group" align="center">
                     <select class="form-control" id="assets">
-                        <option selected="selected" disabled="disabled">Select Asset Type</option>
+                        <option selected="selected" disabled="disabled">Select Form Type</option>
                         <option id="1">OFD 6</option>
                         <option id="2">OFD 6A</option>
                         <option id="3">OFD 6B</option>
