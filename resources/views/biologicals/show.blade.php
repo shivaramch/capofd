@@ -8,13 +8,10 @@
         <li><a href="{{ route('biologicals.index') }}">OFD 6B Biologicals</a></li>
         <li class="active">View OFD 6B Form {{ $biological->ofd6bid }}</li>
     </ol>
-    @endsection
+@endsection
 
-    @section('content')
+@section('content')
     {!! Form::model($biological,['method' => 'PUT', 'route' => ['biologicals.update', $biological->ofd6bid], 'files' => true,])!!}
-
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-    <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
     <style>
         #padtop {
             padding-top: 7px;
@@ -29,7 +26,10 @@
         }
 
     </style>
-    <div class="panel panel-default">
+    @if($biological->employeeid == Auth::user()->id ||
+    ($biological->primaryidconumber == Auth::user()->id && $biological->applicationstatus == 2) ||
+    Auth::user()->roleid == 1)
+        <div class="panel panel-default">
         <div class="panel-heading">
             <div class="jumbotron" style="margin-bottom: 5px; ">
                 <div class="row">
@@ -352,10 +352,25 @@
                     </div>
                 </div>
             </div>
-            <div class="col-sm-12 panel-heading">
-                <label class="col-sm-5"></label>
+            @else
+                <div class="panel-body">
+                    <div class="form-horizontal">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="alert alert-danger" align="center">
+                                    <label>
+                                        You are not authorized to view this form
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            @endif
+
+            <div class="col-sm-12 panel-heading" align="center">
                 <div class="btn-bottom ">
-                    <a href="{{ route('biologicals.index') }}" class="btn btn-primary">Return</a>
+                    <a href="{{ route('biologicals.index') }}" class="btn btn-default">Return</a>
                 </div>
             </div>
         </div>

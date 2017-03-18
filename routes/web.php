@@ -46,6 +46,8 @@ Route::group(['middleware' => 'auth'], function () {// Authentication Routes...
     Route::resource('hazmat', 'HazmatController');
 
     Route::resource('users', 'UserController');
+
+    Route::resource('adminpanel', 'AdminpanelsController');
 });
 
 
