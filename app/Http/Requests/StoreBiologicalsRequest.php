@@ -26,7 +26,7 @@ class StoreBiologicalsRequest extends FormRequest
             //'todaysdate' => 'required|date:biological,todaysdate,'.$this->route('biological'),
             'employeeid' => 'required|integer:biological,employeeid'.$this->route('biological'),
             'exposedemployeename' => 'required|string:biological,exposedemployeename'.$this->route('biological'),
-            'dateofexposure' => 'required|date:biological,dateofexposure'.$this->route('biological'),
+            'dateofexposure' => 'required|before_or_equal:biological,dateofexposure'.$this->route('biological'),
             'assignmentbiological' => 'required|string:biological,assignmentbiological'.$this->route('biological'),
             'shift' => 'required|string:biological,shift'.$this->route('biological'),
             'primaryidconumber' => 'required|integer:biological,primaryidconumber'.$this->route('biological'),
