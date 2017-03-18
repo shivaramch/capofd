@@ -73,7 +73,7 @@
                 <div class="col-sm-4 form-group">
                     {!! Form::label('createdate', 'Todays Date:', ['class' => 'col-sm-4 control-label']) !!}
                     <div class="col-sm-6 ">
-                        {!! Form::text('createdate', old('createdate'), array('class'=>'datepicker form-control','placeholder'=>'MM/DD/YYYY','required' => 'required'))!!}
+                        {!! Form::text('createdate', old('createdate'), array('class'=>'datepicker form-control','placeholder'=>'MM/DD/YYYY'))!!}
                         <p class="help-block"></p>
                         @if($errors->has('createDate'))
                             <p class="help-block">
@@ -85,7 +85,7 @@
                 <div class="col-sm-4 form-group">
                     {!! Form::label('injuryDate', 'Date of Injury:', ['class' => 'col-sm-4 control-label']) !!}
                     <div class="col-sm-6 ">
-                        {!! Form::text('injurydate', old('injurydate'), array('class'=>'datepicker form-control','placeholder'=>'MM/DD/YYYY','required' => 'required'))!!}
+                        {!! Form::text('injurydate', old('injurydate'), array('class'=>'datepicker form-control','placeholder'=>'MM/DD/YYYY'))!!}
                         <p class="help-block"></p>
                         @if($errors->has('injuryDate'))
                             <p class="help-block">
@@ -97,7 +97,7 @@
                 <div class="col-sm-4 form-group">
                     {!! Form::label('assignmentInjury', 'Assignment', ['class' => 'col-sm-4 control-label']) !!}
                     <div class="col-sm-6 ">
-                        {!! Form::text('assignmentinjury', old('assignmentinjury'), array('class' => 'form-control','required' => 'required'))!!}
+                        {!! Form::text('assignmentinjury', old('assignmentinjury'), array('class' => 'form-control'))!!}
                         <p class="help-block"></p>
                         @if($errors->has('assignmentInjury'))
                             <p class="help-block">
@@ -111,7 +111,7 @@
                 <div class="col-sm-4 form-group">
                     {!! Form::label('injuredEmployeeName', 'Injured Name', ['class' => 'col-sm-4 control-label']) !!}
                     <div class="col-sm-6 ">
-                        {!! Form::text('injuredemployeename', old('injuredemployeename'), array('class' => 'form-control','placeholder'=>'Enter Injured Name','required' => 'required'))!!}
+                        {!! Form::text('injuredemployeename', old('injuredemployeename'), array('class' => 'form-control','placeholder'=>'Enter Injured Name'))!!}
                         <p class="help-block"></p>
                         @if($errors->has('injuredEmployeeName'))
                             <p class="help-block">
@@ -123,7 +123,7 @@
                 <div class="col-sm-4 form-group">
                     {!! Form::label('injuredEmployeeID', 'Personnel ID #', ['class' => 'col-sm-4 control-label']) !!}
                     <div class="col-sm-6 ">
-                        {!! Form::text('injuredemployeeid', old('injuredemployeeid'), array('class' => 'form-control','placeholder'=>'Enter Badge Id','required' => 'required'))!!}
+                        {!! Form::text('injuredemployeeid', old('injuredemployeeid'), array('class' => 'form-control','placeholder'=>'Enter Badge Id'))!!}
                         <p class="help-block"></p>
                         @if($errors->has('injuredEmployeeID'))
                             <p class="help-block">
@@ -140,7 +140,7 @@
                       'B' => 'B',
                       'C' => 'C',
                       'DIV' => 'DIV'],null,
-                                ['placeholder' => 'Choose one'], array('class' => 'form-control','required' => 'required'))!!}
+                                ['placeholder' => 'Choose one'], array('class' => 'form-control'))!!}
                         <p class="help-block"></p>
                         @if($errors->has('shift'))
                             <p class="help-block">
@@ -154,7 +154,7 @@
                 <div class="col-sm-4 form-group">
                     {!! Form::label('captainID', 'Captain #', ['class' => 'col-sm-4 control-label']) !!}
                     <div class="col-sm-6 ">
-                        {!! Form::text('captainid', old('captainid'), array('class' => 'form-control','placeholder'=>'Enter Badge Id','required' => 'required'))!!}
+                        {!! Form::text('captainid', old('captainid'), array('class' => 'form-control','placeholder'=>'Enter Badge Id'))!!}
                         <p class="help-block"></p>
                         @if($errors->has('captainID'))
                             <p class="help-block">
@@ -372,7 +372,7 @@
             <div class="col-sm-6 form-group">
                 {!! Form::label('captainID', 'Complete FRMS Casuality & Narrative Tab - Fire service and Fire Service Injury', ['class' => 'col-sm-6 control-label']) !!}
                 <div class="col-sm-6 ">
-                    {!! Form::text('captainID', old('captainID'), array('class' => 'form-control','placeholder'=>'Enter FRMS Number here','required' => 'required'))!!}
+                    {!! Form::text('captainID', old('captainID'), array('class' => 'form-control','placeholder'=>'Enter FRMS Number here'))!!}
                     <p class="help-block"></p>
                     @if($errors->has('captainID'))
                         <p class="help-block">
@@ -387,7 +387,7 @@
             <div class="col-sm-6 form-group">
                 {!! Form::label('captainID', 'Complete in EPCR - All Cases', ['class' => 'col-sm-6 control-label']) !!}
                 <div class="col-sm-6 ">
-                    {!! Form::text('captainID', old('captainID'), array('class' => 'form-control','placeholder'=>'Enter EPCR Number here','required' => 'required'))!!}
+                    {!! Form::text('captainID', old('captainID'), array('class' => 'form-control','placeholder'=>'Enter EPCR Number here'))!!}
                     <p class="help-block"></p>
                     @if($errors->has('captainID'))
                         <p class="help-block">
@@ -400,7 +400,7 @@
         <div class="row">
             <div class="col-sm-12">
                 <div class="form-group">
-                    {{ Form::checkbox('documentworkforce', 1, null, ['id' => 'documentworkforce', 'class'=>'className','required' => 'required']) }}
+                    {{ Form::checkbox('documentworkforce', 1, null, ['id' => 'documentworkforce', 'class'=>'className']) }}
                     <label><strong>Document IOD in
                             Workforce
                         - Only if seeking medical attention.</strong></label>
@@ -410,7 +410,7 @@
         <div class="row">
             <div class="col-sm-12">
                 <div class="form-group">
-                    {{ Form::checkbox('documentoperationalday', 1, null, ['id' => 'documentoperationalday', 'class'=>'className','required' => 'required']) }}
+                    {{ Form::checkbox('documentoperationalday', 1, null, ['id' => 'documentoperationalday', 'class'=>'className']) }}
                     <label><strong>Document in Operational Day
                             Book and Personnel Record</strong></label>
                 </div>
@@ -438,7 +438,7 @@
         <div class="row">
             <div class="col-sm-12">
                 <div class="form-group">
-                    {{ Form::checkbox('policeofficercompletesign', 1, null, ['id' => 'policeofficercompletesign', 'class'=>'className','required' => 'required']) }}
+                    {{ Form::checkbox('policeofficercompletesign', 1, null, ['id' => 'policeofficercompletesign', 'class'=>'className']) }}
                     <label><strong>Have Police Supervisor Complete and Sign
                             Supervisor section on Investigation Report
                             and Witness Statement</strong></label>
@@ -448,7 +448,7 @@
         <div class="row">
             <div class="col-sm-12">
                 <div class="form-group">
-                    {{ Form::checkbox('callsupervisor', 1, null, ['id' => 'callsupervisor', 'class'=>'className','required' => 'required']) }}
+                    {{ Form::checkbox('callsupervisor', 1, null, ['id' => 'callsupervisor', 'class'=>'className']) }}
                     <label><strong>Call Fire Supervisor or SWD B/C immediately
                             and notify CorVel by phone</strong></label>
                 </div>
