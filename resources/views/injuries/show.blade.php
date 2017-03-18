@@ -531,6 +531,25 @@
                         <a href="{{ route('injuries.index') }}" class="btn btn-default">return</a>
                     </div>
                 </div>
+                @if($injury->captainid == Auth::user()->id && $injury->applicationstatus == 2)
+                    <div class="col-sm-12 panel-heading" align="center">
+                        {!! Form::submit('Approve',['class' => 'btn btn-success']) !!}
+                        {!! Form::submit('Reject',['class' => 'btn btn-danger']) !!}
+                    </div>
+                @endif
+                @if($injury->battalionchiefid == Auth::user()->id && $injury->applicationstatus == 3)
+                    <div class="col-sm-12 panel-heading" align="center">
+                        {!! Form::submit('Approve',['class' => 'btn btn-success']) !!}
+                        {!! Form::submit('Reject',['class' => 'btn btn-danger']) !!}
+                    </div>
+                @endif
+                @if($injury->aconduty == Auth::user()->id && $injury->applicationstatus == 4)
+                    <div class="col-sm-12 panel-heading" align="center">
+                        {!! Form::submit('Approve',['class' => 'btn btn-success']) !!}
+                        {!! Form::submit('Reject',['class' => 'btn btn-danger']) !!}
+                    </div>
+                @endif
+
             </div>
         </div>
 @stop
