@@ -101,6 +101,42 @@ return [
         'attribute-name' => [
             'rule-name' => 'custom-message',
         ],
+        'employeeid' => [
+            'required' => '"Employee ID#" field is required',
+            'integer' => '"Employee ID#" field should be an integer',
+            ],
+
+        'exposedemployeename' => [
+            'required' => '"Exposed Employee Name" field is required',
+        ],
+        'dateofexposure' => [
+            'required' => '"Date of Exposure" field is required',
+            'before_or_equal' => '"Date of Exposure" should not be greater than today date',
+        ],
+        'assignmentbiological' => [
+            'required' => '"Assignment" field is required',
+        ],
+        'shift' => [
+            'required' => '"Shift" field is required',
+        ],
+        'primaryidconumber' => [
+            'required' => '"Primary IDCO#" field is required',
+            'integer' => '"Primary IDCO#" field should be an integer',
+        ],
+        'epcrincidentnum' => [
+            'required' => '"EPCR Incident#" field is required',
+            'numeric' => '"EPCR Incident#" field should be a number',
+        ],
+        'frmsincidentnum' => [
+            'required' => '"FRMS Incident#" field is required',
+            'numeric' => '"FRMS Incident#" field should be a number',
+        ],
+        'exposureinjury' => [
+            'required' => 'Select Yes or No for "Do you have any symptoms of illness or injury and require treatment?"',
+        ],
+        'exposure' => [
+            'required' => '"Please Select True Exposure or Potential Exposure radio button"',
+        ],
     ],
 
     /*
