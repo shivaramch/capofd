@@ -18,6 +18,7 @@ class Accident extends Model
         {
             $model->createdby = Auth::user()->id;
             $model->updatedby = Auth::user()->id;
+            $model->ip_address=
         });
 
         static::updating(function($model)
@@ -41,7 +42,8 @@ class Accident extends Model
         'calllaw',
         'daybook',
         'status',
-        'frmsincidentnum'
+        'frmsincidentnum',
+
     ];
     /**
      * Set attribute to date format

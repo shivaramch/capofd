@@ -35,6 +35,7 @@ class InjuriesController extends Controller
 
     public function store(StoreInjuriesRequest $request)
     {
+
         $request = $this->saveFiles($request);
         Injury::create($request->all());
         $last_insert_id = DB::getPdo()->lastInsertId();

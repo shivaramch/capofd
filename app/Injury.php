@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class Injury extends Model
@@ -15,6 +16,7 @@ class Injury extends Model
 
         static::saving(function($table)  {
             $table->createdby = Auth::user()->id;
+            $table->ip_address=\Request::ip();
         });
     }
     protected $fillable = [
