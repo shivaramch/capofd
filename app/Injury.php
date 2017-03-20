@@ -36,6 +36,7 @@ class Injury extends Model
         'documentoperationalday',
         'policeofficercompletesign',
         'callsupervisor',
+        'applicationstatus',
         'createdby',
         'updatedby',
     ];
