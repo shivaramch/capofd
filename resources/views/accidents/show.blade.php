@@ -527,7 +527,7 @@
                         </div>
                     </div>
                 @endif
-                <div align="center">
+                <div class="col-sm-12 panel-heading" align="center">
                     <div class="btn-bottom ">
                         <a href="{{ route('accidents.index') }}" class="btn btn-default">return</a>
                     </div>

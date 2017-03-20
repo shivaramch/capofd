@@ -41,7 +41,8 @@ class Accident extends Model
         'calllaw',
         'daybook',
         'status',
-        'frmsincidentnum'
+        'frmsincidentnum',
+        'applicationstatus',
     ];
     /**
      * Set attribute to date format

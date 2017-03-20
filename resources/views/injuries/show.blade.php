@@ -531,24 +531,14 @@
                         <a href="{{ route('injuries.index') }}" class="btn btn-default">return</a>
                     </div>
                 </div>
-                @if($injury->captainid == Auth::user()->id && $injury->applicationstatus == 2)
+                @if($injury->captainid == Auth::user()->id && $injury->applicationstatus == 2 || $injury->applicationstatus == 3 ||$injury->applicationstatus == 4)
                     <div class="col-sm-12 panel-heading" align="center">
-                        {!! Form::submit('Approve',['class' => 'btn btn-success']) !!}
-                        {!! Form::submit('Reject',['class' => 'btn btn-danger']) !!}
+                        <a href="{{ url('/injuries/'.$injury->ofd6ID.'/Approve') }}" class="btn btn-success">Approve</a>
+                        <a href="{{ url('/injuries/'.$injury->ofd6ID.'/Reject') }}" class="btn btn-danger">Reject</a>
                     </div>
                 @endif
-                @if($injury->battalionchiefid == Auth::user()->id && $injury->applicationstatus == 3)
-                    <div class="col-sm-12 panel-heading" align="center">
-                        {!! Form::submit('Approve',['class' => 'btn btn-success']) !!}
-                        {!! Form::submit('Reject',['class' => 'btn btn-danger']) !!}
-                    </div>
-                @endif
-                @if($injury->aconduty == Auth::user()->id && $injury->applicationstatus == 4)
-                    <div class="col-sm-12 panel-heading" align="center">
-                        {!! Form::submit('Approve',['class' => 'btn btn-success']) !!}
-                        {!! Form::submit('Reject',['class' => 'btn btn-danger']) !!}
-                    </div>
-                @endif
+
+
 
             </div>
         </div>
