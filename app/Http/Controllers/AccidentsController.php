@@ -2,6 +2,7 @@
 namespace App\Http\Controllers;
 use App\Accident;
 use App\Attachment;
+use App\Comment;
 use App\Http\Requests\UpdateAccidentsRequest;
 use App\Http\Requests\StoreStationsRequest;
 use App\Http\Controllers\Traits\FileUploadTrait;
@@ -49,10 +50,11 @@ class AccidentsController extends Controller
     {
         $accident = Accident::findOrFail($id);
         $attachments = Attachment::all();
+        $comments = Comment::all();
         //show history code start
         //below one line code is for storing all history related to the $id in variable, which is to be used to display in show page.
         //show history code end
-        return view('accidents.show', compact('accident', 'attachments'));
+        return view('accidents.show', compact('accident', 'attachments','comments'));
     }
     public function update(UpdateAccidentsRequest $request, $id)
     {

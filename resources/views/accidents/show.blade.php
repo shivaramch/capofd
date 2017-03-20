@@ -527,29 +527,75 @@
                         </div>
                     </div>
                 @endif
-                <div class="col-sm-12 panel-heading" align="center">
+                <div align="center">
                     <div class="btn-bottom ">
                         <a href="{{ route('accidents.index') }}" class="btn btn-default">return</a>
                     </div>
                 </div>
-                @if($accident->captainid == Auth::user()->id && $accident->applicationstatus == 2)
-                    <div class="col-sm-12 panel-heading" align="center">
-                        {!! Form::submit('Approve',['class' => 'btn btn-success']) !!}
-                        {!! Form::submit('Reject',['class' => 'btn btn-danger']) !!}
+                @if($accident->applicationstatus == 2 || $accident->applicationstatus == 3 ||$accident->applicationstatus == 4)
+                    <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                provide your decision
+                                @if($accident->captainid == Auth::user()->id && $accident->applicationstatus == 2)
+                                    <div class="col-sm-12 panel-heading" align="center">
+                                        {!! Form::submit('Approve',['class' => 'btn btn-success']) !!}
+                                        {!! Form::submit('Reject',['class' => 'btn btn-danger']) !!}
+                                    </div>
+                                @endif
+                                @if($accident->battalionchiefid == Auth::user()->id && $accident->applicationstatus == 3)
+                                    <div class="col-sm-12 panel-heading" align="center">
+                                        {!! Form::submit('Approve',['class' => 'btn btn-success']) !!}
+                                        {!! Form::submit('Reject',['class' => 'btn btn-danger']) !!}
+                                    </div>
+                                @endif
+                                @if($accident->aconduty == Auth::user()->id && $accident->applicationstatus == 4)
+                                    <div class="col-sm-12 panel-heading" align="center">
+                                        {!! Form::submit('Approve',['class' => 'btn btn-success']) !!}
+                                        {!! Form::submit('Reject',['class' => 'btn btn-danger']) !!}
+                                    </div>
+                                @endif
+                            </div>
+                        </div>
                     </div>
-                @endif
-                @if($accident->battalionchiefid == Auth::user()->id && $accident->applicationstatus == 3)
-                    <div class="col-sm-12 panel-heading" align="center">
-                        {!! Form::submit('Approve',['class' => 'btn btn-success']) !!}
-                        {!! Form::submit('Reject',['class' => 'btn btn-danger']) !!}
+                    <div class="panel-body">
+                        <div class="titleBox">
+                            <label>Comments </label>
+                        </div>
+
+                        <div class="actionBox">
+                            <ul class="commentList">
+                                @if (!empty($comments))
+                                    @foreach ($comments as $cm)
+                                        <div class="commentAnswerBox" style="background-color:#ade5f4"></div>
+                                        <li>
+                                            <div class="commentText">
+                                                <p class="" >{{$cm->comment_text}}</p>
+                                                <div style="margin-top:10px">
+                                                    <span class="date sub-text" id="dt">on {{$cm->post_d_time}}</span>
+                                                </div>
+                                            </div>
+                                        </li>
+                                    @endforeach
+                                @endif
+                            </ul>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="form-group">
+                                    <div class="form-group" style="width:100%; position:relative">
+                                        {{ Form::textarea('	comment', null, ['class' => 'form-control', 'placeholder' => 'Add your comment', 'rows' => '4']) }}
+                                    </div>
+                                    <div class="form-group">
+                                        {{ Form::submit('Post Comment', array('class' => 'btn btn-block btn-primary' , 'style' => 'width:220px')) }}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                @endif
-                @if($accident->aconduty == Auth::user()->id && $accident->applicationstatus == 4)
-                    <div class="col-sm-12 panel-heading" align="center">
-                        {!! Form::submit('Approve',['class' => 'btn btn-success']) !!}
-                        {!! Form::submit('Reject',['class' => 'btn btn-danger']) !!}
-                    </div>
-                @endif
+                </div>
+                    @endif
             </div>
         </div>
 
