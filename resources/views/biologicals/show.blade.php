@@ -1,4 +1,5 @@
 @extends('layouts.app')
+
 @section('crumbs')
     <ol class="breadcrumb">
         <a class="btn btn-default" type="button"
@@ -374,10 +375,11 @@
                     </div>
                 </div>
             </div>
-            @if($biological->primaryidconumber == Auth::user()->id && $biological->applicationstatus == 2)
+
+            @if($biological->primaryidconumber == Auth::user()->id && $biological->applicationstatus == 2 ||$biological->applicationstatus == 3 ||$biological->applicationstatus == 4)
                 <div class="col-sm-12 panel-heading" align="center">
-                    {!! Form::submit('Approve',['class' => 'btn btn-success']) !!}
-                    {!! Form::submit('Reject',['class' => 'btn btn-danger']) !!}
+                    <a href="{{ url('/biologicals/'.$biological->ofd6bid.'/Approve') }}" class="btn btn-success">Approve</a>
+                    <a href="{{ url('/biologicals/'.$biological->ofd6bid.'/Reject') }}" class="btn btn-danger">Reject</a>
                 </div>
             @endif
 
