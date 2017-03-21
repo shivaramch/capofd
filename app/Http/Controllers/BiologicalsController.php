@@ -8,6 +8,7 @@ use App\Http\Controllers\Traits\FileUploadTrait;
 use App\Http\Controllers\Traits\FormFileUploadTrait;
 use Illuminate\Support\Facades\DB;
 use App\User;
+use App\Comment;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 class BiologicalsController extends Controller
@@ -48,10 +49,12 @@ class BiologicalsController extends Controller
     {
         $biological = Biological::findOrFail($id);
         $attachments = Attachment::all();
+        $comments = Comment::all();
+        $users = User::all();
         //show history code start
         //below one line code is for storing all history related to the $id in variable, which is to be used to display in show page.
         //show history code end
-        return view('biologicals.show', compact('biological', 'attachments'));
+        return view('biologicals.show', compact('biological', 'attachments','comments', 'users'));
     }
     public function update(UpdateBiologicalsRequest $request, $id)
     {
