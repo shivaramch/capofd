@@ -532,7 +532,7 @@
                         <a href="{{ route('accidents.index') }}" class="btn btn-default">return</a>
                     </div>
                 </div>
-                @if($accident->captainid == Auth::user()->id && $accident->applicationstatus == 2 || $accident->applicationstatus == 3 ||$accident->applicationstatus == 4)
+                @if($accident->captainid == Auth::user()->id && $accident->applicationstatus == 2 || $accident->battalionchiefid == Auth::user()->id&&$accident->applicationstatus == 3 ||$accident->aconduty == Auth::user()->id&&$accident->applicationstatus == 4)
                     <div class="col-sm-12 panel-heading" align="center">
                         <a href="{{ url('/accidents/'.$accident->ofd6aid .'/Approve') }}" class="btn btn-success">Approve</a>
                         <a href="{{ url('/accidents/'.$accident->ofd6aid .'/Reject') }}" class="btn btn-danger">Reject</a>

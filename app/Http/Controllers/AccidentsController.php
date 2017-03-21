@@ -16,21 +16,40 @@ class AccidentsController extends Controller
     use FileUploadTrait;
     use FormFileUploadTrait;
 
-    //Approve function for injuries and accidents->userid and capid-
+
 
     public  function Approve($id)
     {
+//if am current user and am captain i will be able to approve
 
         //check the application status id
         //if appstatus->2 then check the current user id and the captain id if same then put appstatus as 3
         $currentuserid=Auth::user()->id;
 
-        $captainid=DB::table('accidents')->where('captainid',$currentuserid)->pluck('captainid');
-        $BCid=DB::table('accidents')->where('battalionchiefid',$currentuserid)->pluck('battalionchiefid');
-        $ACid=DB::table('accidents')->where('aconduty',$currentuserid)->pluck('aconduty');
+     //   $captainid=DB::table('accidents')->where('captainid',$currentuserid,'ofd6aid',$id)->pluck('captainid');
 
-        $currentapplicationstatus=DB::table('accidents')->where('ofd6aid',$id)->pluck('applicationstatus');
+        $captainid=DB::table('accidents')->where ([
+            ['captainid', '=', $currentuserid],
+            ['ofd6aid', '=', $id],
+        ])->pluck('captainid');
 
+
+
+     //   $BCid=DB::table('accidents')->where('battalionchiefid',$currentuserid,'ofd6aid',$id)->pluck('battalionchiefid');
+        $BCid=DB::table('accidents')->where ([
+            ['battalionchiefid', '=', $currentuserid],
+            ['ofd6aid', '=', $id],
+        ])->pluck('battalionchiefid');
+
+    //    $ACid=DB::table('accidents')->where('aconduty',$currentuserid,'ofd6aid',$id)->pluck('aconduty');
+
+        $ACid=DB::table('accidents')->where ([
+            ['aconduty', '=', $currentuserid],
+            ['ofd6aid', '=', $id],
+        ])->pluck('aconduty');
+
+        $currentapplicationstatusraw=DB::table('accidents')->where('ofd6aid',$id)->pluck('applicationstatus');
+        $currentapplicationstatus=  str_replace (array('["', '"]'), '',$currentapplicationstatusraw);
 
 
         $captainapprovalstatusidraw=DB::table('status')->where('statustype','Application under Captain')->pluck('statusid');
@@ -84,15 +103,38 @@ class AccidentsController extends Controller
     }
 
     public  function Reject($id){
+        $currentuserid=Auth::user()->id;
 
+        //   $captainid=DB::table('accidents')->where('captainid',$currentuserid,'ofd6aid',$id)->pluck('captainid');
+
+        $captainid=DB::table('accidents')->where ([
+            ['captainid', '=', $currentuserid],
+            ['ofd6aid', '=', $id],
+        ])->pluck('captainid');
+
+
+
+        //   $BCid=DB::table('accidents')->where('battalionchiefid',$currentuserid,'ofd6aid',$id)->pluck('battalionchiefid');
+        $BCid=DB::table('accidents')->where ([
+            ['battalionchiefid', '=', $currentuserid],
+            ['ofd6aid', '=', $id],
+        ])->pluck('captainid');
+
+        //    $ACid=DB::table('accidents')->where('aconduty',$currentuserid,'ofd6aid',$id)->pluck('aconduty');
+
+        $ACid=DB::table('accidents')->where ([
+            ['aconduty', '=', $currentuserid],
+            ['ofd6aid', '=', $id],
+        ])->pluck('captainid');
         $statusidraw=DB::table('status')->where('statustype','Rejected')->pluck('statusid');
         $statusid=str_replace (array('[', ']'), '', $statusidraw);
+             if($captainid|| $BCid || $ACid) {
+                          $Accident = Accident::find($id);
 
-        $Accident = Accident::find($id);
+                           $Accident->applicationstatus = $statusid;
 
-        $Accident->applicationstatus = $statusid;
-
-        $Accident->save();
+                         $Accident->save();
+                     }
 
         return redirect()->route('accidents.index');
 

@@ -531,15 +531,15 @@
                         <a href="{{ route('injuries.index') }}" class="btn btn-default">return</a>
                     </div>
                 </div>
-                @if($injury->captainid == Auth::user()->id && $injury->applicationstatus == 2 || $injury->applicationstatus == 3 ||$injury->applicationstatus == 4)
+                @if($injury->captainid == Auth::user()->id && $injury->applicationstatus == 2 || $injury->battalionchiefid == Auth::user()->id &&$injury->applicationstatus == 3 ||$injury->aconduty == Auth::user()->id &&$injury->applicationstatus == 4)
                     <div class="col-sm-12 panel-heading" align="center">
-                        <a href="{{ url('/injuries/'.$injury->ofd6ID.'/Approve') }}" class="btn btn-success">Approve</a>
-                        <a href="{{ url('/injuries/'.$injury->ofd6ID.'/Reject') }}" class="btn btn-danger">Reject</a>
+                        <a href="{{ url('/injuries/'.$injury->ofd6id .'/Approve') }}" class="btn btn-success">Approve</a>
+                        <a href="{{ url('/injuries/'.$injury->ofd6id .'/Reject') }}" class="btn btn-danger">Reject</a>
                     </div>
                 @endif
 
 
-
             </div>
         </div>
+        {!! Form::close() !!}
 @stop
