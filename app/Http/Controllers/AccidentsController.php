@@ -74,10 +74,7 @@ class AccidentsController extends Controller
                 $Accident->save();
             }
         }
-
         return redirect()->route('accidents.index');
-
-
     }
 
     public function Reject($id)
