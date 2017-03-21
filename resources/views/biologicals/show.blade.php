@@ -381,23 +381,22 @@
                         <div class="col-sm-12">
                             @if($biological->primaryidconumber == Auth::user()->id && $biological->applicationstatus == 2 ||$biological->applicationstatus == 3 ||$biological->applicationstatus == 4)
                                 <div class="col-sm-12 panel-heading" align="center">
-                                    <a href="{{ url('/biologicals/'.$biological->ofd6bid.'/Approve') }}" class="btn btn-success">Approve</a>
-                                    <a href="{{ url('/biologicals/'.$biological->ofd6bid.'/Reject') }}" class="btn btn-danger">Reject</a>
+                                    <a href="{{ url('/biologicals/'.$biological->ofd6bid.'/Approve') }}"
+                                       class="btn btn-success">Approve</a>
+                                    <a href="{{ url('/biologicals/'.$biological->ofd6bid.'/Reject') }}"
+                                       class="btn btn-danger">Reject</a>
                                 </div>
                             @endif
                         </div>
                     </div>
                 </div>
 
-                @foreach ($comments as $cm)
-                @endforeach
-                @if(($biological->employeeid == Auth::user()->id && $cm->isvisible == 1) ||
-                                                       $biological->primaryidconumber == Auth::user()->id ||
-                                                       Auth::user()->roleid == 1)
-                <div class="panel-body">
-                    <div class="titleBox">
-                        <label>Comments </label>
-                    </div>
+                @if($biological->primaryidconumber == Auth::user()->id ||
+                Auth::user()->roleid == 1)
+                    <div class="panel-body">
+                        <div class="titleBox">
+                            <label>Comments </label>
+                        </div>
                         {!! Form::open(['method' => 'POST', 'route' => ['comments.store'],]) !!}
                         <div class="row">
                             <div class="col-sm-12">
@@ -417,6 +416,7 @@
                             </div>
                         </div>
                         {!! form::close() !!}
+                        @endif
 
                         <div class="actionBox">
                             <ul class="commentList">
@@ -456,8 +456,7 @@
                                 @endif
                             </ul>
                         </div>
-                </div>
-                @endif
+                    </div>
             </div>
 
             @stop

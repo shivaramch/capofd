@@ -23,7 +23,9 @@
             border: 1px solid black;
         }
     </style>
-    @if($injury->injuredemployeeid == Auth::user()->id || Auth::user()->roleid == 1)
+    @if(($injury->injuredemployeeid == Auth::user()->id &&
+    ($injury->applicationstatus == 1 || $injury->applicationstatus == 5))
+    || Auth::user()->roleid == 1)
         <div class="panel panel-default">
             <div class="panel-heading">
                 <div class="jumbotron" style="margin-bottom: 5px; ">

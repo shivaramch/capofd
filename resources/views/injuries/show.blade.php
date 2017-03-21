@@ -540,7 +540,8 @@
                         <div class="col-sm-12">
                             @if($injury->captainid == Auth::user()->id && $injury->applicationstatus == 2 || $injury->battalionchiefid == Auth::user()->id &&$injury->applicationstatus == 3 ||$injury->aconduty == Auth::user()->id &&$injury->applicationstatus == 4)
                                 <div class="col-sm-12 panel-heading" align="center">
-                                    <a href="{{ url('/injuries/'.$injury->ofd6id .'/Approve') }}" class="btn btn-success">Approve</a>
+                                    <a href="{{ url('/injuries/'.$injury->ofd6id .'/Approve') }}"
+                                       class="btn btn-success">Approve</a>
                                     <a href="{{ url('/injuries/'.$injury->ofd6id .'/Reject') }}" class="btn btn-danger">Reject</a>
                                 </div>
                             @endif
@@ -553,9 +554,9 @@
                         <label>Comments </label>
                     </div>
                     @if($injury->captainid == Auth::user()->id ||
-                                                           $injury->battalionchiefid == Auth::user()->id ||
-                                                           $injury->aconduty == Auth::user()->id ||
-                                                           Auth::user()->roleid == 1)
+                    $injury->battalionchiefid == Auth::user()->id ||
+                    $injury->aconduty == Auth::user()->id ||
+                    Auth::user()->roleid == 1)
                         {!! Form::open(['method' => 'POST', 'route' => ['comments.store'],]) !!}
                         <div class="row">
                             <div class="col-sm-12">
@@ -577,45 +578,45 @@
                         {!! form::close() !!}
                     @endif
 
-                        <div class="actionBox">
-                            <ul class="commentList">
-                                @if (!empty($comments))
-                                    @foreach ($comments as $cm)
-                                        @if(($cm->applicationid == $injury->ofd6id && $cm->applicationtype == '6')&&
-                                        (($injury->injuredemployeeid == Auth::user()->id && $cm->isvisible == 1)  ||
-                                        $injury->captainid == Auth::user()->id ||
-                                        $injury->battalionchiefid == Auth::user()->id ||
-                                        $injury->aconduty == Auth::user()->id ||
-                                        Auth::user()->roleid == 1))
-                                            <div class="col-sm-8">
-                                                <div class="panel panel-white post panel-shadow">
-                                                    <div class="post-heading">
-                                                        <div class="pull-left meta">
-                                                            <div class="title h5">
-                                                                @foreach ($users as $user)
-                                                                    @if($user->id == $cm->createdby )
-                                                                        <b><i class="fa fa-user"></i> {{$user->name}}
-                                                                        </b>
-                                                                    @endif
-                                                                @endforeach
-                                                                made a Comment.
-                                                            </div>
-                                                            <time class="comment-date text-muted time"
-                                                                  datetime="{{$cm->created_at}}"><i
-                                                                        class="fa fa-clock-o"></i> {{$cm->created_at}}
-                                                            </time>
+                    <div class="actionBox">
+                        <ul class="commentList">
+                            @if (!empty($comments))
+                                @foreach ($comments as $cm)
+                                    @if(($cm->applicationid == $injury->ofd6id && $cm->applicationtype == '6')&&
+                                    (($injury->injuredemployeeid == Auth::user()->id && $cm->isvisible == 1)  ||
+                                    $injury->captainid == Auth::user()->id ||
+                                    $injury->battalionchiefid == Auth::user()->id ||
+                                    $injury->aconduty == Auth::user()->id ||
+                                    Auth::user()->roleid == 1))
+                                        <div class="col-sm-8">
+                                            <div class="panel panel-white post panel-shadow">
+                                                <div class="post-heading">
+                                                    <div class="pull-left meta">
+                                                        <div class="title h5">
+                                                            @foreach ($users as $user)
+                                                                @if($user->id == $cm->createdby )
+                                                                    <b><i class="fa fa-user"></i> {{$user->name}}
+                                                                    </b>
+                                                                @endif
+                                                            @endforeach
+                                                            made a Comment.
                                                         </div>
-                                                    </div>
-                                                    <div class="post-description">
-                                                        <p>{{$cm->comment}}</p>
+                                                        <time class="comment-date text-muted time"
+                                                              datetime="{{$cm->created_at}}"><i
+                                                                    class="fa fa-clock-o"></i> {{$cm->created_at}}
+                                                        </time>
                                                     </div>
                                                 </div>
+                                                <div class="post-description">
+                                                    <p>{{$cm->comment}}</p>
+                                                </div>
                                             </div>
-                                        @endif
-                                    @endforeach
-                                @endif
-                            </ul>
-                        </div>
+                                        </div>
+                                    @endif
+                                @endforeach
+                            @endif
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>
