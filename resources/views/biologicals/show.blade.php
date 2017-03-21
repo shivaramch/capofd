@@ -1,5 +1,4 @@
 @extends('layouts.app')
-
 @section('crumbs')
     <ol class="breadcrumb">
         <a class="btn btn-default" type="button"
@@ -375,16 +374,92 @@
                     </div>
                 </div>
             </div>
-
-            @if($biological->primaryidconumber == Auth::user()->id && $biological->applicationstatus == 2 ||$biological->applicationstatus == 3 ||$biological->applicationstatus == 4)
-                <div class="col-sm-12 panel-heading" align="center">
-                    <a href="{{ url('/biologicals/'.$biological->ofd6bid.'/Approve') }}" class="btn btn-success">Approve</a>
-                    <a href="{{ url('/biologicals/'.$biological->ofd6bid.'/Reject') }}" class="btn btn-danger">Reject</a>
-                </div>
-            @endif
-
-
             {!! Form::close() !!}
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            @if($biological->primaryidconumber == Auth::user()->id && $biological->applicationstatus == 2 ||$biological->applicationstatus == 3 ||$biological->applicationstatus == 4)
+                                <div class="col-sm-12 panel-heading" align="center">
+                                    <a href="{{ url('/biologicals/'.$biological->ofd6bid.'/Approve') }}" class="btn btn-success">Approve</a>
+                                    <a href="{{ url('/biologicals/'.$biological->ofd6bid.'/Reject') }}" class="btn btn-danger">Reject</a>
+                                </div>
+                            @endif
+                        </div>
+                    </div>
+                </div>
+
+                @foreach ($comments as $cm)
+                @endforeach
+                @if(($biological->employeeid == Auth::user()->id && $cm->isvisible == 1) ||
+                                                       $biological->primaryidconumber == Auth::user()->id ||
+                                                       Auth::user()->roleid == 1)
+                <div class="panel-body">
+                    <div class="titleBox">
+                        <label>Comments </label>
+                    </div>
+                        {!! Form::open(['method' => 'POST', 'route' => ['comments.store'],]) !!}
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="form-group">
+                                    <div class="form-group" style="width:100%; position:relative">
+                                        {{ Form::textarea('comment', null, ['class' => 'form-control', 'placeholder' => 'Add your comment', 'rows' => '4']) }}
+                                    </div>
+                                    {{ Form::hidden('applicationtype', '6B') }}
+                                    {{ Form::hidden('applicationid', $biological->ofd6bid) }}
+                                    {{ Form::checkbox('isvisible', 1, null, ['id' => 'daybook', 'class'=>'className']) }}
+                                    <label><strong>
+                                            Visible to applicant</strong></label>
+                                    <div class="form-group">
+                                        {{ Form::submit('Post Comment', array('class' => 'btn btn-block btn-primary' , 'style' => 'width:220px')) }}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {!! form::close() !!}
+
+                        <div class="actionBox">
+                            <ul class="commentList">
+                                @if (!empty($comments))
+                                    @foreach ($comments as $cm)
+                                        @if(($cm->applicationid == $biological->ofd6bid && $cm->applicationtype == '6B')&&
+                                        (($biological->employeeid == Auth::user()->id && $cm->isvisible == 1) ||
+                                        $biological->primaryidconumber == Auth::user()->id ||
+                                        Auth::user()->roleid == 1))
+                                            <div class="col-sm-8">
+                                                <div class="panel panel-white post panel-shadow">
+                                                    <div class="post-heading">
+                                                        <div class="pull-left meta">
+                                                            <div class="title h5">
+                                                                @foreach ($users as $user)
+                                                                    @if($user->id == $cm->createdby )
+
+                                                                        <b><i class="fa fa-user"></i> {{$user->name}}
+                                                                        </b>
+                                                                    @endif
+                                                                @endforeach
+                                                                made a Comment.
+                                                            </div>
+                                                            <time class="comment-date text-muted time"
+                                                                  datetime="{{$cm->created_at}}"><i
+                                                                        class="fa fa-clock-o"></i> {{$cm->created_at}}
+                                                            </time>
+                                                        </div>
+                                                    </div>
+                                                    <div class="post-description">
+                                                        <p>{{$cm->comment}}</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        @endif
+                                    @endforeach
+                                @endif
+                            </ul>
+                        </div>
+                </div>
+                @endif
+            </div>
+
             @stop
 
             @section('javascript')

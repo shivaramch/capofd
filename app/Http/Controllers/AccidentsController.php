@@ -1,9 +1,9 @@
 <?php
 namespace App\Http\Controllers;
+
 use App\Accident;
 use App\Attachment;
-use App\Http\Requests\UpdateAccidentsRequest;
-use App\Http\Requests\StoreStationsRequest;
+use App\Comment;
 use App\Http\Controllers\Traits\FileUploadTrait;
 use App\Http\Controllers\Traits\FormFileUploadTrait;
 use Illuminate\Support\Facades\DB;
@@ -18,9 +18,8 @@ class AccidentsController extends Controller
 
 
 
-    public  function Approve($id)
+    public function Approve($id)
     {
-//if am current user and am captain i will be able to approve
 
         //check the application status id
         //if appstatus->2 then check the current user id and the captain id if same then put appstatus as 3
@@ -140,11 +139,13 @@ class AccidentsController extends Controller
 
     }
 
+
     public function index()
     {
         $accidents = Accident::all();
         return view('accidents.index', compact('accidents'));
     }
+
     public function create()
     {
         return view('accidents.create');
@@ -173,21 +174,26 @@ class AccidentsController extends Controller
       //  $numsent = (new EmailController)->Email($request, $link,$formname);
         return redirect()->route('accidents.index');
     }
+
     public function edit($id)
     {
         $attachments = Attachment::all();
         $accident = Accident::findOrFail($id);
         return view('accidents.edit', compact('accident', 'attachments'));
     }
+
     public function show($id)
     {
         $accident = Accident::findOrFail($id);
         $attachments = Attachment::all();
+        $comments = Comment::all();
+        $users = User::all();
         //show history code start
         //below one line code is for storing all history related to the $id in variable, which is to be used to display in show page.
         //show history code end
-        return view('accidents.show', compact('accident', 'attachments'));
+        return view('accidents.show', compact('accident', 'attachments', 'comments','users'));
     }
+
     public function update(UpdateAccidentsRequest $request, $id)
     {
         $accident = Accident::findOrFail($id);

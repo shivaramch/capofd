@@ -18,6 +18,7 @@ class Accident extends Model
         {
             $model->createdby = Auth::user()->id;
             $model->updatedby = Auth::user()->id;
+
         });
 
         static::updating(function($model)
@@ -42,7 +43,7 @@ class Accident extends Model
         'daybook',
         'status',
         'frmsincidentnum',
-        'applicationstatus',
+
     ];
     /**
      * Set attribute to date format

@@ -6,7 +6,6 @@ use Illuminate\Support\Facades\Auth;
 class Biological extends Model
 {
     protected $primaryKey = 'ofd6bid';
-
     public static function boot()
     {
         parent::boot();
@@ -46,7 +45,6 @@ class Biological extends Model
         'potdocumentdaybook',
         'exposure',
         'trueofd184',
-        'applicationstatus',
         'potofd184'
         //'trueInjury',
         //'potInjury'
