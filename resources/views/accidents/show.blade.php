@@ -532,24 +532,6 @@
                         <a href="{{ route('accidents.index') }}" class="btn btn-default">return</a>
                     </div>
                 </div>
-<<<<<<< HEAD
-                @if($accident->captainid == Auth::user()->id && $accident->applicationstatus == 2)
-                    <div class="col-sm-12 panel-heading" align="center">
-                        {!! Form::submit('Approve',['class' => 'btn btn-success']) !!}
-                        {!! Form::submit('Reject',['class' => 'btn btn-danger']) !!}
-                    </div>
-                @endif
-                @if($accident->battalionchiefid == Auth::user()->id && $accident->applicationstatus == 3)
-                    <div class="col-sm-12 panel-heading" align="center">
-                        {!! Form::submit('Approve',['class' => 'btn btn-success']) !!}
-                        {!! Form::submit('Reject',['class' => 'btn btn-danger']) !!}
-                    </div>
-                @endif
-                @if($accident->aconduty == Auth::user()->id && $accident->applicationstatus == 4)
-                    <div class="col-sm-12 panel-heading" align="center">
-                        {!! Form::submit('Approve',['class' => 'btn btn-success']) !!}
-                        {!! Form::submit('Reject',['class' => 'btn btn-danger']) !!}
-=======
                 {!! form::close() !!}
                 <div class="panel panel-default">
                     <div class="panel-heading">
@@ -645,7 +627,6 @@
                                 @endif
                             </ul>
                         </div>
->>>>>>> f5b9596a78fedb3bf2dab44d45e00da5f4708d8f
                     </div>
                     @endif
                 </div>
