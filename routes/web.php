@@ -37,12 +37,19 @@ Route::group(['middleware' => 'auth'], function () {// Authentication Routes...
 
     Route::get('/', 'HomeController@index');
 
-
     Route::resource('injuries', 'InjuriesController');
+
+    Route::resource('comments', 'CommentsController');
 
     Route::resource('accidents', 'AccidentsController');
 
     Route::resource('biologicals', 'BiologicalsController');
+
+    Route::resource('hazmat', 'HazmatController');
+
+    Route::resource('users', 'UserController');
+
+    Route::resource('adminpanel', 'AdminpanelsController');
 
     Route::get('biologicals/{id}/Approve', 'BiologicalsController@Approve');
 
@@ -55,12 +62,6 @@ Route::group(['middleware' => 'auth'], function () {// Authentication Routes...
     Route::get('accidents/{id}/Approve', 'AccidentsController@Approve');
 
     Route::get('accidents/{id}/Reject', 'AccidentsController@Reject');
-
-    Route::resource('hazmat', 'HazmatController');
-
-    Route::resource('users', 'UserController');
-
-    Route::resource('adminpanel', 'AdminpanelsController');
 
 
 
