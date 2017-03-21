@@ -39,6 +39,8 @@ Route::group(['middleware' => 'auth'], function () {// Authentication Routes...
 
     Route::resource('injuries', 'InjuriesController');
 
+    Route::resource('comments', 'CommentsController');
+
     Route::resource('accidents', 'AccidentsController');
 
     Route::resource('biologicals', 'BiologicalsController');
@@ -48,6 +50,30 @@ Route::group(['middleware' => 'auth'], function () {// Authentication Routes...
     Route::resource('users', 'UserController');
 
     Route::resource('adminpanel', 'AdminpanelsController');
+<<<<<<< HEAD
+=======
+
+    Route::get('biologicals/{id}/Approve', 'BiologicalsController@Approve');
+
+    Route::get('biologicals/{id}/Reject', 'BiologicalsController@Reject');
+
+    Route::get('injuries/{id}/Approve', 'InjuriesController@Approve');
+
+    Route::get('injuries/{id}/Reject', 'InjuriesController@Reject');
+
+    Route::get('accidents/{id}/Approve', 'AccidentsController@Approve');
+
+    Route::get('accidents/{id}/Reject', 'AccidentsController@Reject');
+
+
+
+
+
+
+
+
+
+>>>>>>> f5b9596a78fedb3bf2dab44d45e00da5f4708d8f
 });
 
 

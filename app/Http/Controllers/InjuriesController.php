@@ -2,6 +2,7 @@
 namespace App\Http\Controllers;
 
 use App\Attachment;
+use App\Comment;
 use App\Http\Requests\StoreInjuriesRequest;
 use App\Injury;
 use Illuminate\Http\Request;
@@ -65,11 +66,13 @@ class InjuriesController extends Controller
 
         $injury = Injury::findOrFail($id);
         $attachments = Attachment::all();
+        $comments = Comment::all();
+        $users = User::all();
 
         //show history code start
         //below one line code is for storing all history related to the $id in variable, which is to be used to display in show page.
         //show history code end
-        return view('injuries.show', compact('injury', 'attachments'));
+        return view('injuries.show', compact('injury', 'attachments','comments', 'users'));
     }
 
 

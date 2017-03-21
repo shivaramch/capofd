@@ -531,6 +531,7 @@
                         <a href="{{ route('injuries.index') }}" class="btn btn-default">return</a>
                     </div>
                 </div>
+<<<<<<< HEAD
                 @if($injury->captainid == Auth::user()->id && $injury->applicationstatus == 2)
                     <div class="col-sm-12 panel-heading" align="center">
                         {!! Form::submit('Approve',['class' => 'btn btn-success']) !!}
@@ -549,7 +550,98 @@
                         {!! Form::submit('Reject',['class' => 'btn btn-danger']) !!}
                     </div>
                 @endif
+=======
+                {!! form::close() !!}
 
             </div>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            @if($injury->captainid == Auth::user()->id && $injury->applicationstatus == 2 || $injury->applicationstatus == 3 ||$injury->applicationstatus == 4)
+                                <div class="col-sm-12 panel-heading" align="center">
+                                    <a href="{{ url('/injuries/'.$injury->ofd6ID.'/Approve') }}"
+                                       class="btn btn-success">Approve</a>
+                                    <a href="{{ url('/injuries/'.$injury->ofd6ID.'/Reject') }}"
+                                       class="btn btn-danger">Reject</a>
+                                </div>
+                            @endif
+                        </div>
+                    </div>
+                </div>
+
+                <div class="panel-body">
+                    <div class="titleBox">
+                        <label>Comments </label>
+                    </div>
+                    @if($injury->captainid == Auth::user()->id ||
+                                                           $injury->battalionchiefid == Auth::user()->id ||
+                                                           $injury->aconduty == Auth::user()->id ||
+                                                           Auth::user()->roleid == 1)
+                        {!! Form::open(['method' => 'POST', 'route' => ['comments.store'],]) !!}
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="form-group">
+                                    <div class="form-group" style="width:100%; position:relative">
+                                        {{ Form::textarea('comment', null, ['class' => 'form-control', 'placeholder' => 'Add your comment', 'rows' => '4']) }}
+                                    </div>
+                                    {{ Form::hidden('applicationtype', '6') }}
+                                    {{ Form::hidden('applicationid', $injury->ofd6id) }}
+                                    {{ Form::checkbox('isvisible', 1, null, ['id' => 'daybook', 'class'=>'className']) }}
+                                    <label><strong>
+                                            Visible to applicant</strong></label>
+                                    <div class="form-group">
+                                        {{ Form::submit('Post Comment', array('class' => 'btn btn-block btn-primary' , 'style' => 'width:220px')) }}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {!! form::close() !!}
+                    @endif
+
+                        <div class="actionBox">
+                            <ul class="commentList">
+                                @if (!empty($comments))
+                                    @foreach ($comments as $cm)
+                                        @if(($cm->applicationid == $injury->ofd6id && $cm->applicationtype == '6')&&
+                                        (($injury->injuredemployeeid == Auth::user()->id && $cm->isvisible == 1)  ||
+                                        $injury->captainid == Auth::user()->id ||
+                                        $injury->battalionchiefid == Auth::user()->id ||
+                                        $injury->aconduty == Auth::user()->id ||
+                                        Auth::user()->roleid == 1))
+                                            <div class="col-sm-8">
+                                                <div class="panel panel-white post panel-shadow">
+                                                    <div class="post-heading">
+                                                        <div class="pull-left meta">
+                                                            <div class="title h5">
+                                                                @foreach ($users as $user)
+                                                                    @if($user->id == $cm->createdby )
+>>>>>>> f5b9596a78fedb3bf2dab44d45e00da5f4708d8f
+
+                                                                        <b><i class="fa fa-user"></i> {{$user->name}}
+                                                                        </b>
+                                                                    @endif
+                                                                @endforeach
+                                                                made a Comment.
+                                                            </div>
+                                                            <time class="comment-date text-muted time"
+                                                                  datetime="{{$cm->created_at}}"><i
+                                                                        class="fa fa-clock-o"></i> {{$cm->created_at}}
+                                                            </time>
+                                                        </div>
+                                                    </div>
+                                                    <div class="post-description">
+                                                        <p>{{$cm->comment}}</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        @endif
+                                    @endforeach
+                                @endif
+                            </ul>
+                        </div>
+                </div>
+            </div>
+        </div>
         </div>
 @stop
