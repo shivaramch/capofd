@@ -17,6 +17,7 @@ class AccidentsController extends Controller
     use FileUploadTrait;
     use FormFileUploadTrait;
 
+
     //Approve function for injuries and accidents->userid and capid-
 
     public function Approve($id)
@@ -93,6 +94,7 @@ class AccidentsController extends Controller
 
     }
 
+
     public function index()
     {
         $accidents = Accident::all();
@@ -121,6 +123,7 @@ class AccidentsController extends Controller
 
     public function store(StoreAccidentsRequest $request)
     {
+
         // 'applicationstatus' => $request->applicationstatus,
 
 
@@ -129,6 +132,7 @@ class AccidentsController extends Controller
         $statusidraw = DB::table('status')->where('statustype', 'Application under Captain')->pluck('statusid');
         $statusid = str_replace(array('[', ']'), '', $statusidraw);
         $request->offsetSet('applicationstatus', $statusid);
+
 
         $request = $this->saveFiles($request);
         Accident::create($request->all());
@@ -140,7 +144,11 @@ class AccidentsController extends Controller
         $rawlink = request()->headers->get('referer');
         $link = preg_replace('#\/[^/]*$#', '', $rawlink) . "/$last_insert_id";
 
+
+        $numsent = (new EmailController)->Email($request, $link,$formname);
+
         //  $numsent = (new EmailController)->Email($request, $link,$formname);
+
         return redirect()->route('accidents.index');
     }
 
@@ -153,14 +161,14 @@ class AccidentsController extends Controller
 
     public function show($id)
     {
-        $accident = Accident::findOrFail($id);
+        $accidents = Accident::findOrFail($id);
         $attachments = Attachment::all();
         $comments = Comment::all();
         $users = User::all();
         //show history code start
         //below one line code is for storing all history related to the $id in variable, which is to be used to display in show page.
         //show history code end
-        return view('accidents.show', compact('accident', 'attachments', 'comments','users'));
+        return view('accidents.show', compact('accidents', 'attachments', 'comments','users'));
     }
 
     public function update(UpdateAccidentsRequest $request, $id)

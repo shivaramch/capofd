@@ -1,5 +1,4 @@
 @extends('layouts.app')
-
 @section('crumbs')
     <ol class="breadcrumb">
         <a class="btn btn-default" type="button"
@@ -375,6 +374,12 @@
                     </div>
                 </div>
             </div>
+<<<<<<< HEAD
+            @if($biological->primaryidconumber == Auth::user()->id && $biological->applicationstatus == 2)
+                <div class="col-sm-12 panel-heading" align="center">
+                    {!! Form::submit('Approve',['class' => 'btn btn-success']) !!}
+                    {!! Form::submit('Reject',['class' => 'btn btn-danger']) !!}
+=======
 
             {!! Form::close() !!}
             <div class="panel panel-default">
@@ -389,6 +394,7 @@
                             @endif
                         </div>
                     </div>
+>>>>>>> f5b9596a78fedb3bf2dab44d45e00da5f4708d8f
                 </div>
 
                 @foreach ($comments as $cm)

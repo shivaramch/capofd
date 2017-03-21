@@ -531,6 +531,26 @@
                         <a href="{{ route('injuries.index') }}" class="btn btn-default">return</a>
                     </div>
                 </div>
+<<<<<<< HEAD
+                @if($injury->captainid == Auth::user()->id && $injury->applicationstatus == 2)
+                    <div class="col-sm-12 panel-heading" align="center">
+                        {!! Form::submit('Approve',['class' => 'btn btn-success']) !!}
+                        {!! Form::submit('Reject',['class' => 'btn btn-danger']) !!}
+                    </div>
+                @endif
+                @if($injury->battalionchiefid == Auth::user()->id && $injury->applicationstatus == 3)
+                    <div class="col-sm-12 panel-heading" align="center">
+                        {!! Form::submit('Approve',['class' => 'btn btn-success']) !!}
+                        {!! Form::submit('Reject',['class' => 'btn btn-danger']) !!}
+                    </div>
+                @endif
+                @if($injury->aconduty == Auth::user()->id && $injury->applicationstatus == 4)
+                    <div class="col-sm-12 panel-heading" align="center">
+                        {!! Form::submit('Approve',['class' => 'btn btn-success']) !!}
+                        {!! Form::submit('Reject',['class' => 'btn btn-danger']) !!}
+                    </div>
+                @endif
+=======
                 {!! form::close() !!}
 
             </div>
@@ -596,6 +616,7 @@
                                                             <div class="title h5">
                                                                 @foreach ($users as $user)
                                                                     @if($user->id == $cm->createdby )
+>>>>>>> f5b9596a78fedb3bf2dab44d45e00da5f4708d8f
 
                                                                         <b><i class="fa fa-user"></i> {{$user->name}}
                                                                         </b>
