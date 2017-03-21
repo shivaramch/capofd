@@ -106,21 +106,6 @@ class AccidentsController extends Controller
         return view('accidents.create');
     }
 
-    public function storecomment(CommentsRequest $request,$id)
-    {
-        $com = new comment();
-        $com->comment = 'comment';
-        $com->comment = '6A';
-        $com->comment = $id;
-
-        $com->save();
-
-        $validation = array('Successfully added the Comment!');
-
-        return Redirect::back()
-            ->withErrors($validation);
-    }
-
     public function store(StoreAccidentsRequest $request)
     {
 
