@@ -127,13 +127,14 @@ trait FormFileUploadTrait
         }
     }
 
-    public function HazmatUpload(Request $request, $id)
+
+    public function LimiteddutyUpload(Request $request, $id)
     {
-        if ($attachmentName = $request['OFD025']) {
+        if ($attachmentName = $request['limitedduty']) {
             $attachment = new Attachment();
             $attachment->attachmentname = $attachmentName;
-            $attachment->ofd6cid = $id;
-            $attachment->attachmenttype = '6c';
+            $attachment->limiteddutyid = $id;
+            $attachment->attachmenttype = 'ltdduty';
             $attachment->save();
         }
     }
