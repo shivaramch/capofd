@@ -19,7 +19,7 @@ class CreateCommentsTable extends Migration
             $table->string('createdby', 256)->nullable();
             $table->string('applicationtype', 256)->nullable();
             $table->integer('applicationid')->nullable();
-           
+
             $table->integer('isvisible')->nullable();
             $table->ipAddress('ip_address', 45)->nullable();
 
