@@ -21,8 +21,8 @@
     </div>
 
     @foreach($accidents as $accident)
-        @endforeach
-        @if($accident->driverid == Auth::user()->id)
+    @endforeach
+    @if($accident->driverid == Auth::user()->id)
         <div class="panel panel-default panel-shadow " hidden>
             <div class="panel-heading">
                 Search Previously filled
@@ -50,25 +50,25 @@
                     @if(count($accidents) > 0)
                         @foreach($accidents as $accident)
                             @if($accident->driverid == Auth::user()->id)
-                            <tr>
-                                <td>{{ $accident->ofd6aid }}</td>
-                                <td>{{ $accident->drivername }}</td>
-                                <td>{{ $accident->accidentdate }}</td>
-                                <td>{{ $accident->assignmentaccident }}</td>
-                                <td>{{ $accident->applicationstatus }}</td>
-                                <td>
-                                    <div>
-                                        <a href="{{ route('accidents.show',[$accident->ofd6aid]) }}"
-                                           class="btn btn-xs btn-info btn-block"><i
-                                                    class="fa fa-eye" aria-hidden="true"></i> VIEW</a>
-                                        <a href="{{ route('accidents.edit',[$accident->ofd6aid]) }}"
-                                           class="btn btn-xs btn-warning btn-block"><i class="fa fa-pencil-square-o"
-                                                                                       aria-hidden="true"></i> EDIT</a>
-                                    </div>
-                                </td>
-                            </tr>
+                                <tr>
+                                    <td>{{ $accident->ofd6aid }}</td>
+                                    <td>{{ $accident->drivername }}</td>
+                                    <td>{{ $accident->accidentdate }}</td>
+                                    <td>{{ $accident->assignmentaccident }}</td>
+                                    <td>{{ $accident->applicationstatus }}</td>
+                                    <td>
+                                        <div>
+                                            <a href="{{ route('accidents.show',[$accident->ofd6aid]) }}"
+                                               class="btn btn-xs btn-info btn-block"><i
+                                                        class="fa fa-eye" aria-hidden="true"></i> VIEW</a>
+                                            <a href="{{ route('accidents.edit',[$accident->ofd6aid]) }}"
+                                               class="btn btn-xs btn-warning btn-block"><i class="fa fa-pencil-square-o"
+                                                                                           aria-hidden="true"></i> EDIT</a>
+                                        </div>
+                                    </td>
+                                </tr>
                             @endif
-                                @endforeach
+                        @endforeach
                     @endif
                     </tbody>
                 </table>
@@ -105,22 +105,22 @@
                     @if(count($accidents) > 0)
                         @foreach($accidents as $accident)
                             @if($accident->captainid == Auth::user()->id && $accident->applicationstatus == 2)
-                            <tr>
-                                <td>{{ $accident->ofd6aid }}</td>
-                                <td>{{ $accident->drivername }}</td>
-                                <td>{{ $accident->accidentdate }}</td>
-                                <td>{{ $accident->assignmentaccident }}</td>
-                                <td>{{ $accident->applicationstatus }}</td>
-                                <td>
-                                    <div>
-                                        <a href="{{ route('accidents.show',[$accident->ofd6aid]) }}"
-                                           class="btn btn-xs btn-info btn-block"><i
-                                                    class="fa fa-eye" aria-hidden="true"></i> VIEW</a>
-                                    </div>
-                                </td>
-                            </tr>
-                        @endif
-                            @endforeach
+                                <tr>
+                                    <td>{{ $accident->ofd6aid }}</td>
+                                    <td>{{ $accident->drivername }}</td>
+                                    <td>{{ $accident->accidentdate }}</td>
+                                    <td>{{ $accident->assignmentaccident }}</td>
+                                    <td>{{ $accident->applicationstatus }}</td>
+                                    <td>
+                                        <div>
+                                            <a href="{{ route('accidents.show',[$accident->ofd6aid]) }}"
+                                               class="btn btn-xs btn-info btn-block"><i
+                                                        class="fa fa-eye" aria-hidden="true"></i> VIEW</a>
+                                        </div>
+                                    </td>
+                                </tr>
+                            @endif
+                        @endforeach
                     @endif
                     </tbody>
                 </table>
@@ -157,22 +157,22 @@
                     @if(count($accidents) > 0)
                         @foreach($accidents as $accident)
                             @if($accident->battalionchiefid == Auth::user()->id && $accident->applicationstatus == 3)
-                            <tr>
-                                <td>{{ $accident->ofd6aid }}</td>
-                                <td>{{ $accident->drivername }}</td>
-                                <td>{{ $accident->accidentdate }}</td>
-                                <td>{{ $accident->assignmentaccident }}</td>
-                                <td>{{ $accident->applicationstatus }}</td>
-                                <td>
-                                    <div>
-                                        <a href="{{ route('accidents.show',[$accident->ofd6aid]) }}"
-                                           class="btn btn-xs btn-info btn-block"><i
-                                                    class="fa fa-eye" aria-hidden="true"></i> VIEW</a>
-                                    </div>
-                                </td>
-                            </tr>
-                        @endif
-                            @endforeach
+                                <tr>
+                                    <td>{{ $accident->ofd6aid }}</td>
+                                    <td>{{ $accident->drivername }}</td>
+                                    <td>{{ $accident->accidentdate }}</td>
+                                    <td>{{ $accident->assignmentaccident }}</td>
+                                    <td>{{ $accident->applicationstatus }}</td>
+                                    <td>
+                                        <div>
+                                            <a href="{{ route('accidents.show',[$accident->ofd6aid]) }}"
+                                               class="btn btn-xs btn-info btn-block"><i
+                                                        class="fa fa-eye" aria-hidden="true"></i> VIEW</a>
+                                        </div>
+                                    </td>
+                                </tr>
+                            @endif
+                        @endforeach
                     @endif
 
                     </tbody>
@@ -209,22 +209,22 @@
                     @if(count($accidents) > 0)
                         @foreach($accidents as $accident)
                             @if($accident->aconduty == Auth::user()->id && $accident->applicationstatus == 4)
-                            <tr>
-                                <td>{{ $accident->ofd6aid }}</td>
-                                <td>{{ $accident->drivername }}</td>
-                                <td>{{ $accident->accidentdate }}</td>
-                                <td>{{ $accident->assignmentaccident }}</td>
-                                <td>{{ $accident->applicationstatus }}</td>
-                                <td>
-                                    <div>
-                                        <a href="{{ route('accidents.show',[$accident->ofd6aid]) }}"
-                                           class="btn btn-xs btn-info btn-block"><i
-                                                    class="fa fa-eye" aria-hidden="true"></i> VIEW</a>
-                                    </div>
-                                </td>
-                            </tr>
-                        @endif
-                            @endforeach
+                                <tr>
+                                    <td>{{ $accident->ofd6aid }}</td>
+                                    <td>{{ $accident->drivername }}</td>
+                                    <td>{{ $accident->accidentdate }}</td>
+                                    <td>{{ $accident->assignmentaccident }}</td>
+                                    <td>{{ $accident->applicationstatus }}</td>
+                                    <td>
+                                        <div>
+                                            <a href="{{ route('accidents.show',[$accident->ofd6aid]) }}"
+                                               class="btn btn-xs btn-info btn-block"><i
+                                                        class="fa fa-eye" aria-hidden="true"></i> VIEW</a>
+                                        </div>
+                                    </td>
+                                </tr>
+                            @endif
+                        @endforeach
                     @endif
 
                     </tbody>

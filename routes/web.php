@@ -48,6 +48,10 @@ Route::group(['middleware' => 'auth'], function () {// Authentication Routes...
     Route::resource('users', 'UserController');
 
     Route::resource('adminpanel', 'AdminpanelsController');
+
+    Route::resource('limitedduties', 'LimiteddutyController');
+
+
 });
 
 
