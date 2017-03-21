@@ -16,7 +16,7 @@ class Injury extends Model
 
         static::creating(function($table)  {
             $table->createdby = Auth::user()->id;
-            $table->ip_address=\Request::ip();
+            $table->ip_address=Request::getClientIp();
         });
     }
     protected $fillable = [

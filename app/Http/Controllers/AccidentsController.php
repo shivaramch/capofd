@@ -164,14 +164,14 @@ class AccidentsController extends Controller
 
     public function show($id)
     {
-        $accident = Accident::findOrFail($id);
+        $accidents = Accident::findOrFail($id);
         $attachments = Attachment::all();
         $comments = Comment::all();
         $users = User::all();
         //show history code start
         //below one line code is for storing all history related to the $id in variable, which is to be used to display in show page.
         //show history code end
-        return view('accidents.show', compact('accident', 'attachments', 'comments','users'));
+        return view('accidents.show', compact('accidents', 'attachments', 'comments','users'));
     }
 
     public function update(UpdateAccidentsRequest $request, $id)
