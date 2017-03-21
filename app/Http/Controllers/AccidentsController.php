@@ -16,8 +16,7 @@ class AccidentsController extends Controller
 {
     use FileUploadTrait;
     use FormFileUploadTrait;
-<<<<<<< HEAD
-=======
+
 
     //Approve function for injuries and accidents->userid and capid-
 
@@ -98,7 +97,7 @@ class AccidentsController extends Controller
 
     }
 
->>>>>>> f5b9596a78fedb3bf2dab44d45e00da5f4708d8f
+
     public function index()
     {
         $accidents = Accident::all();
@@ -127,8 +126,7 @@ class AccidentsController extends Controller
 
     public function store(StoreAccidentsRequest $request)
     {
-<<<<<<< HEAD
-=======
+
         // 'applicationstatus' => $request->applicationstatus,
 
 
@@ -138,7 +136,7 @@ class AccidentsController extends Controller
         $statusid = str_replace(array('[', ']'), '', $statusidraw);
         $request->offsetSet('applicationstatus', $statusid);
 
->>>>>>> f5b9596a78fedb3bf2dab44d45e00da5f4708d8f
+
         $request = $this->saveFiles($request);
         Accident::create($request->all());
         $last_insert_id = DB::getPdo()->lastInsertId();
@@ -149,11 +147,11 @@ class AccidentsController extends Controller
         $rawlink = request()->headers->get('referer');
         $link = preg_replace('#\/[^/]*$#', '', $rawlink) . "/$last_insert_id";
 
-<<<<<<< HEAD
+
         $numsent = (new EmailController)->Email($request, $link,$formname);
-=======
+
         //  $numsent = (new EmailController)->Email($request, $link,$formname);
->>>>>>> f5b9596a78fedb3bf2dab44d45e00da5f4708d8f
+
         return redirect()->route('accidents.index');
     }
 

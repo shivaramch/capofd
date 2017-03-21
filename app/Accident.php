@@ -18,7 +18,7 @@ class Accident extends Model
         {
             $model->createdby = Auth::user()->id;
             $model->updatedby = Auth::user()->id;
-            $model->ip_address=
+
         });
 
         static::updating(function($model)

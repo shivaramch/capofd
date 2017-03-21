@@ -50,8 +50,7 @@ Route::group(['middleware' => 'auth'], function () {// Authentication Routes...
     Route::resource('users', 'UserController');
 
     Route::resource('adminpanel', 'AdminpanelsController');
-<<<<<<< HEAD
-=======
+
 
     Route::get('biologicals/{id}/Approve', 'BiologicalsController@Approve');
 
@@ -73,7 +72,7 @@ Route::group(['middleware' => 'auth'], function () {// Authentication Routes...
 
 
 
->>>>>>> f5b9596a78fedb3bf2dab44d45e00da5f4708d8f
+
 });
 
 
