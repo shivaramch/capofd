@@ -20,7 +20,7 @@ class Injury extends Model
         });
     }
     protected $fillable = [
-
+        'ofd6ID',
         'reportnum',
         'createdate',
         'injurydate',
