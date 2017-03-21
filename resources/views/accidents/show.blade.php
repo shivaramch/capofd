@@ -3,14 +3,14 @@
     <ol class="breadcrumb">
         <a class="btn btn-default" type="button"
            href="{{ route('accidents.index') }}">
-            <i class="fa fa-arrow-left" aria-hidden="true"></i> Back</a>
+            <i class="fa fa-arrow-left" aria-hidden="true"></i> back</a>
         <li><a href="{{ url('/') }}">Dashboard</a></li>
         <li><a href="{{ route('accidents.index') }}">OFD 6A Accidents</a></li>
-        <li class="active">Edit OFD 6A Form {{ $accident->ofd6aid }}</li>
+        <li class="active">View OFD 6A Form {{ $accident->ofd6aid }}</li>
     </ol>
 @endsection
 @section('content')
-    {!! Form::model($accident,['method' => 'PUT']) !!}
+    {!! Form::model($accident,['method' => 'put']) !!}
     <style>
         table {
             border-collapse: collapse;
@@ -20,496 +20,620 @@
             border: 1px solid black;
         }
     </style>
-    <div class="panel panel-default">
-        <div class="panel-heading">
-            <div class="jumbotron" style="margin-bottom: 5px; ">
-                <div class="row">
-                    <div class="col-md-2">
-                        <img src="{{asset('img/login.png')}}">
-                    </div>
-                    <div class="col-md-10">
-                        <div class="col-md-12">
-                            <div class="page-header1">
-                                <h3><strong>Vehicle Accident Report Tracking Document (OFD-6A)</strong></h3>
+    @if($accident->driverid == Auth::user()->id ||
+    ($accident->captainid == Auth::user()->id && $accident->applicationstatus == 2) ||
+    ($accident->battalionchiefid == Auth::user()->id && $accident->applicationstatus == 3) ||
+    ($accident->aconduty == Auth::user()->id && $accident->applicationstatus == 4) ||
+    Auth::user()->roleid == 1)
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <div class="jumbotron" style="margin-bottom: 5px; ">
+                    <div class="row">
+                        <div class="col-md-2">
+                            <img src="{{asset('img/login.png')}}">
+                        </div>
+                        <div class="col-md-10">
+                            <div class="col-md-12">
+                                <div class="page-header1">
+                                    <h3><strong>vehicle accident report tracking document (ofd-6a)</strong></h3>
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                <h5><i><strong>issue date: 9/1/16</strong></i></h5>
+                            </div>
+                            <div class="col-md-2">
+                                <h5><i><strong>effective date: 9/1/16</strong></i></h5>
+                            </div>
+                            <div class="col-md-12">
+                                <h5><i><strong>amends, replaces, rescinds: replaces ofd-6a (july 2016) </strong></i>
+                                </h5>
                             </div>
                         </div>
-                        <div class="col-md-2">
-                            <h5><i><strong>Issue Date: 9/1/16</strong></i></h5>
-                        </div>
-                        <div class="col-md-2">
-                            <h5><i><strong>Effective Date: 9/1/16</strong></i></h5>
-                        </div>
-                        <div class="col-md-12">
-                            <h5><i><strong>Amends, Replaces, Rescinds: Replaces OFD-6A (July 2016) </strong></i></h5>
-                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="panel-body">
-            <div class="form-horizontal">
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="alert alert-danger" align="center">
-                            <strong>
-                                Refer to SOP ADM 3-3 Fire Apparatur/Vehicle Accident Investigation
-                                <br>
-                                COMPLETE ALL FORMS AND FORWARD VIA CHAIN-OF-COMMAND WITHIN 48 HOURS
-                            </strong>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-sm-4 form-group">
-                        {!! Form::label('accidentdate', 'Date of Accident:',array('style'=>'padding-top:7px;','class'=> 'col-sm-4 control-label') )!!}
-                        <div class="col-sm-6 ">
-                            {!! Form::text('accidentdate', old('accidentdate'), ['disabled'],array('id'=>'datepicker1','class' => 'form-control datepicker', 'placeholder' => 'YYYY-MM-DD'))!!}
-                            <p class="help-block"></p>
-                            @if($errors->has('accidentdate'))
-                                <p class="help-block">
-                                    {{ $errors->first('accidentdate') }}
-                                </p>
-                            @endif
-                        </div>
-                    </div>
-                    <div class="col-sm-4 form-group">
-                        {!! Form::label('driverid', 'Driver ID#', array('style'=>'padding-top:7px;','class' => 'col-sm-4 control-label')) !!}
-                        <div class="col-sm-6 ">
-                            {!! Form::text('driverid', old('driverid'), ['disabled'],array('class'=>'form-control'))!!}
-                            <p class="help-block"></p>
-                            @if($errors->has('driverid'))
-                                <p class="help-block">
-                                    {{ $errors->first('driverid') }}
-                                </p>
-                            @endif
-                        </div>
-                    </div>
-                    <div class="col-sm-4 form-group">
-                        {!! Form::label('drivername', 'Driver Name',array( 'style'=>'padding-top:7px;','class' => 'col-sm-4 control-label')) !!}
-                        <div class="col-sm-6 ">
-                            {!! Form::text('drivername', old('drivername'),['disabled'], array('class'=>'form-control'))!!}
-                            <p class="help-block"></p>
-                            @if($errors->has('drivername'))
-                                <p class="help-block">
-                                    {{ $errors->first('drivername') }}
-                                </p>
-                            @endif
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-sm-4 form-group">
-                        {!! Form::label('frmsincidentnum', 'FRMS Incident #', array('style'=>'padding-top:7px;','class' => 'col-sm-4 control-label')) !!}
-                        <div class="col-sm-6 ">
-                            {!! Form::text('frmsincidentnum', old('frmsincidentnum'),['disabled'], ['class' => 'form-control'])!!}
-                            <p class="help-block"></p>
-                            @if($errors->has('frmsincidentnum'))
-                                <p class="help-block">
-                                    {{ $errors->first('frmsincidentnum') }}
-                                </p>
-                            @endif
-                        </div>
-                    </div>
-                    <div class="col-sm-4 form-group">
-                        {!! Form::label('assignmentaccident', 'Assignment', array('style'=>'padding-top:7px;','class' => 'col-sm-4 control-label')) !!}
-                        <div class="col-sm-6 ">
-                            {!! Form::text('assignmentaccident', old('assignmentaccident'),['disabled'], ['class' => 'form-control'])!!}
-                            <p class="help-block"></p>
-                            @if($errors->has('assignmentaccident'))
-                                <p class="help-block">
-                                    {{ $errors->first('assignmentaccident') }}
-                                </p>
-                            @endif
-                        </div>
-                    </div>
-                    <div class="col-sm-4 form-group">
-                        {!! Form::label('apparatus', 'Apparatus', array('style'=>'padding-top:7px;','class' => 'col-sm-4 control-label')) !!}
-                        <div class="col-sm-6 ">
-                            {!! Form::text('apparatus', old('apparatus'),['disabled'], ['class' => 'form-control'])!!}
-                            <p class="help-block"></p>
-                            @if($errors->has('apparatus'))
-                                <p class="help-block">
-                                    {{ $errors->first('apparatus') }}
-                                </p>
-                            @endif
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-sm-4 form-group">
-                        {!! Form::label('captainid', 'Captain #', array('style'=>'padding-top:7px;','class' => 'col-sm-4 control-label')) !!}
-                        <div class="col-sm-6 ">
-                            {!! Form::text('captainid', old('captainid'), ['disabled'],array('class' => 'form-control',))!!}
-                            <p class="help-block"></p>
-                            @if($errors->has('captainid'))
-                                <p class="help-block">
-                                    {{ $errors->first('captainid') }}
-                                </p>
-                            @endif
-                        </div>
-                    </div>
-                    <div class="col-sm-4 form-group">
-                        {!! Form::label('battalionchiefid', 'Battalion Chief #', array('style'=>'padding-top:7px;','class' => 'col-sm-4 control-label')) !!}
-                        <div class="col-sm-6 ">
-                            {!! Form::text('battalionchiefid', old('battalionchiefid'),['disabled'], array('class' => 'form-control'))!!}
-                            <p class="help-block"></p>
-                            @if($errors->has('battalionchiefid'))
-                                <p class="help-block">
-                                    {{ $errors->first('battalionchiefid') }}
-                                </p>
-                            @endif
-                        </div>
-                    </div>
-                    <div class="col-sm-4 form-group">
-                        {!! Form::label('aconduty', 'Assistant Chief #', array('style'=>'padding-top:7px;','class' => 'col-sm-4 control-label')) !!}
-                        <div class="col-sm-6 ">
-                            {!! Form::text('aconduty', old('aconduty'), ['disabled'],array('class' => 'form-control'))!!}
-                            <p class="help-block"></p>
-                            @if($errors->has('aconduty'))
-                                <p class="help-block">
-                                    {{ $errors->first('aconduty') }}
-                                </p>
-                            @endif
-                        </div>
-                    </div>
-                </div>
-                <div class="alert alert-danger" align="center">
+            <div class="panel-body">
+                <div class="form-horizontal">
                     <div class="row">
                         <div class="col-md-12">
-                            <strong>
-                                B/C shall ensure all reports are properly completed and forwarded to Safety Officer
-                                within 24 hours of accident.
-                                <br>
-                                Police Report is REQUIRED on all City vehicles involved in an accident OR property
-                                damage whether on public streets, private property, or at the Fire Station
-                            </strong>
+                            <div class="alert alert-danger" align="center">
+                                <strong>
+                                    refer to sop adm 3-3 fire apparatur/vehicle accident investigation
+                                    <br>
+                                    complete all forms and forward via chain-of-command within 48 hours
+                                </strong>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-4 form-group">
+                            {!! form::label('accidentdate', 'date of accident:',array('style'=>'padding-top:7px;','class'=> 'col-sm-4 control-label') )!!}
+                            <div class="col-sm-6 ">
+                                {!! form::text('accidentdate', old('accidentdate'), ['disabled'],array('id'=>'datepicker1','class' => 'form-control datepicker', 'placeholder' => 'yyyy-mm-dd'))!!}
+                                <p class="help-block"></p>
+                                @if($errors->has('accidentdate'))
+                                    <p class="help-block">
+                                        {{ $errors->first('accidentdate') }}
+                                    </p>
+                                @endif
+                            </div>
+                        </div>
+                        <div class="col-sm-4 form-group">
+                            {!! form::label('driverid', 'driver id#', array('style'=>'padding-top:7px;','class' => 'col-sm-4 control-label')) !!}
+                            <div class="col-sm-6 ">
+                                {!! form::text('driverid', old('driverid'), ['disabled'],array('class'=>'form-control'))!!}
+                                <p class="help-block"></p>
+                                @if($errors->has('driverid'))
+                                    <p class="help-block">
+                                        {{ $errors->first('driverid') }}
+                                    </p>
+                                @endif
+                            </div>
+                        </div>
+                        <div class="col-sm-4 form-group">
+                            {!! form::label('drivername', 'driver name',array( 'style'=>'padding-top:7px;','class' => 'col-sm-4 control-label')) !!}
+                            <div class="col-sm-6 ">
+                                {!! form::text('drivername', old('drivername'),['disabled'], array('class'=>'form-control'))!!}
+                                <p class="help-block"></p>
+                                @if($errors->has('drivername'))
+                                    <p class="help-block">
+                                        {{ $errors->first('drivername') }}
+                                    </p>
+                                @endif
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-4 form-group">
+                            {!! form::label('frmsincidentnum', 'frms incident #', array('style'=>'padding-top:7px;','class' => 'col-sm-4 control-label')) !!}
+                            <div class="col-sm-6 ">
+                                {!! form::text('frmsincidentnum', old('frmsincidentnum'),['disabled'], ['class' => 'form-control'])!!}
+                                <p class="help-block"></p>
+                                @if($errors->has('frmsincidentnum'))
+                                    <p class="help-block">
+                                        {{ $errors->first('frmsincidentnum') }}
+                                    </p>
+                                @endif
+                            </div>
+                        </div>
+                        <div class="col-sm-4 form-group">
+                            {!! form::label('assignmentaccident', 'assignment', array('style'=>'padding-top:7px;','class' => 'col-sm-4 control-label')) !!}
+                            <div class="col-sm-6 ">
+                                {!! form::text('assignmentaccident', old('assignmentaccident'),['disabled'], ['class' => 'form-control'])!!}
+                                <p class="help-block"></p>
+                                @if($errors->has('assignmentaccident'))
+                                    <p class="help-block">
+                                        {{ $errors->first('assignmentaccident') }}
+                                    </p>
+                                @endif
+                            </div>
+                        </div>
+                        <div class="col-sm-4 form-group">
+                            {!! form::label('apparatus', 'apparatus', array('style'=>'padding-top:7px;','class' => 'col-sm-4 control-label')) !!}
+                            <div class="col-sm-6 ">
+                                {!! form::text('apparatus', old('apparatus'),['disabled'], ['class' => 'form-control'])!!}
+                                <p class="help-block"></p>
+                                @if($errors->has('apparatus'))
+                                    <p class="help-block">
+                                        {{ $errors->first('apparatus') }}
+                                    </p>
+                                @endif
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-4 form-group">
+                            {!! form::label('captainid', 'captain #', array('style'=>'padding-top:7px;','class' => 'col-sm-4 control-label')) !!}
+                            <div class="col-sm-6 ">
+                                {!! form::text('captainid', old('captainid'), ['disabled'],array('class' => 'form-control',))!!}
+                                <p class="help-block"></p>
+                                @if($errors->has('captainid'))
+                                    <p class="help-block">
+                                        {{ $errors->first('captainid') }}
+                                    </p>
+                                @endif
+                            </div>
+                        </div>
+                        <div class="col-sm-4 form-group">
+                            {!! form::label('battalionchiefid', 'battalion chief #', array('style'=>'padding-top:7px;','class' => 'col-sm-4 control-label')) !!}
+                            <div class="col-sm-6 ">
+                                {!! form::text('battalionchiefid', old('battalionchiefid'),['disabled'], array('class' => 'form-control'))!!}
+                                <p class="help-block"></p>
+                                @if($errors->has('battalionchiefid'))
+                                    <p class="help-block">
+                                        {{ $errors->first('battalionchiefid') }}
+                                    </p>
+                                @endif
+                            </div>
+                        </div>
+                        <div class="col-sm-4 form-group">
+                            {!! form::label('aconduty', 'assistant chief #', array('style'=>'padding-top:7px;','class' => 'col-sm-4 control-label')) !!}
+                            <div class="col-sm-6 ">
+                                {!! form::text('aconduty', old('aconduty'), ['disabled'],array('class' => 'form-control'))!!}
+                                <p class="help-block"></p>
+                                @if($errors->has('aconduty'))
+                                    <p class="help-block">
+                                        {{ $errors->first('aconduty') }}
+                                    </p>
+                                @endif
+                            </div>
+                        </div>
+                    </div>
+                    <div class="alert alert-danger" align="center">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <strong>
+                                    b/c shall ensure all reports are properly completed and forwarded to safety officer
+                                    within 24 hours of accident.
+                                    <br>
+                                    police report is required on all city vehicles involved in an accident or property
+                                    damage whether on public streets, private property, or at the fire station
+                                </strong>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-    <div class="panel panel-default">
-        <div class="panel-heading">
-            <div class="row">
-                <div class="col-sm-12" form-group>
-                    <h4 style="text-align:left;"><u><strong>ACCIDENT CHECKLIST :</strong></u></h4>
-                </div>
-            </div>
-        </div>
-        <div class="panel-body">
-            <div class="row">
-                <div class="col-sm-12">
-                    <div class="form-group">
-                        {{ Form::checkbox('commemail', 1, null,['disabled'], ['id' => 'commemail', 'class'=>'className','readonly' => 'true']) }}
-                        <label><strong>Generate OFD 025
-                                Intradepartmental Communication</strong>-Email to <a
-                                    href="omafaccident_ofd25@cityofomaha.org"> omafaccident_ofd25@cityofomaha.org </a>
-                        </label>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <div class="row">
+                    <div class="col-sm-12" form-group>
+                        <h4 style="text-align:left;"><u><strong>accident checklist :</strong></u></h4>
                     </div>
                 </div>
             </div>
-            <br>
-            <div class="row">
-                <label class="checkbox-inline col-sm-12">
-                    <strong>Complete LRS 101 City of Omaha Accident Report-Include RB#, Officer Name, Badge#</strong>
-                </label>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="form-group">
+                            {{ form::checkbox('commemail', 1, null,['disabled'], ['id' => 'commemail', 'class'=>'classname','readonly' => 'true']) }}
+                            <label><strong>generate ofd 025
+                                    intradepartmental communication</strong>-email to <a
+                                        href="omafaccident_ofd25@cityofomaha.org"> omafaccident_ofd25@cityofomaha
+                                    .org </a>
+                            </label>
+                        </div>
+                    </div>
+                </div>
                 <br>
-                <div class="col-sm-12 form-group well well-sm">
-                    <div class="col-sm-4">
-                        <a class="btn btn-primary dropdown-toggle col-sm-12" data-toggle="collapse"
-                           data-target="#611"><i class="fa fa-eye" aria-hidden="true"></i> View Previously uploaded
-                            file(s)
-                        </a>
-                        <div id="611" class="collapse">
-                            <table class="table table-striped">
-                                <tr>
-                                    <th> File Name</th>
-                                    <th> File Uploaded At</th>
-                                </tr>
-                                @if(count($attachments) > 0)
-                                    @foreach($attachments as $attachment)
-                                        @if($attachment->attachmenttype == '6a1' && $attachment->createdby ==  Auth::user()->id && $attachment->ofd6aid == $accident->ofd6aid )
-                                            <tr>
-                                                <td>
-                                                    <a href="{{ asset('uploads/'.$attachment->attachmentname) }}"> {{$attachment->attachmentname}}</a>
-                                                </td>
-                                                <td>
-                                                    {{$attachment->created_at}}</a>
-                                                </td>
-                                            <tr>@endif
+                <div class="row">
+                    <label class="checkbox-inline col-sm-12">
+                        <strong>complete lrs 101 city of omaha accident report-include rb#, officer name,
+                            badge#</strong>
+                    </label>
+                    <br>
+                    <div class="col-sm-12 form-group well well-sm">
+                        <div class="col-sm-4">
+                            <a class="btn btn-primary dropdown-toggle col-sm-12" data-toggle="collapse"
+                               data-target="#611"><i class="fa fa-eye" aria-hidden="true"></i> view previously uploaded
+                                file(s)
+                            </a>
+                            <div id="611" class="collapse">
+                                <table class="table table-striped">
+                                    <tr>
+                                        <th> file name</th>
+                                        <th> file uploaded at</th>
+                                    </tr>
+                                    @if(count($attachments) > 0)
+                                        @foreach($attachments as $attachment)
+                                            @if($attachment->attachmenttype == '6a1' && $attachment->createdby ==  auth::user()->id && $attachment->ofd6aid == $accident->ofd6aid )
+                                                <tr>
+                                                    <td>
+                                                        <a href="{{ asset('uploads/'.$attachment->attachmentname) }}"> {{$attachment->attachmentname}}</a>
+                                                    </td>
+                                                    <td>
+                                                        {{$attachment->created_at}}</a>
+                                                    </td>
+                                                <tr>@endif
+                                        @endforeach
+                                    @endif
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <label class="col-sm-12"><strong><strong>complete ofd 295
+                                vehicle accident witness statement</strong>-this report is for civilian statements
+                            only</strong></label>
+                    <div class="col-sm-12 form-group well well-sm">
+                        <div class="col-sm-4">
+                            <a class="btn btn-primary dropdown-toggle col-sm-12" data-toggle="collapse"
+                               data-target="#6a2"><i class="fa fa-eye" aria-hidden="true"></i> view previously uploaded
+                                file(s)
+                            </a>
+                            <div id="6a2" class="collapse">
+                                <table class="table table-striped">
+                                    <tr>
+                                        <th> file name</th>
+                                        <th> file uploaded at</th>
+                                    </tr>
+                                    @if(count($attachments) > 0)
+                                        @foreach($attachments as $attachment)
+                                            @if($attachment->attachmenttype == '6a2' && $attachment->createdby ==  auth::user()->id && $attachment->ofd6aid == $accident->ofd6aid )
+                                                <tr>
+                                                    <td>
+                                                        <a href="{{ asset('uploads/'.$attachment->attachmentname) }}"> {{$attachment->attachmentname}}</a>
+                                                    </td>
+                                                    <td>
+                                                        {{$attachment->created_at}}</a>
+                                                    </td>
+                                                <tr>@endif
+                                        @endforeach
+                                    @endif
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <label class="col-sm-12"><strong>complete ofd 25a accident
+                            intradepartmental communication</strong>-driver</label>
+                    <div class="col-sm-12 form-group well well-sm">
+                        <div class="col-sm-4">
+                            <a class="btn btn-primary dropdown-toggle col-sm-12" data-toggle="collapse"
+                               data-target="#6a3"><i class="fa fa-eye" aria-hidden="true"></i> view previously uploaded
+                                file(s)
+                            </a>
+                            <div id="6a3" class="collapse">
+                                <table class="table table-striped">
+                                    <tr>
+                                        <th> file name</th>
+                                        <th> file uploaded at</th>
+                                    </tr>
+                                    @if(count($attachments) > 0)
+                                        @foreach($attachments as $attachment)
+                                            @if($attachment->attachmenttype == '6a3' && $attachment->createdby ==  auth::user()->id && $attachment->ofd6aid == $accident->ofd6aid )
+                                                <tr>
+                                                    <td>
+                                                        <a href="{{ asset('uploads/'.$attachment->attachmentname) }}"> {{$attachment->attachmentname}}</a>
+                                                    </td>
+                                                    <td>
+                                                        {{$attachment->created_at}}</a>
+                                                    </td>
+                                                <tr>@endif
+                                        @endforeach
+                                    @endif
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <label class="checkbox-inline col-sm-12"><strong>complete ofd 25b accident
+                            intradepartmental communication</strong>-supervisor</label>
+                    <div class="col-sm-12 form-group well well-sm">
+                        <div class="col-sm-4">
+                            <a class="btn btn-primary dropdown-toggle col-sm-12" data-toggle="collapse"
+                               data-target="#6a4"><i class="fa fa-eye" aria-hidden="true"></i> view previously uploaded
+                                file(s)
+                            </a>
+                            <div id="6a4" class="collapse">
+                                <table class="table table-striped">
+                                    <tr>
+                                        <th> file name</th>
+                                        <th> file uploaded at</th>
+                                    </tr>
+                                    @if(count($attachments) > 0)
+                                        @foreach($attachments as $attachment)
+                                            @if($attachment->attachmenttype == '6a4' && $attachment->createdby ==  auth::user()->id && $attachment->ofd6aid == $accident->ofd6aid )
+                                                <tr>
+                                                    <td>
+                                                        <a href="{{ asset('uploads/'.$attachment->attachmentname) }}"> {{$attachment->attachmentname}}</a>
+                                                    </td>
+                                                    <td>
+                                                        {{$attachment->created_at}}</a>
+                                                    </td>
+                                                <tr>@endif
+                                        @endforeach
+                                    @endif
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <label class="checkbox-inline col-sm-12"><strong>complete ofd 25c accident
+                            intradepartmental communication</strong>-other personnel</label>
+                    <div class="col-sm-12 form-group well well-sm">
+                        <div class="col-sm-4">
+                            <a class="btn btn-primary dropdown-toggle col-sm-12" data-toggle="collapse"
+                               data-target="#6a5"><i class="fa fa-eye" aria-hidden="true"></i> view previously uploaded
+                                file(s)
+                            </a>
+                            <div id="6a5" class="collapse">
+                                <table class="table table-striped">
+                                    <tr>
+                                        <th> file name</th>
+                                        <th> file uploaded at</th>
+                                    </tr>
+                                    <tr>
+                                    @if(count($attachments) > 0)
+                                        @foreach($attachments as $attachment)
+                                            @if($attachment->attachmenttype == '6a5' && $attachment->createdby ==  auth::user()->id && $attachment->ofd6aid == $accident->ofd6aid )
+                                                <tr>
+                                                    <td>
+                                                        <a href="{{ asset('uploads/'.$attachment->attachmentname) }}"> {{$attachment->attachmentname}}</a>
+                                                    </td>
+                                                    <td>
+                                                        {{$attachment->created_at}}</a>
+                                                    </td>
+                                                <tr>@endif
+                                                    @endforeach
+                                                    @endif
+                                                </tr>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <label class="checkbox-inline col-sm-12"><strong> complete ofd 31-ofd
+                            damaged, lost, stolen equipment report</strong></label>
+                    <div class="col-sm-12 form-group well well-sm">
+                        <div class="col-sm-4">
+                            <a class="btn btn-primary dropdown-toggle col-sm-12" data-toggle="collapse"
+                               data-target="#6a6"><i class="fa fa-eye" aria-hidden="true"></i> view previously uploaded
+                                file(s)
+                            </a>
+                            <div id="6a6" class="collapse">
+                                <table class="table table-striped">
+                                    <tr>
+                                        <th> file name</th>
+                                        <th> file uploaded at</th>
+                                    </tr>
+                                    <tr>
+                                    @if(count($attachments) > 0)
+                                        @foreach($attachments as $attachment)
+                                            @if($attachment->attachmenttype == '6a6' && $attachment->createdby ==  auth::user()->id && $attachment->ofd6aid == $accident->ofd6aid )
+                                                <tr>
+                                                    <td>
+                                                        <a href="{{ asset('uploads/'.$attachment->attachmentname) }}"> {{$attachment->attachmentname}}</a>
+                                                    </td>
+                                                    <td>
+                                                        {{$attachment->created_at}}</a>
+                                                    </td>
+                                                <tr>@endif
+                                                    @endforeach
+                                                    @endif
+                                                </tr>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <label class="checkbox-inline col-sm-12"><strong> complete ofd 127 request for
+                            services form</strong></label>
+                    <div class="col-sm-12 form-group well well-sm">
+                        <div class="col-sm-4">
+                            <a class="btn btn-primary dropdown-toggle col-sm-12" data-toggle="collapse"
+                               data-target="#6a7"><i class="fa fa-eye" aria-hidden="true"></i> view previously uploaded
+                                file(s)
+                            </a>
+                            <div id="6a7" class="collapse">
+                                <table class="table table-striped">
+                                    <tr>
+                                        <th> file name</th>
+                                        <th> file uploaded at</th>
+                                    </tr>
+                                    <tr>
+                                    @if(count($attachments) > 0)
+                                        @foreach($attachments as $attachment)
+                                            @if($attachment->attachmenttype == '6a7' && $attachment->createdby ==  auth::user()->id && $attachment->ofd6aid == $accident->ofd6aid )
+                                                <tr>
+                                                    <td>
+                                                        <a href="{{ asset('uploads/'.$attachment->attachmentname) }}"> {{$attachment->attachmentname}}</a>
+                                                    </td>
+                                                    <td>
+                                                        {{$attachment->created_at}}</a>
+                                                    </td>
+                                                <tr>@endif
+                                                    @endforeach
+                                                    @endif
+                                                </tr>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <label class="checkbox-inline col-sm-12"><strong><strong> complete dr 41 state
+                                of nebraska dmv vehicle accident report</strong></strong></label>
+                    <div class="col-sm-12 form-group well well-sm">
+                        <div class="col-sm-4">
+                            <a class="btn btn-primary dropdown-toggle col-sm-12" data-toggle="collapse"
+                               data-target="#6a8"><i class="fa fa-eye" aria-hidden="true"></i> view previously uploaded
+                                file(s)
+                            </a>
+                            <div id="6a8" class="collapse">
+                                <table class="table table-striped">
+                                    <tr>
+                                        <th> file name</th>
+                                        <th> file uploaded at</th>
+                                    </tr>
+                                    <tr>
+                                    @if(count($attachments) > 0)
+                                        @foreach($attachments as $attachment)
+                                            @if($attachment->attachmenttype == '6a8' && $attachment->createdby ==  auth::user()->id && $attachment->ofd6aid == $accident->ofd6aid )
+                                                <tr>
+                                                    <td>
+                                                        <a href="{{ asset('uploads/'.$attachment->attachmentname) }}"> {{$attachment->attachmentname}}</a>
+                                                    </td>
+                                                    <td>
+                                                        {{$attachment->created_at}}</a>
+                                                    </td>
+                                                <tr>@endif
+                                                    @endforeach
+                                                    @endif
+                                                </tr>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12 form-group">
+                        {{ form::checkbox('calllaw', 1, null, ['disabled'],['id' => 'calllaw', 'class'=>'classname', 'readonly' => 'true']) }}
+                        <label><strong>
+                                call law department
+                                investigator</strong>- call 444-5131- request report be faxed to
+                            swd fax # 444-6378. you can
+                            leave a message with rig # address of incident, date, time and
+                            rb#</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12 form-group">
+                        {{ form::checkbox('daybook', 1, null,['disabled'], ['id' => 'daybook', 'class'=>'classname']) }}
+                        <label><strong>
+                                enter in company day
+                                book</strong></label>
+                    </div>
+                </div>
+                @else
+                    <div class="panel-body">
+                        <div class="form-horizontal">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="alert alert-danger" align="center">
+                                        <label>
+                                            You are not authorized to view this form
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                @endif
+                <div align="center">
+                    <div class="btn-bottom ">
+                        <a href="{{ route('accidents.index') }}" class="btn btn-default">return</a>
+                    </div>
+                </div>
+                {!! form::close() !!}
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                @if($accident->captainid == Auth::user()->id && $accident->applicationstatus == 2)
+                                    <div class="col-sm-12 panel-heading" align="center">
+                                        {!! Form::submit('Approve',['class' => 'btn btn-success']) !!}
+                                        {!! Form::submit('Reject',['class' => 'btn btn-danger']) !!}
+                                    </div>
+                                @endif
+                                @if($accident->battalionchiefid == Auth::user()->id && $accident->applicationstatus == 3)
+                                    <div class="col-sm-12 panel-heading" align="center">
+                                        {!! Form::submit('Approve',['class' => 'btn btn-success']) !!}
+                                        {!! Form::submit('Reject',['class' => 'btn btn-danger']) !!}
+                                    </div>
+                                @endif
+                                @if($accident->aconduty == Auth::user()->id && $accident->applicationstatus == 4)
+                                    <div class="col-sm-12 panel-heading" align="center">
+                                        {!! Form::submit('Approve',['class' => 'btn btn-success']) !!}
+                                        {!! Form::submit('Reject',['class' => 'btn btn-danger']) !!}
+                                    </div>
+                                @endif
+                            </div>
+                        </div>
+                    </div>
+                    @foreach ($comments as $cm)
+                        @endforeach
+                    @if(($accident->driverid == Auth::user()->id && $cm->isvisible == 1) ||
+                                       $accident->captainid == Auth::user()->id ||
+                                       $accident->battalionchiefid == Auth::user()->id ||
+                                       $accident->aconduty == Auth::user()->id || Auth::user()->roleid == 1)
+                    <div class="panel-body">
+                        <div class="titleBox">
+                            <label>Comments </label>
+                        </div>
+                        {!! Form::open(['method' => 'POST', 'route' => ['comments.store'],]) !!}
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="form-group">
+                                    <div class="form-group" style="width:100%; position:relative">
+                                        {{ Form::textarea('comment', null, ['class' => 'form-control', 'placeholder' => 'Add your comment', 'rows' => '4']) }}
+                                    </div>
+                                    {{ Form::hidden('applicationtype', '6A') }}
+                                    {{ Form::hidden('applicationid', $accident->ofd6aid) }}
+                                    {{ Form::checkbox('isvisible', 1, null, ['id' => 'daybook', 'class'=>'className']) }}
+                                    <label><strong>
+                                            Visible to applicant</strong></label>
+                                    <div class="form-group">
+                                        {{ Form::submit('Post Comment', array('class' => 'btn btn-block btn-primary' , 'style' => 'width:220px')) }}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {!! form::close() !!}
+
+                        <div class="actionBox">
+                            <ul class="commentList">
+                                @if (!empty($comments))
+                                    @foreach ($comments as $cm)
+                                        @if(($cm->applicationid == $accident->ofd6aid && $cm->applicationtype == '6A')&&
+                                        (($accident->driverid == Auth::user()->id && $cm->isvisible == 1) ||
+                                        $accident->captainid == Auth::user()->id ||
+                                        $accident->battalionchiefid == Auth::user()->id ||
+                                        $accident->aconduty == Auth::user()->id || Auth::user()->roleid == 1))
+                                            <div class="col-sm-8">
+                                                <div class="panel panel-white post panel-shadow">
+                                                    <div class="post-heading">
+                                                        <div class="pull-left meta">
+                                                            <div class="title h5">
+                                                                @foreach ($users as $user)
+                                                                    @if($user->id == $cm->createdby )
+
+                                                                        <b><i class="fa fa-user"></i> {{$user->name}}
+                                                                        </b>
+                                                                    @endif
+                                                                @endforeach
+                                                                made a Comment.
+                                                            </div>
+                                                            <time class="comment-date text-muted time"
+                                                                  datetime="{{$cm->created_at}}"><i
+                                                                        class="fa fa-clock-o"></i> {{$cm->created_at}}
+                                                            </time>
+                                                        </div>
+                                                    </div>
+                                                    <div class="post-description">
+                                                        <p>{{$cm->comment}}</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        @endif
                                     @endforeach
                                 @endif
-                            </table>
+                            </ul>
                         </div>
                     </div>
+                    @endif
                 </div>
-            </div>
-            <div class="row">
-                <label class="col-sm-12"><strong><strong>Complete OFD 295
-                            Vehicle Accident Witness Statement</strong>-This Report is for civilian statements
-                        only</strong></label>
-                <div class="col-sm-12 form-group well well-sm">
-                    <div class="col-sm-4">
-                        <a class="btn btn-primary dropdown-toggle col-sm-12" data-toggle="collapse"
-                           data-target="#6a2"><i class="fa fa-eye" aria-hidden="true"></i> View Previously uploaded
-                            file(s)
-                        </a>
-                        <div id="6a2" class="collapse">
-                            <table class="table table-striped">
-                                <tr>
-                                    <th> File Name</th>
-                                    <th> File Uploaded At</th>
-                                </tr>
-                                @if(count($attachments) > 0)
-                                    @foreach($attachments as $attachment)
-                                        @if($attachment->attachmenttype == '6a2' && $attachment->createdby ==  Auth::user()->id && $attachment->ofd6aid == $accident->ofd6aid )
-                                            <tr>
-                                                <td>
-                                                    <a href="{{ asset('uploads/'.$attachment->attachmentname) }}"> {{$attachment->attachmentname}}</a>
-                                                </td>
-                                                <td>
-                                                    {{$attachment->created_at}}</a>
-                                                </td>
-                                            <tr>@endif
-                                    @endforeach
-                                @endif
-                            </table>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <label class="col-sm-12"><strong>Complete OFD 25a Accident
-                        Intradepartmental Communication</strong>-Driver</label>
-                <div class="col-sm-12 form-group well well-sm">
-                    <div class="col-sm-4">
-                        <a class="btn btn-primary dropdown-toggle col-sm-12" data-toggle="collapse"
-                           data-target="#6a3"><i class="fa fa-eye" aria-hidden="true"></i> View Previously uploaded
-                            file(s)
-                        </a>
-                        <div id="6a3" class="collapse">
-                            <table class="table table-striped">
-                                <tr>
-                                    <th> File Name</th>
-                                    <th> File Uploaded At</th>
-                                </tr>
-                                @if(count($attachments) > 0)
-                                    @foreach($attachments as $attachment)
-                                        @if($attachment->attachmenttype == '6a3' && $attachment->createdby ==  Auth::user()->id && $attachment->ofd6aid == $accident->ofd6aid )
-                                            <tr>
-                                                <td>
-                                                    <a href="{{ asset('uploads/'.$attachment->attachmentname) }}"> {{$attachment->attachmentname}}</a>
-                                                </td>
-                                                <td>
-                                                    {{$attachment->created_at}}</a>
-                                                </td>
-                                            <tr>@endif
-                                    @endforeach
-                                @endif
-                            </table>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <label class="checkbox-inline col-sm-12"><strong>Complete OFD 25b Accident
-                        Intradepartmental Communication</strong>-Supervisor</label>
-                <div class="col-sm-12 form-group well well-sm">
-                    <div class="col-sm-4">
-                        <a class="btn btn-primary dropdown-toggle col-sm-12" data-toggle="collapse"
-                           data-target="#6a4"><i class="fa fa-eye" aria-hidden="true"></i> View Previously uploaded
-                            file(s)
-                        </a>
-                        <div id="6a4" class="collapse">
-                            <table class="table table-striped">
-                                <tr>
-                                    <th> File Name</th>
-                                    <th> File Uploaded At</th>
-                                </tr>
-                                @if(count($attachments) > 0)
-                                    @foreach($attachments as $attachment)
-                                        @if($attachment->attachmenttype == '6a4' && $attachment->createdby ==  Auth::user()->id && $attachment->ofd6aid == $accident->ofd6aid )
-                                            <tr>
-                                                <td>
-                                                    <a href="{{ asset('uploads/'.$attachment->attachmentname) }}"> {{$attachment->attachmentname}}</a>
-                                                </td>
-                                                <td>
-                                                    {{$attachment->created_at}}</a>
-                                                </td>
-                                            <tr>@endif
-                                    @endforeach
-                                @endif
-                            </table>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <label class="checkbox-inline col-sm-12"><strong>Complete OFD 25c Accident
-                        Intradepartmental Communication</strong>-Other Personnel</label>
-                <div class="col-sm-12 form-group well well-sm">
-                    <div class="col-sm-4">
-                        <a class="btn btn-primary dropdown-toggle col-sm-12" data-toggle="collapse"
-                           data-target="#6a5"><i class="fa fa-eye" aria-hidden="true"></i> View Previously uploaded
-                            file(s)
-                        </a>
-                        <div id="6a5" class="collapse">
-                            <table class="table table-striped">
-                                <tr>
-                                    <th> File Name</th>
-                                    <th> File Uploaded At</th>
-                                </tr>
-                                <tr>
-                                @if(count($attachments) > 0)
-                                    @foreach($attachments as $attachment)
-                                        @if($attachment->attachmenttype == '6a5' && $attachment->createdby ==  Auth::user()->id && $attachment->ofd6aid == $accident->ofd6aid )
-                                            <tr>
-                                                <td>
-                                                    <a href="{{ asset('uploads/'.$attachment->attachmentname) }}"> {{$attachment->attachmentname}}</a>
-                                                </td>
-                                                <td>
-                                                    {{$attachment->created_at}}</a>
-                                                </td>
-                                            <tr>@endif
-                                                @endforeach
-                                                @endif
-                                            </tr>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <label class="checkbox-inline col-sm-12"><strong> Complete OFD 31-OFD
-                        Damaged, Lost, Stolen Equipment Report</strong></label>
-                <div class="col-sm-12 form-group well well-sm">
-                    <div class="col-sm-4">
-                        <a class="btn btn-primary dropdown-toggle col-sm-12" data-toggle="collapse"
-                           data-target="#6a6"><i class="fa fa-eye" aria-hidden="true"></i> View Previously uploaded
-                            file(s)
-                        </a>
-                        <div id="6a6" class="collapse">
-                            <table class="table table-striped">
-                                <tr>
-                                    <th> File Name</th>
-                                    <th> File Uploaded At</th>
-                                </tr>
-                                <tr>
-                                @if(count($attachments) > 0)
-                                    @foreach($attachments as $attachment)
-                                        @if($attachment->attachmenttype == '6a6' && $attachment->createdby ==  Auth::user()->id && $attachment->ofd6aid == $accident->ofd6aid )
-                                            <tr>
-                                                <td>
-                                                    <a href="{{ asset('uploads/'.$attachment->attachmentname) }}"> {{$attachment->attachmentname}}</a>
-                                                </td>
-                                                <td>
-                                                    {{$attachment->created_at}}</a>
-                                                </td>
-                                            <tr>@endif
-                                                @endforeach
-                                                @endif
-                                            </tr>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <label class="checkbox-inline col-sm-12"><strong> Complete OFD 127 Request for
-                        Services Form</strong></label>
-                <div class="col-sm-12 form-group well well-sm">
-                    <div class="col-sm-4">
-                        <a class="btn btn-primary dropdown-toggle col-sm-12" data-toggle="collapse"
-                           data-target="#6a7"><i class="fa fa-eye" aria-hidden="true"></i> View Previously uploaded
-                            file(s)
-                        </a>
-                        <div id="6a7" class="collapse">
-                            <table class="table table-striped">
-                                <tr>
-                                    <th> File Name</th>
-                                    <th> File Uploaded At</th>
-                                </tr>
-                                <tr>
-                                @if(count($attachments) > 0)
-                                    @foreach($attachments as $attachment)
-                                        @if($attachment->attachmenttype == '6a7' && $attachment->createdby ==  Auth::user()->id && $attachment->ofd6aid == $accident->ofd6aid )
-                                            <tr>
-                                                <td>
-                                                    <a href="{{ asset('uploads/'.$attachment->attachmentname) }}"> {{$attachment->attachmentname}}</a>
-                                                </td>
-                                                <td>
-                                                    {{$attachment->created_at}}</a>
-                                                </td>
-                                            <tr>@endif
-                                                @endforeach
-                                                @endif
-                                            </tr>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <label class="checkbox-inline col-sm-12"><strong><strong> Complete DR 41 State
-                            of Nebraska DMV Vehicle Accident Report</strong></strong></label>
-                <div class="col-sm-12 form-group well well-sm">
-                    <div class="col-sm-4">
-                        <a class="btn btn-primary dropdown-toggle col-sm-12" data-toggle="collapse"
-                           data-target="#6a8"><i class="fa fa-eye" aria-hidden="true"></i> View Previously uploaded
-                            file(s)
-                        </a>
-                        <div id="6a8" class="collapse">
-                            <table class="table table-striped">
-                                <tr>
-                                    <th> File Name</th>
-                                    <th> File Uploaded At</th>
-                                </tr>
-                                <tr>
-                                @if(count($attachments) > 0)
-                                    @foreach($attachments as $attachment)
-                                        @if($attachment->attachmenttype == '6a8' && $attachment->createdby ==  Auth::user()->id && $attachment->ofd6aid == $accident->ofd6aid )
-                                            <tr>
-                                                <td>
-                                                    <a href="{{ asset('uploads/'.$attachment->attachmentname) }}"> {{$attachment->attachmentname}}</a>
-                                                </td>
-                                                <td>
-                                                    {{$attachment->created_at}}</a>
-                                                </td>
-                                            <tr>@endif
-                                                @endforeach
-                                                @endif
-                                            </tr>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-sm-12 form-group">
-                    {{ Form::checkbox('calllaw', 1, null, ['disabled'],['id' => 'calllaw', 'class'=>'className', 'readonly' => 'true']) }}
-                    <label><strong>
-                            Call Law Department
-                            Investigator</strong>- Call 444-5131- Request report be faxed to
-                        SWD fax # 444-6378. You can
-                        leave a message with rig # address of incident, date, time and
-                        RB#</label>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-sm-12 form-group">
-                    {{ Form::checkbox('daybook', 1, null,['disabled'], ['id' => 'daybook', 'class'=>'className']) }}
-                    <label><strong>
-                            Enter in Company Day
-                            Book</strong></label>
-                </div>
-            </div>
-            <label class="col-sm-5"></label>
-            <div class="btn-bottom ">
-                <a href="{{ route('accidents.index') }}" class="btn btn-default">Return</a>
             </div>
         </div>
-    </div>
+@stop
 
-    {!! Form::close() !!}
+@section('CSS')
+
 @stop

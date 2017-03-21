@@ -21,8 +21,8 @@ class UpdateBiologicalsRequest extends FormRequest
     public function rules()
     {
         return [
-            //'trueofd184' => 'mimes:pdf|max:20480'.$this->route('biological'),
-            //'potofd184' => 'mimes:pdf|max:20480'.$this->route('biological'),
+            'trueofd184' => 'mimes:pdf|max:20480'.$this->route('biological'),
+            'potofd184' => 'mimes:pdf|max:20480'.$this->route('biological'),
             //'todaysdate' => 'required|date:biological,todaysdate,'.$this->route('biological'),
             'employeeid' => 'required|integer:biological,employeeid'.$this->route('biological'),
             'exposedemployeename' => 'required|string:biological,exposedemployeename'.$this->route('biological'),

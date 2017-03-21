@@ -2,6 +2,7 @@
 namespace App\Http\Controllers;
 
 use App\Attachment;
+use App\Comment;
 use App\Http\Requests\StoreInjuriesRequest;
 use App\Injury;
 use Illuminate\Http\Request;
@@ -19,7 +20,86 @@ class InjuriesController extends Controller
 {
     use FileUploadTrait;
     use FormFileUploadTrait;
+    public  function Approve($id)
+    {
 
+        //check the application status id
+        //if appstatus->2 then check the current user id and the captain id if same then put appstatus as 3
+        $currentuserid=Auth::user()->id;
+
+        $captainid=DB::table('injuries')->where('captainid',$currentuserid)->pluck('captainid');
+        $BCid=DB::table('injuries')->where('battalionchiefid',$currentuserid)->pluck('battalionchiefid');
+        $ACid=DB::table('injuries')->where('aconduty',$currentuserid)->pluck('aconduty');
+
+        $currentapplicationstatus=DB::table('injuries')->where('ofd6ID',$id)->pluck('applicationstatus');
+
+
+
+        $captainapprovalstatusidraw=DB::table('status')->where('statustype','Application under Captain')->pluck('statusid');
+        $captainapprovalstatusid=str_replace (array('[', ']'), '',$captainapprovalstatusidraw);
+
+        $BCapprovalstatusidraw=DB::table('status')->where('statustype','Application under Batallion Chief')->pluck('statusid');
+        $BCapprovalstatusid=str_replace (array('[', ']'), '',$BCapprovalstatusidraw);
+
+        $ACapprovalstatusidraw=DB::table('status')->where('statustype','Application under Assistant Chief')->pluck('statusid');
+        $ACapprovalstatusid=str_replace (array('[', ']'), '',$ACapprovalstatusidraw);
+
+        $Finalapprovalstatusidraw=DB::table('status')->where('statustype','Approved')->pluck('statusid');
+        $Finalpprovalstatusid=str_replace (array('[', ']'), '',$Finalapprovalstatusidraw);
+
+        if($captainid){
+            if($currentapplicationstatus==$captainapprovalstatusid)
+            {
+                $injury = Injury::find($id);
+
+                $injury->applicationstatus =$BCapprovalstatusid ;
+
+                $injury->save();
+            }
+        }
+
+
+        if($BCid){
+            if($currentapplicationstatus==$BCapprovalstatusid)
+            {
+                $injury = Injury::find($id);
+
+                $injury->applicationstatus =$ACapprovalstatusid ;
+
+                $injury->save();
+            }
+        }
+        if($ACid){
+            if($currentapplicationstatus==$ACapprovalstatusid)
+            {
+                $injury = Injury::find($id);
+
+                $injury->applicationstatus =$Finalpprovalstatusid ;
+
+                $injury->save();
+            }
+        }
+
+        return redirect()->route('injuries.index');
+
+
+    }
+
+
+    public  function Reject($id){
+
+        $statusidraw=DB::table('status')->where('statustype','Rejected')->pluck('statusid');
+        $statusid=str_replace (array('[', ']'), '', $statusidraw);
+
+        $injury = Injury::find($id);
+
+        $injury->applicationstatus = $statusid;
+
+        $injury->save();
+
+        return redirect()->route('injuries.index');
+
+    }
     public function index()
     {
         $injuries = Injury::all();
@@ -35,6 +115,11 @@ class InjuriesController extends Controller
 
     public function store(StoreInjuriesRequest $request)
     {
+
+        $statusidraw=DB::table('status')->where('statustype','Application under Captain')->pluck('statusid');
+        $statusid=str_replace (array('[', ']'), '', $statusidraw);
+        $request->offsetSet('applicationstatus',$statusid);
+
         $request = $this->saveFiles($request);
         Injury::create($request->all());
         $last_insert_id = DB::getPdo()->lastInsertId();
@@ -64,17 +149,18 @@ class InjuriesController extends Controller
 
         $injury = Injury::findOrFail($id);
         $attachments = Attachment::all();
+        $comments = Comment::all();
+        $users = User::all();
 
         //show history code start
         //below one line code is for storing all history related to the $id in variable, which is to be used to display in show page.
         //show history code end
-        return view('injuries.show', compact('injury', 'attachments'));
+        return view('injuries.show', compact('injury', 'attachments','comments', 'users'));
     }
 
 
     public function update(UpdateInjuriesRequest $request, $id)
     {
-        //$accident = $this->saveFiles($request);
         $injury = Injury::findOrFail($id);
 
         \DB::table('injuries')->where('ofd6id', $injury->ofd6id)->update([

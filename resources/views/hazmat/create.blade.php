@@ -56,7 +56,7 @@
                         <div class="col-sm-4 form-group">
                             {!! Form::label('employeeid', 'Employee ID #', array('style'=>'padding-top:7px;','class' => 'col-sm-4 control-label')) !!}
                             <div class="col-sm-6 ">
-                                {!! Form::text('employeeid', old('employeeid'), ['class' => 'form-control', 'placeholder'=>'Enter Employee ID', 'required'=>'required'])!!}
+                                {!! Form::text('employeeid', old('employeeid'), ['class' => 'form-control', 'placeholder'=>'Enter Employee ID'])!!}
                                 <p class="help-block"></p>
                                 @if($errors->has('employeeid'))
                                     <p class="help-block">
@@ -68,7 +68,7 @@
                         <div class="col-sm-4 form-group">
                             {!! Form::label('employeename', 'Exposed Employee Name', array('style'=>'padding-top:7px;','class' => 'col-sm-4 control-label')) !!}
                             <div class="col-sm-6 ">
-                                {!! Form::text('employeename', old('employeename'), ['class' => 'form-control', 'placeholder'=>'Enter Employee Name', 'required'=>'required'])!!}
+                                {!! Form::text('employeename', old('employeename'), ['class' => 'form-control', 'placeholder'=>'Enter Employee Name'])!!}
                                 <p class="help-block"></p>
                                 @if($errors->has('employeename'))
                                     <p class="help-block">
@@ -80,8 +80,8 @@
                         <div class="col-sm-4 form-group">
                             {!! Form::label('dateofexposure', 'Date of Exposure',array('style'=>'padding-top:7px;','class'=> 'col-sm-4 control-label') )!!}
                             <div class="col-sm-6 ">
-                                {!! Form::text('dateofexposure', old('dateofexposure'), array('id'=>'datepicker12','class' => 'form-control datepicker1', 'placeholder' => 'YYYY-MM-DD','required' => 'required'))!!}
-                                {!! Form::text('dateofexposure', old('dateofexposure'), array('style'=>'display:none;','id'=>'datepicker32','class' => 'form-control datepicker', 'placeholder' => 'YYYY-MM-DD','required' => 'required'))!!}
+                                {!! Form::text('dateofexposure', old('dateofexposure'), array('id'=>'datepicker12','class' => 'form-control datepicker1', 'placeholder' => 'YYYY-MM-DD'))!!}
+                                {!! Form::text('dateofexposure', old('dateofexposure'), array('style'=>'display:none;','id'=>'datepicker32','class' => 'form-control datepicker', 'placeholder' => 'YYYY-MM-DD'))!!}
                                 <p class="help-block"></p>
                                 @if($errors->has('dateofexposure'))
                                     <p class="help-block">
@@ -95,7 +95,7 @@
                         <div class="col-sm-4 form-group">
                             {!! Form::label('primaryidconumber', 'Primary IDCO OFD ID#', array('style'=>'padding-top:7px;','class' => 'col-sm-4 control-label')) !!}
                             <div class="col-sm-6 ">
-                                {!! Form::text('primaryidconumber', old('primaryidconumber'), ['class' => 'form-control','placeholder'=>'Enter IDCO Badge ID', 'required'=>'required'])!!}
+                                {!! Form::text('primaryidconumber', old('primaryidconumber'), ['class' => 'form-control','placeholder'=>'Enter IDCO Badge ID'])!!}
                                 <p class="help-block"></p>
                                 @if($errors->has('primaryidconumber'))
                                     <p class="help-block">
@@ -107,7 +107,7 @@
                         <div class="col-sm-4 form-group">
                             {!! Form::label('epcrincidentnum', 'EPCR Incident#', array('style'=>'padding-top:7px;','class' => 'col-sm-4 control-label')) !!}
                             <div class="col-sm-6 ">
-                                {!! Form::text('epcrincidentnum', old('epcrincidentnum'), ['class' => 'form-control','placeholder'=>'Enter EPCR Incident Num', 'required'=>'required'])!!}
+                                {!! Form::text('epcrincidentnum', old('epcrincidentnum'), ['class' => 'form-control','placeholder'=>'Enter EPCR Incident Num'])!!}
                                 <p class="help-block"></p>
                                 @if($errors->has('epcrincidentnum'))
                                     <p class="help-block">
@@ -119,7 +119,7 @@
                         <div class="col-sm-4 form-group">
                             {!! Form::label('frmsincidentnum', 'FRMS Incident#', array('style'=>'padding-top:7px;','class' => 'col-sm-4 control-label')) !!}
                             <div class="col-sm-6 ">
-                                {!! Form::text('frmsincidentnum', old('frmsincidentnum'), ['class' => 'form-control','placeholder'=>'Enter FRMS Incident Num', 'required'=>'required'])!!}
+                                {!! Form::text('frmsincidentnum', old('frmsincidentnum'), ['class' => 'form-control','placeholder'=>'Enter FRMS Incident Num'])!!}
                                 <p class="help-block"></p>
                                 @if($errors->has('frmsincidentnum'))
                                     <p class="help-block">
@@ -133,7 +133,7 @@
                         <div class="col-sm-4 form-group">
                             {!! Form::label('assignment', 'Assignment', array('style'=>'padding-top:7px;','class' => 'col-sm-4 control-label')) !!}
                             <div class="col-sm-6 ">
-                                {!! Form::text('assignment', old('assignment'), ['class' => 'form-control', 'required'=>'required'])!!}
+                                {!! Form::text('assignment', old('assignment'), ['class' => 'form-control'])!!}
                                 <p class="help-block"></p>
                                 @if($errors->has('assignment'))
                                     <p class="help-block">
@@ -182,7 +182,7 @@
             <div class="col-sm-12 form-group">
                 {!! Form::label('corvelid', 'Once you have completed the call, record CorVel Claim #', array('style'=>'padding-top:7px;','class' => 'col-sm-4 control-label')) !!}
                 <div class="col-sm-4">
-                    {!! Form::text('corvelid', old('corvelid'), ['class' => 'form-control','placeholder'=>'Enter Corvel Claim ID', 'required'=>'required'])!!}
+                    {!! Form::text('corvelid', old('corvelid'), ['class' => 'form-control','placeholder'=>'Enter Corvel Claim ID'])!!}
                     <p class="help-block"></p>
                     @if($errors->has('corvelid'))
                         <p class="help-block">
