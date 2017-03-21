@@ -6,11 +6,13 @@ use App\Attachment;
 use App\Comment;
 use App\Http\Controllers\Traits\FileUploadTrait;
 use App\Http\Controllers\Traits\FormFileUploadTrait;
-use Illuminate\Support\Facades\DB;
+use App\Http\Requests\StoreAccidentsRequest;
+use App\Http\Requests\UpdateAccidentsRequest;
 use App\User;
 use Illuminate\Http\Request;
-use App\Http\Requests\StoreAccidentsRequest;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
+
 class AccidentsController extends Controller
 {
     use FileUploadTrait;
@@ -150,6 +152,7 @@ class AccidentsController extends Controller
     {
         return view('accidents.create');
     }
+
     public function store(StoreAccidentsRequest $request)
     {
        // 'applicationstatus' => $request->applicationstatus,
