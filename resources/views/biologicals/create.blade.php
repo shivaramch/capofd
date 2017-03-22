@@ -319,6 +319,7 @@
 
                     </div>
                 </div>
+                {{ Form::hidden('applicationstatus', '2') }}
                 <div class="col-sm-12">
                     <div class="form-group">
                         {{ Form::checkbox('potdocumentdaybook', 1, null, ['id' => 'potdocumentdaybook', 'class'=>'className']) }}
