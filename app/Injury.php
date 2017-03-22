@@ -40,6 +40,7 @@ class Injury extends Model
         'callsupervisor',
         'createdby',
         'updatedby',
+        'applicationstatus'
     ];
 
 

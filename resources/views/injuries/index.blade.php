@@ -70,7 +70,7 @@
                                             <a href="{{ route('injuries.show',[$injury->ofd6id]) }}"
                                                class="btn btn-xs btn-info btn-block"><i
                                                         class="fa fa-eye" aria-hidden="true"></i> VIEW</a>
-                                            @if($injury->applicationstatus == 1 || $biological->applicationstatus == 5)<a
+                                            @if($injury->applicationstatus == 1 || $injury->applicationstatus == 5)<a
                                                     href="{{ route('injuries.edit',[$injury->ofd6id]) }}"
                                                     class="btn btn-xs btn-warning btn-block"><i
                                                         class="fa fa-pencil-square-o"

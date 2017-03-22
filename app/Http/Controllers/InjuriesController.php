@@ -195,7 +195,8 @@ class InjuriesController extends Controller
     public function update(UpdateInjuriesRequest $request, $id)
     {
         $injury = Injury::findOrFail($id);
-
+        $statusidraw=DB::table('status')->where('statustype','Application under Captain')->pluck('statusid');
+        $statusid=str_replace (array('[', ']'), '', $statusidraw);
         \DB::table('injuries')->where('ofd6id', $injury->ofd6id)->update([
                 'reportnum' => $injury->reportnum,
                 'createdate' => $injury->createdate,
@@ -211,9 +212,11 @@ class InjuriesController extends Controller
                 'frmsincidentnum' => $injury->frmsincidentnum,
                 'policeofficercompletesign' => $injury->policeofficercompletesign,
                 'callsupervisor' => $injury->callsupervisor,
+                'applicationstatus'=>$statusid,
                 'createdby' => $injury->createdby,
                 'updatedby' => $injury->updatedby]
         );
+
         $request = $this->saveFiles($request);
 
         $injury->update($request->all());
