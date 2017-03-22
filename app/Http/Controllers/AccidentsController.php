@@ -199,6 +199,10 @@ class AccidentsController extends Controller
 
     public function update(UpdateAccidentsRequest $request, $id)
     {
+
+        $statusidraw=DB::table('status')->where('statustype','Application under Captain')->pluck('statusid');
+        $statusid=str_replace (array('[', ']'), '', $statusidraw);
+
         $accident = Accident::findOrFail($id);
         \DB::table('accidents')->where('ofd6aid', $accident->ofd6aid)->update([
                 'accidentdate' => $accident->accidentdate,
@@ -209,7 +213,7 @@ class AccidentsController extends Controller
                 'captainid' => $accident->captainid,
                 'battalionchiefid' => $accident->battalionchiefid,
                 'aconduty' => $accident->aconduty,
-                'applicationstatus' => $accident->applicationstatus,
+                'applicationstatus' => $statusid,
                 'frmsincidentnum' => $accident->frmsincidentnum,
                 'calllaw' => $accident->calllaw,
                 'daybook' => $accident->daybook,
