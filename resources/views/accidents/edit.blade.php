@@ -27,7 +27,8 @@
             border: 1px solid black;
         }
     </style>
-    @if($accident->driverid == Auth::user()->id ||
+    @if(($accident->driverid == Auth::user()->id &&
+    ($accident->applicationstatus == 1 || $accident->applicationstatus == 5))||
     Auth::user()->roleid == 1)
         <div class="panel panel-default">
         <div class="panel-heading">

@@ -17,6 +17,7 @@ class Attachment extends Model
         'ofd6id',
         'ofd6bid',
         'ofd6aid',
+        'limiteddutyid',
     ];
 
     public static function boot()
@@ -46,6 +47,10 @@ class Attachment extends Model
     public function hazmat()
     {
         return $this->belongsTo(\App\hazmat::class);
+    }
+    public function limitedduty()
+    {
+        return $this->belongsTo(\App\limitedduty::class);
     }
 
 }

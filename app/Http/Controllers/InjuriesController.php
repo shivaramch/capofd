@@ -26,13 +26,25 @@ class InjuriesController extends Controller
         //check the application status id
         //if appstatus->2 then check the current user id and the captain id if same then put appstatus as 3
         $currentuserid=Auth::user()->id;
+        $captainid=DB::table('injuries')->where ([
+            ['captainid', '=', $currentuserid],
+            ['ofd6id', '=', $id],
+        ])->pluck('captainid');
+      //  $captainid=DB::table('injuries')->where('captainid',$currentuserid)->pluck('captainid');
 
-        $captainid=DB::table('injuries')->where('captainid',$currentuserid)->pluck('captainid');
-        $BCid=DB::table('injuries')->where('battalionchiefid',$currentuserid)->pluck('battalionchiefid');
-        $ACid=DB::table('injuries')->where('aconduty',$currentuserid)->pluck('aconduty');
+        $BCid=DB::table('injuries')->where ([
+            ['battalionchiefid', '=', $currentuserid],
+            ['ofd6id', '=', $id],
+        ])->pluck('battalionchiefid');
 
-        $currentapplicationstatus=DB::table('injuries')->where('ofd6ID',$id)->pluck('applicationstatus');
-
+  //      $BCid=DB::table('injuries')->where('battalionchiefid',$currentuserid)->pluck('battalionchiefid');
+     //   $ACid=DB::table('injuries')->where('aconduty',$currentuserid)->pluck('aconduty');
+        $ACid=DB::table('injuries')->where ([
+            ['aconduty', '=', $currentuserid],
+            ['ofd6id', '=', $id],
+        ])->pluck('aconduty');
+        $currentapplicationstatusraw=DB::table('injuries')->where('ofd6ID',$id)->pluck('applicationstatus');
+        $currentapplicationstatus=  str_replace (array('["', '"]'), '',$currentapplicationstatusraw);
 
 
         $captainapprovalstatusidraw=DB::table('status')->where('statustype','Application under Captain')->pluck('statusid');
@@ -50,6 +62,7 @@ class InjuriesController extends Controller
         if($captainid){
             if($currentapplicationstatus==$captainapprovalstatusid)
             {
+
                 $injury = Injury::find($id);
 
                 $injury->applicationstatus =$BCapprovalstatusid ;
@@ -62,6 +75,8 @@ class InjuriesController extends Controller
         if($BCid){
             if($currentapplicationstatus==$BCapprovalstatusid)
             {
+
+
                 $injury = Injury::find($id);
 
                 $injury->applicationstatus =$ACapprovalstatusid ;
@@ -80,23 +95,41 @@ class InjuriesController extends Controller
             }
         }
 
-        return redirect()->route('injuries.index');
+       return redirect()->route('injuries.index');
 
 
     }
 
 
     public  function Reject($id){
+        $currentuserid=Auth::user()->id;
+        $captainid=DB::table('injuries')->where ([
+            ['captainid', '=', $currentuserid],
+            ['ofd6id', '=', $id],
+        ])->pluck('captainid');
+        //  $captainid=DB::table('injuries')->where('captainid',$currentuserid)->pluck('captainid');
+
+        $BCid=DB::table('injuries')->where ([
+            ['battalionchiefid', '=', $currentuserid],
+            ['ofd6id', '=', $id],
+        ])->pluck('battalionchiefid');
+
+        //      $BCid=DB::table('injuries')->where('battalionchiefid',$currentuserid)->pluck('battalionchiefid');
+        //   $ACid=DB::table('injuries')->where('aconduty',$currentuserid)->pluck('aconduty');
+        $ACid=DB::table('injuries')->where ([
+            ['aconduty', '=', $currentuserid],
+            ['ofd6id', '=', $id],
+        ])->pluck('aconduty');
 
         $statusidraw=DB::table('status')->where('statustype','Rejected')->pluck('statusid');
         $statusid=str_replace (array('[', ']'), '', $statusidraw);
+        if($captainid|| $BCid || $ACid) {
+            $injury = Injury::find($id);
 
-        $injury = Injury::find($id);
+            $injury->applicationstatus = $statusid;
 
-        $injury->applicationstatus = $statusid;
-
-        $injury->save();
-
+            $injury->save();
+        }
         return redirect()->route('injuries.index');
 
     }
@@ -162,7 +195,8 @@ class InjuriesController extends Controller
     public function update(UpdateInjuriesRequest $request, $id)
     {
         $injury = Injury::findOrFail($id);
-
+        $statusidraw=DB::table('status')->where('statustype','Application under Captain')->pluck('statusid');
+        $statusid=str_replace (array('[', ']'), '', $statusidraw);
         \DB::table('injuries')->where('ofd6id', $injury->ofd6id)->update([
                 'reportnum' => $injury->reportnum,
                 'createdate' => $injury->createdate,
@@ -178,9 +212,11 @@ class InjuriesController extends Controller
                 'frmsincidentnum' => $injury->frmsincidentnum,
                 'policeofficercompletesign' => $injury->policeofficercompletesign,
                 'callsupervisor' => $injury->callsupervisor,
+                'applicationstatus'=>$statusid,
                 'createdby' => $injury->createdby,
                 'updatedby' => $injury->updatedby]
         );
+
         $request = $this->saveFiles($request);
 
         $injury->update($request->all());
