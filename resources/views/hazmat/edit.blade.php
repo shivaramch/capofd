@@ -144,19 +144,13 @@
                     <div class="col-sm-4 form-group">
                         {!! Form::label('shift', 'Shift', ['class'=> 'col-sm-4 control-label'] ) !!}
                         <div class="col-sm-6">
-<<<<<<< HEAD
+
                             {!! Form::select('shift',[
                           'A' => 'A',
                           'B' => 'B',
                           'C' => 'C',
                           'DIV' => 'DIV'],old('shift'), ['class' => 'form-control'])!!}
-=======
-                            {!! Form::select('shift', ['A' => 'A',
-                            'B' => 'B',
-                            'C' => 'C',
-                            'DIV' => 'DIV'], old('shift'),
-                            ['class' => 'form-control']) !!}
->>>>>>> 462fc1df80e03279ade488928e5de11cc0a3475e
+
                             <p class="help-block"></p>
                             @if($errors->has('shift'))
                                 <p class="help-block">
@@ -201,8 +195,14 @@
 
 
             <div class="col-sm-12 form-group">
-                <label class="col-sm-4">
-                    <strong>Fill out OFD-025 Hazmat Exposure Report form</strong></label>
+                <div class="col-sm-12 form-group">
+                    <div class="form-group">
+                        {{ Form::checkbox('checkbox1', 1, null, ['id'=>'checkbox1', 'class' => 'className' ]) }}
+                        {{Form::label('Checkbox1','Fill out OFD-025 Hazmat Exposure Report form')}}
+                    </div>
+
+              {{-- <label class="col-sm-4">
+                    <strong>Fill out OFD-025 Hazmat Exposure Report form</strong></label> --}}
                 <div class="col-sm-12 form-group well well-sm">
                     <div class="col-sm-4">
                         <a class="btn btn-success dropdown-toggle col-sm-12" type="button"
@@ -259,7 +259,7 @@
                 <div class="form-horizontal">
                     <div class="row">
                         <div class="col-md-12">
-<<<<<<< HEAD
+
                             <div class="alert alert-danger" align="left">
                                 {{Form::label('exposureInjury','Do you have any symptoms of illness or injury and require
                                    treatment? (In case of Injury, please fill OFD - 6 IOD Application)     ')}}
@@ -274,7 +274,7 @@
                                         {{ $errors->first('exposurehazmat') }}
                                     </p>
                                 @endif
-=======
+
                             <div class="alert alert-danger form-group" align="left">
                                 <div class="col-md-9">
                                     {{Form::label('exposurehazmat','Do you have any symptoms of illness or injury and require
@@ -292,7 +292,7 @@
                                         </p>
                                     @endif
                                 </div>
->>>>>>> 462fc1df80e03279ade488928e5de11cc0a3475e
+
                             </div>
                         </div>
                     </div>

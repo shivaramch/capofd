@@ -173,9 +173,11 @@
                         </div>
                     </div>
                     <div class="col-sm-12">
-                        <label class="checkbox-inline col-sm-12">
+                        {{ Form::checkbox('checkbox1', 1, null,['disabled'], ['id' => 'checkbox1', 'class'=>'className','readonly' => 'true']) }}
+                        {{Form::label('Checkbox1','Fill out OFD-025 Hazmat Exposure Report form')}}
+                        {{--}}<label class="checkbox-inline col-sm-12">
                             <strong>Fill out OFD-025 Hazmat Exposure Report form</strong>
-                        </label>
+                        </label>--}}
                         <br>
                         <div class="col-sm-12 form-group well well-sm">
                             <div class="col-sm-4">

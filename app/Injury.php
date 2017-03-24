@@ -37,6 +37,11 @@ class Injury extends Model
         'policeofficercompletesign',
         'callsupervisor',
         'applicationstatus',
+        'checkbox1',
+        'checkbox2',
+        'checkbox3',
+        'checkbox4',
+        'checkbox5',
         'createdby',
         'updatedby',
     ];
