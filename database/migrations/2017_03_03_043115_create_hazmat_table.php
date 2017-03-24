@@ -38,6 +38,6 @@ class CreateHazmatTable extends Migration
      */
     public function down()
     {
-        Schema::drop('hazmat');
+        Schema::drop('hazmats');
     }
 }
