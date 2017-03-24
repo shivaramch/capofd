@@ -61,9 +61,11 @@
                                             <a href="{{ route('biologicals.show',[$biological->ofd6bid]) }}"
                                                class="btn btn-xs btn-info btn-block"><i
                                                         class="fa fa-eye" aria-hidden="true"></i> VIEW</a>
-                                            <a href="{{ route('biologicals.edit',[$biological->ofd6bid]) }}"
+                                            @if( $biological->applicationstatus == 1 || $biological->applicationstatus == 5)
+                                                <a href="{{ route('biologicals.edit',[$biological->ofd6bid]) }}"
                                                class="btn btn-xs btn-warning btn-block"><i class="fa fa-pencil-square-o"
                                                                                            aria-hidden="true"></i> EDIT</a>
+                                            @endif
                                         </div>
                                     </td>
                                 </tr>

@@ -20,217 +20,223 @@
         </div>
     </div>
 
-    @foreach($accidents as $accident)
+    @if(count($accidents) > 0)
+
+        @foreach($accidents as $accident)
         @endforeach
         @if($accident->driverid == Auth::user()->id)
-        <div class="panel panel-default panel-shadow " hidden>
-            <div class="panel-heading">
-                Search Previously filled
-            </div>
-            <div class="panel-body">
-                <table data-toolbar="#toolbar"
-                       data-toggle="table"
-                       data-search="true"
-                       data-cookie="true"
-                       data-click-to-select="true"
-                       data-cookie-id-table="station-index-v1.1-1"
-                       data-show-columns="true"
-                       id="table">
-                    <thead>
-                    <tr>
-                        <th data-sortable="true">OFD 6A ID</th>
-                        <th data-sortable="true">Driver Name</th>
-                        <th data-sortable="true">Date of Accident</th>
-                        <th data-sortable="true">Assignment</th>
-                        <th data-sortable="true">Status</th>
-                        <th data-switchable="false" data-searchable="false" data-sortable="false">Action</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    @if(count($accidents) > 0)
-                        @foreach($accidents as $accident)
-                            @if($accident->driverid == Auth::user()->id)
-                            <tr>
-                                <td>{{ $accident->ofd6aid }}</td>
-                                <td>{{ $accident->drivername }}</td>
-                                <td>{{ $accident->accidentdate }}</td>
-                                <td>{{ $accident->assignmentaccident }}</td>
-                                <td>{{ $accident->applicationstatus }}</td>
-                                <td>
-                                    <div>
-                                        <a href="{{ route('accidents.show',[$accident->ofd6aid]) }}"
-                                           class="btn btn-xs btn-info btn-block"><i
-                                                    class="fa fa-eye" aria-hidden="true"></i> VIEW</a>
-                                        <a href="{{ route('accidents.edit',[$accident->ofd6aid]) }}"
-                                           class="btn btn-xs btn-warning btn-block"><i class="fa fa-pencil-square-o"
-                                                                                       aria-hidden="true"></i> EDIT</a>
-                                    </div>
-                                </td>
-                            </tr>
-                            @endif
-                                @endforeach
-                    @endif
-                    </tbody>
-                </table>
-            </div>
-        </div>
-    @endif
-
-
-    @if($accident->captainid == Auth::user()->id && $accident->applicationstatus == 2)
-        <div class="panel panel-default panel-shadow " hidden>
-            <div class="panel-heading">
-                In your Queue For Approval as Captain
-            </div>
-            <div class="panel-body">
-                <table data-toolbar="#toolbar"
-                       data-toggle="table"
-                       data-search="true"
-                       data-cookie="true"
-                       data-click-to-select="true"
-                       data-cookie-id-table="station-index-v1.1-1"
-                       data-show-columns="true"
-                       id="table">
-                    <thead>
-                    <tr>
-                        <th data-sortable="true">OFD 6A ID</th>
-                        <th data-sortable="true">Driver Name</th>
-                        <th data-sortable="true">Date of Accident</th>
-                        <th data-sortable="true">Assignment</th>
-                        <th data-sortable="true">Status</th>
-                        <th data-switchable="false" data-searchable="false" data-sortable="false">Action</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    @if(count($accidents) > 0)
-                        @foreach($accidents as $accident)
-                            @if($accident->captainid == Auth::user()->id && $accident->applicationstatus == 2)
-                            <tr>
-                                <td>{{ $accident->ofd6aid }}</td>
-                                <td>{{ $accident->drivername }}</td>
-                                <td>{{ $accident->accidentdate }}</td>
-                                <td>{{ $accident->assignmentaccident }}</td>
-                                <td>{{ $accident->applicationstatus }}</td>
-                                <td>
-                                    <div>
-                                        <a href="{{ route('accidents.show',[$accident->ofd6aid]) }}"
-                                           class="btn btn-xs btn-info btn-block"><i
-                                                    class="fa fa-eye" aria-hidden="true"></i> VIEW</a>
-                                    </div>
-                                </td>
-                            </tr>
-                        @endif
+            <div class="panel panel-default panel-shadow " hidden>
+                <div class="panel-heading">
+                    Search Previously filled
+                </div>
+                <div class="panel-body">
+                    <table data-toolbar="#toolbar"
+                           data-toggle="table"
+                           data-search="true"
+                           data-cookie="true"
+                           data-click-to-select="true"
+                           data-cookie-id-table="station-index-v1.1-1"
+                           data-show-columns="true"
+                           id="table">
+                        <thead>
+                        <tr>
+                            <th data-sortable="true">OFD 6A ID</th>
+                            <th data-sortable="true">Driver Name</th>
+                            <th data-sortable="true">Date of Accident</th>
+                            <th data-sortable="true">Assignment</th>
+                            <th data-sortable="true">Status</th>
+                            <th data-switchable="false" data-searchable="false" data-sortable="false">Action</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        @if(count($accidents) > 0)
+                            @foreach($accidents as $accident)
+                                @if($accident->driverid == Auth::user()->id)
+                                    <tr>
+                                        <td>{{ $accident->ofd6aid }}</td>
+                                        <td>{{ $accident->drivername }}</td>
+                                        <td>{{ $accident->accidentdate }}</td>
+                                        <td>{{ $accident->assignmentaccident }}</td>
+                                        <td>{{ $accident->applicationstatus }}</td>
+                                        <td>
+                                            <div>
+                                                <a href="{{ route('accidents.show',[$accident->ofd6aid]) }}"
+                                                   class="btn btn-xs btn-info btn-block"><i
+                                                            class="fa fa-eye" aria-hidden="true"></i> VIEW</a>
+                                                @if( $accident->applicationstatus == 1 || $accident->applicationstatus == 5)
+                                                    <a href="{{ route('accidents.edit',[$accident->ofd6aid]) }}"
+                                                       class="btn btn-xs btn-warning btn-block"><i
+                                                                class="fa fa-pencil-square-o"
+                                                                aria-hidden="true"></i> EDIT</a>
+                                                @endif
+                                            </div>
+                                        </td>
+                                    </tr>
+                                @endif
                             @endforeach
-                    @endif
-                    </tbody>
-                </table>
-            </div>
-        </div>
-    @endif
-
-
-    @if($accident->battalionchiefid == Auth::user()->id && $accident->applicationstatus == 3)
-        <div class="panel panel-default panel-shadow " hidden>
-            <div class="panel-heading">
-                In your Queue For Approval as battalion chief
-            </div>
-            <div class="panel-body">
-                <table data-toolbar="#toolbar"
-                       data-toggle="table"
-                       data-search="true"
-                       data-cookie="true"
-                       data-click-to-select="true"
-                       data-cookie-id-table="station-index-v1.1-1"
-                       data-show-columns="true"
-                       id="table">
-                    <thead>
-                    <tr>
-                        <th data-sortable="true">OFD 6A ID</th>
-                        <th data-sortable="true">Driver Name</th>
-                        <th data-sortable="true">Date of Accident</th>
-                        <th data-sortable="true">Assignment</th>
-                        <th data-sortable="true">Status</th>
-                        <th data-switchable="false" data-searchable="false" data-sortable="false">Action</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    @if(count($accidents) > 0)
-                        @foreach($accidents as $accident)
-                            @if($accident->battalionchiefid == Auth::user()->id && $accident->applicationstatus == 3)
-                            <tr>
-                                <td>{{ $accident->ofd6aid }}</td>
-                                <td>{{ $accident->drivername }}</td>
-                                <td>{{ $accident->accidentdate }}</td>
-                                <td>{{ $accident->assignmentaccident }}</td>
-                                <td>{{ $accident->applicationstatus }}</td>
-                                <td>
-                                    <div>
-                                        <a href="{{ route('accidents.show',[$accident->ofd6aid]) }}"
-                                           class="btn btn-xs btn-info btn-block"><i
-                                                    class="fa fa-eye" aria-hidden="true"></i> VIEW</a>
-                                    </div>
-                                </td>
-                            </tr>
                         @endif
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        @endif
+
+
+        @if($accident->captainid == Auth::user()->id && $accident->applicationstatus == 2)
+            <div class="panel panel-default panel-shadow " hidden>
+                <div class="panel-heading">
+                    In your Queue For Approval as Captain
+                </div>
+                <div class="panel-body">
+                    <table data-toolbar="#toolbar"
+                           data-toggle="table"
+                           data-search="true"
+                           data-cookie="true"
+                           data-click-to-select="true"
+                           data-cookie-id-table="station-index-v1.1-1"
+                           data-show-columns="true"
+                           id="table">
+                        <thead>
+                        <tr>
+                            <th data-sortable="true">OFD 6A ID</th>
+                            <th data-sortable="true">Driver Name</th>
+                            <th data-sortable="true">Date of Accident</th>
+                            <th data-sortable="true">Assignment</th>
+                            <th data-sortable="true">Status</th>
+                            <th data-switchable="false" data-searchable="false" data-sortable="false">Action</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        @if(count($accidents) > 0)
+                            @foreach($accidents as $accident)
+                                @if($accident->captainid == Auth::user()->id && $accident->applicationstatus == 2)
+                                    <tr>
+                                        <td>{{ $accident->ofd6aid }}</td>
+                                        <td>{{ $accident->drivername }}</td>
+                                        <td>{{ $accident->accidentdate }}</td>
+                                        <td>{{ $accident->assignmentaccident }}</td>
+                                        <td>{{ $accident->applicationstatus }}</td>
+                                        <td>
+                                            <div>
+                                                <a href="{{ route('accidents.show',[$accident->ofd6aid]) }}"
+                                                   class="btn btn-xs btn-info btn-block"><i
+                                                            class="fa fa-eye" aria-hidden="true"></i> VIEW</a>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                @endif
                             @endforeach
-                    @endif
-
-                    </tbody>
-                </table>
-            </div>
-        </div>
-    @endif
-
-    @if($accident->aconduty == Auth::user()->id && $accident->applicationstatus == 4)
-        <div class="panel panel-default panel-shadow " hidden>
-            <div class="panel-heading">
-                In your Queue For Approval as Assistant chief
-            </div>
-            <div class="panel-body">
-                <table data-toolbar="#toolbar"
-                       data-toggle="table"
-                       data-search="true"
-                       data-cookie="true"
-                       data-click-to-select="true"
-                       data-cookie-id-table="station-index-v1.1-1"
-                       data-show-columns="true"
-                       id="table">
-                    <thead>
-                    <tr>
-                        <th data-sortable="true">OFD 6A ID</th>
-                        <th data-sortable="true">Driver Name</th>
-                        <th data-sortable="true">Date of Accident</th>
-                        <th data-sortable="true">Assignment</th>
-                        <th data-sortable="true">Status</th>
-                        <th data-switchable="false" data-searchable="false" data-sortable="false">Action</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    @if(count($accidents) > 0)
-                        @foreach($accidents as $accident)
-                            @if($accident->aconduty == Auth::user()->id && $accident->applicationstatus == 4)
-                            <tr>
-                                <td>{{ $accident->ofd6aid }}</td>
-                                <td>{{ $accident->drivername }}</td>
-                                <td>{{ $accident->accidentdate }}</td>
-                                <td>{{ $accident->assignmentaccident }}</td>
-                                <td>{{ $accident->applicationstatus }}</td>
-                                <td>
-                                    <div>
-                                        <a href="{{ route('accidents.show',[$accident->ofd6aid]) }}"
-                                           class="btn btn-xs btn-info btn-block"><i
-                                                    class="fa fa-eye" aria-hidden="true"></i> VIEW</a>
-                                    </div>
-                                </td>
-                            </tr>
                         @endif
-                            @endforeach
-                    @endif
-
-                    </tbody>
-                </table>
+                        </tbody>
+                    </table>
+                </div>
             </div>
-        </div>
+        @endif
+
+
+        @if($accident->battalionchiefid == Auth::user()->id && $accident->applicationstatus == 3)
+            <div class="panel panel-default panel-shadow " hidden>
+                <div class="panel-heading">
+                    In your Queue For Approval as battalion chief
+                </div>
+                <div class="panel-body">
+                    <table data-toolbar="#toolbar"
+                           data-toggle="table"
+                           data-search="true"
+                           data-cookie="true"
+                           data-click-to-select="true"
+                           data-cookie-id-table="station-index-v1.1-1"
+                           data-show-columns="true"
+                           id="table">
+                        <thead>
+                        <tr>
+                            <th data-sortable="true">OFD 6A ID</th>
+                            <th data-sortable="true">Driver Name</th>
+                            <th data-sortable="true">Date of Accident</th>
+                            <th data-sortable="true">Assignment</th>
+                            <th data-sortable="true">Status</th>
+                            <th data-switchable="false" data-searchable="false" data-sortable="false">Action</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        @if(count($accidents) > 0)
+                            @foreach($accidents as $accident)
+                                @if($accident->battalionchiefid == Auth::user()->id && $accident->applicationstatus == 3)
+                                    <tr>
+                                        <td>{{ $accident->ofd6aid }}</td>
+                                        <td>{{ $accident->drivername }}</td>
+                                        <td>{{ $accident->accidentdate }}</td>
+                                        <td>{{ $accident->assignmentaccident }}</td>
+                                        <td>{{ $accident->applicationstatus }}</td>
+                                        <td>
+                                            <div>
+                                                <a href="{{ route('accidents.show',[$accident->ofd6aid]) }}"
+                                                   class="btn btn-xs btn-info btn-block"><i
+                                                            class="fa fa-eye" aria-hidden="true"></i> VIEW</a>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                @endif
+                            @endforeach
+                        @endif
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        @endif
+
+        @if($accident->aconduty == Auth::user()->id && $accident->applicationstatus == 4)
+            <div class="panel panel-default panel-shadow " hidden>
+                <div class="panel-heading">
+                    In your Queue For Approval as Assistant chief
+                </div>
+                <div class="panel-body">
+                    <table data-toolbar="#toolbar"
+                           data-toggle="table"
+                           data-search="true"
+                           data-cookie="true"
+                           data-click-to-select="true"
+                           data-cookie-id-table="station-index-v1.1-1"
+                           data-show-columns="true"
+                           id="table">
+                        <thead>
+                        <tr>
+                            <th data-sortable="true">OFD 6A ID</th>
+                            <th data-sortable="true">Driver Name</th>
+                            <th data-sortable="true">Date of Accident</th>
+                            <th data-sortable="true">Assignment</th>
+                            <th data-sortable="true">Status</th>
+                            <th data-switchable="false" data-searchable="false" data-sortable="false">Action</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        @if(count($accidents) > 0)
+                            @foreach($accidents as $accident)
+                                @if($accident->aconduty == Auth::user()->id && $accident->applicationstatus == 4)
+                                    <tr>
+                                        <td>{{ $accident->ofd6aid }}</td>
+                                        <td>{{ $accident->drivername }}</td>
+                                        <td>{{ $accident->accidentdate }}</td>
+                                        <td>{{ $accident->assignmentaccident }}</td>
+                                        <td>{{ $accident->applicationstatus }}</td>
+                                        <td>
+                                            <div>
+                                                <a href="{{ route('accidents.show',[$accident->ofd6aid]) }}"
+                                                   class="btn btn-xs btn-info btn-block"><i
+                                                            class="fa fa-eye" aria-hidden="true"></i> VIEW</a>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                @endif
+                            @endforeach
+                        @endif
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        @endif
     @endif
 
 @stop

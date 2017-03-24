@@ -8,13 +8,64 @@ use App\Http\Controllers\Traits\FileUploadTrait;
 use App\Http\Controllers\Traits\FormFileUploadTrait;
 use Illuminate\Support\Facades\DB;
 use App\User;
+use App\Comment;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 class BiologicalsController extends Controller
 {
     use FileUploadTrait;
     use FormFileUploadTrait;
-    public function index()
+
+    public function Approve($id)
+    {
+
+
+        $currentuserid = Auth::user()->id;
+        $primaryidconumber=DB::table('biologicals')->where ([
+            ['primaryidconumber', '=', $currentuserid],
+            ['ofd6bid', '=', $id],
+        ])->pluck('primaryidconumber');
+        $Finalapprovalstatusidraw=DB::table('status')->where('statustype','Approved')->pluck('statusid');
+        $Finalpprovalstatusid=str_replace (array('[', ']'), '',$Finalapprovalstatusidraw);
+
+        if($primaryidconumber){
+
+            $Biological = Biological::find($id);
+
+            $Biological->applicationstatus =$Finalpprovalstatusid ;
+
+            $Biological->save();
+        }
+
+        return redirect()->route('biologicals.index');
+    }
+
+
+    public  function Reject($id)
+    {
+        $currentuserid = Auth::user()->id;
+        $primaryidconumber=DB::table('biologicals')->where ([
+            ['primaryidconumber', '=', $currentuserid],
+            ['ofd6bid', '=', $id],
+        ])->pluck('primaryidconumber');
+
+        $statusidraw=DB::table('status')->where('statustype','Rejected')->pluck('statusid');
+        $statusid=str_replace (array('[', ']'), '', $statusidraw);
+        if($primaryidconumber) {
+
+            $Biological = Biological::find($id);
+
+            $Biological->applicationstatus =$statusid ;
+
+            $Biological->save();
+        }
+
+        return redirect()->route('biologicals.index');
+
+    }
+
+
+        public function index()
     {
         $biologicals = Biological::all();
         return view('biologicals.index', compact('biologicals'));
@@ -25,6 +76,11 @@ class BiologicalsController extends Controller
     }
     public function store(StoreBiologicalsRequest $request)
     {
+
+        $statusidraw=DB::table('status')->where('statustype','Application under Captain')->pluck('statusid');
+        $statusid=str_replace (array('[', ']'), '', $statusidraw);
+        $request->offsetSet('applicationstatus',$statusid);
+
         $request = $this->saveFiles($request);
         Biological::create($request->all());
         $last_insert_id = DB::getPdo()->lastInsertId();
@@ -48,13 +104,19 @@ class BiologicalsController extends Controller
     {
         $biological = Biological::findOrFail($id);
         $attachments = Attachment::all();
+        $comments = Comment::all();
+        $users = User::all();
         //show history code start
         //below one line code is for storing all history related to the $id in variable, which is to be used to display in show page.
         //show history code end
-        return view('biologicals.show', compact('biological', 'attachments'));
+        return view('biologicals.show', compact('biological', 'attachments','comments', 'users'));
     }
     public function update(UpdateBiologicalsRequest $request, $id)
     {
+
+        $statusidraw=DB::table('status')->where('statustype','Application under Captain')->pluck('statusid');
+        $statusid=str_replace (array('[', ']'), '', $statusidraw);
+
         $biological = Biological::findOrFail($id);
         \DB::table('biologicals')->where('ofd6bid', $biological->ofd6bid)->update([
                 'exposedemployeename' => $biological->exposedemployeename,
@@ -66,6 +128,7 @@ class BiologicalsController extends Controller
                 'epcrincidentnum' => $biological->epcrincidentnum,
                 //'todaysdate' => $biological->todaysdate,
                 'exposure'=>$biological->exposure,
+                'applicationstatus' => $statusid,
                 'frmsincidentnum'=>$biological->frmsincidentnum,
                 'exposureinjury'=>$biological->exposureinjury]
         );

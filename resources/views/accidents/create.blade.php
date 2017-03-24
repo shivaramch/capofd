@@ -383,6 +383,7 @@
                     </div>
                 </div>
             </div>
+
             <div class="row">
                 <label class="checkbox-inline col-sm-12"><strong><strong> Complete DR 41 State
                             of Nebraska DMV Vehicle Accident Report</strong></strong></label>
@@ -426,6 +427,7 @@
                 </div>
             </div>
             <br>
+            {{ Form::hidden('applicationstatus', '2') }}
             <label class="col-sm-5"></label>
             <button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal">
                 Submit
