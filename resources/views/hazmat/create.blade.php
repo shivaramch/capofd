@@ -194,9 +194,15 @@
 
 
             <div class="col-sm-12 form-group">
-                <label class="col-sm-4">
+                <div class="form-group">
+                    {{ Form::checkbox('checkbox1', 1, null, ['id'=>'checkbox1', 'class' => 'className' ]) }}
+                    {{Form::label('Checkbox1','Fill out OFD-025 Hazmat Exposure Report form')}}
+                </div>
+
+
+              {{--}}  <label class="col-sm-4">
                     <strong>Fill out OFD-025 Hazmat Exposure Report form</strong>
-                </label>
+                </label> --}}
                 <div class="col-sm-12 form-group well well-sm">
                     <div class="col-sm-4">
                         <a class="btn btn-success dropdown-toggle col-sm-12" type="button"
