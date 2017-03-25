@@ -137,6 +137,60 @@ return [
         'exposure' => [
             'required' => '"Please Select True Exposure or Potential Exposure radio button"',
         ],
+        'reportnum' => [
+            'required' => '"Report#" field is required',
+            'numeric' => '"Report#" field should be a number',
+        ],
+        'injurydate' => [
+            'required' => '"Date of Injury" field is required',
+            'date' => '"Date of Injury" field should be a valid date',
+        ],
+        'createdate' => [
+            'required' => '"Todays Date" field is required',
+            'date' => '"Todays Date" field should be a valid date',
+        ],
+        'injuredemployeename' => [
+            'required' => '"Todays Date" field is required',
+        ],
+        'injuredemployeeid' => [
+        'required' => '"Personnel ID #" field is required',
+        'integer' => '"Personnel ID #" field should be an integer',
+        ],
+        'assignmentinjury' => [
+        'required' => '"Assignment" field is required',
+        ],
+        'corvelid' => [
+            'required' => '"CorVel ID #" field is required',
+            'integer' => '"CorVel ID #" field should be an integer',
+        ],
+        'captainid' => [
+            'required' => '"Captain#" field is required',
+            'integer' => '"Captain#" field should be an integer',
+        ],
+        'battalionchiefid' => [
+            'required' => '"Battalion Chief#" field is required',
+            'integer' => '"Battalion Chief#" field should be an integer',
+        ],
+        'aconduty' => [
+            'required' => '"Assistant Chief#" field is required',
+            'integer' => '"Assistant Chief#" field should be an integer',
+        ],
+        'trainingassigned' => [
+            'required' => 'Select Yes or No for "In case attend Omaha Police Academy - Training Assigned" drop down',
+        ],
+        'documentworkforce' => [
+            'required' => 'Check "Document IOD in Workforce - Only if seeking medical attention" checkbox',
+        ],
+        'documentoperationalday' => [
+            'required' => 'Check "Document in Operational Day Book and Personnel Record" checkbox',
+        ],
+        'policeofficercompletesign' => [
+            'required' => 'Check "Have Police Supervisor Complete and Sign Supervisor section on Investigation Report and Witness Statement" checkbox',
+        ],
+        'callsupervisor' => [
+            'required' => 'Check "Call Fire Supervisor or SWD B/C immediately and notify CorVel by phone" checkbox',
+        ],
+
     ],
 
     /*

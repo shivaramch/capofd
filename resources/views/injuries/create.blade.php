@@ -454,7 +454,6 @@
                 </div>
             </div>
         </div>
-        {{ Form::hidden('applicationstatus', '2') }}
         <div class="row">
             <div class="col-sm-12 panel-headinzzzzg">
                 <br>

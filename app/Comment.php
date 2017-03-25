@@ -16,6 +16,7 @@ class Comment extends Model
 
         static::creating(function ($model) {
             $model->createdby = Auth::user()->id;
+            $model->ip_address=\Request::getClientIp();
         });
     }
 

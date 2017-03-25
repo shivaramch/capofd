@@ -427,7 +427,6 @@
                 </div>
             </div>
             <br>
-            {{ Form::hidden('applicationstatus', '2') }}
             <label class="col-sm-5"></label>
             <button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal">
                 Submit
