@@ -35,6 +35,7 @@ class StoreHazmatRequest extends FormRequest
             'epcrincidentnum' => 'required|integer:hazmat,epcrincidentnum'. $this->route('hazmat'),
             'assignment' => 'required|string:hazmat,assignment'. $this->route('hazmat'),
             'frmsincidentnum' => 'required|integer:hazmat,frmsincidentnum'. $this->route('hazmat'),
+            'shift' => 'required|string:hazmat,shift,'. $this->route('hazmat'),
             //'applicationstatus' =>'required|string:hazmat,applicationstatus'. $this->route('hazmat'),
         ];
     }

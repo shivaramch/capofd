@@ -223,7 +223,12 @@ return [
             'required' => '"Exposed Employee Name" field is required',
             'alpha' => '"Exposed Employee Name" can only have letters',
         ],
-
+        'assignment' => [
+            'required' => '"Assignment" field is required',
+        ],
+        'contactcorvel' => [
+            'required' => 'Check "Contact CorVel Enterprise Comp @ 877-764-3574" checkbox',
+        ],
 
     ],
 
