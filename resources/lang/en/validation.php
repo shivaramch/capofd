@@ -219,6 +219,10 @@ return [
         'commemail' => [
             'required' => 'Check "Generate OFD 025 Intradepartmental Communication-Email" checkbox',
         ],
+        'employeename' => [
+            'required' => '"Exposed Employee Name" field is required',
+            'alpha' => '"Exposed Employee Name" can only have letters',
+        ],
 
 
     ],

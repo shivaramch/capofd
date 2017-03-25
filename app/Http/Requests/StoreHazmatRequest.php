@@ -27,7 +27,7 @@ class StoreHazmatRequest extends FormRequest
     {
         return [
             'employeeid' => 'required|integer:hazmat,employeeid,'. $this->route('hazmat'),
-            'employeename' => 'required|string:hazmat,employeename,' . $this->route('hazmat'),
+            'employeename' => 'required|alpha|string:hazmat,employeename,' . $this->route('hazmat'),
             'dateofexposure' => 'required|date:hazmat,dateofexposure,'. $this->route('hazmat'),
             'primaryidconumber' => 'required|integer:hazmat,primaryidconumber'. $this->route('hazmat'),
             'contactcorvel' => 'required|string:hazmat,contactcorvel'. $this->route('hazmat'),
