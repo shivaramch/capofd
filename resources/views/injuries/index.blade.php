@@ -64,7 +64,9 @@
                                     <td>{{ $injury->ofd6id }}</td>
                                     <td>{{ $injury->injurydate }}</td>
                                     <td>{{ $injury->assignmentinjury }}</td>
-                                    <td>{{ $injury->status1 }}</td>
+                                    <td>{{DB::table('status')->where('statusid',$injury->applicationstatus)->value('statustype')}}</td>
+
+
                                     <td>
                                         <div>
                                             <a href="{{ route('injuries.show',[$injury->ofd6id]) }}"
@@ -119,7 +121,7 @@
                                     <td>{{ $injury->ofd6id }}</td>
                                     <td>{{ $injury->injurydate }}</td>
                                     <td>{{ $injury->assignmentinjury }}</td>
-                                    <td>{{ $injury->status1 }}</td>
+                                    <td>{{ DB::table('status')->where('statusid',$injury->applicationstatus)->value('statustype')}}</td>
                                     <td>
                                         <div>
                                             <a href="{{ route('injuries.show',[$injury->ofd6id]) }}"
@@ -135,8 +137,8 @@
                 </div>
             </div>
         @endif
-
-        @if($injury->battalionchiefid == Auth::user()->id && $injury->applicationstatus == 3)
+        @if($injury->battalionchiefid== Auth::user()->id )
+       {{-- @if($injury->battalionchiefid == Auth::user()->id && $injury->applicationstatus ==3)--}}
             <div class="panel panel-default panel-shadow " hidden>
                 <div class="panel-heading">
                     Search Previously filled as Battalion Chief
@@ -156,17 +158,19 @@
                             <th data-sortable="true">Date of Injury</th>
                             <th data-sortable="true">Assignment</th>
                             <th data-sortable="true">Status</th>
+
                             <th data-switchable="false" data-searchable="false" data-sortable="false">Action</th>
                         </tr>
                         </thead>
                         <tbody>
                         @foreach($injuries as $injury)
                             @if($injury->battalionchiefid == Auth::user()->id && $injury->applicationstatus == 3)
+
                                 <tr>
                                     <td>{{ $injury->ofd6id }}</td>
                                     <td>{{ $injury->injurydate }}</td>
                                     <td>{{ $injury->assignmentinjury }}</td>
-                                    <td>{{ $injury->status1 }}</td>
+                                    <td>{{ DB::table('status')->where('statusid',$injury->applicationstatus)->value('statustype') }}</td>
                                     <td>
                                         <div>
                                             <a href="{{ route('injuries.show',[$injury->ofd6id]) }}"
@@ -208,12 +212,12 @@
                         </thead>
                         <tbody>
                         @foreach($injuries as $injury)
-                            @if($injury->aconduty == Auth::user()->id && $injury->applicationstatus == 4)
+                            @if($injury->aconduty == Auth::user()->id )
                                 <tr>
                                     <td>{{ $injury->ofd6id }}</td>
                                     <td>{{ $injury->injurydate }}</td>
                                     <td>{{ $injury->assignmentinjury }}</td>
-                                    <td>{{ $injury->status1 }}</td>
+                                    <td>{{DB::table('status')->where('statusid',$injury->applicationstatus)->value('statustype') }}</td>
                                     <td>
                                         <div>
                                             <a href="{{ route('injuries.show',[$injury->ofd6id]) }}"
