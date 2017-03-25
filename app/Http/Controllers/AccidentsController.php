@@ -12,6 +12,7 @@ use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Input;
 
 class AccidentsController extends Controller
 {
@@ -153,15 +154,55 @@ class AccidentsController extends Controller
         return view('accidents.create');
     }
 
-    public function store(StoreAccidentsRequest $request)
+
+
+
+    public function save( Request $requestSave)
     {
-       // 'applicationstatus' => $request->applicationstatus,
+        if(Input::get('store')) {
+            $this->store($requestSave);
+        }
+
+        if(Input::get('partialSave')) {
+            $this->partialSave($requestSave);
+        }
+        return redirect()->route('accidents.index');
+
+    }
+
+    public function store(Request $request)
+
+    {
 
 
-        //request will have all values filled by firefighter
-        //check if the user
-        $statusidraw=DB::table('status')->where('statustype','Application under Captain')->pluck('statusid');
-        $statusid=str_replace (array('[', ']'), '', $statusidraw);
+
+
+        // 'applicationstatus' => $request->applicationstatus,
+
+        $this->validate($request, [
+            'accidentdate' => 'required|date:accidents,accidentdate,',
+            'driverid' => 'required|integer:accidents,driverid,' ,
+            'drivername' => 'required|alpha|string:accidents,drivername,',
+            'assignmentaccident' => 'required|string:accidents,assignmentaccident',
+            'apparatus' => 'required|string:accidents,apparatus',
+            'captainid' => 'required|integer:accidents,captainid',
+            'battalionchiefid' => 'required|integer:accidents,battalionchiefid',
+            'aconduty' => 'required|integer:accidents,aconduty',
+            'frmsincidentnum' => 'required|integer:accidents,frmsincidentnum',
+            'calllaw' =>'required|integer:accidents,calllaw',
+            'daybook' =>'required|integer:accidents,daybook',
+            'commemail' =>'required|integer:accidents,commemail',
+        ]);//request will have all values filled by firefighter
+        //check if the user*/
+
+
+
+
+
+
+
+        $statusid=DB::table('status')->where('statustype','Application under Captain')->value('statusid');
+
         $request->offsetSet('applicationstatus',$statusid);
 
         $request = $this->saveFiles($request);
@@ -177,6 +218,30 @@ class AccidentsController extends Controller
        $numsent = (new EmailController)->Email($request, $link,$formname);
        return redirect()->route('accidents.index');
     }
+
+
+
+    public function partialSave(Request $request)
+    {
+        // 'applicationstatus' => $request->applicationstatus,
+
+
+        //request will have all values filled by firefighter
+        //check if the user
+        $statusid=DB::table('status')->where('statustype','Draft')->value('statusid');
+
+        $request->offsetSet('applicationstatus',$statusid);
+
+        $request = $this->saveFiles($request);
+        Accident::create($request->all());
+        $last_insert_id = DB::getPdo()->lastInsertId();
+        $this->AccidentUpload($request, $last_insert_id);
+        $link = $request->url() . "/$last_insert_id";
+//write code for email notification here
+
+        return redirect()->route('accidents.index');
+    }
+
 
     public function edit($id)
     {

@@ -16,7 +16,7 @@ class Accident extends Model
 
         static::creating(function($model)
         {
-            $model->createdby = Auth::user()->id;
+            $model->c = Auth::user()->id;
             $model->updatedby = Auth::user()->id;
             $model->ip_address=\Request::getClientIp();
 

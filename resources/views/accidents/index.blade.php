@@ -24,7 +24,7 @@
 
         @foreach($accidents as $accident)
         @endforeach
-        @if($accident->driverid == Auth::user()->id)
+        @if($accident->createdby == Auth::user()->id)
             <div class="panel panel-default panel-shadow " hidden>
                 <div class="panel-heading">
                     Search Previously filled
@@ -51,7 +51,7 @@
                         <tbody>
                         @if(count($accidents) > 0)
                             @foreach($accidents as $accident)
-                                @if($accident->driverid == Auth::user()->id)
+                                @if($accident->createdby == Auth::user()->id)
                                     <tr>
                                         <td>{{ $accident->ofd6aid }}</td>
                                         <td>{{ $accident->drivername }}</td>
