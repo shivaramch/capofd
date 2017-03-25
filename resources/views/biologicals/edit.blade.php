@@ -29,7 +29,8 @@
         }
 
     </style>
-    @if($biological->employeeid == Auth::user()->id ||
+    @if(($biological->employeeid == Auth::user()->id &&
+    ($biological->applicationstatus == 1 || $biological->applicationstatus == 5)) ||
     Auth::user()->roleid == 1)
         <div class="panel panel-default">
         <div class="panel-heading">

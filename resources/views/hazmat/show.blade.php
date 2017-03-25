@@ -178,6 +178,7 @@
                         {{--}}<label class="checkbox-inline col-sm-12">
                             <strong>Fill out OFD-025 Hazmat Exposure Report form</strong>
                         </label>--}}
+                        </div>
                         <br>
                         <div class="col-sm-12 form-group well well-sm">
                             <div class="col-sm-4">
