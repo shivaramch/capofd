@@ -108,6 +108,7 @@ return [
 
         'exposedemployeename' => [
             'required' => '"Exposed Employee Name" field is required',
+            'alpha' => '"Exposed Employee Name" can only have letters',
         ],
         'dateofexposure' => [
             'required' => '"Date of Exposure" field is required',
@@ -151,6 +152,7 @@ return [
         ],
         'injuredemployeename' => [
             'required' => '"Todays Date" field is required',
+            'alpha' => '"Todays Date" field can only have letters',
         ],
         'injuredemployeeid' => [
         'required' => '"Personnel ID #" field is required',
@@ -200,6 +202,7 @@ return [
         ],
         'drivername' => [
             'required' => '"Driver Name" field is required',
+            'alpha' => '"Driver Name" can only have letters',
         ],
         'assignmentaccident' => [
             'required' => '"Assignment" field is required',
@@ -213,6 +216,10 @@ return [
         'daybook' => [
             'required' => 'Check "Enter in Company Day Book" checkbox',
         ],
+        'commemail' => [
+            'required' => 'Check "Generate OFD 025 Intradepartmental Communication-Email" checkbox',
+        ],
+
 
     ],
 
