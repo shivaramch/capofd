@@ -174,8 +174,8 @@ class AccidentsController extends Controller
         $rawlink=request()->headers->get('referer');
         $link=preg_replace('#\/[^/]*$#', '', $rawlink)."/$last_insert_id";
 
-      //  $numsent = (new EmailController)->Email($request, $link,$formname);
-        return redirect()->route('accidents.index');
+       $numsent = (new EmailController)->Email($request, $link,$formname);
+       return redirect()->route('accidents.index');
     }
 
     public function edit($id)

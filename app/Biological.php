@@ -45,7 +45,8 @@ class Biological extends Model
         'potdocumentdaybook',
         'exposure',
         'trueofd184',
-        'potofd184'
+        'potofd184',
+        'applicationstatus'
         //'trueInjury',
         //'potInjury'
     ];
