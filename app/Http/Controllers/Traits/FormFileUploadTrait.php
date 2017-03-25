@@ -138,4 +138,14 @@ trait FormFileUploadTrait
             $attachment->save();
         }
     }
+    public function FmlaUpload(Request $request, $id)
+    {
+        if ($attachmentName = $request['fmla']) {
+            $attachment = new Attachment();
+            $attachment->attachmentname = $attachmentName;
+            $attachment->fmlaid = $id;
+            $attachment->attachmenttype = 'fmla';
+            $attachment->save();
+        }
+    }
 }

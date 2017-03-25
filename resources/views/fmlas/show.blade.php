@@ -2,16 +2,16 @@
 @section('crumbs')
     <ol class="breadcrumb">
         <a class="btn btn-default" type="button"
-           href="{{ route('limitedduties.index') }}">
+           href="{{ route('fmlas.index') }}">
             <i class="fa fa-arrow-left" aria-hidden="true"></i> Back</a>
         <li><a href="{{ url('/') }}">Dashboard</a></li>
-        <li><a href="{{ route('limitedduties.index') }}">Employee Limited Duty</a></li>
-        <li class="active">Edit Limited Duty Information {{ $limitedduty->limiteddutyid }}</li>
+        <li><a href="{{ route('fmlas.index') }}">FMLA Information</a></li>
+        <li class="active">View Employee FMLA Information {{ $fmla->fmlaid }}</li>
     </ol>
 @endsection
 
 @section('content')
-    {!! Form::model($limitedduty,['method' => 'PUT', 'route' => ['limitedduties.update', $limitedduty->limiteddutyid], 'files' => true,]) !!}
+    {!! Form::model($fmla,['method' => 'PUT', 'route' => ['fmlas.update', $fmla->fmlaid], 'files' => true,])!!}
     <input type="hidden" name="_token" value="{!!  'csrf_token()' !!}">
     {{ csrf_field() }}
     <style>
@@ -28,6 +28,7 @@
         }
     </style>
     {{--@if($limitedduty->employeeid == Auth::user()->id ||--}}
+    {{--($limitedduty->primaryidconumber == Auth::user()->id && $biological->applicationstatus == 2) ||--}}
     {{--Auth::user()->roleid == 1)--}}
     <div class="panel panel-default">
         <div class="panel-heading">
@@ -39,23 +40,22 @@
                     <div class="col-md-10">
                         <div class="col-md-12">
                             <div class="page-header1">
-                                <h3><strong>Employee Limited Duty Information</strong></h3>
+                                <h3><strong>Employee FMLA Information</strong></h3>
                             </div>
-                        </div>
-                        <div class="col-md-12">
-                            <h6><i><strong>Used for future tracking purposes only</strong></i></h6>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+        <br>
+        <br>
         <div class="panel-body">
             <div class="form-horizontal">
                 <div class="row">
                     <div class="col-sm-6 form-group">
                         {!! Form::label('employeename', 'Employee Name',array('style'=>'padding-top:7px;','class'=> 'col-sm-4 control-label') ) !!}
                         <div class="col-sm-6 ">
-                            {!! Form::text('employeename', old('employeename'), array('class'=>'form-control'))!!}
+                            {!! Form::text('employeename', old('employeename'),['disabled'], array('class'=>'form-control'))!!}
                             <p class="help-block"></p>
                             @if($errors->has('employeename'))
                                 <p class="help-block">
@@ -67,7 +67,7 @@
                     <div class="col-sm-6 form-group">
                         {!! Form::label('employeeid', 'Employee ID#', array('style'=>'padding-top:7px;','class'=> 'col-sm-4 control-label') ) !!}
                         <div class="col-sm-6 ">
-                            {!! Form::text('employeeid', old('employeeid'), array('class'=> 'form-control','placeholder'=>'Enter Badge ID'))!!}
+                            {!! Form::text('employeeid', old('employeeid'),['disabled'], array('class'=> 'form-control','placeholder'=>'Enter Badge ID'))!!}
                             <p class="help-block"></p>
                             @if($errors->has('employeeid'))
                                 <p class="help-block">
@@ -81,7 +81,7 @@
                     <div class="col-sm-6 form-group">
                         {!! Form::label('fromdate', 'From Date', array('style'=>'padding-top:7px;','class'=> 'col-sm-4 control-label') ) !!}
                         <div class="col-sm-6 ">
-                            {!! Form::text('fromdate', old('fromdate'), array('id'=>'datepicker','class' => 'form-control datepicker', 'placeholder' => 'MM-DD-YYYY','required' => 'required'))!!}
+                            {!! Form::text('fromdate', old('fromdate'),['disabled'], array('id'=>'datepicker','class' => 'form-control datepicker', 'placeholder' => 'MM-DD-YYYY','required' => 'required'))!!}
                             <p class="help-block"></p>
                             @if($errors->has('fromdate'))
                                 <p class="help-block">
@@ -93,7 +93,7 @@
                     <div class="col-sm-6 form-group">
                         {!! Form::label('todate', 'To Date', array('style'=>'padding-top:7px;','class'=> 'col-sm-4 control-label') ) !!}
                         <div class="col-sm-6 ">
-                            {!! Form::text('todate', old('todate'), array('id'=>'datepicker','class' => 'form-control datepicker', 'placeholder' => 'MM-DD-YYYY','required' => 'required'))!!}
+                            {!! Form::text('todate', old('todate'),['disabled'], array('id'=>'datepicker','class' => 'form-control datepicker', 'placeholder' => 'MM-DD-YYYY','required' => 'required'))!!}
                             <p class="help-block"></p>
                             @if($errors->has('todate'))
                                 <p class="help-block">
@@ -105,37 +105,9 @@
                 </div>
                 <div class="row">
                     <div class="col-sm-4 form-group">
-                        {!! Form::label('corvelid', 'CorVel ID', array('style'=>'padding-top:7px;','class'=> 'col-sm-4 control-label') ) !!}
-                        <div class="col-sm-6 ">
-                            {!! Form::text('corvelid', old('corvelid'), array('class' => 'form-control', 'placeholder' => 'Enter CorVel ID Here'))!!}
-                            <p class="help-block"></p>
-                            @if($errors->has('corvelid'))
-                                <p class="help-block">
-                                    {{ $errors->first('corvelid') }}
-                                </p>
-                            @endif
-                        </div>
-                    </div>
-                    <div class="col-sm-4 form-group">
-                        {!! Form::label('incidentid', 'EPCR Incident#', array('style'=>'padding-top:7px;','class'=> 'col-sm-4 control-label') ) !!}
-                        <div class="col-sm-6 ">
-                            {!! Form::text('incidentid', old('incidentid'), array('class' => 'form-control','placeholder'=>'Enter Incident Num'))!!}
-                            <p class="help-block"></p>
-                            @if($errors->has('incidentid'))
-                                <p class="help-block">
-                                    {{ $errors->first('incidentid') }}
-                                </p>
-                            @endif
-                        </div>
-                    </div>
-                    <div class="col-sm-4 form-group">
                         {!! Form::label('incidenttype', 'Incident Type', ['class'=> 'col-sm-4 control-label'] ) !!}
                         <div class="col-sm-6">
-                            {!! Form::select('incidenttype', ['ofd6' => 'IOD',
-                            'ofd6a' => 'Accident',
-                            'ofd6b' => 'Biological Exposure',
-                            'ofd6c' => 'HazMat Exposure'], null,
-                            ['placeholder' => 'Select One'],old('exposureinjury'),
+                            {!! Form::text('incidenttype',old('incidenttype'),['disabled'],
                             ['class' => 'form-control']) !!}
                             <p class="help-block"></p>
                             @if($errors->has('incidenttype'))
@@ -158,7 +130,7 @@
             <div class="col-sm-12">
                 <div class="form-group">
                     {{--{{ Form::checkbox('trueofd184', 1, null, ['id'=>'trueofd184', 'class' => 'className' ]) }}--}}
-                    {{Form::label('limitedduty','Attachments')}}
+                    {{Form::label('fmla','Attachments')}}
                 </div>
                 <div class="col-sm-12 form-group well well-sm">
                     <div class="col-sm-4">
@@ -166,7 +138,7 @@
                             <label class="input-group-btn">
                                             <span class="btn btn-info"><i class="fa fa-cloud-upload"
                                                                           aria-hidden="true"></i> Upload<input
-                                                        type="file" name="limitedduty"
+                                                        type="file" name="fmla"
                                                         style="display: none;"
                                                         multiple>
                                             </span>
@@ -175,13 +147,13 @@
                         </div>
                         <div class="col-sm-4">
                             <a class="btn btn-primary dropdown-toggle col-sm-12" data-toggle="collapse"
-                               data-target="#ltdduty"><i class="fa fa-eye" aria-hidden="true"></i> View
+                               data-target="#fmla"><i class="fa fa-eye" aria-hidden="true"></i> View
                                 Previously
                                 uploaded
                                 file(s)
                             </a>
 
-                            <div id="ltdduty" class="collapse">
+                            <div id="fmla" class="collapse">
 
                                 <table class="table table-striped">
                                     <tr>
@@ -191,7 +163,7 @@
 
                                     @if(count($attachments) > 0)
                                         @foreach($attachments as $attachment)
-                                            @if($attachment->attachmenttype == 'ltdduty' && $attachment->createdby ==  Auth::user()->id && $attachment->limiteddutyid == $limitedduty->limiteddutyid )
+                                            @if($attachment->attachmenttype == 'fmla' && $attachment->createdby ==  Auth::user()->id && $attachment->fmlaid == $fmla->fmlaid )
                                                 <tr>
                                                     <td>
                                                         <a href="{{ asset('uploads/'.$attachment->attachmentname) }}"> {{$attachment->attachmentname}}</a>
@@ -214,7 +186,7 @@
                         {!! Form::label('comments', 'Comments', array('style'=>'padding-top:7px;','class'=> 'col-sm-4 control-label') ) !!}
                     </div>
                     <div class="col-sm-12 ">
-                        {!! Form::textarea('comments', old('comments'), array('class' => 'form-control','placeholder'=>'Enter Comments'))!!}
+                        {!! Form::textarea('comments', old('comments'), ['disabled'],array('class' => 'form-control','placeholder'=>'Enter Comments'))!!}
                         <p class="help-block"></p>
                         @if($errors->has('comments'))
                             <p class="help-block">
@@ -225,44 +197,12 @@
                 </div>
             </div>
 
-            <div class="row">
-                <div class="col-sm-12">
-                    <label class="col-sm-5"></label>
-                    <div class="btn-bottom">
-                        <button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal">
-                            Save
-                        </button>
-                        <a href="{{ route('limitedduties.index') }}" class="btn btn-danger">Cancel</a>
-                    </div>
+            <div class="col-sm-12 panel-heading" align="center">
+                <div class="btn-bottom ">
+                    <a href="{{ route('fmlas.index') }}" class="btn btn-default">Return</a>
                 </div>
             </div>
-
-
-            <!-- Modal -->
-            <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-                <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
-                                        aria-hidden="true">&times;</span></button>
-                            <h4 class="modal-title" id="myModalLabel"></h4>
-                        </div>
-                        <div class="modal-body">
-                            Are you sure you want to Submit?
-                        </div>
-                        <div class="modal-footer">
-                            {!! Form::submit('Yes',['class' => 'btn btn-success']) !!}
-                            <button type="button" class=" btn btn-danger" data-dismiss="modal" aria-label="">No
-                            </button>
-
-
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-
-            {!! Form::close() !!}
-            @stop
         </div>
     </div>
+    {!! Form::close() !!}
+@stop
