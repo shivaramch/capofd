@@ -23,6 +23,7 @@ class CreateAttachmentTable extends Migration
             $table->integer('ofd6bid')->nullable();
             $table->integer('ofd6aid')->nullable();
             $table->integer('limiteddutyid')->nullable();
+            $table->integer('fmlaid')->nullable();
 
             $table->timestamps();
 

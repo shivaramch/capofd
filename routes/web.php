@@ -53,6 +53,8 @@ Route::group(['middleware' => 'auth'], function () {// Authentication Routes...
 
     Route::resource('limitedduties', 'LimiteddutyController');
 
+    Route::resource('fmlas', 'FmlaController');
+
 
 
     Route::get('biologicals/{id}/Approve', 'BiologicalsController@Approve');
