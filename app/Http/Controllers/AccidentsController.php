@@ -228,6 +228,12 @@ class AccidentsController extends Controller
 
         //request will have all values filled by firefighter
         //check if the user
+
+
+
+        $this->validate($request, [
+            'accidentdate' => 'required|date:accidents,accidentdate,',
+            ]);
         $statusid=DB::table('status')->where('statustype','Draft')->value('statusid');
 
         $request->offsetSet('applicationstatus',$statusid);
