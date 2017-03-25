@@ -32,7 +32,7 @@ class AccidentsController extends Controller
         $captainid=DB::table('accidents')->where ([
             ['captainid', '=', $currentuserid],
             ['ofd6aid', '=', $id],
-        ])->pluck('captainid');
+        ])->value('captainid');
 
 
 
@@ -40,30 +40,30 @@ class AccidentsController extends Controller
         $BCid=DB::table('accidents')->where ([
             ['battalionchiefid', '=', $currentuserid],
             ['ofd6aid', '=', $id],
-        ])->pluck('battalionchiefid');
+        ])->value('battalionchiefid');
 
     //    $ACid=DB::table('accidents')->where('aconduty',$currentuserid,'ofd6aid',$id)->pluck('aconduty');
 
         $ACid=DB::table('accidents')->where ([
             ['aconduty', '=', $currentuserid],
             ['ofd6aid', '=', $id],
-        ])->pluck('aconduty');
+        ])->value('aconduty');
 
-        $currentapplicationstatusraw=DB::table('accidents')->where('ofd6aid',$id)->pluck('applicationstatus');
-        $currentapplicationstatus=  str_replace (array('["', '"]'), '',$currentapplicationstatusraw);
+        $currentapplicationstatus=DB::table('accidents')->where('ofd6aid',$id)->value('applicationstatus');
+     //   $currentapplicationstatus=  str_replace (array('["', '"]'), '',$currentapplicationstatusraw);
 
 
-        $captainapprovalstatusidraw=DB::table('status')->where('statustype','Application under Captain')->pluck('statusid');
-        $captainapprovalstatusid=str_replace (array('[', ']'), '',$captainapprovalstatusidraw);
+        $captainapprovalstatusid=DB::table('status')->where('statustype','Application under Captain')->value('statusid');
+     //   $captainapprovalstatusid=str_replace (array('[', ']'), '',$captainapprovalstatusidraw);
 
-        $BCapprovalstatusidraw=DB::table('status')->where('statustype','Application under Batallion Chief')->pluck('statusid');
-        $BCapprovalstatusid=str_replace (array('[', ']'), '',$BCapprovalstatusidraw);
+        $BCapprovalstatusid=DB::table('status')->where('statustype','Application under Batallion Chief')->value('statusid');
+     //   $BCapprovalstatusid=str_replace (array('[', ']'), '',$BCapprovalstatusidraw);
 
-        $ACapprovalstatusidraw=DB::table('status')->where('statustype','Application under Assistant Chief')->pluck('statusid');
-        $ACapprovalstatusid=str_replace (array('[', ']'), '',$ACapprovalstatusidraw);
+        $ACapprovalstatusid=DB::table('status')->where('statustype','Application under Assistant Chief')->value('statusid');
+     //   $ACapprovalstatusid=str_replace (array('[', ']'), '',$ACapprovalstatusidraw);
 
-        $Finalapprovalstatusidraw=DB::table('status')->where('statustype','Approved')->pluck('statusid');
-        $Finalpprovalstatusid=str_replace (array('[', ']'), '',$Finalapprovalstatusidraw);
+        $Finalapprovalstatusid=DB::table('status')->where('statustype','Approved')->value('statusid');
+     //   $Finalpprovalstatusid=str_replace (array('[', ']'), '',$Finalapprovalstatusidraw);
 
         if($captainid){
           if($currentapplicationstatus==$captainapprovalstatusid)
@@ -92,7 +92,7 @@ class AccidentsController extends Controller
             {
                 $Accident = Accident::find($id);
 
-                $Accident->applicationstatus =$Finalpprovalstatusid ;
+                $Accident->applicationstatus =$Finalapprovalstatusid;
 
                 $Accident->save();
             }
@@ -111,7 +111,7 @@ class AccidentsController extends Controller
         $captainid=DB::table('accidents')->where ([
             ['captainid', '=', $currentuserid],
             ['ofd6aid', '=', $id],
-        ])->pluck('captainid');
+        ])->value('captainid');
 
 
 
@@ -119,16 +119,16 @@ class AccidentsController extends Controller
         $BCid=DB::table('accidents')->where ([
             ['battalionchiefid', '=', $currentuserid],
             ['ofd6aid', '=', $id],
-        ])->pluck('captainid');
+        ])->value('captainid');
 
         //    $ACid=DB::table('accidents')->where('aconduty',$currentuserid,'ofd6aid',$id)->pluck('aconduty');
 
         $ACid=DB::table('accidents')->where ([
             ['aconduty', '=', $currentuserid],
             ['ofd6aid', '=', $id],
-        ])->pluck('captainid');
-        $statusidraw=DB::table('status')->where('statustype','Rejected')->pluck('statusid');
-        $statusid=str_replace (array('[', ']'), '', $statusidraw);
+        ])->value('captainid');
+        $statusid=DB::table('status')->where('statustype','Rejected')->value('statusid');
+  //      $statusid=str_replace (array('[', ']'), '', $statusid);
              if($captainid|| $BCid || $ACid) {
                           $Accident = Accident::find($id);
 

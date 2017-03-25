@@ -55,7 +55,7 @@
                                     <td>{{ $biological->ofd6bid }}</td>
                                     <td>{{ $biological->dateofexposure }}</td>
                                     <td>{{ $biological->assignmentbiological }}</td>
-                                    <td>{{ $biological->status }}</td>
+                                    <td>{{ DB::table('status')->where('statusid',$biological->applicationstatus)->value('statustype') }}</td>
                                     <td>
                                         <div>
                                             <a href="{{ route('biologicals.show',[$biological->ofd6bid]) }}"
@@ -108,7 +108,7 @@
                                     <td>{{ $biological->ofd6bid }}</td>
                                     <td>{{ $biological->dateofexposure }}</td>
                                     <td>{{ $biological->assignmentbiological }}</td>
-                                    <td>{{ $biological->status }}</td>
+                                    <td>{{DB::table('status')->where('statusid',$biological->applicationstatus)->value('statustype') }}</td>
                                     <td>
                                         <div>
                                             <a href="{{ route('biologicals.show',[$biological->ofd6bid]) }}"
