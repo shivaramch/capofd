@@ -23,7 +23,7 @@ class StoreAccidentsRequest extends FormRequest
         return [
             'accidentdate' => 'required|date:accidents,accidentdate,'. $this->route('accident'),
             'driverid' => 'required|integer:accidents,driverid,' . $this->route('accident'),
-            'drivername' => 'required|string:accidents,drivername,'. $this->route('accident'),
+            'drivername' => 'required|alpha|string:accidents,drivername,'. $this->route('accident'),
             'assignmentaccident' => 'required|string:accidents,assignmentaccident'. $this->route('accident'),
             'apparatus' => 'required|string:accidents,apparatus'. $this->route('accident'),
             'captainid' => 'required|integer:accidents,captainid'. $this->route('accident'),

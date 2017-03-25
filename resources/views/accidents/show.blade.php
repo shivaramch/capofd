@@ -222,11 +222,11 @@
                         {{ Form::checkbox('checkbox1', 1, null,['disabled'], ['id' => 'checkbox1', 'class'=>'className','readonly' => 'true']) }}
                         {{Form::label('Checkbox1','Complete lrs 101 city of omaha accident report-include rb#, officer name,
                             badge#')}}
-                        </div>
-                   {{--}} <label class="checkbox-inline col-sm-12">
-                        <strong>complete lrs 101 city of omaha accident report-include rb#, officer name,
-                            badge#</strong>
-                    </label> --}}
+                    </div>
+                    {{--}} <label class="checkbox-inline col-sm-12">
+                         <strong>complete lrs 101 city of omaha accident report-include rb#, officer name,
+                             badge#</strong>
+                     </label> --}}
                     <br>
                     <div class="col-sm-12 form-group well well-sm">
                         <div class="col-sm-4">
@@ -265,9 +265,9 @@
                                 vehicle accident witness statement -this report is for civilian statements
                             only')}}
                     </div>
-                   {{--}} <label class="col-sm-12"><strong><strong>complete ofd 295
-                                vehicle accident witness statement</strong>-this report is for civilian statements
-                            only</strong></label> --}}
+                    {{--}} <label class="col-sm-12"><strong><strong>complete ofd 295
+                                 vehicle accident witness statement</strong>-this report is for civilian statements
+                             only</strong></label> --}}
                     <div class="col-sm-12 form-group well well-sm">
                         <div class="col-sm-4">
                             <a class="btn btn-primary dropdown-toggle col-sm-12" data-toggle="collapse"
@@ -343,8 +343,8 @@
                         {{Form::label('Checkbox4','Complete ofd 25b accident
                             intradepartmental communication - Supervisor')}}
                     </div>
-                  {{--}}  <label class="checkbox-inline col-sm-12"><strong>complete ofd 25b accident
-                            intradepartmental communication</strong>-supervisor</label> --}}
+                    {{--}}  <label class="checkbox-inline col-sm-12"><strong>complete ofd 25b accident
+                              intradepartmental communication</strong>-supervisor</label> --}}
                     <div class="col-sm-12 form-group well well-sm">
                         <div class="col-sm-4">
                             <a class="btn btn-primary dropdown-toggle col-sm-12" data-toggle="collapse"
@@ -421,8 +421,8 @@
                         {{Form::label('Checkbox6','Complete ofd 31-ofd
                             damaged, lost, stolen equipment report')}}
                     </div>
-                   {{--}} <label class="checkbox-inline col-sm-12"><strong> complete ofd 31-ofd
-                            damaged, lost, stolen equipment report</strong></label> --}}
+                    {{--}} <label class="checkbox-inline col-sm-12"><strong> complete ofd 31-ofd
+                             damaged, lost, stolen equipment report</strong></label> --}}
                     <div class="col-sm-12 form-group well well-sm">
                         <div class="col-sm-4">
                             <a class="btn btn-primary dropdown-toggle col-sm-12" data-toggle="collapse"
@@ -461,8 +461,8 @@
                         {{Form::label('Checkbox7','Complete ofd 127 request for
                             services form')}}
                     </div>
-                  {{--}}  <label class="checkbox-inline col-sm-12"><strong> complete ofd 127 request for
-                            services form</strong></label> --}}
+                    {{--}}  <label class="checkbox-inline col-sm-12"><strong> complete ofd 127 request for
+                              services form</strong></label> --}}
                     <div class="col-sm-12 form-group well well-sm">
                         <div class="col-sm-4">
                             <a class="btn btn-primary dropdown-toggle col-sm-12" data-toggle="collapse"
@@ -501,8 +501,8 @@
                         {{Form::label('Checkbox8','Complete dr 41 state
                                 of nebraska dmv vehicle accident report')}}
                     </div>
-                   {{--}} <label class="checkbox-inline col-sm-12"><strong><strong> complete dr 41 state
-                                of nebraska dmv vehicle accident report</strong></strong></label> --}}
+                    {{--}} <label class="checkbox-inline col-sm-12"><strong><strong> complete dr 41 state
+                                 of nebraska dmv vehicle accident report</strong></strong></label> --}}
                     <div class="col-sm-12 form-group well well-sm">
                         <div class="col-sm-4">
                             <a class="btn btn-primary dropdown-toggle col-sm-12" data-toggle="collapse"

@@ -53,7 +53,7 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-sm-8 form-group">
+                    <div class="col-sm-8 form-group">
                     {!! Form::label('reportnum', 'Report #', ['class' => 'col-sm-2 control-label']) !!}
                     <div class="col-sm-3">
                         {!! Form::text('reportnum', old('reportnum'), array('class' => 'form-control','style' =>'margin-left:-7px;','placeholder'=>'Enter Report Number'))!!}
@@ -67,21 +67,9 @@
                     <div class='col-sm-7'>
                         {!! Form::label('reportnum ', '(Obtain from SWD Office)', array('class' => 'col-sm-6 control-label','style' =>'margin-left:-70px;')) !!}
                     </div>
-                </div>
+                    </div>
             </div>
             <div class="row">
-                <div class="col-sm-4 form-group">
-                    {!! Form::label('createdate', 'Todays Date:', ['class' => 'col-sm-4 control-label']) !!}
-                    <div class="col-sm-6 ">
-                        {!! Form::text('createdate', old('createdate'), array('class'=>'datepicker form-control','placeholder'=>'MM/DD/YYYY'))!!}
-                        <p class="help-block"></p>
-                        @if($errors->has('createDate'))
-                            <p class="help-block">
-                                {{ $errors->first('createDate') }}
-                            </p>
-                        @endif
-                    </div>
-                </div>
                 <div class="col-sm-4 form-group">
                     {!! Form::label('injuryDate', 'Date of Injury:', ['class' => 'col-sm-4 control-label']) !!}
                     <div class="col-sm-6 ">
@@ -217,10 +205,23 @@
                     </div>
                 </div>
             </div>
+            <div class="row">
+                <div class="col-sm-8 form-group">
+                    {!! Form::label('captainID', 'Enter EPCR #', ['class' => 'col-sm-2 control-label']) !!}
+                    <div class="col-sm-3">
+                        {!! Form::text('captainID', old('captainID'), array('class' => 'form-control','placeholder'=>'Enter EPCR Number'))!!}
+                        <p class="help-block"></p>
+                        @if($errors->has('captainID'))
+                            <p class="help-block">
+                                {{ $errors->first('captainID') }}
+                            </p>
+                        @endif
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>
-
 <div class="panel panel-default">
     <div class="panel-heading">
         <div class="row">
@@ -349,8 +350,8 @@
             <div class="col-sm-12 form-group well well-sm">
                 <div class="col-sm-4">
                     <a class="btn btn-success dropdown-toggle col-sm-12" type="button"
-                       href="{{ asset('Fillable PDFs\Injury Module\(Injury PDF) OFD Employee Choice of Physician or Doctor.pdf') }}"
-                       download="(Injury PDF) OFD Employee Choice of Physician or Doctor.pdf">
+                       href="{{ asset('Fillable PDFs\Injury Module\(Injury PDF) OFD Employee\'s Choice of Physician or Doctor.pdf') }}"
+                       download="(Injury PDF) OFD Employee's Choice of Physician or Doctor.pdf">
                         <i class="fa fa-download" aria-hidden="true"></i> Download</a>
                 </div>
                 <div class="col-sm-4">
@@ -399,36 +400,6 @@
                 </div>
             </div>
         </div>
-
-        <div class="row">
-            <div class="col-sm-6 form-group">
-                {!! Form::label('captainID', 'Complete FRMS Casuality & Narrative Tab - Fire service and Fire Service Injury', ['class' => 'col-sm-6 control-label']) !!}
-                <div class="col-sm-6 ">
-                    {!! Form::text('captainID', old('captainID'), array('class' => 'form-control','placeholder'=>'Enter FRMS Number here'))!!}
-                    <p class="help-block"></p>
-                    @if($errors->has('captainID'))
-                        <p class="help-block">
-                            {{ $errors->first('captainID') }}
-                        </p>
-                    @endif
-                </div>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col-sm-6 form-group">
-                {!! Form::label('captainID', 'Complete in EPCR - All Cases', ['class' => 'col-sm-6 control-label']) !!}
-                <div class="col-sm-6 ">
-                    {!! Form::text('captainID', old('captainID'), array('class' => 'form-control','placeholder'=>'Enter EPCR Number here'))!!}
-                    <p class="help-block"></p>
-                    @if($errors->has('captainID'))
-                        <p class="help-block">
-                            {{ $errors->first('captainID') }}
-                        </p>
-                    @endif
-                </div>
-            </div>
-        </div>
         <div class="row">
             <div class="col-sm-12">
                 <div class="form-group">
@@ -462,9 +433,9 @@
         </div>
         <div class="row">
             <div class="col-sm-12 form-group">
-                <label class="checkbox-inline col-sm-12"><u>For Fire Omaha Police Recruits: Use normal Chain-of-Command
+                <label class="checkbox-inline col-sm-12"><em>For Fire Omaha Police Recruits: Use normal Chain-of-Command
                         for Tracking
-                        Document</u></label>
+                        Document</em></label>
             </div>
         </div>
         <div class="row">
@@ -486,7 +457,6 @@
                 </div>
             </div>
         </div>
-        {{ Form::hidden('applicationstatus', '2') }}
         <div class="row">
             <div class="col-sm-12 panel-headinzzzzg">
                 <br>
