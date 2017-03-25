@@ -323,8 +323,8 @@
             <div class="col-sm-12 form-group well well-sm">
                 <div class="col-sm-4">
                     <a class="btn btn-success dropdown-toggle col-sm-12" type="button"
-                       href="{{ asset('Fillable PDFs\Injury Module\(Injury PDF) OFD Employee Choice of Physician or Doctor.pdf') }}"
-                       download="(Injury PDF) OFD Employee Choice of Physician or Doctor.pdf">
+                       href="{{ asset('Fillable PDFs\Injury Module\(Injury PDF) OFD Employee\'s Choice of Physician or Doctor.pdf') }}"
+                       download="(Injury PDF) OFD Employee's Choice of Physician or Doctor.pdf">
                         <i class="fa fa-download" aria-hidden="true"></i> Download</a>
                 </div>
                 <div class="col-sm-4">
@@ -430,9 +430,9 @@
         </div>
         <div class="row">
             <div class="col-sm-12 form-group">
-                <label class="checkbox-inline col-sm-12"><u>For Fire Omaha Police Recruits: Use normal Chain-of-Command
+                <label class="checkbox-inline col-sm-12"><em>For Fire Omaha Police Recruits: Use normal Chain-of-Command
                         for Tracking
-                        Document</u></label>
+                        Document</em></label>
             </div>
         </div>
         <div class="row">
@@ -454,7 +454,6 @@
                 </div>
             </div>
         </div>
-        {{ Form::hidden('applicationstatus', '2') }}
         <div class="row">
             <div class="col-sm-12 panel-headinzzzzg">
                 <br>

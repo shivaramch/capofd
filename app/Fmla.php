@@ -15,10 +15,13 @@ class Fmla extends Model
         {
             $model->createdby = Auth::user()->id;
             $model->updatedby = Auth::user()->id;
+            $model->ip_address=\Request::getClientIp();
         });
         static::updating(function($model)
         {
             $model->updatedby = Auth::user()->id;
+            $model->ip_address=\Request::getClientIp();
+
         });
     }
     protected $fillable = [

@@ -183,9 +183,6 @@
                     <div class="row">
                         <div class="col-md-12">
                             <strong>
-                                B/C shall ensure all reports are properly completed and forwarded to Safety Officer
-                                within 24 hours of accident.
-                                <br>
                                 Police Report is REQUIRED on all City vehicles involved in an accident OR property
                                 damage whether on public streets, private property, or at the Fire Station
                             </strong>
@@ -427,7 +424,6 @@
                 </div>
             </div>
             <br>
-            {{ Form::hidden('applicationstatus', '2') }}
             <label class="col-sm-5"></label>
             <button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal">
                 Submit
