@@ -46,6 +46,7 @@ class Accident extends Model
         'status',
         'frmsincidentnum',
 
+
     ];
     /**
      * Set attribute to date format

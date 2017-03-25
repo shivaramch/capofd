@@ -1,15 +1,10 @@
 <?php
 namespace App\Http\Controllers\Traits;
-use Illuminate\Http\Request;
+
 use App\Attachment;
-use App\Injury;
-use App\Biological;
-use App\Http\Requests\StoreStationsRequest;
-use App\Http\Controllers\Traits\FileUploadTrait;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Input;
-use Illuminate\Support\Facades\Redirect;
 use Auth;
+use Illuminate\Http\Request;
+
 trait FormFileUploadTrait
 {
     public function InjuriesUpload(Request $request, $id)
@@ -50,6 +45,7 @@ trait FormFileUploadTrait
             $attachment->save();
         }
     }
+
     public function AccidentUpload(Request $request, $id)
     {
         if ($attachmentName = $request['LRS101']) {
@@ -109,6 +105,7 @@ trait FormFileUploadTrait
             $attachment->save();
         }
     }
+
     public function BiologicalUpload(Request $request, $id)
     {
         if ($attachmentName = $request['trueofd184']) {
@@ -128,6 +125,19 @@ trait FormFileUploadTrait
     }
 
 
+    public function HazmatUpload(Request $request, $id)
+
+    {
+        if ($attachmentName = $request['OFD025']) {
+            $attachment = new Attachment();
+            $attachment->attachmentname = $attachmentName;
+            $attachment->ofd6cid = $id;
+            $attachment->attachmenttype = '6c';
+            $attachment->save();
+        }
+
+    }
+
     public function LimiteddutyUpload(Request $request, $id)
     {
         if ($attachmentName = $request['limitedduty']) {
@@ -138,6 +148,7 @@ trait FormFileUploadTrait
             $attachment->save();
         }
     }
+
     public function FmlaUpload(Request $request, $id)
     {
         if ($attachmentName = $request['fmla']) {
