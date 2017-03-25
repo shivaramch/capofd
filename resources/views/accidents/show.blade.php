@@ -183,9 +183,6 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <strong>
-                                    b/c shall ensure all reports are properly completed and forwarded to safety officer
-                                    within 24 hours of accident.
-                                    <br>
                                     police report is required on all city vehicles involved in an accident or property
                                     damage whether on public streets, private property, or at the fire station
                                 </strong>
