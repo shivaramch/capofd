@@ -195,7 +195,7 @@
 
                                         @if(count($attachments) > 0)
                                             @foreach($attachments as $attachment)
-                                                @if($attachment->attachmenttype == '6c' && $attachment->createdby ==  Auth::user()->id && $attachment->ofd6cid == $hazmat->ofd6cid)
+                                                @if($attachment->attachmenttype == '6c' && $attachment->ofd6cid == $hazmat->ofd6cid)
                                                     <tr>
                                                         <td>
                                                             <a href="{{ asset('uploads/'.$attachment->attachmentname) }}"> {{$attachment->attachmentname}}</a>
