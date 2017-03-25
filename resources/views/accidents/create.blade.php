@@ -428,6 +428,7 @@
             </div>
             <br>
             <label class="col-sm-5"></label>
+            {!! Form::submit('Save',['class' => 'btn btn-success']) !!}
             <button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal">
                 Submit
             </button>
