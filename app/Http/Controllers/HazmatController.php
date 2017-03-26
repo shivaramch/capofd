@@ -13,6 +13,7 @@ use App\User;
 use Illuminate\Http\Request;
 use App\Http\Requests\StoreHazmatRequest;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Input;
 
 class HazmatController extends Controller
 {
@@ -31,8 +32,66 @@ class HazmatController extends Controller
         return view('hazmat.create');
     }
 
+
+
+
+
+    public function save( Request $requestSave)
+    {
+        if(Input::get('store')) {
+            $this->store($requestSave);
+        }
+
+        if(Input::get('partialSave')) {
+            $this->partialSave($requestSave);
+        }
+        return redirect()->route('hazmat.index');
+
+    }
+
+
+
+    public function partialSave(Request $request)
+    {
+
+
+        $this->validate($request, [
+
+
+
+            'dateofexposure' => 'required|date:hazmat,dateofexposure,',
+            'corvelid' => 'required|integer:hazmat,corvelid',
+            'contactcorvel' => 'required|string:hazmat,contactcorvel',
+            ]);
+        $request = $this->saveFiles($request);
+        hazmat::create($request->all());
+        $last_insert_id = DB::getPdo()->lastInsertId();
+        $this->HazmatUpload($request, $last_insert_id);
+
+        $link = $request->url() . "/$last_insert_id";
+
+    }
+
     public function store(StoreHazmatRequest $request)
     {
+
+
+
+
+        $this->validate($request, [
+
+
+            'employeeid' => 'required|integer:hazmat,employeeid,',
+            'employeename' => 'required|alpha|string:hazmat,employeename,' ,
+            'dateofexposure' => 'required|date:hazmat,dateofexposure,',
+            'primaryidconumber' => 'required|integer:hazmat,primaryidconumber',
+            'contactcorvel' => 'required|string:hazmat,contactcorvel',
+            'corvelid' => 'required|integer:hazmat,corvelid',
+            'epcrincidentnum' => 'required|integer:hazmat,epcrincidentnum',
+            'assignment' => 'required|string:hazmat,assignment',
+            'frmsincidentnum' => 'required|integer:hazmat,frmsincidentnum',
+            'shift' => 'required|string:hazmat,shift,',
+            ]);
         $request = $this->saveFiles($request);
         hazmat::create($request->all());
         $last_insert_id = DB::getPdo()->lastInsertId();

@@ -50,6 +50,7 @@ Route::group(['middleware' => 'auth'], function () {// Authentication Routes...
     Route::post('biologicals/save', 'BiologicalsController@save');
 
     Route::resource('hazmat', 'HazmatController');
+    Route::post('hazmat/save', 'HazmatController@save');
 
     Route::resource('users', 'UserController');
 
