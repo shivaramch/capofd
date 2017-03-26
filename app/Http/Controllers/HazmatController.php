@@ -18,6 +18,67 @@ class HazmatController extends Controller
 {
     use FileUploadTrait;
     use FormFileUploadTrait;
+    public function Approve($id)
+    {
+
+        //$hazmat->ofd6cid
+
+        $hazmat=DB::table('hazmats')->where('ofd6cid',$id)->first();
+        $formname="hazmat";
+
+        $rawlink=request()->headers->get('referer');
+        $link=preg_replace('#\/[^/]*$#', '', $rawlink);
+        $currentuserid = Auth::user()->id;
+        $primaryidconumber=DB::table('hazmats')->where ([
+            ['primaryidconumber', '=', $currentuserid],
+            ['ofd6cid', '=', $id],
+        ])->pluck('primaryidconumber');
+        $Finalapprovalstatusidraw=DB::table('status')->where('statustype','Approved')->pluck('statusid');
+        $Finalpprovalstatusid=str_replace (array('[', ']'), '',$Finalapprovalstatusidraw);
+
+        if($primaryidconumber){
+
+            $hazmat = hazmat::find($id);
+
+            $hazmat->applicationstatus =$Finalpprovalstatusid ;
+
+            $hazmat->save();
+            (new EmailController)->Email($hazmat, $rawlink,$formname,$Finalpprovalstatusid);
+        }
+
+        return redirect()->route('hazmat.index');
+    }
+
+    public  function Reject($id)
+    {
+        $hazmat=DB::table('hazmats')->where('ofd6cid',$id)->first();
+        $formname="hazmat";
+
+        $rawlink=request()->headers->get('referer');
+        $link=preg_replace('#\/[^/]*$#', '', $rawlink);
+
+        $currentuserid = Auth::user()->id;
+        $primaryidconumber=DB::table('hazmats')->where ([
+            ['primaryidconumber', '=', $currentuserid],
+            ['ofd6cid', '=', $id],
+        ])->pluck('primaryidconumber');
+
+        $statusidraw=DB::table('status')->where('statustype','Rejected')->pluck('statusid');
+        $statusid=str_replace (array('[', ']'), '', $statusidraw);
+        if($primaryidconumber) {
+
+            $hazmat = hazmat::find($id);
+
+            $hazmat->applicationstatus =$statusid ;
+
+            $hazmat->save();
+
+            (new EmailController)->Email( $hazmat, $rawlink,$formname,$statusid);
+        }
+
+        return redirect()->route('hazmat.index');
+
+    }
 
     public function index()
     {
@@ -33,6 +94,11 @@ class HazmatController extends Controller
 
     public function store(StoreHazmatRequest $request)
     {
+
+        $statusidraw=DB::table('status')->where('statustype','Application under Captain')->pluck('statusid');
+        $statusid=str_replace (array('[', ']'), '', $statusidraw);
+        $request->offsetSet('applicationstatus',$statusid);
+
         $request = $this->saveFiles($request);
         hazmat::create($request->all());
         $last_insert_id = DB::getPdo()->lastInsertId();
@@ -45,7 +111,7 @@ class HazmatController extends Controller
         $rawlink=request()->headers->get('referer');
         $link=preg_replace('#\/[^/]*$#', '', $rawlink)."/$last_insert_id";
 
-        $numsent = (new EmailController)->Email($request, $link,$formname);
+        (new EmailController)->Email($request, $link,$formname,$statusid);
         //email notification-end
         return redirect()->route('hazmat.index');
     }
@@ -73,6 +139,10 @@ class HazmatController extends Controller
     public function update(UpdateHazmatRequest $request, $id)
     {
         //$accident = $this->saveFiles($request);
+
+        $statusidraw=DB::table('status')->where('statustype','Application under Captain')->pluck('statusid');
+        $statusid=str_replace (array('[', ']'), '', $statusidraw);
+
         $hazmat = hazmat::findOrFail($id);
 
         \DB::table('hazmats')->where('ofd6cid', $hazmat->ofd6cid)->update([
@@ -84,6 +154,7 @@ class HazmatController extends Controller
                 'frmsincidentnum' => $hazmat->frmsincidentnum,
                 'assignment' => $hazmat->assignment,
                 'shift' => $hazmat->shift,
+                'applicationstatus' => $statusid,
                 'corvelid' => $hazmat->corvelid,
                 'exposurehazmat' => $hazmat->exposurehazmat]
         );
@@ -100,7 +171,7 @@ class HazmatController extends Controller
         $formname="hazmat";
         $rawlink=request()->headers->get('referer');
         $link=preg_replace('#\/[^/]*$#', '', $rawlink);
-     $numsent = (new EmailController)->Email($request, $link,$formname);
+    (new EmailController)->Email($request, $link,$formname,$statusid);
 
         //email notification-end
 

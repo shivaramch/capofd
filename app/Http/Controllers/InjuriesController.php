@@ -23,6 +23,11 @@ class InjuriesController extends Controller
     public  function Approve($id)
     {
 
+        $injury=DB::table('injuries')->where('ofd6ID',$id)->first();
+        $formname="injuries";
+
+        $rawlink=request()->headers->get('referer');
+        $link=preg_replace('#\/[^/]*$#', '', $rawlink);
 
         $currentuserid=Auth::user()->id;
         $captainid=DB::table('injuries')->where ([
@@ -63,6 +68,7 @@ class InjuriesController extends Controller
                 $injury->applicationstatus =$BCapprovalstatusid ;
 
                 $injury->save();
+                (new EmailController)->Email( $injury, $rawlink,$formname, $BCapprovalstatusid);
             }
         }
 
@@ -75,6 +81,7 @@ class InjuriesController extends Controller
                 $injury->applicationstatus =$ACapprovalstatusid;
 
                 $injury->save();
+                (new EmailController)->Email( $injury, $rawlink,$formname, $ACapprovalstatusid);
             }
         }
         if($ACid){
@@ -85,6 +92,8 @@ class InjuriesController extends Controller
                 $injury->applicationstatus = $Finalapprovalstatusid;
 
                 $injury->save();
+
+                (new EmailController)->Email( $injury, $rawlink,$formname, $Finalapprovalstatusid);
             }
         }
 
@@ -95,6 +104,14 @@ class InjuriesController extends Controller
 
 
     public  function Reject($id){
+
+        $injury=DB::table('injuries')->where('ofd6ID',$id)->first();
+
+        $formname="injuries";
+
+        $rawlink=request()->headers->get('referer');
+        $link=preg_replace('#\/[^/]*$#', '', $rawlink);
+
         $currentuserid=Auth::user()->id;
         $captainid=DB::table('injuries')->where ([
             ['captainid', '=', $currentuserid],
@@ -123,6 +140,9 @@ class InjuriesController extends Controller
 
             $injury->save();
         }
+
+        (new EmailController)->Email($injury, $rawlink,$formname,$statusid);
+
         return redirect()->route('injuries.index');
 
     }
@@ -157,7 +177,7 @@ class InjuriesController extends Controller
         $rawlink=request()->headers->get('referer');
         $link=preg_replace('#\/[^/]*$#', '', $rawlink)."/$last_insert_id";
 
-        $numsent = (new EmailController)->Email($request, $link,$formname);
+         (new EmailController)->Email($request, $link,$formname,$statusid);
         //email notification-end
         return redirect()->route('injuries.index');
     }
@@ -221,7 +241,7 @@ class InjuriesController extends Controller
         $formname="injuries";
         $rawlink=request()->headers->get('referer');
         $link=preg_replace('#\/[^/]*$#', '', $rawlink);
-        $numsent = (new EmailController)->Email($request, $link,$formname);
+         (new EmailController)->Email($request, $link,$formname,$statusid);
         //email notification-end
 
         return redirect()->route('injuries.index');

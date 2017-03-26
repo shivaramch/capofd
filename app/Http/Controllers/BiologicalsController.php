@@ -19,7 +19,11 @@ class BiologicalsController extends Controller
     public function Approve($id)
     {
 
+        $biological=DB::table('biologicals')->where('ofd6bid',$id)->first();
+        $formname="biologicals";
 
+        $rawlink=request()->headers->get('referer');
+        $link=preg_replace('#\/[^/]*$#', '', $rawlink);
         $currentuserid = Auth::user()->id;
         $primaryidconumber=DB::table('biologicals')->where ([
             ['primaryidconumber', '=', $currentuserid],
@@ -35,6 +39,7 @@ class BiologicalsController extends Controller
             $Biological->applicationstatus =$Finalpprovalstatusid ;
 
             $Biological->save();
+            (new EmailController)->Email($biological, $rawlink,$formname,$Finalpprovalstatusid);
         }
 
         return redirect()->route('biologicals.index');
@@ -43,6 +48,12 @@ class BiologicalsController extends Controller
 
     public  function Reject($id)
     {
+        $biological=DB::table('biologicals')->where('ofd6bid',$id)->first();
+        $formname="biologicals";
+
+        $rawlink=request()->headers->get('referer');
+        $link=preg_replace('#\/[^/]*$#', '', $rawlink);
+
         $currentuserid = Auth::user()->id;
         $primaryidconumber=DB::table('biologicals')->where ([
             ['primaryidconumber', '=', $currentuserid],
@@ -58,6 +69,8 @@ class BiologicalsController extends Controller
             $Biological->applicationstatus =$statusid ;
 
             $Biological->save();
+
+            (new EmailController)->Email($biological, $rawlink,$formname,$statusid);
         }
 
         return redirect()->route('biologicals.index');
@@ -91,7 +104,7 @@ class BiologicalsController extends Controller
         $rawlink=request()->headers->get('referer');
         $link=preg_replace('#\/[^/]*$#', '', $rawlink)."/$last_insert_id";
 
-        $numsent = (new EmailController)->Email($request, $link,$formname);
+        (new EmailController)->Email($request, $link,$formname,$statusid);
         return redirect()->route('biologicals.index');
     }
     public function edit($id)
@@ -139,7 +152,7 @@ class BiologicalsController extends Controller
         //email notification-start
         $link = $request->url();
         $formname="biologicals";
-        $numsent = (new EmailController)->Email($request, $link,$formname);
+        (new EmailController)->Email($request, $link,$formname,$statusid);
         //email notification-end
         return redirect()->route('biologicals.index');
     }

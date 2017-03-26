@@ -71,6 +71,9 @@ Route::group(['middleware' => 'auth'], function () {// Authentication Routes...
 
     Route::get('accidents/{id}/Reject', 'AccidentsController@Reject');
 
+    Route::get('hazmat/{id}/Approve', 'HazmatController@Approve');
+
+    Route::get('hazmat/{id}/Reject', 'HazmatController@Reject');
 
 
 

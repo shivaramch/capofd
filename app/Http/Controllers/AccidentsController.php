@@ -13,8 +13,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Input;
-
-class AccidentsController extends Controller
+use App\Http\Controllers\EmailController;
+class AccidentsController extends EmailController
 {
     use FileUploadTrait;
     use FormFileUploadTrait;
@@ -23,6 +23,11 @@ class AccidentsController extends Controller
 
     public function Approve($id)
     {
+        $accident=DB::table('accidents')->where('ofd6aid',$id)->first();
+        $formname="accidents";
+
+        $rawlink=request()->headers->get('referer');
+        $link=preg_replace('#\/[^/]*$#', '', $rawlink);
 
         //check the application status id
         //if appstatus->2 then check the current user id and the captain id if same then put appstatus as 3
@@ -74,6 +79,7 @@ class AccidentsController extends Controller
               $Accident->applicationstatus =$BCapprovalstatusid ;
 
               $Accident->save();
+              (new EmailController)->Email($accident, $rawlink,$formname, $BCapprovalstatusid);
           }
         }
 
@@ -85,7 +91,8 @@ class AccidentsController extends Controller
 
                 $Accident->applicationstatus =$ACapprovalstatusid ;
 
-                $Accident->save();
+               $Accident->save();
+                (new EmailController)->Email($accident, $rawlink,$formname, $ACapprovalstatusid);
             }
         }
         if($ACid){
@@ -96,15 +103,27 @@ class AccidentsController extends Controller
                 $Accident->applicationstatus =$Finalapprovalstatusid;
 
                 $Accident->save();
+
+                (new EmailController)->Email($accident, $rawlink,$formname, $Finalapprovalstatusid);
+
+
             }
         }
 
-        return redirect()->route('accidents.index');
+
+
+     return redirect()->route('accidents.index');
 
 
     }
 
     public  function Reject($id){
+
+//Get all details for tht record
+        $accident=DB::table('accidents')->where('ofd6aid',$id)->first();
+
+     //   var_dump($accident);
+
         $currentuserid=Auth::user()->id;
 
         //   $captainid=DB::table('accidents')->where('captainid',$currentuserid,'ofd6aid',$id)->pluck('captainid');
@@ -113,7 +132,6 @@ class AccidentsController extends Controller
             ['captainid', '=', $currentuserid],
             ['ofd6aid', '=', $id],
         ])->value('captainid');
-
 
 
         //   $BCid=DB::table('accidents')->where('battalionchiefid',$currentuserid,'ofd6aid',$id)->pluck('battalionchiefid');
@@ -135,10 +153,19 @@ class AccidentsController extends Controller
 
                            $Accident->applicationstatus = $statusid;
 
-                         $Accident->save();
+                       $Accident->save();
                      }
 
-        return redirect()->route('accidents.index');
+                     //Send email to super admin and fire fighter
+        $formname="accidents";
+
+        $rawlink=request()->headers->get('referer');
+        $link=preg_replace('#\/[^/]*$#', '', $rawlink);
+       // $link=request()->headers->get('referer');
+        (new EmailController)->Email($accident, $rawlink,$formname,$statusid);
+   //     $numsent = (new EmailController)->Email($request, $link,$formname,$statusid);
+
+       return redirect()->route('accidents.index');
 
     }
 
@@ -214,8 +241,8 @@ class AccidentsController extends Controller
         $formname="accidents";
         $rawlink=request()->headers->get('referer');
         $link=preg_replace('#\/[^/]*$#', '', $rawlink)."/$last_insert_id";
-
-       $numsent = (new EmailController)->Email($request, $link,$formname);
+//   (new EmailController)->Email($accident, $rawlink,$formname,$statusid);
+      (new EmailController)->Email($request, $link,$formname,$statusid);
        return redirect()->route('accidents.index');
     }
 
@@ -300,7 +327,9 @@ class AccidentsController extends Controller
     //    var_dump( env('APP_URL')."/"."$formname"."/$id");
         $rawlink=request()->headers->get('referer');
         $link=preg_replace('#\/[^/]*$#', '', $rawlink);
-        $numsent = (new EmailController)->Email($request, $link,$formname);
+
+
+      (new EmailController)->Email($request, $link,$formname,$statusid);
         //email notification-end
       return redirect()->route('accidents.index');
     }
