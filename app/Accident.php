@@ -45,6 +45,7 @@ class Accident extends Model
         'daybook',
         'status',
         'frmsincidentnum',
+        'applicationstatus'
 
     ];
     /**

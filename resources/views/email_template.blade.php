@@ -127,57 +127,87 @@ Responsive Email Template by @keenthemes
                                                     <div style="line-height: 24px;">
                                                         <font face="Arial, Helvetica, sans-serif" size="4" color="#57697e" style="font-size: 15px;">
 					<span style="font-family: Arial, Helvetica, sans-serif; font-size: 15px; color: #57697e;">
-					 <p>Hello  {{$officername}} ,</p>
-        <br>
-    <p>
+
+        @if($appstatus==2 && $superadmin=="no"||$appstatus==3 && $superadmin=="no" ||$appstatus==4 &&$superadmin=="no")
+
+                            <p>Hello  {{$officername}} ,</p>
+                            <br>
+                            <p>
     {{$firefighter}}({{$personid}}) has just submitted  {{$formname}} application and pending for your approval.{{$content}}
     </p>
-					</span></font>
-                                                    </div>
-                                                    <!-- padding --><div style="height: 40px; line-height: 40px; font-size: 10px;"></div>
-                                                </td></tr>
 
 
-                                            <tr><td align="center">
-                                                    <div style="line-height: 24px;">
+                        @endif
 
-                                                        <a type="button" class="button button2" value="Click for Application" href="{{$link}}">Click for Application</a>
-
-                                                    </div>
-                                                    <!-- padding --><div style="height: 60px; line-height: 60px; font-size: 10px;"> </div>
-                                                </td></tr>
-                                        </table>
-                                    </td></tr>
-                                <!--content 1 END-->
+@if($appstatus==5 && $superadmin=="no" || $appstatus==6 && $superadmin=="no")
+                            <p>Hello  {{$firefighter}} ,</p>
+                            <br>
+                            <p>
+     {{$content}}
+    </p>
 
 
-                                <!--footer -->
-                                <tr><td class="iage_footer" align="center" bgcolor="#ffffff">
+
+    @endif
+
+            @if( $superadmin=="yes")
+                <p>Hello  {{$superadminname}} ,</p>
+                <br>
+                <p>
+     Form  {{$formname}} for {{$firefighter}}({{$personid}}) has been updated with status {{$statustype}}.
+    </p>
 
 
-                                        <table width="100%" border="0" cellspacing="0" cellpadding="0">
-                                            <tr><td align="center" style="padding:20px;float:left;width:100%; text-align:center;">
 
-                                                </td></tr>
-                                        </table>
+            @endif
 
 
-                                    </td></tr>
-                                <!--footer END-->
-                                <tr><td>
+</span></font>
+                       </div>
+                       <!-- padding --><div style="height: 40px; line-height: 40px; font-size: 10px;"></div>
+                   </td></tr>
 
-                                    </td></tr>
-                            </table>
-                            <!--[if gte mso 10]>
-                            </td></tr>
-                            </table>
-                            <![endif]-->
 
-                        </td></tr>
-                </table>
-            </td>
-        </tr>
-    </table>
+               <tr><td align="center">
+                       <div style="line-height: 24px;">
+
+                           <a type="button" class="button button2" value="Click for Application" href="{{$link}}">Click for Application</a>
+
+                       </div>
+                       <!-- padding --><div style="height: 60px; line-height: 60px; font-size: 10px;"> </div>
+                   </td></tr>
+           </table>
+       </td></tr>
+   <!--content 1 END-->
+
+
+   <!--footer -->
+   <tr><td class="iage_footer" align="center" bgcolor="#ffffff">
+
+
+           <table width="100%" border="0" cellspacing="0" cellpadding="0">
+               <tr><td align="center" style="padding:20px;float:left;width:100%; text-align:center;">
+
+                   </td></tr>
+           </table>
+
+
+       </td></tr>
+   <!--footer END-->
+   <tr><td>
+
+       </td></tr>
+</table>
+<!--[if gte mso 10]>
+</td></tr>
+</table>
+<![endif]-->
+
+</td></tr>
+</table>
+</td>
+</tr>
+</table>
 </div>
 </body>
 </html>

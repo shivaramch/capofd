@@ -108,6 +108,7 @@ return [
 
         'exposedemployeename' => [
             'required' => '"Exposed Employee Name" field is required',
+            'alpha' => '"Exposed Employee Name" can only have letters',
         ],
         'dateofexposure' => [
             'required' => '"Date of Exposure" field is required',
@@ -151,6 +152,7 @@ return [
         ],
         'injuredemployeename' => [
             'required' => '"Todays Date" field is required',
+            'alpha' => '"Todays Date" field can only have letters',
         ],
         'injuredemployeeid' => [
         'required' => '"Personnel ID #" field is required',
@@ -189,6 +191,43 @@ return [
         ],
         'callsupervisor' => [
             'required' => 'Check "Call Fire Supervisor or SWD B/C immediately and notify CorVel by phone" checkbox',
+        ],
+        'accidentdate' => [
+            'required' => '"Date of Accident" field is required',
+            'date' => '"Date of Accident" field should be a valid date',
+        ],
+        'driverid' => [
+            'required' => '"Driver ID#" field is required',
+            'integer' => '"Driver ID#" field should be an integer',
+        ],
+        'drivername' => [
+            'required' => '"Driver Name" field is required',
+            'alpha' => '"Driver Name" can only have letters',
+        ],
+        'assignmentaccident' => [
+            'required' => '"Assignment" field is required',
+        ],
+        'apparatus' => [
+            'required' => '"Apparatus" field is required',
+        ],
+        'calllaw' => [
+            'required' => 'Check "Call Law Department Investigator- Call 444-5131- Request report be faxed to SWD fax # 444-6378" checkbox',
+        ],
+        'daybook' => [
+            'required' => 'Check "Enter in Company Day Book" checkbox',
+        ],
+        'commemail' => [
+            'required' => 'Check "Generate OFD 025 Intradepartmental Communication-Email" checkbox',
+        ],
+        'employeename' => [
+            'required' => '"Exposed Employee Name" field is required',
+            'alpha' => '"Exposed Employee Name" can only have letters',
+        ],
+        'assignment' => [
+            'required' => '"Assignment" field is required',
+        ],
+        'contactcorvel' => [
+            'required' => 'Check "Contact CorVel Enterprise Comp @ 877-764-3574" checkbox',
         ],
 
     ],

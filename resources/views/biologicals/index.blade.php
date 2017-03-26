@@ -25,7 +25,7 @@
         @foreach($biologicals as $biological)
         @endforeach
 
-        @if($biological->employeeid == Auth::user()->id)
+        @if($biological->employeeid == Auth::user()->id || $biological->createdby == Auth::user()->id )
             <div class="panel panel-default panel-shadow " hidden>
                 <div class="panel-heading">
                     Search Previously filled
@@ -50,12 +50,12 @@
                         </thead>
                         <tbody>
                         @foreach($biologicals as $biological)
-                            @if($biological->employeeid == Auth::user()->id)
+                            @if($biological->employeeid == Auth::user()->id|| $biological->createdby == Auth::user()->id )
                                 <tr>
                                     <td>{{ $biological->ofd6bid }}</td>
                                     <td>{{ $biological->dateofexposure }}</td>
                                     <td>{{ $biological->assignmentbiological }}</td>
-                                    <td>{{ $biological->status }}</td>
+                                    <td>{{ DB::table('status')->where('statusid',$biological->applicationstatus)->value('statustype') }}</td>
                                     <td>
                                         <div>
                                             <a href="{{ route('biologicals.show',[$biological->ofd6bid]) }}"
@@ -108,7 +108,7 @@
                                     <td>{{ $biological->ofd6bid }}</td>
                                     <td>{{ $biological->dateofexposure }}</td>
                                     <td>{{ $biological->assignmentbiological }}</td>
-                                    <td>{{ $biological->status }}</td>
+                                    <td>{{DB::table('status')->where('statusid',$biological->applicationstatus)->value('statustype') }}</td>
                                     <td>
                                         <div>
                                             <a href="{{ route('biologicals.show',[$biological->ofd6bid]) }}"

@@ -173,9 +173,12 @@
                         </div>
                     </div>
                     <div class="col-sm-12">
-                        <label class="checkbox-inline col-sm-12">
+                        {{ Form::checkbox('checkbox1', 1, null,['disabled'], ['id' => 'checkbox1', 'class'=>'className','readonly' => 'true']) }}
+                        {{Form::label('Checkbox1','Fill out OFD-025 Hazmat Exposure Report form')}}
+                        {{--}}<label class="checkbox-inline col-sm-12">
                             <strong>Fill out OFD-025 Hazmat Exposure Report form</strong>
-                        </label>
+                        </label>--}}
+                        </div>
                         <br>
                         <div class="col-sm-12 form-group well well-sm">
                             <div class="col-sm-4">
@@ -195,7 +198,7 @@
 
                                         @if(count($attachments) > 0)
                                             @foreach($attachments as $attachment)
-                                                @if($attachment->attachmenttype == '6c' && $attachment->createdby ==  Auth::user()->id && $attachment->ofd6cid == $hazmat->ofd6cid)
+                                                @if($attachment->attachmenttype == '6c' && $attachment->ofd6cid == $hazmat->ofd6cid)
                                                     <tr>
                                                         <td>
                                                             <a href="{{ asset('uploads/'.$attachment->attachmentname) }}"> {{$attachment->attachmentname}}</a>
@@ -258,7 +261,24 @@
             </div>
         </div>
 
-
         {!! Form::close() !!}
+
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <div class="row">
+                    <div class="col-sm-12">
+                        @if($hazmat->primaryidconumber == Auth::user()->id && $hazmat->applicationstatus == 2 ||$hazmat->applicationstatus == 3 ||$hazmat->applicationstatus == 4)
+                            <div class="col-sm-12 panel-heading" align="center">
+                                <a href="{{ url('/hazmat/'. $hazmat->ofd6cid.'/Approve') }}"
+                                   class="btn btn-success">Approve</a>
+                                <a href="{{ url('/hazmat/'. $hazmat->ofd6cid.'/Reject') }}"
+                                   class="btn btn-danger">Reject</a>
+                            </div>
+                        @endif
+                    </div>
+                </div>
+            </div>
+        </div>
+
 @stop
 

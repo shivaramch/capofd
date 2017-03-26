@@ -12,8 +12,9 @@ use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
-
-class AccidentsController extends Controller
+use Illuminate\Support\Facades\Input;
+use App\Http\Controllers\EmailController;
+class AccidentsController extends EmailController
 {
     use FileUploadTrait;
     use FormFileUploadTrait;
@@ -22,6 +23,11 @@ class AccidentsController extends Controller
 
     public function Approve($id)
     {
+        $accident=DB::table('accidents')->where('ofd6aid',$id)->first();
+        $formname="accidents";
+
+        $rawlink=request()->headers->get('referer');
+        $link=preg_replace('#\/[^/]*$#', '', $rawlink);
 
         //check the application status id
         //if appstatus->2 then check the current user id and the captain id if same then put appstatus as 3
@@ -32,7 +38,7 @@ class AccidentsController extends Controller
         $captainid=DB::table('accidents')->where ([
             ['captainid', '=', $currentuserid],
             ['ofd6aid', '=', $id],
-        ])->pluck('captainid');
+        ])->value('captainid');
 
 
 
@@ -40,30 +46,30 @@ class AccidentsController extends Controller
         $BCid=DB::table('accidents')->where ([
             ['battalionchiefid', '=', $currentuserid],
             ['ofd6aid', '=', $id],
-        ])->pluck('battalionchiefid');
+        ])->value('battalionchiefid');
 
     //    $ACid=DB::table('accidents')->where('aconduty',$currentuserid,'ofd6aid',$id)->pluck('aconduty');
 
         $ACid=DB::table('accidents')->where ([
             ['aconduty', '=', $currentuserid],
             ['ofd6aid', '=', $id],
-        ])->pluck('aconduty');
+        ])->value('aconduty');
 
-        $currentapplicationstatusraw=DB::table('accidents')->where('ofd6aid',$id)->pluck('applicationstatus');
-        $currentapplicationstatus=  str_replace (array('["', '"]'), '',$currentapplicationstatusraw);
+        $currentapplicationstatus=DB::table('accidents')->where('ofd6aid',$id)->value('applicationstatus');
+     //   $currentapplicationstatus=  str_replace (array('["', '"]'), '',$currentapplicationstatusraw);
 
 
-        $captainapprovalstatusidraw=DB::table('status')->where('statustype','Application under Captain')->pluck('statusid');
-        $captainapprovalstatusid=str_replace (array('[', ']'), '',$captainapprovalstatusidraw);
+        $captainapprovalstatusid=DB::table('status')->where('statustype','Application under Captain')->value('statusid');
+     //   $captainapprovalstatusid=str_replace (array('[', ']'), '',$captainapprovalstatusidraw);
 
-        $BCapprovalstatusidraw=DB::table('status')->where('statustype','Application under Batallion Chief')->pluck('statusid');
-        $BCapprovalstatusid=str_replace (array('[', ']'), '',$BCapprovalstatusidraw);
+        $BCapprovalstatusid=DB::table('status')->where('statustype','Application under Batallion Chief')->value('statusid');
+     //   $BCapprovalstatusid=str_replace (array('[', ']'), '',$BCapprovalstatusidraw);
 
-        $ACapprovalstatusidraw=DB::table('status')->where('statustype','Application under Assistant Chief')->pluck('statusid');
-        $ACapprovalstatusid=str_replace (array('[', ']'), '',$ACapprovalstatusidraw);
+        $ACapprovalstatusid=DB::table('status')->where('statustype','Application under Assistant Chief')->value('statusid');
+     //   $ACapprovalstatusid=str_replace (array('[', ']'), '',$ACapprovalstatusidraw);
 
-        $Finalapprovalstatusidraw=DB::table('status')->where('statustype','Approved')->pluck('statusid');
-        $Finalpprovalstatusid=str_replace (array('[', ']'), '',$Finalapprovalstatusidraw);
+        $Finalapprovalstatusid=DB::table('status')->where('statustype','Approved')->value('statusid');
+     //   $Finalpprovalstatusid=str_replace (array('[', ']'), '',$Finalapprovalstatusidraw);
 
         if($captainid){
           if($currentapplicationstatus==$captainapprovalstatusid)
@@ -73,6 +79,7 @@ class AccidentsController extends Controller
               $Accident->applicationstatus =$BCapprovalstatusid ;
 
               $Accident->save();
+              (new EmailController)->Email($accident, $rawlink,$formname, $BCapprovalstatusid);
           }
         }
 
@@ -84,7 +91,8 @@ class AccidentsController extends Controller
 
                 $Accident->applicationstatus =$ACapprovalstatusid ;
 
-                $Accident->save();
+               $Accident->save();
+                (new EmailController)->Email($accident, $rawlink,$formname, $ACapprovalstatusid);
             }
         }
         if($ACid){
@@ -92,18 +100,30 @@ class AccidentsController extends Controller
             {
                 $Accident = Accident::find($id);
 
-                $Accident->applicationstatus =$Finalpprovalstatusid ;
+                $Accident->applicationstatus =$Finalapprovalstatusid;
 
                 $Accident->save();
+
+                (new EmailController)->Email($accident, $rawlink,$formname, $Finalapprovalstatusid);
+
+
             }
         }
 
-        return redirect()->route('accidents.index');
+
+
+     return redirect()->route('accidents.index');
 
 
     }
 
     public  function Reject($id){
+
+//Get all details for tht record
+        $accident=DB::table('accidents')->where('ofd6aid',$id)->first();
+
+     //   var_dump($accident);
+
         $currentuserid=Auth::user()->id;
 
         //   $captainid=DB::table('accidents')->where('captainid',$currentuserid,'ofd6aid',$id)->pluck('captainid');
@@ -111,33 +131,41 @@ class AccidentsController extends Controller
         $captainid=DB::table('accidents')->where ([
             ['captainid', '=', $currentuserid],
             ['ofd6aid', '=', $id],
-        ])->pluck('captainid');
-
+        ])->value('captainid');
 
 
         //   $BCid=DB::table('accidents')->where('battalionchiefid',$currentuserid,'ofd6aid',$id)->pluck('battalionchiefid');
         $BCid=DB::table('accidents')->where ([
             ['battalionchiefid', '=', $currentuserid],
             ['ofd6aid', '=', $id],
-        ])->pluck('captainid');
+        ])->value('captainid');
 
         //    $ACid=DB::table('accidents')->where('aconduty',$currentuserid,'ofd6aid',$id)->pluck('aconduty');
 
         $ACid=DB::table('accidents')->where ([
             ['aconduty', '=', $currentuserid],
             ['ofd6aid', '=', $id],
-        ])->pluck('captainid');
-        $statusidraw=DB::table('status')->where('statustype','Rejected')->pluck('statusid');
-        $statusid=str_replace (array('[', ']'), '', $statusidraw);
+        ])->value('captainid');
+        $statusid=DB::table('status')->where('statustype','Rejected')->value('statusid');
+  //      $statusid=str_replace (array('[', ']'), '', $statusid);
              if($captainid|| $BCid || $ACid) {
                           $Accident = Accident::find($id);
 
                            $Accident->applicationstatus = $statusid;
 
-                         $Accident->save();
+                       $Accident->save();
                      }
 
-        return redirect()->route('accidents.index');
+                     //Send email to super admin and fire fighter
+        $formname="accidents";
+
+        $rawlink=request()->headers->get('referer');
+        $link=preg_replace('#\/[^/]*$#', '', $rawlink);
+       // $link=request()->headers->get('referer');
+        (new EmailController)->Email($accident, $rawlink,$formname,$statusid);
+   //     $numsent = (new EmailController)->Email($request, $link,$formname,$statusid);
+
+       return redirect()->route('accidents.index');
 
     }
 
@@ -153,15 +181,55 @@ class AccidentsController extends Controller
         return view('accidents.create');
     }
 
-    public function store(StoreAccidentsRequest $request)
+
+
+
+    public function save( Request $requestSave)
     {
-       // 'applicationstatus' => $request->applicationstatus,
+        if(Input::get('store')) {
+            $this->store($requestSave);
+        }
+
+        if(Input::get('partialSave')) {
+            $this->partialSave($requestSave);
+        }
+        return redirect()->route('accidents.index');
+
+    }
+
+    public function store(Request $request)
+
+    {
 
 
-        //request will have all values filled by firefighter
-        //check if the user
-        $statusidraw=DB::table('status')->where('statustype','Application under Captain')->pluck('statusid');
-        $statusid=str_replace (array('[', ']'), '', $statusidraw);
+
+
+        // 'applicationstatus' => $request->applicationstatus,
+
+        $this->validate($request, [
+            'accidentdate' => 'required|date:accidents,accidentdate,',
+            'driverid' => 'required|integer:accidents,driverid,' ,
+            'drivername' => 'required|alpha|string:accidents,drivername,',
+            'assignmentaccident' => 'required|string:accidents,assignmentaccident',
+            'apparatus' => 'required|string:accidents,apparatus',
+            'captainid' => 'required|integer:accidents,captainid',
+            'battalionchiefid' => 'required|integer:accidents,battalionchiefid',
+            'aconduty' => 'required|integer:accidents,aconduty',
+            'frmsincidentnum' => 'required|integer:accidents,frmsincidentnum',
+            'calllaw' =>'required|integer:accidents,calllaw',
+            'daybook' =>'required|integer:accidents,daybook',
+            'commemail' =>'required|integer:accidents,commemail',
+        ]);//request will have all values filled by firefighter
+        //check if the user*/
+
+
+
+
+
+
+
+        $statusid=DB::table('status')->where('statustype','Application under Captain')->value('statusid');
+
         $request->offsetSet('applicationstatus',$statusid);
 
         $request = $this->saveFiles($request);
@@ -173,10 +241,40 @@ class AccidentsController extends Controller
         $formname="accidents";
         $rawlink=request()->headers->get('referer');
         $link=preg_replace('#\/[^/]*$#', '', $rawlink)."/$last_insert_id";
+//   (new EmailController)->Email($accident, $rawlink,$formname,$statusid);
+      (new EmailController)->Email($request, $link,$formname,$statusid);
+       return redirect()->route('accidents.index');
+    }
 
-      //  $numsent = (new EmailController)->Email($request, $link,$formname);
+
+
+    public function partialSave(Request $request)
+    {
+        // 'applicationstatus' => $request->applicationstatus,
+
+
+        //request will have all values filled by firefighter
+        //check if the user
+
+
+
+        $this->validate($request, [
+            'accidentdate' => 'required|date:accidents,accidentdate,',
+            ]);
+        $statusid=DB::table('status')->where('statustype','Draft')->value('statusid');
+
+        $request->offsetSet('applicationstatus',$statusid);
+
+        $request = $this->saveFiles($request);
+        Accident::create($request->all());
+        $last_insert_id = DB::getPdo()->lastInsertId();
+        $this->AccidentUpload($request, $last_insert_id);
+        $link = $request->url() . "/$last_insert_id";
+//write code for email notification here
+
         return redirect()->route('accidents.index');
     }
+
 
     public function edit($id)
     {
@@ -229,7 +327,9 @@ class AccidentsController extends Controller
     //    var_dump( env('APP_URL')."/"."$formname"."/$id");
         $rawlink=request()->headers->get('referer');
         $link=preg_replace('#\/[^/]*$#', '', $rawlink);
-        $numsent = (new EmailController)->Email($request, $link,$formname);
+
+
+      (new EmailController)->Email($request, $link,$formname,$statusid);
         //email notification-end
       return redirect()->route('accidents.index');
     }

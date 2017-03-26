@@ -10,7 +10,7 @@
     </ol>
 @endsection
 @section('content')
-    {!! Form::open(['method' => 'POST', 'route' => ['hazmat.store'], 'files' => true,]) !!}
+    {!! Form::open(['method' => 'POST', 'url' => '/hazmat/save', 'files' => true,]) !!}
 
     <input type="hidden" name="_token" value="{!!  'csrf_token()' !!}">
     {{ csrf_field() }}
@@ -194,9 +194,15 @@
 
 
             <div class="col-sm-12 form-group">
-                <label class="col-sm-4">
+                <div class="form-group">
+                    {{ Form::checkbox('checkbox1', 1, null, ['id'=>'checkbox1', 'class' => 'className' ]) }}
+                    {{Form::label('Checkbox1','Fill out OFD-025 Hazmat Exposure Report form')}}
+                </div>
+
+
+              {{--}}  <label class="col-sm-4">
                     <strong>Fill out OFD-025 Hazmat Exposure Report form</strong>
-                </label>
+                </label> --}}
                 <div class="col-sm-12 form-group well well-sm">
                     <div class="col-sm-4">
                         <a class="btn btn-success dropdown-toggle col-sm-12" type="button"
@@ -245,6 +251,8 @@
 
             <label class="col-sm-5"></label>
             <div class="btn-bottom ">
+
+                {!! Form::submit('Save',['class' => 'btn btn-success','name' => 'partialSave']) !!}
                 <button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal">
                     Submit
                 </button>
@@ -269,7 +277,7 @@
                     Are you sure you want to Submit?
                 </div>
                 <div class="modal-footer">
-                    {!! Form::submit('Yes',['class' => 'btn btn-success']) !!}
+                    {!! Form::submit('Yes',['class' => 'btn btn-success','name'=> 'store']) !!}
                     <button type="button" class=" btn btn-danger" data-dismiss="modal" aria-label="">No</button>
 
 
