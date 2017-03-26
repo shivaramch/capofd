@@ -536,6 +536,44 @@
                     </div>
                 </div>
                 <div class="row">
+                    <div class="col-sm-12">
+                        {{ Form::checkbox('checkbox9', 1, null,['disabled'], ['id' => 'checkbox9', 'class'=>'className','readonly' => 'true']) }}
+                        {{Form::label('Checkbox9','Miscellaneous Documents')}}
+                    </div>
+                    <div class="col-sm-12 form-group well well-sm">
+                        <div class="col-sm-4">
+                            <a class="btn btn-primary dropdown-toggle col-sm-12" data-toggle="collapse"
+                               data-target="#6a9"><i class="fa fa-eye" aria-hidden="true"></i> view previously uploaded
+                                file(s)
+                            </a>
+                            <div id="6a9" class="collapse">
+                                <table class="table table-striped">
+                                    <tr>
+                                        <th> File Name</th>
+                                        <th> File Uploaded At</th>
+                                    </tr>
+                                    <tr>
+                                    @if(count($attachments) > 0)
+                                        @foreach($attachments as $attachment)
+                                            @if($attachment->attachmenttype == '6a9' && $attachment->ofd6aid == $accident->ofd6aid )
+                                                <tr>
+                                                    <td>
+                                                        <a href="{{ asset('uploads/'.$attachment->attachmentname) }}"> {{$attachment->attachmentname}}</a>
+                                                    </td>
+                                                    <td>
+                                                        {{$attachment->created_at}}</a>
+                                                    </td>
+                                                <tr>@endif
+                                                    @endforeach
+                                                    @endif
+                                                </tr>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
                     <div class="col-sm-12 form-group">
                         {{ form::checkbox('calllaw', 1, null, ['disabled'],['id' => 'calllaw', 'class'=>'classname', 'readonly' => 'true']) }}
                         <label><strong>

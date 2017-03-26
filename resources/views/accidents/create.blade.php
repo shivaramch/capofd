@@ -405,7 +405,7 @@
                 <div class="col-sm-12 form-group">
                 <div class="form-group">
                     {{ Form::checkbox('checkbox7', 1, null, ['id'=>'checkbox7', 'class' => 'className' ]) }}
-                    {{Form::label('Complete OFD 127 Request for
+                    {{Form::label('checkbox7','Complete OFD 127 Request for
                         Services Form')}}
                 </div>
             </div>
@@ -436,7 +436,7 @@
                 <div class="col-sm-12 form-group">
                 <div class="form-group">
                     {{ Form::checkbox('checkbox8', 1, null, ['id'=>'checkbox8', 'class' => 'className' ]) }}
-                    {{Form::label('Complete DR 41 State
+                    {{Form::label('checkbox8','Complete DR 41 State
                             of Nebraska DMV Vehicle Accident Report')}}
                 </div>
             </div>
@@ -462,6 +462,28 @@
                     </div>
                 </div>
             </div>
+            <div class="row">
+                <div class="col-sm-12 form-group">
+                    <div class="form-group">
+                        {{ Form::checkbox('checkbox9', 1, null, ['id'=>'checkbox9', 'class' => 'className' ]) }}
+                        {{Form::label('checkbox9','Miscellaneous Documents')}}
+                    </div>
+                </div>
+                <div class="col-sm-12 form-group well well-sm">
+                    <div class="col-sm-3">
+                        <div class="input-group">
+                            <label class="input-group-btn">
+                    <span class="btn btn-info">
+                        <i class="fa fa-cloud-upload" aria-hidden="true"></i> Upload<input type="file" name="miscaccidents"
+                                                                                           style="display: none;">
+                    </span>
+                            </label>
+                            <input type="text" id="upload-file-info" class="form-control" readonly>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             <div class="row">
                 <div class="col-sm-12 form-group">
                     {{ Form::checkbox('calllaw', 1, null, ['id' => 'calllaw', 'class'=>'className']) }}

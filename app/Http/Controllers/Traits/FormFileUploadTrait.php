@@ -44,6 +44,13 @@ trait FormFileUploadTrait
             $attachment->attachmenttype = '615';
             $attachment->save();
         }
+        if ($attachmentName = $request['miscinjuries']) {
+            $attachment = new Attachment();
+            $attachment->attachmentname = $attachmentName;
+            $attachment->ofd6id = $id;
+            $attachment->attachmenttype = '616';
+            $attachment->save();
+        }
     }
 
     public function AccidentUpload(Request $request, $id)
@@ -104,6 +111,13 @@ trait FormFileUploadTrait
             $attachment->attachmenttype = '6a8';
             $attachment->save();
         }
+        if ($attachmentName = $request['miscaccidents']) {
+            $attachment = new Attachment();
+            $attachment->attachmentname = $attachmentName;
+            $attachment->ofd6aid = $id;
+            $attachment->attachmenttype = '6a9';
+            $attachment->save();
+        }
     }
 
     public function BiologicalUpload(Request $request, $id)
@@ -122,6 +136,20 @@ trait FormFileUploadTrait
             $attachment->attachmenttype = '6b2';
             $attachment->save();
         }
+        if ($attachmentName = $request['miscbiological1']) {
+            $attachment = new Attachment();
+            $attachment->attachmentname = $attachmentName;
+            $attachment->ofd6bid = $id;
+            $attachment->attachmenttype = '6b3';
+            $attachment->save();
+        }
+        if ($attachmentName = $request['miscbiological2']) {
+            $attachment = new Attachment();
+            $attachment->attachmentname = $attachmentName;
+            $attachment->ofd6bid = $id;
+            $attachment->attachmenttype = '6b4';
+            $attachment->save();
+        }
     }
 
 
@@ -133,6 +161,13 @@ trait FormFileUploadTrait
             $attachment->attachmentname = $attachmentName;
             $attachment->ofd6cid = $id;
             $attachment->attachmenttype = '6c';
+            $attachment->save();
+        }
+        if ($attachmentName = $request['mischazmat']) {
+            $attachment = new Attachment();
+            $attachment->attachmentname = $attachmentName;
+            $attachment->ofd6cid = $id;
+            $attachment->attachmenttype = '6c1';
             $attachment->save();
         }
 

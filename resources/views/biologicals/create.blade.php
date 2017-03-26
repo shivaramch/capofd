@@ -198,8 +198,8 @@
 
                 <div class="col-sm-12">
                     <div class="form-group">
-                        {{ Form::checkbox('trueofd184', 1, null, ['id'=>'trueofd184', 'class' => 'className' ]) }}
-                        {{Form::label('trueofd184','Complete OFD 184')}}
+                        {{ Form::checkbox('checkbox1', 1, null, ['id'=>'checkbox1', 'class' => 'className' ]) }}
+                        {{Form::label('checkbox1','Complete OFD 184')}}
                     </div>
                     <div class="col-sm-12 form-group well well-sm">
                         <div class="col-sm-4">
@@ -214,6 +214,27 @@
                                             <span class="btn btn-info"><i class="fa fa-cloud-upload"
                                                                           aria-hidden="true"></i> Upload<input
                                                         type="file" name="trueofd184"
+                                                        style="display: none;"
+                                                        multiple>
+                                            </span>
+                                </label>
+                                <input type="text" id="upload-file-info" class="form-control" readonly>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-12">
+                    <div class="form-group">
+                        {{ Form::checkbox('checkbox2', 1, null, ['id'=>'checkbox2', 'class' => 'className' ]) }}
+                        {{Form::label('checkbox2','Miscellaneous Documents')}}
+                    </div>
+                    <div class="col-sm-12 form-group well well-sm">
+                        <div class="col-sm-4">
+                            <div class="input-group">
+                                <label class="input-group-btn">
+                                            <span class="btn btn-info"><i class="fa fa-cloud-upload"
+                                                                          aria-hidden="true"></i> Upload<input
+                                                        type="file" name="miscbiological1"
                                                         style="display: none;"
                                                         multiple>
                                             </span>
@@ -278,34 +299,48 @@
                         {{Form::label('potdecontaminate','Decontaminate self- wash, flush as soon as possible')}}
                     </div>
                 </div>
-
                 <div class="col-sm-12">
                     <div class="form-group">
-                        {{ Form::checkbox('potbagtag', 1, null, ['id' => 'potbagtag', 'class'=>'className']) }}
-                        {{Form::label('potbagtag','Bag & Tag clothing if applicable - send email to PSS with pick-up location')}}
-                    </div>
-                </div>
-
-                <div class="col-sm-12">
-                    <div class="form-group">
-                        {{--{{ Form::checkbox('potofd184', 1, null, ['id'=>'potofd184', 'class' => 'className' ]) }}--}}
-                        {{Form::label('potofd184','Complete OFD 184')}}
+                        {{ Form::checkbox('checkbox3', 1, null, ['id'=>'checkbox3', 'class' => 'className' ]) }}
+                        {{Form::label('checkbox3','Complete OFD 184')}}
                     </div>
                     <div class="col-sm-12 form-group well well-sm">
                         <div class="col-sm-4">
                             <a class="btn btn-success dropdown-toggle col-sm-12" type="button"
                                href="{{ asset('Fillable PDFs\Exposure Complete\(Exposure PDF) OFD 184 State Infectious Disease Exposure Report.pdf')}}"
-                               download="(Exposure PDF) OFD 184 State Infectious Disease Exposure Report">
+                               download="(Exposure PDF) OFD 184 State Infectious Disease Exposure Report.pdf">
                                 <i class="fa fa-download" aria-hidden="true"></i> Download</a>
                         </div>
                         <div class="col-sm-4">
                             <div class="input-group">
                                 <label class="input-group-btn">
-                    <span class="btn btn-info">
-                        <i class="fa fa-cloud-upload" aria-hidden="true"></i> Upload<input type="file" name="potofd184"
-                                                                                           style="display: none;"
-                                                                                           multiple>
-                    </span>
+                                            <span class="btn btn-info"><i class="fa fa-cloud-upload"
+                                                                          aria-hidden="true"></i> Upload<input
+                                                        type="file" name="potofd184"
+                                                        style="display: none;"
+                                                        multiple>
+                                            </span>
+                                </label>
+                                <input type="text" id="upload-file-info" class="form-control" readonly>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-12">
+                    <div class="form-group">
+                        {{ Form::checkbox('checkbox4', 1, null, ['id'=>'checkbox4', 'class' => 'className' ]) }}
+                        {{Form::label('checkbox4','Miscellaneous Documents')}}
+                    </div>
+                    <div class="col-sm-12 form-group well well-sm">
+                        <div class="col-sm-4">
+                            <div class="input-group">
+                                <label class="input-group-btn">
+                                            <span class="btn btn-info"><i class="fa fa-cloud-upload"
+                                                                          aria-hidden="true"></i> Upload<input
+                                                        type="file" name="miscbiological2"
+                                                        style="display: none;"
+                                                        multiple>
+                                            </span>
                                 </label>
                                 <input type="text" id="upload-file-info" class="form-control" readonly>
                             </div>

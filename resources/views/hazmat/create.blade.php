@@ -223,6 +223,26 @@
                     </div>
                 </div>
             </div>
+            <div class="col-sm-12 form-group">
+                <div class="form-group">
+                    {{ Form::checkbox('checkbox2', 1, null, ['id'=>'checkbox2', 'class' => 'className' ]) }}
+                    {{Form::label('Checkbox2','Miscellaneous Documents')}}
+                </div>
+                <div class="col-sm-12 form-group well well-sm">
+                    <div class="col-sm-4">
+                        <div class="input-group">
+                            <label class="input-group-btn">
+                    <span class="btn btn-info">
+                        <i class="fa fa-cloud-upload" aria-hidden="true"></i> Upload<input type="file" name="mischazmat"
+                                                                                           style="display: none;">
+                    </span>
+                            </label>
+                            <input type="text" id="upload-file-info" class="form-control" readonly>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
 
             <div class="panel-body">
                 <div class="form-horizontal">
