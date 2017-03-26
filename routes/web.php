@@ -47,6 +47,7 @@ Route::group(['middleware' => 'auth'], function () {// Authentication Routes...
     Route::post('accidents/save', 'AccidentsController@save');
 
     Route::resource('biologicals', 'BiologicalsController');
+    Route::post('biologicals/save', 'BiologicalsController@save');
 
     Route::resource('hazmat', 'HazmatController');
 

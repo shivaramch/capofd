@@ -197,8 +197,8 @@ class InjuriesController extends Controller
             
             ]);
 
-        $statusidraw=DB::table('status')->where('statustype','Application under Captain')->pluck('statusid');
-        $statusid=str_replace (array('[', ']'), '', $statusidraw);
+        $statusid=DB::table('status')->where('statustype','Application under Captain')->value('statusid');
+
         $request->offsetSet('applicationstatus',$statusid);
 
         $request = $this->saveFiles($request);
