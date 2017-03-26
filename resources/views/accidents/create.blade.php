@@ -407,6 +407,27 @@
                     </div>
                 </div>
             </div>
+
+            <div class="row">
+                <label class="checkbox-inline col-sm-12">
+                    <strong>Miscellaneous Documents</strong></label>
+                <div class="col-sm-12 form-group well well-sm">
+                    <div class="col-sm-4">
+                        <div class="input-group">
+                            <label class="input-group-btn">
+                                            <span class="btn btn-info"><i class="fa fa-cloud-upload"
+                                                                          aria-hidden="true"></i> Upload<input
+                                                        type="file" name="miscaccidents"
+                                                        style="display: none;"
+                                                        multiple>
+                                            </span>
+                            </label>
+                            <input type="text" id="upload-file-info" class="form-control" readonly>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             <div class="row">
                 <div class="col-sm-12 form-group">
                     {{ Form::checkbox('calllaw', 1, null, ['id' => 'calllaw', 'class'=>'className']) }}

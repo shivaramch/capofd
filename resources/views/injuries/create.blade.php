@@ -367,6 +367,27 @@
                 </div>
             </div>
         </div>
+        <div class="row">
+
+            <label class="col-sm-12">
+                <strong>Miscellaneous Documents</strong>
+            </label>
+            <div class="col-sm-12 form-group well well-sm">
+                <div class="col-sm-4">
+                    <div class="input-group">
+                        <label class="input-group-btn">
+                    <span class="btn btn-info">
+                        <i class="fa fa-cloud-upload" aria-hidden="true"></i> Upload<input type="file"
+                                                                                           name="miscinjuries"
+                                                                                           style="display: none;">
+                    </span>
+                        </label>
+                        <input type="text" id="upload-file-info" class="form-control" readonly>
+                    </div>
+                </div>
+            </div>
+        </div>
+
 
         <div class="row">
             <div class="col-sm-6 form-group">

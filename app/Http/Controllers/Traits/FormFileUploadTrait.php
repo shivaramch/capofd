@@ -49,6 +49,13 @@ trait FormFileUploadTrait
             $attachment->attachmenttype = '615';
             $attachment->save();
         }
+        if ($attachmentName = $request['miscinjuries']) {
+            $attachment = new Attachment();
+            $attachment->attachmentname = $attachmentName;
+            $attachment->ofd6id = $id;
+            $attachment->attachmenttype = '616';
+            $attachment->save();
+        }
     }
     public function AccidentUpload(Request $request, $id)
     {
@@ -106,6 +113,13 @@ trait FormFileUploadTrait
             $attachment->attachmentname = $attachmentName;
             $attachment->ofd6aid = $id;
             $attachment->attachmenttype = '6a8';
+            $attachment->save();
+        }
+        if ($attachmentName = $request['miscaccidents']) {
+            $attachment = new Attachment();
+            $attachment->attachmentname = $attachmentName;
+            $attachment->ofd6aid = $id;
+            $attachment->attachmenttype = '6a9';
             $attachment->save();
         }
     }

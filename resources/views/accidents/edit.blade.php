@@ -636,6 +636,53 @@
                 </div>
             </div>
             <div class="row">
+                <label class="checkbox-inline col-sm-12">
+                    <strong>Miscellaneous Documents</strong></label>
+                <div class="col-sm-12 form-group well well-sm">
+                    <div class="col-sm-3">
+                        <div class="input-group">
+                            <label class="input-group-btn">
+                    <span class="btn btn-info">
+                        <i class="fa fa-cloud-upload" aria-hidden="true"></i> Upload<input type="file" name="miscaccidents"
+                                                                                           style="display: none;">
+                    </span>
+                            </label>
+                            <input type="text" id="upload-file-info" class="form-control" readonly>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <a class="btn btn-primary dropdown-toggle col-sm-12" data-toggle="collapse"
+                           data-target="#6a9"><i class="fa fa-eye" aria-hidden="true"></i> View Previously uploaded
+                            file(s)
+                        </a>
+                        <div id="6a9" class="collapse">
+                            <table class="table table-striped">
+                                <tr>
+                                    <th> File Name</th>
+                                    <th> File Uploaded At</th>
+                                </tr>
+                                <tr>
+                                @if(count($attachments) > 0)
+                                    @foreach($attachments as $attachment)
+                                        @if($attachment->attachmenttype == '6a9' && $attachment->createdby ==  Auth::user()->id && $attachment->ofd6aid == $accident->ofd6aid )
+                                            <tr>
+                                                <td>
+                                                    <a href="{{ asset('uploads/'.$attachment->attachmentname) }}"> {{$attachment->attachmentname}}</a>
+                                                </td>
+                                                <td>
+                                                    {{$attachment->created_at}}</a>
+                                                </td>
+                                            <tr>
+                                                @endif
+                                                @endforeach
+                                                @endif
+                                            </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
                 <div class="col-sm-12 form-group">
                     {{ Form::checkbox('calllaw', 1, null, ['id' => 'calllaw', 'class'=>'className']) }}
                     <label><strong>
