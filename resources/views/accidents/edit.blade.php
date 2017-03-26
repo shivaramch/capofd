@@ -631,7 +631,7 @@
             <div class="row">
                 <div class="col-sm-12 form-group">
                     <div class="form-group">
-                        {{ Form::checkbox('checkbox8', 1, null, ['id'=>'checkbox7', 'class' => 'className' ]) }}
+                        {{ Form::checkbox('checkbox8', 1, null, ['id'=>'checkbox8', 'class' => 'className' ]) }}
                         {{Form::label('Checkbox8','Complete DR 41 State
                             of Nebraska DMV Vehicle Accident Report')}}
                     </div>
@@ -689,8 +689,12 @@
                 </div>
             </div>
             <div class="row">
-                <label class="checkbox-inline col-sm-12">
-                    <strong>Miscellaneous Documents</strong></label>
+                <div class="col-sm-12 form-group">
+                    <div class="form-group">
+                        {{ Form::checkbox('checkbox9', 1, null, ['id'=>'checkbox9', 'class' => 'className' ]) }}
+                        {{Form::label('Checkbox9','Miscellaneous Documents')}}
+                    </div>
+                </div>
                 <div class="col-sm-12 form-group well well-sm">
                     <div class="col-sm-3">
                         <div class="input-group">
@@ -735,6 +739,7 @@
                     </div>
                 </div>
             </div>
+
             <div class="row">
                 <div class="col-sm-12 form-group">
                     {{ Form::checkbox('calllaw', 1, null, ['id' => 'calllaw', 'class'=>'className']) }}

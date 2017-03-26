@@ -255,7 +255,58 @@
                         </div>
                     </div>
                 </div>
+            <div class="col-sm-12 form-group">
+                <div class="form-group">
+                    {{ Form::checkbox('checkbox2', 1, null, ['id'=>'checkbox2', 'class' => 'className' ]) }}
+                    {{Form::label('Checkbox2','Miscellaneous Documents')}}
+                </div>
             </div>
+            <div class="col-sm-12 form-group well well-sm">
+                <div class="col-sm-4">
+                    <div class="input-group">
+                        <label class="input-group-btn">
+                    <span class="btn btn-info">
+                        <i class="fa fa-cloud-upload" aria-hidden="true"></i> Upload<input type="file" name="mischazmat"
+                                                                                           style="display: none;">
+                    </span>
+                        </label>
+                        <input type="text" id="upload-file-info" class="form-control" readonly>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <a class="btn btn-primary dropdown-toggle col-sm-12" data-toggle="collapse"
+                       data-target="#6c1"><i class="fa fa-eye" aria-hidden="true"></i> View Previously
+                        uploaded
+                        file(s)
+                    </a>
+
+                    <div id="6c1" class="collapse">
+
+                        <table class="table table-striped">
+                            <tr>
+                                <th> File Name</th>
+                                <th> File Uploaded At</th>
+                            </tr>
+
+                            @if(count($attachments) > 0)
+                                @foreach($attachments as $attachment)
+                                    @if($attachment->attachmenttype == '6c1' && $attachment->createdby ==  Auth::user()->id && $attachment->ofd6cid == $hazmat->ofd6cid )
+                                        <tr>
+                                            <td>
+                                                <a href="{{ asset('uploads/'.$attachment->attachmentname) }}"> {{$attachment->attachmentname}}</a>
+                                            </td>
+                                            <td>
+                                                {{$attachment->created_at}}</a>
+                                            </td>
+                                        </tr>
+                                    @endif
+                                @endforeach
+                            @endif
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
             <div class="panel-body">
                 <div class="form-horizontal">
                     <div class="row">

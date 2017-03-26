@@ -551,11 +551,14 @@
                         </div>
                     </div>
                 </div>
-                <div class="row">
 
-                    <label class="col-sm-12">
-                        <strong>Miscellaneous Documents</strong>
-                    </label>
+                <div class="row">
+                    <div class="col-sm-12 form-group">
+                        <div class="form-group">
+                            {{ Form::checkbox('checkbox6', 1, null, ['id'=>'checkbox6', 'class' => 'className' ]) }}
+                            {{Form::label('Checkbox5','Miscellaneous Documents')}}
+                        </div>
+                    </div>
                     <div class="col-sm-12 form-group well well-sm">
                         <div class="col-sm-4">
                             <div class="input-group">
@@ -600,7 +603,6 @@
                         </div>
                     </div>
                 </div>
-
 
                 <div class="row">
                     <div class="col-sm-6 form-group">

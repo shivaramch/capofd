@@ -400,6 +400,30 @@
                 </div>
             </div>
         </div>
+
+        <div class="row">
+            <div class="col-sm-12 form-group">
+                <div class="form-group">
+                    {{ Form::checkbox('checkbox6', 1, null, ['id'=>'checkbox6', 'class' => 'className' ]) }}
+                    {{Form::label('Checkbox6','Miscellaneous Documents')}}
+                </div>
+            </div>
+            <div class="col-sm-12 form-group well well-sm">
+                <div class="col-sm-4">
+                    <div class="input-group">
+                        <label class="input-group-btn">
+                    <span class="btn btn-info">
+                        <i class="fa fa-cloud-upload" aria-hidden="true"></i> Upload<input type="file"
+                                                                                           name="miscinjuries"
+                                                                                           style="display: none;">
+                    </span>
+                        </label>
+                        <input type="text" id="upload-file-info" class="form-control" readonly>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <div class="row">
             <div class="col-sm-12">
                 <div class="form-group">
