@@ -124,6 +124,9 @@ class HazmatController extends Controller
             'corvelid' => 'required|integer:hazmat,corvelid',
             'contactcorvel' => 'required|string:hazmat,contactcorvel',
             ]);
+
+        $statusid=DB::table('status')->where('statustype','Draft')->value('statusid');
+        $request->offsetSet('applicationstatus',$statusid);
         $request = $this->saveFiles($request);
         hazmat::create($request->all());
         $last_insert_id = DB::getPdo()->lastInsertId();
@@ -154,6 +157,11 @@ class HazmatController extends Controller
             'frmsincidentnum' => 'required|integer:hazmat,frmsincidentnum',
             'shift' => 'required|string:hazmat,shift,',
             ]);
+
+
+        $statusid=DB::table('status')->where('statustype','Application under Captain')->value('statusid');
+
+        $request->offsetSet('applicationstatus',$statusid);
 
         $request = $this->saveFiles($request);
         hazmat::create($request->all());
