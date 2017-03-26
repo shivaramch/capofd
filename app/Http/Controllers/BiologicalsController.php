@@ -11,6 +11,8 @@ use App\User;
 use App\Comment;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Input;
+
 class BiologicalsController extends Controller
 {
     use FileUploadTrait;
@@ -87,13 +89,66 @@ class BiologicalsController extends Controller
     {
         return view('biologicals.create');
     }
-    public function store(StoreBiologicalsRequest $request)
-    {
 
-        $statusidraw=DB::table('status')->where('statustype','Application under Captain')->pluck('statusid');
-        $statusid=str_replace (array('[', ']'), '', $statusidraw);
+
+    public function save( Request $requestSave)
+    {
+        if(Input::get('store')) {
+            $this->store($requestSave);
+        }
+
+        if(Input::get('partialSave')) {
+            $this->partialSave($requestSave);
+        }
+        return redirect()->route('biologicals.index');
+
+    }
+
+
+
+
+    public function partialSave(Request $request)
+    {
+        $this->validate($request, [
+
+           'dateofexposure'=> 'required|date:biological,todaysdate,',
+            ]);
+
+
+        $statusid=DB::table('status')->where('statustype','Draft')->value('statusid');
         $request->offsetSet('applicationstatus',$statusid);
 
+        $request = $this->saveFiles($request);
+        Biological::create($request->all());
+        $last_insert_id = DB::getPdo()->lastInsertId();
+        $this->BiologicalUpload($request, $last_insert_id);
+        $link = $request->url() . "/$last_insert_id";
+        return redirect()->route('biologicals.index');
+
+    }
+
+    public function store(Request $request)
+    {
+
+        $this->validate($request, [
+
+        'trueofd184' => 'max:20480|mimes:pdf'.$this->route('biological'),
+            'potofd184' => 'max:20480|mimes:pdf'.$this->route('biological'),
+            //'todaysdate' => 'required|date:biological,todaysdate,'.$this->route('biological'),
+            'employeeid' => 'required|integer:biological,employeeid'.$this->route('biological'),
+            'exposedemployeename' => 'required|alpha|string:biological,exposedemployeename'.$this->route('biological'),
+            'dateofexposure' => 'required|before_or_equal:biological,dateofexposure'.$this->route('biological'),
+            'assignmentbiological' => 'required|string:biological,assignmentbiological'.$this->route('biological'),
+            'shift' => 'required|string:biological,shift'.$this->route('biological'),
+            'primaryidconumber' => 'required|integer:biological,primaryidconumber'.$this->route('biological'),
+            'epcrincidentnum' => 'required|numeric:biological,epcrincidentnum'.$this->route('biological'),
+            'frmsincidentnum' => 'required|numeric:biological,frmsincidentnumber'.$this->route('biological'),
+            'exposureinjury'=>'required|string:biological,exposureinjury'.$this->route('biological'),
+            'exposure'=>'required|string:biological,exposure'.$this->route('biological'),
+            ]);
+
+        $statusid=DB::table('status')->where('statustype','Application under Captain')->value('statusid');
+        $request->offsetSet('applicationstatus',$statusid);
         $request = $this->saveFiles($request);
         Biological::create($request->all());
         $last_insert_id = DB::getPdo()->lastInsertId();

@@ -159,11 +159,66 @@ class InjuriesController extends Controller
         return view('injuries.create');
     }
 
-    public function store(StoreInjuriesRequest $request)
+
+
+    public function save( Request $requestSave)
+    {
+        if(Input::get('store')) {
+            $this->store($requestSave);
+        }
+
+        if(Input::get('partialSave')) {
+            $this->partialSave($requestSave);
+        }
+        return redirect()->route('injuries.index');
+
+    }
+
+
+
+    public function partialSave(Request $request)
+    {
+        $this->validate($request, [
+            'injurydate' => 'required|date:injury,injurydate,',
+        ]);
+
+
+        $statusid=DB::table('status')->where('statustype','Draft')->value('statusid');
+        $request->offsetSet('applicationstatus',$statusid);
+        $request = $this->saveFiles($request);
+        Injury::create($request->all());
+        $last_insert_id = DB::getPdo()->lastInsertId();
+        $this->InjuriesUpload($request, $last_insert_id);
+
+    }
+
+
+
+    public function store(Request $request)
     {
 
-        $statusidraw=DB::table('status')->where('statustype','Application under Captain')->pluck('statusid');
-        $statusid=str_replace (array('[', ']'), '', $statusidraw);
+        $this->validate($request, [ 'reportnum' => 'required|integer:injury,reportnum,',
+            'injurydate' => 'required|date:injury,injurydate,',
+            'createdate' => 'required|date:injury,createdate,',
+            'injuredemployeename' => 'required|alpha|string:injuries,injuredemployeename,',
+            'injuredemployeeid' => 'required|integer:injury,injuredemployeeid,' ,
+            'assignmentinjury' => 'required|string:injury,assignmentinjury,',
+            'corvelid' => 'required|integer:injury,corvelid,' ,
+            'captainid' => 'required|integer:injury,captainid',
+            'battalionchiefid' => 'required|integer:injury,battalionchiefid',
+            'aconduty' => 'required|integer:injury,aconduty',
+            'documentworkforce' => 'required',
+            'documentoperationalday' => 'required',
+            'shift' => 'required|string:injury,shift,',
+            'trainingassigned' => 'required|string:injury,shift,',
+            'frmsincidentnum' => 'required|string:injury,frmsincidentnum',
+            'policeofficercompletesign' => 'required',
+            'callsupervisor' => 'required',
+            
+            ]);
+
+        $statusid=DB::table('status')->where('statustype','Application under Captain')->value('statusid');
+
         $request->offsetSet('applicationstatus',$statusid);
 
         $request = $this->saveFiles($request);

@@ -39,6 +39,7 @@ Route::group(['middleware' => 'auth'], function () {// Authentication Routes...
 
 
     Route::resource('injuries', 'InjuriesController');
+    Route::post('injuries/save', 'InjuriesController@save');
 
     Route::resource('comments', 'CommentsController');
 
@@ -46,8 +47,10 @@ Route::group(['middleware' => 'auth'], function () {// Authentication Routes...
     Route::post('accidents/save', 'AccidentsController@save');
 
     Route::resource('biologicals', 'BiologicalsController');
+    Route::post('biologicals/save', 'BiologicalsController@save');
 
     Route::resource('hazmat', 'HazmatController');
+    Route::post('hazmat/save', 'HazmatController@save');
 
     Route::resource('users', 'UserController');
 
