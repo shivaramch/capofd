@@ -34,7 +34,7 @@
         @foreach($injuries as $injury)
         @endforeach
 
-        @if($injury->injuredemployeeid == Auth::user()->id)
+        @if($injury->injuredemployeeid == Auth::user()->id || $injury->createdby == Auth::user()->id)
             <div class="panel panel-default panel-shadow " hidden>
                 <div class="panel-heading">
                     Search Previously filled
@@ -59,7 +59,7 @@
                         </thead>
                         <tbody>
                         @foreach($injuries as $injury)
-                            @if($injury->injuredemployeeid == Auth::user()->id)
+                            @if($injury->injuredemployeeid == Auth::user()->id || $injury->createdby == Auth::user()->id)
                                 <tr>
                                     <td>{{ $injury->ofd6id }}</td>
                                     <td>{{ $injury->injurydate }}</td>
