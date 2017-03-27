@@ -182,10 +182,52 @@
                 </div>
             </div>
             <div id="Exposure0" class="desc" style="display: none;">
+
+                <div class="col-md-12">
+                    <div class="alert alert-danger" align="left">
+                        Definition of True Exposure:
+                        <ul type="Disc">
+                            <li>Eye, mouth, other mucous membrane, non-related skin or parenteral contact with blood,
+                                other body fluids or other potentially infectious material.
+                            </li>
+                            <li>
+                                Inhalation of potentially contagious microbes.
+                            </li>
+                            <li>
+                                Contact with an infected patient’s skin lesions or body fluids that can cause
+                                infectious disease that require preventative treatment or quarantine.
+                            </li>
+
+                        </ul>
+                    </div>
+                </div>
+
                 <div class="col-sm-12">
                     <div class="form-group">
                         {{ Form::checkbox('truedecontaminate', 1, null, ['id' => 'truedecontaminate', 'class'=>'className']) }}
                         {{Form::label('truedecontaminate','Decontaminate self- wash, flush as soon as possible  ')}}
+                        <div class="col-md-12">
+                            <div class="alert alert-danger" align="left">
+                                Contamination might be due to soiling or pollution, as by the introduction of blood or
+                                body fluids onto:
+                                <ul type="Disc">
+                                    <li>Equipment
+                                    </li>
+                                    <li>
+                                        Clothing
+                                    </li>
+                                    <li>
+                                        PPE
+                                    </li>
+                                    <li>
+                                        Intact Skin
+                                    </li>
+                                    <li>
+                                        Turnout gear
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="col-sm-12">
@@ -291,11 +333,58 @@
             </div>
 
             <div id="Exposure1" class="desc" style="display: none;">
-
+                <div class="col-md-12">
+                    <div class="alert alert-danger" align="left">
+                        Definition of Potential Exposure:
+                        <ul type="Disc">
+                            <li>Occurs through a break in the skin barrier, this includes injections, needle sticks,
+                                human/ animal bites, abrasions and cuts that become contaminated with blood.
+                            </li>
+                            <li>
+                                For human/animal bites, the clinical evaluation must include the possibility that both
+                                the person bitten and the person/animal that inflicted the bite were exposed to
+                                bloodborne pathogens.
+                            </li>
+                        </ul>
+                    </div>
+                </div>
                 <div class="col-sm-12">
                     <div class="form-group">
                         {{ Form::checkbox('potdecontaminate', 1, null, ['id' => 'potdecontaminate', 'class'=>'className']) }}
-                        {{Form::label('potdecontaminate','Decontaminate self- wash, flush as soon as possible')}}
+                        {{Form::label('potdecontaminate','Decontaminate by self- wash, flush as soon as possible')}}
+                        <div class="col-md-12">
+                            <div class="alert alert-danger" align="left">
+                                Contamination might be due to soiling or pollution, as by the introduction of blood or
+                                body fluids onto:
+                                <ul type="Disc">
+                                    <li>Equipment
+                                    </li>
+                                    <li>
+                                        Clothing
+                                    </li>
+                                    <li>
+                                        PPE
+                                    </li>
+                                    <li>
+                                        Intact Skin
+                                    </li>
+                                    <li>
+                                        Turnout gear
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        {{--<div class = "form-group" align="left">--}}
+                        {{--Contamination might be due to soiling or pollution, as by the introduction of blood or body fluids onto:--}}
+                        {{--<ul type="square">--}}
+                        {{--<li>Equipment</li>--}}
+                        {{--<li>Clothing</li>--}}
+                        {{--<li>PPE</li>--}}
+                        {{--<li>Intact skin</li>--}}
+                        {{--<li>Turnout gear</li>--}}
+                        {{--</ul>--}}
+
+                        {{--</div>--}}
                     </div>
                 </div>
                 <div class="col-sm-12">
@@ -448,5 +537,6 @@
                     });
                 });
             </script>
+
     </div>
 @endsection

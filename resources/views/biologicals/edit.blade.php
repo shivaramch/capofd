@@ -185,6 +185,28 @@
                         <div class="form-group">
                             {{ Form::checkbox('truedecontaminate', 1, null, ['id' => 'truedecontaminate', 'class'=>'className']) }}
                             {{Form::label('truedecontaminate','Decontaminate self- wash, flush as soon as possible  ')}}
+                            <div class="col-md-12">
+                                <div class="alert alert-danger" align="left">
+                                    Contamination might be due to soiling or pollution, as by the introduction of blood
+                                    or body fluids onto:
+                                    <ul type="Disc">
+                                        <li>Equipment
+                                        </li>
+                                        <li>
+                                            Clothing
+                                        </li>
+                                        <li>
+                                            PPE
+                                        </li>
+                                        <li>
+                                            Intact Skin
+                                        </li>
+                                        <li>
+                                            Turnout gear
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div class="col-sm-12">
@@ -358,6 +380,28 @@
                         <div class="form-group">
                             {{ Form::checkbox('potdecontaminate', 1, null, ['id' => 'potdecontaminate', 'class'=>'className']) }}
                             {{Form::label('potdecontaminate','Decontaminate self- wash, flush as soon as possible')}}
+                            <div class="col-md-12">
+                                <div class="alert alert-danger" align="left">
+                                    Contamination might be due to soiling or pollution, as by the introduction of blood
+                                    or body fluids onto:
+                                    <ul type="Disc">
+                                        <li>Equipment
+                                        </li>
+                                        <li>
+                                            Clothing
+                                        </li>
+                                        <li>
+                                            PPE
+                                        </li>
+                                        <li>
+                                            Intact Skin
+                                        </li>
+                                        <li>
+                                            Turnout gear
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
                         </div>
                     </div>
 
