@@ -626,20 +626,6 @@
         {!! form::close() !!}
         {!! form::close() !!}
         <div class="panel panel-default">
-            <div class="panel-heading">
-                <div class="row">
-                    <div class="col-sm-12">
-                        @if($accident->captainid == Auth::user()->id && $accident->applicationstatus == 2 || $accident->battalionchiefid == Auth::user()->id&&$accident->applicationstatus == 3 ||$accident->aconduty == Auth::user()->id&&$accident->applicationstatus == 4)
-                            <div class="col-sm-12 panel-heading" align="center">
-                                <a href="{{ url('/accidents/'.$accident->ofd6aid .'/Approve') }}"
-                                   class="btn btn-success">Approve</a>
-                                <a href="{{ url('/accidents/'.$accident->ofd6aid .'/Reject') }}" class="btn btn-danger">Reject</a>
-
-                            </div>
-                        @endif
-                    </div>
-                </div>
-            </div>
             <div class="panel-body">
 
                 @if($accident->captainid == Auth::user()->id ||
@@ -658,10 +644,26 @@
                                 {{ Form::hidden('applicationtype', '6A') }}
                                 {{ Form::hidden('applicationid', $accident->ofd6aid) }}
                                 {{ Form::checkbox('isvisible', 1, null, ['id' => 'daybook', 'class'=>'className']) }}
-                                <label><strong>
-                                        Visible to applicant</strong></label>
-                                <div class="form-group">
-                                    {{ Form::submit('Post Comment', array('class' => 'btn btn-block btn-primary' , 'style' => 'width:220px')) }}
+                                <label>
+                                    <strong> Visible to applicant</strong>
+                                </label>
+                                <div class="col-sm-12" align="center">
+                                    <div class="col-sm-4">
+                                        {{ Form::submit('Post Comment', array('class' => 'btn btn-block btn-primary')) }}
+                                    </div>
+                                    @if($accident->captainid == Auth::user()->id && $accident->applicationstatus == 2 ||
+                                    $accident->battalionchiefid == Auth::user()->id&&$accident->applicationstatus == 3 ||
+                                    $accident->aconduty == Auth::user()->id&&$accident->applicationstatus == 4 || Auth::user()->roleid == 1)
+                                        <div class="col-sm-4">
+                                            <a href="{{ url('/accidents/'.$accident->ofd6aid .'/Approve') }}"
+                                               class="btn btn-block btn-success">Approve</a>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <button type="button" class="btn btn-block btn-danger" data-toggle="modal" data-target="#myModal">
+                                              Reject
+                                            </button>
+                                        </div>
+                                    @endif
                                 </div>
                             </div>
                         </div>
@@ -710,10 +712,29 @@
                 </div>
             </div>
         </div>
-        </div>
-        </div>
-@stop
 
-@section('CSS')
+        <!-- Modal -->
+        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                    aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="myModalLabel"></h4>
+                    </div>
+                    <div class="modal-body">
+                        Are you sure you want to <strong>Reject</strong> this application? If, <strong>Yes</strong> please include a comment for the applicant if not done already!
+                    </div>
+                    <div class="modal-footer">
+                        <a href="{{ url('/accidents/'.$accident->ofd6aid .'/Reject') }}"
+                           class="btn btn-success">Yes</a>
+                        <button type="button" class=" btn btn-danger" data-dismiss="modal" aria-label="">No</button>
+
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
 
 @stop

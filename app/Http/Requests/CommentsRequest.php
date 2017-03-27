@@ -24,7 +24,7 @@ class CommentsRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'comment' => 'required|string:accidents,comment'. $this->route('accident'),
         ];
     }
 }
