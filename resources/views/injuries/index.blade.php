@@ -91,7 +91,7 @@
 
 
 
-        @if($injury->captainid == Auth::user()->id && $injury->applicationstatus == 2)
+        @if($injury->captainid == Auth::user()->id )
             <div class="panel panel-default panel-shadow " hidden>
                 <div class="panel-heading">
                     In your Queue For Approval as Captain
@@ -187,7 +187,7 @@
             </div>
         @endif
 
-        @if($injury->aconduty == Auth::user()->id && $injury->applicationstatus == 4)
+        @if($injury->aconduty == Auth::user()->id )
             <div class="panel panel-default panel-shadow " hidden>
                 <div class="panel-heading">
                     Search Previously filled as Assistant chief

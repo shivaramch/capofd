@@ -83,7 +83,7 @@
         @endif
 
 
-        @if($accident->captainid == Auth::user()->id && $accident->applicationstatus == 2)
+        @if($accident->captainid == Auth::user()->id )
             <div class="panel panel-default panel-shadow " hidden>
                 <div class="panel-heading">
                     In your Queue For Approval as Captain
@@ -135,7 +135,7 @@
         @endif
 
 
-        @if($accident->battalionchiefid == Auth::user()->id && $accident->applicationstatus == 3)
+        @if($accident->battalionchiefid == Auth::user()->id )
             <div class="panel panel-default panel-shadow " hidden>
                 <div class="panel-heading">
                     In your Queue For Approval as battalion chief
@@ -187,7 +187,7 @@
             </div>
         @endif
 
-        @if($accident->aconduty == Auth::user()->id && $accident->applicationstatus == 4)
+        @if($accident->aconduty == Auth::user()->id )
             <div class="panel panel-default panel-shadow " hidden>
                 <div class="panel-heading">
                     In your Queue For Approval as Assistant chief
