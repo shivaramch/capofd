@@ -21,12 +21,16 @@ class LimiteddutyController extends Controller
     public function index()
     {
         $limitedduties = Limitedduty::all();
-        return view('limitedduties.index', compact('limitedduties'));
+        if (Auth::user()->roleid == 1) {
+            return view('limitedduties.index', compact('limitedduties'));
+        }
     }
 
     public function create()
     {
-        return view('limitedduties.create');
+        if (Auth::user()->roleid == 1) {
+            return view('limitedduties.create');
+        }
     }
 
     public function store(StoreLimiteddutiesRequest $request)
@@ -42,14 +46,18 @@ class LimiteddutyController extends Controller
         //$link=preg_replace('#\/[^/]*$#', '', $rawlink)."/$last_insert_id";
 
         //$numsent = (new EmailController)->Email($request, $link,$formname);
-        return redirect()->route('limitedduties.index');
+
+            return redirect()->route('limitedduties.index');
+
     }
 
     public function edit($id)
     {
         $attachments = Attachment::all();
         $limitedduty = Limitedduty::findOrFail($id);
-        return view('limitedduties.edit', compact('limitedduty', 'attachments'));
+        if (Auth::user()->roleid == 1) {
+            return view('limitedduties.edit', compact('limitedduty', 'attachments'));
+        }
     }
 
     public function show($id)
@@ -59,7 +67,9 @@ class LimiteddutyController extends Controller
         //show history code start
         //below one line code is for storing all history related to the $id in variable, which is to be used to display in show page.
         //show history code end
-        return view('limitedduties.show', compact('limitedduty', 'attachments'));
+        if (Auth::user()->roleid == 1) {
+            return view('limitedduties.show', compact('limitedduty', 'attachments'));
+        }
     }
 
     public function update(UpdateLimiteddutiesRequest $request, $id)

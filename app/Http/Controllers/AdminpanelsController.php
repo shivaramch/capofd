@@ -12,10 +12,13 @@ use Illuminate\Support\Facades\Auth;
 class AdminpanelsController extends Controller
 {
     public function index()
-    {   $accidents = Accident::all();
+    {
+        $accidents = Accident::all();
         $biologicals = Biological::all();
         $hazmat = hazmat::all();
         $injuries = Injury::all();
-        return view('adminpanel.index', compact('accidents', 'injuries','hazmat','biologicals' ));
+        if (Auth::user()->roleid == 1) {
+            return view('adminpanel.index', compact('accidents', 'injuries', 'hazmat', 'biologicals'));
+        }
     }
 }

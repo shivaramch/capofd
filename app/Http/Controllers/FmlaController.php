@@ -21,12 +21,16 @@ class FmlaController extends Controller
     public function index()
     {
         $fmlas = Fmla::all();
-        return view('fmlas.index', compact('fmlas'));
+        if (Auth::user()->roleid == 1) {
+            return view('fmlas.index', compact('fmlas'));
+        }
     }
 
     public function create()
     {
-        return view('fmlas.create');
+        if (Auth::user()->roleid == 1) {
+            return view('fmlas.create');
+        }
     }
 
     public function store(StoreFmlasRequest $request)
@@ -49,7 +53,9 @@ class FmlaController extends Controller
     {
         $attachments = Attachment::all();
         $fmla = Fmla::findOrFail($id);
-        return view('limitedduties.edit', compact('limitedduty', 'attachments'));
+        if (Auth::user()->roleid == 1) {
+            return view('limitedduties.edit', compact('limitedduty', 'attachments'));
+        }
     }
 
     public function show($id)
@@ -59,7 +65,9 @@ class FmlaController extends Controller
         //show history code start
         //below one line code is for storing all history related to the $id in variable, which is to be used to display in show page.
         //show history code end
-        return view('fmlas.show', compact('fmla', 'attachments'));
+        if (Auth::user()->roleid == 1) {
+            return view('fmlas.show', compact('fmla', 'attachments'));
+        }
     }
 
     public function update(UpdateFmlasRequest $request, $id)
