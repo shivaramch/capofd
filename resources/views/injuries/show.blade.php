@@ -615,9 +615,9 @@
                                         <div class="col-sm-4">
                                             {{ Form::submit('Post Comment', array('class' => 'btn btn-block btn-primary')) }}
                                         </div>
-                                        @if($accident->captainid == Auth::user()->id && $accident->applicationstatus == 2 ||
-                                        $accident->battalionchiefid == Auth::user()->id&&$accident->applicationstatus == 3 ||
-                                        $accident->aconduty == Auth::user()->id&&$accident->applicationstatus == 4)
+                                        @if($injury->captainid == Auth::user()->id && $injury->applicationstatus == 2 ||
+                                        $injury->battalionchiefid == Auth::user()->id&&$injury->applicationstatus == 3 ||
+                                        $injury->aconduty == Auth::user()->id&&$injury->applicationstatus == 4)
                                             <div class="col-sm-4">
                                                 <a href="{{ url('/injuries/'.$injury->ofd6id .'/Approve') }}"
                                                    class="btn btn-block btn-success">Approve</a>
