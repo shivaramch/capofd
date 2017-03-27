@@ -784,6 +784,46 @@
             </div>
         </div>
 
+        @if (!empty($comments))
+            <div class="panel panel-default">
+            <div class="panel-body">
+                <div class="actionBox">
+                    <ul class="commentList">
+                            @foreach ($comments as $cm)
+                                @if(($cm->applicationid == $accident->ofd6aid && $cm->applicationtype == '6A')&&
+                                ($accident->driverid == Auth::user()->id && $cm->isvisible == 1))
+                                    <div class="col-sm-8">
+                                        <div class="panel panel-white post panel-shadow">
+                                            <div class="post-heading">
+                                                <div class="pull-left meta">
+                                                    <div class="title h5">
+                                                        @foreach ($users as $user)
+                                                            @if($user->id == $cm->createdby )
+
+                                                                <b><i class="fa fa-user"></i> {{$user->name}}
+                                                                </b>
+                                                            @endif
+                                                        @endforeach
+                                                        made a Comment.
+                                                    </div>
+                                                    <time class="comment-date text-muted time"
+                                                          datetime="{{$cm->created_at}}"><i
+                                                                class="fa fa-clock-o"></i> {{$cm->created_at}}
+                                                    </time>
+                                                </div>
+                                            </div>
+                                            <div class="post-description">
+                                                <p>{{$cm->comment}}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                @endif
+                            @endforeach
+                    </ul>
+                </div>
+            </div>
+        </div>
+        @endif
 
     @else
         <div class="panel-body">
@@ -805,6 +845,7 @@
             </div>
         </div>
         @endif
+
 
                 <!-- Modal -->
         <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">

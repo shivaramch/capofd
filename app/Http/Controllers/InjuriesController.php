@@ -241,7 +241,10 @@ class InjuriesController extends Controller
     {
         $attachments = Attachment::all();
         $injury = Injury::findOrFail($id);
-        return view('injuries.edit', compact('injury', 'attachments'));
+        $comments = Comment::all();
+        $users = User::all();
+
+        return view('injuries.edit', compact('injury', 'attachments','comments', 'users'));
 
     }
 

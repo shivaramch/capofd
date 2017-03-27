@@ -278,21 +278,31 @@ class AccidentsController extends EmailController
 
     public function edit($id)
     {
-        $attachments = Attachment::all();
+
+        $attachments = Attachment::where('ofd6aid', $id)->get();
         $accident = Accident::findOrFail($id);
-        return view('accidents.edit', compact('accident', 'attachments'));
+        $comments = Comment::all();
+        $users = User::all();
+
+        if(($accident->driverid == Auth::user()->id &&
+            ($accident->applicationstatus == 1 || $accident->applicationstatus == 5))||
+        Auth::user()->roleid == 1)
+        {
+            return view('accidents.edit', compact('accident', 'attachments', 'comments','users'));
+        }
     }
 
     public function show($id)
     {
         $accident = Accident::findOrFail($id);
-        $attachments = Attachment::all();
+        $attachments = Attachment::where('ofd6aid', $id)->get();
         $comments = Comment::all();
         $users = User::all();
         //show history code start
         //below one line code is for storing all history related to the $id in variable, which is to be used to display in show page.
         //show history code end
-        return view('accidents.show', compact('accident', 'attachments', 'comments','users'));
+            return view('accidents.show', compact('accident', 'attachments', 'comments','users'));
+
     }
 
     public function update(UpdateAccidentsRequest $request, $id)

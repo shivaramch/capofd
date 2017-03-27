@@ -166,7 +166,10 @@ class BiologicalsController extends Controller
     {
         $attachments = Attachment::all();
         $biological = Biological::findOrFail($id);
-        return view('biologicals.edit', compact('biological', 'attachments'));
+        $comments = Comment::all();
+        $users = User::all();
+
+        return view('biologicals.edit', compact('biological', 'attachments','comments', 'users'));
     }
     public function show($id)
     {
