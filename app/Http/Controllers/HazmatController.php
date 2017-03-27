@@ -136,7 +136,7 @@ class HazmatController extends Controller
 
     }
 
-    public function store(StoreHazmatRequest $request)
+    public function store(Request $request)
     {
 
 
