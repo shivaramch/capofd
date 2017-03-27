@@ -9,6 +9,7 @@
     </ol>
 @endsection
 @section('content')
+    @if(Auth::user()->roleid == 1)
     <div class="panel panel-default panel-shadow ">
         <div class="panel-heading">
             <div class="row">
@@ -21,11 +22,6 @@
     </div>
 
     @if(count($fmlas) > 0)
-
-        @foreach($fmlas as $fmla)
-        @endforeach
-
-        @if($fmla->employeeid == Auth::user()->id)
             <div class="panel panel-default panel-shadow " hidden>
                 <div class="panel-heading">
                     Search Previously filled
@@ -50,9 +46,8 @@
                         </tr>
                         </thead>
                         <tbody>
-                        @if(count($fmlas) > 0)
                             @foreach($fmlas as $fmla)
-                                @if($fmla->employeeid == Auth::user()->id)
+
                                     <tr>
                                         <td>{{ $fmla->fmlaid }}</td>
                                         <td>{{ $fmla->employeeid }}</td>
@@ -71,69 +66,32 @@
                                             </div>
                                         </td>
                                     </tr>
-                                @endif
                             @endforeach
-                        @endif
                         </tbody>
                     </table>
                 </div>
             </div>
         @endif
-
-
-
-
-
-
-        {{--@if($limitedduty->primaryidconumber == Auth::user()->id && $limitedduty->applicationstatus == 2)--}}
-        {{--<div class="panel panel-default panel-shadow " hidden>--}}
-        {{--<div class="panel-heading">--}}
-        {{--In your Queue For Approval--}}
-        {{--</div>--}}
-        {{--<div class="panel-body">--}}
-        {{--<table data-toolbar="#toolbar"--}}
-        {{--data-toggle="table"--}}
-        {{--data-search="true"--}}
-        {{--data-cookie="true"--}}
-        {{--data-click-to-select="true"--}}
-        {{--data-cookie-id-table="station-index-v1.1-1"--}}
-        {{--data-show-columns="true"--}}
-        {{--id="table">--}}
-        {{--<thead>--}}
-        {{--<tr>--}}
-        {{--<th data-sortable="true">OFD 6B ID</th>--}}
-        {{--<th data-sortable="true">Date of Exposure</th>--}}
-        {{--<th data-sortable="true">Assignment</th>--}}
-        {{--<th data-sortable="true">Status</th>--}}
-        {{--<th data-switchable="false" data-searchable="false" data-sortable="false">Action--}}
-        {{--</th>--}}
-        {{--</tr>--}}
-        {{--</thead>--}}
-        {{--<tbody>--}}
-        {{--@if(count($limitedduty) > 0)--}}
-        {{--@if($limitedduty->applicationstatus == 2)--}}
-        {{--<tr>--}}
-        {{--<td>{{ $limitedduty->ofd6bid }}</td>--}}
-        {{--<td>{{ $biological->dateofexposure }}</td>--}}
-        {{--<td>{{ $biological->assignmentbiological }}</td>--}}
-        {{--<td>{{ $biological->status }}</td>--}}
-        {{--<td>--}}
-        {{--<div>--}}
-        {{--<a href="{{ route('biologicals.show',[$biological->ofd6bid]) }}"--}}
-        {{--class="btn btn-xs btn-info btn-block"><i--}}
-        {{--class="fa fa-eye" aria-hidden="true"></i> VIEW</a>--}}
-        {{--</div>--}}
-        {{--</td>--}}
-        {{--</tr>--}}
-        {{--@endif--}}
-        {{--@endif--}}
-        {{--</tbody>--}}
-        {{--</table>--}}
-        {{--</div>--}}
-        {{--</div>--}}
+    @else
+        <div class="panel-body">
+            <div class="form-horizontal">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="alert alert-danger" align="center">
+                            <label>
+                                You are not authorized to view this Area.
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-12 panel-heading" align="center">
+            <div class="btn-bottom ">
+                <a href="{{ url('/') }}" class="btn btn-default">return</a>
+            </div>
+        </div>
     @endif
-
-
 @stop
 @section('javascript')
     <script src="{{ url('js/extensions/cookie') }}/bootstrap-table-cookie.js"></script>

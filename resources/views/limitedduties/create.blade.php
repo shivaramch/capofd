@@ -1,7 +1,4 @@
 @extends('layouts.app')
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
 @section('crumbs')
     <ol class="breadcrumb">
         <a class="btn btn-default" type="button"
@@ -159,7 +156,7 @@
         <div class="panel-body">
             <div class="col-sm-12">
                 <div class="form-group">
-                    {{--{{ Form::checkbox('trueofd184', 1, null, ['id'=>'trueofd184', 'class' => 'className' ]) }}--}}
+
                     {{Form::label('limitedduty','Attachments')}}
                 </div>
                 <div class="col-sm-12 form-group well well-sm">

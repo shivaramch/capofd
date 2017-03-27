@@ -52,8 +52,6 @@
                     <div class="col-md-12">
                         <div class="alert alert-danger" align="center">
                             <strong>
-                                Refer to SOP ADM 3-3 Fire Apparatur/Vehicle Accident Investigation
-                                <br>
                                 COMPLETE ALL FORMS AND FORWARD VIA CHAIN-OF-COMMAND WITHIN 48 HOURS
                             </strong>
                         </div>
@@ -181,10 +179,21 @@
                                                                      disabled></label>
                     </div>
                     <div class="row">
-                        <div class="col-md-12">
+                        <div class="col-md-12" style="text-align:left">
                             <strong>
-                                Police Report is REQUIRED on all City vehicles involved in an accident OR property
-                                damage whether on public streets, private property, or at the Fire Station
+                                Please Follow These Instructions:
+                                <ol start="1">
+                                    <li>B/C shall ensure all reports are properly completed within 24 hours.</li>
+                                    <li>If an employee receives an injury from this incident, the employee shall
+                                        complete an OFD6 and designate whether treatment is being requested in the
+                                        OFD-25 IOD.
+                                    </li>
+                                    <li>City of Omaha policy REQUIRES a Police Report and DR41 State Form on all City
+                                        vehicles involved in an accident OR property damage whether on public streets,
+                                        private property, or at the Fire Station.
+                                    </li>
+                                    <li>DR41 is only submitted to the State if damage is over $1000.00</li>
+                                </ol>
                             </strong>
                         </div>
                     </div>
@@ -219,10 +228,10 @@
                         {{ Form::checkbox('checkbox1', 1, null, ['id'=>'checkbox1', 'class' => 'className' ]) }}
                         {{Form::label('Checkbox1','Complete LRS 101 City of Omaha Accident Report-Include RB#, Officer Name, Badge#')}}
                     </div>
-                    </div>
-               {{--}} <label class="checkbox-inline col-sm-12">
-                    <strong>Complete LRS 101 City of Omaha Accident Report-Include RB#, Officer Name, Badge#</strong>
-                </label> --}}
+                </div>
+                {{--}} <label class="checkbox-inline col-sm-12">
+                     <strong>Complete LRS 101 City of Omaha Accident Report-Include RB#, Officer Name, Badge#</strong>
+                 </label> --}}
 
                 <div class="col-sm-12 form-group well well-sm">
                     <div class="col-sm-4">
@@ -253,10 +262,10 @@
                             Vehicle Accident Witness Statement -This Report is for civilian statements
                         only')}}
                     </div>
-                    </div>
-               {{--}} <label class="col-sm-12"><strong><strong>Complete OFD 295
-                            Vehicle Accident Witness Statement</strong>-This Report is for civilian statements
-                        only</strong></label> --}}
+                </div>
+                {{--}} <label class="col-sm-12"><strong><strong>Complete OFD 295
+                             Vehicle Accident Witness Statement</strong>-This Report is for civilian statements
+                         only</strong></label> --}}
                 <div class="col-sm-12 form-group well well-sm">
                     <div class="col-sm-4">
                         <a class="btn btn-success dropdown-toggle col-sm-12" type="button"
@@ -286,8 +295,8 @@
                         Intradepartmental Communication - Driver')}}
                     </div>
                 </div>
-               {{--}} <label class="col-sm-12"><strong>Complete OFD 25a Accident
-                        Intradepartmental Communication</strong>-Driver</label> --}}
+                {{--}} <label class="col-sm-12"><strong>Complete OFD 25a Accident
+                         Intradepartmental Communication</strong>-Driver</label> --}}
                 <div class="col-sm-12 form-group well well-sm">
                     <div class="col-sm-4">
                         <a class="btn btn-success dropdown-toggle col-sm-12" type="button"
@@ -342,15 +351,15 @@
             </div>
             <div class="row">
                 <div class="col-sm-12 form-group">
-                <div class="form-group">
-                    {{ Form::checkbox('checkbox5', 1, null, ['id'=>'checkbox5', 'class' => 'className' ]) }}
-                    {{Form::label('Checkbox5','Complete OFD 25b Accident
-                    Intradepartmental Communication - Other Personnel')}}
+                    <div class="form-group">
+                        {{ Form::checkbox('checkbox5', 1, null, ['id'=>'checkbox5', 'class' => 'className' ]) }}
+                        {{Form::label('Checkbox5','Complete OFD 25b Accident
+                        Intradepartmental Communication - Other Personnel')}}
+                    </div>
                 </div>
-            </div>
 
-              {{--}}  <label class="checkbox-inline col-sm-12"><strong>Complete OFD 25c Accident
-                        Intradepartmental Communication</strong>-Other Personnel</label> --}}
+                {{--}}  <label class="checkbox-inline col-sm-12"><strong>Complete OFD 25c Accident
+                          Intradepartmental Communication</strong>-Other Personnel</label> --}}
                 <div class="col-sm-12 form-group well well-sm">
                     <div class="col-sm-4">
                         <a class="btn btn-success dropdown-toggle col-sm-12" type="button"
@@ -373,12 +382,12 @@
             </div>
             <div class="row">
                 <div class="col-sm-12 form-group">
-                <div class="form-group">
-                    {{ Form::checkbox('checkbox6', 1, null, ['id'=>'checkbox6', 'class' => 'className' ]) }}
-                    {{Form::label('Checkbox6','Complete OFD 31-OFD
-                        Damaged, Lost, Stolen Equipment Report')}}
+                    <div class="form-group">
+                        {{ Form::checkbox('checkbox6', 1, null, ['id'=>'checkbox6', 'class' => 'className' ]) }}
+                        {{Form::label('Checkbox6','Complete OFD 31-OFD
+                            Damaged, Lost, Stolen Equipment Report')}}
+                    </div>
                 </div>
-            </div>
                 {{--}}<label class="checkbox-inline col-sm-12"><strong> Complete OFD 31-OFD
                         Damaged, Lost, Stolen Equipment Report</strong></label>--}}
                 <div class="col-sm-12 form-group well well-sm">
@@ -403,14 +412,14 @@
             </div>
             <div class="row">
                 <div class="col-sm-12 form-group">
-                <div class="form-group">
-                    {{ Form::checkbox('checkbox7', 1, null, ['id'=>'checkbox7', 'class' => 'className' ]) }}
-                    {{Form::label('checkbox7','Complete OFD 127 Request for
-                        Services Form')}}
+                    <div class="form-group">
+                        {{ Form::checkbox('checkbox7', 1, null, ['id'=>'checkbox7', 'class' => 'className' ]) }}
+                        {{Form::label('checkbox7','Complete OFD 127 Request for
+                            Services Form')}}
+                    </div>
                 </div>
-            </div>
-             {{--}}   <label class="checkbox-inline col-sm-12"><strong> Complete OFD 127 Request for
-                        Services Form</strong></label> --}}
+                {{--}}   <label class="checkbox-inline col-sm-12"><strong> Complete OFD 127 Request for
+                           Services Form</strong></label> --}}
                 <div class="col-sm-12 form-group well well-sm">
                     <div class="col-sm-4">
                         <a class="btn btn-success dropdown-toggle col-sm-12" type="button"
@@ -434,14 +443,14 @@
 
             <div class="row">
                 <div class="col-sm-12 form-group">
-                <div class="form-group">
-                    {{ Form::checkbox('checkbox8', 1, null, ['id'=>'checkbox8', 'class' => 'className' ]) }}
-                    {{Form::label('checkbox8','Complete DR 41 State
-                            of Nebraska DMV Vehicle Accident Report')}}
+                    <div class="form-group">
+                        {{ Form::checkbox('checkbox8', 1, null, ['id'=>'checkbox8', 'class' => 'className' ]) }}
+                        {{Form::label('checkbox8','Complete DR 41 State
+                                of Nebraska DMV Vehicle Accident Report')}}
+                    </div>
                 </div>
-            </div>
-               {{--}} <label class="checkbox-inline col-sm-12"><strong><strong> Complete DR 41 State
-                            of Nebraska DMV Vehicle Accident Report</strong></strong></label> --}}
+                {{--}} <label class="checkbox-inline col-sm-12"><strong><strong> Complete DR 41 State
+                             of Nebraska DMV Vehicle Accident Report</strong></strong></label> --}}
                 <div class="col-sm-12 form-group well well-sm">
                     <div class="col-sm-4">
                         <a class="btn btn-success dropdown-toggle col-sm-12" type="button"
@@ -474,7 +483,8 @@
                         <div class="input-group">
                             <label class="input-group-btn">
                     <span class="btn btn-info">
-                        <i class="fa fa-cloud-upload" aria-hidden="true"></i> Upload<input type="file" name="miscaccidents"
+                        <i class="fa fa-cloud-upload" aria-hidden="true"></i> Upload<input type="file"
+                                                                                           name="miscaccidents"
                                                                                            style="display: none;">
                     </span>
                             </label>

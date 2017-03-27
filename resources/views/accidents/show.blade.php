@@ -58,8 +58,6 @@
                         <div class="col-md-12">
                             <div class="alert alert-danger" align="center">
                                 <strong>
-                                    Refer to SOP ADM 3-3 fire Apparatus/Vehicle Accident Investigation
-                                    <br>
                                     Complete all forms and forward via chain-of-command within 48 hours
                                 </strong>
                             </div>
@@ -181,13 +179,23 @@
                     </div>
                     <div class="alert alert-danger" align="center">
                         <div class="row">
-                            <div class="col-md-12">
+                            <div class="col-md-12" style="text-align:left">
                                 <strong>
-                                    B/C shall ensure all reports are properly completed and forwarded to safety officer
-                                    within 24 hours of accident.
-                                    <br>
-                                    Police report is required on all city vehicles involved in an accident or property
-                                    damage whether on public streets, private property, or at the fire station
+                                    Please Follow These Instructions:
+                                    <ol start="1">
+                                        <li>B/C shall ensure all reports are properly completed within 24 hours.</li>
+                                        <li>If an employee receives an injury from this incident, the employee shall
+                                            complete an OFD6 and designate whether treatment is being requested in the
+                                            OFD-25 IOD.
+                                        </li>
+                                        <li>City of Omaha policy REQUIRES a Police Report and DR41 State Form on all
+                                            City
+                                            vehicles involved in an accident OR property damage whether on public
+                                            streets,
+                                            private property, or at the Fire Station.
+                                        </li>
+                                        <li>DR41 is only submitted to the State if damage is over $1000.00</li>
+                                    </ol>
                                 </strong>
                             </div>
                         </div>

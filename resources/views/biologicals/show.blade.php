@@ -170,6 +170,28 @@
                         <div class="form-group">
                             {{ Form::checkbox('truedecontaminate', 1, null, ['id' => 'truedecontaminate', 'class'=>'className' , 'disabled' => "disabled"]) }}
                             {{Form::label('truedecontaminate','Decontaminate self- wash, flush as soon as possible  ')}}
+                            <div class="col-md-12">
+                                <div class="alert alert-danger" align="left">
+                                    Contamination might be due to soiling or pollution, as by the introduction of blood
+                                    or body fluids onto:
+                                    <ul type="Disc">
+                                        <li>Equipment
+                                        </li>
+                                        <li>
+                                            Clothing
+                                        </li>
+                                        <li>
+                                            PPE
+                                        </li>
+                                        <li>
+                                            Intact Skin
+                                        </li>
+                                        <li>
+                                            Turnout gear
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div class="col-sm-12">
@@ -314,6 +336,28 @@
                         <div class="form-group">
                             {{ Form::checkbox('potdecontaminate', 1, null, ['id' => 'potdecontaminate', 'class'=>'className','disabled' => "disabled" ]) }}
                             {{Form::label('potdecontaminate','Decontaminate self- wash, flush as soon as possible  ')}}
+                            <div class="col-md-12">
+                                <div class="alert alert-danger" align="left">
+                                    Contamination might be due to soiling or pollution, as by the introduction of blood
+                                    or body fluids onto:
+                                    <ul type="Disc">
+                                        <li>Equipment
+                                        </li>
+                                        <li>
+                                            Clothing
+                                        </li>
+                                        <li>
+                                            PPE
+                                        </li>
+                                        <li>
+                                            Intact Skin
+                                        </li>
+                                        <li>
+                                            Turnout gear
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
                         </div>
                     </div>
 
@@ -424,11 +468,11 @@
                 <div class="form-horizontal">
                     <div class="row">
                         <div class="col-md-12">
-                            <div class="alert alert-danger" align="left">
-                                {{Form::label('exposureinjury','Do you have any symptoms of illness or injury and require
-                                   treatment? (In case of Injury, please fill OFD - 6 IOD Application)  :  ')}}
+                            <div class="alert alert-danger" align="center">
+                                {{Form::label('If an employee receives an injury or illness from this incident,
+                                the employee shall complete an OFD6 and designate whether treatment is being requested in the OFD-25 IOD.')}}
 
-                                <strong> {{ $biological->exposureinjury}} </strong>
+                                {{--<strong> {{ $biological->exposureinjury}} </strong>--}}
 
                             </div>
                         </div>

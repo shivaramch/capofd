@@ -42,7 +42,7 @@ class LimiteddutyController extends Controller
         //$link=preg_replace('#\/[^/]*$#', '', $rawlink)."/$last_insert_id";
 
         //$numsent = (new EmailController)->Email($request, $link,$formname);
-        //return redirect()->route('biologicals.index');
+        return redirect()->route('limitedduties.index');
     }
 
     public function edit($id)
@@ -73,7 +73,6 @@ class LimiteddutyController extends Controller
                 'incidenttype' => $limitedduty->incidenttype,
                 'fromdate' => $limitedduty->fromdate,
                 'todate' => $limitedduty->todate,
-                //'todaysdate' => $biological->todaysdate,
                 'comments' => $limitedduty->comments]
         );
         //end history code

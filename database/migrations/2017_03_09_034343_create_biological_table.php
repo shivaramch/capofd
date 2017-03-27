@@ -24,7 +24,7 @@ class CreateBiologicalTable extends Migration
             $table->string('frmsincidentnum',256)->nullable();
             //$table->date('todaysdate')->nullable();
             $table->string('exposure',256)->nullable();
-            $table->string('exposureinjury',256)->nullable();
+            //$table->string('exposureinjury',256)->nullable();
             $table->string('truedecontaminate')->nullable();
             $table->string('confirmsource')->nullable();
             $table->string('bloodreport')->nullable();

@@ -153,23 +153,11 @@
         <div class="panel-body">
             <div class="col-sm-12">
                 <div class="form-group">
-                    {{--{{ Form::checkbox('trueofd184', 1, null, ['id'=>'trueofd184', 'class' => 'className' ]) }}--}}
                     {{Form::label('limitedduty','Attachments')}}
                 </div>
                 <div class="col-sm-12 form-group well well-sm">
-                    <div class="col-sm-4">
-                        <div class="input-group">
-                            <label class="input-group-btn">
-                                            <span class="btn btn-info"><i class="fa fa-cloud-upload"
-                                                                          aria-hidden="true"></i> Upload<input
-                                                        type="file" name="limitedduty"
-                                                        style="display: none;"
-                                                        multiple>
-                                            </span>
-                            </label>
-                            <input type="text" id="upload-file-info" class="form-control" readonly>
-                        </div>
-                        <div class="col-sm-4">
+                    <div class="col-sm-8">
+                        <div class="col-sm-8">
                             <a class="btn btn-primary dropdown-toggle col-sm-12" data-toggle="collapse"
                                data-target="#ltdduty"><i class="fa fa-eye" aria-hidden="true"></i> View
                                 Previously

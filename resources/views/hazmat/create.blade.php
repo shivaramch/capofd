@@ -200,9 +200,9 @@
                 </div>
 
 
-              {{--}}  <label class="col-sm-4">
-                    <strong>Fill out OFD-025 Hazmat Exposure Report form</strong>
-                </label> --}}
+                {{--}}  <label class="col-sm-4">
+                      <strong>Fill out OFD-025 Hazmat Exposure Report form</strong>
+                  </label> --}}
                 <div class="col-sm-12 form-group well well-sm">
                     <div class="col-sm-4">
                         <a class="btn btn-success dropdown-toggle col-sm-12" type="button"
@@ -248,21 +248,21 @@
                 <div class="form-horizontal">
                     <div class="row">
                         <div class="col-md-12">
-                            <div class="alert alert-danger" align="left">
-                                {{Form::label('exposureinjury','Do you have any symptoms of illness or injury and require
-                                   treatment? (In case of Injury, please fill OFD - 6 IOD Application)     ')}}
+                            <div class="alert alert-danger" align="center">
+                                {{Form::label('If an employee receives an injury or illness from this incident,
+                                the employee shall complete an OFD6 and designate whether treatment is being requested in the OFD-25 IOD.')}}
 
-                                {!! Form::select('exposureinjury',[
-                                  'Yes' => 'Yes',
-                                  'No' => 'No'],null,
-                                ['placeholder' => 'Choose one'],'required',
-                                array('class' => 'form-control'))!!}
-                                <p class="help-block"></p>
-                                @if($errors->has('exposureinjury'))
-                                    <p class="help-block">
-                                        {{ $errors->first('exposureinjury') }}
-                                    </p>
-                                @endif
+                                {{--{!! Form::select('exposureinjury',[--}}
+                                {{--'Yes' => 'Yes',--}}
+                                {{--'No' => 'No'],null,--}}
+                                {{--['placeholder' => 'Choose one'],'required',--}}
+                                {{--array('class' => 'form-control'))!!}--}}
+                                {{--<p class="help-block"></p>--}}
+                                {{--@if($errors->has('exposureinjury'))--}}
+                                {{--<p class="help-block">--}}
+                                {{--{{ $errors->first('exposureinjury') }}--}}
+                                {{--</p>--}}
+                                {{--@endif--}}
                             </div>
                         </div>
                     </div>
