@@ -18,13 +18,12 @@
 
 <script type="text/javascript">$('.tip').tooltip()</script>
 
-
 <script>
     $(document).ready(function () {
         $(".datepicker1").datepicker({
             onClose: function () {
                 var date2 = $('.datepicker1').datepicker('getDate');
-                date2.setDate(date2.getDate() + 35)
+                date2.setDate(date2.getDate() + 30)
                 $(".datepicker2").datepicker("setDate", date2);
                 var date3 = $('.datepicker1').datepicker('getDate');
                 date3.setDate(date3.getDate() + 0)

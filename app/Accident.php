@@ -18,12 +18,14 @@ class Accident extends Model
         {
             $model->createdby = Auth::user()->id;
             $model->updatedby = Auth::user()->id;
+            $model->ip_address=\Request::getClientIp();
 
         });
 
         static::updating(function($model)
         {
             $model->updatedby = Auth::user()->id;
+            $model->ip_address=\Request::getClientIp();
         });
     }
 
@@ -43,6 +45,15 @@ class Accident extends Model
         'daybook',
         'status',
         'frmsincidentnum',
+        'checkbox1',
+        'checkbox2',
+        'checkbox3',
+        'checkbox4',
+        'checkbox5',
+        'checkbox6',
+        'checkbox7',
+        'checkbox8'
+
 
     ];
     /**
