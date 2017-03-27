@@ -45,15 +45,7 @@ class Accident extends Model
         'daybook',
         'status',
         'frmsincidentnum',
-        'checkbox1',
-        'checkbox2',
-        'checkbox3',
-        'checkbox4',
-        'checkbox5',
-        'checkbox6',
-        'checkbox7',
-        'checkbox8'
-
+        'applicationstatus'
 
     ];
     /**

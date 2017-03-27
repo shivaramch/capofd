@@ -27,7 +27,7 @@
         @foreach($hazmat as $hazmats)
         @endforeach
 
-        @if($hazmats->employeeid == Auth::user()->id)
+        @if($hazmats->employeeid == Auth::user()->id || $hazmats->createdby == Auth::user()->id)
             <div class="panel panel-default panel-shadow " hidden>
                 <div class="panel-heading">
                     Search Previously filled
@@ -51,7 +51,7 @@
                         </thead>
                         <tbody>
                         @foreach($hazmat as $hazmats)
-                            @if($hazmats->employeeid == Auth::user()->id)
+                            @if($hazmats->employeeid == Auth::user()->id || $hazmats->createdby == Auth::user()->id)
                                 <tr>
                                     <td>{{ $hazmats->ofd6cid }}</td>
                                     <td>{{ $hazmats->dateofexposure }}</td>

@@ -11,7 +11,7 @@
         <li class="active">New Form</li>
     </ol>
 @endsection
-{!! Form::open(['method' => 'POST', 'route' => ['injuries.store'], 'files' => true,]) !!}
+{!! Form::open(['method' => 'POST', 'url' => '/injuries/save', 'files' => true,]) !!}
 <input type="hidden" name="_token" value="{!!  'csrf_token()' !!}">
 {{ csrf_field() }}
 
@@ -31,7 +31,7 @@
                     <div class="col-md-2">
                         <h5><i><strong>Issue Date: 8/17/16</strong></i></h5>
                     </div>
-                    <div class="col-md-2">
+                    <div class="col-md-4">
                         <h5><i><strong>Effective Date: 8/17/16</strong></i></h5>
                     </div>
                     <div class="col-md-12">
@@ -53,7 +53,7 @@
                 </div>
             </div>
             <div class="row">
-                    <div class="col-sm-8 form-group">
+                <div class="col-sm-8 form-group">
                     {!! Form::label('reportnum', 'Report #', ['class' => 'col-sm-2 control-label']) !!}
                     <div class="col-sm-3">
                         {!! Form::text('reportnum', old('reportnum'), array('class' => 'form-control','style' =>'margin-left:-7px;','placeholder'=>'Enter Report Number'))!!}
@@ -67,7 +67,7 @@
                     <div class='col-sm-7'>
                         {!! Form::label('reportnum ', '(Obtain from SWD Office)', array('class' => 'col-sm-6 control-label','style' =>'margin-left:-70px;')) !!}
                     </div>
-                    </div>
+                </div>
             </div>
             <div class="row">
                 <div class="col-sm-4 form-group">
@@ -219,6 +219,24 @@
                     </div>
                 </div>
             </div>
+            <div class="alert alert-danger" align="center">
+                <div class="row">
+                    <div class="col-md-12" style="text-align:left">
+                        <strong>
+                            Please Follow These Instructions:
+                            <ol start="1">
+                                <li>All injuries must have an FRMS and ePCR incident ID#.</li>
+                                <li>If your injury is not related to an incident, the Captain shall call dispatch,
+                                    explain that an injury
+                                    has occurred and request an FRMS ID#. The FRMS will automatically generate an ePCR#.
+                                </li>
+                                <li>The employee shall designate whether treatment is being requested in the OFD-25 IOD.
+                                </li>
+                            </ol>
+                        </strong>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>
@@ -226,9 +244,8 @@
     <div class="panel-heading">
         <div class="row">
             <div class="col-sm-12" form-group>
-                <h4 style="text-align:center;"><strong>All injuries must have FRMS incident ID#- if non-incident
-                        related,inform dispatch of your injury
-                        and need for an FRMS ID#</strong></h4>
+                <h4 style="text-align:left"><strong>Injury Checklist:
+                    </strong></h4>
             </div>
         </div>
     </div>
@@ -242,10 +259,10 @@
                     {{ Form::checkbox('checkbox1', 1, null, ['id'=>'checkbox1', 'class' => 'className' ]) }}
                     {{Form::label('Checkbox1','CorVel Work Ability- Only if seeking medical attention. Complete "Employee Section" and sign at bottom.')}}
                 </div>
-                </div>
-         {{--   <label class="col-sm-12"><strong>CorVel Work Ability
-                    Report</strong>
-                - Only if seeking medical attention. Complete "Employee Section" and sign at bottom.</label> --}}
+            </div>
+            {{--   <label class="col-sm-12"><strong>CorVel Work Ability
+                       Report</strong>
+                   - Only if seeking medical attention. Complete "Employee Section" and sign at bottom.</label> --}}
 
             <div class="col-sm-12 form-group well well-sm">
                 <div class="col-sm-4">
@@ -277,9 +294,9 @@
                     Occupational Injury or Illness- Both employee and supervisor must complete and sign.')}}
                 </div>
             </div>
-           {{-- <label class="col-sm-12"><strong>Investigation Report for
-                    Occupational Injury or Illness</strong>
-                - Both employee and supervisor must complete and sign.</label> --}}
+            {{-- <label class="col-sm-12"><strong>Investigation Report for
+                     Occupational Injury or Illness</strong>
+                 - Both employee and supervisor must complete and sign.</label> --}}
             <div class="col-sm-12 form-group well well-sm">
                 <div class="col-sm-4">
                     <a class="btn btn-success dropdown-toggle col-sm-12" type="button"
@@ -343,10 +360,9 @@
             </div>
 
 
-
-             {{--   <label class="col-sm-12"><strong>Employee's Choice of
-                    Physician or Doctor Form</strong>
-                - Two signatures required - both section A & B.</label> --}}
+            {{--   <label class="col-sm-12"><strong>Employee's Choice of
+                   Physician or Doctor Form</strong>
+               - Two signatures required - both section A & B.</label> --}}
             <div class="col-sm-12 form-group well well-sm">
                 <div class="col-sm-4">
                     <a class="btn btn-success dropdown-toggle col-sm-12" type="button"
@@ -400,13 +416,37 @@
                 </div>
             </div>
         </div>
+
+        <div class="row">
+            <div class="col-sm-12 form-group">
+                <div class="form-group">
+                    {{ Form::checkbox('checkbox6', 1, null, ['id'=>'checkbox6', 'class' => 'className' ]) }}
+                    {{Form::label('Checkbox6','Miscellaneous Documents')}}
+                </div>
+            </div>
+            <div class="col-sm-12 form-group well well-sm">
+                <div class="col-sm-4">
+                    <div class="input-group">
+                        <label class="input-group-btn">
+                    <span class="btn btn-info">
+                        <i class="fa fa-cloud-upload" aria-hidden="true"></i> Upload<input type="file"
+                                                                                           name="miscinjuries"
+                                                                                           style="display: none;">
+                    </span>
+                        </label>
+                        <input type="text" id="upload-file-info" class="form-control" readonly>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <div class="row">
             <div class="col-sm-12">
                 <div class="form-group">
                     {{ Form::checkbox('documentworkforce', 1, null, ['id' => 'documentworkforce', 'class'=>'className']) }}
                     <label><strong>Document IOD in
                             Workforce
-                        - Only if seeking medical attention.</strong></label>
+                            - Only if seeking medical attention.</strong></label>
                 </div>
             </div>
         </div>
@@ -462,7 +502,7 @@
                 <br>
                 <label class="col-sm-5"></label>
                 <div class="btn-bottom ">
-
+                    {!! Form::submit('Save',['class' => 'btn btn-success','name' => 'partialSave']) !!}
                     <button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal">
                         Submit
                     </button>
@@ -486,7 +526,7 @@
                 Are you sure want to submit the form?
             </div>
             <div class="modal-footer">
-                {!! Form::submit('Yes',['class' => 'btn btn-success']) !!}
+                {!! Form::submit('Yes',['class' => 'btn btn-success','name'=> 'store']) !!}
                 <button type="button" class="btn btn-danger" data-dismiss="modal">No</button>
             </div>
         </div>

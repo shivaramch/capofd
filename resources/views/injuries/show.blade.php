@@ -441,6 +441,45 @@
                     </div>
                 </div>
                 <div class="row">
+                    <div class="col-sm-12">
+                        {{ Form::checkbox('checkbox6', 1, null,['disabled'], ['id' => 'checkbox6', 'class'=>'className','readonly' => 'true']) }}
+                        {{Form::label('Checkbox6','Miscellaneous Documents')}}
+                    </div>
+                    <div class="col-sm-12 form-group well well-sm">
+                        <div class="col-sm-4">
+                            <a class="btn btn-primary dropdown-toggle col-sm-12" data-toggle="collapse"
+                               data-target="#616"><i class="fa fa-eye" aria-hidden="true"></i> View Previously uploaded
+                                file(s)
+                            </a>
+                            <div id="616" class="collapse">
+
+                                <table class="table table-striped">
+                                    <tr>
+                                        <th> File Name</th>
+                                        <th> File Uploaded At</th>
+                                    </tr>
+                                    @if(count($attachments) > 0)
+                                        @foreach($attachments as $attachment)
+                                            @if($attachment->attachmenttype == '616' && $attachment->ofd6id == $injury->ofd6id )
+                                                <tr>
+                                                    <td>
+                                                        <a href="{{ asset('uploads/'.$attachment->attachmentname) }}"> {{$attachment->attachmentname}}</a>
+                                                    </td>
+                                                    <td>
+                                                        {{$attachment->created_at}}</a>
+                                                    </td>
+                                                </tr>
+                                            @endif
+                                        @endforeach
+                                    @endif
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="row">
                     <div class="col-sm-6 form-group">
                         {!! Form::label('captainid', 'Complete FRMS Casuality & Narrative Tab - Fire service and Fire Service Injury', ['class' => 'col-sm-6 control-label']) !!}
                         <div class="col-sm-6 ">
@@ -552,20 +591,6 @@
 
             </div>
             <div class="panel panel-default">
-                <div class="panel-heading">
-                    <div class="row">
-                        <div class="col-sm-12">
-                            @if($injury->captainid == Auth::user()->id && $injury->applicationstatus == 2 || $injury->battalionchiefid == Auth::user()->id &&$injury->applicationstatus == 3 ||$injury->aconduty == Auth::user()->id &&$injury->applicationstatus == 4)
-                                <div class="col-sm-12 panel-heading" align="center">
-                                    <a href="{{ url('/injuries/'.$injury->ofd6id .'/Approve') }}"
-                                       class="btn btn-success">Approve</a>
-                                    <a href="{{ url('/injuries/'.$injury->ofd6id .'/Reject') }}" class="btn btn-danger">Reject</a>
-                                </div>
-                            @endif
-                        </div>
-                    </div>
-                </div>
-
                 <div class="panel-body">
                     <div class="titleBox">
                         <label>Comments </label>
@@ -586,8 +611,23 @@
                                     {{ Form::checkbox('isvisible', 1, null, ['id' => 'daybook', 'class'=>'className']) }}
                                     <label><strong>
                                             Visible to applicant</strong></label>
-                                    <div class="form-group">
-                                        {{ Form::submit('Post Comment', array('class' => 'btn btn-block btn-primary' , 'style' => 'width:220px')) }}
+                                    <div class="col-sm-12" align="center">
+                                        <div class="col-sm-4">
+                                            {{ Form::submit('Post Comment', array('class' => 'btn btn-block btn-primary')) }}
+                                        </div>
+                                        @if($accident->captainid == Auth::user()->id && $accident->applicationstatus == 2 ||
+                                        $accident->battalionchiefid == Auth::user()->id&&$accident->applicationstatus == 3 ||
+                                        $accident->aconduty == Auth::user()->id&&$accident->applicationstatus == 4)
+                                            <div class="col-sm-4">
+                                                <a href="{{ url('/injuries/'.$injury->ofd6id .'/Approve') }}"
+                                                   class="btn btn-block btn-success">Approve</a>
+                                            </div>
+                                            <div class="col-sm-4">
+                                                <button type="button" class="btn btn-block btn-danger" data-toggle="modal" data-target="#myModal">
+                                                    Reject
+                                                </button>
+                                            </div>
+                                        @endif
                                     </div>
                                 </div>
                             </div>
@@ -637,5 +677,27 @@
                 </div>
             </div>
         </div>
+        <!-- Modal -->
+        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                    aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="myModalLabel"></h4>
+                    </div>
+                    <div class="modal-body">
+                        Are you sure you want to <strong>Reject</strong> this application? If, <strong>Yes</strong> please include a comment for the applicant if not done already!
+                    </div>
+                    <div class="modal-footer">
+                        <a href="{{ url('/injuries/'.$injury->ofd6id .'/Reject') }}"
+                           class="btn btn-success">Yes</a>
+                        <button type="button" class=" btn btn-danger" data-dismiss="modal" aria-label="">No</button>
+
+
+                    </div>
+
+                </div>
+            </div>
         </div>
 @stop

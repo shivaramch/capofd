@@ -553,6 +553,58 @@
                 </div>
 
                 <div class="row">
+                    <div class="col-sm-12 form-group">
+                        <div class="form-group">
+                            {{ Form::checkbox('checkbox6', 1, null, ['id'=>'checkbox6', 'class' => 'className' ]) }}
+                            {{Form::label('Checkbox5','Miscellaneous Documents')}}
+                        </div>
+                    </div>
+                    <div class="col-sm-12 form-group well well-sm">
+                        <div class="col-sm-4">
+                            <div class="input-group">
+                                <label class="input-group-btn">
+                    <span class="btn btn-info">
+                        <i class="fa fa-cloud-upload" aria-hidden="true"></i> Upload<input type="file"
+                                                                                           name="miscinjuries"
+                                                                                           style="display: none;">
+                    </span>
+                                </label>
+                                <input type="text" id="upload-file-info" class="form-control" readonly>
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <a class="btn btn-primary dropdown-toggle col-sm-12" data-toggle="collapse"
+                               data-target="#616"><i class="fa fa-eye" aria-hidden="true"></i> View Previously uploaded
+                                file(s)
+                            </a>
+                            <div id="616" class="collapse">
+
+                                <table class="table table-striped">
+                                    <tr>
+                                        <th> File Name</th>
+                                        <th> File Uploaded At</th>
+                                    </tr>
+                                    @if(count($attachments) > 0)
+                                        @foreach($attachments as $attachment)
+                                            @if($attachment->attachmenttype == '616' && $attachment->createdby ==  Auth::user()->id && $attachment->ofd6id == $injury->ofd6id )
+                                                <tr>
+                                                    <td>
+                                                        <a href="{{ asset('uploads/'.$attachment->attachmentname) }}"> {{$attachment->attachmentname}}</a>
+                                                    </td>
+                                                    <td>
+                                                        {{$attachment->created_at}}</a>
+                                                    </td>
+                                                </tr>
+                                            @endif
+                                        @endforeach
+                                    @endif
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
                     <div class="col-sm-6 form-group">
                         {!! Form::label('captainid', 'Complete FRMS Casuality & Narrative Tab - Fire service and Fire Service Injury', ['class' => 'col-sm-6 control-label']) !!}
                         <div class="col-sm-6 ">
@@ -653,9 +705,48 @@
                 </div>
 
             </div>
-
-
         </div>
+
+        @if (!empty($comments))
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <div class="actionBox">
+                        <ul class="commentList">
+                            @foreach ($comments as $cm)
+                                @if(($cm->applicationid == $injury->ofd6id && $cm->applicationtype == '6')&&
+                                    ($injury->injuredemployeeid == Auth::user()->id && $cm->isvisible == 1))
+                                    <div class="col-sm-8">
+                                        <div class="panel panel-white post panel-shadow">
+                                            <div class="post-heading">
+                                                <div class="pull-left meta">
+                                                    <div class="title h5">
+                                                        @foreach ($users as $user)
+                                                            @if($user->id == $cm->createdby )
+                                                                <b><i class="fa fa-user"></i> {{$user->name}}
+                                                                </b>
+                                                            @endif
+                                                        @endforeach
+                                                        made a Comment.
+                                                    </div>
+                                                    <time class="comment-date text-muted time"
+                                                          datetime="{{$cm->created_at}}"><i
+                                                                class="fa fa-clock-o"></i> {{$cm->created_at}}
+                                                    </time>
+                                                </div>
+                                            </div>
+                                            <div class="post-description">
+                                                <p>{{$cm->comment}}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                @endif
+                            @endforeach
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        @endif
+
     @else
         <div class="panel-body">
             <div class="form-horizontal">

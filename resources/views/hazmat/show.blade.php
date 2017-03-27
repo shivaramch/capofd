@@ -178,90 +178,146 @@
                         {{--}}<label class="checkbox-inline col-sm-12">
                             <strong>Fill out OFD-025 Hazmat Exposure Report form</strong>
                         </label>--}}
+                    </div>
+                    <br>
+                    <div class="col-sm-12 form-group well well-sm">
+                        <div class="col-sm-4">
+                            <a class="btn btn-primary dropdown-toggle col-sm-12" data-toggle="collapse"
+                               data-target="#6c"><i class="fa fa-eye" aria-hidden="true"></i> View Previously
+                                uploaded
+                                file(s)
+                            </a>
+
+                            <div id="6c" class="collapse">
+
+                                <table class="table table-striped">
+                                    <tr>
+                                        <th> File Name</th>
+                                        <th> File Uploaded At</th>
+                                    </tr>
+
+                                    @if(count($attachments) > 0)
+                                        @foreach($attachments as $attachment)
+                                            @if($attachment->attachmenttype == '6c' && $attachment->ofd6cid == $hazmat->ofd6cid)
+                                                <tr>
+                                                    <td>
+                                                        <a href="{{ asset('uploads/'.$attachment->attachmentname) }}"> {{$attachment->attachmentname}}</a>
+                                                    </td>
+                                                    <td>
+                                                        {{$attachment->created_at}}</a>
+                                                    </td>
+                                                <tr>@endif
+                                        @endforeach
+                                    @endif
+
+                                </table>
+                            </div>
                         </div>
-                        <br>
-                        <div class="col-sm-12 form-group well well-sm">
-                            <div class="col-sm-4">
-                                <a class="btn btn-primary dropdown-toggle col-sm-12" data-toggle="collapse"
-                                   data-target="#6c"><i class="fa fa-eye" aria-hidden="true"></i> View Previously
-                                    uploaded
-                                    file(s)
-                                </a>
+                    </div>
+                    <div class="col-sm-12">
+                        {{ Form::checkbox('checkbox2', 1, null,['disabled'], ['id' => 'checkbox2', 'class'=>'className','readonly' => 'true']) }}
+                        {{Form::label('Checkbox2','Miscellaneous Documents')}}
+                    </div>
+                    <br>
+                    <div class="col-sm-12 form-group well well-sm">
+                        <div class="col-sm-4">
+                            <a class="btn btn-primary dropdown-toggle col-sm-12" data-toggle="collapse"
+                               data-target="#6c1"><i class="fa fa-eye" aria-hidden="true"></i> View Previously
+                                uploaded
+                                file(s)
+                            </a>
 
-                                <div id="6c" class="collapse">
+                            <div id="6c1" class="collapse">
 
-                                    <table class="table table-striped">
-                                        <tr>
-                                            <th> File Name</th>
-                                            <th> File Uploaded At</th>
-                                        </tr>
+                                <table class="table table-striped">
+                                    <tr>
+                                        <th> File Name</th>
+                                        <th> File Uploaded At</th>
+                                    </tr>
 
-                                        @if(count($attachments) > 0)
-                                            @foreach($attachments as $attachment)
-                                                @if($attachment->attachmenttype == '6c' && $attachment->ofd6cid == $hazmat->ofd6cid)
-                                                    <tr>
-                                                        <td>
-                                                            <a href="{{ asset('uploads/'.$attachment->attachmentname) }}"> {{$attachment->attachmentname}}</a>
-                                                        </td>
-                                                        <td>
-                                                            {{$attachment->created_at}}</a>
-                                                        </td>
-                                                    <tr>@endif
-                                            @endforeach
-                                        @endif
+                                    @if(count($attachments) > 0)
+                                        @foreach($attachments as $attachment)
+                                            @if($attachment->attachmenttype == '6c1' && $attachment->ofd6cid == $hazmat->ofd6cid)
+                                                <tr>
+                                                    <td>
+                                                        <a href="{{ asset('uploads/'.$attachment->attachmentname) }}"> {{$attachment->attachmentname}}</a>
+                                                    </td>
+                                                    <td>
+                                                        {{$attachment->created_at}}</a>
+                                                    </td>
+                                                <tr>@endif
+                                        @endforeach
+                                    @endif
 
-                                    </table>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel-body">
+                    <div class="form-horizontal">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="alert alert-danger" align="left">
+                                    {{Form::label('If an employee receives an injury or illness from this incident,
+                            the employee shall complete an OFD6 and designate whether treatment is being requested in the OFD-25 IOD.')}}
+
+                                    {{--{!! Form::text('exposurehazmat', old('exposurehazmat'), ['disabled'], array('class'=>'form-control'))!!}--}}
+                                    {{--<p class="help-block"></p>--}}
+                                    {{--@if($errors->has('exposurehazmat'))--}}
+                                    {{--<p class="help-block">--}}
+                                    {{--{{ $errors->first('exposurehazmat') }}--}}
+                                    {{--</p>--}}
+                                    {{--@endif--}}
                                 </div>
                             </div>
                         </div>
                     </div>
+                </div>
+                @else
                     <div class="panel-body">
                         <div class="form-horizontal">
                             <div class="row">
                                 <div class="col-md-12">
-                                    <div class="alert alert-danger" align="left">
-                                        {{Form::label('exposurehazmat','Do you have any symptoms of illness or injury and require
-                                           treatment? (In case of Injury, please fill OFD - 6 IOD Application)     ')}}
-
-                                        {!! Form::text('exposurehazmat', old('exposurehazmat'), ['disabled'], array('class'=>'form-control'))!!}
-                                        <p class="help-block"></p>
-                                        @if($errors->has('exposurehazmat'))
-                                            <p class="help-block">
-                                                {{ $errors->first('exposurehazmat') }}
-                                            </p>
-                                        @endif
+                                    <div class="alert alert-danger" align="center">
+                                        <label>
+                                            You are not authorized to view this form
+                                        </label>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    @else
-                        <div class="panel-body">
-                            <div class="form-horizontal">
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <div class="alert alert-danger" align="center">
-                                            <label>
-                                                You are not authorized to view this form
-                                            </label>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    @endif
+                @endif
 
-                    <div class="col-sm-12 panel-heading" align="center">
-                        <div class="btn-bottom ">
-                            <a href="{{ route('hazmat.index') }}" class="btn btn-default">Return</a>
-                        </div>
+                <div class="col-sm-12 panel-heading" align="center">
+                    <div class="btn-bottom ">
+                        <a href="{{ route('hazmat.index') }}" class="btn btn-default">Return</a>
                     </div>
+                </div>
 
+            </div>
+        </div>
+        </div>
+
+        {!! Form::close() !!}
+
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <div class="row">
+                    <div class="col-sm-12">
+                        @if($hazmat->primaryidconumber == Auth::user()->id && $hazmat->applicationstatus == 2 ||$hazmat->applicationstatus == 3 ||$hazmat->applicationstatus == 4)
+                            <div class="col-sm-12 panel-heading" align="center">
+                                <a href="{{ url('/hazmat/'. $hazmat->ofd6cid.'/Approve') }}"
+                                   class="btn btn-success">Approve</a>
+                                <a href="{{ url('/hazmat/'. $hazmat->ofd6cid.'/Reject') }}"
+                                   class="btn btn-danger">Reject</a>
+                            </div>
+                        @endif
+                    </div>
                 </div>
             </div>
         </div>
 
-
-        {!! Form::close() !!}
 @stop
 
