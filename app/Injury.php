@@ -3,7 +3,6 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class Injury extends Model
@@ -18,9 +17,17 @@ class Injury extends Model
             $table->createdby = Auth::user()->id;
             $table->ip_address=\Request::getClientIp();
         });
+
+
+
+        static::updating(function($model)
+        {
+            $model->updatedby = Auth::user()->id;
+            $model->ip_address=\Request::getClientIp();
+        });
     }
     protected $fillable = [
-        'ofd6ID',
+
         'reportnum',
         'createdate',
         'injurydate',
@@ -38,9 +45,14 @@ class Injury extends Model
         'documentoperationalday',
         'policeofficercompletesign',
         'callsupervisor',
+        'applicationstatus',
+        'checkbox1',
+        'checkbox2',
+        'checkbox3',
+        'checkbox4',
+        'checkbox5',
         'createdby',
         'updatedby',
-        'applicationstatus'
     ];
 
 

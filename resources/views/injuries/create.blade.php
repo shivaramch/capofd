@@ -11,7 +11,7 @@
         <li class="active">New Form</li>
     </ol>
 @endsection
-{!! Form::open(['method' => 'POST', 'route' => ['injuries.store'], 'files' => true,]) !!}
+{!! Form::open(['method' => 'POST', 'url' => '/injuries/save', 'files' => true,]) !!}
 <input type="hidden" name="_token" value="{!!  'csrf_token()' !!}">
 {{ csrf_field() }}
 
@@ -31,7 +31,7 @@
                     <div class="col-md-2">
                         <h5><i><strong>Issue Date: 8/17/16</strong></i></h5>
                     </div>
-                    <div class="col-md-2">
+                    <div class="col-md-4">
                         <h5><i><strong>Effective Date: 8/17/16</strong></i></h5>
                     </div>
                     <div class="col-md-12">
@@ -70,18 +70,6 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-sm-4 form-group">
-                    {!! Form::label('createdate', 'Todays Date:', ['class' => 'col-sm-4 control-label']) !!}
-                    <div class="col-sm-6 ">
-                        {!! Form::text('createdate', old('createdate'), array('class'=>'datepicker form-control','placeholder'=>'MM/DD/YYYY'))!!}
-                        <p class="help-block"></p>
-                        @if($errors->has('createDate'))
-                            <p class="help-block">
-                                {{ $errors->first('createDate') }}
-                            </p>
-                        @endif
-                    </div>
-                </div>
                 <div class="col-sm-4 form-group">
                     {!! Form::label('injuryDate', 'Date of Injury:', ['class' => 'col-sm-4 control-label']) !!}
                     <div class="col-sm-6 ">
@@ -217,17 +205,47 @@
                     </div>
                 </div>
             </div>
+            <div class="row">
+                <div class="col-sm-8 form-group">
+                    {!! Form::label('captainID', 'Enter EPCR #', ['class' => 'col-sm-2 control-label']) !!}
+                    <div class="col-sm-3">
+                        {!! Form::text('captainID', old('captainID'), array('class' => 'form-control','placeholder'=>'Enter EPCR Number'))!!}
+                        <p class="help-block"></p>
+                        @if($errors->has('captainID'))
+                            <p class="help-block">
+                                {{ $errors->first('captainID') }}
+                            </p>
+                        @endif
+                    </div>
+                </div>
+            </div>
+            <div class="alert alert-danger" align="center">
+                <div class="row">
+                    <div class="col-md-12" style="text-align:left">
+                        <strong>
+                            Please Follow These Instructions:
+                            <ol start="1">
+                                <li>All injuries must have an FRMS and ePCR incident ID#.</li>
+                                <li>If your injury is not related to an incident, the Captain shall call dispatch,
+                                    explain that an injury
+                                    has occurred and request an FRMS ID#. The FRMS will automatically generate an ePCR#.
+                                </li>
+                                <li>The employee shall designate whether treatment is being requested in the OFD-25 IOD.
+                                </li>
+                            </ol>
+                        </strong>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>
-
 <div class="panel panel-default">
     <div class="panel-heading">
         <div class="row">
             <div class="col-sm-12" form-group>
-                <h4 style="text-align:center;"><strong>All injuries must have FRMS incident ID#- if non-incident
-                        related,inform dispatch of your injury
-                        and need for an FRMS ID#</strong></h4>
+                <h4 style="text-align:left"><strong>Injury Checklist:
+                    </strong></h4>
             </div>
         </div>
     </div>
@@ -236,10 +254,15 @@
 
 
         <div class="row">
-
-            <label class="col-sm-12"><strong>CorVel Work Ability
-                    Report</strong>
-                - Only if seeking medical attention. Complete "Employee Section" and sign at bottom.</label>
+            <div class="col-sm-12 form-group">
+                <div class="form-group">
+                    {{ Form::checkbox('checkbox1', 1, null, ['id'=>'checkbox1', 'class' => 'className' ]) }}
+                    {{Form::label('Checkbox1','CorVel Work Ability- Only if seeking medical attention. Complete "Employee Section" and sign at bottom.')}}
+                </div>
+            </div>
+            {{--   <label class="col-sm-12"><strong>CorVel Work Ability
+                       Report</strong>
+                   - Only if seeking medical attention. Complete "Employee Section" and sign at bottom.</label> --}}
 
             <div class="col-sm-12 form-group well well-sm">
                 <div class="col-sm-4">
@@ -264,10 +287,16 @@
         </div>
 
         <div class="row">
-
-            <label class="col-sm-12"><strong>Investigation Report for
-                    Occupational Injury or Illness</strong>
-                - Both employee and supervisor must complete and sign.</label>
+            <div class="col-sm-12 form-group">
+                <div class="form-group">
+                    {{ Form::checkbox('checkbox2', 1, null, ['id'=>'checkbox2', 'class' => 'className' ]) }}
+                    {{Form::label('Checkbox2','Investigation Report for
+                    Occupational Injury or Illness- Both employee and supervisor must complete and sign.')}}
+                </div>
+            </div>
+            {{-- <label class="col-sm-12"><strong>Investigation Report for
+                     Occupational Injury or Illness</strong>
+                 - Both employee and supervisor must complete and sign.</label> --}}
             <div class="col-sm-12 form-group well well-sm">
                 <div class="col-sm-4">
                     <a class="btn btn-success dropdown-toggle col-sm-12" type="button"
@@ -289,10 +318,17 @@
                 </div>
             </div>
         </div>
-        <div class="row">
 
-            <label class="col-sm-12"><strong>Statement of Witness of
-                    Accident</strong></label>
+        <div class="row">
+            <div class="col-sm-12 form-group">
+                <div class="form-group">
+                    {{ Form::checkbox('checkbox3', 1, null, ['id'=>'checkbox3', 'class' => 'className' ]) }}
+                    {{Form::label('Checkbox3','Statement of Witness of Accident')}}
+                </div>
+            </div>
+
+            {{--<label class="col-sm-12"><strong>Statement of Witness of
+                    Accident</strong></label> --}}
             <div class="col-sm-12 form-group well well-sm">
                 <div class="col-sm-4">
                     <a class="btn btn-success dropdown-toggle col-sm-12" type="button"
@@ -316,15 +352,22 @@
             </div>
         </div>
         <div class="row">
+            <div class="col-sm-12 form-group">
+                <div class="form-group">
+                    {{ Form::checkbox('checkbox4', 1, null, ['id'=>'checkbox4', 'class' => 'className' ]) }}
+                    {{Form::label('Checkbox4','Employees Choice of Physician or Doctor Form- Two signatures required - both section A & B.')}}
+                </div>
+            </div>
 
-            <label class="col-sm-12"><strong>Employee's Choice of
-                    Physician or Doctor Form</strong>
-                - Two signatures required - both section A & B.</label>
+
+            {{--   <label class="col-sm-12"><strong>Employee's Choice of
+                   Physician or Doctor Form</strong>
+               - Two signatures required - both section A & B.</label> --}}
             <div class="col-sm-12 form-group well well-sm">
                 <div class="col-sm-4">
                     <a class="btn btn-success dropdown-toggle col-sm-12" type="button"
-                       href="{{ asset('Fillable PDFs\Injury Module\(Injury PDF) OFD Employee Choice of Physician or Doctor.pdf') }}"
-                       download="(Injury PDF) OFD Employee Choice of Physician or Doctor.pdf">
+                       href="{{ asset('Fillable PDFs\Injury Module\(Injury PDF) OFD Employee\'s Choice of Physician or Doctor.pdf') }}"
+                       download="(Injury PDF) OFD Employee's Choice of Physician or Doctor.pdf">
                         <i class="fa fa-download" aria-hidden="true"></i> Download</a>
                 </div>
                 <div class="col-sm-4">
@@ -342,10 +385,16 @@
             </div>
         </div>
         <div class="row">
+            <div class="col-sm-12 form-group">
+                <div class="form-group">
+                    {{ Form::checkbox('checkbox5', 1, null, ['id'=>'checkbox5', 'class' => 'className' ]) }}
+                    {{Form::label('Checkbox5','OFD - 25 Injury on Job- Send an attachment electronically to OmafIOD@cityofomaha.org')}}
+                </div>
+            </div>
 
-            <label class="col-sm-12"><strong>OFD - 25 Injury on
+            {{--<label class="col-sm-12"><strong>OFD - 25 Injury on
                     Job</strong>
-                - Send an attachment electronically to OmafIOD@cityofomaha.org</label>
+                - Send an attachment electronically to OmafIOD@cityofomaha.org</label> --}}
             <div class="col-sm-12 form-group well well-sm">
                 <div class="col-sm-4">
                     <a class="btn btn-success dropdown-toggle col-sm-12" type="button"
@@ -369,41 +418,35 @@
         </div>
 
         <div class="row">
-            <div class="col-sm-6 form-group">
-                {!! Form::label('captainID', 'Complete FRMS Casuality & Narrative Tab - Fire service and Fire Service Injury', ['class' => 'col-sm-6 control-label']) !!}
-                <div class="col-sm-6 ">
-                    {!! Form::text('captainID', old('captainID'), array('class' => 'form-control','placeholder'=>'Enter FRMS Number here'))!!}
-                    <p class="help-block"></p>
-                    @if($errors->has('captainID'))
-                        <p class="help-block">
-                            {{ $errors->first('captainID') }}
-                        </p>
-                    @endif
+            <div class="col-sm-12 form-group">
+                <div class="form-group">
+                    {{ Form::checkbox('checkbox6', 1, null, ['id'=>'checkbox6', 'class' => 'className' ]) }}
+                    {{Form::label('Checkbox6','Miscellaneous Documents')}}
+                </div>
+            </div>
+            <div class="col-sm-12 form-group well well-sm">
+                <div class="col-sm-4">
+                    <div class="input-group">
+                        <label class="input-group-btn">
+                    <span class="btn btn-info">
+                        <i class="fa fa-cloud-upload" aria-hidden="true"></i> Upload<input type="file"
+                                                                                           name="miscinjuries"
+                                                                                           style="display: none;">
+                    </span>
+                        </label>
+                        <input type="text" id="upload-file-info" class="form-control" readonly>
+                    </div>
                 </div>
             </div>
         </div>
 
-        <div class="row">
-            <div class="col-sm-6 form-group">
-                {!! Form::label('captainID', 'Complete in EPCR - All Cases', ['class' => 'col-sm-6 control-label']) !!}
-                <div class="col-sm-6 ">
-                    {!! Form::text('captainID', old('captainID'), array('class' => 'form-control','placeholder'=>'Enter EPCR Number here'))!!}
-                    <p class="help-block"></p>
-                    @if($errors->has('captainID'))
-                        <p class="help-block">
-                            {{ $errors->first('captainID') }}
-                        </p>
-                    @endif
-                </div>
-            </div>
-        </div>
         <div class="row">
             <div class="col-sm-12">
                 <div class="form-group">
                     {{ Form::checkbox('documentworkforce', 1, null, ['id' => 'documentworkforce', 'class'=>'className']) }}
                     <label><strong>Document IOD in
                             Workforce
-                        - Only if seeking medical attention.</strong></label>
+                            - Only if seeking medical attention.</strong></label>
                 </div>
             </div>
         </div>
@@ -430,9 +473,9 @@
         </div>
         <div class="row">
             <div class="col-sm-12 form-group">
-                <label class="checkbox-inline col-sm-12"><u>For Fire Omaha Police Recruits: Use normal Chain-of-Command
+                <label class="checkbox-inline col-sm-12"><em>For Fire Omaha Police Recruits: Use normal Chain-of-Command
                         for Tracking
-                        Document</u></label>
+                        Document</em></label>
             </div>
         </div>
         <div class="row">
@@ -454,13 +497,12 @@
                 </div>
             </div>
         </div>
-        {{ Form::hidden('applicationstatus', '2') }}
         <div class="row">
             <div class="col-sm-12 panel-headinzzzzg">
                 <br>
                 <label class="col-sm-5"></label>
                 <div class="btn-bottom ">
-
+                    {!! Form::submit('Save',['class' => 'btn btn-success','name' => 'partialSave']) !!}
                     <button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal">
                         Submit
                     </button>
@@ -484,7 +526,7 @@
                 Are you sure want to submit the form?
             </div>
             <div class="modal-footer">
-                {!! Form::submit('Yes',['class' => 'btn btn-success']) !!}
+                {!! Form::submit('Yes',['class' => 'btn btn-success','name'=> 'store']) !!}
                 <button type="button" class="btn btn-danger" data-dismiss="modal">No</button>
             </div>
         </div>

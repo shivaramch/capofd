@@ -246,10 +246,16 @@
 
 
                 <div class="row">
+                    <div class="col-sm-12 form-group">
+                        <div class="form-group">
+                            {{ Form::checkbox('checkbox1', 1, null, ['id'=>'checkbox1', 'class' => 'className' ]) }}
+                            {{Form::label('Checkbox1','CorVel Work Ability- Only if seeking medical attention. Complete "Employee Section" and sign at bottom.')}}
+                        </div>
+                    </div>
 
-                    <label class="col-sm-12"><strong>CorVel Work Ability
+                    {{--}}<label class="col-sm-12"><strong>CorVel Work Ability
                             Report</strong>
-                        - Only if seeking medical attention. Complete "Employee Section" and sign at bottom.</label>
+                        - Only if seeking medical attention. Complete "Employee Section" and sign at bottom.</label> --}}
 
                     <div class="col-sm-12 form-group well well-sm">
                         <div class="col-sm-4">
@@ -303,10 +309,16 @@
                 </div>
 
                 <div class="row">
-
-                    <label class="col-sm-12"><strong>Investigation Report for
+                    <div class="col-sm-12 form-group">
+                        <div class="form-group">
+                            {{ Form::checkbox('checkbox2', 1, null, ['id'=>'checkbox2', 'class' => 'className' ]) }}
+                            {{Form::label('Checkbox2','Investigation Report for
+                            Occupational Injury or Illness- Both employee and supervisor must complete and sign.')}}
+                        </div>
+                    </div>
+                   {{--}} <label class="col-sm-12"><strong>Investigation Report for
                             Occupational Injury or Illness</strong>
-                        - Both employee and supervisor must complete and sign.</label>
+                        - Both employee and supervisor must complete and sign.</label> --}}
                     <div class="col-sm-12 form-group well well-sm">
                         <div class="col-sm-4">
                             <a class="btn btn-success dropdown-toggle col-sm-12" type="button"
@@ -358,9 +370,15 @@
                     </div>
                 </div>
                 <div class="row">
+                    <div class="col-sm-12 form-group">
+                        <div class="form-group">
+                            {{ Form::checkbox('checkbox3', 1, null, ['id'=>'checkbox3', 'class' => 'className' ]) }}
+                            {{Form::label('Checkbox3','Statement of Witness of Accident')}}
+                        </div>
+                    </div>
 
-                    <label class="col-sm-12"><strong>Statement of Witness of
-                            Accident</strong></label>
+                   {{--}} <label class="col-sm-12"><strong>Statement of Witness of
+                            Accident</strong></label> --}}
                     <div class="col-sm-12 form-group well well-sm">
                         <div class="col-sm-4">
                             <a class="btn btn-success dropdown-toggle col-sm-12" type="button"
@@ -413,10 +431,15 @@
                     </div>
                 </div>
                 <div class="row">
-
-                    <label class="col-sm-12"><strong>Employee's Choice of
+                    <div class="col-sm-12 form-group">
+                        <div class="form-group">
+                            {{ Form::checkbox('checkbox4', 1, null, ['id'=>'checkbox4', 'class' => 'className' ]) }}
+                            {{Form::label('Checkbox4','Employees Choice of Physician or Doctor Form- Two signatures required - both section A & B.')}}
+                        </div>
+                    </div>
+                  {{--}}  <label class="col-sm-12"><strong>Employee's Choice of
                             Physician or Doctor Form</strong>
-                        - Two signatures required - both section A & B.</label>
+                        - Two signatures required - both section A & B.</label> --}}
                     <div class="col-sm-12 form-group well well-sm">
                         <div class="col-sm-4">
                             <a class="btn btn-success dropdown-toggle col-sm-12" type="button"
@@ -468,10 +491,16 @@
                     </div>
                 </div>
                 <div class="row">
+                    <div class="col-sm-12 form-group">
+                        <div class="form-group">
+                            {{ Form::checkbox('checkbox5', 1, null, ['id'=>'checkbox5', 'class' => 'className' ]) }}
+                            {{Form::label('Checkbox5','OFD - 25 Injury on Job- Send an attachment electronically to OmafIOD@cityofomaha.org')}}
+                        </div>
+                    </div>
 
-                    <label class="col-sm-12"><strong>OFD - 25 Injury on
+                    {{--}}<label class="col-sm-12"><strong>OFD - 25 Injury on
                             Job</strong>
-                        - Send an attachment electronically to OmafIOD@cityofomaha.org</label>
+                        - Send an attachment electronically to OmafIOD@cityofomaha.org</label> --}}
                     <div class="col-sm-12 form-group well well-sm">
                         <div class="col-sm-4">
                             <a class="btn btn-success dropdown-toggle col-sm-12" type="button"
@@ -506,6 +535,58 @@
                                     @if(count($attachments) > 0)
                                         @foreach($attachments as $attachment)
                                             @if($attachment->attachmenttype == '615' && $attachment->createdby ==  Auth::user()->id && $attachment->ofd6id == $injury->ofd6id )
+                                                <tr>
+                                                    <td>
+                                                        <a href="{{ asset('uploads/'.$attachment->attachmentname) }}"> {{$attachment->attachmentname}}</a>
+                                                    </td>
+                                                    <td>
+                                                        {{$attachment->created_at}}</a>
+                                                    </td>
+                                                </tr>
+                                            @endif
+                                        @endforeach
+                                    @endif
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-sm-12 form-group">
+                        <div class="form-group">
+                            {{ Form::checkbox('checkbox6', 1, null, ['id'=>'checkbox6', 'class' => 'className' ]) }}
+                            {{Form::label('Checkbox5','Miscellaneous Documents')}}
+                        </div>
+                    </div>
+                    <div class="col-sm-12 form-group well well-sm">
+                        <div class="col-sm-4">
+                            <div class="input-group">
+                                <label class="input-group-btn">
+                    <span class="btn btn-info">
+                        <i class="fa fa-cloud-upload" aria-hidden="true"></i> Upload<input type="file"
+                                                                                           name="miscinjuries"
+                                                                                           style="display: none;">
+                    </span>
+                                </label>
+                                <input type="text" id="upload-file-info" class="form-control" readonly>
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <a class="btn btn-primary dropdown-toggle col-sm-12" data-toggle="collapse"
+                               data-target="#616"><i class="fa fa-eye" aria-hidden="true"></i> View Previously uploaded
+                                file(s)
+                            </a>
+                            <div id="616" class="collapse">
+
+                                <table class="table table-striped">
+                                    <tr>
+                                        <th> File Name</th>
+                                        <th> File Uploaded At</th>
+                                    </tr>
+                                    @if(count($attachments) > 0)
+                                        @foreach($attachments as $attachment)
+                                            @if($attachment->attachmenttype == '616' && $attachment->createdby ==  Auth::user()->id && $attachment->ofd6id == $injury->ofd6id )
                                                 <tr>
                                                     <td>
                                                         <a href="{{ asset('uploads/'.$attachment->attachmentname) }}"> {{$attachment->attachmentname}}</a>

@@ -1,15 +1,10 @@
 <?php
 namespace App\Http\Controllers\Traits;
-use Illuminate\Http\Request;
+
 use App\Attachment;
-use App\Injury;
-use App\Biological;
-use App\Http\Requests\StoreStationsRequest;
-use App\Http\Controllers\Traits\FileUploadTrait;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Input;
-use Illuminate\Support\Facades\Redirect;
 use Auth;
+use Illuminate\Http\Request;
+
 trait FormFileUploadTrait
 {
     public function InjuriesUpload(Request $request, $id)
@@ -49,7 +44,15 @@ trait FormFileUploadTrait
             $attachment->attachmenttype = '615';
             $attachment->save();
         }
+        if ($attachmentName = $request['miscinjuries']) {
+            $attachment = new Attachment();
+            $attachment->attachmentname = $attachmentName;
+            $attachment->ofd6id = $id;
+            $attachment->attachmenttype = '616';
+            $attachment->save();
+        }
     }
+
     public function AccidentUpload(Request $request, $id)
     {
         if ($attachmentName = $request['LRS101']) {
@@ -108,7 +111,15 @@ trait FormFileUploadTrait
             $attachment->attachmenttype = '6a8';
             $attachment->save();
         }
+        if ($attachmentName = $request['miscaccidents']) {
+            $attachment = new Attachment();
+            $attachment->attachmentname = $attachmentName;
+            $attachment->ofd6aid = $id;
+            $attachment->attachmenttype = '6a9';
+            $attachment->save();
+        }
     }
+
     public function BiologicalUpload(Request $request, $id)
     {
         if ($attachmentName = $request['trueofd184']) {
@@ -125,8 +136,42 @@ trait FormFileUploadTrait
             $attachment->attachmenttype = '6b2';
             $attachment->save();
         }
+        if ($attachmentName = $request['miscbiological1']) {
+            $attachment = new Attachment();
+            $attachment->attachmentname = $attachmentName;
+            $attachment->ofd6bid = $id;
+            $attachment->attachmenttype = '6b3';
+            $attachment->save();
+        }
+        if ($attachmentName = $request['miscbiological2']) {
+            $attachment = new Attachment();
+            $attachment->attachmentname = $attachmentName;
+            $attachment->ofd6bid = $id;
+            $attachment->attachmenttype = '6b4';
+            $attachment->save();
+        }
     }
 
+
+    public function HazmatUpload(Request $request, $id)
+
+    {
+        if ($attachmentName = $request['OFD025']) {
+            $attachment = new Attachment();
+            $attachment->attachmentname = $attachmentName;
+            $attachment->ofd6cid = $id;
+            $attachment->attachmenttype = '6c';
+            $attachment->save();
+        }
+        if ($attachmentName = $request['mischazmat']) {
+            $attachment = new Attachment();
+            $attachment->attachmentname = $attachmentName;
+            $attachment->ofd6cid = $id;
+            $attachment->attachmenttype = '6c1';
+            $attachment->save();
+        }
+
+    }
 
     public function LimiteddutyUpload(Request $request, $id)
     {
@@ -138,6 +183,7 @@ trait FormFileUploadTrait
             $attachment->save();
         }
     }
+
     public function FmlaUpload(Request $request, $id)
     {
         if ($attachmentName = $request['fmla']) {

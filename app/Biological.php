@@ -13,10 +13,12 @@ class Biological extends Model
         {
             $model->createdby = Auth::user()->id;
             $model->updatedby = Auth::user()->id;
+            $model->ip_address=\Request::getClientIp();
         });
         static::updating(function($model)
         {
             $model->updatedby = Auth::user()->id;
+            $model->ip_address=\Request::getClientIp();
         });
     }
     protected $fillable = [
@@ -28,7 +30,7 @@ class Biological extends Model
         'shift',
         'primaryidconumber',
         'epcrincidentnum',
-        'exposureinjury',
+        //'exposureinjury',
         'frmsincidentnum',
         //'todaysdate',
         'truedecontaminate',
@@ -45,7 +47,8 @@ class Biological extends Model
         'potdocumentdaybook',
         'exposure',
         'trueofd184',
-        'potofd184'
+        'potofd184',
+        'applicationstatus'
         //'trueInjury',
         //'potInjury'
     ];

@@ -181,7 +181,8 @@
 
                     <div class="col-sm-12">
                         <div class="form-group">
-                            {{Form::label('trueofd184','Complete OFD 184')}}
+                            {{ Form::checkbox('checkbox1', 1, null, ['id'=>'checkbox1', 'class' => 'className' ]) }}
+                            {{Form::label('checkbox1','Complete OFD 184')}}
                         </div>
                         <div class="col-sm-12 form-group well well-sm">
                             <div class="col-sm-4">
@@ -201,7 +202,7 @@
                                         </tr>
                                         @if(count($attachments) > 0)
                                             @foreach($attachments as $attachment)
-                                                @if($attachment->attachmenttype == '6b1' && $attachment->createdby ==  Auth::user()->id && $attachment->ofd6bid == $biological->ofd6bid )
+                                                @if($attachment->attachmenttype == '6b1' && $attachment->ofd6bid == $biological->ofd6bid )
                                                     <tr>
                                                         <td>
                                                             <a href="{{ asset('uploads/'.$attachment->attachmentname) }}"> {{$attachment->attachmentname}}</a>
@@ -218,6 +219,48 @@
                             </div>
                         </div>
                     </div>
+                    <div class="col-sm-12">
+                        <div class="form-group">
+                            {{ Form::checkbox('checkbox2', 1, null, ['id'=>'checkbox2', 'class' => 'className' ]) }}
+                            {{Form::label('checkbox2','Miscellaneous Documents')}}
+                        </div>
+                        <div class="col-sm-12 form-group well well-sm">
+                            <div class="col-sm-4">
+                                <a class="btn btn-primary dropdown-toggle col-sm-12" data-toggle="collapse"
+                                   data-target="#6b3"><i class="fa fa-eye" aria-hidden="true"></i> View
+                                    Previously
+                                    uploaded
+                                    file(s)
+                                </a>
+
+                                <div id="6b3" class="collapse">
+
+                                    <table class="table table-striped">
+                                        <tr>
+                                            <th> File Name</th>
+                                            <th> File Uploaded At</th>
+                                        </tr>
+
+                                        @if(count($attachments) > 0)
+                                            @foreach($attachments as $attachment)
+                                                @if($attachment->attachmenttype == '6b3' && $attachment->createdby ==  Auth::user()->id && $attachment->ofd6bid == $biological->ofd6bid )
+                                                    <tr>
+                                                        <td>
+                                                            <a href="{{ asset('uploads/'.$attachment->attachmentname) }}"> {{$attachment->attachmentname}}</a>
+                                                        </td>
+                                                        <td>
+                                                            <a>{{$attachment->created_at}}</a>
+                                                        </td>
+                                                    </tr>@endif
+                                            @endforeach
+                                        @endif
+
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
                     <div class="col-sm-12">
                         <div class="form-group">
                             {{ Form::checkbox('bloodreport', 1, null, ['id' => 'bloodreport', 'class'=>'className','disabled' => "disabled" ]) }}
@@ -280,16 +323,16 @@
                             {{Form::label('potbagtag','Bag & Tag clothing if applicable - send email to PSS with pick-up location')}}
                         </div>
                     </div>
-
                     <div class="col-sm-12">
                         <div class="form-group">
-                            {{Form::label('potofd184','Complete OFD 184')}}
+                            {{ Form::checkbox('checkbox3', 1, null, ['id'=>'checkbox3', 'class' => 'className' ]) }}
+                            {{Form::label('checkbox3','Complete OFD 184')}}
                         </div>
                         <div class="col-sm-12 form-group well well-sm">
-
                             <div class="col-sm-4">
                                 <a class="btn btn-primary dropdown-toggle col-sm-12" data-toggle="collapse"
-                                   data-target="#6b2"><i class="fa fa-eye" aria-hidden="true"></i> View Previously
+                                   data-target="#6b2"><i class="fa fa-eye" aria-hidden="true"></i> View
+                                    Previously
                                     uploaded
                                     file(s)
                                 </a>
@@ -301,10 +344,9 @@
                                             <th> File Name</th>
                                             <th> File Uploaded At</th>
                                         </tr>
-
                                         @if(count($attachments) > 0)
                                             @foreach($attachments as $attachment)
-                                                @if($attachment->attachmenttype == '6b2' && $attachment->createdby ==  Auth::user()->id && $attachment->ofd6bid == $biological->ofd6bid )
+                                                @if($attachment->attachmenttype == '6b2' && $attachment->ofd6bid == $biological->ofd6bid )
                                                     <tr>
                                                         <td>
                                                             <a href="{{ asset('uploads/'.$attachment->attachmentname) }}"> {{$attachment->attachmentname}}</a>
@@ -321,7 +363,47 @@
                             </div>
                         </div>
                     </div>
+                    <div class="col-sm-12">
+                        <div class="form-group">
+                            {{ Form::checkbox('checkbox4', 1, null, ['id'=>'checkbox4', 'class' => 'className' ]) }}
+                            {{Form::label('checkbox4','Miscellaneous Documents')}}
+                        </div>
+                        <div class="col-sm-12 form-group well well-sm">
+                            <div class="col-sm-4">
+                                <a class="btn btn-primary dropdown-toggle col-sm-12" data-toggle="collapse"
+                                   data-target="#6b4"><i class="fa fa-eye" aria-hidden="true"></i> View
+                                    Previously
+                                    uploaded
+                                    file(s)
+                                </a>
 
+                                <div id="6b4" class="collapse">
+
+                                    <table class="table table-striped">
+                                        <tr>
+                                            <th> File Name</th>
+                                            <th> File Uploaded At</th>
+                                        </tr>
+
+                                        @if(count($attachments) > 0)
+                                            @foreach($attachments as $attachment)
+                                                @if($attachment->attachmenttype == '6b4' && $attachment->createdby ==  Auth::user()->id && $attachment->ofd6bid == $biological->ofd6bid )
+                                                    <tr>
+                                                        <td>
+                                                            <a href="{{ asset('uploads/'.$attachment->attachmentname) }}"> {{$attachment->attachmentname}}</a>
+                                                        </td>
+                                                        <td>
+                                                            <a>{{$attachment->created_at}}</a>
+                                                        </td>
+                                                    </tr>@endif
+                                            @endforeach
+                                        @endif
+
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                     <div class="col-sm-12">
                         <div class="form-group">
                             {{ Form::checkbox('potppe', 1, null, ['id' => 'potppe', 'class'=>'className','disabled' => "disabled" ]) }}
@@ -342,11 +424,11 @@
                 <div class="form-horizontal">
                     <div class="row">
                         <div class="col-md-12">
-                            <div class="alert alert-danger" align="left">
-                                {{Form::label('exposureinjury','Do you have any symptoms of illness or injury and require
-                                   treatment? (In case of Injury, please fill OFD - 6 IOD Application)  :  ')}}
+                            <div class="alert alert-danger" align="center">
+                                {{Form::label('If an employee receives an injury or illness from this incident,
+                                the employee shall complete an OFD6 and designate whether treatment is being requested in the OFD-25 IOD.')}}
 
-                                <strong> {{ $biological->exposureinjury}} </strong>
+                                {{--<strong> {{ $biological->exposureinjury}} </strong>--}}
 
                             </div>
                         </div>
