@@ -145,14 +145,12 @@ return [
         'injurydate' => [
             'required' => '"Date of Injury" field is required',
             'date' => '"Date of Injury" field should be a valid date',
+            'before_or_equal' => '"Date of Injury" field should be a present or a past date - No future dates are allowed',
         ],
-        'createdate' => [
-            'required' => '"Todays Date" field is required',
-            'date' => '"Todays Date" field should be a valid date',
-        ],
+
         'injuredemployeename' => [
-            'required' => '"Todays Date" field is required',
-            'alpha' => '"Todays Date" field can only have letters',
+            'required' => '"Injured Name" field is required',
+            'alpha' => '"Injured Name" field can only have letters',
         ],
         'injuredemployeeid' => [
         'required' => '"Personnel ID #" field is required',

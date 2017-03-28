@@ -198,7 +198,7 @@ class InjuriesController extends Controller
     {
 
         $this->validate($request, [ 'reportnum' => 'required|integer:injury,reportnum,',
-            'injurydate' => 'required|date:injury,injurydate,',
+            'injurydate' => 'required|date|before_or_equal:today',
            // 'createdate' => 'required|date:injury,createdate,',
             'injuredemployeename' => 'required|alpha|string:injuries,injuredemployeename,',
             'injuredemployeeid' => 'required|integer:injury,injuredemployeeid,' ,
