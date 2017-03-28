@@ -13,7 +13,7 @@
 @endsection
 
 @section('content')
-    {!! Form::open(['method' => 'POST',  'url' => '/biologicals/save', 'files' => true,]) !!}
+    {!! Form::open(['method' => 'POST', 'url' => '/biologicals/save', 'files' => true,]) !!}
     <input type="hidden" name="_token" value="{!!  'csrf_token()' !!}">
     {{ csrf_field() }}
 

@@ -6,7 +6,7 @@
             <i class="fa fa-arrow-left" aria-hidden="true"></i> Back</a>
         <li><a href="{{ url('/') }}">Dashboard</a></li>
         <li><a href="{{ route('hazmat.index') }}">OFD 6C Hazmat</a></li>
-        <li class="active">Edit OFD 6C Form {{ $hazmat->ofd6cid }}</li>
+        <li class="active">View OFD 6C Form {{ $hazmat->ofd6cid }}</li>
     </ol>
 @endsection
 

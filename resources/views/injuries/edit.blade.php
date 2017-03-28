@@ -23,10 +23,7 @@
             border: 1px solid black;
         }
     </style>
-    @if(($injury->injuredemployeeid == Auth::user()->id &&
-    ($injury->applicationstatus == 1 || $injury->applicationstatus == 5))
-    || Auth::user()->roleid == 1)
-        <div class="panel panel-default">
+    <div class="panel panel-default">
             <div class="panel-heading">
                 <div class="jumbotron" style="margin-bottom: 5px; ">
                     <div class="row">
@@ -706,8 +703,9 @@
 
             </div>
         </div>
+    {!! Form::close() !!}
 
-        @if (!empty($comments))
+    @if (!empty($comments))
             <div class="panel panel-default">
                 <div class="panel-body">
                     <div class="actionBox">
@@ -746,28 +744,6 @@
                 </div>
             </div>
         @endif
-
-    @else
-        <div class="panel-body">
-            <div class="form-horizontal">
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="alert alert-danger" align="center">
-                            <label>
-                                You are not authorized to view this form
-                            </label>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-sm-12 panel-heading" align="center">
-            <div class="btn-bottom ">
-                <a href="{{ route('injuries.index') }}" class="btn btn-default">return</a>
-            </div>
-        </div>
-    @endif
-
     <!-- Modal -->
 
     <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
@@ -789,5 +765,4 @@
             </div>
         </div>
     </div>
-    {!! Form::close() !!}
-@stop
+    @stop

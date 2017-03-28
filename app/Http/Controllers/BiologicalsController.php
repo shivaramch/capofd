@@ -132,19 +132,19 @@ class BiologicalsController extends Controller
 
         $this->validate($request, [
 
-            'trueofd184' => 'max:20480|mimes:pdf'.$this->route('biological'),
-            'potofd184' => 'max:20480|mimes:pdf'.$this->route('biological'),
-            //'todaysdate' => 'required|date:biological,todaysdate,'.$this->route('biological'),
-            'employeeid' => 'required|integer:biological,employeeid'.$this->route('biological'),
-            'exposedemployeename' => 'required|alpha|string:biological,exposedemployeename'.$this->route('biological'),
-            'dateofexposure' => 'required|before_or_equal:biological,dateofexposure'.$this->route('biological'),
-            'assignmentbiological' => 'required|string:biological,assignmentbiological'.$this->route('biological'),
-            'shift' => 'required|string:biological,shift'.$this->route('biological'),
-            'primaryidconumber' => 'required|integer:biological,primaryidconumber'.$this->route('biological'),
-            'epcrincidentnum' => 'required|numeric:biological,epcrincidentnum'.$this->route('biological'),
-            'frmsincidentnum' => 'required|numeric:biological,frmsincidentnumber'.$this->route('biological'),
-            //'exposureinjury'=>'required|string:biological,exposureinjury'.$this->route('biological'),
-            'exposure'=>'required|string:biological,exposure'.$this->route('biological'),
+            'trueofd184' => 'max:20480|mimes:pdf',
+            'potofd184' => 'max:20480|mimes:pdf',
+            //'todaysdate' => 'required|date:biological,todaysdate,',
+            'employeeid' => 'required|integer:biological,employeeid',
+            'exposedemployeename' => 'required|alpha|string:biological,exposedemployeename',
+            //'dateofexposure' => 'required|before_or_equal:biological,dateofexposure',
+            'assignmentbiological' => 'required|string:biological,assignmentbiological',
+            'shift' => 'required|string:biological,shift',
+            'primaryidconumber' => 'required|integer:biological,primaryidconumber',
+            'epcrincidentnum' => 'required|numeric:biological,epcrincidentnum',
+            'frmsincidentnum' => 'required|numeric:biological,frmsincidentnumber',
+            //'exposureinjury'=>'required|string:biological,exposureinjury',
+            'exposure'=>'required|string:biological,exposure',
             ]);
 
         $statusid=DB::table('status')->where('statustype','Application under Captain')->value('statusid');
@@ -160,7 +160,7 @@ class BiologicalsController extends Controller
         $link=preg_replace('#\/[^/]*$#', '', $rawlink)."/$last_insert_id";
 
         (new EmailController)->Email($request, $link,$formname,$statusid);
-        return redirect()->route('biologicals.index');
+       return redirect()->route('biologicals.index');
     }
     public function edit($id)
     {
