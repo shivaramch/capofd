@@ -14,7 +14,7 @@
 @endsection
 
 @section('content')
-    {!! Form::open(['method' => 'POST', 'route' => ['biologicals.store'], 'files' => true,]) !!}
+    {!! Form::open(['method' => 'POST', 'url' => '/accidents/save', 'files' => true,]) !!}
     <input type="hidden" name="_token" value="{!!  'csrf_token()' !!}">
     {{ csrf_field() }}
 
