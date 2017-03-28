@@ -314,7 +314,7 @@
                     <div class="row">
                         <div class="col-md-12">
 
-                            <div class="alert alert-danger" align="left">
+                       {{--}}     <div class="alert alert-danger" align="left">
                                 {{Form::label('exposureInjury','Do you have any symptoms of illness or injury and require
                                    treatment? (In case of Injury, please fill OFD - 6 IOD Application)     ')}}
 
@@ -327,7 +327,7 @@
                                     <p class="help-block">
                                         {{ $errors->first('exposurehazmat') }}
                                     </p>
-                                @endif
+                                @endif --}}
 
                                 <div class="alert alert-danger form-group" align="left">
                                     <div class="col-md-9">
