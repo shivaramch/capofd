@@ -26,7 +26,7 @@ class Attachment extends Model
 
         static::saving(function ($table) {
             $table->createdby = Auth::user()->id;
-            $table->ip_address=\Request::getClientIp();
+
         });
     }
 
