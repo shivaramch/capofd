@@ -34,6 +34,7 @@ class CreateAccidentTable extends Migration
             $table->string('checkbox6')->nullable();
             $table->string('checkbox7')->nullable();
             $table->string('checkbox8')->nullable();
+            $table->string('checkbox9')->nullable();
             $table->string('daybook', 256)->nullable();
             $table->string('commemail', 256)->nullable();
             $table->string('createdby', 256)->nullable();

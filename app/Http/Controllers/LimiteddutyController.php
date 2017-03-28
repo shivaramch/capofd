@@ -24,12 +24,18 @@ class LimiteddutyController extends Controller
         if (Auth::user()->roleid == 1) {
             return view('limitedduties.index', compact('limitedduties'));
         }
+        else {
+            return view('errors.access');
+        }
     }
 
     public function create()
     {
         if (Auth::user()->roleid == 1) {
             return view('limitedduties.create');
+        }
+        else {
+            return view('errors.access');
         }
     }
 
@@ -58,6 +64,9 @@ class LimiteddutyController extends Controller
         if (Auth::user()->roleid == 1) {
             return view('limitedduties.edit', compact('limitedduty', 'attachments'));
         }
+        else {
+            return view('errors.access');
+        }
     }
 
     public function show($id)
@@ -69,6 +78,9 @@ class LimiteddutyController extends Controller
         //show history code end
         if (Auth::user()->roleid == 1) {
             return view('limitedduties.show', compact('limitedduty', 'attachments'));
+        }
+        else {
+            return view('errors.access');
         }
     }
 
