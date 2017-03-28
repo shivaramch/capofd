@@ -472,7 +472,7 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-sm-12 form-group">
+             <div class="col-sm-12 form-group">
                     <div class="form-group">
                         {{ Form::checkbox('checkbox9', 1, null, ['id'=>'checkbox9', 'class' => 'className' ]) }}
                         {{Form::label('checkbox9','Miscellaneous Documents')}}
