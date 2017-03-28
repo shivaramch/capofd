@@ -151,8 +151,8 @@ return [
             'date' => '"Todays Date" field should be a valid date',
         ],
         'injuredemployeename' => [
-            'required' => '"Todays Date" field is required',
-            'alpha' => '"Todays Date" field can only have letters',
+            'required' => '"Employee Name" field is required',
+            'alpha' => '"Employee Name" field can only have letters',
         ],
         'injuredemployeeid' => [
         'required' => '"Personnel ID #" field is required',
