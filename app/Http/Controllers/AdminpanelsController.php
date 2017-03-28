@@ -20,5 +20,9 @@ class AdminpanelsController extends Controller
         if (Auth::user()->roleid == 1) {
             return view('adminpanel.index', compact('accidents', 'injuries', 'hazmat', 'biologicals'));
         }
+        else {
+            return view('errors.access');
+        }
+
     }
 }

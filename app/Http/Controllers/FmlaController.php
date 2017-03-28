@@ -24,12 +24,18 @@ class FmlaController extends Controller
         if (Auth::user()->roleid == 1) {
             return view('fmlas.index', compact('fmlas'));
         }
+        else {
+            return view('errors.access');
+        }
     }
 
     public function create()
     {
         if (Auth::user()->roleid == 1) {
             return view('fmlas.create');
+        }
+        else {
+            return view('errors.access');
         }
     }
 
@@ -56,6 +62,9 @@ class FmlaController extends Controller
         if (Auth::user()->roleid == 1) {
             return view('limitedduties.edit', compact('limitedduty', 'attachments'));
         }
+        else {
+            return view('errors.access');
+        }
     }
 
     public function show($id)
@@ -67,6 +76,9 @@ class FmlaController extends Controller
         //show history code end
         if (Auth::user()->roleid == 1) {
             return view('fmlas.show', compact('fmla', 'attachments'));
+        }
+        else {
+            return view('errors.access');
         }
     }
 
