@@ -14,6 +14,7 @@
     {!! Form::model($biological,['method' => 'PUT', 'route' => ['biologicals.update', $biological->ofd6bid], 'files' => true,]) !!}
     <input type="hidden" name="_token" value="{!!  'csrf_token()' !!}">
     {{ csrf_field() }}
+
     <style>
         #padtop {
             padding-top: 7px;
@@ -55,18 +56,6 @@
                 <div class="form-horizontal">
                     <div class="row">
                         <div class="col-sm-4 form-group">
-                            {!! Form::label('exposedemployeename', 'Exposed Employee Name',array('style'=>'padding-top:7px;','class'=> 'col-sm-4 control-label') ) !!}
-                            <div class="col-sm-6 ">
-                                {!! Form::text('exposedemployeename', old('exposedemployeename'), array('class'=>'form-control'))!!}
-                                <p class="help-block"></p>
-                                @if($errors->has('exposedemployeename'))
-                                    <p class="help-block">
-                                        {{ $errors->first('exposedemployeename') }}
-                                    </p>
-                                @endif
-                            </div>
-                        </div>
-                        <div class="col-sm-4 form-group">
                             {!! Form::label('dateofexposure', 'Date of Exposure', array('style'=>'padding-top:7px;','class'=> 'col-sm-4 control-label') ) !!}
                             <div class="col-sm-6 ">
                                 {!! Form::text('dateofexposure', old('dateofexposure'), array('id'=>'datepicker','class' => 'form-control datepicker', 'placeholder' => 'YYYY-MM-DD','required' => 'required'))!!}
@@ -90,12 +79,29 @@
                                 @endif
                             </div>
                         </div>
+                        <div class="col-sm-4 form-group">
+                            {!! Form::label('exposedemployeename', 'Exposed Employee Name',array('style'=>'padding-top:7px;','class'=> 'col-sm-4 control-label') ) !!}
+                            <div class="col-sm-6 ">
+                                {!! Form::text('exposedemployeename', old('exposedemployeename'), array('class'=>'form-control'))!!}
+                                <p class="help-block"></p>
+                                @if($errors->has('exposedemployeename'))
+                                    <p class="help-block">
+                                        {{ $errors->first('exposedemployeename') }}
+                                    </p>
+                                @endif
+                            </div>
+                        </div>
                     </div>
                     <div class="row">
                         <div class="col-sm-4 form-group">
-                            {!! Form::label('assignmentbiological', 'Assignment', array('style'=>'padding-top:7px;','class'=> 'col-sm-4 control-label') ) !!}
-                            <div class="col-sm-6 ">
-                                {!! Form::text('assignmentbiological', old('assignmentbiological'), array('class' => 'form-control'))!!}
+                            {!! Form::label('assignmentbiological', 'Assignment', ['class'=> 'col-sm-4 control-label'] ) !!}
+                            <div class="col-sm-6">
+                                {!! Form::select('assignmentbiological', ['A' => 'A',
+                                'B' => 'B',
+                                'C' => 'C',
+                                'DIV' => 'DIV'], old('assignmentbiological'),
+                                ['placeholder' => 'Select your Assignment'],'required',
+                                ['class' => 'form-control']) !!}
                                 <p class="help-block"></p>
                                 @if($errors->has('assignmentbiological'))
                                     <p class="help-block">
@@ -121,18 +127,6 @@
                                 @endif
                             </div>
                         </div>
-                        <div class="col-sm-4 form-group">
-                            {!! Form::label('epcrincidentnum', 'EPCR Incident#', array('style'=>'padding-top:7px;','class'=> 'col-sm-4 control-label') ) !!}
-                            <div class="col-sm-6 ">
-                                {!! Form::text('epcrincidentnum', old('epcrincidentnum'), array('class' => 'form-control','placeholder'=>'Enter Incident Num'))!!}
-                                <p class="help-block"></p>
-                                @if($errors->has('epcrincidentnum'))
-                                    <p class="help-block">
-                                        {{ $errors->first('epcrincidentnum') }}
-                                    </p>
-                                @endif
-                            </div>
-                        </div>
                     </div>
                     <div class="row">
                         <div class="col-sm-4 form-group">
@@ -143,6 +137,18 @@
                                 @if($errors->has('primaryidconumber'))
                                     <p class="help-block">
                                         {{ $errors->first('primaryidconumber') }}
+                                    </p>
+                                @endif
+                            </div>
+                        </div>
+                        <div class="col-sm-4 form-group">
+                            {!! Form::label('epcrincidentnum', 'EPCR Incident#', array('style'=>'padding-top:7px;','class'=> 'col-sm-4 control-label') ) !!}
+                            <div class="col-sm-6 ">
+                                {!! Form::text('epcrincidentnum', old('epcrincidentnum'), array('class' => 'form-control','placeholder'=>'Enter Incident Num'))!!}
+                                <p class="help-block"></p>
+                                @if($errors->has('epcrincidentnum'))
+                                    <p class="help-block">
+                                        {{ $errors->first('epcrincidentnum') }}
                                     </p>
                                 @endif
                             </div>
@@ -181,6 +187,25 @@
                     </div>
                 </div>
                 <div id="Exposure0" class="desc" style="display: none;">
+                    <div class="col-md-12">
+                        <div class="alert alert-danger" align="left">
+                            Definition of True Exposure:
+                            <ul type="Disc">
+                                <li>Eye, mouth, other mucous membrane, non-related skin or parenteral contact with
+                                    blood,
+                                    other body fluids or other potentially infectious material.
+                                </li>
+                                <li>
+                                    Inhalation of potentially contagious microbes.
+                                </li>
+                                <li>
+                                    Contact with an infected patient’s skin lesions or body fluids that can cause
+                                    infectious disease that require preventative treatment or quarantine.
+                                </li>
+
+                            </ul>
+                        </div>
+                    </div>
                     <div class="col-sm-12">
                         <div class="form-group">
                             {{ Form::checkbox('truedecontaminate', 1, null, ['id' => 'truedecontaminate', 'class'=>'className']) }}
@@ -375,7 +400,21 @@
                     </div>
                 </div>
                 <div id="Exposure1" class="desc" style="display: none;">
-
+                    <div class="col-md-12">
+                        <div class="alert alert-danger" align="left">
+                            Definition of Potential Exposure:
+                            <ul type="Disc">
+                                <li>Occurs through a break in the skin barrier, this includes injections, needle sticks,
+                                    human/ animal bites, abrasions and cuts that become contaminated with blood.
+                                </li>
+                                <li>
+                                    For human/animal bites, the clinical evaluation must include the possibility that both
+                                    the person bitten and the person/animal that inflicted the bite were exposed to
+                                    bloodborne pathogens.
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
                     <div class="col-sm-12">
                         <div class="form-group">
                             {{ Form::checkbox('potdecontaminate', 1, null, ['id' => 'potdecontaminate', 'class'=>'className']) }}
@@ -404,7 +443,6 @@
                             </div>
                         </div>
                     </div>
-
                     <div class="col-sm-12">
                         <div class="form-group">
                             {{ Form::checkbox('potbagtag', 1, null, ['id' => 'potbagtag', 'class'=>'className']) }}
@@ -549,18 +587,6 @@
                                             the employee shall complete an OFD6 and designate whether treatment is being
                                             requested in the OFD-25 IOD.</label>
                                     </div>
-                                    {{--<div class="col-md-1">--}}
-                                    {{--{!! Form::select('exposureinjury',--}}
-                                    {{--['Yes' => 'Yes',--}}
-                                    {{--'No' => 'No'], old('exposureinjury'),--}}
-                                    {{--['class' => 'form-control']) !!}--}}
-                                    {{--<p class="help-block"></p>--}}
-                                    {{--@if($errors->has('exposureinjury'))--}}
-                                    {{--<p class="help-block">--}}
-                                    {{--{{ $errors->first('exposureinjury') }}--}}
-                                    {{--</p>--}}
-                                    {{--@endif--}}
-                                    {{--</div>--}}
                                 </div>
                             </div>
                         </div>
