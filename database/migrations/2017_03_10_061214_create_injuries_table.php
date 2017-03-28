@@ -34,7 +34,7 @@ class CreateInjuriesTable extends Migration
             $table->string('callsupervisor', 256)->nullable();
             $table->string('createdby', 256)->nullable();
             $table->string('updatedby', 256)->nullable();
-            $table->integer('applicationstatus', 256)->nullable();
+            $table->integer('applicationstatus')->nullable();
             $table->string('checkbox1')->nullable();
             $table->string('checkbox2')->nullable();
             $table->string('checkbox3')->nullable();

@@ -23,7 +23,7 @@ class CreateAccidentTable extends Migration
             $table->string('captainid', 256)->nullable();
             $table->string('battalionchiefid', 256)->nullable();
             $table->string('aconduty', 256)->nullable();
-            $table->integer('applicationstatus', 256)->nullable();
+            $table->integer('applicationstatus')->nullable();
             $table->string('frmsincidentnum', 256)->nullable();
             $table->string('calllaw', 256)->nullable();
             $table->string('checkbox1')->nullable();
