@@ -545,8 +545,9 @@
                             <div class="col-md-12">
                                 <div class="alert alert-danger form-group" align="center">
                                     <div class="col-md-9">
-                                        {{Form::label('If an employee receives an injury or illness from this incident,
-                                the employee shall complete an OFD6 and designate whether treatment is being requested in the OFD-25 IOD.')}}
+                                        <label>If an employee receives an injury or illness from this incident,
+                                            the employee shall complete an OFD6 and designate whether treatment is being
+                                            requested in the OFD-25 IOD.</label>
                                     </div>
                                     {{--<div class="col-md-1">--}}
                                     {{--{!! Form::select('exposureinjury',--}}

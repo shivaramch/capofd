@@ -4,7 +4,7 @@
         <a class="btn btn-default" type="button"
            href="{{ url('/') }}">
             <i class="fa fa-arrow-left" aria-hidden="true"></i> Back</a>
-        <li><a href="{{ url('/') }}">Dashboard</a></li>
+       <li><a href="{{ url('/') }}">Dashboard</a></li>
         <li class="active">Admin Search</li>
     </ol>
 @endsection

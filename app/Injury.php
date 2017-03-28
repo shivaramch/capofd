@@ -51,6 +51,7 @@ class Injury extends Model
         'checkbox3',
         'checkbox4',
         'checkbox5',
+        'checkbox6',
         'createdby',
         'updatedby',
     ];

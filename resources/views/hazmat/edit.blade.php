@@ -173,23 +173,26 @@
             <div class="panel-body">
                 <div class="row">
                     <div class="col-sm-12 form-group">
+                        {{--{{ Form::checkbox('corvelid', 1, null,['disabled'], ['id' => 'corvelid', 'class'=>'className','readonly' => 'true']) }}--}}
+                        {!! Form::label('corvelid', 'Once you have completed the call, record CorVel Claim #', array('style'=>'padding-top:7px;','class' => 'col-sm-4 control-label')) !!}
+                        <div class="col-sm-4">
+                            {!! Form::text('corvelid', old('corvelid'), ['class' => 'form-control','placeholder'=>'Enter Corvel Claim ID', 'required'=>'required'])!!}
+                            <p class="help-block"></p>
+                            @if($errors->has('corvelid'))
+                                <p class="help-block">
+                                    {{ $errors->first('corvelid') }}
+                                </p>
+                            @endif
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12 form-group">
                         <div class="col-sm-12">
                             {{ Form::checkbox('contactcorvel', 1, null, ['id' => 'contactcorvel', 'class'=>'className']) }}
                             {{Form::label('contactcorvel','Contact CorVel Enterprise Comp @ 877-764-3574.
                                     Tell them you have a Hazardous Material Exposure and the call is for reporting ONLY.')}}
                         </div>
-                    </div>
-                </div>
-                <div class="col-sm-12 form-group">
-                    {!! Form::label('corvelid', 'Once you have completed the call, record CorVel Claim #', array('style'=>'padding-top:7px;','class' => 'col-sm-4 control-label')) !!}
-                    <div class="col-sm-4">
-                        {!! Form::text('corvelid', old('corvelid'), ['class' => 'form-control','placeholder'=>'Enter Corvel Claim ID', 'required'=>'required'])!!}
-                        <p class="help-block"></p>
-                        @if($errors->has('corvelid'))
-                            <p class="help-block">
-                                {{ $errors->first('corvelid') }}
-                            </p>
-                        @endif
                     </div>
                 </div>
 
@@ -311,7 +314,7 @@
                     <div class="row">
                         <div class="col-md-12">
 
-                            <div class="alert alert-danger" align="left">
+                       {{--}}     <div class="alert alert-danger" align="left">
                                 {{Form::label('exposureInjury','Do you have any symptoms of illness or injury and require
                                    treatment? (In case of Injury, please fill OFD - 6 IOD Application)     ')}}
 
@@ -324,12 +327,13 @@
                                     <p class="help-block">
                                         {{ $errors->first('exposurehazmat') }}
                                     </p>
-                                @endif
+                                @endif --}}
 
                                 <div class="alert alert-danger form-group" align="left">
                                     <div class="col-md-9">
-                                        {{Form::label('If an employee receives an injury or illness from this incident,
-                                    the employee shall complete an OFD6 and designate whether treatment is being requested in the OFD-25 IOD.')}}
+                                        <label>If an employee receives an injury or illness from this incident,
+                                            the employee shall complete an OFD6 and designate whether treatment is being
+                                            requested in the OFD-25 IOD.</label>
                                     </div>
                                     {{--<div class="col-md-1">--}}
                                     {{--{!! Form::select('exposurehazmat',--}}
