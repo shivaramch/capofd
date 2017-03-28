@@ -14,7 +14,7 @@
 @endsection
 
 @section('content')
-    {!! Form::open(['method' => 'POST', 'route' => ['biologicals.store'], 'files' => true,]) !!}
+    {!! Form::open(['method' => 'POST', 'url' => '/biologicals/save', 'files' => true,]) !!}
     <input type="hidden" name="_token" value="{!!  'csrf_token()' !!}">
     {{ csrf_field() }}
 
@@ -365,6 +365,8 @@
                 <div class="col-sm-12">
                     <label class="col-sm-5"></label>
                     <div class="btn-bottom">
+
+                        {!! Form::submit('Save',['class' => 'btn btn-success','name' => 'partialSave']) !!}
                         <button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal">
                             Submit
                         </button>

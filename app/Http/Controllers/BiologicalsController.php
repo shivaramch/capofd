@@ -132,7 +132,7 @@ class BiologicalsController extends Controller
 
         $this->validate($request, [
 
-        'trueofd184' => 'max:20480|mimes:pdf'.$this->route('biological'),
+            'trueofd184' => 'max:20480|mimes:pdf'.$this->route('biological'),
             'potofd184' => 'max:20480|mimes:pdf'.$this->route('biological'),
             //'todaysdate' => 'required|date:biological,todaysdate,'.$this->route('biological'),
             'employeeid' => 'required|integer:biological,employeeid'.$this->route('biological'),
