@@ -146,10 +146,6 @@ return [
             'required' => '"Date of Injury" field is required',
             'date' => '"Date of Injury" field should be a valid date',
         ],
-        'createdate' => [
-            'required' => '"Todays Date" field is required',
-            'date' => '"Todays Date" field should be a valid date',
-        ],
         'injuredemployeename' => [
             'required' => '"Employee Name" field is required',
             'alpha' => '"Employee Name" field can only have letters',
