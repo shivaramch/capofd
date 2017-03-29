@@ -61,8 +61,8 @@
                     <div class="col-sm-4 form-group">
                         {!! Form::label('accidentdate', 'Date of Accident:',array('style'=>'padding-top:7px;','class'=> 'col-sm-4 control-label') )!!}
                         <div class="col-sm-6 ">
-                            {!! Form::text('accidentdate', old('accidentdate'), array('id'=>'datepicker12','class' => 'form-control datepicker1', 'placeholder' => 'MM-DD-YYYY'))!!}
-                            {!! Form::text('accidentdate', old('accidentdate'), array('style'=>'display:none;','id'=>'datepicker32','class' => 'form-control datepicker datepicker32', 'placeholder' => 'YYYY-MM-DD'))!!}
+                            {!! Form::text('accidentdate', old('accidentdate'), array('class' => 'form-control datepicker', 'placeholder' => 'MM-DD-YYYY'))!!}
+                            
                             <p class="help-block"></p>
                             @if($errors->has('accidentdate'))
                                 <p class="help-block">
@@ -174,11 +174,7 @@
                     </div>
                 </div>
                 <div class="alert alert-danger" align="center">
-                    <div class="row">
-                        <label>Please submit all the forms by:<input type="text" class="form-control datepicker2"
-                                                                     id="datepicker12"
-                                                                     disabled></label>
-                    </div>
+                   
                     <div class="row">
                         <div class="col-md-12" style="text-align:left">
                             <strong>
