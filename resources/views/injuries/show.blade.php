@@ -34,14 +34,8 @@
                                 <h3><strong>I.O.D. Report Tracking Document (OFD-6)</strong></h3>
                             </div>
                         </div>
-                        <div class="col-md-2">
-                            <h5><i><strong>Issue Date: 8/17/16</strong></i></h5>
-                        </div>
-                        <div class="col-md-2">
-                            <h5><i><strong>Effective Date: 8/17/16</strong></i></h5>
-                        </div>
                         <div class="col-md-12">
-                            <h5><i><strong>Amends, Replaces, Rescinds: Replaces OFD-6 (Rev. 05-15)</strong></i></h5>
+                            <h6><i><strong>Used for future tracking purposes only</strong></i></h6>
                         </div>
                     </div>
                 </div>
