@@ -10,7 +10,9 @@
 
 <script src="{{ url ('js') }}/bootstrap-table.js"></script>
 
-<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+ <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+
 
 <script src="//cdn.datatables.net/1.10.9/js/jquery.dataTables.min.js"></script>
 
@@ -27,14 +29,40 @@
                 $(".datepicker2").datepicker("setDate", date2);
                 var date3 = $('.datepicker1').datepicker('getDate');
                 date3.setDate(date3.getDate() + 0)
-                $("#datepicker32").datepicker("setDate", date3);
+                $(".datepicker32").datepicker("setDate", date3);
             }
         });
         $(".datepicker2").datepicker();
-        $("#datepicker32").datepicker();
+        $(".datepicker32").datepicker();
     });
-</script>
+</script> 
 
+<script>
+$(function addZero() {
+
+
+    $('#text1').change( function () {
+        var text1 = $('#text1');
+        var text2 = $('#text2');
+        var i = document.getElementById("text1");
+        var len = i.value.length;
+        
+        
+        if($('#text1').val().charAt(0) == 0 && $('#text1').val().charAt(1) == 0)
+        {
+        text2.val(text1.val());   
+        }
+		else if($('#text1').val().charAt(0) == 0 && $('#text1').val().charAt(1) != 0)
+        {
+        text2.val("0" + text1.val());   
+        }
+        else
+        {
+        text2.val('00' + text1.val());   
+        }
+    });
+});
+</script>
 <script>
     $(function () {
 

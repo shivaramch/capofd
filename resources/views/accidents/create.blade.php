@@ -62,7 +62,7 @@
                         {!! Form::label('accidentdate', 'Date of Accident:',array('style'=>'padding-top:7px;','class'=> 'col-sm-4 control-label') )!!}
                         <div class="col-sm-6 ">
                             {!! Form::text('accidentdate', old('accidentdate'), array('id'=>'datepicker12','class' => 'form-control datepicker1', 'placeholder' => 'MM-DD-YYYY'))!!}
-                            {!! Form::text('accidentdate', old('accidentdate'), array('style'=>'display:none;','id'=>'datepicker32','class' => 'form-control datepicker', 'placeholder' => 'YYYY-MM-DD'))!!}
+                            {!! Form::text('accidentdate', old('accidentdate'), array('style'=>'display:none;','id'=>'datepicker32','class' => 'form-control datepicker datepicker32', 'placeholder' => 'YYYY-MM-DD'))!!}
                             <p class="help-block"></p>
                             @if($errors->has('accidentdate'))
                                 <p class="help-block">
@@ -100,7 +100,8 @@
                     <div class="col-sm-4 form-group">
                         {!! Form::label('frmsincidentnum', 'FRMS Incident #', array('style'=>'padding-top:7px;','class' => 'col-sm-4 control-label')) !!}
                         <div class="col-sm-6 ">
-                            {!! Form::text('frmsincidentnum', old('frmsincidentnum'), array('class' => 'form-control','placeholder'=>'Enter FRMS number'))!!}
+                            {!! Form::text('frmsincidentnum12', old('frmsincidentnum12'), array('id'=>'text1', 'class' => 'form-control','placeholder'=>'Enter FRMS Number'))!!}
+                        {!! Form::text('frmsincidentnum', old('frmsincidentnum'), array('id'=>'text2', 'class' => 'form-control','placeholder'=>'Enter FRMS Number', 'style'=>'display:none;'))!!}
                             <p class="help-block"></p>
                             @if($errors->has('frmsincidentnum'))
                                 <p class="help-block">
