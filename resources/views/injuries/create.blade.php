@@ -369,10 +369,6 @@
                     {{Form::label('Checkbox5','OFD - 25 Injury on Job- Send an attachment electronically to OmafIOD@cityofomaha.org')}}
                 </div>
             </div>
-
-            {{--<label class="col-sm-12"><strong>OFD - 25 Injury on
-                    Job</strong>
-                - Send an attachment electronically to OmafIOD@cityofomaha.org</label> --}}
             <div class="col-sm-12 form-group well well-sm">
                 <div class="col-sm-4">
                     <a class="btn btn-success dropdown-toggle col-sm-12" type="button"
