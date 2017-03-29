@@ -53,23 +53,6 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-sm-8 form-group">
-                    {!! Form::label('reportnum', 'Report #', ['class' => 'col-sm-2 control-label']) !!}
-                    <div class="col-sm-3">
-                        {!! Form::text('reportnum', old('reportnum'), array('class' => 'form-control','style' =>'margin-left:-7px;','placeholder'=>'Enter Report Number'))!!}
-                        <p class="help-block"></p>
-                        @if($errors->has('reportnum'))
-                            <p class="help-block">
-                                {{ $errors->first('reportnum') }}
-                            </p>
-                        @endif
-                    </div>
-                    <div class='col-sm-7'>
-                        {!! Form::label('reportnum ', '(Obtain from SWD Office)', array('class' => 'col-sm-6 control-label','style' =>'margin-left:-70px;')) !!}
-                    </div>
-                </div>
-            </div>
-            <div class="row">
                 <div class="col-sm-4 form-group">
                     {!! Form::label('injuryDate', 'Date of Injury:', ['class' => 'col-sm-4 control-label']) !!}
                     <div class="col-sm-6 ">
