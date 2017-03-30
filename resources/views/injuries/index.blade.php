@@ -21,7 +21,7 @@
         <div class="panel-heading">
             <div class="row">
                 <div class="col-md-offset-3 col-md-6">
-                    <a class="btn btn-success btn-lg btn-block" href="{{ route('injuries.create') }}">Fill a New OFD
+                    <a class="btn btn-success btn-lg btn-block" href="{{ route('injuries.create') }}" id="fillNew">Fill a New OFD
                         6</a>
                 </div>
             </div>
