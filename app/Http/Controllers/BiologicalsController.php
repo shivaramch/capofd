@@ -142,7 +142,7 @@ class BiologicalsController extends Controller
             'shift' => 'required|string:biological,shift',
             'primaryidconumber' => 'required|integer:biological,primaryidconumber',
             'epcrincidentnum' => 'required|numeric:biological,epcrincidentnum',
-            'frmsincidentnum' => 'required|numeric:biological,frmsincidentnumber',
+            'frmsincidentnum' => 'required|string:biological,frmsincidentnumber',
             //'exposureinjury'=>'required|string:biological,exposureinjury',
             'exposure'=>'required|string:biological,exposure',
             ]);

@@ -154,7 +154,7 @@ class HazmatController extends Controller
             'corvelid' => 'required|integer:hazmat,corvelid',
             'epcrincidentnum' => 'required|integer:hazmat,epcrincidentnum',
             'assignment' => 'required|string:hazmat,assignment',
-            'frmsincidentnum' => 'required|integer:hazmat,frmsincidentnum',
+            'frmsincidentnum' => 'required|string:hazmat,frmsincidentnum',
             'shift' => 'required|string:hazmat,shift,',
             ]);
 
