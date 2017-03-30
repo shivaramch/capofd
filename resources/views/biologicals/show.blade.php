@@ -101,7 +101,7 @@
                         </div>
                         <div class="col-sm-4 form-group">
                             {!! Form::label('shift', 'Shift', ['class'=> 'col-sm-4 control-label'] ) !!}
-                            <div class="col-sm-8">
+                            <div class="col-sm-6">
                                 {!! Form::text('shift', old('shift'),
                                 ['class' => 'form-control','disabled' => "disabled"]) !!}
                                 <p class="help-block"></p>
@@ -227,7 +227,7 @@
                     </div>
                     <div class="col-sm-12">
                         <div class="form-group">
-                            {{ Form::checkbox('miscbiological1', 1, null, ['id'=>'miscbiological1', 'class' => 'className' ]) }}
+                            {{ Form::checkbox('miscbiological1', 1, null, ['id'=>'miscbiological1', 'class' => 'className','disabled' => "disabled" ]) }}
                             {{Form::label('miscbiological1','Miscellaneous Documents')}}
                         </div>
                         <div class="col-sm-12 form-group well well-sm">
@@ -365,7 +365,7 @@
                     </div>
                     <div class="col-sm-12">
                         <div class="form-group">
-                            {{ Form::checkbox('miscbiological2', 1, null, ['id'=>'miscbiological2', 'class' => 'className' ]) }}
+                            {{ Form::checkbox('miscbiological2', 1, null, ['id'=>'miscbiological2', 'class' => 'className','disabled' => "disabled" ]) }}
                             {{Form::label('miscbiological2','Miscellaneous Documents')}}
                         </div>
                         <div class="col-sm-12 form-group well well-sm">

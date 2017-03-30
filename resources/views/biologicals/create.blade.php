@@ -107,7 +107,7 @@
                     </div>
                     <div class="col-sm-4 form-group">
                         {!! Form::label('shift', 'Shift', ['class'=> 'col-sm-4 control-label'] ) !!}
-                        <div class="col-sm-8">
+                        <div class="col-sm-">
                             {!! Form::select('shift', ['A' => 'A',
                             'B' => 'B',
                             'C' => 'C',

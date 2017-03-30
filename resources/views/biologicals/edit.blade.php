@@ -50,6 +50,7 @@
                     </div>
                 </div>
             </div>
+
             <div class="panel-body">
                 <div class="form-horizontal">
                     <div class="row">
@@ -98,7 +99,6 @@
                                 'B' => 'B',
                                 'C' => 'C',
                                 'DIV' => 'DIV'], old('assignmentbiological'),
-                                ['placeholder' => 'Select your Assignment'],'required',
                                 ['class' => 'form-control']) !!}
                                 <p class="help-block"></p>
                                 @if($errors->has('assignmentbiological'))
@@ -540,7 +540,7 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="alert alert-danger form-group" align="center">
-                                    <div class="col-md-9">
+                                    <div class="col-md-12">
                                         <label>If an employee receives an injury or illness from this incident,
                                             the employee shall complete an OFD6 and designate whether treatment is being
                                             requested in the OFD-25 IOD.</label>
@@ -550,15 +550,14 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-12">
-                    <div class="form-group">
-                        {{Form::label('exposureinjury','Do you have any symptoms of illness or injury and require
-                           treatment?')}}
+                <div class="col-md-6 form-group">
+                    {{Form::label('exposureinjury','Do you have any symptoms of illness or injury and require
+                       treatment?',['class'=> 'col-sm-10 control-label'] ) }}
+                    <div class="col-sm-2">
                         {!! Form::select('exposureinjury',[
                           'Yes' => 'Yes',
-                          'No' => 'No'],null,
-                        ['placeholder' => 'Choose one'],old('exposureinjury'),'required',
-                        array('class' => 'form-control'))!!}
+                          'No' => 'No'],old('exposureinjury'),
+                        ['class' => 'form-control'])!!}
                         <p class="help-block"></p>
                         @if($errors->has('exposureinjury'))
                             <p class="help-block">
@@ -567,101 +566,102 @@
                         @endif
                     </div>
                 </div>
-            </div>
-            <div class="row">
-                <div class="col-sm-12">
-                    <label class="col-sm-5"></label>
-                    <div class="btn-bottom">
-                        {!! Form::submit('Save as Draft',['class' => 'btn btn-primary','name' => 'partialSave']) !!}
-                        <button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal">
-                            Save
-                        </button>
-                        <a href="{{ route('biologicals.index') }}" class="btn btn-danger">Cancel</a>
+
+                <div class="row">
+                    <div class="col-sm-12">
+                        <label class="col-sm-5"></label>
+                        <div class="btn-bottom">
+                            {!! Form::submit('Save as Draft',['class' => 'btn btn-primary','name' => 'partialSave']) !!}
+                            <button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal">
+                                Submit
+                            </button>
+                            <a href="{{ route('biologicals.index') }}" class="btn btn-danger">Cancel</a>
+                        </div>
                     </div>
                 </div>
             </div>
-            @if (!empty($comments))
-                <div class="panel panel-default">
-                    <div class="panel-body">
-                        <div class="actionBox">
-                            <ul class="commentList">
-                                @foreach ($comments as $cm)
-                                    @if(($cm->applicationid == $biological->ofd6bid && $cm->applicationtype == '6B')&&
-                                        ($biological->employeeid == Auth::user()->id && $cm->isvisible == 1))
-                                        <div class="col-sm-8">
-                                            <div class="panel panel-white post panel-shadow">
-                                                <div class="post-heading">
-                                                    <div class="pull-left meta">
-                                                        <div class="title h5">
-                                                            @foreach ($users as $user)
-                                                                @if($user->id == $cm->createdby )
-                                                                    <b><i class="fa fa-user"></i> {{$user->name}}
-                                                                    </b>
-                                                                @endif
-                                                            @endforeach
-                                                            made a Comment.
-                                                        </div>
-                                                        <time class="comment-date text-muted time"
-                                                              datetime="{{$cm->created_at}}"><i
-                                                                    class="fa fa-clock-o"></i> {{$cm->created_at}}
-                                                        </time>
+        </div>
+        @if (!empty($comments))
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <div class="actionBox">
+                        <ul class="commentList">
+                            @foreach ($comments as $cm)
+                                @if(($cm->applicationid == $biological->ofd6bid && $cm->applicationtype == '6B')&&
+                                    ($biological->employeeid == Auth::user()->id && $cm->isvisible == 1))
+                                    <div class="col-sm-8">
+                                        <div class="panel panel-white post panel-shadow">
+                                            <div class="post-heading">
+                                                <div class="pull-left meta">
+                                                    <div class="title h5">
+                                                        @foreach ($users as $user)
+                                                            @if($user->id == $cm->createdby )
+                                                                <b><i class="fa fa-user"></i> {{$user->name}}
+                                                                </b>
+                                                            @endif
+                                                        @endforeach
+                                                        made a Comment.
                                                     </div>
-                                                </div>
-                                                <div class="post-description">
-                                                    <p>{{$cm->comment}}</p>
+                                                    <time class="comment-date text-muted time"
+                                                          datetime="{{$cm->created_at}}"><i
+                                                                class="fa fa-clock-o"></i> {{$cm->created_at}}
+                                                    </time>
                                                 </div>
                                             </div>
+                                            <div class="post-description">
+                                                <p>{{$cm->comment}}</p>
+                                            </div>
                                         </div>
-                                    @endif
-                                @endforeach
-                            </ul>
+                                    </div>
+                                @endif
+                            @endforeach
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        @endif
+    @else
+        <div class="panel-body">
+            <div class="form-horizontal">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="alert alert-danger" align="center">
+                            <label>
+                                You are not authorized to view this form
+                            </label>
                         </div>
                     </div>
                 </div>
-            @endif
-            @else
-                <div class="panel-body">
-                    <div class="form-horizontal">
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div class="alert alert-danger" align="center">
-                                    <label>
-                                        You are not authorized to view this form
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-12 panel-heading" align="center">
-                    <div class="btn-bottom ">
-                        <a href="{{ route('biologicals.index') }}" class="btn btn-default">return</a>
-                    </div>
-                </div>
-                @endif
-                        <!-- Modal -->
-                <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-                    <div class="modal-dialog" role="document">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
-                                            aria-hidden="true">&times;</span></button>
-                                <h4 class="modal-title" id="myModalLabel"></h4>
-                            </div>
-                            <div class="modal-body">
-                                Are you sure you want to Submit?
-                            </div>
-                            <div class="modal-footer">
-                                {!! Form::submit('Yes',['class' => 'btn btn-success']) !!}
-                                <button type="button" class=" btn btn-danger" data-dismiss="modal" aria-label="">No
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                {!! Form::close() !!}
-                @stop
+            </div>
         </div>
+        <div class="col-sm-12 panel-heading" align="center">
+            <div class="btn-bottom ">
+                <a href="{{ route('biologicals.index') }}" class="btn btn-default">return</a>
+            </div>
+        </div>
+        @endif
+                <!-- Modal -->
+        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                    aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="myModalLabel"></h4>
+                    </div>
+                    <div class="modal-body">
+                        Are you sure you want to Submit?
+                    </div>
+                    <div class="modal-footer">
+                        {!! Form::submit('Yes',['class' => 'btn btn-success']) !!}
+                        <button type="button" class=" btn btn-danger" data-dismiss="modal" aria-label="">No
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {!! Form::close() !!}
+@stop
 
 @section('javascript')
 
