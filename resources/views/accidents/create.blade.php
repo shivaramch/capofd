@@ -34,14 +34,8 @@
                                 <h3><strong>Vehicle Accident Report Tracking Document (OFD-6A)</strong></h3>
                             </div>
                         </div>
-                        <div class="col-md-2">
-                            <h5><i><strong>Issue Date: 9/1/16</strong></i></h5>
-                        </div>
-                        <div class="col-md-2">
-                            <h5><i><strong>Effective Date: 9/1/16</strong></i></h5>
-                        </div>
                         <div class="col-md-12">
-                            <h5><i><strong>Amends, Replaces, Rescinds: Replaces OFD-6A (July 2016) </strong></i></h5>
+                            <h6><i><strong>Used for future tracking purposes only</strong></i></h6>
                         </div>
                     </div>
                 </div>
@@ -53,7 +47,7 @@
                     <div class="col-md-12">
                         <div class="alert alert-danger" align="center">
                             <strong>
-                                COMPLETE ALL FORMS AND FORWARD VIA CHAIN-OF-COMMAND WITHIN 48 HOURS
+                                COMPLETE ALL FORMS AND FORWARD VIA CHAIN-OF-COMMAND WITHIN 24 HOURS
                             </strong>
                         </div>
                     </div>
@@ -190,7 +184,7 @@
                                         vehicles involved in an accident OR property damage whether on public streets,
                                         private property, or at the Fire Station.
                                     </li>
-                                    <li>DR41 is only submitted to the State if damage is over $1000.00</li>
+                                    <li>DR41 is also submitted to the State if damage is over $1000.00</li>
                                 </ol>
                             </strong>
                         </div>

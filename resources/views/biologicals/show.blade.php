@@ -232,15 +232,57 @@
                                         @endforeach
                                     @endif
 
-                                </table>
+                                    </table>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-sm-12">
-                    <div class="form-group">
-                        {{ Form::checkbox('bloodreport', 1, null, ['id' => 'bloodreport', 'class'=>'className','disabled' => "disabled" ]) }}
-                        {{Form::label('bloodreport','Report for blood draw as directed by OUCH Nurse')}}
+                    <div class="col-sm-12">
+                        <div class="form-group">
+                            {{ Form::checkbox('miscbiological1', 1, null, ['id'=>'miscbiological1', 'class' => 'className' ]) }}
+                            {{Form::label('miscbiological1','Miscellaneous Documents')}}
+                        </div>
+                        <div class="col-sm-12 form-group well well-sm">
+                            <div class="col-sm-4">
+                                <a class="btn btn-primary dropdown-toggle col-sm-12" data-toggle="collapse"
+                                   data-target="#6b3"><i class="fa fa-eye" aria-hidden="true"></i> View
+                                    Previously
+                                    uploaded
+                                    file(s)
+                                </a>
+
+                                <div id="6b3" class="collapse">
+
+                                    <table class="table table-striped">
+                                        <tr>
+                                            <th> File Name</th>
+                                            <th> File Uploaded At</th>
+                                        </tr>
+
+                                        @if(count($attachments) > 0)
+                                            @foreach($attachments as $attachment)
+                                                @if($attachment->attachmenttype == '6b3' && $attachment->createdby ==  Auth::user()->id && $attachment->ofd6bid == $biological->ofd6bid )
+                                                    <tr>
+                                                        <td>
+                                                            <a href="{{ asset('uploads/'.$attachment->attachmentname) }}"> {{$attachment->attachmentname}}</a>
+                                                        </td>
+                                                        <td>
+                                                            <a>{{$attachment->created_at}}</a>
+                                                        </td>
+                                                    </tr>@endif
+                                            @endforeach
+                                        @endif
+
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-12">
+                        <div class="form-group">
+                            {{ Form::checkbox('bloodreport', 1, null, ['id' => 'bloodreport', 'class'=>'className','disabled' => "disabled" ]) }}
+                            {{Form::label('bloodreport','Report for blood draw as directed by OUCH Nurse')}}
 
                     </div>
                 </div>
@@ -336,16 +378,54 @@
                                         @endforeach
                                     @endif
 
-                                </table>
+                                    </table>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
+                    <div class="col-sm-12">
+                        <div class="form-group">
+                            {{ Form::checkbox('miscbiological2', 1, null, ['id'=>'miscbiological2', 'class' => 'className' ]) }}
+                            {{Form::label('miscbiological2','Miscellaneous Documents')}}
+                        </div>
+                        <div class="col-sm-12 form-group well well-sm">
+                            <div class="col-sm-4">
+                                <a class="btn btn-primary dropdown-toggle col-sm-12" data-toggle="collapse"
+                                   data-target="#6b4"><i class="fa fa-eye" aria-hidden="true"></i> View
+                                    Previously
+                                    uploaded
+                                    file(s)
+                                </a>
+                                <div id="6b4" class="collapse">
+                                    <table class="table table-striped">
+                                        <tr>
+                                            <th> File Name</th>
+                                            <th> File Uploaded At</th>
+                                        </tr>
 
-                <div class="col-sm-12">
-                    <div class="form-group">
-                        {{ Form::checkbox('potppe', 1, null, ['id' => 'potppe', 'class'=>'className','disabled' => "disabled" ]) }}
-                        {{Form::label('potppe','PPE has been cleaned per SOP SWD 1-0')}}
+                                        @if(count($attachments) > 0)
+                                            @foreach($attachments as $attachment)
+                                                @if($attachment->attachmenttype == '6b4' && $attachment->createdby ==  Auth::user()->id && $attachment->ofd6bid == $biological->ofd6bid )
+                                                    <tr>
+                                                        <td>
+                                                            <a href="{{ asset('uploads/'.$attachment->attachmentname) }}"> {{$attachment->attachmentname}}</a>
+                                                        </td>
+                                                        <td>
+                                                            <a>{{$attachment->created_at}}</a>
+                                                        </td>
+                                                    </tr>@endif
+                                            @endforeach
+                                        @endif
+
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-12">
+                        <div class="form-group">
+                            {{ Form::checkbox('potppe', 1, null, ['id' => 'potppe', 'class'=>'className','disabled' => "disabled" ]) }}
+                            {{Form::label('potppe','PPE has been cleaned per SOP SWD 1-0')}}
 
                     </div>
                 </div>
