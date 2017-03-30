@@ -28,14 +28,8 @@
                             <h3><strong>I.O.D. Report Tracking Document (OFD-6)</strong></h3>
                         </div>
                     </div>
-                    <div class="col-md-2">
-                        <h5><i><strong>Issue Date: 8/17/16</strong></i></h5>
-                    </div>
-                    <div class="col-md-4">
-                        <h5><i><strong>Effective Date: 8/17/16</strong></i></h5>
-                    </div>
                     <div class="col-md-12">
-                        <h5><i><strong>Amends, Replaces, Rescinds: Replaces OFD-6 (Rev. 05-15)</strong></i></h5>
+                        <h6><i><strong>Used for future tracking purposes only</strong></i></h6>
                     </div>
                 </div>
             </div>
@@ -49,23 +43,6 @@
                     <div class="alert alert-danger" align="center">
                         <strong>COMPLETE ALL FORMS AND FORWARD VIA CHAIN-OF-COMMAND WITHIN 48 HOURS
                         </strong>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-sm-8 form-group">
-                    {!! Form::label('reportnum', 'Report #', ['class' => 'col-sm-2 control-label']) !!}
-                    <div class="col-sm-3">
-                        {!! Form::text('reportnum', old('reportnum'), array('class' => 'form-control','style' =>'margin-left:-7px;','placeholder'=>'Enter Report Number'))!!}
-                        <p class="help-block"></p>
-                        @if($errors->has('reportnum'))
-                            <p class="help-block">
-                                {{ $errors->first('reportnum') }}
-                            </p>
-                        @endif
-                    </div>
-                    <div class='col-sm-7'>
-                        {!! Form::label('reportnum ', '(Obtain from SWD Office)', array('class' => 'col-sm-6 control-label','style' =>'margin-left:-70px;')) !!}
                     </div>
                 </div>
             </div>
@@ -258,13 +235,9 @@
             <div class="col-sm-12 form-group">
                 <div class="form-group">
                     {{ Form::checkbox('checkbox1', 1, null, ['id'=>'checkbox1', 'class' => 'className' ]) }}
-                    {{Form::label('Checkbox1','CorVel Work Ability- Only if seeking medical attention. Complete "Employee Section" and sign at bottom.')}}
+                    {{Form::label('Checkbox1','CorVel Work Ability Report Form  - Only if seeking medical attention. Complete "Employee Section" and sign at bottom.')}}
                 </div>
             </div>
-            {{--   <label class="col-sm-12"><strong>CorVel Work Ability
-                       Report</strong>
-                   - Only if seeking medical attention. Complete "Employee Section" and sign at bottom.</label> --}}
-
             <div class="col-sm-12 form-group well well-sm">
                 <div class="col-sm-4">
                     <a class="btn btn-success dropdown-toggle col-sm-12" type="button"
@@ -392,10 +365,6 @@
                     {{Form::label('Checkbox5','OFD - 25 Injury on Job- Send an attachment electronically to OmafIOD@cityofomaha.org')}}
                 </div>
             </div>
-
-            {{--<label class="col-sm-12"><strong>OFD - 25 Injury on
-                    Job</strong>
-                - Send an attachment electronically to OmafIOD@cityofomaha.org</label> --}}
             <div class="col-sm-12 form-group well well-sm">
                 <div class="col-sm-4">
                     <a class="btn btn-success dropdown-toggle col-sm-12" type="button"

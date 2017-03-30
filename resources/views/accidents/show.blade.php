@@ -211,11 +211,7 @@
                 <div class="col-sm-12">
                     <div class="form-group">
                         {{ form::checkbox('commemail', 1, null,['disabled'], ['id' => 'commemail', 'class'=>'classname','readonly' => 'true']) }}
-                        <label><strong>Generate OFD 025
-                                Intradepartmental Communication</strong>-email to <a
-                                    href="omafaccident_ofd25@cityofomaha.org"> omafaccident_ofd25@cityofomaha
-                                .org </a>
-                        </label>
+                        {{Form::label('Checkbox5','Generate OFD 025 Intradepartmental Communicatio-Email to omafaccident_ofd25@cityofomaha.org')}}
                     </div>
                 </div>
             </div>
