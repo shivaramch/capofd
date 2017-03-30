@@ -169,7 +169,11 @@ class BiologicalsController extends Controller
         $comments = Comment::all();
         $users = User::all();
 
-        return view('biologicals.edit', compact('biological', 'attachments','comments', 'users'));
+        if(($biological->employeeid == Auth::user()->id &&
+            ($biological->applicationstatus == 1 || $biological->applicationstatus == 5)) ||
+        Auth::user()->roleid == 1) {
+            return view('biologicals.edit', compact('biological', 'attachments','comments', 'users'));
+    }
     }
     public function show($id)
     {
@@ -180,7 +184,11 @@ class BiologicalsController extends Controller
         //show history code start
         //below one line code is for storing all history related to the $id in variable, which is to be used to display in show page.
         //show history code end
-        return view('biologicals.show', compact('biological', 'attachments','comments', 'users'));
+        if($biological->employeeid == Auth::user()->id ||
+        ($biological->primaryidconumber == Auth::user()->id && $biological->applicationstatus == 2) ||
+        Auth::user()->roleid == 1) {
+            return view('biologicals.show', compact('biological', 'attachments','comments', 'users'));
+    }
     }
     public function update(UpdateBiologicalsRequest $request, $id)
     {
