@@ -295,13 +295,6 @@
             </div>
         </div>
     @endif
-
-    <div class="col-sm-12 panel-heading" align="center">
-        <div class="btn-bottom ">
-            <a href="{{ route('hazmat.index') }}" class="btn btn-default">Return</a>
-        </div>
-    </div>
-
     {!! Form::close() !!}
 
     <div class="panel panel-default">
