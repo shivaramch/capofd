@@ -10,7 +10,9 @@
 
 <script src="{{ url ('js') }}/bootstrap-table.js"></script>
 
-<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+ <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+
 
 <script src="//cdn.datatables.net/1.10.9/js/jquery.dataTables.min.js"></script>
 
@@ -27,14 +29,14 @@
                 $(".datepicker2").datepicker("setDate", date2);
                 var date3 = $('.datepicker1').datepicker('getDate');
                 date3.setDate(date3.getDate() + 0)
-                $("#datepicker32").datepicker("setDate", date3);
+                $(".datepicker32").datepicker("setDate", date3);
             }
         });
         $(".datepicker2").datepicker();
-        $("#datepicker32").datepicker();
+        $(".datepicker32").datepicker();
     });
-</script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+</script> 
+
 <script>
 $(function addZero() {
 
