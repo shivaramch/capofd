@@ -21,18 +21,20 @@ class UpdateBiologicalsRequest extends FormRequest
     public function rules()
     {
         return [
-            'trueofd184' => 'mimes:pdf|max:20480'.$this->route('biological'),
-            'potofd184' => 'mimes:pdf|max:20480'.$this->route('biological'),
+            'trueofd184' => 'max:20480|mimes:pdf'.$this->route('biological'),
+            'potofd184' => 'max:20480|mimes:pdf'.$this->route('biological'),
             //'todaysdate' => 'required|date:biological,todaysdate,'.$this->route('biological'),
             'employeeid' => 'required|integer:biological,employeeid'.$this->route('biological'),
-            'exposedemployeename' => 'required|string:biological,exposedemployeename'.$this->route('biological'),
-            'dateofexposure' => 'required|date:biological,dateofexposure'.$this->route('biological'),
+            //'exposedemployeename' => 'required|string:biological,exposedemployeename'.$this->route('biological'),
+            //'dateofexposure' => 'required|date:biological,dateofexposure'.$this->route('biological'),
+            'exposedemployeename' => 'required|alpha|string:biological,exposedemployeename'.$this->route('biological'),
+            'dateofexposure' => 'required|before_or_equal:biological,dateofexposure'.$this->route('biological'),
             'assignmentbiological' => 'required|string:biological,assignmentbiological'.$this->route('biological'),
             'shift' => 'required|string:biological,shift'.$this->route('biological'),
             'primaryidconumber' => 'required|integer:biological,primaryidconumber'.$this->route('biological'),
             'epcrincidentnum' => 'required|numeric:biological,epcrincidentnum'.$this->route('biological'),
-            'frmsincidentnum' => 'required|string:biological,frmsincidentnumber'.$this->route('biological'),
-            //'exposureinjury'=>'required|string:biological,exposureinjury'.$this->route('biological'),
+            'frmsincidentnum' => 'required|numeric:biological,frmsincidentnumber'.$this->route('biological'),
+            'exposureinjury'=>'required|string:biological,exposureinjury'.$this->route('biological'),
             'exposure'=>'required|string:biological,exposure'.$this->route('biological'),
         ];
     }

@@ -267,17 +267,16 @@
                             <label>If an employee receives an injury or illness from this incident,
                                 the employee shall complete an OFD6 and designate whether treatment is being
                                 requested in the OFD-25 IOD.</label>
-
-                            {{--{!! Form::text('exposurehazmat', old('exposurehazmat'), ['disabled'], array('class'=>'form-control'))!!}--}}
-                            {{--<p class="help-block"></p>--}}
-                            {{--@if($errors->has('exposurehazmat'))--}}
-                            {{--<p class="help-block">--}}
-                            {{--{{ $errors->first('exposurehazmat') }}--}}
-                            {{--</p>--}}
-                            {{--@endif--}}
                         </div>
                     </div>
                 </div>
+            </div>
+        </div>
+        <div class="col-md-12">
+            <div class="form-group">
+                {{Form::label('exposureinjury','Do you have any symptoms of illness or injury and require
+                   treatment? (In case of Injury, please fill OFD - 6 IOD Application)  :  ')}}
+                <strong> {{ $hazmat->exposureinjury}} </strong>
             </div>
         </div>
     @else
@@ -295,13 +294,6 @@
             </div>
         </div>
     @endif
-
-    <div class="col-sm-12 panel-heading" align="center">
-        <div class="btn-bottom ">
-            <a href="{{ route('hazmat.index') }}" class="btn btn-default">Return</a>
-        </div>
-    </div>
-
     {!! Form::close() !!}
 
     <div class="panel panel-default">

@@ -1,6 +1,4 @@
 @extends('layouts.app')
-
-
 @section('crumbs')
     <ol class="breadcrumb">
         <a class="btn btn-default" type="button"
@@ -16,7 +14,6 @@
     {!! Form::open(['method' => 'POST', 'url' => '/biologicals/save', 'files' => true,]) !!}
     <input type="hidden" name="_token" value="{!!  'csrf_token()' !!}">
     {{ csrf_field() }}
-
     <style>
         #padtop {
             padding-top: 7px;
@@ -29,7 +26,6 @@
         table, td, th {
             border: 1px solid black;
         }
-
     </style>
     <div class="panel panel-default">
         <div class="panel-heading">
@@ -109,7 +105,6 @@
                             @endif
                         </div>
                     </div>
-
                     <div class="col-sm-4 form-group">
                         {!! Form::label('shift', 'Shift', ['class'=> 'col-sm-4 control-label'] ) !!}
                         <div class="col-sm-8">
@@ -156,8 +151,8 @@
                     <div class="col-sm-4 form-group">
                         {!! Form::label('frmsincidentnum', 'FRMS Incident#', array('style'=>'padding-top:7px;','class'=> 'col-sm-4 control-label') ) !!}
                         <div class="col-sm-6 ">
-                           {!! Form::text('frmsincidentnum12', old('frmsincidentnum12'), array('id'=>'text1', 'class' => 'form-control','placeholder'=>'Enter FRMS Number'))!!}
-                        {!! Form::text('frmsincidentnum', old('frmsincidentnum'), array('id'=>'text2', 'class' => 'form-control','placeholder'=>'Enter FRMS Number', 'style'=>'display:none;'))!!}
+                            {!! Form::text('frmsincidentnum12', old('frmsincidentnum12'), array('id'=>'text1', 'class' => 'form-control','placeholder'=>'Enter FRMS Number'))!!}
+                            {!! Form::text('frmsincidentnum', old('frmsincidentnum'), array('id'=>'text2', 'class' => 'form-control','placeholder'=>'Enter FRMS Number', 'style'=>'display:none;'))!!}
                             <p class="help-block"></p>
                             @if($errors->has('frmsincidentnum'))
                                 <p class="help-block">
@@ -183,7 +178,7 @@
                         {{ Form::label('exposure', 'True Exposure') }}
 
                         {{ Form::radio('exposure',1 , null, ['id'=>'exposure', 'class' => 'className']) }}
-                        {{ Form::label('exposure', 'Potential Exposure') }}
+                        {{ Form::label('exposure', 'Contamination') }}
                     </div>
                 </div>
             </div>
@@ -202,7 +197,17 @@
                                 Contact with an infected patient’s skin lesions or body fluids that can cause
                                 infectious disease that require preventative treatment or quarantine.
                             </li>
-
+                        </ul>
+                        Parenteral Exposure :
+                        <ul type="Disc">
+                            <li>Occurs through a break in the skin barrier, this includes injections, needle sticks,
+                                human/ animal bites, abrasions and cuts that become contaminated with blood.
+                            </li>
+                            <li>
+                                For human/animal bites, the clinical evaluation must include the possibility that both
+                                the person bitten and the person/animal that inflicted the bite were exposed to
+                                bloodborne pathogens.
+                            </li>
                         </ul>
                     </div>
                 </div>
@@ -210,28 +215,6 @@
                     <div class="form-group">
                         {{ Form::checkbox('truedecontaminate', 1, null, ['id' => 'truedecontaminate', 'class'=>'className']) }}
                         {{Form::label('truedecontaminate','Decontaminate self- wash, flush as soon as possible  ')}}
-                        <div class="col-md-12">
-                            <div class="alert alert-danger" align="left">
-                                Contamination might be due to soiling or pollution, as by the introduction of blood or
-                                body fluids onto:
-                                <ul type="Disc">
-                                    <li>Equipment
-                                    </li>
-                                    <li>
-                                        Clothing
-                                    </li>
-                                    <li>
-                                        PPE
-                                    </li>
-                                    <li>
-                                        Intact Skin
-                                    </li>
-                                    <li>
-                                        Turnout gear
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
                     </div>
                 </div>
                 <div class="col-sm-12">
@@ -243,8 +226,8 @@
 
                 <div class="col-sm-12">
                     <div class="form-group">
-                        {{ Form::checkbox('checkbox1', 1, null, ['id'=>'checkbox1', 'class' => 'className' ]) }}
-                        {{Form::label('checkbox1','Complete OFD 184')}}
+                        {{ Form::checkbox('trueofd184', 1, null, ['id'=>'trueofd184', 'class' => 'className' ]) }}
+                        {{Form::label('trueofd184','Complete OFD 184')}}
                     </div>
                     <div class="col-sm-12 form-group well well-sm">
                         <div class="col-sm-4">
@@ -270,8 +253,8 @@
                 </div>
                 <div class="col-sm-12">
                     <div class="form-group">
-                        {{ Form::checkbox('checkbox2', 1, null, ['id'=>'checkbox2', 'class' => 'className' ]) }}
-                        {{Form::label('checkbox2','Miscellaneous Documents')}}
+                        {{ Form::checkbox('miscbiological1', 1, null, ['id'=>'miscbiological1', 'class' => 'className' ]) }}
+                        {{Form::label('miscbiological1','Miscellaneous Documents')}}
                     </div>
                     <div class="col-sm-12 form-group well well-sm">
                         <div class="col-sm-4">
@@ -296,7 +279,6 @@
 
                     </div>
                 </div>
-
                 <div class="col-sm-12">
                     <div class="form-group">
                         {{ Form::checkbox('exposuretab', 1, null, ['id' => 'exposuretab', 'class'=>'className']) }}
@@ -304,7 +286,6 @@
 
                     </div>
                 </div>
-
                 <div class="col-sm-12">
                     <div class="form-group">
                         {{ Form::checkbox('truebagtag', 1, null,  ['id' => 'truebagtag', 'class'=>'className']) }}
@@ -336,15 +317,22 @@
             <div id="Exposure1" class="desc" style="display: none;">
                 <div class="col-md-12">
                     <div class="alert alert-danger" align="left">
-                        Definition of Potential Exposure:
+                        Contamination might be due to soiling or pollution, as by the introduction of blood or
+                        body fluids onto:
                         <ul type="Disc">
-                            <li>Occurs through a break in the skin barrier, this includes injections, needle sticks,
-                                human/ animal bites, abrasions and cuts that become contaminated with blood.
+                            <li>Equipment
                             </li>
                             <li>
-                                For human/animal bites, the clinical evaluation must include the possibility that both
-                                the person bitten and the person/animal that inflicted the bite were exposed to
-                                bloodborne pathogens.
+                                Clothing
+                            </li>
+                            <li>
+                                PPE
+                            </li>
+                            <li>
+                                Intact Skin
+                            </li>
+                            <li>
+                                Turnout gear
                             </li>
                         </ul>
                     </div>
@@ -353,28 +341,7 @@
                     <div class="form-group">
                         {{ Form::checkbox('potdecontaminate', 1, null, ['id' => 'potdecontaminate', 'class'=>'className']) }}
                         {{Form::label('potdecontaminate','Decontaminate by self- wash, flush as soon as possible')}}
-                        <div class="col-md-12">
-                            <div class="alert alert-danger" align="left">
-                                Contamination might be due to soiling or pollution, as by the introduction of blood or
-                                body fluids onto:
-                                <ul type="Disc">
-                                    <li>Equipment
-                                    </li>
-                                    <li>
-                                        Clothing
-                                    </li>
-                                    <li>
-                                        PPE
-                                    </li>
-                                    <li>
-                                        Intact Skin
-                                    </li>
-                                    <li>
-                                        Turnout gear
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
+
                     </div>
                 </div>
                 <div class="col-sm-12">
@@ -385,8 +352,8 @@
                 </div>
                 <div class="col-sm-12">
                     <div class="form-group">
-                        {{ Form::checkbox('checkbox3', 1, null, ['id'=>'checkbox3', 'class' => 'className' ]) }}
-                        {{Form::label('checkbox3','Complete OFD 184')}}
+                        {{ Form::checkbox('potofd184', 1, null, ['id'=>'potofd184', 'class' => 'className' ]) }}
+                        {{Form::label('potofd184','Complete OFD 184')}}
                     </div>
                     <div class="col-sm-12 form-group well well-sm">
                         <div class="col-sm-4">
@@ -412,8 +379,8 @@
                 </div>
                 <div class="col-sm-12">
                     <div class="form-group">
-                        {{ Form::checkbox('checkbox4', 1, null, ['id'=>'checkbox4', 'class' => 'className' ]) }}
-                        {{Form::label('checkbox4','Miscellaneous Documents')}}
+                        {{ Form::checkbox('miscbiological2', 1, null, ['id'=>'miscbiological2', 'class' => 'className' ]) }}
+                        {{Form::label('miscbiological2','Miscellaneous Documents')}}
                     </div>
                     <div class="col-sm-12 form-group well well-sm">
                         <div class="col-sm-4">
@@ -435,14 +402,12 @@
                     <div class="form-group">
                         {{ Form::checkbox('potbagtag', 1, null, ['id' => 'potbagtag', 'class'=>'className']) }}
                         {{Form::label('potbagtag','Bag & Tag clothing if applicable - send email to PSS with pick-up location ')}}
-
                     </div>
                 </div>
                 <div class="col-sm-12">
                     <div class="form-group">
                         {{ Form::checkbox('potppe', 1, null, ['id' => 'potppe', 'class'=>'className']) }}
                         {{Form::label('potppe','PPE has been cleaned per SOP SWD 1-0')}}
-
                     </div>
                 </div>
                 {{ Form::hidden('applicationstatus', '2') }}
@@ -453,8 +418,6 @@
                     </div>
                 </div>
             </div>
-
-
             <div class="panel-body">
                 <div class="form-horizontal">
                     <div class="row">
@@ -468,13 +431,28 @@
                     </div>
                 </div>
             </div>
-
+            <div class="col-md-12">
+                <div class="form-group">
+                    {{Form::label('exposureinjury','Do you have any symptoms of illness or injury and require
+                       treatment?')}}
+                    {!! Form::select('exposureinjury',[
+                      'Yes' => 'Yes',
+                      'No' => 'No'],null,
+                    ['placeholder' => 'Choose one'],'required',
+                    array('class' => 'form-control'))!!}
+                    <p class="help-block"></p>
+                    @if($errors->has('exposureinjury'))
+                        <p class="help-block">
+                            {{ $errors->first('exposureinjury') }}
+                        </p>
+                    @endif
+                </div>
+            </div>
             <div class="row">
                 <div class="col-sm-12">
                     <label class="col-sm-5"></label>
                     <div class="btn-bottom">
-
-                        {!! Form::submit('Save',['class' => 'btn btn-success','name' => 'partialSave']) !!}
+                        {!! Form::submit('Save as Draft',['class' => 'btn btn-primary','name' => 'partialSave']) !!}
                         <button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal">
                             Submit
                         </button>
@@ -483,7 +461,6 @@
                 </div>
             </div>
         </div>
-
         <!-- Modal -->
         <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
             <div class="modal-dialog" role="document">
@@ -499,36 +476,30 @@
                     <div class="modal-footer">
                         {!! Form::submit('Yes',['class' => 'btn btn-success','name'=> 'store']) !!}
                         <button type="button" class=" btn btn-danger" data-dismiss="modal" aria-label="">No</button>
-
-
                     </div>
-
                 </div>
             </div>
         </div>
-
-        {!! Form::close() !!}
-        @stop
-
-        @section('javascript')
-
-            <script src="{{ ('js/extensions/cookie') }}/bootstrap-table-cookie.js"></script>
-            <script src="{{ ('js/extensions/mobile') }}/bootstrap-table-mobile.js"></script>
-
-            <script src="{{ ('js/export') }}/bootstrap-table-export.js"></script>
-            <script src="{{ ('js/export') }}/tableExport.js"></script>
-            <script src="{{ ('js/export') }}/jquery.base64.js"></script>
-
-            <script type="text/javascript">
-                $(document).ready(function () {
-                    $("input[name$='exposure']").click(function () {
-                        var test = $(this).val();
-
-                        $("div.desc").hide();
-                        $("#Exposure" + test).show();
-                    });
-                });
-            </script>
-
     </div>
+    {!! Form::close() !!}
+@stop
+@section('javascript')
+    <script src="{{ ('js/extensions/cookie') }}/bootstrap-table-cookie.js"></script>
+    <script src="{{ ('js/extensions/mobile') }}/bootstrap-table-mobile.js"></script>
+
+    <script src="{{ ('js/export') }}/bootstrap-table-export.js"></script>
+    <script src="{{ ('js/export') }}/tableExport.js"></script>
+    <script src="{{ ('js/export') }}/jquery.base64.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("input[name$='exposure']").click(function () {
+                var test = $(this).val();
+
+                $("div.desc").hide();
+                $("#Exposure" + test).show();
+            });
+        });
+    </script>
+
 @endsection

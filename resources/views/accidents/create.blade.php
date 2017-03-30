@@ -10,6 +10,7 @@
         <li class="active">New Form</li>
     </ol>
 @endsection
+
 @section('content')
     {!! Form::open(['method' => 'POST', 'url' => '/accidents/save', 'files' => true,]) !!}
     <input type="hidden" name="_token" value="{!!  'csrf_token()' !!}">
@@ -33,14 +34,8 @@
                                 <h3><strong>Vehicle Accident Report Tracking Document (OFD-6A)</strong></h3>
                             </div>
                         </div>
-                        <div class="col-md-2">
-                            <h5><i><strong>Issue Date: 9/1/16</strong></i></h5>
-                        </div>
-                        <div class="col-md-2">
-                            <h5><i><strong>Effective Date: 9/1/16</strong></i></h5>
-                        </div>
                         <div class="col-md-12">
-                            <h5><i><strong>Amends, Replaces, Rescinds: Replaces OFD-6A (July 2016) </strong></i></h5>
+                            <h6><i><strong>Used for future tracking purposes only</strong></i></h6>
                         </div>
                     </div>
                 </div>
@@ -52,7 +47,7 @@
                     <div class="col-md-12">
                         <div class="alert alert-danger" align="center">
                             <strong>
-                                COMPLETE ALL FORMS AND FORWARD VIA CHAIN-OF-COMMAND WITHIN 48 HOURS
+                                COMPLETE ALL FORMS AND FORWARD VIA CHAIN-OF-COMMAND WITHIN 24 HOURS
                             </strong>
                         </div>
                     </div>
@@ -62,7 +57,7 @@
                         {!! Form::label('accidentdate', 'Date of Accident:',array('style'=>'padding-top:7px;','class'=> 'col-sm-4 control-label') )!!}
                         <div class="col-sm-6 ">
                             {!! Form::text('accidentdate', old('accidentdate'), array('class' => 'form-control datepicker', 'placeholder' => 'MM-DD-YYYY'))!!}
-                            
+
                             <p class="help-block"></p>
                             @if($errors->has('accidentdate'))
                                 <p class="help-block">
@@ -101,7 +96,7 @@
                         {!! Form::label('frmsincidentnum', 'FRMS Incident #', array('style'=>'padding-top:7px;','class' => 'col-sm-4 control-label')) !!}
                         <div class="col-sm-6 ">
                             {!! Form::text('frmsincidentnum12', old('frmsincidentnum12'), array('id'=>'text1', 'class' => 'form-control','placeholder'=>'Enter FRMS Number'))!!}
-                        {!! Form::text('frmsincidentnum', old('frmsincidentnum'), array('id'=>'text2', 'class' => 'form-control','placeholder'=>'Enter FRMS Number', 'style'=>'display:none;'))!!}
+                            {!! Form::text('frmsincidentnum', old('frmsincidentnum'), array('id'=>'text2', 'class' => 'form-control','placeholder'=>'Enter FRMS Number', 'style'=>'display:none;'))!!}
                             <p class="help-block"></p>
                             @if($errors->has('frmsincidentnum'))
                                 <p class="help-block">
@@ -174,7 +169,7 @@
                     </div>
                 </div>
                 <div class="alert alert-danger" align="center">
-                   
+
                     <div class="row">
                         <div class="col-md-12" style="text-align:left">
                             <strong>
@@ -189,7 +184,7 @@
                                         vehicles involved in an accident OR property damage whether on public streets,
                                         private property, or at the Fire Station.
                                     </li>
-                                    <li>DR41 is only submitted to the State if damage is over $1000.00</li>
+                                    <li>DR41 is also submitted to the State if damage is over $1000.00</li>
                                 </ol>
                             </strong>
                         </div>
@@ -198,6 +193,7 @@
             </div>
         </div>
     </div>
+
     <div class="panel panel-default">
         <div class="panel-heading">
             <div class="row">
@@ -465,7 +461,7 @@
                 </div>
             </div>
             <div class="row">
-             <div class="col-sm-12 form-group">
+                <div class="col-sm-12 form-group">
                     <div class="form-group">
                         {{ Form::checkbox('checkbox9', 1, null, ['id'=>'checkbox9', 'class' => 'className' ]) }}
                         {{Form::label('checkbox9','Miscellaneous Documents')}}
@@ -515,7 +511,6 @@
 
             <a href="{{ route('accidents.index') }}" class="btn btn-danger">Cancel</a>
             <br>
-
         </div>
     </div>
 

@@ -21,109 +21,55 @@
     </div>
 
     @if(count($biologicals) > 0)
-
-        @foreach($biologicals as $biological)
-        @endforeach
-
-        @if($biological->employeeid == Auth::user()->id || $biological->createdby == Auth::user()->id )
-            <div class="panel panel-default panel-shadow " hidden>
-                <div class="panel-heading">
-                    Search Previously filled
-                </div>
-                <div class="panel-body">
-                    <table data-toolbar="#toolbar"
-                           data-toggle="table"
-                           data-search="true"
-                           data-cookie="true"
-                           data-click-to-select="true"
-                           data-cookie-id-table="station-index-v1.1-1"
-                           data-show-columns="true"
-                           id="table">
-                        <thead>
-                        <tr>
-                            <th data-sortable="true">OFD 6B ID</th>
-                            <th data-sortable="true">Date of Exposure</th>
-                            <th data-sortable="true">Assignment</th>
-                            <th data-sortable="true">Status</th>
-                            <th data-switchable="false" data-searchable="false" data-sortable="false">Action</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        @foreach($biologicals as $biological)
-                            @if($biological->employeeid == Auth::user()->id|| $biological->createdby == Auth::user()->id )
-                                <tr>
-                                    <td>{{ $biological->ofd6bid }}</td>
-                                    <td>{{ $biological->dateofexposure }}</td>
-                                    <td>{{ $biological->assignmentbiological }}</td>
-                                    <td>{{ DB::table('status')->where('statusid',$biological->applicationstatus)->value('statustype') }}</td>
-                                    <td>
-                                        <div>
-                                            <a href="{{ route('biologicals.show',[$biological->ofd6bid]) }}"
-                                               class="btn btn-xs btn-info btn-block"><i
-                                                        class="fa fa-eye" aria-hidden="true"></i> VIEW</a>
-                                            @if( $biological->applicationstatus == 1 || $biological->applicationstatus == 5)
-                                                <a href="{{ route('biologicals.edit',[$biological->ofd6bid]) }}"
+        <div class="panel panel-default panel-shadow " hidden>
+            <div class="panel-heading">
+                Search Previously filled
+            </div>
+            <div class="panel-body">
+                <table data-toolbar="#toolbar"
+                       data-toggle="table"
+                       data-search="true"
+                       data-cookie="true"
+                       data-click-to-select="true"
+                       data-cookie-id-table="station-index-v1.1-1"
+                       data-show-columns="true"
+                       id="table">
+                    <thead>
+                    <tr>
+                        <th data-sortable="true">OFD 6B ID</th>
+                        <th data-sortable="true">Date of Exposure</th>
+                        <th data-sortable="true">Assignment</th>
+                        <th data-sortable="true">Status</th>
+                        <th data-switchable="false" data-searchable="false" data-sortable="false">Action</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    @foreach($biologicals as $biological)
+                        @if($biological->employeeid == Auth::user()->id)
+                            <tr>
+                                <td>{{ $biological->ofd6bid }}</td>
+                                <td>{{ $biological->dateofexposure }}</td>
+                                <td>{{ $biological->assignmentbiological }}</td>
+                                <td>{{ DB::table('status')->where('statusid',$biological->applicationstatus)->value('statustype') }}</td>
+                                <td>
+                                    <div>
+                                        <a href="{{ route('biologicals.show',[$biological->ofd6bid]) }}"
+                                           class="btn btn-xs btn-info btn-block"><i
+                                                    class="fa fa-eye" aria-hidden="true"></i> VIEW</a>
+                                        @if( $biological->applicationstatus == 1 || $biological->applicationstatus == 5)
+                                            <a href="{{ route('biologicals.edit',[$biological->ofd6bid]) }}"
                                                class="btn btn-xs btn-warning btn-block"><i class="fa fa-pencil-square-o"
                                                                                            aria-hidden="true"></i> EDIT</a>
-                                            @endif
-                                        </div>
-                                    </td>
-                                </tr>
-                            @endif
-                        @endforeach
-                        </tbody>
-                    </table>
-                </div>
+                                        @endif
+                                    </div>
+                                </td>
+                            </tr>
+                        @endif
+                    @endforeach
+                    </tbody>
+                </table>
             </div>
-        @endif
-
-        @if($biological->primaryidconumber == Auth::user()->id )
-            <div class="panel panel-default panel-shadow " hidden>
-                <div class="panel-heading">
-                    In your Queue For Approval
-                </div>
-                <div class="panel-body">
-                    <table data-toolbar="#toolbar"
-                           data-toggle="table"
-                           data-search="true"
-                           data-cookie="true"
-                           data-click-to-select="true"
-                           data-cookie-id-table="station-index-v1.1-1"
-                           data-show-columns="true"
-                           id="table">
-                        <thead>
-                        <tr>
-                            <th data-sortable="true">OFD 6B ID</th>
-                            <th data-sortable="true">Date of Exposure</th>
-                            <th data-sortable="true">Assignment</th>
-                            <th data-sortable="true">Status</th>
-                            <th data-switchable="false" data-searchable="false" data-sortable="false">Action
-                            </th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        @foreach($biologicals as $biological)
-                            @if($biological->primaryidconumber == Auth::user()->id && $biological->applicationstatus == 2)
-                                <tr>
-                                    <td>{{ $biological->ofd6bid }}</td>
-                                    <td>{{ $biological->dateofexposure }}</td>
-                                    <td>{{ $biological->assignmentbiological }}</td>
-                                    <td>{{DB::table('status')->where('statusid',$biological->applicationstatus)->value('statustype') }}</td>
-                                    <td>
-                                        <div>
-                                            <a href="{{ route('biologicals.show',[$biological->ofd6bid]) }}"
-                                               class="btn btn-xs btn-info btn-block"><i
-                                                        class="fa fa-eye" aria-hidden="true"></i> VIEW</a>
-                                        </div>
-                                    </td>
-                                </tr>
-                            @endif
-                        @endforeach
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        @endif
+        </div>
     @endif
 
 @stop

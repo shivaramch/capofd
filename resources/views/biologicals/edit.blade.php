@@ -27,89 +27,85 @@
         table, td, th {
             border: 1px solid black;
         }
-
     </style>
-    @if(($biological->employeeid == Auth::user()->id &&
-    ($biological->applicationstatus == 1 || $biological->applicationstatus == 5)) ||
-    Auth::user()->roleid == 1)
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                <div class="jumbotron" style="margin-bottom: 5px; ">
-                    <div class="row">
-                        <div class="col-md-2">
-                            <img src="{{asset('img/login.png')}}">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <div class="jumbotron" style="margin-bottom: 5px; ">
+                <div class="row">
+                    <div class="col-md-2">
+                        <img src="{{asset('img/login.png')}}">
+                    </div>
+                    <div class="col-md-10">
+                        <div class="col-md-12">
+                            <div class="page-header1">
+                                <h3><strong>Biological Exposure Tracking Document (OFD-006B)</strong></h3>
+                            </div>
                         </div>
-                        <div class="col-md-10">
-                            <div class="col-md-12">
-                                <div class="page-header1">
-                                    <h3><strong>Biological Exposure Tracking Document (OFD-006B)</strong></h3>
-                                </div>
-                            </div>
-                            <div class="col-md-12">
-                                <h6><i><strong>Used for future tracking purposes only</strong></i></h6>
-                            </div>
+                        <div class="col-md-12">
+                            <h6><i><strong>Used for future tracking purposes only</strong></i></h6>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="panel-body">
-                <div class="form-horizontal">
-                    <div class="row">
-                        <div class="col-sm-4 form-group">
-                            {!! Form::label('dateofexposure', 'Date of Exposure', array('style'=>'padding-top:7px;','class'=> 'col-sm-4 control-label') ) !!}
-                            <div class="col-sm-6 ">
-                                {!! Form::text('dateofexposure', old('dateofexposure'), array('id'=>'datepicker','class' => 'form-control datepicker', 'placeholder' => 'YYYY-MM-DD','required' => 'required'))!!}
-                                <p class="help-block"></p>
-                                @if($errors->has('dateofexposure'))
-                                    <p class="help-block">
-                                        {{ $errors->first('dateofexposure') }}
-                                    </p>
-                                @endif
-                            </div>
-                        </div>
-                        <div class="col-sm-4 form-group">
-                            {!! Form::label('employeeid', 'Employee ID#', array('style'=>'padding-top:7px;','class'=> 'col-sm-4 control-label') ) !!}
-                            <div class="col-sm-6 ">
-                                {!! Form::text('employeeid', old('employeeid'), array('class'=> 'form-control','placeholder'=>'Enter Badge ID'))!!}
-                                <p class="help-block"></p>
-                                @if($errors->has('employeeid'))
-                                    <p class="help-block">
-                                        {{ $errors->first('employeeid') }}
-                                    </p>
-                                @endif
-                            </div>
-                        </div>
-                        <div class="col-sm-4 form-group">
-                            {!! Form::label('exposedemployeename', 'Exposed Employee Name',array('style'=>'padding-top:7px;','class'=> 'col-sm-4 control-label') ) !!}
-                            <div class="col-sm-6 ">
-                                {!! Form::text('exposedemployeename', old('exposedemployeename'), array('class'=>'form-control'))!!}
-                                <p class="help-block"></p>
-                                @if($errors->has('exposedemployeename'))
-                                    <p class="help-block">
-                                        {{ $errors->first('exposedemployeename') }}
-                                    </p>
-                                @endif
-                            </div>
+        </div>
+        <div class="panel-body">
+            <div class="form-horizontal">
+                <div class="row">
+                    <div class="col-sm-4 form-group">
+                        {!! Form::label('dateofexposure', 'Date of Exposure', array('style'=>'padding-top:7px;','class'=> 'col-sm-4 control-label') ) !!}
+                        <div class="col-sm-6 ">
+                            {!! Form::text('dateofexposure', old('dateofexposure'), array('id'=>'datepicker','class' => 'form-control datepicker', 'placeholder' => 'YYYY-MM-DD','required' => 'required'))!!}
+                            <p class="help-block"></p>
+                            @if($errors->has('dateofexposure'))
+                                <p class="help-block">
+                                    {{ $errors->first('dateofexposure') }}
+                                </p>
+                            @endif
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col-sm-4 form-group">
-                            {!! Form::label('assignmentbiological', 'Assignment', ['class'=> 'col-sm-4 control-label'] ) !!}
-                            <div class="col-sm-6">
-                                {!! Form::select('assignmentbiological', ['A' => 'A',
-                                'B' => 'B',
-                                'C' => 'C',
-                                'DIV' => 'DIV'], old('assignmentbiological'),
-                                ['placeholder' => 'Select your Assignment'],'required',
-                                ['class' => 'form-control']) !!}
-                                <p class="help-block"></p>
-                                @if($errors->has('assignmentbiological'))
-                                    <p class="help-block">
-                                        {{ $errors->first('assignmentbiological') }}
-                                    </p>
-                                @endif
-                            </div>
+                    <div class="col-sm-4 form-group">
+                        {!! Form::label('employeeid', 'Employee ID#', array('style'=>'padding-top:7px;','class'=> 'col-sm-4 control-label') ) !!}
+                        <div class="col-sm-6 ">
+                            {!! Form::text('employeeid', old('employeeid'), array('class'=> 'form-control','placeholder'=>'Enter Badge ID'))!!}
+                            <p class="help-block"></p>
+                            @if($errors->has('employeeid'))
+                                <p class="help-block">
+                                    {{ $errors->first('employeeid') }}
+                                </p>
+                            @endif
                         </div>
+                    </div>
+                    <div class="col-sm-4 form-group">
+                        {!! Form::label('exposedemployeename', 'Exposed Employee Name',array('style'=>'padding-top:7px;','class'=> 'col-sm-4 control-label') ) !!}
+                        <div class="col-sm-6 ">
+                            {!! Form::text('exposedemployeename', old('exposedemployeename'), array('class'=>'form-control'))!!}
+                            <p class="help-block"></p>
+                            @if($errors->has('exposedemployeename'))
+                                <p class="help-block">
+                                    {{ $errors->first('exposedemployeename') }}
+                                </p>
+                            @endif
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-4 form-group">
+                        {!! Form::label('assignmentbiological', 'Assignment', ['class'=> 'col-sm-4 control-label'] ) !!}
+                        <div class="col-sm-6">
+                            {!! Form::select('assignmentbiological', ['A' => 'A',
+                            'B' => 'B',
+                            'C' => 'C',
+                            'DIV' => 'DIV'], old('assignmentbiological'),
+                            ['placeholder' => 'Select your Assignment'],'required',
+                            ['class' => 'form-control']) !!}
+                            <p class="help-block"></p>
+                            @if($errors->has('assignmentbiological'))
+                                <p class="help-block">
+                                    {{ $errors->first('assignmentbiological') }}
+                                </p>
+                            @endif
+                        </div>
+                    </div>
 
                         <div class="col-sm-4 form-group">
                             {!! Form::label('shift', 'Shift', ['class'=> 'col-sm-4 control-label'] ) !!}
@@ -402,15 +398,22 @@
                 <div id="Exposure1" class="desc" style="display: none;">
                     <div class="col-md-12">
                         <div class="alert alert-danger" align="left">
-                            Definition of Potential Exposure:
+                            Contamination might be due to soiling or pollution, as by the introduction of blood
+                            or body fluids onto:
                             <ul type="Disc">
-                                <li>Occurs through a break in the skin barrier, this includes injections, needle sticks,
-                                    human/ animal bites, abrasions and cuts that become contaminated with blood.
+                                <li>Equipment
                                 </li>
                                 <li>
-                                    For human/animal bites, the clinical evaluation must include the possibility that both
-                                    the person bitten and the person/animal that inflicted the bite were exposed to
-                                    bloodborne pathogens.
+                                    Clothing
+                                </li>
+                                <li>
+                                    PPE
+                                </li>
+                                <li>
+                                    Intact Skin
+                                </li>
+                                <li>
+                                    Turnout gear
                                 </li>
                             </ul>
                         </div>
@@ -419,28 +422,6 @@
                         <div class="form-group">
                             {{ Form::checkbox('potdecontaminate', 1, null, ['id' => 'potdecontaminate', 'class'=>'className']) }}
                             {{Form::label('potdecontaminate','Decontaminate self- wash, flush as soon as possible')}}
-                            <div class="col-md-12">
-                                <div class="alert alert-danger" align="left">
-                                    Contamination might be due to soiling or pollution, as by the introduction of blood
-                                    or body fluids onto:
-                                    <ul type="Disc">
-                                        <li>Equipment
-                                        </li>
-                                        <li>
-                                            Clothing
-                                        </li>
-                                        <li>
-                                            PPE
-                                        </li>
-                                        <li>
-                                            Intact Skin
-                                        </li>
-                                        <li>
-                                            Turnout gear
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
                         </div>
                     </div>
                     <div class="col-sm-12">
@@ -451,8 +432,8 @@
                     </div>
                     <div class="col-sm-12">
                         <div class="form-group">
-                            {{ Form::checkbox('checkbox3', 1, null, ['id'=>'checkbox3', 'class' => 'className' ]) }}
-                            {{Form::label('checkbox3','Complete OFD 184')}}
+                            {{ Form::checkbox('potofd184', 1, null, ['id'=>'potofd184', 'class' => 'className' ]) }}
+                            {{Form::label('potofd184','Complete OFD 184')}}
                         </div>
                         <div class="col-sm-12 form-group well well-sm">
                             <div class="col-sm-4">
@@ -524,176 +505,157 @@
                                                         style="display: none;"
                                                         multiple>
                                             </span>
-                                    </label>
-                                    <input type="text" id="upload-file-info" class="form-control" readonly>
-                                </div>
-                            </div>
-                            <div class="col-sm-4">
-                                <a class="btn btn-primary dropdown-toggle col-sm-12" data-toggle="collapse"
-                                   data-target="#6b4"><i class="fa fa-eye" aria-hidden="true"></i> View
-                                    Previously
-                                    uploaded
-                                    file(s)
-                                </a>
-
-                                <div id="6b4" class="collapse">
-
-                                    <table class="table table-striped">
-                                        <tr>
-                                            <th> File Name</th>
-                                            <th> File Uploaded At</th>
-                                        </tr>
-
-                                        @if(count($attachments) > 0)
-                                            @foreach($attachments as $attachment)
-                                                @if($attachment->attachmenttype == '6b4' && $attachment->createdby ==  Auth::user()->id && $attachment->ofd6bid == $biological->ofd6bid )
-                                                    <tr>
-                                                        <td>
-                                                            <a href="{{ asset('uploads/'.$attachment->attachmentname) }}"> {{$attachment->attachmentname}}</a>
-                                                        </td>
-                                                        <td>
-                                                            <a>{{$attachment->created_at}}</a>
-                                                        </td>
-                                                    </tr>@endif
-                                            @endforeach
-                                        @endif
-
-                                    </table>
-                                </div>
+                                </label>
+                                <input type="text" id="upload-file-info" class="form-control" readonly>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-sm-12">
-                        <div class="form-group">
-                            {{ Form::checkbox('potppe', 1, null, ['id' => 'potppe', 'class'=>'className']) }}
-                            {{Form::label('potppe','PPE has been cleaned per SOP SWD 1-0')}}
+                        <div class="col-sm-4">
+                            <a class="btn btn-primary dropdown-toggle col-sm-12" data-toggle="collapse"
+                               data-target="#6b4"><i class="fa fa-eye" aria-hidden="true"></i> View
+                                Previously
+                                uploaded
+                                file(s)
+                            </a>
 
-                        </div>
-                    </div>
-                    <div class="col-sm-12">
-                        <div class="form-group">
-                            {{ Form::checkbox('potdocumentdaybook', 1, null, ['id' => 'potdocumentdaybook', 'class'=>'className']) }}
-                            {{Form::label('potdocumentdaybook','Document in Company Day Book and on your Personnel Record   ')}}
-                        </div>
-                    </div>
-                </div>
-                <div class="panel-body">
-                    <div class="form-horizontal">
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div class="alert alert-danger form-group" align="center">
-                                    <div class="col-md-9">
-                                        <label>If an employee receives an injury or illness from this incident,
-                                            the employee shall complete an OFD6 and designate whether treatment is being
-                                            requested in the OFD-25 IOD.</label>
-                                    </div>
-                                </div>
+                            <div id="6b4" class="collapse">
+
+                                <table class="table table-striped">
+                                    <tr>
+                                        <th> File Name</th>
+                                        <th> File Uploaded At</th>
+                                    </tr>
+
+                                    @if(count($attachments) > 0)
+                                        @foreach($attachments as $attachment)
+                                            @if($attachment->attachmenttype == '6b4' && $attachment->createdby ==  Auth::user()->id && $attachment->ofd6bid == $biological->ofd6bid )
+                                                <tr>
+                                                    <td>
+                                                        <a href="{{ asset('uploads/'.$attachment->attachmentname) }}"> {{$attachment->attachmentname}}</a>
+                                                    </td>
+                                                    <td>
+                                                        <a>{{$attachment->created_at}}</a>
+                                                    </td>
+                                                </tr>@endif
+                                        @endforeach
+                                    @endif
+
+                                </table>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-
-            <div class="row">
                 <div class="col-sm-12">
-                    <label class="col-sm-5"></label>
-                    <div class="btn-bottom">
-                        <button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal">
-                            Save
-                        </button>
-                        <a href="{{ route('biologicals.index') }}" class="btn btn-danger">Cancel</a>
+                    <div class="form-group">
+                        {{ Form::checkbox('potppe', 1, null, ['id' => 'potppe', 'class'=>'className']) }}
+                        {{Form::label('potppe','PPE has been cleaned per SOP SWD 1-0')}}
+
+                    </div>
+                </div>
+                <div class="col-sm-12">
+                    <div class="form-group">
+                        {{ Form::checkbox('potdocumentdaybook', 1, null, ['id' => 'potdocumentdaybook', 'class'=>'className']) }}
+                        {{Form::label('potdocumentdaybook','Document in Company Day Book and on your Personnel Record   ')}}
                     </div>
                 </div>
             </div>
+            <div class="panel-body">
+                <div class="form-horizontal">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="alert alert-danger form-group" align="center">
+                                <div class="col-md-9">
+                                    <label>If an employee receives an injury or illness from this incident,
+                                        the employee shall complete an OFD6 and designate whether treatment is being
+                                        requested in the OFD-25 IOD.</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-            @if (!empty($comments))
-                <div class="panel panel-default">
-                    <div class="panel-body">
-                        <div class="actionBox">
-                            <ul class="commentList">
-                                @foreach ($comments as $cm)
-                                    @if(($cm->applicationid == $biological->ofd6bid && $cm->applicationtype == '6B')&&
-                                        ($biological->employeeid == Auth::user()->id && $cm->isvisible == 1))
-                                        <div class="col-sm-8">
-                                            <div class="panel panel-white post panel-shadow">
-                                                <div class="post-heading">
-                                                    <div class="pull-left meta">
-                                                        <div class="title h5">
-                                                            @foreach ($users as $user)
-                                                                @if($user->id == $cm->createdby )
+        <div class="row">
+            <div class="col-sm-12">
+                <label class="col-sm-5"></label>
+                <div class="btn-bottom">
+                    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal">
+                        Save
+                    </button>
+                    <a href="{{ route('biologicals.index') }}" class="btn btn-danger">Cancel</a>
+                </div>
+            </div>
+        </div>
+    </div>
 
-                                                                    <b><i class="fa fa-user"></i> {{$user->name}}
-                                                                    </b>
-                                                                @endif
-                                                            @endforeach
-                                                            made a Comment.
-                                                        </div>
-                                                        <time class="comment-date text-muted time"
-                                                              datetime="{{$cm->created_at}}"><i
-                                                                    class="fa fa-clock-o"></i> {{$cm->created_at}}
-                                                        </time>
-                                                    </div>
+    @if (!empty($comments))
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <div class="actionBox">
+                    <ul class="commentList">
+                        @foreach ($comments as $cm)
+                            @if(($cm->applicationid == $biological->ofd6bid && $cm->applicationtype == '6B')&&
+                                ($biological->employeeid == Auth::user()->id && $cm->isvisible == 1))
+                                <div class="col-sm-8">
+                                    <div class="panel panel-white post panel-shadow">
+                                        <div class="post-heading">
+                                            <div class="pull-left meta">
+                                                <div class="title h5">
+                                                    @foreach ($users as $user)
+                                                        @if($user->id == $cm->createdby )
+
+                                                            <b><i class="fa fa-user"></i> {{$user->name}}
+                                                            </b>
+                                                        @endif
+                                                    @endforeach
+                                                    made a Comment.
                                                 </div>
-                                                <div class="post-description">
-                                                    <p>{{$cm->comment}}</p>
-                                                </div>
+                                                <time class="comment-date text-muted time"
+                                                      datetime="{{$cm->created_at}}"><i
+                                                            class="fa fa-clock-o"></i> {{$cm->created_at}}
+                                                </time>
                                             </div>
                                         </div>
-                                    @endif
-                                @endforeach
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            @endif
-
-            @else
-                <div class="panel-body">
-                    <div class="form-horizontal">
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div class="alert alert-danger" align="center">
-                                    <label>
-                                        You are not authorized to view this form
-                                    </label>
+                                        <div class="post-description">
+                                            <p>{{$cm->comment}}</p>
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
-                        </div>
-                    </div>
+                            @endif
+                        @endforeach
+                    </ul>
                 </div>
-                <div class="col-sm-12 panel-heading" align="center">
-                    <div class="btn-bottom ">
-                        <a href="{{ route('hazmat.index') }}" class="btn btn-default">return</a>
-                    </div>
-                </div>
-                @endif
-                        <!-- Modal -->
-                <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-                    <div class="modal-dialog" role="document">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
-                                            aria-hidden="true">&times;</span></button>
-                                <h4 class="modal-title" id="myModalLabel"></h4>
-                            </div>
-                            <div class="modal-body">
-                                Are you sure you want to Submit?
-                            </div>
-                            <div class="modal-footer">
-                                {!! Form::submit('Yes',['class' => 'btn btn-success']) !!}
-                                <button type="button" class=" btn btn-danger" data-dismiss="modal" aria-label="">No
-                                </button>
-
-
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
-
-                {!! Form::close() !!}
-                @stop
+            </div>
         </div>
+    @endif
+
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel"></h4>
+                </div>
+                <div class="modal-body">
+                    Are you sure you want to Submit?
+                </div>
+                <div class="modal-footer">
+                    {!! Form::submit('Yes',['class' => 'btn btn-success']) !!}
+                    <button type="button" class=" btn btn-danger" data-dismiss="modal" aria-label="">No
+                    </button>
+
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    {!! Form::close() !!}
+    @stop
+
 @section('javascript')
 
     <script src="{{ ('js/extensions/cookie') }}/bootstrap-table-cookie.js"></script>
