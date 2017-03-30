@@ -10,6 +10,7 @@ use App\Http\Controllers\Traits\FileUploadTrait;
 use App\Http\Controllers\Traits\FormFileUploadTrait;
 use Illuminate\Support\Facades\DB;
 use App\User;
+use App\Comment;
 use Illuminate\Http\Request;
 use App\Http\Requests\StoreHazmatRequest;
 use Illuminate\Support\Facades\Auth;
@@ -185,7 +186,8 @@ class HazmatController extends Controller
 
         $attachments = Attachment::all();
         $hazmat = hazmat::findOrFail($id);
-        return view('hazmat.edit', compact('hazmat', 'attachments'));
+        $comments = Comment::all();
+        return view('hazmat.edit', compact('hazmat', 'attachments','comments','users'));
     }
 
     public function show($id)

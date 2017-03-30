@@ -202,8 +202,8 @@
 
                     <div class="col-sm-12">
                         <div class="form-group">
-                            {{ Form::checkbox('trueofd184', 1, null, ['id'=>'trueofd184', 'class' => 'className','disabled' => "disabled" ]) }}
-                            {{Form::label('trueofd184','Complete OFD 184')}}
+                            {{ Form::checkbox('trueofd184', 1, null, ['id'=>'checkbox1', 'class' => 'className','disabled' => "disabled" ]) }}
+                            {{Form::label('checkbox1','Complete OFD 184')}}
                         </div>
                         <div class="col-sm-12 form-group well well-sm">
                             <div class="col-sm-4">
@@ -245,6 +245,46 @@
                             {{ Form::checkbox('bloodreport', 1, null, ['id' => 'bloodreport', 'class'=>'className','disabled' => "disabled" ]) }}
                             {{Form::label('bloodreport','Report for blood draw as directed by OUCH Nurse')}}
 
+                        </div>
+                    </div>
+                    <div class="col-sm-12">
+                        <div class="form-group">
+                            {{ Form::checkbox('checkbox2', 1, null, ['id'=>'checkbox2', 'class' => 'className','disabled' => "disabled" ]) }}
+                            {{Form::label('checkbox2','Miscellaneous Documents')}}
+                        </div>
+                        <div class="col-sm-12 form-group well well-sm">
+                            <div class="col-sm-4">
+                                <a class="btn btn-primary dropdown-toggle col-sm-12" data-toggle="collapse"
+                                   data-target="#6b1"><i class="fa fa-eye" aria-hidden="true"></i> View
+                                    Previously
+                                    uploaded
+                                    file(s)
+                                </a>
+
+                                <div id="6b1" class="collapse">
+
+                                    <table class="table table-striped">
+                                        <tr>
+                                            <th> File Name</th>
+                                            <th> File Uploaded At</th>
+                                        </tr>
+                                        @if(count($attachments) > 0)
+                                            @foreach($attachments as $attachment)
+                                                @if($attachment->attachmenttype == '6b1' && $attachment->ofd6bid == $biological->ofd6bid )
+                                                    <tr>
+                                                        <td>
+                                                            <a href="{{ asset('uploads/'.$attachment->attachmentname) }}"> {{$attachment->attachmentname}}</a>
+                                                        </td>
+                                                        <td>
+                                                            <a>{{$attachment->created_at}}</a>
+                                                        </td>
+                                                    </tr>@endif
+                                            @endforeach
+                                        @endif
+
+                                    </table>
+                                </div>
+                            </div>
                         </div>
                     </div>
 

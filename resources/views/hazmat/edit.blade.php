@@ -388,6 +388,47 @@
                 </div>
                 @endif
 
+    @if (!empty($comments))
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <div class="actionBox">
+                    <ul class="commentList">
+                        @foreach ($comments as $cm)
+                            @if(($cm->applicationid == $hazmat->ofd6cid && $cm->applicationtype == '6C')&&
+                                ($hazmat->employeeid == Auth::user()->id && $cm->isvisible == 1))
+                                <div class="col-sm-8">
+                                    <div class="panel panel-white post panel-shadow">
+                                        <div class="post-heading">
+                                            <div class="pull-left meta">
+                                                <div class="title h5">
+                                                    @foreach ($users as $user)
+                                                        @if($user->id == $cm->createdby )
+
+                                                            <b><i class="fa fa-user"></i> {{$user->name}}
+                                                            </b>
+                                                        @endif
+                                                    @endforeach
+                                                    made a Comment.
+                                                </div>
+                                                <time class="comment-date text-muted time"
+                                                      datetime="{{$cm->created_at}}"><i
+                                                            class="fa fa-clock-o"></i> {{$cm->created_at}}
+                                                </time>
+                                            </div>
+                                        </div>
+                                        <div class="post-description">
+                                            <p>{{$cm->comment}}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            @endif
+                        @endforeach
+                    </ul>
+                </div>
+            </div>
+        </div>
+        @endif
+
                         <!-- Modal -->
                 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
                     <div class="modal-dialog" role="document">
@@ -404,15 +445,31 @@
                                 {!! Form::submit('Yes',['class' => 'btn btn-success']) !!}
                                 <button type="button" class=" btn btn-danger" data-dismiss="modal" aria-label="">No
                                 </button>
-
-
                             </div>
-
                         </div>
                     </div>
                 </div>
                 {!! Form::close() !!}
-
-
                 @stop
         </div>
+
+@section('javascript')
+
+    <script src="{{ ('js/extensions/cookie') }}/bootstrap-table-cookie.js"></script>
+    <script src="{{ ('js/extensions/mobile') }}/bootstrap-table-mobile.js"></script>
+
+    <script src="{{ ('js/export') }}/bootstrap-table-export.js"></script>
+    <script src="{{ ('js/export') }}/tableExport.js"></script>
+    <script src="{{ ('js/export') }}/jquery.base64.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("input[name$='exposure']").click(function () {
+                var test = $(this).val();
+
+                $("div.desc").hide();
+                $("#Exposure" + test).show();
+            });
+        });
+    </script>
+@endsection
