@@ -227,7 +227,7 @@
             <div class="row">
                 <div class="col-sm-12">
                     {{ Form::checkbox('checkbox1', 1, null,['disabled'], ['id' => 'checkbox1', 'class'=>'className','readonly' => 'true']) }}
-                    {{Form::label('Checkbox1','CorVel Work Ability- Only if seeking medical attention. Complete "Employee Section" and sign at bottom.')}}
+                    {{Form::label('Checkbox1','CorVel Work Ability Report Form  - Only if seeking medical attention. Complete "Employee Section" and sign at bottom.')}}
                     {{--}}  <label class="col-sm-12"><strong>CorVel Work Ability
                               Report</strong>
                           - Only if seeking medical attention. Complete "Employee Section" and sign at bottom.</label> --}}
