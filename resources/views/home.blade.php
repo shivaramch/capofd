@@ -11,7 +11,7 @@
     <!-- top navigation icons starting here-->
     <div class="col-md-12">
         <div class="row" style="margin: inherit">
-            <a href="{{ route('injuries.index') }}">
+            <a href="{{ route('injuries.index') }}" id="ofd6Link">
                 <div class="col-md-3 large-category">
                     <div class="thumbnail">
                         <div class="thumbnail-dash">
@@ -20,13 +20,12 @@
                         <div class="caption">
                             <h3>OFD 6</h3>
                             <h4 align="center">Injury On Duty</h4>
-
                         </div>
                     </div>
                 </div>
             </a>
 
-            <a href="{{ route('accidents.index') }}">
+            <a href="{{ route('accidents.index') }}" id="ofd6aLink">
                 <div class="col-md-3 large-category">
                     <div class="thumbnail">
                         <div class="thumbnail-dash">
@@ -41,7 +40,7 @@
                 </div>
             </a>
 
-            <a href="{{ route('biologicals.index') }}">
+            <a href="{{ route('biologicals.index') }}" id="ofd6bLink">
                 <div class="col-md-3 large-category">
                     <div class="thumbnail">
                         <div class="thumbnail-dash">
@@ -56,7 +55,7 @@
                 </div>
             </a>
 
-            <a href="{{ route('hazmat.index') }}">
+            <a href="{{ route('hazmat.index') }}" id="ofd6cLink">
                 <div class="col-md-3 large-category">
                     <div class="thumbnail">
                         <div class="thumbnail-dash">
