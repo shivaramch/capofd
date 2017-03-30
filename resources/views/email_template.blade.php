@@ -128,7 +128,9 @@ Responsive Email Template by @keenthemes
                                                         <font face="Arial, Helvetica, sans-serif" size="4" color="#57697e" style="font-size: 15px;">
 					<span style="font-family: Arial, Helvetica, sans-serif; font-size: 15px; color: #57697e;">
 
-        @if($appstatus==2 && $superadmin=="no"||$appstatus==3 && $superadmin=="no" ||$appstatus==4 &&$superadmin=="no")
+        @if($statustype=="Application under Captain" && $superadmin=="no"||$statustype=="Application under Batallion Chief" && $superadmin=="no" ||$statustype=="Application under Assistant Chief" &&$superadmin=="no"
+        || $statustype=="Application under Primary IDCO" &&$superadmin=="no"
+        )
 
                             <p>Hello  {{$officername}} ,</p>
                             <br>

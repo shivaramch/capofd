@@ -147,7 +147,7 @@ class BiologicalsController extends Controller
             'exposure'=>'required|string:biological,exposure',
             ]);
 
-        $statusid=DB::table('status')->where('statustype','Application under Captain')->value('statusid');
+        $statusid=DB::table('status')->where('statustype','Application under Primary IDCO ')->value('statusid');
         $request->offsetSet('applicationstatus',$statusid);
         $request = $this->saveFiles($request);
         Biological::create($request->all());
@@ -185,7 +185,7 @@ class BiologicalsController extends Controller
     public function update(UpdateBiologicalsRequest $request, $id)
     {
 
-        $statusidraw=DB::table('status')->where('statustype','Application under Captain')->pluck('statusid');
+        $statusidraw=DB::table('status')->where('statustype','Application under Primary IDCO ')->pluck('statusid');
         $statusid=str_replace (array('[', ']'), '', $statusidraw);
 
         $biological = Biological::findOrFail($id);
@@ -212,6 +212,6 @@ class BiologicalsController extends Controller
         $formname="biologicals";
         (new EmailController)->Email($request, $link,$formname,$statusid);
         //email notification-end
-        return redirect()->route('biologicals.index');
+ //       return redirect()->route('biologicals.index');
     }
 }

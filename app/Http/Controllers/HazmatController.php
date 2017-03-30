@@ -159,7 +159,7 @@ class HazmatController extends Controller
             ]);
 
 
-        $statusid=DB::table('status')->where('statustype','Application under Captain')->value('statusid');
+        $statusid=DB::table('status')->where('statustype',' Application under Primary IDCO ')->value('statusid');
 
         $request->offsetSet('applicationstatus',$statusid);
 
@@ -204,7 +204,7 @@ class HazmatController extends Controller
     {
         //$accident = $this->saveFiles($request);
 
-        $statusidraw=DB::table('status')->where('statustype','Application under Captain')->pluck('statusid');
+        $statusidraw=DB::table('status')->where('statustype','Application under Primary IDCO ')->pluck('statusid');
         $statusid=str_replace (array('[', ']'), '', $statusidraw);
 
         $hazmat = hazmat::findOrFail($id);
