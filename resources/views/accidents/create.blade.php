@@ -61,8 +61,8 @@
                     <div class="col-sm-4 form-group">
                         {!! Form::label('accidentdate', 'Date of Accident:',array('style'=>'padding-top:7px;','class'=> 'col-sm-4 control-label') )!!}
                         <div class="col-sm-6 ">
-                            {!! Form::text('accidentdate', old('accidentdate'), array('id'=>'datepicker12','class' => 'form-control datepicker1', 'placeholder' => 'MM-DD-YYYY'))!!}
-                            {!! Form::text('accidentdate', old('accidentdate'), array('style'=>'display:none;','id'=>'datepicker32','class' => 'form-control datepicker datepicker32', 'placeholder' => 'YYYY-MM-DD'))!!}
+                            {!! Form::text('accidentdate', old('accidentdate'), array('class' => 'form-control datepicker', 'placeholder' => 'MM-DD-YYYY'))!!}
+                            
                             <p class="help-block"></p>
                             @if($errors->has('accidentdate'))
                                 <p class="help-block">
@@ -174,11 +174,7 @@
                     </div>
                 </div>
                 <div class="alert alert-danger" align="center">
-                    <div class="row">
-                        <label>Please submit all the forms by:<input type="text" class="form-control datepicker2"
-                                                                     id="datepicker12"
-                                                                     disabled></label>
-                    </div>
+                   
                     <div class="row">
                         <div class="col-md-12" style="text-align:left">
                             <strong>
@@ -215,11 +211,7 @@
                 <div class="col-sm-12">
                     <div class="form-group">
                         {{ Form::checkbox('commemail', 1, null, ['id' => 'commemail', 'class'=>'className']) }}
-
-                        <label><strong>Generate OFD 025
-                                Intradepartmental Communication</strong>-Email to <a
-                                    href="omafaccident_ofd25@cityofomaha.org"> omafaccident_ofd25@cityofomaha.org </a>
-                        </label>
+                        {{Form::label('Checkbox5','Generate OFD 025 Intradepartmental Communicatio-Email to omafaccident_ofd25@cityofomaha.org')}}
                     </div>
                 </div>
             </div>

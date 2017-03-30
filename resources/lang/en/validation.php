@@ -126,11 +126,11 @@ return [
         ],
         'epcrincidentnum' => [
             'required' => '"EPCR Incident#" field is required',
-            'numeric' => '"EPCR Incident#" field should be a number',
+            'integer' => '"EPCR Incident#" field should be a number',
         ],
         'frmsincidentnum' => [
             'required' => '"FRMS Incident#" field is required',
-            'numeric' => '"FRMS Incident#" field should be a number',
+            'integer' => '"FRMS Incident#" field should be a number',
         ],
         'exposureinjury' => [
             'required' => 'Select Yes or No for "Do you have any symptoms of illness or injury and require treatment?"',
@@ -140,7 +140,7 @@ return [
         ],
         'reportnum' => [
             'required' => '"Report#" field is required',
-            'numeric' => '"Report#" field should be a number',
+            'integer' => '"Report#" field should be a number',
         ],
         'injurydate' => [
             'required' => '"Date of Injury" field is required',
