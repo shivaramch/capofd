@@ -14,7 +14,6 @@
     {!! Form::model($biological,['method' => 'PUT', 'route' => ['biologicals.update', $biological->ofd6bid], 'files' => true,]) !!}
     <input type="hidden" name="_token" value="{!!  'csrf_token()' !!}">
     {{ csrf_field() }}
-
     <style>
         #padtop {
             padding-top: 7px;
@@ -27,7 +26,6 @@
         table, td, th {
             border: 1px solid black;
         }
-
     </style>
     @if(($biological->employeeid == Auth::user()->id &&
     ($biological->applicationstatus == 1 || $biological->applicationstatus == 5)) ||
@@ -182,7 +180,7 @@
                             {{ Form::label('exposure', 'True Exposure') }}
 
                             {{ Form::radio('exposure',1 , null, ['id'=>'exposure', 'class' => 'className']) }}
-                            {{ Form::label('exposure', 'Potential Exposure') }}
+                            {{ Form::label('exposure', 'Contamination') }}
                         </div>
                     </div>
                 </div>
@@ -202,7 +200,18 @@
                                     Contact with an infected patient’s skin lesions or body fluids that can cause
                                     infectious disease that require preventative treatment or quarantine.
                                 </li>
-
+                            </ul>
+                            Parenteral Exposure :
+                            <ul type="Disc">
+                                <li>Occurs through a break in the skin barrier, this includes injections, needle sticks,
+                                    human/ animal bites, abrasions and cuts that become contaminated with blood.
+                                </li>
+                                <li>
+                                    For human/animal bites, the clinical evaluation must include the possibility that
+                                    both
+                                    the person bitten and the person/animal that inflicted the bite were exposed to
+                                    bloodborne pathogens.
+                                </li>
                             </ul>
                         </div>
                     </div>
@@ -210,28 +219,6 @@
                         <div class="form-group">
                             {{ Form::checkbox('truedecontaminate', 1, null, ['id' => 'truedecontaminate', 'class'=>'className']) }}
                             {{Form::label('truedecontaminate','Decontaminate self- wash, flush as soon as possible  ')}}
-                            <div class="col-md-12">
-                                <div class="alert alert-danger" align="left">
-                                    Contamination might be due to soiling or pollution, as by the introduction of blood
-                                    or body fluids onto:
-                                    <ul type="Disc">
-                                        <li>Equipment
-                                        </li>
-                                        <li>
-                                            Clothing
-                                        </li>
-                                        <li>
-                                            PPE
-                                        </li>
-                                        <li>
-                                            Intact Skin
-                                        </li>
-                                        <li>
-                                            Turnout gear
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
                         </div>
                     </div>
                     <div class="col-sm-12">
@@ -243,8 +230,8 @@
 
                     <div class="col-sm-12">
                         <div class="form-group">
-                            {{ Form::checkbox('checkbox1', 1, null, ['id'=>'checkbox1', 'class' => 'className' ]) }}
-                            {{Form::label('checkbox1','Complete OFD 184')}}
+                            {{ Form::checkbox('trueofd184', 1, null, ['id'=>'trueofd184', 'class' => 'className' ]) }}
+                            {{Form::label('trueofd184','Complete OFD 184')}}
                         </div>
                         <div class="col-sm-12 form-group well well-sm">
                             <div class="col-sm-4">
@@ -273,7 +260,6 @@
                                     uploaded
                                     file(s)
                                 </a>
-
                                 <div id="6b1" class="collapse">
 
                                     <table class="table table-striped">
@@ -303,8 +289,8 @@
                     </div>
                     <div class="col-sm-12">
                         <div class="form-group">
-                            {{ Form::checkbox('checkbox2', 1, null, ['id'=>'checkbox2', 'class' => 'className' ]) }}
-                            {{Form::label('checkbox2','Miscellaneous Documents')}}
+                            {{ Form::checkbox('miscbiological1', 1, null, ['id'=>'miscbiological1', 'class' => 'className' ]) }}
+                            {{Form::label('miscbiological1','Miscellaneous Documents')}}
                         </div>
                         <div class="col-sm-12 form-group well well-sm">
                             <div class="col-sm-4">
@@ -327,7 +313,6 @@
                                     uploaded
                                     file(s)
                                 </a>
-
                                 <div id="6b3" class="collapse">
 
                                     <table class="table table-striped">
@@ -349,7 +334,6 @@
                                                     </tr>@endif
                                             @endforeach
                                         @endif
-
                                     </table>
                                 </div>
                             </div>
@@ -359,10 +343,8 @@
                         <div class="form-group">
                             {{ Form::checkbox('bloodreport', 1, null, ['id' => 'bloodreport', 'class'=>'className']) }}
                             {{Form::label('bloodreport','Report for blood draw as directed by OUCH Nurse')}}
-
                         </div>
                     </div>
-
                     <div class="col-sm-12">
                         <div class="form-group">
                             {{ Form::checkbox('exposuretab', 1, null, ['id' => 'exposuretab', 'class'=>'className']) }}
@@ -370,7 +352,6 @@
 
                         </div>
                     </div>
-
                     <div class="col-sm-12">
                         <div class="form-group">
                             {{ Form::checkbox('truebagtag', 1, null, ['id' => 'truebagtag', 'class'=>'className']) }}
@@ -402,15 +383,22 @@
                 <div id="Exposure1" class="desc" style="display: none;">
                     <div class="col-md-12">
                         <div class="alert alert-danger" align="left">
-                            Definition of Potential Exposure:
+                            Contamination might be due to soiling or pollution, as by the introduction of blood
+                            or body fluids onto:
                             <ul type="Disc">
-                                <li>Occurs through a break in the skin barrier, this includes injections, needle sticks,
-                                    human/ animal bites, abrasions and cuts that become contaminated with blood.
+                                <li>Equipment
                                 </li>
                                 <li>
-                                    For human/animal bites, the clinical evaluation must include the possibility that both
-                                    the person bitten and the person/animal that inflicted the bite were exposed to
-                                    bloodborne pathogens.
+                                    Clothing
+                                </li>
+                                <li>
+                                    PPE
+                                </li>
+                                <li>
+                                    Intact Skin
+                                </li>
+                                <li>
+                                    Turnout gear
                                 </li>
                             </ul>
                         </div>
@@ -419,28 +407,6 @@
                         <div class="form-group">
                             {{ Form::checkbox('potdecontaminate', 1, null, ['id' => 'potdecontaminate', 'class'=>'className']) }}
                             {{Form::label('potdecontaminate','Decontaminate self- wash, flush as soon as possible')}}
-                            <div class="col-md-12">
-                                <div class="alert alert-danger" align="left">
-                                    Contamination might be due to soiling or pollution, as by the introduction of blood
-                                    or body fluids onto:
-                                    <ul type="Disc">
-                                        <li>Equipment
-                                        </li>
-                                        <li>
-                                            Clothing
-                                        </li>
-                                        <li>
-                                            PPE
-                                        </li>
-                                        <li>
-                                            Intact Skin
-                                        </li>
-                                        <li>
-                                            Turnout gear
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
                         </div>
                     </div>
                     <div class="col-sm-12">
@@ -451,8 +417,8 @@
                     </div>
                     <div class="col-sm-12">
                         <div class="form-group">
-                            {{ Form::checkbox('checkbox3', 1, null, ['id'=>'checkbox3', 'class' => 'className' ]) }}
-                            {{Form::label('checkbox3','Complete OFD 184')}}
+                            {{ Form::checkbox('potofd184', 1, null, ['id'=>'potofd184', 'class' => 'className' ]) }}
+                            {{Form::label('potofd184','Complete OFD 184')}}
                         </div>
                         <div class="col-sm-12 form-group well well-sm">
                             <div class="col-sm-4">
@@ -481,7 +447,6 @@
                                     uploaded
                                     file(s)
                                 </a>
-
                                 <div id="6b2" class="collapse">
 
                                     <table class="table table-striped">
@@ -489,7 +454,6 @@
                                             <th> File Name</th>
                                             <th> File Uploaded At</th>
                                         </tr>
-
                                         @if(count($attachments) > 0)
                                             @foreach($attachments as $attachment)
                                                 @if($attachment->attachmenttype == '6b2' && $attachment->createdby ==  Auth::user()->id && $attachment->ofd6bid == $biological->ofd6bid )
@@ -503,7 +467,6 @@
                                                     </tr>@endif
                                             @endforeach
                                         @endif
-
                                     </table>
                                 </div>
                             </div>
@@ -511,8 +474,8 @@
                     </div>
                     <div class="col-sm-12">
                         <div class="form-group">
-                            {{ Form::checkbox('checkbox4', 1, null, ['id'=>'checkbox4', 'class' => 'className' ]) }}
-                            {{Form::label('checkbox4','Miscellaneous Documents')}}
+                            {{ Form::checkbox('miscbiological2', 1, null, ['id'=>'miscbiological2', 'class' => 'className' ]) }}
+                            {{Form::label('miscbiological2','Miscellaneous Documents')}}
                         </div>
                         <div class="col-sm-12 form-group well well-sm">
                             <div class="col-sm-4">
@@ -535,15 +498,12 @@
                                     uploaded
                                     file(s)
                                 </a>
-
                                 <div id="6b4" class="collapse">
-
                                     <table class="table table-striped">
                                         <tr>
                                             <th> File Name</th>
                                             <th> File Uploaded At</th>
                                         </tr>
-
                                         @if(count($attachments) > 0)
                                             @foreach($attachments as $attachment)
                                                 @if($attachment->attachmenttype == '6b4' && $attachment->createdby ==  Auth::user()->id && $attachment->ofd6bid == $biological->ofd6bid )
@@ -557,7 +517,6 @@
                                                     </tr>@endif
                                             @endforeach
                                         @endif
-
                                     </table>
                                 </div>
                             </div>
@@ -567,7 +526,6 @@
                         <div class="form-group">
                             {{ Form::checkbox('potppe', 1, null, ['id' => 'potppe', 'class'=>'className']) }}
                             {{Form::label('potppe','PPE has been cleaned per SOP SWD 1-0')}}
-
                         </div>
                     </div>
                     <div class="col-sm-12">
@@ -592,12 +550,29 @@
                         </div>
                     </div>
                 </div>
+                <div class="col-md-12">
+                    <div class="form-group">
+                        {{Form::label('exposureinjury','Do you have any symptoms of illness or injury and require
+                           treatment?')}}
+                        {!! Form::select('exposureinjury',[
+                          'Yes' => 'Yes',
+                          'No' => 'No'],null,
+                        ['placeholder' => 'Choose one'],old('exposureinjury'),'required',
+                        array('class' => 'form-control'))!!}
+                        <p class="help-block"></p>
+                        @if($errors->has('exposureinjury'))
+                            <p class="help-block">
+                                {{ $errors->first('exposureinjury') }}
+                            </p>
+                        @endif
+                    </div>
+                </div>
             </div>
-
             <div class="row">
                 <div class="col-sm-12">
                     <label class="col-sm-5"></label>
                     <div class="btn-bottom">
+                        {!! Form::submit('Save as Draft',['class' => 'btn btn-primary','name' => 'partialSave']) !!}
                         <button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal">
                             Save
                         </button>
@@ -605,7 +580,6 @@
                     </div>
                 </div>
             </div>
-
             @if (!empty($comments))
                 <div class="panel panel-default">
                     <div class="panel-body">
@@ -621,7 +595,6 @@
                                                         <div class="title h5">
                                                             @foreach ($users as $user)
                                                                 @if($user->id == $cm->createdby )
-
                                                                     <b><i class="fa fa-user"></i> {{$user->name}}
                                                                     </b>
                                                                 @endif
@@ -646,7 +619,6 @@
                     </div>
                 </div>
             @endif
-
             @else
                 <div class="panel-body">
                     <div class="form-horizontal">
@@ -663,7 +635,7 @@
                 </div>
                 <div class="col-sm-12 panel-heading" align="center">
                     <div class="btn-bottom ">
-                        <a href="{{ route('hazmat.index') }}" class="btn btn-default">return</a>
+                        <a href="{{ route('biologicals.index') }}" class="btn btn-default">return</a>
                     </div>
                 </div>
                 @endif
@@ -683,17 +655,14 @@
                                 {!! Form::submit('Yes',['class' => 'btn btn-success']) !!}
                                 <button type="button" class=" btn btn-danger" data-dismiss="modal" aria-label="">No
                                 </button>
-
-
                             </div>
-
                         </div>
                     </div>
                 </div>
-
                 {!! Form::close() !!}
                 @stop
         </div>
+
 @section('javascript')
 
     <script src="{{ ('js/extensions/cookie') }}/bootstrap-table-cookie.js"></script>
