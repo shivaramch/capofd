@@ -22,12 +22,7 @@
         </div>
     </div>
 
-    @if(count($hazmat) > 0)
 
-        @foreach($hazmat as $hazmats)
-        @endforeach
-
-        @if($hazmats->employeeid == Auth::user()->id || $hazmats->createdby == Auth::user()->id)
             <div class="panel panel-default panel-shadow " hidden>
                 <div class="panel-heading">
                     Search Previously filled
@@ -74,8 +69,7 @@
                     </table>
                 </div>
             </div>
-        @endif
-    @endif
+
 @stop
 
 @section('javascript')

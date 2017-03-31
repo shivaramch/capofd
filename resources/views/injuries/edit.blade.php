@@ -703,7 +703,7 @@
 
             </div>
         </div>
-    {!! Form::close() !!}
+
 
     @if (!empty($comments))
             <div class="panel panel-default">
@@ -765,4 +765,5 @@
             </div>
         </div>
     </div>
+    {!! Form::close() !!}
     @stop

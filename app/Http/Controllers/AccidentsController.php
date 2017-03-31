@@ -206,7 +206,7 @@ class AccidentsController extends EmailController
             'captainid' => 'required|integer:accidents,captainid',
             'battalionchiefid' => 'required|integer:accidents,battalionchiefid',
             'aconduty' => 'required|integer:accidents,aconduty',
-            'frmsincidentnum' => 'required|integer:accidents,frmsincidentnum',
+            //'frmsincidentnum' => 'required|integer:accidents,frmsincidentnum',
             'calllaw' => 'required|integer:accidents,calllaw',
             'daybook' => 'required|integer:accidents,daybook',
             'commemail' => 'required|integer:accidents,commemail',
