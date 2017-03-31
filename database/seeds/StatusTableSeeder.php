@@ -14,6 +14,7 @@ class StatusTableSeeder extends Seeder
         DB::table('status')->insert(['statustype' =>'Application under Assistant Chief',]);
         DB::table('status')->insert(['statustype' =>'Rejected',]);
         DB::table('status')->insert(['statustype' =>'Approved',]);
+        DB::table('status')->insert(['statustype' =>'Application under Primary IDCO',]);
 
     }
 }

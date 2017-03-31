@@ -471,7 +471,7 @@
                                     {{ Form::textarea('comment', null, ['class' => 'form-control', 'placeholder' => 'Add your comment', 'rows' => '4']) }}
                                 </div>
                                 {{ Form::hidden('applicationtype', '6') }}
-                                {{ Form::hidden('applicationid', $injury->ofd6id) }}
+                                {{ Form::hidden('applicationid', $biological->ofd6bid ) }}
                                 {{ Form::checkbox('isvisible', 1, null, ['id' => 'daybook', 'class'=>'className']) }}
                                 <label><strong>
                                         Visible to applicant</strong></label>
@@ -483,7 +483,7 @@
                                     Auth::user()->roleid == 1)
                                         @if($biological->applicationstatus != 6)
                                             <div class="col-sm-4">
-                                                <a href="{{ url('/injuries/'.$injury->ofd6id .'/Approve') }}"
+                                                <a href="{{ url('/biologicals/'.$biological->ofd6bid .'/Approve') }}"
                                                    class="btn btn-block btn-success">Approve</a>
                                             </div>
                                         @endif
@@ -558,7 +558,7 @@
                         include a comment for the applicant if not done already!
                     </div>
                     <div class="modal-footer">
-                        <a href="{{ url('/injuries/'.$injury->ofd6id .'/Reject') }}"
+                        <a href="{{ url('/biologicals/'.$biological->ofd6bid  .'/Reject') }}"
                            class="btn btn-success">Yes</a>
                         <button type="button" class=" btn btn-danger" data-dismiss="modal" aria-label="">No</button>
                     </div>
