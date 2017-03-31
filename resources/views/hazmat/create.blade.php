@@ -5,29 +5,24 @@
            href="{{ route('hazmat.index') }}">
             <i class="fa fa-arrow-left" aria-hidden="true"></i> Back</a>
         <li><a href="{{ url('/') }}">Dashboard</a></li>
-        <li><a href="{{ route('hazmat.create') }}">OFD 6C Hazmat</a></li>
+        <li><a href="{{ route('hazmat.index') }}">OFD 6C Hazmat</a></li>
         <li class="active">New Form</li>
     </ol>
 @endsection
 @section('content')
     {!! Form::open(['method' => 'POST', 'url' => '/hazmat/save', 'files' => true,]) !!}
-
     <input type="hidden" name="_token" value="{!!  'csrf_token()' !!}">
     {{ csrf_field() }}
-
     <style>
         #padtop {
             padding-top: 7px;
         }
-
         table {
             border-collapse: collapse;
         }
-
         table, td, th {
             border: 1px solid black;
         }
-
     </style>
     <div class="navya">
         <div class="panel panel-default">
@@ -53,12 +48,12 @@
             <div class="panel-body">
                 <div class="form-horizontal">
                     <div class="row">
-					
-					<div class="col-sm-4 form-group">
+
+                        <div class="col-sm-4 form-group">
                             {!! Form::label('dateofexposure', 'Date of Exposure',array('style'=>'padding-top:7px;','class'=> 'col-sm-4 control-label') )!!}
                             <div class="col-sm-6 ">
                                 {!! Form::text('dateofexposure', old('dateofexposure'), array('class' => 'form-control datepicker', 'placeholder' => 'YYYY-MM-DD'))!!}
-                                
+
                                 <p class="help-block"></p>
                                 @if($errors->has('dateofexposure'))
                                     <p class="help-block">
@@ -67,7 +62,7 @@
                                 @endif
                             </div>
                         </div>
-					
+
                         <div class="col-sm-4 form-group">
                             {!! Form::label('employeeid', 'Employee ID #', array('style'=>'padding-top:7px;','class' => 'col-sm-4 control-label')) !!}
                             <div class="col-sm-6 ">
@@ -92,7 +87,7 @@
                                 @endif
                             </div>
                         </div>
-                        
+
                     </div>
                     <div class="row">
                         <div class="col-sm-4 form-group">
@@ -199,15 +194,11 @@
                     </div>
                 </div>
             </div>
-
-
             <div class="col-sm-12 form-group">
                 <div class="form-group">
                     {{ Form::checkbox('checkbox1', 1, null, ['id'=>'checkbox1', 'class' => 'className' ]) }}
                     {{Form::label('checkbox1','Fill out OFD-025 Hazmat Exposure Report form')}}
                 </div>
-
-
                 {{--}}  <label class="col-sm-4">
                       <strong>Fill out OFD-025 Hazmat Exposure Report form</strong>
                   </label> --}}
@@ -250,8 +241,6 @@
                     </div>
                 </div>
             </div>
-
-
             <div class="panel-body">
                 <div class="form-horizontal">
                     <div class="row">
@@ -282,22 +271,16 @@
                     @endif
                 </div>
             </div>
-
             <label class="col-sm-5"></label>
             <div class="btn-bottom ">
-
                 {!! Form::submit('Save as Draft',['class' => 'btn btn-primary','name' => 'partialSave']) !!}
                 <button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal">
                     Submit
                 </button>
-
                 <a href="{{ route('hazmat.index') }}" class="btn btn-danger">Cancel</a>
             </div>
         </div>
-
     </div>
-
-
     <!-- Modal -->
     <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
         <div class="modal-dialog" role="document">
@@ -313,10 +296,7 @@
                 <div class="modal-footer">
                     {!! Form::submit('Yes',['class' => 'btn btn-success','name'=> 'store']) !!}
                     <button type="button" class=" btn btn-danger" data-dismiss="modal" aria-label="">No</button>
-
-
                 </div>
-
             </div>
         </div>
     </div>
