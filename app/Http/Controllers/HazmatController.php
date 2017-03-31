@@ -187,12 +187,13 @@ class HazmatController extends Controller
         $attachments = Attachment::all();
         $hazmat = hazmat::findOrFail($id);
         $comments = Comment::all();
-        $users = User::all();
         if (($hazmat->employeeid == Auth::user()->id &&
                 ($hazmat->applicationstatus == 1 || $hazmat->applicationstatus == 5)) ||
             Auth::user()->roleid == 1
         ) {
             return view('hazmat.edit', compact('hazmat', 'attachments','comments','users'));
+        }else {
+            return view('errors.access');
         }
 
     }
