@@ -313,45 +313,30 @@
                 <div class="form-horizontal">
                     <div class="row">
                         <div class="col-md-12">
-
-                       {{--}}     <div class="alert alert-danger" align="left">
-                                {{Form::label('exposureInjury','Do you have any symptoms of illness or injury and require
-                                   treatment? (In case of Injury, please fill OFD - 6 IOD Application)     ')}}
-
-                                {!! Form::select('exposurehazmat',[
-                                  'Yes' => 'Yes',
-                                  'No' => 'No'],old('exposurehazmat'),
-                                array('class' => 'form-control'))!!}
-                                <p class="help-block"></p>
-                                @if($errors->has('exposurehazmat'))
-                                    <p class="help-block">
-                                        {{ $errors->first('exposurehazmat') }}
-                                    </p>
-                                @endif --}}
-
-                                <div class="alert alert-danger form-group" align="left">
-                                    <div class="col-md-9">
-                                        <label>If an employee receives an injury or illness from this incident,
-                                            the employee shall complete an OFD6 and designate whether treatment is being
-                                            requested in the OFD-25 IOD.</label>
-                                    </div>
-                                    {{--<div class="col-md-1">--}}
-                                    {{--{!! Form::select('exposurehazmat',--}}
-                                    {{--['Yes' => 'Yes',--}}
-                                    {{--'No' => 'No'], old('exposurehazmat'),--}}
-                                    {{--['class' => 'form-control']) !!}--}}
-                                    {{--<p class="help-block"></p>--}}
-                                    {{--@if($errors->has('exposurehazmat'))--}}
-                                    {{--<p class="help-block">--}}
-                                    {{--{{ $errors->first('exposurehazmat') }}--}}
-                                    {{--</p>--}}
-                                    {{--@endif--}}
-                                    {{--</div>--}}
-
-                                </div>
+                            <div class="alert alert-danger" align="center">
+                                <label>If an employee receives an injury or illness from this incident,
+                                    the employee shall complete an OFD6 and designate whether treatment is being
+                                    requested in the OFD-25 IOD.</label>
                             </div>
                         </div>
                     </div>
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div class="form-group">
+                    {{Form::label('exposureinjury','Do you have any symptoms of illness or injury and require
+                       treatment?')}}
+                    {!! Form::select('exposureinjury',[
+                      'Yes' => 'Yes',
+                      'No' => 'No'],null,
+                    ['placeholder' => 'Choose one'],old('exposureinjury'),'required',
+                    array('class' => 'form-control'))!!}
+                    <p class="help-block"></p>
+                    @if($errors->has('exposureinjury'))
+                        <p class="help-block">
+                            {{ $errors->first('exposureinjury') }}
+                        </p>
+                    @endif
                 </div>
             </div>
 
@@ -359,6 +344,7 @@
                 <div class="col-sm-12">
                     <label class="col-sm-5"></label>
                     <div class="btn-bottom">
+                        {!! Form::submit('Save as Draft',['class' => 'btn btn-primary','name' => 'partialSave']) !!}
                         <button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal">
                             Save
                         </button>
@@ -388,6 +374,47 @@
                 </div>
                 @endif
 
+            @if (!empty($comments))
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <div class="actionBox">
+                            <ul class="commentList">
+                                @foreach ($comments as $cm)
+                                    @if(($cm->applicationid == $hazmat->ofd6aid && $cm->applicationtype == '6C')&&
+                                    ($hazmat->driverid == Auth::user()->id && $cm->isvisible == 1))
+                                        <div class="col-sm-8">
+                                            <div class="panel panel-white post panel-shadow">
+                                                <div class="post-heading">
+                                                    <div class="pull-left meta">
+                                                        <div class="title h5">
+                                                            @foreach ($users as $user)
+                                                                @if($user->id == $cm->createdby )
+
+                                                                    <b><i class="fa fa-user"></i> {{$user->name}}
+                                                                    </b>
+                                                                @endif
+                                                            @endforeach
+                                                            made a Comment.
+                                                        </div>
+                                                        <time class="comment-date text-muted time"
+                                                              datetime="{{$cm->created_at}}"><i
+                                                                    class="fa fa-clock-o"></i> {{$cm->created_at}}
+                                                        </time>
+                                                    </div>
+                                                </div>
+                                                <div class="post-description">
+                                                    <p>{{$cm->comment}}</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    @endif
+                                @endforeach
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                @endif
+
                         <!-- Modal -->
                 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
                     <div class="modal-dialog" role="document">
@@ -404,15 +431,12 @@
                                 {!! Form::submit('Yes',['class' => 'btn btn-success']) !!}
                                 <button type="button" class=" btn btn-danger" data-dismiss="modal" aria-label="">No
                                 </button>
-
-
                             </div>
-
                         </div>
                     </div>
                 </div>
                 {!! Form::close() !!}
-
-
                 @stop
         </div>
+
+

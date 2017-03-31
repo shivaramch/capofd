@@ -30,7 +30,7 @@ class Biological extends Model
         'shift',
         'primaryidconumber',
         'epcrincidentnum',
-        //'exposureinjury',
+        'exposureinjury',
         'frmsincidentnum',
         //'todaysdate',
         'truedecontaminate',
@@ -48,7 +48,9 @@ class Biological extends Model
         'exposure',
         'trueofd184',
         'potofd184',
-        'applicationstatus'
+        'applicationstatus',
+        'checkbox1',
+    'checkbox2'
         //'trueInjury',
         //'potInjury'
     ];

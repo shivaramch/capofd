@@ -43,7 +43,8 @@ class hazmat extends Model
         'corvelid',
         'applicationstatus',
         //'exposurehazmat',
-        'checkbox1'
+        'checkbox1',
+        'checkbox2'
 
 
     ];

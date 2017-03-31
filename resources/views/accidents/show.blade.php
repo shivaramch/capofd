@@ -9,6 +9,7 @@
         <li class="active">View OFD 6A Form {{ $accident->ofd6aid }}</li>
     </ol>
 @endsection
+
 @section('content')
     {!! Form::model($accident,['method' => 'put']) !!}
     <style>
@@ -33,15 +34,8 @@
                                 <h3><strong>Vehicle Accident Report Tracking Document (OFD-6A)</strong></h3>
                             </div>
                         </div>
-                        <div class="col-md-2">
-                            <h5><i><strong>Issue Date: 9/1/16</strong></i></h5>
-                        </div>
-                        <div class="col-md-2">
-                            <h5><i><strong>Effective date: 9/1/16</strong></i></h5>
-                        </div>
                         <div class="col-md-12">
-                            <h5><i><strong>Amends, Replaces, Rescinds: Replaces OFD-6A (July 2016) </strong></i>
-                            </h5>
+                            <h6><i><strong>Used for future tracking purposes only</strong></i></h6>
                         </div>
                     </div>
                 </div>
@@ -53,7 +47,7 @@
                     <div class="col-md-12">
                         <div class="alert alert-danger" align="center">
                             <strong>
-                                Complete all forms and forward via chain-of-command within 48 hours
+                                Complete all forms and forward via chain-of-command within 24 hours
                             </strong>
                         </div>
                     </div>
@@ -189,7 +183,7 @@
                                         streets,
                                         private property, or at the Fire Station.
                                     </li>
-                                    <li>DR41 is only submitted to the State if damage is over $1000.00</li>
+                                    <li>DR41 is also submitted to the State if damage is over $1000.00</li>
                                 </ol>
                             </strong>
                         </div>
@@ -198,6 +192,7 @@
             </div>
         </div>
     </div>
+
     <div class="panel panel-default">
         <div class="panel-heading">
             <div class="row">
@@ -211,11 +206,7 @@
                 <div class="col-sm-12">
                     <div class="form-group">
                         {{ form::checkbox('commemail', 1, null,['disabled'], ['id' => 'commemail', 'class'=>'classname','readonly' => 'true']) }}
-                        <label><strong>Generate OFD 025
-                                Intradepartmental Communication</strong>-email to <a
-                                    href="omafaccident_ofd25@cityofomaha.org"> omafaccident_ofd25@cityofomaha
-                                .org </a>
-                        </label>
+                        {{Form::label('Checkbox5','Generate OFD 025 Intradepartmental Communicatio-Email to omafaccident_ofd25@cityofomaha.org')}}
                     </div>
                 </div>
             </div>
@@ -599,14 +590,16 @@
     </div>
 
     {!! form::close() !!}
+
     <div class="panel panel-default">
         <div class="panel-body">
+            <div class="titleBox">
+                <label>Comments </label>
+            </div>
             @if($accident->captainid == Auth::user()->id ||
-            $accident->battalionchiefid == Auth::user()->id ||
-            $accident->aconduty == Auth::user()->id || Auth::user()->roleid == 1)
-                <div class="titleBox">
-                    <label>Comments </label>
-                </div>
+        $accident->battalionchiefid == Auth::user()->id ||
+        $accident->aconduty == Auth::user()->id ||
+        Auth::user()->roleid == 1)
                 {!! Form::open(['method' => 'POST', 'route' => ['comments.store'],]) !!}
                 <div class="row">
                     <div class="col-sm-12">
@@ -624,9 +617,10 @@
                                 <div class="col-sm-4">
                                     {{ Form::submit('Post Comment', array('class' => 'btn btn-block btn-primary')) }}
                                 </div>
-                                @if($accident->captainid == Auth::user()->id && $accident->applicationstatus == 2 ||
-                                $accident->battalionchiefid == Auth::user()->id&&$accident->applicationstatus == 3 ||
-                                $accident->aconduty == Auth::user()->id&&$accident->applicationstatus == 4 || Auth::user()->roleid == 1)
+                                @if(($accident->captainid == Auth::user()->id && $accident->applicationstatus == 2) ||
+                                ($accident->battalionchiefid == Auth::user()->id&&$accident->applicationstatus == 3) ||
+                                ($accident->aconduty == Auth::user()->id&&$accident->applicationstatus == 4) ||
+                                Auth::user()->roleid == 1)
                                     <div class="col-sm-4">
                                         <a href="{{ url('/accidents/'.$accident->ofd6aid .'/Approve') }}"
                                            class="btn btn-block btn-success">Approve</a>
@@ -704,10 +698,7 @@
                     <a href="{{ url('/accidents/'.$accident->ofd6aid .'/Reject') }}"
                        class="btn btn-success">Yes</a>
                     <button type="button" class=" btn btn-danger" data-dismiss="modal" aria-label="">No</button>
-
-
                 </div>
-
             </div>
         </div>
     </div>

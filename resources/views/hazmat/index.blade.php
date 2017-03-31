@@ -22,54 +22,56 @@
         </div>
     </div>
 
+    @if(count($hazmat) > 0)
 
-            <div class="panel panel-default panel-shadow " hidden>
-                <div class="panel-heading">
-                    Search Previously filled
-                </div>
-                <div class="panel-body">
-                    <table data-toolbar="#toolbar"
-                           data-toggle="table"
-                           data-search="true"
-                           data-cookie="true"
-                           data-click-to-select="true"
-                           data-cookie-id-table="station-index-v1.1-1"
-                           data-show-columns="true"
-                           id="table">
-                        <thead>
-                        <tr>
-                            <th data-sortable="true">OFD 6C ID</th>
-                            <th data-sortable="true">Date of Exposure</th>
-                            <th data-sortable="true">Assignment</th>
-                            <th data-switchable="false" data-searchable="false" data-sortable="false">Action</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        @foreach($hazmat as $hazmats)
-                            @if($hazmats->employeeid == Auth::user()->id || $hazmats->createdby == Auth::user()->id)
-                                <tr>
-                                    <td>{{ $hazmats->ofd6cid }}</td>
-                                    <td>{{ $hazmats->dateofexposure }}</td>
-                                    <td>{{ $hazmats->assignment }}</td>
-
-                                    <td>
-                                        <div>
-                                            <a href="{{ route('hazmat.show',[$hazmats->ofd6cid]) }}"
-                                               class="btn btn-xs btn-info btn-block"><i
-                                                        class="fa fa-eye" aria-hidden="true"></i> VIEW</a>
-                                            <a href="{{ route('hazmat.edit',[$hazmats->ofd6cid]) }}"
-                                               class="btn btn-xs btn-warning btn-block"><i class="fa fa-pencil-square-o"
-                                                                                           aria-hidden="true"></i> EDIT</a>
-                                        </div>
-                                    </td>
-                                </tr>
-                            @endif
-                        @endforeach
-                        </tbody>
-                    </table>
-                </div>
+        <div class="panel panel-default panel-shadow " hidden>
+            <div class="panel-heading">
+                Search Previously filled
             </div>
+            <div class="panel-body">
+                <table data-toolbar="#toolbar"
+                       data-toggle="table"
+                       data-search="true"
+                       data-cookie="true"
+                       data-click-to-select="true"
+                       data-cookie-id-table="station-index-v1.1-1"
+                       data-show-columns="true"
+                       id="table">
+                    <thead>
+                    <tr>
+                        <th data-sortable="true">OFD 6C ID</th>
+                        <th data-sortable="true">Date of Exposure</th>
+                        <th data-sortable="true">Assignment</th>
+                        <th data-switchable="false" data-searchable="false" data-sortable="false">Action</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    @foreach($hazmat as $hazmats)
+                        @if($hazmats->employeeid == Auth::user()->id)
+                            <tr>
+                                <td>{{ $hazmats->ofd6cid }}</td>
+                                <td>{{ $hazmats->dateofexposure }}</td>
+                                <td>{{ $hazmats->assignment }}</td>
 
+                                <td>
+                                    <div>
+                                        <a href="{{ route('hazmat.show',[$hazmats->ofd6cid]) }}"
+                                           class="btn btn-xs btn-info btn-block"><i
+                                                    class="fa fa-eye" aria-hidden="true"></i> VIEW</a>
+                                        <a href="{{ route('hazmat.edit',[$hazmats->ofd6cid]) }}"
+                                           class="btn btn-xs btn-warning btn-block"><i class="fa fa-pencil-square-o"
+                                                                                       aria-hidden="true"></i> EDIT</a>
+                                    </div>
+                                </td>
+                            </tr>
+                        @endif
+                    @endforeach
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    @endif
 @stop
 
 @section('javascript')
