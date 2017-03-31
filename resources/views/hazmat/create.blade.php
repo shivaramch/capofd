@@ -53,6 +53,21 @@
             <div class="panel-body">
                 <div class="form-horizontal">
                     <div class="row">
+					
+					<div class="col-sm-4 form-group">
+                            {!! Form::label('dateofexposure', 'Date of Exposure',array('style'=>'padding-top:7px;','class'=> 'col-sm-4 control-label') )!!}
+                            <div class="col-sm-6 ">
+                                {!! Form::text('dateofexposure', old('dateofexposure'), array('class' => 'form-control datepicker', 'placeholder' => 'YYYY-MM-DD'))!!}
+                                
+                                <p class="help-block"></p>
+                                @if($errors->has('dateofexposure'))
+                                    <p class="help-block">
+                                        {{ $errors->first('dateofexposure') }}
+                                    </p>
+                                @endif
+                            </div>
+                        </div>
+					
                         <div class="col-sm-4 form-group">
                             {!! Form::label('employeeid', 'Employee ID #', array('style'=>'padding-top:7px;','class' => 'col-sm-4 control-label')) !!}
                             <div class="col-sm-6 ">
@@ -77,19 +92,7 @@
                                 @endif
                             </div>
                         </div>
-                        <div class="col-sm-4 form-group">
-                            {!! Form::label('dateofexposure', 'Date of Exposure',array('style'=>'padding-top:7px;','class'=> 'col-sm-4 control-label') )!!}
-                            <div class="col-sm-6 ">
-                                {!! Form::text('dateofexposure', old('dateofexposure'), array('id'=>'datepicker12','class' => 'form-control datepicker1', 'placeholder' => 'YYYY-MM-DD'))!!}
-                                {!! Form::text('dateofexposure', old('dateofexposure'), array('style'=>'display:none;','id'=>'datepicker32','class' => 'form-control datepicker', 'placeholder' => 'YYYY-MM-DD'))!!}
-                                <p class="help-block"></p>
-                                @if($errors->has('dateofexposure'))
-                                    <p class="help-block">
-                                        {{ $errors->first('dateofexposure') }}
-                                    </p>
-                                @endif
-                            </div>
-                        </div>
+                        
                     </div>
                     <div class="row">
                         <div class="col-sm-4 form-group">
@@ -119,8 +122,8 @@
                         <div class="col-sm-4 form-group">
                             {!! Form::label('frmsincidentnum', 'FRMS Incident#', array('style'=>'padding-top:7px;','class' => 'col-sm-4 control-label')) !!}
                             <div class="col-sm-6 ">
-                               {!! Form::text('frmsincidentnum12', old('frmsincidentnum12'), array('id'=>'text1', 'class' => 'form-control','placeholder'=>'Enter FRMS Number'))!!}
-                        {!! Form::text('frmsincidentnum', old('frmsincidentnum'), array('id'=>'text2', 'class' => 'form-control','placeholder'=>'Enter FRMS Number', 'style'=>'display:none;'))!!}
+                                {!! Form::text('frmsincidentnum12', old('frmsincidentnum12'), array('id'=>'text1', 'class' => 'form-control','placeholder'=>'Enter FRMS Number'))!!}
+                                {!! Form::text('frmsincidentnum', old('frmsincidentnum'), array('id'=>'text2', 'class' => 'form-control','placeholder'=>'Enter FRMS Number', 'style'=>'display:none;'))!!}
                                 <p class="help-block"></p>
                                 @if($errors->has('frmsincidentnum'))
                                     <p class="help-block">
@@ -201,7 +204,7 @@
             <div class="col-sm-12 form-group">
                 <div class="form-group">
                     {{ Form::checkbox('checkbox1', 1, null, ['id'=>'checkbox1', 'class' => 'className' ]) }}
-                    {{Form::label('Checkbox1','Fill out OFD-025 Hazmat Exposure Report form')}}
+                    {{Form::label('checkbox1','Fill out OFD-025 Hazmat Exposure Report form')}}
                 </div>
 
 
@@ -231,7 +234,7 @@
             <div class="col-sm-12 form-group">
                 <div class="form-group">
                     {{ Form::checkbox('checkbox2', 1, null, ['id'=>'checkbox2', 'class' => 'className' ]) }}
-                    {{Form::label('Checkbox2','Miscellaneous Documents')}}
+                    {{Form::label('checkbox2','Miscellaneous Documents')}}
                 </div>
                 <div class="col-sm-12 form-group well well-sm">
                     <div class="col-sm-4">
@@ -257,28 +260,33 @@
                                 <label>If an employee receives an injury or illness from this incident,
                                     the employee shall complete an OFD6 and designate whether treatment is being
                                     requested in the OFD-25 IOD.</label>
-
-                                {{--{!! Form::select('exposureinjury',[--}}
-                                {{--'Yes' => 'Yes',--}}
-                                {{--'No' => 'No'],null,--}}
-                                {{--['placeholder' => 'Choose one'],'required',--}}
-                                {{--array('class' => 'form-control'))!!}--}}
-                                {{--<p class="help-block"></p>--}}
-                                {{--@if($errors->has('exposureinjury'))--}}
-                                {{--<p class="help-block">--}}
-                                {{--{{ $errors->first('exposureinjury') }}--}}
-                                {{--</p>--}}
-                                {{--@endif--}}
                             </div>
                         </div>
                     </div>
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div class="form-group">
+                    {{Form::label('exposureinjury','Do you have any symptoms of illness or injury and require
+                       treatment?')}}
+                    {!! Form::select('exposureinjury',[
+                      'Yes' => 'Yes',
+                      'No' => 'No'],null,
+                    ['placeholder' => 'Choose one'],'required',
+                    array('class' => 'form-control'))!!}
+                    <p class="help-block"></p>
+                    @if($errors->has('exposureinjury'))
+                        <p class="help-block">
+                            {{ $errors->first('exposureinjury') }}
+                        </p>
+                    @endif
                 </div>
             </div>
 
             <label class="col-sm-5"></label>
             <div class="btn-bottom ">
 
-                {!! Form::submit('Save',['class' => 'btn btn-success','name' => 'partialSave']) !!}
+                {!! Form::submit('Save as Draft',['class' => 'btn btn-primary','name' => 'partialSave']) !!}
                 <button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal">
                     Submit
                 </button>

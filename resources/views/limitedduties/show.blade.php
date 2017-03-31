@@ -209,12 +209,71 @@
                 </div>
             </div>
 
-            <div class="col-sm-12 panel-heading" align="center">
-                <div class="btn-bottom ">
-                    <a href="{{ route('limitedduties.index') }}" class="btn btn-default">Return</a>
+            <div class="panel-body">
+                <div class="titleBox">
+                    <label>Comments </label>
+                </div>
+                {!! Form::open(['method' => 'POST', 'route' => ['comments.store'],]) !!}
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="form-group">
+                            <div class="form-group" style="width:100%; position:relative">
+                                {{ Form::textarea('comment', null, ['class' => 'form-control', 'placeholder' => 'Add your comment', 'rows' => '4']) }}
+                            </div>
+                            {{ Form::hidden('applicationtype', 'LD') }}
+                            {{ Form::hidden('applicationid', $limitedduty->limiteddutyid) }}
+                            {{ Form::checkbox('isvisible', 1, null, ['id' => 'daybook', 'class'=>'className']) }}
+                            <label><strong>
+                                    Visible to applicant</strong></label>
+                            <div class="form-group">
+                                {{ Form::submit('Post Comment', array('class' => 'btn btn-block btn-primary' , 'style' => 'width:220px')) }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {!! form::close() !!}
+
+                <div class="actionBox">
+                    <ul class="commentList">
+                        @if (!empty($comments))
+                            @foreach ($comments as $cm)
+                                @if(($cm->applicationid == $limitedduty->limiteddutyid && $cm->applicationtype == 'LD')&&
+                                (($biological->employeeid == Auth::user()->id && $cm->isvisible == 1) ||
+                                $biological->primaryidconumber == Auth::user()->id ||
+                                Auth::user()->roleid == 1))
+                                    <div class="col-sm-8">
+                                        <div class="panel panel-white post panel-shadow">
+                                            <div class="post-heading">
+                                                <div class="pull-left meta">
+                                                    <div class="title h5">
+                                                        @foreach ($users as $user)
+                                                            @if($user->id == $cm->createdby )
+
+                                                                <b><i class="fa fa-user"></i> {{$user->name}}
+                                                                </b>
+                                                            @endif
+                                                        @endforeach
+                                                        made a Comment.
+                                                    </div>
+                                                    <time class="comment-date text-muted time"
+                                                          datetime="{{$cm->created_at}}"><i
+                                                                class="fa fa-clock-o"></i> {{$cm->created_at}}
+                                                    </time>
+                                                </div>
+                                            </div>
+                                            <div class="post-description">
+                                                <p>{{$cm->comment}}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                @endif
+                            @endforeach
+                        @endif
+                    </ul>
                 </div>
             </div>
         </div>
+    </div>
     </div>
     {!! Form::close() !!}
 @stop

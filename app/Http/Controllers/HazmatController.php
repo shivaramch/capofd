@@ -155,7 +155,7 @@ class HazmatController extends Controller
             'corvelid' => 'required|integer:hazmat,corvelid',
             'epcrincidentnum' => 'required|integer:hazmat,epcrincidentnum',
             'assignment' => 'required|string:hazmat,assignment',
-            'frmsincidentnum' => 'required|integer:hazmat,frmsincidentnum',
+            'frmsincidentnum' => 'required|string:hazmat,frmsincidentnum',
             'shift' => 'required|string:hazmat,shift,',
             ]);
 
@@ -187,7 +187,14 @@ class HazmatController extends Controller
         $attachments = Attachment::all();
         $hazmat = hazmat::findOrFail($id);
         $comments = Comment::all();
-        return view('hazmat.edit', compact('hazmat', 'attachments','comments','users'));
+        $users = User::all();
+        if (($hazmat->employeeid == Auth::user()->id &&
+                ($hazmat->applicationstatus == 1 || $hazmat->applicationstatus == 5)) ||
+            Auth::user()->roleid == 1
+        ) {
+            return view('hazmat.edit', compact('hazmat', 'attachments','comments','users'));
+        }
+
     }
 
     public function show($id)
@@ -195,11 +202,20 @@ class HazmatController extends Controller
 
         $hazmat = hazmat::findOrFail($id);
         $attachments = Attachment::all();
+        $comments = Comment::all();
+        $users = User::all();
+
+        if ($hazmat->employeeid == Auth::user()->id ||
+            ($hazmat->primaryidconumber == Auth::user()->id && $hazmat->applicationstatus == 2) ||
+            Auth::user()->roleid == 1
+        ) {
+            return view('hazmat.show', compact('hazmat', 'attachments', 'comments', 'users'));
+        }
 
         //show history code start
         //below one line code is for storing all history related to the $id in variable, which is to be used to display in show page.
         //show history code end
-        return view('hazmat.show',compact('hazmat', 'attachments'));
+
     }
 
     public function update(UpdateHazmatRequest $request, $id)

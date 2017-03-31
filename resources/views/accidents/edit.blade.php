@@ -9,6 +9,7 @@
         <li class="active">Edit OFD 6A Form {{ $accident->ofd6aid }}</li>
     </ol>
 @endsection
+
 @section('content')
     {!! Form::model($accident,['method' => 'PUT', 'route' => ['accidents.update', $accident->ofd6aid], 'files' => true,]) !!}
     <input type="hidden" name="_token" value="{!!  'csrf_token()' !!}">
@@ -27,6 +28,7 @@
             border: 1px solid black;
         }
     </style>
+
     <div class="panel panel-default">
         <div class="panel-heading">
             <div class="jumbotron" style="margin-bottom: 5px; ">
@@ -40,15 +42,8 @@
                                 <h3><strong>Vehicle Accident Report Tracking Document (OFD-6A)</strong></h3>
                             </div>
                         </div>
-                        <div class="col-md-2">
-                            <h5><i><strong>Issue Date: 9/1/16</strong></i></h5>
-                        </div>
-                        <div class="col-md-2">
-                            <h5><i><strong>Effective Date: 9/1/16</strong></i></h5>
-                        </div>
                         <div class="col-md-12">
-                            <h5><i><strong>Amends, Replaces, Rescinds: Replaces OFD-6A (July 2016) </strong></i>
-                            </h5>
+                            <h6><i><strong>Used for future tracking purposes only</strong></i></h6>
                         </div>
                     </div>
                 </div>
@@ -60,7 +55,7 @@
                     <div class="col-md-12">
                         <div class="alert alert-danger" align="center">
                             <strong>
-                                COMPLETE ALL FORMS AND FORWARD VIA CHAIN-OF-COMMAND WITHIN 48 HOURS
+                                COMPLETE ALL FORMS AND FORWARD VIA CHAIN-OF-COMMAND WITHIN 24 HOURS
                             </strong>
                         </div>
                     </div>
@@ -196,7 +191,7 @@
                                         streets,
                                         private property, or at the Fire Station.
                                     </li>
-                                    <li>DR41 is only submitted to the State if damage is over $1000.00</li>
+                                    <li>DR41 is also submitted to the State if damage is over $1000.00</li>
                                 </ol>
                             </strong>
                         </div>
@@ -205,6 +200,7 @@
             </div>
         </div>
     </div>
+
     <div class="panel panel-default">
         <div class="panel-heading">
             <div class="row">
@@ -218,11 +214,7 @@
                 <div class="col-sm-12">
                     <div class="form-group">
                         {{ Form::checkbox('commemail', 1, null, ['id' => 'commemail', 'class'=>'className']) }}
-                        <label><strong>Generate OFD 025
-                                Intradepartmental Communication</strong>-Email to <a
-                                    href="omafaccident_ofd25@cityofomaha.org"> omafaccident_ofd25@cityofomaha
-                                .org </a>
-                        </label>
+                        {{Form::label('Checkbox5','Generate OFD 025 Intradepartmental Communicatio-Email to omafaccident_ofd25@cityofomaha.org')}}
                     </div>
                 </div>
             </div>
