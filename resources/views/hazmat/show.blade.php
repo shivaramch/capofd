@@ -308,7 +308,7 @@
         <div class="panel-heading">
             <div class="row">
                 <div class="col-sm-12">
-                    @if($hazmat->primaryidconumber == Auth::user()->id && $hazmat->applicationstatus == 2 ||$hazmat->applicationstatus == 3 ||$hazmat->applicationstatus == 4)
+                    @if($hazmat->primaryidconumber == Auth::user()->id && $hazmat->applicationstatus == 7)
                         <div class="col-sm-12 panel-heading" align="center">
                             <a href="{{ url('/hazmat/'.$hazmat->ofd6cid.'/Approve') }}"
                                class="btn btn-success">Approve</a>

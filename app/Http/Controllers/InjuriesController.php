@@ -22,7 +22,7 @@ class InjuriesController extends Controller
     public function Approve($id)
     {
 
-        $injury = DB::table('injuries')->where('ofd6ID', $id)->first();
+        $injury = DB::table('injuries')->where('ofd6id', $id)->first();
         $formname = "injuries";
 
         $rawlink = request()->headers->get('referer');
@@ -102,7 +102,7 @@ class InjuriesController extends Controller
     public function Reject($id)
     {
 
-        $injury = DB::table('injuries')->where('ofd6ID', $id)->first();
+        $injury = DB::table('injuries')->where('ofd6id', $id)->first();
 
         $formname = "injuries";
 
