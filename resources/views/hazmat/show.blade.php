@@ -267,16 +267,17 @@
                             <label>If an employee receives an injury or illness from this incident,
                                 the employee shall complete an OFD6 and designate whether treatment is being
                                 requested in the OFD-25 IOD.</label>
+
+                            {{--{!! Form::text('exposurehazmat', old('exposurehazmat'), ['disabled'], array('class'=>'form-control'))!!}--}}
+                            {{--<p class="help-block"></p>--}}
+                            {{--@if($errors->has('exposurehazmat'))--}}
+                            {{--<p class="help-block">--}}
+                            {{--{{ $errors->first('exposurehazmat') }}--}}
+                            {{--</p>--}}
+                            {{--@endif--}}
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
-        <div class="col-md-12">
-            <div class="form-group">
-                {{Form::label('exposureinjury','Do you have any symptoms of illness or injury and require
-                   treatment? (In case of Injury, please fill OFD - 6 IOD Application)  :  ')}}
-                <strong> {{ $hazmat->exposureinjury}} </strong>
             </div>
         </div>
     @else
@@ -294,24 +295,120 @@
             </div>
         </div>
     @endif
-    {!! Form::close() !!}
 
+    <div class="col-sm-12 panel-heading" align="center">
+        <div class="btn-bottom ">
+            <a href="{{ route('hazmat.index') }}" class="btn btn-default">Return</a>
+        </div>
+    </div>
+
+    </div>
+    {!! Form::close() !!}
     <div class="panel panel-default">
         <div class="panel-heading">
             <div class="row">
                 <div class="col-sm-12">
-                    @if($hazmat->primaryidconumber == Auth::user()->id && $hazmat->applicationstatus == 2 ||$hazmat->applicationstatus == 3 ||$hazmat->applicationstatus == 4)
+                    @if($hazmat->primaryidconumber == Auth::user()->id && $hazmat->applicationstatus == 7)
                         <div class="col-sm-12 panel-heading" align="center">
-                            <a href="{{ url('/hazmat/'. $hazmat->ofd6cid.'/Approve') }}"
+                            <a href="{{ url('/hazmat/'.$hazmat->ofd6cid.'/Approve') }}"
                                class="btn btn-success">Approve</a>
-                            <a href="{{ url('/hazmat/'. $hazmat->ofd6cid.'/Reject') }}"
+                            <a href="{{ url('/hazmat/'.$hazmat->ofd6cid.'/Reject') }}"
                                class="btn btn-danger">Reject</a>
                         </div>
                     @endif
                 </div>
             </div>
         </div>
+
+        @if($hazmat->primaryidconumber == Auth::user()->id ||
+        Auth::user()->roleid == 1)
+            <div class="panel-body">
+                <div class="titleBox">
+                    <label>Comments </label>
+                </div>
+                {!! Form::open(['method' => 'POST', 'route' => ['comments.store'],]) !!}
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="form-group">
+                            <div class="form-group" style="width:100%; position:relative">
+                                {{ Form::textarea('comment', null, ['class' => 'form-control', 'placeholder' => 'Add your comment', 'rows' => '4']) }}
+                            </div>
+                            {{ Form::hidden('applicationtype', '6C') }}
+                            {{ Form::hidden('applicationid', $hazmat->ofd6cid) }}
+                            {{ Form::checkbox('isvisible', 1, null, ['id' => 'daybook', 'class'=>'className']) }}
+                            <label><strong>
+                                    Visible to applicant</strong></label>
+                            <div class="form-group">
+                                {{ Form::submit('Post Comment', array('class' => 'btn btn-block btn-primary' , 'style' => 'width:220px')) }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {!! form::close() !!}
+                @endif
+
+                <div class="actionBox">
+                    <ul class="commentList">
+                        @if (!empty($comments))
+                            @foreach ($comments as $cm)
+                                @if(($cm->applicationid == $hazmat->ofd6cid && $cm->applicationtype == '6C')&&
+                                (($hazmat->employeeid == Auth::user()->id && $cm->isvisible == 1) ||
+                                $hazmat->primaryidconumber == Auth::user()->id ||
+                                Auth::user()->roleid == 1))
+                                    <div class="col-sm-8">
+                                        <div class="panel panel-white post panel-shadow">
+                                            <div class="post-heading">
+                                                <div class="pull-left meta">
+                                                    <div class="title h5">
+                                                        @foreach ($users as $user)
+                                                            @if($user->id == $cm->createdby )
+
+                                                                <b><i class="fa fa-user"></i> {{$user->name}}
+                                                                </b>
+                                                            @endif
+                                                        @endforeach
+                                                        made a Comment.
+                                                    </div>
+                                                    <time class="comment-date text-muted time"
+                                                          datetime="{{$cm->created_at}}"><i
+                                                                class="fa fa-clock-o"></i> {{$cm->created_at}}
+                                                    </time>
+                                                </div>
+                                            </div>
+                                            <div class="post-description">
+                                                <p>{{$cm->comment}}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                @endif
+                            @endforeach
+                        @endif
+                    </ul>
+                </div>
+            </div>
     </div>
 
 @stop
 
+@section('javascript')
+
+    <script src="{{ ('js/extensions/cookie') }}/bootstrap-table-cookie.js"></script>
+    <script src="{{ ('js/extensions/mobile') }}/bootstrap-table-mobile.js"></script>
+
+    <script src="{{ ('js/export') }}/bootstrap-table-export.js"></script>
+    <script src="{{ ('js/export') }}/tableExport.js"></script>
+    <script src="{{ ('js/export') }}/jquery.base64.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("input[name$='exposure']").click(function () {
+                var test = $(this).val();
+
+                $("div.desc").hide();
+                $("#Exposure" + test).show();
+            });
+        });
+    </script>
+    </div>
+
+@endsection

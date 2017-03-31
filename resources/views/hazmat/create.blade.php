@@ -197,7 +197,7 @@
             <div class="col-sm-12 form-group">
                 <div class="form-group">
                     {{ Form::checkbox('checkbox1', 1, null, ['id'=>'checkbox1', 'class' => 'className' ]) }}
-                    {{Form::label('Checkbox1','Fill out OFD-025 Hazmat Exposure Report form')}}
+                    {{Form::label('checkbox1','Fill out OFD-025 Hazmat Exposure Report form')}}
                 </div>
                 {{--}}  <label class="col-sm-4">
                       <strong>Fill out OFD-025 Hazmat Exposure Report form</strong>
@@ -225,7 +225,7 @@
             <div class="col-sm-12 form-group">
                 <div class="form-group">
                     {{ Form::checkbox('checkbox2', 1, null, ['id'=>'checkbox2', 'class' => 'className' ]) }}
-                    {{Form::label('Checkbox2','Miscellaneous Documents')}}
+                    {{Form::label('checkbox2','Miscellaneous Documents')}}
                 </div>
                 <div class="col-sm-12 form-group well well-sm">
                     <div class="col-sm-4">

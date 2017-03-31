@@ -157,8 +157,8 @@
                 <div class="col-sm-4 form-group">
                     {!! Form::label('frmsincidentnum', 'FRMS Incident #', ['class' => 'col-sm-4 control-label']) !!}
                     <div class="col-sm-6 ">
-					{!! Form::text('frmsincidentnum12', old('frmsincidentnum12'), array('id'=>'frmsincidentnum12', 'class' => 'form-control','placeholder'=>'Enter FRMS Number'))!!}
-                        {!! Form::text('frmsincidentnum', old('frmsincidentnum'), array('id'=>'frmsincidentnum', 'class' => 'form-control','placeholder'=>'Enter FRMS Number', 'style'=>'display:none;'))!!}
+					{!! Form::text('frmsincidentnum12', old('frmsincidentnum12'), array('id'=>'text1', 'class' => 'form-control','placeholder'=>'Enter FRMS Number'))!!}
+                        {!! Form::text('frmsincidentnum', old('frmsincidentnum'), array('id'=>'text2', 'class' => 'form-control','placeholder'=>'Enter FRMS Number', 'style'=>'display:none;'))!!}
                         <p class="help-block"></p>
                         @if($errors->has('frmsincidentnum'))
                             <p class="help-block">
@@ -234,8 +234,10 @@
         <div class="row">
             <div class="col-sm-12 form-group">
                 <div class="form-group">
-                    {{ Form::checkbox('checkbox1', 1, null, ['id'=>'corvelAbilityReport', 'class' => 'className' ]) }}
-                    {{Form::label('Checkbox1','CorVel Work Ability Report Form  - Only if seeking medical attention. Complete "Employee Section" and sign at bottom.')}}
+                    {{ Form::checkbox('checkbox1', 1, null, ['id' => 'corvelAbilityReport', 'class' => 'className' ]) }}
+                    {{Form::label('corvelAbilityReport','CorVel Work Ability Report Form  - Only if seeking medical attention. Complete "Employee Section" and sign at bottom.')}}
+					
+					
                 </div>
             </div>
             <div class="col-sm-12 form-group well well-sm">
@@ -264,7 +266,7 @@
             <div class="col-sm-12 form-group">
                 <div class="form-group">
                     {{ Form::checkbox('checkbox2', 1, null, ['id'=>'investigationReport', 'class' => 'className' ]) }}
-                    {{Form::label('Checkbox2','Investigation Report for
+                    {{Form::label('investigationReport','Investigation Report for
                     Occupational Injury or Illness- Both employee and supervisor must complete and sign.')}}
                 </div>
             </div>
@@ -297,7 +299,7 @@
             <div class="col-sm-12 form-group">
                 <div class="form-group">
                     {{ Form::checkbox('checkbox3', 1, null, ['id'=>'witnessStatement', 'class' => 'className' ]) }}
-                    {{Form::label('Checkbox3','Statement of Witness of Accident')}}
+                    {{Form::label('witnessStatement','Statement of Witness of Accident')}}
                 </div>
             </div>
             <div class="col-sm-12 form-group well well-sm">
@@ -326,7 +328,7 @@
             <div class="col-sm-12 form-group">
                 <div class="form-group">
                     {{ Form::checkbox('checkbox4', 1, null, ['id'=>'employeeChoice', 'class' => 'className' ]) }}
-                    {{Form::label('Checkbox4','Employees Choice of Physician or Doctor Form- Two signatures required - both section A & B.')}}
+                    {{Form::label('employeeChoice','Employees Choice of Physician or Doctor Form- Two signatures required - both section A & B.')}}
                 </div>
             </div>
 
@@ -359,7 +361,7 @@
             <div class="col-sm-12 form-group">
                 <div class="form-group">
                     {{ Form::checkbox('checkbox5', 1, null, ['id'=>'ofd25', 'class' => 'className' ]) }}
-                    {{Form::label('Checkbox5','OFD - 25 Injury on Job- Send an attachment electronically to OmafIOD@cityofomaha.org')}}
+                    {{Form::label('ofd25','OFD - 25 Injury on Job- Send an attachment electronically to OmafIOD@cityofomaha.org')}}
                 </div>
             </div>
             <div class="col-sm-12 form-group well well-sm">
@@ -388,7 +390,7 @@
             <div class="col-sm-12 form-group">
                 <div class="form-group">
                     {{ Form::checkbox('checkbox6', 1, null, ['id'=>'miscDocs', 'class' => 'className' ]) }}
-                    {{Form::label('Checkbox6','Miscellaneous Documents')}}
+                    {{Form::label('miscDocs','Miscellaneous Documents')}}
                 </div>
             </div>
             <div class="col-sm-12 form-group well well-sm">
@@ -411,9 +413,9 @@
             <div class="col-sm-12">
                 <div class="form-group">
                     {{ Form::checkbox('documentworkforce', 1, null, ['id' => 'documentworkforce', 'class'=>'className']) }}
-                    <label><strong>Document IOD in
-                            Workforce
-                            - Only if seeking medical attention.</strong></label>
+                                        {{Form::label('documentworkforce','Document IOD in Workforce - Only if seeking medical attention.')}}
+
+					
                 </div>
             </div>
         </div>
@@ -421,8 +423,8 @@
             <div class="col-sm-12">
                 <div class="form-group">
                     {{ Form::checkbox('documentoperationalday', 1, null, ['id' => 'documentoperationalday', 'class'=>'className']) }}
-                    <label><strong>Document in Operational Day
-                            Book and Personnel Record</strong></label>
+					{{Form::label('documentoperationalday','Document in Operational Day Book and Personnel Record')}}
+                    
                 </div>
             </div>
         </div>
@@ -449,9 +451,9 @@
             <div class="col-sm-12">
                 <div class="form-group">
                     {{ Form::checkbox('policeofficercompletesign', 1, null, ['id' => 'policeofficercompletesign', 'class'=>'className']) }}
-                    <label><strong>Have Police Supervisor Complete and Sign
-                            Supervisor section on Investigation Report
-                            and Witness Statement</strong></label>
+                    {{Form::label('policeofficercompletesign','Have Police Supervisor Complete and Sign Supervisor section on Investigation Report and Witness Statement')}}
+					
+					
                 </div>
             </div>
         </div>
@@ -459,8 +461,8 @@
             <div class="col-sm-12">
                 <div class="form-group">
                     {{ Form::checkbox('callsupervisor', 1, null, ['id' => 'callsupervisor', 'class'=>'className']) }}
-                    <label><strong>Call Fire Supervisor or SWD B/C immediately
-                            and notify CorVel by phone</strong></label>
+					{{Form::label('callsupervisor','Call Fire Supervisor or SWD B/C immediately and notify CorVel by phone')}}
+                    
                 </div>
             </div>
         </div>

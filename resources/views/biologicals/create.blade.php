@@ -288,7 +288,7 @@
                 </div>
                 <div class="col-sm-12">
                     <div class="form-group">
-                        {{ Form::checkbox('truebagtag', 1, null, ['id' => 'truebagtag', 'class'=>'className']) }}
+                        {{ Form::checkbox('truebagtag', 1, null,  ['id' => 'truebagtag', 'class'=>'className']) }}
                         {{Form::label('truebagtag','Bag & Tag clothing if applicable - send email to PSS with pick-up location ')}}
 
                     </div>

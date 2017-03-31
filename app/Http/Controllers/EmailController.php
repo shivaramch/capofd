@@ -67,7 +67,7 @@ class EmailController extends Controller
             //Get the firefighter information and add his email in list
             //FFEmail func->sets person name and email and also gives sets email for firefighter
             //Use FFEmail only when the form status is approved or rejected
-            if ($appstatus == 5) {
+            if ($currentformstatus  == "Rejected") {
 
 
                 list($FFemails,$FFid,$FFName,$templateform)=(new EmailController)->FireFEmail($request,$formname);
@@ -78,7 +78,7 @@ class EmailController extends Controller
                 (new EmailController)->SuperAdminEmail($request,$templateform,$link,$appstatus,$FFName,$FFid);
             }
 
-            if ($appstatus == 6) {
+            if ($currentformstatus  == "Approved") {
 
 
                 list($FFemails,$FFid,$FFName,$templateform)=(new EmailController)->FireFEmail($request,$formname);
@@ -90,7 +90,7 @@ class EmailController extends Controller
             }
 
 
-            if($appstatus==2){
+            if($currentformstatus  =="Application under Captain"){
                 $extracontent="Please review carefully as part of approval process and make a decision.";
                 list($FFemails,$FFid,$FFName,$templateform)=(new EmailController)->FireFEmail($request,$formname);
                 list($captainemail,$captainname)=(new EmailController)->CapApproval($request);
@@ -98,7 +98,7 @@ class EmailController extends Controller
                (new EmailController)->SuperAdminEmail($request,$templateform,$link,$appstatus,$FFName,$FFid);
             }
 
-            if($appstatus==3){
+            if($currentformstatus =="Application under Batallion Chief"){
                 $extracontent="Please review carefully as part of approval process and make a decision.";
                 list($FFemails,$FFid,$FFName,$templateform)=(new EmailController)->FireFEmail($request,$formname);
                 list($BCemail,$BCname)=(new EmailController)->BCApproval($request);
@@ -107,7 +107,7 @@ class EmailController extends Controller
                (new EmailController)->SuperAdminEmail($request,$templateform,$link,$appstatus,$FFName,$FFid);
             }
 
-            if($appstatus==4){
+            if($currentformstatus=="Application under Assistant Chief"){
                 $extracontent="Please review carefully as part of approval process and make a decision.";
                 list($FFemails,$FFid,$FFName,$templateform)=(new EmailController)->FireFEmail($request,$formname);
                   list($ACemail,$ACname)=(new EmailController)->ACApproval($request);
@@ -123,7 +123,7 @@ class EmailController extends Controller
 
         if ($formname == "biologicals" || $formname == "hazmat") {
 //primaryidco
-            if($appstatus==2){
+            if($currentformstatus =="Application under Primary IDCO"){
                 $extracontent="Please review carefully as part of approval process and make a decision.";
                 list($FFemails,$FFid,$FFName,$templateform)=(new EmailController)->FireFEmail($request,$formname);
 
@@ -132,7 +132,7 @@ class EmailController extends Controller
                 (new EmailController)->SuperAdminEmail($request,$templateform,$link,$appstatus,$FFName,$FFid);
             }
 
-            if ($appstatus == 6) {
+            if ($currentformstatus == "Approved") {
 
 
                 list($FFemails,$FFid,$FFName,$templateform)=(new EmailController)->FireFEmail($request,$formname);
@@ -141,7 +141,7 @@ class EmailController extends Controller
                 (new EmailController)->SuperAdminEmail($request,$templateform,$link,$appstatus,$FFName,$FFid);
             }
 
-            if ($appstatus == 5) {
+            if ($currentformstatus == "Rejected") {
 
 
                 list($FFemails,$FFid,$FFName,$templateform)=(new EmailController)->FireFEmail($request,$formname);
@@ -168,7 +168,7 @@ class EmailController extends Controller
 
 
         //
-
+        $currentformstatus = DB::table('status')->where('statusid', $formstatus)->value('statustype');
         $smtpAddress = 'smtp.gmail.com';
         $port = 587;
         $encryption = 'tls';
@@ -197,7 +197,7 @@ class EmailController extends Controller
                 $view = View::make('email_template', [
                     'message'=>$templateform.'Report Tracking Document Submitted',
                     'link'=>$link,'firefighter'=>str_replace (array('["', '"]'), '', $personname),
-                    'formname'=>$templateform,'officername'=>$testname,'content'=>$extracontent,'personid'=>$personid,'appstatus'=>$formstatus,'personname'=>$personname,'superadmin'=>'no'
+                    'formname'=>$templateform,'officername'=>$testname,'content'=>$extracontent,'personid'=>$personid,'appstatus'=>$formstatus,'personname'=>$personname,'superadmin'=>'no' ,'statustype'=> $currentformstatus
                 ]);
 
                 $html = $view->render();
@@ -300,6 +300,9 @@ class EmailController extends Controller
 //(new EmailController)->SuperAdminEmail($request,$formname,$link,$appstatus);
     public function SuperAdminEmail($SAdminrequest,$templateform,$link,$formstatus,$personname,$personid)
     {
+
+     var_dump($formstatus.$templateform.$templateform.$personname.$personid);
+
         $currentformstatus = DB::table('status')->where('statusid', $formstatus)->value('statustype');
         $superAdmin = new Collection();
         $superAdminEmails=new Collection();

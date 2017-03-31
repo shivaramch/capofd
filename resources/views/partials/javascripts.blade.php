@@ -44,21 +44,36 @@ $(function addZero() {
     $('#text1').change( function () {
         var text1 = $('#text1');
         var text2 = $('#text2');
-        var i = document.getElementById("text1");
-        var len = i.value.length;
         
         
-        if($('#text1').val().charAt(0) == 0 && $('#text1').val().charAt(1) == 0)
+        
+        if($('#text1').val().length == 7)
         {
-        text2.val(text1.val());   
+        text2.val((text1.val()));   
         }
-		else if($('#text1').val().charAt(0) == 0 && $('#text1').val().charAt(1) != 0)
+		else if($('#text1').val().length == 6)
         {
-        text2.val("0" + text1.val());   
+        text2.val('0' + text1.val());   
         }
-        else
+       else if($('#text1').val().length == 5)
         {
         text2.val('00' + text1.val());   
+        }
+		else if($('#text1').val().length == 4)
+        {
+        text2.val('000' + text1.val());   
+        }
+		else if($('#text1').val().length == 3)
+		{
+        text2.val('0000' + text1.val());   
+        }
+		else if($('#text1').val().length == 2)
+        {
+        text2.val('00000' + text1.val());   
+        }
+		else if($('#text1').val().length == 1)
+        {
+        text2.val('000000' + text1.val());   
         }
     });
 });
@@ -78,7 +93,8 @@ $(function addZero() {
         $(document).ready(function () {
             $(':file').on('fileselect', function (event, numFiles, label) {
 
-                var input = $(this).parents('.input-group').find(':text'),
+                var input = $(this).parents
+				('.input-group').find(':text'),
                     log = numFiles > 1 ? numFiles + ' files selected' : label;
 
                 if (input.length) {
