@@ -10,6 +10,7 @@
         <li class="active">New Form</li>
     </ol>
 @endsection
+
 @section('content')
     {!! Form::open(['method' => 'POST', 'url' => '/accidents/save', 'files' => true,]) !!}
     <input type="hidden" name="_token" value="{!!  'csrf_token()' !!}">
@@ -33,14 +34,8 @@
                                 <h3><strong>Vehicle Accident Report Tracking Document (OFD-6A)</strong></h3>
                             </div>
                         </div>
-                        <div class="col-md-2">
-                            <h5><i><strong>Issue Date: 9/1/16</strong></i></h5>
-                        </div>
-                        <div class="col-md-2">
-                            <h5><i><strong>Effective Date: 9/1/16</strong></i></h5>
-                        </div>
                         <div class="col-md-12">
-                            <h5><i><strong>Amends, Replaces, Rescinds: Replaces OFD-6A (July 2016) </strong></i></h5>
+                            <h6><i><strong>Used for future tracking purposes only</strong></i></h6>
                         </div>
                     </div>
                 </div>
@@ -52,7 +47,7 @@
                     <div class="col-md-12">
                         <div class="alert alert-danger" align="center">
                             <strong>
-                                COMPLETE ALL FORMS AND FORWARD VIA CHAIN-OF-COMMAND WITHIN 48 HOURS
+                                COMPLETE ALL FORMS AND FORWARD VIA CHAIN-OF-COMMAND WITHIN 24 HOURS
                             </strong>
                         </div>
                     </div>
@@ -62,7 +57,7 @@
                         {!! Form::label('accidentdate', 'Date of Accident:',array('style'=>'padding-top:7px;','class'=> 'col-sm-4 control-label') )!!}
                         <div class="col-sm-6 ">
                             {!! Form::text('accidentdate', old('accidentdate'), array('class' => 'form-control datepicker', 'placeholder' => 'MM-DD-YYYY'))!!}
-                            
+
                             <p class="help-block"></p>
                             @if($errors->has('accidentdate'))
                                 <p class="help-block">
@@ -101,7 +96,7 @@
                         {!! Form::label('frmsincidentnum', 'FRMS Incident #', array('style'=>'padding-top:7px;','class' => 'col-sm-4 control-label')) !!}
                         <div class="col-sm-6 ">
                             {!! Form::text('frmsincidentnum12', old('frmsincidentnum12'), array('id'=>'text1', 'class' => 'form-control','placeholder'=>'Enter FRMS Number'))!!}
-                        {!! Form::text('frmsincidentnum', old('frmsincidentnum'), array('id'=>'text2', 'class' => 'form-control','placeholder'=>'Enter FRMS Number', 'style'=>'display:none;'))!!}
+                            {!! Form::text('frmsincidentnum', old('frmsincidentnum'), array('id'=>'text2', 'class' => 'form-control','placeholder'=>'Enter FRMS Number', 'style'=>'display:none;'))!!}
                             <p class="help-block"></p>
                             @if($errors->has('frmsincidentnum'))
                                 <p class="help-block">
@@ -174,7 +169,7 @@
                     </div>
                 </div>
                 <div class="alert alert-danger" align="center">
-                   
+
                     <div class="row">
                         <div class="col-md-12" style="text-align:left">
                             <strong>
@@ -189,7 +184,7 @@
                                         vehicles involved in an accident OR property damage whether on public streets,
                                         private property, or at the Fire Station.
                                     </li>
-                                    <li>DR41 is only submitted to the State if damage is over $1000.00</li>
+                                    <li>DR41 is also submitted to the State if damage is over $1000.00</li>
                                 </ol>
                             </strong>
                         </div>
@@ -198,6 +193,7 @@
             </div>
         </div>
     </div>
+
     <div class="panel panel-default">
         <div class="panel-heading">
             <div class="row">
@@ -211,7 +207,7 @@
                 <div class="col-sm-12">
                     <div class="form-group">
                         {{ Form::checkbox('commemail', 1, null, ['id' => 'commemail', 'class'=>'className']) }}
-                        {{Form::label('Checkbox5','Generate OFD 025 Intradepartmental Communicatio-Email to omafaccident_ofd25@cityofomaha.org')}}
+                        {{Form::label('commemail','Generate OFD 025 Intradepartmental Communicatio-Email to omafaccident_ofd25@cityofomaha.org')}}
                     </div>
                 </div>
             </div>
@@ -219,7 +215,7 @@
                 <div class="col-sm-12 form-group">
                     <div class="form-group">
                         {{ Form::checkbox('checkbox1', 1, null, ['id'=>'checkbox1', 'class' => 'className' ]) }}
-                        {{Form::label('Checkbox1','Complete LRS 101 City of Omaha Accident Report-Include RB#, Officer Name, Badge#')}}
+                        {{Form::label('checkbox1','Complete LRS 101 City of Omaha Accident Report-Include RB#, Officer Name, Badge#')}}
                     </div>
                 </div>
                 {{--}} <label class="checkbox-inline col-sm-12">
@@ -251,7 +247,7 @@
                 <div class="col-sm-12 form-group">
                     <div class="form-group">
                         {{ Form::checkbox('checkbox2', 1, null, ['id'=>'checkbox2', 'class' => 'className' ]) }}
-                        {{Form::label('Checkbox2','Complete OFD 295
+                        {{Form::label('checkbox2','Complete OFD 295
                             Vehicle Accident Witness Statement -This Report is for civilian statements
                         only')}}
                     </div>
@@ -284,7 +280,7 @@
                 <div class="col-sm-12 form-group">
                     <div class="form-group">
                         {{ Form::checkbox('checkbox3', 1, null, ['id'=>'checkbox3', 'class' => 'className' ]) }}
-                        {{Form::label('Checkbox3','Complete OFD 25a Accident
+                        {{Form::label('checkbox3','Complete OFD 25a Accident
                         Intradepartmental Communication - Driver')}}
                     </div>
                 </div>
@@ -315,7 +311,7 @@
                 <div class="col-sm-12 form-group">
                     <div class="form-group">
                         {{ Form::checkbox('checkbox4', 1, null, ['id'=>'checkbox4', 'class' => 'className' ]) }}
-                        {{Form::label('Checkbox4','Complete OFD 25b Accident
+                        {{Form::label('checkbox4','Complete OFD 25b Accident
                         Intradepartmental Communication - Supervisor')}}
                     </div>
                 </div>
@@ -346,7 +342,7 @@
                 <div class="col-sm-12 form-group">
                     <div class="form-group">
                         {{ Form::checkbox('checkbox5', 1, null, ['id'=>'checkbox5', 'class' => 'className' ]) }}
-                        {{Form::label('Checkbox5','Complete OFD 25b Accident
+                        {{Form::label('checkbox5','Complete OFD 25b Accident
                         Intradepartmental Communication - Other Personnel')}}
                     </div>
                 </div>
@@ -377,7 +373,7 @@
                 <div class="col-sm-12 form-group">
                     <div class="form-group">
                         {{ Form::checkbox('checkbox6', 1, null, ['id'=>'checkbox6', 'class' => 'className' ]) }}
-                        {{Form::label('Checkbox6','Complete OFD 31-OFD
+                        {{Form::label('checkbox6','Complete OFD 31-OFD
                             Damaged, Lost, Stolen Equipment Report')}}
                     </div>
                 </div>
@@ -465,7 +461,7 @@
                 </div>
             </div>
             <div class="row">
-             <div class="col-sm-12 form-group">
+                <div class="col-sm-12 form-group">
                     <div class="form-group">
                         {{ Form::checkbox('checkbox9', 1, null, ['id'=>'checkbox9', 'class' => 'className' ]) }}
                         {{Form::label('checkbox9','Miscellaneous Documents')}}
@@ -490,20 +486,20 @@
             <div class="row">
                 <div class="col-sm-12 form-group">
                     {{ Form::checkbox('calllaw', 1, null, ['id' => 'calllaw', 'class'=>'className']) }}
-                    <label><strong>
-                            Call Law Department
-                            Investigator</strong>- Call 444-5131- Request report be faxed to
+					{{Form::label('calllaw','Call Law Department
+                            Investigator - Call 444-5131- Request report be faxed to
                         SWD fax # 444-6378. You can
                         leave a message with rig # address of incident, date, time and
-                        RB#</label>
+                        RB#')}}
+                    
                 </div>
             </div>
             <div class="row">
                 <div class="col-sm-12 form-group">
                     {{ Form::checkbox('daybook', 1, null, ['id' => 'daybook', 'class'=>'className']) }}
-                    <label><strong>
-                            Enter in Company Day
-                            Book</strong></label>
+                    {{Form::label('daybook','Enter in Company Day
+                            Book')}}
+					
                 </div>
             </div>
             <br>
@@ -515,7 +511,6 @@
 
             <a href="{{ route('accidents.index') }}" class="btn btn-danger">Cancel</a>
             <br>
-
         </div>
     </div>
 

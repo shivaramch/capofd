@@ -313,45 +313,30 @@
                 <div class="form-horizontal">
                     <div class="row">
                         <div class="col-md-12">
-
-                       {{--}}     <div class="alert alert-danger" align="left">
-                                {{Form::label('exposureInjury','Do you have any symptoms of illness or injury and require
-                                   treatment? (In case of Injury, please fill OFD - 6 IOD Application)     ')}}
-
-                                {!! Form::select('exposurehazmat',[
-                                  'Yes' => 'Yes',
-                                  'No' => 'No'],old('exposurehazmat'),
-                                array('class' => 'form-control'))!!}
-                                <p class="help-block"></p>
-                                @if($errors->has('exposurehazmat'))
-                                    <p class="help-block">
-                                        {{ $errors->first('exposurehazmat') }}
-                                    </p>
-                                @endif --}}
-
-                                <div class="alert alert-danger form-group" align="left">
-                                    <div class="col-md-9">
-                                        <label>If an employee receives an injury or illness from this incident,
-                                            the employee shall complete an OFD6 and designate whether treatment is being
-                                            requested in the OFD-25 IOD.</label>
-                                    </div>
-                                    {{--<div class="col-md-1">--}}
-                                    {{--{!! Form::select('exposurehazmat',--}}
-                                    {{--['Yes' => 'Yes',--}}
-                                    {{--'No' => 'No'], old('exposurehazmat'),--}}
-                                    {{--['class' => 'form-control']) !!}--}}
-                                    {{--<p class="help-block"></p>--}}
-                                    {{--@if($errors->has('exposurehazmat'))--}}
-                                    {{--<p class="help-block">--}}
-                                    {{--{{ $errors->first('exposurehazmat') }}--}}
-                                    {{--</p>--}}
-                                    {{--@endif--}}
-                                    {{--</div>--}}
-
-                                </div>
+                            <div class="alert alert-danger" align="center">
+                                <label>If an employee receives an injury or illness from this incident,
+                                    the employee shall complete an OFD6 and designate whether treatment is being
+                                    requested in the OFD-25 IOD.</label>
                             </div>
                         </div>
                     </div>
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div class="form-group">
+                    {{Form::label('exposureinjury','Do you have any symptoms of illness or injury and require
+                       treatment?')}}
+                    {!! Form::select('exposureinjury',[
+                      'Yes' => 'Yes',
+                      'No' => 'No'],null,
+                    ['placeholder' => 'Choose one'],old('exposureinjury'),'required',
+                    array('class' => 'form-control'))!!}
+                    <p class="help-block"></p>
+                    @if($errors->has('exposureinjury'))
+                        <p class="help-block">
+                            {{ $errors->first('exposureinjury') }}
+                        </p>
+                    @endif
                 </div>
             </div>
 
@@ -359,6 +344,7 @@
                 <div class="col-sm-12">
                     <label class="col-sm-5"></label>
                     <div class="btn-bottom">
+                        {!! Form::submit('Save as Draft',['class' => 'btn btn-primary','name' => 'partialSave']) !!}
                         <button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal">
                             Save
                         </button>

@@ -24,7 +24,7 @@ class UpdateInjuriesRequest extends FormRequest
     public function rules()
     {
         return [
-            'reportnum' => 'required|integer:injury,reportnum,'. $this->route('injury'),
+            
             'injurydate' => 'required|date:injury,injurydate,'. $this->route('injury'),
             'injuredemployeename' => 'required|string:injury,injuredemployeename,'. $this->route('injury'),
             'injuredemployeeid' => 'required|integer:injury,injuredemployeeid,' . $this->route('injury'),

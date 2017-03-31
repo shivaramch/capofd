@@ -669,8 +669,6 @@
                     <a href="{{ url('/injuries/'.$injury->ofd6id .'/Reject') }}"
                        class="btn btn-success">Yes</a>
                     <button type="button" class=" btn btn-danger" data-dismiss="modal" aria-label="">No</button>
-
-
                 </div>
 
             </div>

@@ -192,7 +192,7 @@ class InjuriesController extends Controller
     public function store(Request $request)
     {
 
-        $this->validate($request, ['reportnum' => 'required|integer:injury,reportnum,',
+        $this->validate($request, [
             'injurydate' => 'required|date:injury,injurydate,',
             'injuredemployeename' => 'required|alpha|string:injuries,injuredemployeename,',
             'injuredemployeeid' => 'required|integer:injury,injuredemployeeid,',

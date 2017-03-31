@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Http\Controllers;
 use App\Biological;
 use App\Attachment;
@@ -6,11 +7,12 @@ use App\Http\Requests\UpdateBiologicalsRequest;
 use App\Http\Requests\StoreBiologicalsRequest;
 use App\Http\Controllers\Traits\FileUploadTrait;
 use App\Http\Controllers\Traits\FormFileUploadTrait;
-use Illuminate\Support\Facades\DB;
+
 use App\User;
 use App\Comment;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Input;
 
 class BiologicalsController extends Controller
@@ -72,7 +74,7 @@ class BiologicalsController extends Controller
 
             $Biological->save();
 
-            (new EmailController)->Email($biological, $rawlink,$formname,$statusid);
+            (new EmailController)->Email($biological, $rawlink, $formname, $statusid);
         }
 
         return redirect()->route('biologicals.index');
@@ -142,10 +144,10 @@ class BiologicalsController extends Controller
             'shift' => 'required|string:biological,shift',
             'primaryidconumber' => 'required|integer:biological,primaryidconumber',
             'epcrincidentnum' => 'required|numeric:biological,epcrincidentnum',
-            'frmsincidentnum' => 'required|numeric:biological,frmsincidentnumber',
+            'frmsincidentnum' => 'required|string:biological,frmsincidentnumber',
             //'exposureinjury'=>'required|string:biological,exposureinjury',
-            'exposure'=>'required|string:biological,exposure',
-            ]);
+            'exposure' => 'required|string:biological,exposure',
+        ]);
 
         $statusid=DB::table('status')->where('statustype','Application under Primary IDCO ')->value('statusid');
         $request->offsetSet('applicationstatus',$statusid);
@@ -180,11 +182,19 @@ class BiologicalsController extends Controller
         //show history code start
         //below one line code is for storing all history related to the $id in variable, which is to be used to display in show page.
         //show history code end
-        return view('biologicals.show', compact('biological', 'attachments','comments', 'users'));
+        if ($biological->employeeid == Auth::user()->id ||
+            ($biological->primaryidconumber == Auth::user()->id && $biological->applicationstatus == 2) ||
+            Auth::user()->roleid == 1
+        ) {
+            return view('biologicals.show', compact('biological', 'attachments', 'comments', 'users'));
+        }
     }
+
     public function update(UpdateBiologicalsRequest $request, $id)
     {
 
+        $statusidraw = DB::table('status')->where('statustype', 'Application under Captain')->pluck('statusid');
+        $statusid = str_replace(array('[', ']'), '', $statusidraw);
         $statusidraw=DB::table('status')->where('statustype','Application under Primary IDCO ')->pluck('statusid');
         $statusid=str_replace (array('[', ']'), '', $statusidraw);
 
@@ -198,10 +208,10 @@ class BiologicalsController extends Controller
                 'primaryidconumber' => $biological->primaryidconumber,
                 'epcrincidentnum' => $biological->epcrincidentnum,
                 //'todaysdate' => $biological->todaysdate,
-                'exposure'=>$biological->exposure,
+                'exposure' => $biological->exposure,
                 'applicationstatus' => $statusid,
-                'frmsincidentnum'=>$biological->frmsincidentnum,
-                'exposureinjury'=>$biological->exposureinjury]
+                'frmsincidentnum' => $biological->frmsincidentnum,
+                'exposureinjury' => $biological->exposureinjury]
         );
         //end history code
         $request = $this->saveFiles($request);
@@ -209,9 +219,9 @@ class BiologicalsController extends Controller
         $this->BiologicalUpload($request, $id);
         //email notification-start
         $link = $request->url();
-        $formname="biologicals";
-        (new EmailController)->Email($request, $link,$formname,$statusid);
+        $formname = "biologicals";
+        (new EmailController)->Email($request, $link, $formname, $statusid);
         //email notification-end
- //       return redirect()->route('biologicals.index');
+        return redirect()->route('biologicals.index');
     }
 }
