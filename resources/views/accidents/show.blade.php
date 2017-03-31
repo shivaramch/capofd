@@ -9,6 +9,7 @@
         <li class="active">View OFD 6A Form {{ $accident->ofd6aid }}</li>
     </ol>
 @endsection
+
 @section('content')
     {!! Form::model($accident,['method' => 'put']) !!}
     <style>
@@ -191,6 +192,7 @@
             </div>
         </div>
     </div>
+
     <div class="panel panel-default">
         <div class="panel-heading">
             <div class="row">
@@ -588,14 +590,16 @@
     </div>
 
     {!! form::close() !!}
+
     <div class="panel panel-default">
         <div class="panel-body">
+            <div class="titleBox">
+                <label>Comments </label>
+            </div>
             @if($accident->captainid == Auth::user()->id ||
-            $accident->battalionchiefid == Auth::user()->id ||
-            $accident->aconduty == Auth::user()->id || Auth::user()->roleid == 1)
-                <div class="titleBox">
-                    <label>Comments </label>
-                </div>
+        $accident->battalionchiefid == Auth::user()->id ||
+        $accident->aconduty == Auth::user()->id ||
+        Auth::user()->roleid == 1)
                 {!! Form::open(['method' => 'POST', 'route' => ['comments.store'],]) !!}
                 <div class="row">
                     <div class="col-sm-12">
@@ -613,9 +617,10 @@
                                 <div class="col-sm-4">
                                     {{ Form::submit('Post Comment', array('class' => 'btn btn-block btn-primary')) }}
                                 </div>
-                                @if($accident->captainid == Auth::user()->id && $accident->applicationstatus == 2 ||
-                                $accident->battalionchiefid == Auth::user()->id&&$accident->applicationstatus == 3 ||
-                                $accident->aconduty == Auth::user()->id&&$accident->applicationstatus == 4 || Auth::user()->roleid == 1)
+                                @if(($accident->captainid == Auth::user()->id && $accident->applicationstatus == 2) ||
+                                ($accident->battalionchiefid == Auth::user()->id&&$accident->applicationstatus == 3) ||
+                                ($accident->aconduty == Auth::user()->id&&$accident->applicationstatus == 4) ||
+                                Auth::user()->roleid == 1)
                                     <div class="col-sm-4">
                                         <a href="{{ url('/accidents/'.$accident->ofd6aid .'/Approve') }}"
                                            class="btn btn-block btn-success">Approve</a>
@@ -693,10 +698,7 @@
                     <a href="{{ url('/accidents/'.$accident->ofd6aid .'/Reject') }}"
                        class="btn btn-success">Yes</a>
                     <button type="button" class=" btn btn-danger" data-dismiss="modal" aria-label="">No</button>
-
-
                 </div>
-
             </div>
         </div>
     </div>

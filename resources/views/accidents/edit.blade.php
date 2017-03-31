@@ -9,6 +9,7 @@
         <li class="active">Edit OFD 6A Form {{ $accident->ofd6aid }}</li>
     </ol>
 @endsection
+
 @section('content')
     {!! Form::model($accident,['method' => 'PUT', 'route' => ['accidents.update', $accident->ofd6aid], 'files' => true,]) !!}
     <input type="hidden" name="_token" value="{!!  'csrf_token()' !!}">
@@ -27,6 +28,7 @@
             border: 1px solid black;
         }
     </style>
+
     <div class="panel panel-default">
         <div class="panel-heading">
             <div class="jumbotron" style="margin-bottom: 5px; ">
@@ -198,6 +200,7 @@
             </div>
         </div>
     </div>
+
     <div class="panel panel-default">
         <div class="panel-heading">
             <div class="row">
