@@ -177,6 +177,7 @@ class InjuriesController extends Controller
     {
         if (Input::get('store')) {
             $this->store($requestSave);
+            return redirect()->route('injuries.index')->with('message', 'Form Submitted Successfully');
         }
 
         if (Input::get('partialSave')) {
