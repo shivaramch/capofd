@@ -163,25 +163,36 @@
                 </div>
             </div>
         </div>
+        
+        <div class="panel panel-default">
+        <div class="panel-heading">
+            <div><h4 style="padding-left:12px;"><strong>Please Select the Type of Exposure</strong></h4>
+        </div>
+        </div>
+
+         <div class="panel-body"> 
+             <div class="row">
+                 <div class="col-sm-12 form-group"> 
+                 <div class="col-sm-12"> 
+
+                 <div class="bs-example">
+                 <input type="radio" name="group1" value="1" data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
+                <label for="group1">True Exposure</label>
+
+                <input type="radio" name="group2" value="2" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
+                <label for="group2">Contamination</label>
+
+   
+    <div class="panel-group" id="accordion">
         <div class="panel panel-default">
             <div class="panel-heading">
-                <div><h4 style="padding-left:12px;"><strong>Please Select the Type of Exposure</strong></h4>
-                </div>
+                <h4 class="panel-title">
+                   TRUE EXPOSURE
+                </h4>
             </div>
-            <div class="panel-body">
-                <div class="row">
-                    <div class="col-sm-12 form-group">
-                        <div class="col-sm-6">
-                            {{ Form::radio('exposure', 0 , null, ['id'=>'exposure', 'class' => 'className']) }}
-                            {{ Form::label('exposure', 'True Exposure') }}
-
-                            {{ Form::radio('exposure',1 , null, ['id'=>'exposure', 'class' => 'className']) }}
-                            {{ Form::label('exposure', 'Contamination') }}
-                        </div>
-                    </div>
-                </div>
-                <div id="Exposure0" class="desc" style="display: none;">
-                    <div class="col-md-12">
+            <div id="collapseOne" >
+                <div class="panel-body">
+                <div class="col-md-12">
                         <div class="alert alert-danger" align="left">
                             Definition of True Exposure:
                             <ul type="Disc">
@@ -374,10 +385,21 @@
                             {{ Form::checkbox('truedocumentdaybook', 1, null, ['id' => 'truedocumentdaybook', 'class'=>'className']) }}
                             {{Form::label('truedocumentdaybook','Document in Company Day Book and on your Personnel Record')}}
                         </div>
-                    </div>
                 </div>
-                <div id="Exposure1" class="desc" style="display: none;">
+            </div>
+            </div>
+            </div>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4 class="panel-title">
+            CONTAMINATION
+                </h4>
+            </div>
+            <div id="collapseTwo">
+                <div class="panel-body">
                     <div class="col-md-12">
+                    
                         <div class="alert alert-danger" align="left">
                             Contamination might be due to soiling or pollution, as by the introduction of blood
                             or body fluids onto:
