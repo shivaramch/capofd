@@ -238,7 +238,7 @@ class InjuriesController extends Controller
         $comments = Comment::all();
         $users = User::all();
 
-        if (($injury->driverid == Auth::user()->id &&
+        if (($injury->injuredemployeeid == Auth::user()->id &&
                 ($injury->applicationstatus == 1 || $injury->applicationstatus == 5)) ||
             Auth::user()->roleid == 1
         ) {
