@@ -21,8 +21,8 @@
             border: 1px solid black;
         }
     </style>
-
-    @if($hazmat->employeeid == Auth::user()->id || ($hazmat->primaryidconumber == Auth::user()->id && $hazmat->applicationstatus == 2) || Auth::user()->roleid == 1)
+    @if($hazmat->employeeid == Auth::user()->id || ($hazmat->primaryidconumber == Auth::user()->id && $hazmat->applicationstatus ==DB::table('status')->where('statustype','Application under Primary IDCO')->value('statusid')
+) || Auth::user()->roleid == 1)
         <div class="panel panel-default">
             <div class="panel-heading">
                 <div class="jumbotron" style="margin-bottom: 5px; ">
@@ -308,7 +308,7 @@
         <div class="panel-heading">
             <div class="row">
                 <div class="col-sm-12">
-                    @if($hazmat->primaryidconumber == Auth::user()->id && $hazmat->applicationstatus == 7)
+                    @if($hazmat->primaryidconumber == Auth::user()->id && $hazmat->applicationstatus == DB::table('status')->where('statustype','Application under Primary IDCO')->value('statusid'))
                         <div class="col-sm-12 panel-heading" align="center">
                             <a href="{{ url('/hazmat/'.$hazmat->ofd6cid.'/Approve') }}"
                                class="btn btn-success">Approve</a>
