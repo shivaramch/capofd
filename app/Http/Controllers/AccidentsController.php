@@ -20,6 +20,7 @@ class AccidentsController extends EmailController
     use FormFileUploadTrait;
 
 
+
     public function Approve($id)
     {
         $accident = DB::table('accidents')->where('ofd6aid', $id)->first();

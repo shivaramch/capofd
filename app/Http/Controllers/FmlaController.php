@@ -90,7 +90,7 @@ class FmlaController extends Controller
                 'employeeid' => $fmla->employeeid,
 //                'corvelid' => $fmla->corvelid,
 //                'incidentid' => $fmla->incidentid,
-                'incidenttype' => $fmla->incidenttype,
+ //               'incidenttype' => $fmla->incidenttype,
                 'fromdate' => $fmla->fromdate,
                 'todate' => $fmla->todate,
                 //'todaysdate' => $biological->todaysdate,
