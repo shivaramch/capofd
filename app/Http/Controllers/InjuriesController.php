@@ -45,7 +45,7 @@ class InjuriesController extends Controller
             ['ofd6id', '=', $id],
         ])->value('aconduty');
 
-        $currentapplicationstatus = DB::table('injuries')->where('ofd6ID', $id)->value('applicationstatus');
+        $currentapplicationstatus = DB::table('injuries')->where('ofd6id', $id)->value('applicationstatus');
 
         $captainapprovalstatusid = DB::table('status')->where('statustype', 'Application under Captain')->value('statusid');
 
