@@ -67,7 +67,9 @@
                                         <a href="{{ route('injuries.show',[$injury->ofd6id]) }}"
                                            class="btn btn-xs btn-info btn-block"><i
                                                     class="fa fa-eye" aria-hidden="true"></i> VIEW</a>
-                                        @if($injury->applicationstatus == 1 || $injury->applicationstatus == 5)<a
+                                        @if($injury->applicationstatus == DB::table('status')->where('statustype','Draft')->value('statusid')
+|| $injury->applicationstatus == DB::table('status')->where('statustype','Rejected')->value('statusid'))
+                                            <a
                                                 href="{{ route('injuries.edit',[$injury->ofd6id]) }}"
                                                 class="btn btn-xs btn-warning btn-block"><i
                                                     class="fa fa-pencil-square-o"
@@ -108,7 +110,7 @@
                     </thead>
                     <tbody>
                     @foreach($injuries as $injury)
-                        @if($injury->captainid == Auth::user()->id && $injury->applicationstatus == 2)
+                        @if($injury->captainid == Auth::user()->id && $injury->applicationstatus ==   DB::table('status')->where('statustype','Application under Captain')->value('statusid'))
                             <tr>
                                 <td>{{ $injury->ofd6id }}</td>
                                 <td>{{ $injury->injurydate }}</td>
@@ -154,7 +156,8 @@
                     </thead>
                     <tbody>
                     @foreach($injuries as $injury)
-                        @if($injury->battalionchiefid == Auth::user()->id && $injury->applicationstatus == 3)
+                        @if($injury->battalionchiefid == Auth::user()->id && $injury->applicationstatus ==  DB::table('status')->where('statustype','Application under Batallion Chief')->value('statusid')
+)
 
                             <tr>
                                 <td>{{ $injury->ofd6id }}</td>
@@ -200,7 +203,7 @@
                     </thead>
                     <tbody>
                     @foreach($injuries as $injury)
-                        @if($injury->aconduty == Auth::user()->id )
+                        @if($injury->aconduty == Auth::user()->id && $injury->applicationstatus ==DB::table('status')->where('statustype','Application under Assistant Chief')->value('statusid'))
                             <tr>
                                 <td>{{ $injury->ofd6id }}</td>
                                 <td>{{ $injury->injurydate }}</td>

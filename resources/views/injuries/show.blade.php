@@ -589,9 +589,10 @@
                                     <div class="col-sm-4">
                                         {{ Form::submit('Post Comment', array('class' => 'btn btn-block btn-primary')) }}
                                     </div>
-                                    @if($injury->captainid == Auth::user()->id && $injury->applicationstatus == 2 ||
-                                    $injury->battalionchiefid == Auth::user()->id&&$injury->applicationstatus == 3 ||
-                                    $injury->aconduty == Auth::user()->id&&$injury->applicationstatus == 4)
+                                    @if($injury->captainid == Auth::user()->id && $injury->applicationstatus ==        DB::table('status')->where('statustype','Application under Captain')->value('statusid') ||
+                                    $injury->battalionchiefid == Auth::user()->id&&$injury->applicationstatus ==       DB::table('status')->where('statustype','Application under Batallion Chief')->value('statusid')||
+                                    $injury->aconduty == Auth::user()->id&&$injury->applicationstatus ==   DB::table('status')->where('statustype','Application under Assistant Chief')->value('statusid')
+)
                                         <div class="col-sm-4">
                                             <a href="{{ url('/injuries/'.$injury->ofd6id .'/Approve') }}"
                                                class="btn btn-block btn-success">Approve</a>
