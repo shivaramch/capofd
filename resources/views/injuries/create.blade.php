@@ -41,7 +41,7 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="alert alert-danger" align="center">
-                        <strong>COMPLETE ALL FORMS AND FORWARD VIA CHAIN-OF-COMMAND WITHIN 48 HOURS
+                        <strong>COMPLETE ALL FORMS AND FORWARD VIA CHAIN-OF-COMMAND WITHIN 24 HOURS
                         </strong>
                     </div>
                 </div>
