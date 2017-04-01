@@ -49,7 +49,7 @@
                         <div class="col-sm-4 form-group">
                             {!! Form::label('employeeid', 'Employee ID#', array('style'=>'padding-top:7px;', 'class' => 'col-sm-4 control-label') ) !!}
                             <div class="col-sm-6 ">
-                                {!! Form::text('employeeid', old('employeeid'),array('class'=>'form-control','disabled'=>'disabled'))!!}
+                                {!! Form::text('employeeid', old('employeeid'), ['disabled'],array('class'=>'form-control'))!!}
                                 <p class="help-block"></p>
                                 @if($errors->has('employeeid'))
                                     <p class="help-block">
@@ -61,7 +61,7 @@
                         <div class="col-sm-4 form-group">
                             {!! Form::label('employeename', 'Exposed Employee Name', array('style'=>'padding-top:7px;', 'class' => 'col-sm-4 control-label') ) !!}
                             <div class="col-sm-6 ">
-                                {!! Form::text('employeename', old('employeename'),array('class'=>'form-control','disabled'=>'disabled'))!!}
+                                {!! Form::text('employeename', old('employeename'), ['disabled'],array('class'=>'form-control'))!!}
                                 <p class="help-block"></p>
                                 @if($errors->has('employeename'))
                                     <p class="help-block">
@@ -73,7 +73,7 @@
                         <div class="col-sm-4 form-group">
                             {!! Form::label('dateofexposure', 'Date of Exposure', array('style'=>'padding-top:7px;', 'class' => 'col-sm-4 control-label') ) !!}
                             <div class="col-sm-6 ">
-                                {!! Form::text('dateofexposure', old('dateofexposure'), array('id'=>'datepicker1','class' => 'form-control datepicker','disabled'=>'disabled'))!!}
+                                {!! Form::text('dateofexposure', old('dateofexposure'), ['disabled'],array('id'=>'datepicker1','class' => 'form-control datepicker', 'placeholder' => 'YYYY-MM-DD'))!!}
                                 <p class="help-block"></p>
                                 @if($errors->has('dateofexposure'))
                                     <p class="help-block">
@@ -87,7 +87,7 @@
                         <div class="col-sm-4 form-group">
                             {!! Form::label('primaryidconumber', 'Primary IDCO OFD ID#', array('style'=>'padding-top:7px;', 'class' => 'col-sm-4 control-label') ) !!}
                             <div class="col-sm-6 ">
-                                {!! Form::text('primaryidconumber', old('primaryidconumber'),array('class'=>'form-control','disabled'=>'disabled'))!!}
+                                {!! Form::text('primaryidconumber', old('primaryidconumber'), ['disabled'],array('class'=>'form-control'))!!}
                                 <p class="help-block"></p>
                                 @if($errors->has('primaryidconumber'))
                                     <p class="help-block">
@@ -99,7 +99,7 @@
                         <div class="col-sm-4 form-group">
                             {!! Form::label('epcrincidentnum', 'EPCR Incident#', array('style'=>'padding-top:7px;', 'class' => 'col-sm-4 control-label') ) !!}
                             <div class="col-sm-6 ">
-                                {!! Form::text('epcrincidentnum', old('epcrincidentnum'),array('class'=>'form-control','disabled'=>'disabled'))!!}
+                                {!! Form::text('epcrincidentnum', old('epcrincidentnum'), ['disabled'],array('class'=>'form-control'))!!}
                                 <p class="help-block"></p>
                                 @if($errors->has('epcrincidentnum'))
                                     <p class="help-block">
@@ -111,7 +111,7 @@
                         <div class="col-sm-4 form-group">
                             {!! Form::label('frmsincidentnum', 'FRMS Incident#', array('style'=>'padding-top:7px;','class' => 'col-sm-4 control-label')) !!}
                             <div class="col-sm-6 ">
-                                {!! Form::text('frmsincidentnum', old('frmsincidentnum'),array('class'=>'form-control','disabled'=>'disabled'))!!}
+                                {!! Form::text('frmsincidentnum', old('frmsincidentnum'), ['disabled'],array('class'=>'form-control'))!!}
                                 <p class="help-block"></p>
                                 @if($errors->has('frmsincidentnum'))
                                     <p class="help-block">
@@ -125,7 +125,7 @@
                         <div class="col-sm-4 form-group">
                             {!! Form::label('assignment', 'Assignment', array('style'=>'padding-top:7px;', 'class' => 'col-sm-4 control-label') ) !!}
                             <div class="col-sm-6 ">
-                                {!! Form::text('assignment', old('assignment'),array('class'=>'form-control','disabled'=>'disabled'))!!}
+                                {!! Form::text('assignment', old('assignment'), ['disabled'],array('class'=>'form-control'))!!}
                                 <p class="help-block"></p>
                                 @if($errors->has('assignment'))
                                     <p class="help-block">
@@ -137,7 +137,7 @@
                         <div class="col-sm-4 form-group">
                             {!! Form::label('shift', 'Shift', ['class'=> 'col-sm-4 control-label'] ) !!}
                             <div class="col-sm-6">
-                                {!! Form::text('shift', old('shift'), array('class'=>'form-control','disabled'=>'disabled'))!!}
+                                {!! Form::text('shift', old('shift'), ['disabled'],array('class'=>'form-control'))!!}
                                 <p class="help-block"></p>
                                 @if($errors->has('shift'))
                                     <p class="help-block">
@@ -149,20 +149,14 @@
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                <div><h4 style="padding-left:12px;"><strong>Please perform following steps in case of
-                            Exposure</strong></h4>
-                </div>
-            </div>
+
             <div class="panel-body">
                 <div class="row">
                     <div class="col-sm-12 form-group">
                         {{--{{ Form::checkbox('corvelid', 1, null,['disabled'], ['id' => 'corvelid', 'class'=>'className','readonly' => 'true']) }}--}}
                         {!! Form::label('corvelid', 'Once you have completed the call, record CorVel Claim #', array('style'=>'padding-top:7px;','class' => 'col-sm-4 control-label')) !!}
                         <div class="col-sm-4">
-                            {!! Form::text('corvelid', old('corvelid'), array('class'=>'form-control','disabled'=>'disabled'))!!}
+                            {!! Form::text('corvelid', old('corvelid'), ['disabled'], array('class'=>'form-control'))!!}
                             <p class="help-block"></p>
                             @if($errors->has('corvelid'))
                                 <p class="help-block">
@@ -180,6 +174,8 @@
                         </strong>
                     </label>
                 </div>
+
+
                 <div class="col-sm-12">
                     {{ Form::checkbox('checkbox1', 1, null,['disabled'], ['id' => 'checkbox1', 'class'=>'className','readonly' => 'true']) }}
                     {{Form::label('Checkbox1','Fill out OFD-025 Hazmat Exposure Report form')}}
@@ -187,6 +183,7 @@
                         <strong>Fill out OFD-025 Hazmat Exposure Report form</strong>
                     </label>--}}
                 </div>
+                <br>
                 <div class="col-sm-12 form-group well well-sm">
                     <div class="col-sm-4">
                         <a class="btn btn-primary dropdown-toggle col-sm-12" data-toggle="collapse"
@@ -261,36 +258,28 @@
                     </div>
                 </div>
             </div>
+        </div>
+        <div class="panel-body">
+            <div class="form-horizontal">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="alert alert-danger" align="left">
+                            <label>If an employee receives an injury or illness from this incident,
+                                the employee shall complete an OFD6 and designate whether treatment is being
+                                requested in the OFD-25 IOD.</label>
 
-            <div class="panel-body">
-                <div class="form-horizontal">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="alert alert-danger" align="left">
-                                <label>If an employee receives an injury or illness from this incident,
-                                    the employee shall complete an OFD6 and designate whether treatment is being
-                                    requested in the OFD-25 IOD.</label>
-
-                                {{--{!! Form::text('exposurehazmat', old('exposurehazmat'), ['disabled'], array('class'=>'form-control'))!!}--}}
-                                {{--<p class="help-block"></p>--}}
-                                {{--@if($errors->has('exposurehazmat'))--}}
-                                {{--<p class="help-block">--}}
-                                {{--{{ $errors->first('exposurehazmat') }}--}}
-                                {{--</p>--}}
-                                {{--@endif--}}
-                            </div>
+                            {{--{!! Form::text('exposurehazmat', old('exposurehazmat'), ['disabled'], array('class'=>'form-control'))!!}--}}
+                            {{--<p class="help-block"></p>--}}
+                            {{--@if($errors->has('exposurehazmat'))--}}
+                            {{--<p class="help-block">--}}
+                            {{--{{ $errors->first('exposurehazmat') }}--}}
+                            {{--</p>--}}
+                            {{--@endif--}}
                         </div>
-                    </div>
-                </div>
-
-                <div class="col-sm-12 panel-heading" align="center">
-                    <div class="btn-bottom ">
-                        <a href="{{ route('hazmat.index') }}" class="btn btn-warning">Return</a>
                     </div>
                 </div>
             </div>
         </div>
-
     @else
         <div class="panel-body">
             <div class="form-horizontal">
@@ -307,8 +296,13 @@
         </div>
     @endif
 
+    <div class="col-sm-12 panel-heading" align="center">
+        <div class="btn-bottom ">
+            <a href="{{ route('hazmat.index') }}" class="btn btn-danger">Cancel</a>
+        </div>
+    </div>
 
-
+    </div>
     {!! Form::close() !!}
     <div class="panel panel-default">
         <div class="panel-heading">
@@ -415,6 +409,6 @@
             });
         });
     </script>
-
+    </div>
 
 @endsection
