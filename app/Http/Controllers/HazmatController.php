@@ -48,7 +48,7 @@ class HazmatController extends Controller
             (new EmailController)->Email($hazmat, $rawlink,$formname,$Finalpprovalstatusid);
         }
 
-        return redirect()->route('hazmat.index');
+        return redirect()->route('hazmat.index')->with('message', 'Form has been Approved');
     }
 
     public  function Reject($id)
@@ -78,7 +78,7 @@ class HazmatController extends Controller
             (new EmailController)->Email( $hazmat, $rawlink,$formname,$statusid);
         }
 
-        return redirect()->route('hazmat.index');
+        return redirect()->route('hazmat.index')->with('message', 'Form has been Rejected');
 
     }
 
@@ -106,8 +106,9 @@ class HazmatController extends Controller
 
         if(Input::get('partialSave')) {
             $this->partialSave($requestSave);
+			return redirect()->route('hazmat.index')->with('message', 'Form has been partially saved');
         }
-        return redirect()->route('hazmat.index');
+        
 
     }
 
@@ -178,7 +179,7 @@ class HazmatController extends Controller
 
         (new EmailController)->Email($request, $link,$formname,$statusid);
         //email notification-end
-        return redirect()->route('hazmat.index');
+        return redirect()->route('hazmat.index')->with('message', 'Form Submitted Successfully');
     }
 
     public function edit($id)
@@ -260,6 +261,6 @@ class HazmatController extends Controller
         //email notification-end
 
 
-        return redirect()->route('hazmat.index');
+        return redirect()->route('hazmat.index')->with('message', 'Form Updated Successfully');
     }
 }

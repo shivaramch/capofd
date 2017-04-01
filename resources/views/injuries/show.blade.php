@@ -558,7 +558,7 @@
             </div>
             <div class="col-sm-12 panel-heading" align="center">
                 <div class="btn-bottom ">
-                    <a href="{{ route('injuries.index') }}" class="btn btn-default">return</a>
+                    <a href="{{ route('injuries.index') }}" class="btn btn-danger">Cancel</a>
                 </div>
             </div>
         </div>

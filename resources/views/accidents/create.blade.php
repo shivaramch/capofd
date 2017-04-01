@@ -35,7 +35,7 @@
                             </div>
                         </div>
                         <div class="col-md-12">
-                            <h6><i><strong>Used for future tracking purposes only</strong></i></h6>
+                            <h5><i><strong>Used for future tracking purposes only</strong></i></h5>
                         </div>
                     </div>
                 </div>
@@ -157,7 +157,7 @@
                     </div>
                     <div class="col-sm-4 form-group">
                         {!! Form::label('aconduty', 'Assistant Chief #', array('style'=>'padding-top:7px;','class' => 'col-sm-4 control-label','placeholder'=>'Enter Badge Id')) !!}
-                        <div class="col-sm-7 ">
+                        <div class="col-sm-6 ">
                             {!! Form::text('aconduty', old('aconduty'), array('class' => 'form-control','placeholder'=>'Enter Badge Id'))!!}
                             <p class="help-block"></p>
                             @if($errors->has('aconduty'))
@@ -504,7 +504,7 @@
             </div>
             <br>
             <label class="col-sm-5"></label>
-            {!! Form::submit('Save as Draft',['class' => 'btn btn-success','name' => 'partialSave']) !!}
+            {!! Form::submit('Save & Exit',['class' => 'btn btn-primary','name' => 'partialSave']) !!}
             <button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal">
                 Submit
             </button>
