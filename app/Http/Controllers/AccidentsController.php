@@ -187,7 +187,7 @@ class AccidentsController extends EmailController
 
         if (Input::get('partialSave')) {
             $this->partialSave($requestSave);
-			return redirect()->route('accidents.index')->with('message', 'Form has been Rejected');
+			return redirect()->route('accidents.index')->with('message', 'Form has been Partially Saved');
         }
         
 
@@ -198,11 +198,12 @@ class AccidentsController extends EmailController
     {
         if (Input::get('store')) {
             $this->updateRecords($requestSave,$id);
+            eturn redirect()->route('accidents.index')->with('message', 'Form Submitted Successfully');
         }
 
         if (Input::get('partialSave')) {
             $this->partialUpdate($requestSave, $id);
-			return redirect()->route('accidents.index')->with('message', 'Form has been Rejected');
+			return redirect()->route('accidents.index')->with('message', 'Form has been Partially Saved');
         }
 
         
