@@ -206,7 +206,7 @@ class InjuriesController extends Controller
     public function store(Request $request)
     {
 
-        Validate($request);
+        $this-> requestValidation($request);
 
         $statusid = DB::table('status')->where('statustype', 'Application under Captain')->value('statusid');
 
@@ -228,7 +228,7 @@ class InjuriesController extends Controller
         return redirect()->route('injuries.index');
     }
 
-    public function Validate(Request $request)
+  public  function requestValidation(Request $request)
     {
         $this->validate($request, [
             'injurydate' => 'required|date:injury,injurydate,',
@@ -297,7 +297,7 @@ class InjuriesController extends Controller
     public function updateRecord(Request $request, $id)
     {
 
-        Validate($request);
+        $this-> requestValidation($request);
         $injury = Injury::findOrFail($id);
        $statusid = DB::table('status')->where('statustype', 'Application under Captain')->value('statusid');
       /*  $statusid = str_replace(array('[', ']'), '', $statusidraw);*/
