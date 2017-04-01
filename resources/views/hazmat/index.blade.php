@@ -42,25 +42,81 @@
                         <th data-sortable="true">OFD 6C ID</th>
                         <th data-sortable="true">Date of Exposure</th>
                         <th data-sortable="true">Assignment</th>
+                        <th data-sortable="true">Status</th>
                         <th data-switchable="false" data-searchable="false" data-sortable="false">Action</th>
                     </tr>
                     </thead>
                     <tbody>
                     @foreach($hazmat as $hazmats)
-                        @if($hazmats->employeeid == Auth::user()->id)
+                        @if($hazmats->employeeid == Auth::user()->id )
                             <tr>
                                 <td>{{ $hazmats->ofd6cid }}</td>
                                 <td>{{ $hazmats->dateofexposure }}</td>
                                 <td>{{ $hazmats->assignment }}</td>
+                                <td>{{ DB::table('status')->where('statusid',$hazmats->applicationstatus)->value('statustype') }}</td>
 
                                 <td>
                                     <div>
                                         <a href="{{ route('hazmat.show',[$hazmats->ofd6cid]) }}"
                                            class="btn btn-xs btn-info btn-block"><i
                                                     class="fa fa-eye" aria-hidden="true"></i> VIEW</a>
+                                        @if( $hazmats->applicationstatus == DB::table('status')->where('statustype','Draft')->value('statusid')
+ || $hazmats->applicationstatus == DB::table('status')->where('statustype','Rejected')->value('statusid'))
                                         <a href="{{ route('hazmat.edit',[$hazmats->ofd6cid]) }}"
                                            class="btn btn-xs btn-warning btn-block"><i class="fa fa-pencil-square-o"
                                                                                        aria-hidden="true"></i> EDIT</a>
+                                            @endif
+                                    </div>
+                                </td>
+                            </tr>
+                        @endif
+                    @endforeach
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="panel panel-default panel-shadow " hidden>
+            <div class="panel-heading">
+                Search Previously filled as Primary IDCO
+            </div>
+            <div class="panel-body">
+                <table data-toolbar="#toolbar"
+                       data-toggle="table"
+                       data-search="true"
+                       data-cookie="true"
+                       data-click-to-select="true"
+                       data-cookie-id-table="station-index-v1.1-1"
+                       data-show-columns="true"
+                       id="table">
+                    <thead>
+                    <tr>
+                        <th data-sortable="true">OFD 6C ID</th>
+                        <th data-sortable="true">Date of Exposure</th>
+                        <th data-sortable="true">Assignment</th>
+                        <th data-sortable="true">Status</th>
+                        <th data-switchable="false" data-searchable="false" data-sortable="false">Action</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    @foreach($hazmat as $hazmats)
+                        @if($hazmats->primaryidconumber == Auth::user()->id  && $hazmats->applicationstatus==DB::table('status')->where('statustype','Application under Primary IDCO')->value('statusid'))
+                            <tr>
+                                <td>{{ $hazmats->ofd6cid }}</td>
+                                <td>{{ $hazmats->dateofexposure }}</td>
+                                <td>{{ $hazmats->assignment }}</td>
+                                <td>{{DB::table('status')->where('statusid',$hazmats->applicationstatus)->value('statustype')}}</td>
+
+                                <td>
+                                    <div>
+                                        <a href="{{ route('hazmat.show',[$hazmats->ofd6cid]) }}"
+                                           class="btn btn-xs btn-info btn-block"><i
+                                                    class="fa fa-eye" aria-hidden="true"></i> VIEW</a>
+                                        @if( $hazmats->applicationstatus == DB::table('status')->where('statustype','Draft')->value('statusid')
+|| $hazmats->applicationstatus ==   DB::table('status')->where('statustype','Rejected')->value('statusid'))
+                                        <a href="{{ route('hazmat.edit',[$hazmats->ofd6cid]) }}"
+                                           class="btn btn-xs btn-warning btn-block"><i class="fa fa-pencil-square-o"
+                                                                                       aria-hidden="true"></i> EDIT</a>
+                                            @endif
                                     </div>
                                 </td>
                             </tr>
