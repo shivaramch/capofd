@@ -436,6 +436,11 @@
                         @endif
                     </div>
                 </div>
+                <div class="col-sm-12 panel-heading" align="center">
+                    <div class="btn-bottom ">
+                        <a href="{{ route('biologicals.index') }}" class="btn btn-warning">Return</a>
+                    </div>
+                </div>
             </div>
         </div>
     @else
