@@ -273,6 +273,15 @@ class InjuriesController extends Controller
 
     }
 
+
+    public function retrieve($id)
+    {
+        $injury = Injury::findOrFail($id);
+        $attachments = Attachment::all();
+        $comments = Comment::all();
+        $users = User::all();
+    }
+
     public function show($id)
     {
 

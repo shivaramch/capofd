@@ -95,6 +95,23 @@ class BiologicalsController extends Controller
     }
 
 
+    public function update(Request $requestSave,$id)
+    {
+        if (Input::get('store')) {
+            $this->updateRecord($requestSave,$id);
+            return redirect()->route('biologicals.index')->with('message', 'Form Submitted Successfully');
+        }
+
+        if (Input::get('partialSave')) {
+            $this->partialUpdate($requestSave, $id);
+            return redirect()->route('biologicals.index')->with('message', 'Form has been partially saved');
+        }
+
+
+    }
+
+
+
     public function save(Request $requestSave)
     {
         if (Input::get('store')) {
@@ -128,9 +145,9 @@ class BiologicalsController extends Controller
 
     }
 
-    public function store(Request $request)
-    {
 
+    public function validateRequest(Request $request)
+    {
         $this->validate($request, [
 
             'trueofd184' => 'max:20480|mimes:pdf',
@@ -148,7 +165,12 @@ class BiologicalsController extends Controller
             'exposureinjury' => 'required|string:biological,exposureinjury',
             'exposure' => 'required|string:biological,exposure',
         ]);
+    }
 
+    public function store(Request $request)
+    {
+
+        $this->validateRequest($request);
         $statusid = DB::table('status')->where('statustype', 'Application under Primary IDCO ')->value('statusid');
         $request->offsetSet('applicationstatus', $statusid);
         $request = $this->saveFiles($request);
@@ -192,13 +214,55 @@ class BiologicalsController extends Controller
         }
     }
 
-    public function update(UpdateBiologicalsRequest $request, $id)
+
+
+    public function partialUpdate(Request $request, $id)
+    {
+        $statusid = DB::table('status')->where('statustype', 'Draft')->value('statusid');
+
+
+        $biological = Biological::findOrFail($id);
+        \DB::table('biologicals')->where('ofd6bid', $biological->ofd6bid)->update([
+                'exposedemployeename' => $biological->exposedemployeename,
+                'trueofd184' => 'max:20480|mimes:pdf',
+                'potofd184' => 'max:20480|mimes:pdf',
+                'dateofexposure' => $biological->dateofexposure,
+                'employeeid' => $biological->employeeid,
+                'assignmentbiological' => $biological->assignmentbiological,
+                'shift' => $biological->shift,
+                'primaryidconumber' => $biological->primaryidconumber,
+                'epcrincidentnum' => $biological->epcrincidentnum,
+                'exposure' => $biological->exposure,
+                'applicationstatus' => $statusid,
+                'frmsincidentnum' => $biological->frmsincidentnum,
+                'exposureinjury' => $biological->exposureinjury,
+                'miscbiological1' => 'max:20480|mimes:pdf',
+                'miscbiological2' => 'max:20480|mimes:pdf']
+        );
+        //end history code
+        $request = $this->saveFiles($request);
+        $biological->update($request->all());
+        $this->BiologicalUpload($request, $id);
+        //email notification-start
+
+
+        //email notification-end
+        return redirect()->route('biologicals.index');
+
+
+    }
+
+
+
+
+    public function updateRecord(Request $request, $id)
     {
 
-        $statusidraw = DB::table('status')->where('statustype', 'Application under Captain')->pluck('statusid');
-        $statusid = str_replace(array('[', ']'), '', $statusidraw);
-        $statusidraw = DB::table('status')->where('statustype', 'Application under Primary IDCO ')->pluck('statusid');
-        $statusid = str_replace(array('[', ']'), '', $statusidraw);
+        $this->validateRequest($request);
+
+
+        $statusid = DB::table('status')->where('statustype', 'Application under Primary IDCO ')->value('statusid');
+
 
         $biological = Biological::findOrFail($id);
         \DB::table('biologicals')->where('ofd6bid', $biological->ofd6bid)->update([
