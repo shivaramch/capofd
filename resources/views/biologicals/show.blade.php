@@ -479,9 +479,9 @@
                                     <div class="col-sm-4">
                                         {{ Form::submit('Post Comment', array('class' => 'btn btn-block btn-primary')) }}
                                     </div>
-                                    @if(($biological->primaryidconumber == Auth::user()->id && $biological->applicationstatus == 2) ||
+                                    @if(($biological->primaryidconumber == Auth::user()->id && $biological->applicationstatus ==    DB::table('status')->where('statustype','Application under Primary IDCO')->value('statusid')) ||
                                     Auth::user()->roleid == 1)
-                                        @if($biological->applicationstatus != 6)
+                                        @if($biological->applicationstatus != DB::table('status')->where('statustype','Approved ')->value('statusid'))
                                             <div class="col-sm-4">
                                                 <a href="{{ url('/biologicals/'.$biological->ofd6bid .'/Approve') }}"
                                                    class="btn btn-block btn-success">Approve</a>
