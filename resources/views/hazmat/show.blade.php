@@ -298,7 +298,7 @@
 
     <div class="col-sm-12 panel-heading" align="center">
         <div class="btn-bottom ">
-            <a href="{{ route('hazmat.index') }}" class="btn btn-default">Return</a>
+            <a href="{{ route('hazmat.index') }}" class="btn btn-danger">Cancel</a>
         </div>
     </div>
 
