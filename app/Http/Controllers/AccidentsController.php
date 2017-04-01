@@ -182,6 +182,7 @@ class AccidentsController extends EmailController
     {
         if (Input::get('store')) {
             $this->store($requestSave);
+            return redirect()->route('accidents.index')->with('message', 'Form Submitted Successfully');
         }
 
         if (Input::get('partialSave')) {
