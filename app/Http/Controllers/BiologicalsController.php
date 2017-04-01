@@ -1,15 +1,14 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Biological;
+
 use App\Attachment;
-use App\Http\Requests\UpdateBiologicalsRequest;
-use App\Http\Requests\StoreBiologicalsRequest;
+use App\Biological;
+use App\Comment;
 use App\Http\Controllers\Traits\FileUploadTrait;
 use App\Http\Controllers\Traits\FormFileUploadTrait;
-
+use App\Http\Requests\UpdateBiologicalsRequest;
 use App\User;
-use App\Comment;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -46,7 +45,7 @@ class BiologicalsController extends Controller
             (new EmailController)->Email($biological, $rawlink,$formname,$Finalpprovalstatusid);
         }
 
-        return redirect()->route('biologicals.index');
+        return redirect()->route('biologicals.index')->with('message', 'Form has been Approved');
     }
 
 
@@ -77,7 +76,7 @@ class BiologicalsController extends Controller
             (new EmailController)->Email($biological, $rawlink, $formname, $statusid);
         }
 
-        return redirect()->route('biologicals.index');
+        return redirect()->route('biologicals.index')->with('message', 'Form has been Rejected');
 
     }
 
@@ -161,8 +160,8 @@ class BiologicalsController extends Controller
         $rawlink=request()->headers->get('referer');
         $link=preg_replace('#\/[^/]*$#', '', $rawlink)."/$last_insert_id";
 
-        (new EmailController)->Email($request, $link,$formname,$statusid);
-       return redirect()->route('biologicals.index');
+        (new EmailController)->Email($request, $link, $formname, $statusid);
+        return redirect()->route('biologicals.index')->with('message', 'Form Submitted Successfully');
     }
     public function edit($id)
     {
@@ -222,6 +221,6 @@ class BiologicalsController extends Controller
         $formname = "biologicals";
         (new EmailController)->Email($request, $link, $formname, $statusid);
         //email notification-end
-        return redirect()->route('biologicals.index');
+        return redirect()->route('biologicals.index')->with('message', 'Form Updated Successfully');
     }
 }

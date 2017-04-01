@@ -93,7 +93,7 @@ class InjuriesController extends Controller
             }
         }
 
-        return redirect()->route('injuries.index');
+        return redirect()->route('injuries.index')->with('message', 'Form has been Approved');
 
 
     }
@@ -140,7 +140,7 @@ class InjuriesController extends Controller
 
         (new EmailController)->Email($injury, $rawlink, $formname, $statusid);
 
-        return redirect()->route('injuries.index');
+        return redirect()->route('injuries.index')->with('message', 'Form has been Rejected');
 
     }
 
@@ -225,7 +225,7 @@ class InjuriesController extends Controller
 
         (new EmailController)->Email($request, $link, $formname, $statusid);
         //email notification-end
-        return redirect()->route('injuries.index');
+        return redirect()->route('injuries.index')->with('message', 'Form Submitted Successfully');
     }
 
   public  function requestValidation(Request $request)
@@ -334,7 +334,7 @@ class InjuriesController extends Controller
         (new EmailController)->Email($request, $link, $formname, $statusid);
         //email notification-end
 
-        return redirect()->route('injuries.index');
+        return redirect()->route('injuries.index')->with('message', 'Form Updated Successfully');
     }
 
     public function partialUpdate(Request $request, $id)
