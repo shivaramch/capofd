@@ -153,25 +153,23 @@
                 </div>
             </div>
         </div>
+    
+
+         <div class="panel-body"> 
+             <div class="row">
+                 <div class="col-sm-12 form-group"> 
+                 <div class="col-sm-12">             
+   
+    <div class="panel-group" id="accordion">
         <div class="panel panel-default">
             <div class="panel-heading">
-                <div><h4 style="padding-left:12px;"><strong>Please Select the Type of Exposure</strong></h4>
-                </div>
+                <h4 class="panel-title">
+                   TRUE EXPOSURE
+                </h4>
             </div>
-            <div class="panel-body">
-                <div class="row">
-                    <div class="col-sm-12 form-group">
-                        <div class="col-sm-6">
-                            {{ Form::radio('exposure', 0 , null, ['id'=>'exposure', 'class' => 'className' ]) }}
-                            {{ Form::label('exposure', 'True Exposure') }}
-
-                            {{ Form::radio('exposure',1 , null, ['id'=>'exposure', 'class' => 'className' ]) }}
-                            {{ Form::label('exposure', 'Potential Exposure') }}
-                        </div>
-                    </div>
-                </div>
-                <div id="Exposure0" class="desc" style="display: none;">
-                    <div class="col-sm-12">
+            <div id="collapseOne" >
+                <div class="panel-body">
+                <div class="col-md-12">
                         <div class="form-group">
                             {{ Form::checkbox('truedecontaminate', 1, null, ['id' => 'truedecontaminate', 'class'=>'className' , 'disabled' => "disabled"]) }}
                             {{Form::label('truedecontaminate','Decontaminate self- wash, flush as soon as possible  ')}}
@@ -307,13 +305,21 @@
                         <div class="form-group">
                             {{ Form::checkbox('truedocumentdaybook', 1, null, ['id' => 'truedocumentdaybook', 'class'=>'className','disabled' => "disabled" ]) }}
                             {{Form::label('truedocumentdaybook','Document in Company Day Book and on your Personnel Record')}}
-
-                        </div>
                     </div>
-
                 </div>
-
-                <div id="Exposure1" class="desc" style="display: none;">
+            </div>
+            </div>
+            </div>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4 class="panel-title">
+            CONTAMINATION
+                </h4>
+            </div>
+            <div id="collapseTwo" >
+                <div class="panel-body">
+                    <div class="col-md-12">
 
                     <div class="col-sm-12">
                         <div class="form-group">
@@ -420,10 +426,19 @@
                         <div class="form-group">
                             {{ Form::checkbox('potdocumentdaybook', 1, null, ['id' => 'potdocumentdaybook', 'class'=>'className','disabled' => "disabled" ]) }}
                             {{Form::label('potdocumentdaybook','Document in Company Day Book and on your Personnel Record   ')}}
+                        
                         </div>
-                    </div>
                 </div>
+            </div>
 
+
+           
+        </div>
+        </div>
+        </div>
+        </div>
+       
+    </div>
 
                 <div class="form-horizontal">
                     <div class="row">
