@@ -99,7 +99,7 @@
                     </thead>
                     <tbody>
                     @foreach($hazmat as $hazmats)
-                        @if($hazmats->employeeid == Auth::user()->id  && $hazmats->applicationstatus==DB::table('status')->where('statustype','Application under Primary IDCO')->value('statusid'))
+                        @if($hazmats->primaryidconumber == Auth::user()->id  && $hazmats->applicationstatus==DB::table('status')->where('statustype','Application under Primary IDCO')->value('statusid'))
                             <tr>
                                 <td>{{ $hazmats->ofd6cid }}</td>
                                 <td>{{ $hazmats->dateofexposure }}</td>
