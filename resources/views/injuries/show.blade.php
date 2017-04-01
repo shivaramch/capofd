@@ -53,35 +53,6 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-sm-8 form-group">
-                        {!! Form::label('reportnum', 'Report #', ['class' => 'col-sm-2 control-label']) !!}
-                        <div class="col-sm-3">
-                            {!! Form::text('reportnum', old('reportnum'), array('class' => 'form-control','style' =>'margin-left:-7px;','placeholder'=>'Enter Report Number','required' => 'required','disabled'=>'disabled'))!!}
-                            <p class="help-block"></p>
-                            @if($errors->has('reportnum'))
-                                <p class="help-block">
-                                    {{ $errors->first('reportnum') }}
-                                </p>
-                            @endif
-                        </div>
-                        <div class='col-sm-6'>
-                            {!! Form::label('reportnum ', '(Obtain from SWD Office)', array('class' => 'col-sm-8 control-label','style' =>'margin-left:-70px;')) !!}
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-sm-4 form-group">
-                        {!! Form::label('createdate', 'Todays Date:', ['class' => 'col-sm-4 control-label']) !!}
-                        <div class="col-sm-6 ">
-                            {!! Form::text('createdate', old('createdate'), array('class'=>'datepicker form-control','placeholder'=>'MM/DD/YYYY','required' => 'required','disabled'=>'disabled'))!!}
-                            <p class="help-block"></p>
-                            @if($errors->has('createdate'))
-                                <p class="help-block">
-                                    {{ $errors->first('createdate') }}
-                                </p>
-                            @endif
-                        </div>
-                    </div>
                     <div class="col-sm-4 form-group">
                         {!! Form::label('injurydate', 'Date of Injury:', ['class' => 'col-sm-4 control-label']) !!}
                         <div class="col-sm-6 ">
