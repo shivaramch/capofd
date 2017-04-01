@@ -158,6 +158,20 @@ class InjuriesController extends Controller
     }
 
 
+    public function update(Request $requestSave,$id)
+    {
+        if (Input::get('store')) {
+            $this->updateRecords($requestSave,$id);
+        }
+
+        if (Input::get('partialSave')) {
+            $this->partialUpdate($requestSave, $id);
+        }
+        return redirect()->route('accidents.index');
+
+    }
+
+
     public function save(Request $requestSave)
     {
         if (Input::get('store')) {
@@ -192,24 +206,7 @@ class InjuriesController extends Controller
     public function store(Request $request)
     {
 
-        $this->validate($request, [
-            'injurydate' => 'required|date:injury,injurydate,',
-            //'injuredemployeename' => 'required|alpha|string:injuries,injuredemployeename,',
-            'injuredemployeeid' => 'required|integer:injury,injuredemployeeid,',
-            'assignmentinjury' => 'required|string:injury,assignmentinjury,',
-            'corvelid' => 'required|integer:injury,corvelid,',
-            'captainid' => 'required|integer:injury,captainid',
-            'battalionchiefid' => 'required|integer:injury,battalionchiefid',
-            'aconduty' => 'required|integer:injury,aconduty',
-            'documentworkforce' => 'required',
-            'documentoperationalday' => 'required',
-            'shift' => 'required|string:injury,shift,',
-            'trainingassigned' => 'required|string:injury,shift,',
-            'frmsincidentnum' => 'required|string:injury,frmsincidentnum',
-            'policeofficercompletesign' => 'required',
-            'callsupervisor' => 'required',
-
-        ]);
+        Validate($request);
 
         $statusid = DB::table('status')->where('statustype', 'Application under Captain')->value('statusid');
 
@@ -229,6 +226,29 @@ class InjuriesController extends Controller
         (new EmailController)->Email($request, $link, $formname, $statusid);
         //email notification-end
         return redirect()->route('injuries.index');
+    }
+
+    public function Validate(Request $request)
+    {
+        $this->validate($request, [
+            'injurydate' => 'required|date:injury,injurydate,',
+            //'injuredemployeename' => 'required|alpha|string:injuries,injuredemployeename,',
+            'injuredemployeeid' => 'required|integer:injury,injuredemployeeid,',
+            'assignmentinjury' => 'required|string:injury,assignmentinjury,',
+            'corvelid' => 'required|integer:injury,corvelid,',
+            'captainid' => 'required|integer:injury,captainid',
+            'battalionchiefid' => 'required|integer:injury,battalionchiefid',
+            'aconduty' => 'required|integer:injury,aconduty',
+            'documentworkforce' => 'required',
+            'documentoperationalday' => 'required',
+            'shift' => 'required|string:injury,shift,',
+            'trainingassigned' => 'required|string:injury,shift,',
+            'frmsincidentnum' => 'required|string:injury,frmsincidentnum',
+            'policeofficercompletesign' => 'required',
+            'callsupervisor' => 'required',
+
+        ]);
+
     }
 
     public function edit($id)
@@ -274,8 +294,10 @@ class InjuriesController extends Controller
     }
 
 
-    public function update(UpdateInjuriesRequest $request, $id)
+    public function updateRecord(Request $request, $id)
     {
+
+        Validate($request);
         $injury = Injury::findOrFail($id);
        $statusid = DB::table('status')->where('statustype', 'Application under Captain')->value('statusid');
       /*  $statusid = str_replace(array('[', ']'), '', $statusidraw);*/
@@ -314,4 +336,41 @@ class InjuriesController extends Controller
 
         return redirect()->route('injuries.index');
     }
+
+    public function partialUpdate(Request $request, $id)
+    {
+        $injury = Injury::findOrFail($id);
+        $statusid = DB::table('status')->where('statustype', 'Application under Captain')->value('statusid');
+        /*  $statusid = str_replace(array('[', ']'), '', $statusidraw);*/
+        \DB::table('injuries')->where('ofd6id', $injury->ofd6id)->update([
+                'reportnum' => $injury->reportnum,
+                'injurydate' => $injury->injurydate,
+                'injuredemployeename' => $injury->injuredemployeename,
+                'injuredemployeeid' => $injury->injuredemployeeid,
+                'assignmentinjury' => $injury->assignmentinjury,
+                'corvelid' => $injury->corvelid,
+                'captainid' => $injury->captainid,
+                'battalionchiefid' => $injury->battalionchiefid,
+                'aconduty' => $injury->aconduty,
+                'shift' => $injury->shift,
+                'frmsincidentnum' => $injury->frmsincidentnum,
+                'policeofficercompletesign' => $injury->policeofficercompletesign,
+                'callsupervisor' => $injury->callsupervisor,
+                'applicationstatus' => $statusid,
+                'createdby' => $injury->createdby,
+                'updatedby' => $injury->updatedby]
+        );
+
+        $request = $this->saveFiles($request);
+
+        $injury->update($request->all());
+
+        $this->InjuriesUpload($request, $id);
+        //$request->session()->flash('alert-success', 'Form was successfully Submitted!');
+
+
+
+        return redirect()->route('injuries.index');
+    }
+
 }
