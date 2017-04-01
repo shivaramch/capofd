@@ -420,8 +420,6 @@
                     </div>
                 </div>
             </div>
-
-            <!--accordion design code-->
             {{--<div class="container col-sm-12">--}}
             {{--<div class="panel-group" id="accordion">--}}
             {{--<div class="panel panel-primary">--}}
@@ -707,7 +705,6 @@
             {{--</div>--}}
             {{--</div>--}}
             {{--</div>--}}
-
             <div class="panel-body">
                 <div class="form-horizontal">
                     <div class="row">
