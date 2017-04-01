@@ -283,7 +283,7 @@ class InjuriesController extends Controller
         //show history code start
         //below one line code is for storing all history related to the $id in variable, which is to be used to display in show page.
         //show history code end
-        if ($injury->driverid == Auth::user()->id ||
+        if ($injury->injuredemployeeid == Auth::user()->id ||
             ($injury->captainid == Auth::user()->id && $injury->applicationstatus == 2) ||
             ($injury->battalionchiefid == Auth::user()->id && $injury->applicationstatus == 3) ||
             ($injury->aconduty == Auth::user()->id && $injury->applicationstatus == 4) ||
