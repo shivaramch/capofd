@@ -10,6 +10,7 @@ use App\Http\Controllers\Traits\FileUploadTrait;
 use App\Http\Controllers\Traits\FormFileUploadTrait;
 use Illuminate\Support\Facades\DB;
 use App\User;
+use App\Comment;
 use Illuminate\Http\Request;
 use App\Http\Requests\StoreHazmatRequest;
 use Illuminate\Support\Facades\Auth;
@@ -159,7 +160,7 @@ class HazmatController extends Controller
             ]);
 
 
-        $statusid=DB::table('status')->where('statustype','Application under Captain')->value('statusid');
+        $statusid=DB::table('status')->where('statustype','Application under Primary IDCO')->value('statusid');
 
         $request->offsetSet('applicationstatus',$statusid);
 
@@ -185,7 +186,16 @@ class HazmatController extends Controller
 
         $attachments = Attachment::all();
         $hazmat = hazmat::findOrFail($id);
-        return view('hazmat.edit', compact('hazmat', 'attachments'));
+        $comments = Comment::all();
+        if (($hazmat->employeeid == Auth::user()->id &&
+                ($hazmat->applicationstatus == 1 || $hazmat->applicationstatus == 5)) ||
+            Auth::user()->roleid == 1
+        ) {
+            return view('hazmat.edit', compact('hazmat', 'attachments','comments','users'));
+        }else {
+            return view('errors.access');
+        }
+
     }
 
     public function show($id)
@@ -193,18 +203,27 @@ class HazmatController extends Controller
 
         $hazmat = hazmat::findOrFail($id);
         $attachments = Attachment::all();
+        $comments = Comment::all();
+        $users = User::all();
+
+        if ($hazmat->employeeid == Auth::user()->id ||
+            ($hazmat->primaryidconumber == Auth::user()->id && $hazmat->applicationstatus == 2) ||
+            Auth::user()->roleid == 1
+        ) {
+            return view('hazmat.show', compact('hazmat', 'attachments', 'comments', 'users'));
+        }
 
         //show history code start
         //below one line code is for storing all history related to the $id in variable, which is to be used to display in show page.
         //show history code end
-        return view('hazmat.show',compact('hazmat', 'attachments'));
+
     }
 
     public function update(UpdateHazmatRequest $request, $id)
     {
         //$accident = $this->saveFiles($request);
 
-        $statusidraw=DB::table('status')->where('statustype','Application under Captain')->pluck('statusid');
+        $statusidraw=DB::table('status')->where('statustype','Application under Primary IDCO ')->pluck('statusid');
         $statusid=str_replace (array('[', ']'), '', $statusidraw);
 
         $hazmat = hazmat::findOrFail($id);

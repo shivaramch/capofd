@@ -112,7 +112,7 @@ return [
         ],
         'dateofexposure' => [
             'required' => '"Date of Exposure" field is required',
-            'before_or_equal' => '"Date of Exposure" should not be greater than today date',
+            'date' => '"Date of Exposure" should be a date',
         ],
         'assignmentbiological' => [
             'required' => '"Assignment" field is required',
@@ -147,8 +147,8 @@ return [
             'date' => '"Date of Injury" field should be a valid date',
         ],
         'injuredemployeename' => [
-            'required' => '"Employee Name" field is required',
-            'alpha' => '"Employee Name" field can only have letters',
+            'required' => '"Injured Name" field is required',
+            'alpha' => '"Injured Name" field can only have letters',
         ],
         'injuredemployeeid' => [
         'required' => '"Personnel ID #" field is required',

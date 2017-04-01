@@ -26,7 +26,7 @@ class StoreFmlasRequest extends FormRequest
             'fromdate' => 'required|date_format:Y-m-d,fromdate'.$this->route('limitedduty'),
             'todate' => 'required|date_format:Y-m-d,todate'.$this->route('limitedduty'),
 //            'corvelid' => 'required|string:limitedduty,assignmentbiological'.$this->route('limitedduty'),
-            'incidenttype' => 'required|string:limitedduty,incidenttype'.$this->route('limitedduty'),
+ //           'incidenttype' => 'required|string:limitedduty,incidenttype'.$this->route('limitedduty'),
 //            'incidentid' => 'required|integer:limitedduty,incidentid'.$this->route('limitedduty'),
             //'commments'=>'required|array:limitedduty,commments'.$this->route('limitedduty'),
             //'exposure'=>'required|string:biological,exposure'.$this->route('biological'),

@@ -91,11 +91,11 @@
                     <div class="col-sm-4 form-group">
                         {!! Form::label('assignmentbiological', 'Assignment', ['class'=> 'col-sm-4 control-label'] ) !!}
                         <div class="col-sm-6">
-                            {!! Form::select('assignmentbiological', ['A' => 'A',
+                            {!! Form::select('assignmentbiological',['A' => 'A',
                             'B' => 'B',
                             'C' => 'C',
-                            'DIV' => 'DIV'], null,
-                            ['placeholder' => 'Select your Assignment'],'required',
+                            'DIV' => 'DIV'],
+                            'required',
                             ['class' => 'form-control']) !!}
                             <p class="help-block"></p>
                             @if($errors->has('assignmentbiological'))
@@ -107,12 +107,12 @@
                     </div>
                     <div class="col-sm-4 form-group">
                         {!! Form::label('shift', 'Shift', ['class'=> 'col-sm-4 control-label'] ) !!}
-                        <div class="col-sm-8">
+                        <div class="col-sm-4">
                             {!! Form::select('shift', ['A' => 'A',
                             'B' => 'B',
                             'C' => 'C',
-                            'DIV' => 'DIV'], null,
-                            ['placeholder' => 'Select your Shift'],'required',
+                            'DIV' => 'DIV'],
+                            'required',
                             ['class' => 'form-control']) !!}
                             <p class="help-block"></p>
                             @if($errors->has('shift'))
@@ -431,15 +431,14 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-12">
-                <div class="form-group">
-                    {{Form::label('exposureinjury','Do you have any symptoms of illness or injury and require
-                       treatment?')}}
+            <div class="col-md-6 form-group">
+                {{Form::label('exposureinjury','Do you have any symptoms of illness or injury and require
+                   treatment?',['class'=> 'col-sm-10 control-label'] ) }}
+                <div class="col-sm-2">
                     {!! Form::select('exposureinjury',[
                       'Yes' => 'Yes',
-                      'No' => 'No'],null,
-                    ['placeholder' => 'Choose one'],'required',
-                    array('class' => 'form-control'))!!}
+                      'No' => 'No'],'required',
+                    ['class' => 'form-control'])!!}
                     <p class="help-block"></p>
                     @if($errors->has('exposureinjury'))
                         <p class="help-block">
@@ -448,6 +447,10 @@
                     @endif
                 </div>
             </div>
+            <br>
+            <br>
+            <br>
+            <br>
             <div class="row">
                 <div class="col-sm-12">
                     <label class="col-sm-5"></label>

@@ -685,7 +685,7 @@
                         <br>
                         <label class="col-sm-5"></label>
                         <div class="btn-bottom ">
-
+                            {!! Form::submit('Save as Draft',['class' => 'btn btn-primary','name' => 'partialSave']) !!}
                             <button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal">
                                 Submit
                             </button>
@@ -697,7 +697,7 @@
 
             </div>
         </div>
-    {!! Form::close() !!}
+
 
     @if (!empty($comments))
             <div class="panel panel-default">
@@ -759,4 +759,5 @@
             </div>
         </div>
     </div>
+    {!! Form::close() !!}
     @stop

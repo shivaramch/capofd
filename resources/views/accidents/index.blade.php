@@ -64,7 +64,8 @@
                                             <a href="{{ route('accidents.show',[$accident->ofd6aid]) }}"
                                                class="btn btn-xs btn-info btn-block"><i
                                                         class="fa fa-eye" aria-hidden="true"></i> VIEW</a>
-                                            @if( $accident->applicationstatus == 1 || $accident->applicationstatus== 5)
+                                            @if( $accident->applicationstatus == DB::table('status')->where('statustype','Draft')->value('statusid') || $accident->applicationstatus==   DB::table('status')->where('statustype','Rejected')->value('statusid')
+)
                                                 <a href="{{ route('accidents.edit',[$accident->ofd6aid]) }}"
                                                    class="btn btn-xs btn-warning btn-block"><i
                                                             class="fa fa-pencil-square-o"
@@ -107,7 +108,7 @@
                     <tbody>
                     @if(count($accidents) > 0)
                         @foreach($accidents as $accident)
-                            @if($accident->captainid == Auth::user()->id && $accident->applicationstatus == 2)
+                            @if($accident->captainid == Auth::user()->id && $accident->applicationstatus ==  DB::table('status')->where('statustype','Application under Captain')->value('statusid'))
                                 <tr>
                                     <td>{{ $accident->ofd6aid }}</td>
                                     <td>{{ $accident->drivername }}</td>
@@ -156,7 +157,7 @@
                     <tbody>
                     @if(count($accidents) > 0)
                         @foreach($accidents as $accident)
-                            @if($accident->battalionchiefid == Auth::user()->id && $accident->applicationstatus == 3)
+                            @if($accident->battalionchiefid == Auth::user()->id && $accident->applicationstatus == DB::table('status')->where('statustype','Application under Batallion Chief')->value('statusid'))
                                 <tr>
                                     <td>{{ $accident->ofd6aid }}</td>
                                     <td>{{ $accident->drivername }}</td>
@@ -206,7 +207,7 @@
                     <tbody>
                     @if(count($accidents) > 0)
                         @foreach($accidents as $accident)
-                            @if($accident->aconduty == Auth::user()->id && $accident->applicationstatus == 4)
+                            @if($accident->aconduty == Auth::user()->id && $accident->applicationstatus ==   DB::table('status')->where('statustype','Application under Assistant Chief')->value('statusid'))
                                 <tr>
                                     <td>{{ $accident->ofd6aid }}</td>
                                     <td>{{ $accident->drivername }}</td>

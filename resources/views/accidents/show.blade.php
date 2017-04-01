@@ -225,7 +225,7 @@
                 <div class="col-sm-12 form-group well well-sm">
                     <div class="col-sm-4">
                         <a class="btn btn-primary dropdown-toggle col-sm-12" data-toggle="collapse"
-                           data-target="#611"><i class="fa fa-eye" aria-hidden="true"></i> view previously uploaded
+                           data-target="#611"><i class="fa fa-eye" aria-hidden="true"></i> View previously uploaded
                             file(s)
                         </a>
                         <div id="611" class="collapse">
@@ -255,7 +255,7 @@
             <div class="row">
                 <div class="col-sm-12">
                     {{ Form::checkbox('checkbox2', 1, null,['disabled'], ['id' => 'checkbox2', 'class'=>'className','readonly' => 'true']) }}
-                    {{Form::label('Checkbox2','Complete ofd 295
+                    {{Form::label('Checkbox2','Complete OFD 295
                             vehicle accident witness statement -this report is for civilian statements
                         only')}}
                 </div>
@@ -265,7 +265,7 @@
                 <div class="col-sm-12 form-group well well-sm">
                     <div class="col-sm-4">
                         <a class="btn btn-primary dropdown-toggle col-sm-12" data-toggle="collapse"
-                           data-target="#6a2"><i class="fa fa-eye" aria-hidden="true"></i> view previously uploaded
+                           data-target="#6a2"><i class="fa fa-eye" aria-hidden="true"></i> View previously uploaded
                             file(s)
                         </a>
                         <div id="6a2" class="collapse">
@@ -295,8 +295,8 @@
             <div class="row">
                 <div class="col-sm-12">
                     {{ Form::checkbox('checkbox3', 1, null,['disabled'], ['id' => 'checkbox3', 'class'=>'className','readonly' => 'true']) }}
-                    {{Form::label('Checkbox3','Complete ofd 25a accident
-                        intradepartmental communication - driver')}}
+                    {{Form::label('Checkbox3','Complete OFD 25a Accident
+                        Intradepartmental Communication - Driver')}}
                 </div>
 
                 {{--}}<label class="col-sm-12"><strong>complete ofd 25a accident
@@ -304,7 +304,7 @@
                 <div class="col-sm-12 form-group well well-sm">
                     <div class="col-sm-4">
                         <a class="btn btn-primary dropdown-toggle col-sm-12" data-toggle="collapse"
-                           data-target="#6a3"><i class="fa fa-eye" aria-hidden="true"></i> view previously uploaded
+                           data-target="#6a3"><i class="fa fa-eye" aria-hidden="true"></i> View previously uploaded
                             file(s)
                         </a>
                         <div id="6a3" class="collapse">
@@ -334,15 +334,15 @@
             <div class="row">
                 <div class="col-sm-12">
                     {{ Form::checkbox('checkbox4', 1, null,['disabled'], ['id' => 'checkbox4', 'class'=>'className','readonly' => 'true']) }}
-                    {{Form::label('Checkbox4','Complete ofd 25b accident
-                        intradepartmental communication - Supervisor')}}
+                    {{Form::label('Checkbox4','Complete OFD 25b Accident
+                        Intradepartmental Communication - Supervisor')}}
                 </div>
                 {{--}}  <label class="checkbox-inline col-sm-12"><strong>complete ofd 25b accident
                           intradepartmental communication</strong>-supervisor</label> --}}
                 <div class="col-sm-12 form-group well well-sm">
                     <div class="col-sm-4">
                         <a class="btn btn-primary dropdown-toggle col-sm-12" data-toggle="collapse"
-                           data-target="#6a4"><i class="fa fa-eye" aria-hidden="true"></i> view previously uploaded
+                           data-target="#6a4"><i class="fa fa-eye" aria-hidden="true"></i> View previously uploaded
                             file(s)
                         </a>
                         <div id="6a4" class="collapse">
@@ -372,15 +372,15 @@
             <div class="row">
                 <div class="col-sm-12">
                     {{ Form::checkbox('checkbox5', 1, null,['disabled'], ['id' => 'checkbox5', 'class'=>'className','readonly' => 'true']) }}
-                    {{Form::label('Checkbox5','Complete ofd 25b accident
-                        intradepartmental communication - Other Personnel')}}
+                    {{Form::label('Checkbox5','Complete OFD 25b Accident
+                        Intradepartmental Communication - Other Personnel')}}
                 </div>
                 {{--}}<label class="checkbox-inline col-sm-12"><strong>complete ofd 25c accident
                         intradepartmental communication</strong>-other personnel</label> --}}
                 <div class="col-sm-12 form-group well well-sm">
                     <div class="col-sm-4">
                         <a class="btn btn-primary dropdown-toggle col-sm-12" data-toggle="collapse"
-                           data-target="#6a5"><i class="fa fa-eye" aria-hidden="true"></i> view previously uploaded
+                           data-target="#6a5"><i class="fa fa-eye" aria-hidden="true"></i> View previously uploaded
                             file(s)
                         </a>
                         <div id="6a5" class="collapse">
@@ -412,7 +412,7 @@
             <div class="row">
                 <div class="col-sm-12">
                     {{ Form::checkbox('checkbox6', 1, null,['disabled'], ['id' => 'checkbox6', 'class'=>'className','readonly' => 'true']) }}
-                    {{Form::label('Checkbox6','Complete ofd 31-ofd
+                    {{Form::label('Checkbox6','Complete OFD 31-ofd
                         damaged, lost, stolen equipment report')}}
                 </div>
                 {{--}} <label class="checkbox-inline col-sm-12"><strong> complete ofd 31-ofd
@@ -420,7 +420,7 @@
                 <div class="col-sm-12 form-group well well-sm">
                     <div class="col-sm-4">
                         <a class="btn btn-primary dropdown-toggle col-sm-12" data-toggle="collapse"
-                           data-target="#6a6"><i class="fa fa-eye" aria-hidden="true"></i> view previously uploaded
+                           data-target="#6a6"><i class="fa fa-eye" aria-hidden="true"></i> View previously uploaded
                             file(s)
                         </a>
                         <div id="6a6" class="collapse">
@@ -452,7 +452,7 @@
             <div class="row">
                 <div class="col-sm-12">
                     {{ Form::checkbox('checkbox7', 1, null,['disabled'], ['id' => 'checkbox7', 'class'=>'className','readonly' => 'true']) }}
-                    {{Form::label('Checkbox7','Complete ofd 127 request for
+                    {{Form::label('Checkbox7','Complete OFD 127 request for
                         services form')}}
                 </div>
                 {{--}}  <label class="checkbox-inline col-sm-12"><strong> complete ofd 127 request for
@@ -460,7 +460,7 @@
                 <div class="col-sm-12 form-group well well-sm">
                     <div class="col-sm-4">
                         <a class="btn btn-primary dropdown-toggle col-sm-12" data-toggle="collapse"
-                           data-target="#6a7"><i class="fa fa-eye" aria-hidden="true"></i> view previously uploaded
+                           data-target="#6a7"><i class="fa fa-eye" aria-hidden="true"></i> View previously uploaded
                             file(s)
                         </a>
                         <div id="6a7" class="collapse">
@@ -492,15 +492,15 @@
             <div class="row">
                 <div class="col-sm-12">
                     {{ Form::checkbox('checkbox8', 1, null,['disabled'], ['id' => 'checkbox8', 'class'=>'className','readonly' => 'true']) }}
-                    {{Form::label('Checkbox8','Complete dr 41 state
-                            of nebraska dmv vehicle accident report')}}
+                    {{Form::label('Checkbox8','Complete DR 41 State
+                            of Nebraska DMV Vehicle Accident Report')}}
                 </div>
                 {{--}} <label class="checkbox-inline col-sm-12"><strong><strong> complete dr 41 state
                              of nebraska dmv vehicle accident report</strong></strong></label> --}}
                 <div class="col-sm-12 form-group well well-sm">
                     <div class="col-sm-4">
                         <a class="btn btn-primary dropdown-toggle col-sm-12" data-toggle="collapse"
-                           data-target="#6a8"><i class="fa fa-eye" aria-hidden="true"></i> view previously uploaded
+                           data-target="#6a8"><i class="fa fa-eye" aria-hidden="true"></i> View previously uploaded
                             file(s)
                         </a>
                         <div id="6a8" class="collapse">
@@ -537,7 +537,7 @@
                 <div class="col-sm-12 form-group well well-sm">
                     <div class="col-sm-4">
                         <a class="btn btn-primary dropdown-toggle col-sm-12" data-toggle="collapse"
-                           data-target="#6a9"><i class="fa fa-eye" aria-hidden="true"></i> view previously uploaded
+                           data-target="#6a9"><i class="fa fa-eye" aria-hidden="true"></i> View previously uploaded
                             file(s)
                         </a>
                         <div id="6a9" class="collapse">
@@ -571,23 +571,29 @@
                 <div class="col-sm-12 form-group">
                     {{ form::checkbox('calllaw', 1, null, ['disabled'],['id' => 'calllaw', 'class'=>'classname', 'readonly' => 'true']) }}
                     <label><strong>
-                            Call law department
-                            investigator</strong>- call 444-5131- request report be faxed to
-                        swd fax # 444-6378. you can
-                        leave a message with rig # address of incident, date, time and
-                        rb#</label>
+                            Call Law Department
+                            Investigator</strong>- Call 444-5131- Request report be faxed to
+                        SWD fax # 444-6378. You can
+                        leave a message with RIG # Address of Incident, Date, Time and
+                        RB#</label>
                 </div>
             </div>
             <div class="row">
                 <div class="col-sm-12 form-group">
                     {{ form::checkbox('daybook', 1, null,['disabled'], ['id' => 'daybook', 'class'=>'classname']) }}
                     <label><strong>
-                            Enter in company day
-                            book</strong></label>
+                            Enter in Company Day
+                            Book</strong></label>
                 </div>
             </div>
         </div>
+        <div class="col-sm-12 panel-heading" align="center">
+            <div class="btn-bottom ">
+                <a href="{{ route('accidents.index') }}" class="btn btn-danger">Cancel</a>
+            </div>
+        </div>
     </div>
+
 
     {!! form::close() !!}
 
@@ -617,9 +623,11 @@
                                 <div class="col-sm-4">
                                     {{ Form::submit('Post Comment', array('class' => 'btn btn-block btn-primary')) }}
                                 </div>
-                                @if(($accident->captainid == Auth::user()->id && $accident->applicationstatus == 2) ||
-                                ($accident->battalionchiefid == Auth::user()->id&&$accident->applicationstatus == 3) ||
-                                ($accident->aconduty == Auth::user()->id&&$accident->applicationstatus == 4) ||
+                                @if(($accident->captainid == Auth::user()->id && $accident->applicationstatus ==DB::table('status')->where('statustype','Application under Captain')->value('statusid')
+) ||
+                                ($accident->battalionchiefid == Auth::user()->id&&$accident->applicationstatus ==       DB::table('status')->where('statustype','Application under Batallion Chief')->value('statusid')) ||
+                                ($accident->aconduty == Auth::user()->id&&$accident->applicationstatus ==      DB::table('status')->where('statustype','Application under Assistant Chief')->value('statusid')
+) ||
                                 Auth::user()->roleid == 1)
                                     <div class="col-sm-4">
                                         <a href="{{ url('/accidents/'.$accident->ofd6aid .'/Approve') }}"
