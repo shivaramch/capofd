@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use App\Biological;
 use App\Attachment;
 use App\Http\Requests\UpdateBiologicalsRequest;
@@ -23,54 +24,54 @@ class BiologicalsController extends Controller
     public function Approve($id)
     {
 
-        $biological=DB::table('biologicals')->where('ofd6bid',$id)->first();
-        $formname="biologicals";
+        $biological = DB::table('biologicals')->where('ofd6bid', $id)->first();
+        $formname = "biologicals";
 
-        $rawlink=request()->headers->get('referer');
-        $link=preg_replace('#\/[^/]*$#', '', $rawlink);
+        $rawlink = request()->headers->get('referer');
+        $link = preg_replace('#\/[^/]*$#', '', $rawlink);
         $currentuserid = Auth::user()->id;
-        $primaryidconumber=DB::table('biologicals')->where ([
+        $primaryidconumber = DB::table('biologicals')->where([
             ['primaryidconumber', '=', $currentuserid],
             ['ofd6bid', '=', $id],
         ])->pluck('primaryidconumber');
-        $Finalapprovalstatusidraw=DB::table('status')->where('statustype','Approved')->pluck('statusid');
-        $Finalpprovalstatusid=str_replace (array('[', ']'), '',$Finalapprovalstatusidraw);
+        $Finalapprovalstatusidraw = DB::table('status')->where('statustype', 'Approved')->pluck('statusid');
+        $Finalpprovalstatusid = str_replace(array('[', ']'), '', $Finalapprovalstatusidraw);
 
-        if($primaryidconumber){
+        if ($primaryidconumber) {
 
             $Biological = Biological::find($id);
 
-            $Biological->applicationstatus =$Finalpprovalstatusid ;
+            $Biological->applicationstatus = $Finalpprovalstatusid;
 
             $Biological->save();
-            (new EmailController)->Email($biological, $rawlink,$formname,$Finalpprovalstatusid);
+            (new EmailController)->Email($biological, $rawlink, $formname, $Finalpprovalstatusid);
         }
 
         return redirect()->route('biologicals.index');
     }
 
 
-    public  function Reject($id)
+    public function Reject($id)
     {
-        $biological=DB::table('biologicals')->where('ofd6bid',$id)->first();
-        $formname="biologicals";
+        $biological = DB::table('biologicals')->where('ofd6bid', $id)->first();
+        $formname = "biologicals";
 
-        $rawlink=request()->headers->get('referer');
-        $link=preg_replace('#\/[^/]*$#', '', $rawlink);
+        $rawlink = request()->headers->get('referer');
+        $link = preg_replace('#\/[^/]*$#', '', $rawlink);
 
         $currentuserid = Auth::user()->id;
-        $primaryidconumber=DB::table('biologicals')->where ([
+        $primaryidconumber = DB::table('biologicals')->where([
             ['primaryidconumber', '=', $currentuserid],
             ['ofd6bid', '=', $id],
         ])->pluck('primaryidconumber');
 
-        $statusidraw=DB::table('status')->where('statustype','Rejected')->pluck('statusid');
-        $statusid=str_replace (array('[', ']'), '', $statusidraw);
-        if($primaryidconumber) {
+        $statusidraw = DB::table('status')->where('statustype', 'Rejected')->pluck('statusid');
+        $statusid = str_replace(array('[', ']'), '', $statusidraw);
+        if ($primaryidconumber) {
 
             $Biological = Biological::find($id);
 
-            $Biological->applicationstatus =$statusid ;
+            $Biological->applicationstatus = $statusid;
 
             $Biological->save();
 
@@ -82,43 +83,41 @@ class BiologicalsController extends Controller
     }
 
 
-        public function index()
+    public function index()
     {
         $biologicals = Biological::all();
         return view('biologicals.index', compact('biologicals'));
     }
+
     public function create()
     {
         return view('biologicals.create');
     }
 
 
-    public function save( Request $requestSave)
+    public function save(Request $requestSave)
     {
-        if(Input::get('store')) {
+        if (Input::get('store')) {
             $this->store($requestSave);
         }
 
-        if(Input::get('partialSave')) {
+        if (Input::get('partialSave')) {
             $this->partialSave($requestSave);
         }
         return redirect()->route('biologicals.index');
 
     }
 
-
-
-
     public function partialSave(Request $request)
     {
         $this->validate($request, [
 
-           'dateofexposure'=> 'required|date:biological,todaysdate,',
-            ]);
+            'dateofexposure' => 'required|date:biological,todaysdate,',
+        ]);
 
 
-        $statusid=DB::table('status')->where('statustype','Draft')->value('statusid');
-        $request->offsetSet('applicationstatus',$statusid);
+        $statusid = DB::table('status')->where('statustype', 'Draft')->value('statusid');
+        $request->offsetSet('applicationstatus', $statusid);
 
         $request = $this->saveFiles($request);
         Biological::create($request->all());
@@ -136,34 +135,36 @@ class BiologicalsController extends Controller
 
             'trueofd184' => 'max:20480|mimes:pdf',
             'potofd184' => 'max:20480|mimes:pdf',
-            //'todaysdate' => 'required|date:biological,todaysdate,',
+            'miscbiological1' => 'max:20480|mimes:pdf',
+            'miscbiological2' => 'max:20480|mimes:pdf',
             'employeeid' => 'required|integer:biological,employeeid',
             'exposedemployeename' => 'required|alpha|string:biological,exposedemployeename',
-            //'dateofexposure' => 'required|before_or_equal:biological,dateofexposure',
+            'dateofexposure' => 'required|date:biological,dateofexposure',
             'assignmentbiological' => 'required|string:biological,assignmentbiological',
             'shift' => 'required|string:biological,shift',
             'primaryidconumber' => 'required|integer:biological,primaryidconumber',
             'epcrincidentnum' => 'required|numeric:biological,epcrincidentnum',
             'frmsincidentnum' => 'required|string:biological,frmsincidentnumber',
-            //'exposureinjury'=>'required|string:biological,exposureinjury',
+            'exposureinjury' => 'required|string:biological,exposureinjury',
             'exposure' => 'required|string:biological,exposure',
         ]);
 
-        $statusid=DB::table('status')->where('statustype','Application under Primary IDCO ')->value('statusid');
-        $request->offsetSet('applicationstatus',$statusid);
+        $statusid = DB::table('status')->where('statustype', 'Application under Primary IDCO ')->value('statusid');
+        $request->offsetSet('applicationstatus', $statusid);
         $request = $this->saveFiles($request);
         Biological::create($request->all());
         $last_insert_id = DB::getPdo()->lastInsertId();
         $this->BiologicalUpload($request, $last_insert_id);
         $link = $request->url() . "/$last_insert_id";
 //write code for email notification here
-        $formname="biologicals";
-        $rawlink=request()->headers->get('referer');
-        $link=preg_replace('#\/[^/]*$#', '', $rawlink)."/$last_insert_id";
+        $formname = "biologicals";
+        $rawlink = request()->headers->get('referer');
+        $link = preg_replace('#\/[^/]*$#', '', $rawlink) . "/$last_insert_id";
 
-        (new EmailController)->Email($request, $link,$formname,$statusid);
-       return redirect()->route('biologicals.index');
+        (new EmailController)->Email($request, $link, $formname, $statusid);
+        return redirect()->route('biologicals.index');
     }
+
     public function edit($id)
     {
         $attachments = Attachment::all();
@@ -171,8 +172,9 @@ class BiologicalsController extends Controller
         $comments = Comment::all();
         $users = User::all();
 
-        return view('biologicals.edit', compact('biological', 'attachments','comments', 'users'));
+        return view('biologicals.edit', compact('biological', 'attachments', 'comments', 'users'));
     }
+
     public function show($id)
     {
         $biological = Biological::findOrFail($id);
@@ -195,23 +197,26 @@ class BiologicalsController extends Controller
 
         $statusidraw = DB::table('status')->where('statustype', 'Application under Captain')->pluck('statusid');
         $statusid = str_replace(array('[', ']'), '', $statusidraw);
-        $statusidraw=DB::table('status')->where('statustype','Application under Primary IDCO ')->pluck('statusid');
-        $statusid=str_replace (array('[', ']'), '', $statusidraw);
+        $statusidraw = DB::table('status')->where('statustype', 'Application under Primary IDCO ')->pluck('statusid');
+        $statusid = str_replace(array('[', ']'), '', $statusidraw);
 
         $biological = Biological::findOrFail($id);
         \DB::table('biologicals')->where('ofd6bid', $biological->ofd6bid)->update([
                 'exposedemployeename' => $biological->exposedemployeename,
+                'trueofd184' => 'max:20480|mimes:pdf',
+                'potofd184' => 'max:20480|mimes:pdf',
                 'dateofexposure' => $biological->dateofexposure,
                 'employeeid' => $biological->employeeid,
                 'assignmentbiological' => $biological->assignmentbiological,
                 'shift' => $biological->shift,
                 'primaryidconumber' => $biological->primaryidconumber,
                 'epcrincidentnum' => $biological->epcrincidentnum,
-                //'todaysdate' => $biological->todaysdate,
                 'exposure' => $biological->exposure,
                 'applicationstatus' => $statusid,
                 'frmsincidentnum' => $biological->frmsincidentnum,
-                'exposureinjury' => $biological->exposureinjury]
+                'exposureinjury' => $biological->exposureinjury,
+                'miscbiological1' => 'max:20480|mimes:pdf',
+                'miscbiological2' => 'max:20480|mimes:pdf']
         );
         //end history code
         $request = $this->saveFiles($request);

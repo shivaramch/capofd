@@ -226,7 +226,7 @@
                     </div>
                     <div class="col-sm-12">
                         <div class="form-group">
-                            {{ Form::checkbox('miscbiological1', 1, null, ['id'=>'miscbiological1', 'class' => 'className' ]) }}
+                            {{ Form::checkbox('miscbiological1', 1, null, ['id'=>'miscbiological1', 'class' => 'className','disabled'=>'disabled' ]) }}
                             {{Form::label('miscbiological1','Miscellaneous Documents')}}
                         </div>
                         <div class="col-sm-12 form-group well well-sm">
@@ -307,44 +307,35 @@
                         <div class="form-group">
                             {{ Form::checkbox('truedocumentdaybook', 1, null, ['id' => 'truedocumentdaybook', 'class'=>'className','disabled' => "disabled" ]) }}
                             {{Form::label('truedocumentdaybook','Document in Company Day Book and on your Personnel Record')}}
-
                         </div>
                     </div>
-
                 </div>
-
                 <div id="Exposure1" class="desc" style="display: none;">
-
                     <div class="col-sm-12">
                         <div class="form-group">
                             {{ Form::checkbox('potdecontaminate', 1, null, ['id' => 'potdecontaminate', 'class'=>'className','disabled' => "disabled" ]) }}
                             {{Form::label('potdecontaminate','Decontaminate self- wash, flush as soon as possible  ')}}
                         </div>
                     </div>
-
                     <div class="col-sm-12">
                         <div class="form-group">
                             {{ Form::checkbox('potbagtag', 1, null, ['id' => 'potbagtag', 'class'=>'className','disabled' => "disabled" ]) }}
                             {{Form::label('potbagtag','Bag & Tag clothing if applicable - send email to PSS with pick-up location')}}
                         </div>
                     </div>
-
                     <div class="col-sm-12">
                         <div class="form-group">
                             {{ Form::checkbox('potofd184', 1, null, ['id' => 'potofd184', 'class'=>'className','disabled' => "disabled" ]) }}
                             {{Form::label('potofd184','Complete OFD 184')}}
                         </div>
                         <div class="col-sm-12 form-group well well-sm">
-
                             <div class="col-sm-4">
                                 <a class="btn btn-primary dropdown-toggle col-sm-12" data-toggle="collapse"
                                    data-target="#6b2"><i class="fa fa-eye" aria-hidden="true"></i> View Previously
                                     uploaded
                                     file(s)
                                 </a>
-
                                 <div id="6b2" class="collapse">
-
                                     <table class="table table-striped">
                                         <tr>
                                             <th> File Name</th>
@@ -364,7 +355,6 @@
                                                     </tr>@endif
                                             @endforeach
                                         @endif
-
                                     </table>
                                 </div>
                             </div>
@@ -372,7 +362,7 @@
                     </div>
                     <div class="col-sm-12">
                         <div class="form-group">
-                            {{ Form::checkbox('miscbiological2', 1, null, ['id'=>'miscbiological2', 'class' => 'className' ]) }}
+                            {{ Form::checkbox('miscbiological2', 1, null, ['id'=>'miscbiological2', 'class' => 'className','disabled'=>'disabled' ]) }}
                             {{Form::label('miscbiological2','Miscellaneous Documents')}}
                         </div>
                         <div class="col-sm-12 form-group well well-sm">
@@ -403,7 +393,6 @@
                                                     </tr>@endif
                                             @endforeach
                                         @endif
-
                                     </table>
                                 </div>
                             </div>
@@ -423,8 +412,6 @@
                         </div>
                     </div>
                 </div>
-
-
                 <div class="form-horizontal">
                     <div class="row">
                         <div class="col-md-12">
@@ -436,11 +423,52 @@
                         </div>
                     </div>
                 </div>
+                <div class="col-md-6 form-group">
+                    {{Form::label('exposureinjury','Do you have any symptoms of illness or injury and require
+                       treatment?',['class'=> 'col-sm-10 control-label'] ) }}
+                    <div class="col-sm-2">
+                        {!! Form::text('exposureinjury', old('exposureinjury'),array('class'=>'form-control','disabled'=>'disabled'))!!}
+                        <p class="help-block"></p>
+                        @if($errors->has('exposureinjury'))
+                            <p class="help-block">
+                                {{ $errors->first('exposureinjury') }}
+                            </p>
+                        @endif
+                    </div>
+                </div>
             </div>
         </div>
-
-
-
+    @else
+        <div class="panel-body">
+            <div class="form-horizontal">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="alert alert-danger" align="center">
+                            <label>
+                                You are not authorized to view this form
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    @endif
+    {!! Form::close() !!}
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <div class="row">
+                <div class="col-sm-12">
+                    @if($biological->primaryidconumber == Auth::user()->id && $biological->applicationstatus == DB::table('status')->where('statustype','Application under Primary IDCO')->value('statusid'))
+                        <div class="col-sm-12 panel-heading" align="center">
+                            <a href="{{ url('/biologicals/'.$biological->ofd6bid.'/Approve') }}"
+                               class="btn btn-success">Approve</a>
+                            <a href="{{ url('/biologicals/'.$biological->ofd6bid.'/Reject') }}"
+                               class="btn btn-danger">Reject</a>
+                        </div>
+                    @endif
+                </div>
+            </div>
+        </div>
         <!--comment section-->
         @if($biological->primaryidconumber == Auth::user()->id ||
         Auth::user()->roleid == 1)
@@ -490,15 +518,13 @@
                         {!! form::close() !!}
                     @endif
                     @endif
-
                     <div class="actionBox">
                         <ul class="commentList">
                             @if (!empty($comments))
                                 @foreach ($comments as $cm)
                                     @if(($cm->applicationid == $biological->ofd6bid && $cm->applicationtype == '6B')&&
-                        (($biological->employeeid == Auth::user()->id && $cm->isvisible == 1) ||
-                        $biological->primaryidconumber == Auth::user()->id ||
-                        Auth::user()->roleid == 1))
+                                    (($biological->employeeid == Auth::user()->id && $cm->isvisible == 1) ||
+                                    $biological->primaryidconumber == Auth::user()->id || Auth::user()->roleid == 1))
                                         <div class="col-sm-8">
                                             <div class="panel panel-white post panel-shadow">
                                                 <div class="post-heading">
@@ -506,6 +532,7 @@
                                                         <div class="title h5">
                                                             @foreach ($users as $user)
                                                                 @if($user->id == $cm->createdby )
+
                                                                     <b><i class="fa fa-user"></i> {{$user->name}}
                                                                     </b>
                                                                 @endif
@@ -530,7 +557,6 @@
                     </div>
                 </div>
             </div>
-
             <!-- Modal -->
             <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
                 <div class="modal-dialog" role="document">
@@ -554,28 +580,22 @@
                     </div>
                 </div>
             </div>
-        @endif
-        {!! Form::close() !!}
-@stop
+            @stop
+        @section('javascript')
+            <script src="{{ ('js/extensions/cookie') }}/bootstrap-table-cookie.js"></script>
+            <script src="{{ ('js/extensions/mobile') }}/bootstrap-table-mobile.js"></script>
+            <script src="{{ ('js/export') }}/bootstrap-table-export.js"></script>
+            <script src="{{ ('js/export') }}/tableExport.js"></script>
+            <script src="{{ ('js/export') }}/jquery.base64.js"></script>
+            <script type="text/javascript">
+                $(document).ready(function () {
+                    $("input[name$='exposure']").click(function () {
+                        var test = $(this).val();
 
-@section('javascript')
-
-    <script src="{{ ('js/extensions/cookie') }}/bootstrap-table-cookie.js"></script>
-    <script src="{{ ('js/extensions/mobile') }}/bootstrap-table-mobile.js"></script>
-
-    <script src="{{ ('js/export') }}/bootstrap-table-export.js"></script>
-    <script src="{{ ('js/export') }}/tableExport.js"></script>
-    <script src="{{ ('js/export') }}/jquery.base64.js"></script>
-
-    <script type="text/javascript">
-        $(document).ready(function () {
-            $("input[name$='exposure']").click(function () {
-                var test = $(this).val();
-
-                $("div.desc").hide();
-                $("#Exposure" + test).show();
-            });
-        });
-    </script>
-
+                        $("div.desc").hide();
+                        $("#Exposure" + test).show();
+                    });
+                });
+            </script>
+    </div>
 @endsection

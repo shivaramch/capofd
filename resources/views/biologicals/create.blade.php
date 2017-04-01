@@ -41,7 +41,7 @@
                             </div>
                         </div>
                         <div class="col-md-12">
-                            <h6><i><strong>Used for future tracking purposes only</strong></i></h6>
+                            <h5><i><strong>Used for future tracking purposes only</strong></i></h5>
                         </div>
                     </div>
                 </div>

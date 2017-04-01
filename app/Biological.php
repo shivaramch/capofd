@@ -32,7 +32,6 @@ class Biological extends Model
         'epcrincidentnum',
         'exposureinjury',
         'frmsincidentnum',
-        //'todaysdate',
         'truedecontaminate',
         'confirmsource',
         'bloodreport',
@@ -49,10 +48,8 @@ class Biological extends Model
         'trueofd184',
         'potofd184',
         'applicationstatus',
-        'checkbox1',
-    'checkbox2'
-        //'trueInjury',
-        //'potInjury'
+        'miscbiological1',
+        'miscbiological2'
     ];
     public function setDateAccidentDate($input)
     {

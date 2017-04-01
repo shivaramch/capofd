@@ -22,9 +22,8 @@ class CreateBiologicalTable extends Migration
             $table->string('primaryidconumber',256)->nullable();
             $table->string('epcrincidentnum',256)->nullable();
             $table->string('frmsincidentnum',256)->nullable();
-            //$table->date('todaysdate')->nullable();
             $table->string('exposure',256)->nullable();
-            //$table->string('exposureinjury',256)->nullable();
+            $table->string('exposureinjury',256)->nullable();
             $table->string('truedecontaminate')->nullable();
             $table->string('confirmsource')->nullable();
             $table->string('bloodreport')->nullable();
@@ -42,8 +41,8 @@ class CreateBiologicalTable extends Migration
             $table->integer('applicationstatus')->nullable();
             $table->string('trueofd184')->nullable();
             $table->string('potofd184')->nullable();
-            $table->string('checkbox1')->nullable();
-            $table->string('checkbox2')->nullable();
+            $table->string('miscbiological1')->nullable();
+            $table->string('miscbiological2')->nullable();
             $table->timestamps();
             $table->ipAddress('ip_address', 45)->nullable();
 

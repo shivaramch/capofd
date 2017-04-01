@@ -270,15 +270,20 @@
                                 <label>If an employee receives an injury or illness from this incident,
                                     the employee shall complete an OFD6 and designate whether treatment is being
                                     requested in the OFD-25 IOD.</label>
-
-                                {{--{!! Form::text('exposurehazmat', old('exposurehazmat'), ['disabled'], array('class'=>'form-control'))!!}--}}
-                                {{--<p class="help-block"></p>--}}
-                                {{--@if($errors->has('exposurehazmat'))--}}
-                                {{--<p class="help-block">--}}
-                                {{--{{ $errors->first('exposurehazmat') }}--}}
-                                {{--</p>--}}
-                                {{--@endif--}}
                             </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 form-group">
+                        {{Form::label('exposureinjury','Do you have any symptoms of illness or injury and require
+                           treatment?',['class'=> 'col-sm-10 control-label'] ) }}
+                        <div class="col-sm-2">
+                            {!! Form::text('exposureinjury', old('exposureinjury'),array('class'=>'form-control','disabled'=>'disabled'))!!}
+                            <p class="help-block"></p>
+                            @if($errors->has('exposureinjury'))
+                                <p class="help-block">
+                                    {{ $errors->first('exposureinjury') }}
+                                </p>
+                            @endif
                         </div>
                     </div>
                 </div>
