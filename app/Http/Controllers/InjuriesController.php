@@ -161,13 +161,13 @@ class InjuriesController extends Controller
     public function update(Request $requestSave,$id)
     {
         if (Input::get('store')) {
-            $this->updateRecords($requestSave,$id);
+            $this->updateRecord($requestSave,$id);
         }
 
         if (Input::get('partialSave')) {
             $this->partialUpdate($requestSave, $id);
         }
-        return redirect()->route('accidents.index');
+        return redirect()->route('injuries.index');
 
     }
 

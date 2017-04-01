@@ -753,7 +753,7 @@
                     Are you sure want to submit the form?
                 </div>
                 <div class="modal-footer">
-                    {!! Form::submit('Yes',['class' => 'btn btn-success']) !!}
+                    {!! Form::submit('Yes',['class' => 'btn btn-success','name'=> 'store']) !!}
                     <button type="button" class="btn btn-danger" data-dismiss="modal">No</button>
                 </div>
             </div>
