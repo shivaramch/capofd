@@ -45,7 +45,7 @@ class BiologicalsController extends Controller
             (new EmailController)->Email($biological, $rawlink, $formname, $Finalpprovalstatusid);
         }
 
-        return redirect()->route('biologicals.index');
+        return redirect()->route('biologicals.index')->with('message', 'Form has been Approved');
     }
 
 
@@ -76,7 +76,7 @@ class BiologicalsController extends Controller
             (new EmailController)->Email($biological, $rawlink, $formname, $statusid);
         }
 
-        return redirect()->route('biologicals.index');
+        return redirect()->route('biologicals.index')->with('message', 'Form has been Rejected');
 
     }
 
@@ -160,7 +160,7 @@ class BiologicalsController extends Controller
         $link = preg_replace('#\/[^/]*$#', '', $rawlink) . "/$last_insert_id";
 
         (new EmailController)->Email($request, $link, $formname, $statusid);
-        return redirect()->route('biologicals.index');
+        return redirect()->route('biologicals.index')->with('message', 'Form Submitted Successfully');
     }
 
     public function edit($id)
@@ -225,6 +225,6 @@ class BiologicalsController extends Controller
         $formname = "biologicals";
         (new EmailController)->Email($request, $link, $formname, $statusid);
         //email notification-end
-        return redirect()->route('biologicals.index');
+        return redirect()->route('biologicals.index')->with('message', 'Form Updated Successfully');
     }
 }

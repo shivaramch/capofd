@@ -106,7 +106,7 @@ class AccidentsController extends EmailController
         }
 
 
-        return redirect()->route('accidents.index');
+        return redirect()->route('accidents.index')->with('message', 'Form has been Approved');
 
 
     }
@@ -160,7 +160,7 @@ class AccidentsController extends EmailController
         (new EmailController)->Email($accident, $rawlink, $formname, $statusid);
         //     $numsent = (new EmailController)->Email($request, $link,$formname,$statusid);
 
-        return redirect()->route('accidents.index');
+        return redirect()->route('accidents.index')->with('message', 'Form has been Rejected');
 
     }
 
@@ -229,7 +229,8 @@ class AccidentsController extends EmailController
         $link = preg_replace('#\/[^/]*$#', '', $rawlink) . "/$last_insert_id";
 //   (new EmailController)->Email($accident, $rawlink,$formname,$statusid);
         (new EmailController)->Email($request, $link, $formname, $statusid);
-        return redirect()->route('accidents.index');
+        //$request->session()->flash('alert-success', 'User was successful added!');
+		return redirect()->route('accidents.index')->with('message', 'Form Submitted Successfully');
     }
 
 
@@ -336,6 +337,6 @@ class AccidentsController extends EmailController
 
         (new EmailController)->Email($request, $link, $formname, $statusid);
         //email notification-end
-        return redirect()->route('accidents.index');
+        return redirect()->route('accidents.index')->with('message', 'Form Updated Successfully');
     }
 }

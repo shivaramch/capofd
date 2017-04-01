@@ -29,7 +29,7 @@
                         </div>
                     </div>
                     <div class="col-md-12">
-                        <h6><i><strong>Used for future tracking purposes only</strong></i></h6>
+                        <h5><i><strong>Used for future tracking purposes only</strong></i></h5>
                     </div>
                 </div>
             </div>
@@ -471,7 +471,7 @@
                 <br>
                 <label class="col-sm-5"></label>
                 <div class="btn-bottom ">
-                    {!! Form::submit('Save',['class' => 'btn btn-success','name' => 'partialSave', 'id' => 'save']) !!}
+                    {!! Form::submit('Save & Exit',['class' => 'btn btn-primary','name' => 'partialSave', 'id' => 'save']) !!}
                     <button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal" id="submit">
                         Submit
                     </button>

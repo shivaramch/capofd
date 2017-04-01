@@ -1,4 +1,5 @@
 @extends('layouts.app')
+
 @section('crumbs')
     <ol class="breadcrumb">
         <a class="btn btn-default" type="button"
@@ -8,6 +9,9 @@
         <li class="active">OFD 6A Accidents</li>
     </ol>
 @endsection
+
+
+
 @section('content')
     <div class="panel panel-default panel-shadow ">
         <div class="panel-heading">

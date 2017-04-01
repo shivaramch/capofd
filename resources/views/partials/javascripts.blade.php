@@ -110,6 +110,12 @@ $(function addZero() {
 </script>
 
 <script>
+    setTimeout(function() {
+        $('.flash').fadeOut('fast');
+    }, 5000); // <-- time in milliseconds
+</script>
+
+<script>
     $('.datepicker').datepicker({
         autoclose: true,
         dateFormat: "yy-mm-dd"
