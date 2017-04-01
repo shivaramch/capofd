@@ -20,6 +20,7 @@ class AccidentsController extends EmailController
     use FormFileUploadTrait;
 
 
+
     public function Approve($id)
     {
         $accident = DB::table('accidents')->where('ofd6aid', $id)->first();
@@ -190,6 +191,22 @@ class AccidentsController extends EmailController
 
     }
 
+
+    public function update(Request $requestSave,$id)
+    {
+        if (Input::get('store')) {
+            $this->updateRecords($requestSave,$id);
+        }
+
+        if (Input::get('partialSave')) {
+            $this->partialUpdate($requestSave, $id);
+        }
+        return redirect()->route('accidents.index');
+
+    }
+
+
+
     public function store(Request $request)
 
     {
@@ -300,11 +317,11 @@ class AccidentsController extends EmailController
 
     }
 
-    public function update(UpdateAccidentsRequest $request, $id)
+    public function updateRecords(Request $request, $id)
     {
 
-        $statusidraw = DB::table('status')->where('statustype', 'Application under Captain')->pluck('statusid');
-        $statusid = str_replace(array('[', ']'), '', $statusidraw);
+        $statusid = DB::table('status')->where('statustype', 'Application under Captain')->value('statusid');
+
 
         $accident = Accident::findOrFail($id);
         \DB::table('accidents')->where('ofd6aid', $accident->ofd6aid)->update([
@@ -338,4 +355,34 @@ class AccidentsController extends EmailController
         //email notification-end
         return redirect()->route('accidents.index');
     }
+
+    public function partialUpdate(Request $request, $id)
+    {
+
+        $statusid = DB::table('status')->where('statustype', 'Draft')->value('statusid');
+
+
+        $accident = Accident::findOrFail($id);
+        \DB::table('accidents')->where('ofd6aid', $accident->ofd6aid)->update([
+                'accidentdate' => $accident->accidentdate,
+                'drivername' => $accident->drivername,
+                'driverid' => $accident->driverid,
+                'assignmentaccident' => $accident->assignmentaccident,
+                'apparatus' => $accident->apparatus,
+                'captainid' => $accident->captainid,
+                'battalionchiefid' => $accident->battalionchiefid,
+                'aconduty' => $accident->aconduty,
+                'applicationstatus' => $statusid,
+                'frmsincidentnum' => $accident->frmsincidentnum,
+                'calllaw' => $accident->calllaw,
+                'daybook' => $accident->daybook,
+                'commemail' => $accident->commemail]
+        );
+        //end history code
+        $request = $this->saveFiles($request);
+        $accident->update($request->all());
+
+        return redirect()->route('accidents.index');
+    }
+
 }

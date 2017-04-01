@@ -194,7 +194,7 @@ class InjuriesController extends Controller
 
         $this->validate($request, [
             'injurydate' => 'required|date:injury,injurydate,',
-            'injuredemployeename' => 'required|alpha|string:injuries,injuredemployeename,',
+            //'injuredemployeename' => 'required|alpha|string:injuries,injuredemployeename,',
             'injuredemployeeid' => 'required|integer:injury,injuredemployeeid,',
             'assignmentinjury' => 'required|string:injury,assignmentinjury,',
             'corvelid' => 'required|integer:injury,corvelid,',
@@ -277,8 +277,8 @@ class InjuriesController extends Controller
     public function update(UpdateInjuriesRequest $request, $id)
     {
         $injury = Injury::findOrFail($id);
-        $statusidraw = DB::table('status')->where('statustype', 'Application under Captain')->pluck('statusid');
-        $statusid = str_replace(array('[', ']'), '', $statusidraw);
+       $statusid = DB::table('status')->where('statustype', 'Application under Captain')->value('statusid');
+      /*  $statusid = str_replace(array('[', ']'), '', $statusidraw);*/
         \DB::table('injuries')->where('ofd6id', $injury->ofd6id)->update([
                 'reportnum' => $injury->reportnum,
                 'injurydate' => $injury->injurydate,
@@ -293,7 +293,7 @@ class InjuriesController extends Controller
                 'frmsincidentnum' => $injury->frmsincidentnum,
                 'policeofficercompletesign' => $injury->policeofficercompletesign,
                 'callsupervisor' => $injury->callsupervisor,
-                'applicationstatus' => $statusid,
+              'applicationstatus' => $statusid,
                 'createdby' => $injury->createdby,
                 'updatedby' => $injury->updatedby]
         );
