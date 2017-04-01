@@ -106,8 +106,9 @@ class HazmatController extends Controller
 
         if(Input::get('partialSave')) {
             $this->partialSave($requestSave);
+			return redirect()->route('hazmat.index')->with('message', 'Form has been partially saved');
         }
-        return redirect()->route('hazmat.index');
+        
 
     }
 

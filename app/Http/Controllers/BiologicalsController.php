@@ -100,8 +100,9 @@ class BiologicalsController extends Controller
 
         if(Input::get('partialSave')) {
             $this->partialSave($requestSave);
+			return redirect()->route('biologicals.index')->with('message', 'Form has been partially saved');
         }
-        return redirect()->route('biologicals.index');
+        
 
     }
 

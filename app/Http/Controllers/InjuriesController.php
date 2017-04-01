@@ -166,8 +166,9 @@ class InjuriesController extends Controller
 
         if (Input::get('partialSave')) {
             $this->partialUpdate($requestSave, $id);
+			return redirect()->route('injuries.index')->with('message', 'Form has been partially saved');
         }
-        return redirect()->route('injuries.index');
+        
 
     }
 
@@ -180,8 +181,9 @@ class InjuriesController extends Controller
 
         if (Input::get('partialSave')) {
             $this->partialSave($requestSave);
+			return redirect()->route('injuries.index')->with('message', 'Form has been partially saved');
         }
-        return redirect()->route('injuries.index');
+        
 
     }
 
