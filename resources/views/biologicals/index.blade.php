@@ -98,7 +98,7 @@
                     </thead>
                     <tbody>
                     @foreach($biologicals as $biological)
-                        @if($biological->employeeid == Auth::user()->id && $biological->applicationstatus==DB::table('status')->where('statustype','Application under Primary IDCO')->value('statusid')
+                        @if($biological->primaryidconumber== Auth::user()->id && $biological->applicationstatus==DB::table('status')->where('statustype','Application under Primary IDCO')->value('statusid')
 )
                             <tr>
                                 <td>{{ $biological->ofd6bid }}</td>
