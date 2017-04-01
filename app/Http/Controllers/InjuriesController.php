@@ -162,6 +162,7 @@ class InjuriesController extends Controller
     {
         if (Input::get('store')) {
             $this->updateRecord($requestSave,$id);
+            return redirect()->route('injuries.index')->with('message', 'Form Submitted Successfully');
         }
 
         if (Input::get('partialSave')) {
