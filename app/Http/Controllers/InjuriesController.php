@@ -167,7 +167,7 @@ class InjuriesController extends Controller
         if (Input::get('partialSave')) {
             $this->partialUpdate($requestSave, $id);
         }
-        return redirect()->route('accidents.index');
+        return redirect()->route('injuries.index');
 
     }
 
