@@ -114,6 +114,33 @@ class HazmatController extends Controller
 
     public function partialUpdate(Request $request, $id)
     {
+        $statusid=DB::table('status')->where('statustype','Application under Primary IDCO')->value('statusid');
+
+
+        $hazmat = hazmat::findOrFail($id);
+
+        \DB::table('hazmats')->where('ofd6cid', $hazmat->ofd6cid)->update([
+                'employeeid' => $hazmat->employeeid,
+                'employeename' => $hazmat->employeename,
+                'dateofexposure' => $hazmat->dateofexposure,
+                'primaryidconumber' => $hazmat->primaryidconumber,
+                'epcrincidentnum' => $hazmat->epcrincidentnum,
+                'frmsincidentnum' => $hazmat->frmsincidentnum,
+                'assignment' => $hazmat->assignment,
+                'shift' => $hazmat->shift,
+                'applicationstatus' => $statusid,
+                'corvelid' => $hazmat->corvelid,
+                //'exposurehazmat' => $hazmat->exposurehazmat
+            ]
+        );
+
+        //end history code
+        $request = $this->saveFiles($request);
+        $hazmat->update($request->all());
+
+        $this->HazmatUpload($request, $id);
+
+        $link=$request->url();
 
     }
 
@@ -163,13 +190,10 @@ class HazmatController extends Controller
 
     }
 
-    public function store(Request $request)
+
+
+    public function validateRequest(Request $request)
     {
-
-
-
-
-
         $this->validate($request, [
 
 
@@ -183,7 +207,16 @@ class HazmatController extends Controller
             'assignment' => 'required|string:hazmat,assignment',
             'frmsincidentnum' => 'required|string:hazmat,frmsincidentnum',
             'shift' => 'required|string:hazmat,shift,',
-            ]);
+        ]);
+    }
+
+
+
+    public function store(Request $request)
+    {
+
+
+        validateRequest($request);
 
 
         $statusid=DB::table('status')->where('statustype','Application under Primary IDCO')->value('statusid');
@@ -251,12 +284,14 @@ class HazmatController extends Controller
 
     }
 
-    public function updateRecord(UpdateHazmatRequest $request, $id)
+    public function updateRecord(Request $request, $id)
     {
         //$accident = $this->saveFiles($request);
 
-        $statusid=DB::table('status')->where('statustype','Application under Primary IDCO ')->value('statusid');
-       
+        validateRequest($request);
+
+        $statusid=DB::table('status')->where('statustype','Application under Primary IDCO')->value('statusid');
+
 
         $hazmat = hazmat::findOrFail($id);
 
