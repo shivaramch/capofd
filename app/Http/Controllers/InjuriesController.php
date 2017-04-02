@@ -262,10 +262,10 @@ class InjuriesController extends Controller
         $comments = Comment::all();
         $users = User::all();
         $rejectstatus = DB::table('status')->where('statustype', 'Rejected')->value('statusid');
-        $draftstatus = DB::table('status')->where('statustype', 'Rejected')->value('statusid');
+        $draftstatus = DB::table('status')->where('statustype', 'Draft')->value('statusid');
 
 
-        if (($injury->injuredemployeeid == Auth::user()->id &&
+        if (($injury->injuredemployeeid == Auth::user()->id  &&
                 ($injury->applicationstatus == $rejectstatus
                     || $injury->applicationstatus == $draftstatus)) ||
             Auth::user()->roleid == 1
@@ -293,9 +293,9 @@ class InjuriesController extends Controller
         $attachments = Attachment::all();
         $comments = Comment::all();
         $users = User::all();
-        $capstatus = DB::table('status')->where('statustype', 'Rejected')->value('Application under Captain');
-        $bcstatus = DB::table('status')->where('statustype', 'Rejected')->value('Application under Batallion Chief');
-        $acstatus = DB::table('status')->where('statustype', 'Rejected')->value('Application under Assistant Chief');
+        $capstatus = DB::table('status')->where('statustype','Application under Captain')->value('statusid');
+        $bcstatus = DB::table('status')->where('statustype','Application under Batallion Chief')->value('statusid');
+        $acstatus = DB::table('status')->where('statustype','Application under Assistant Chief')->value('statusid');
 
 
         //show history code start

@@ -114,6 +114,14 @@ class HazmatController extends Controller
 
     public function partialUpdate(Request $request, $id)
     {
+
+
+        $this->validate($request, ['dateofexposure' => 'required|date:hazmat,dateofexposure,',
+            'employeeid' => 'required|integer:hazmat,employeeid,',
+            'corvelid' => 'required|integer:hazmat,corvelid',
+            // 'contactcorvel' => 'required|string:hazmat,contactcorvel',
+        ]);
+
         $statusid=DB::table('status')->where('statustype','Application under Primary IDCO')->value('statusid');
 
 
@@ -175,8 +183,9 @@ class HazmatController extends Controller
 
 
             'dateofexposure' => 'required|date:hazmat,dateofexposure,',
+            'employeeid' => 'required|integer:hazmat,employeeid,',
             'corvelid' => 'required|integer:hazmat,corvelid',
-            'contactcorvel' => 'required|string:hazmat,contactcorvel',
+           // 'contactcorvel' => 'required|string:hazmat,contactcorvel',
             ]);
 
         $statusid=DB::table('status')->where('statustype','Draft')->value('statusid');
@@ -216,7 +225,7 @@ class HazmatController extends Controller
     {
 
 
-        validateRequest($request);
+        $this->validateRequest($request);
 
 
         $statusid=DB::table('status')->where('statustype','Application under Primary IDCO')->value('statusid');
@@ -288,7 +297,7 @@ class HazmatController extends Controller
     {
         //$accident = $this->saveFiles($request);
 
-        validateRequest($request);
+       $this-> validateRequest($request);
 
         $statusid=DB::table('status')->where('statustype','Application under Primary IDCO')->value('statusid');
 
