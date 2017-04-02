@@ -26,7 +26,7 @@
         }
 
     </style>
-    @if($biological->employeeid == Auth::user()->id || ($biological->primaryidconumber == Auth::user()->id && $biological->applicationstatus == 2) || Auth::user()->roleid == 1)
+    @if($biological->employeeid == Auth::user()->id || ($biological->primaryidconumber == Auth::user()->id && $biological->applicationstatus == 7) || Auth::user()->roleid == 1)
         <div class="panel panel-default">
             <div class="panel-heading">
                 <div class="jumbotron" style="margin-bottom: 5px; ">
