@@ -406,7 +406,7 @@
                                 Are you sure you want to Submit?
                             </div>
                             <div class="modal-footer">
-                                {!! Form::submit('Yes',['class' => 'btn btn-success']) !!}
+                                {!! Form::submit('Yes',['class' => 'btn btn-success','name' => 'store']) !!}
                                 <button type="button" class=" btn btn-danger" data-dismiss="modal" aria-label="">No
                                 </button>
                             </div>
