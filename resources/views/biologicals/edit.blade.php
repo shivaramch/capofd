@@ -566,7 +566,7 @@
                 <div class="col-sm-12">
                     <label class="col-sm-5"></label>
                     <div class="btn-bottom">
-                        {!! Form::submit('Save and Exit',['class' => 'btn btn-primary','name' => 'partialSave']) !!}
+                        {!! Form::submit('Save as Draft',['class' => 'btn btn-primary','name' => 'partialSave']) !!}
                         <button type="button" class="btn btn-success" data-toggle="modal"
                                 data-target="#myModal">
                             Submit
