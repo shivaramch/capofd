@@ -210,8 +210,8 @@ class BiologicalsController extends Controller
 
         if ($biological->employeeid == Auth::user()->id ||
             ($biological->primaryidconumber == Auth::user()->id && $biological->applicationstatus == $applicationStatus) ||
-            Auth::user()->roleid == 1
-        ) {
+            Auth::user()->roleid == 1)
+        {
             return view('biologicals.show', compact('biological', 'attachments', 'comments', 'users'));
         }
         else
