@@ -150,22 +150,19 @@ class BiologicalsController extends Controller
 
     public function validateRequest(Request $request)
     {
-        $this->validate($request, [
+        $this->validate($request, ['employeeid' => 'required|integer:biological,employeeid'.$this->route('biological'),
+            'dateofexposure' => 'required|date:biological,dateofexposure'.$this->route('biological'),
+            'exposedemployeename' => 'required|alpha|string:biological,exposedemployeename'.$this->route('biological'),
+            //'dateofexposure' => 'required|before_or_equal:biological,dateofexposure'.$this->route('biological'),
+            'assignmentbiological' => 'required|string:biological,assignmentbiological'.$this->route('biological'),
+            'shift' => 'required|string:biological,shift'.$this->route('biological'),
+            'primaryidconumber' => 'required|integer:biological,primaryidconumber'.$this->route('biological'),
+            'epcrincidentnum' => 'required|numeric:biological,epcrincidentnum'.$this->route('biological'),
+            'frmsincidentnum' => 'required|string:biological,frmsincidentnumber'.$this->route('biological'),
+            'exposureinjury'=>'required|string:biological,exposureinjury'.$this->route('biological'),
+            'exposure'=>'required|string:biological,exposure'.$this->route('biological'),
 
-            'trueofd184' => 'max:20480|mimes:pdf',
-            'potofd184' => 'max:20480|mimes:pdf',
-            'miscbiological1' => 'max:20480|mimes:pdf',
-            'miscbiological2' => 'max:20480|mimes:pdf',
-            'employeeid' => 'required|integer:biological,employeeid',
-            'exposedemployeename' => 'required|alpha|string:biological,exposedemployeename',
-            'dateofexposure' => 'required|date:biological,dateofexposure',
-            'assignmentbiological' => 'required|string:biological,assignmentbiological',
-            'shift' => 'required|string:biological,shift',
-            'primaryidconumber' => 'required|integer:biological,primaryidconumber',
-            'epcrincidentnum' => 'required|numeric:biological,epcrincidentnum',
-            'frmsincidentnum' => 'required|string:biological,frmsincidentnumber',
-            'exposureinjury' => 'required|string:biological,exposureinjury',
-            'exposure' => 'required|string:biological,exposure',
+
         ]);
     }
 
