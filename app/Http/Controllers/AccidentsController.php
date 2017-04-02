@@ -331,7 +331,7 @@ $this->validateRequest($request);
     public function updateRecords(Request $request, $id)
     {
 
-        $this->validateRequest();
+        $this->validateRequest($request);
 
         $statusid = DB::table('status')->where('statustype', 'Application under Captain')->value('statusid');
 

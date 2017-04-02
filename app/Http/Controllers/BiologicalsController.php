@@ -116,10 +116,12 @@ class BiologicalsController extends Controller
     {
         if (Input::get('store')) {
             $this->store($requestSave);
+            return redirect()->route('biologicals.index');
         }
 
         if (Input::get('partialSave')) {
             $this->partialSave($requestSave);
+            return redirect()->route('biologicals.index');
         }
         return redirect()->route('biologicals.index');
 
