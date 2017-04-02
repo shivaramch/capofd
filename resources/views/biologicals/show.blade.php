@@ -39,6 +39,9 @@
                                 <h3><strong>Biological Exposure Tracking Document (OFD-006B)</strong></h3>
                             </div>
                         </div>
+                        <div class="col-md-12">
+                            <h5><i><strong>Used for future tracking purposes only</strong></i></h5>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -59,18 +62,6 @@
                         </div>
                     </div>
                     <div class="col-sm-4 form-group">
-                        {!! Form::label('exposedemployeename', 'Exposed Employee Name',array('style'=>'padding-top:7px;','class'=> 'col-sm-4 control-label') ) !!}
-                        <div class="col-sm-6 ">
-                            {!! Form::text('exposedemployeename', old('exposedemployeename'), array('class'=>'form-control','disabled' => "disabled"))!!}
-                            <p class="help-block"></p>
-                            @if($errors->has('exposedemployeename'))
-                                <p class="help-block">
-                                    {{ $errors->first('exposedemployeename') }}
-                                </p>
-                            @endif
-                        </div>
-                    </div>
-                    <div class="col-sm-4 form-group">
                         {!! Form::label('employeeid', 'Employee ID#', array('style'=>'padding-top:7px;','class'=> 'col-sm-4 control-label') ) !!}
                         <div class="col-sm-6 ">
                             {!! Form::text('employeeid', old('employeeid'), array('class'=> 'form-control','placeholder'=>'Enter Badge ID','disabled' => "disabled"))!!}
@@ -82,6 +73,19 @@
                             @endif
                         </div>
                     </div>
+                    <div class="col-sm-4 form-group">
+                        {!! Form::label('exposedemployeename', 'Exposed Employee Name',array('style'=>'padding-top:7px;','class'=> 'col-sm-4 control-label') ) !!}
+                        <div class="col-sm-6 ">
+                            {!! Form::text('exposedemployeename', old('exposedemployeename'), array('class'=>'form-control','disabled' => "disabled"))!!}
+                            <p class="help-block"></p>
+                            @if($errors->has('exposedemployeename'))
+                                <p class="help-block">
+                                    {{ $errors->first('exposedemployeename') }}
+                                </p>
+                            @endif
+                        </div>
+                    </div>
+
                 </div>
                 <div class="row">
                     <div class="col-sm-4 form-group">
@@ -111,20 +115,6 @@
                 </div>
                 <div class="row">
                     <div class="col-sm-4 form-group">
-                        {!! Form::label('epcrincidentnum', 'EPCR Incident#', array('style'=>'padding-top:7px;','class'=> 'col-sm-4 control-label') ) !!}
-                        <div class="col-sm-6 ">
-                            {!! Form::text('epcrincidentnum', old('epcrincidentnum'), array('class' => 'form-control','placeholder'=>'Enter Incident Num','disabled' => "disabled"))!!}
-                            <p class="help-block"></p>
-                            @if($errors->has('epcrincidentnum'))
-                                <p class="help-block">
-                                    {{ $errors->first('epcrincidentnum') }}
-                                </p>
-                            @endif
-                        </div>
-                    </div>
-
-
-                    <div class="col-sm-4 form-group">
                         {!! Form::label('primaryidconumber', 'Primary IDCO#', array('style'=>'padding-top:7px;','class'=> 'col-sm-4 control-label') ) !!}
                         <div class="col-sm-6 ">
                             {!! Form::text('primaryidconumber', old('primaryidconumber'), array('class' => 'form-control','placeholder'=>'Enter IDCO Badge ID','disabled' => "disabled"))!!}
@@ -132,6 +122,18 @@
                             @if($errors->has('primaryidconumber'))
                                 <p class="help-block">
                                     {{ $errors->first('primaryidconumber') }}
+                                </p>
+                            @endif
+                        </div>
+                    </div>
+                    <div class="col-sm-4 form-group">
+                        {!! Form::label('epcrincidentnum', 'EPCR Incident#', array('style'=>'padding-top:7px;','class'=> 'col-sm-4 control-label') ) !!}
+                        <div class="col-sm-6 ">
+                            {!! Form::text('epcrincidentnum', old('epcrincidentnum'), array('class' => 'form-control','placeholder'=>'Enter Incident Num','disabled' => "disabled"))!!}
+                            <p class="help-block"></p>
+                            @if($errors->has('epcrincidentnum'))
+                                <p class="help-block">
+                                    {{ $errors->first('epcrincidentnum') }}
                                 </p>
                             @endif
                         </div>
@@ -447,128 +449,128 @@
     {!! Form::close() !!}
     <!--comment section-->
 
-        <div class="panel panel-default">
-            <div class="panel-body">
-                <div class="titleBox">
-                    <label>Comments </label>
-                </div>
-                @if($biological->primaryidconumber == Auth::user()->id ||
-                Auth::user()->roleid == 1)
-                    {!! Form::open(['method' => 'POST', 'route' => ['comments.store'],]) !!}
-                    <div class="row">
-                        <div class="col-sm-12">
-                            <div class="form-group">
-                                <div class="form-group" style="width:100%; position:relative">
-                                    {{ Form::textarea('comment', null, ['class' => 'form-control', 'placeholder' => 'Add your comment', 'rows' => '4']) }}
+    <div class="panel panel-default">
+        <div class="panel-body">
+            <div class="titleBox">
+                <label>Comments </label>
+            </div>
+            @if($biological->primaryidconumber == Auth::user()->id ||
+            Auth::user()->roleid == 1)
+                {!! Form::open(['method' => 'POST', 'route' => ['comments.store'],]) !!}
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="form-group">
+                            <div class="form-group" style="width:100%; position:relative">
+                                {{ Form::textarea('comment', null, ['class' => 'form-control', 'placeholder' => 'Add your comment', 'rows' => '4']) }}
+                            </div>
+                            {{ Form::hidden('applicationtype', '6B') }}
+                            {{ Form::hidden('applicationid', $biological->ofd6bid ) }}
+                            {{ Form::checkbox('isvisible', 1, null, ['id' => 'daybook', 'class'=>'className']) }}
+                            <label><strong>
+                                    Visible to applicant</strong></label>
+                            <div class="col-sm-12" align="center">
+                                <div class="col-sm-4">
+                                    {{ Form::submit('Post Comment', array('class' => 'btn btn-block btn-primary')) }}
                                 </div>
-                                {{ Form::hidden('applicationtype', '6B') }}
-                                {{ Form::hidden('applicationid', $biological->ofd6bid ) }}
-                                {{ Form::checkbox('isvisible', 1, null, ['id' => 'daybook', 'class'=>'className']) }}
-                                <label><strong>
-                                        Visible to applicant</strong></label>
-                                <div class="col-sm-12" align="center">
+                                @if(($biological->primaryidconumber == Auth::user()->id && $biological->applicationstatus == DB::table('status')->where('statustype','Application under Primary IDCO')->value('statusid')) ||
+                                Auth::user()->roleid == 1)
                                     <div class="col-sm-4">
-                                        {{ Form::submit('Post Comment', array('class' => 'btn btn-block btn-primary')) }}
+                                        <a href="{{ url('/biologicals/'.$biological->ofd6bid .'/Approve') }}"
+                                           class="btn btn-block btn-success">Approve</a>
                                     </div>
-                                    @if(($biological->primaryidconumber == Auth::user()->id && $biological->applicationstatus == DB::table('status')->where('statustype','Application under Primary IDCO')->value('statusid')) ||
-                                    Auth::user()->roleid == 1)
-                                        <div class="col-sm-4">
-                                            <a href="{{ url('/biologicals/'.$biological->ofd6bid .'/Approve') }}"
-                                               class="btn btn-block btn-success">Approve</a>
-                                        </div>
-                                        <div class="col-sm-4">
-                                            <button type="button" class="btn btn-block btn-danger"
-                                                    data-toggle="modal"
-                                                    data-target="#myModal">
-                                                Reject
-                                            </button>
-                                        </div>
-                                    @endif
-                                </div>
+                                    <div class="col-sm-4">
+                                        <button type="button" class="btn btn-block btn-danger"
+                                                data-toggle="modal"
+                                                data-target="#myModal">
+                                            Reject
+                                        </button>
+                                    </div>
+                                @endif
                             </div>
                         </div>
                     </div>
-                    {!! form::close() !!}
-                @endif
+                </div>
+                {!! form::close() !!}
+            @endif
 
-                @if (!empty($comments))
-                    <div class="actionBox">
-                        <ul class="commentList">
-                            @foreach ($comments as $cm)
-                                @if(($cm->applicationid == $biological->ofd6bid && $cm->applicationtype == '6B')&&
-                                (($biological->employeeid == Auth::user()->id && $cm->isvisible == 1) ||
-                                $biological->primaryidconumber == Auth::user()->id || Auth::user()->roleid == 1))
-                                    <div class="col-sm-8">
-                                        <div class="panel panel-white post panel-shadow">
-                                            <div class="post-heading">
-                                                <div class="pull-left meta">
-                                                    <div class="title h5">
-                                                        @foreach ($users as $user)
-                                                            @if($user->id == $cm->createdby )
-                                                                <b>
-                                                                    <i class="fa fa-user"></i> {{$user->name}}
-                                                                </b>
-                                                            @endif
-                                                        @endforeach
-                                                        made a Comment.
-                                                    </div>
-                                                    <time class="comment-date text-muted time"
-                                                          datetime="{{$cm->created_at}}"><i
-                                                                class="fa fa-clock-o"></i> {{$cm->created_at}}
-                                                    </time>
+            @if (!empty($comments))
+                <div class="actionBox">
+                    <ul class="commentList">
+                        @foreach ($comments as $cm)
+                            @if(($cm->applicationid == $biological->ofd6bid && $cm->applicationtype == '6B')&&
+                            (($biological->employeeid == Auth::user()->id && $cm->isvisible == 1) ||
+                            $biological->primaryidconumber == Auth::user()->id || Auth::user()->roleid == 1))
+                                <div class="col-sm-8">
+                                    <div class="panel panel-white post panel-shadow">
+                                        <div class="post-heading">
+                                            <div class="pull-left meta">
+                                                <div class="title h5">
+                                                    @foreach ($users as $user)
+                                                        @if($user->id == $cm->createdby )
+                                                            <b>
+                                                                <i class="fa fa-user"></i> {{$user->name}}
+                                                            </b>
+                                                        @endif
+                                                    @endforeach
+                                                    made a Comment.
                                                 </div>
-                                            </div>
-                                            <div class="post-description">
-                                                <p>{{$cm->comment}}</p>
+                                                <time class="comment-date text-muted time"
+                                                      datetime="{{$cm->created_at}}"><i
+                                                            class="fa fa-clock-o"></i> {{$cm->created_at}}
+                                                </time>
                                             </div>
                                         </div>
+                                        <div class="post-description">
+                                            <p>{{$cm->comment}}</p>
+                                        </div>
                                     </div>
-                                @endif
-                            @endforeach
-                        </ul>
-                    </div>
-                @endif
-            </div>
-        </div>
-        <!-- Modal -->
-        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
-                                    aria-hidden="true">&times;</span></button>
-                        <h4 class="modal-title" id="myModalLabel"></h4>
-                    </div>
-                    <div class="modal-body">
-                        Are you sure you want to <strong>Reject</strong> this application? If, <strong>Yes</strong>
-                        please
-                        include a comment for the applicant if not done already!
-                    </div>
-                    <div class="modal-footer">
-                        <a href="{{ url('/biologicals/'.$biological->ofd6bid .'/Reject') }}"
-                           class="btn btn-success">Yes</a>
-                        <button type="button" class=" btn btn-danger" data-dismiss="modal" aria-label="">No</button>
-                    </div>
-
+                                </div>
+                            @endif
+                        @endforeach
+                    </ul>
                 </div>
+            @endif
+        </div>
+    </div>
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel"></h4>
+                </div>
+                <div class="modal-body">
+                    Are you sure you want to <strong>Reject</strong> this application? If, <strong>Yes</strong>
+                    please
+                    include a comment for the applicant if not done already!
+                </div>
+                <div class="modal-footer">
+                    <a href="{{ url('/biologicals/'.$biological->ofd6bid .'/Reject') }}"
+                       class="btn btn-success">Yes</a>
+                    <button type="button" class=" btn btn-danger" data-dismiss="modal" aria-label="">No</button>
+                </div>
+
             </div>
         </div>
-        @stop
-        @section('javascript')
-            <script src="{{ ('js/extensions/cookie') }}/bootstrap-table-cookie.js"></script>
-            <script src="{{ ('js/extensions/mobile') }}/bootstrap-table-mobile.js"></script>
-            <script src="{{ ('js/export') }}/bootstrap-table-export.js"></script>
-            <script src="{{ ('js/export') }}/tableExport.js"></script>
-            <script src="{{ ('js/export') }}/jquery.base64.js"></script>
-            <script type="text/javascript">
-                $(document).ready(function () {
-                    $("input[name$='exposure']").click(function () {
-                        var test = $(this).val();
+    </div>
+@stop
+@section('javascript')
+    <script src="{{ ('js/extensions/cookie') }}/bootstrap-table-cookie.js"></script>
+    <script src="{{ ('js/extensions/mobile') }}/bootstrap-table-mobile.js"></script>
+    <script src="{{ ('js/export') }}/bootstrap-table-export.js"></script>
+    <script src="{{ ('js/export') }}/tableExport.js"></script>
+    <script src="{{ ('js/export') }}/jquery.base64.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("input[name$='exposure']").click(function () {
+                var test = $(this).val();
 
-                        $("div.desc").hide();
-                        $("#Exposure" + test).show();
-                    });
-                });
-            </script>
+                $("div.desc").hide();
+                $("#Exposure" + test).show();
+            });
+        });
+    </script>
 
 @endsection
