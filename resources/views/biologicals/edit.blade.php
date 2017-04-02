@@ -595,7 +595,7 @@
                             Are you sure you want to Submit?
                         </div>
                         <div class="modal-footer">
-                            {!! Form::submit('Yes',['class' => 'btn btn-success']) !!}
+                            {!! Form::submit('Yes',['class' => 'btn btn-success','name'=> 'store']) !!}
                             <button type="button"
                                     class=" btn btn-danger"
                                     data-dismiss="modal"
@@ -668,24 +668,7 @@
         </div>
     @endif
     <!-- Modal -->
-    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
-                                aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title" id="myModalLabel"></h4>
-                </div>
-                <div class="modal-body">
-                    Are you sure you want to Submit?
-                </div>
-                <div class="modal-footer">
-                    {!! Form::submit('Yes',['class' => 'btn btn-success','name'=> 'store']) !!}
-                    <button type="button" class=" btn btn-danger" data-dismiss="modal" aria-label="">No</button>
-                </div>
-            </div>
-        </div>
-    </div>
+
     </div>
     {!! Form::close() !!}
 @stop
