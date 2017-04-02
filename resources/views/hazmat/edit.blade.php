@@ -29,7 +29,6 @@
         }
 
     </style>
-    @if($hazmat->employeeid == Auth::user()->id || Auth::user()->roleid == 1)
         <div class="panel panel-default">
             <div class="panel-heading">
                 <div class="jumbotron" style="margin-bottom: 5px; ">
@@ -353,27 +352,6 @@
                 </div>
             </div>
 
-            @else
-                <div class="panel-body">
-                    <div class="form-horizontal">
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div class="alert alert-danger" align="center">
-                                    <label>
-                                        You are not authorized to view this form
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-12 panel-heading" align="center">
-                    <div class="btn-bottom ">
-                        <a href="{{ route('hazmat.index') }}" class="btn btn-default">return</a>
-                    </div>
-                </div>
-                @endif
-
             @if (!empty($comments))
                 <div class="panel panel-default">
                     <div class="panel-body">
@@ -381,7 +359,7 @@
                             <ul class="commentList">
                                 @foreach ($comments as $cm)
                                     @if(($cm->applicationid == $hazmat->ofd6aid && $cm->applicationtype == '6C')&&
-                                    ($hazmat->driverid == Auth::user()->id && $cm->isvisible == 1))
+                                    ($hazmat->employeeid == Auth::user()->id && $cm->isvisible == 1))
                                         <div class="col-sm-8">
                                             <div class="panel panel-white post panel-shadow">
                                                 <div class="post-heading">
