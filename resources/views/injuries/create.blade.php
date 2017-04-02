@@ -235,7 +235,7 @@
             <div class="col-sm-12 form-group">
                 <div class="form-group">
                     {{ Form::checkbox('checkbox1', 1, null, ['id' => 'corvelAbilityReport', 'class' => 'className' ]) }}
-                    {{Form::label('corvelAbilityReport','CorVel Work Ability Report Form  - Only if seeking medical attention. Complete "Employee Section" and sign at bottom.')}}
+                    {{Form::label('corvelAbilityReport','Complete CorVel Work Ability Report Form - Only if seeking medical attention. Complete "Employee Section" and sign at bottom.')}}
 					
 					
                 </div>
@@ -266,8 +266,8 @@
             <div class="col-sm-12 form-group">
                 <div class="form-group">
                     {{ Form::checkbox('checkbox2', 1, null, ['id'=>'investigationReport', 'class' => 'className' ]) }}
-                    {{Form::label('investigationReport','Investigation Report for
-                    Occupational Injury or Illness- Both employee and supervisor must complete and sign.')}}
+                    {{Form::label('investigationReport','Complete Investigation Report for
+                    Occupational Injury or Illness Form - Both employee and supervisor must complete and sign.')}}
                 </div>
             </div>
             {{-- <label class="col-sm-12"><strong>Investigation Report for
@@ -299,7 +299,7 @@
             <div class="col-sm-12 form-group">
                 <div class="form-group">
                     {{ Form::checkbox('checkbox3', 1, null, ['id'=>'witnessStatement', 'class' => 'className' ]) }}
-                    {{Form::label('witnessStatement','Statement of Witness of Accident')}}
+                    {{Form::label('witnessStatement','Complete OFD 295a Injury Witness Statement Form')}}
                 </div>
             </div>
             <div class="col-sm-12 form-group well well-sm">
@@ -328,7 +328,7 @@
             <div class="col-sm-12 form-group">
                 <div class="form-group">
                     {{ Form::checkbox('checkbox4', 1, null, ['id'=>'employeeChoice', 'class' => 'className' ]) }}
-                    {{Form::label('employeeChoice','Employees Choice of Physician or Doctor Form- Two signatures required - both section A & B.')}}
+                    {{Form::label('employeeChoice','Complete Employee’s Choice of Physician or Doctor Form - Two signatures required - both section A & B')}}
                 </div>
             </div>
 
@@ -361,7 +361,7 @@
             <div class="col-sm-12 form-group">
                 <div class="form-group">
                     {{ Form::checkbox('checkbox5', 1, null, ['id'=>'ofd25', 'class' => 'className' ]) }}
-                    {{Form::label('ofd25','OFD - 25 Injury on Job- Send an attachment electronically to OmafIOD@cityofomaha.org')}}
+                    {{Form::label('ofd25','Complete OFD 25 Injury Intradepartmental Communication Form - Send an attachment electronically to OmafIOD@cityofomaha.org')}}
                 </div>
             </div>
             <div class="col-sm-12 form-group well well-sm">

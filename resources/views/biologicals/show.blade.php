@@ -465,11 +465,11 @@
             <div class="row">
                 <div class="col-sm-12">
                     @if($biological->primaryidconumber == Auth::user()->id && $biological->applicationstatus == DB::table('status')->where('statustype','Application under Primary IDCO')->value('statusid'))
-                        <div class="col-sm-12 panel-heading" align="center">
+                       {{-- <div class="col-sm-12 panel-heading" align="center">
                             <a href="{{ url('/biologicals/'.$biological->ofd6bid.'/Approve') }}"
                                class="btn btn-success">Approve</a>
                             <a href="{{ url('/biologicals/'.$biological->ofd6bid.'/Reject') }}"
-                               class="btn btn-danger">Reject</a>
+                               class="btn btn-danger">Reject</a>--}}
                         </div>
                     @endif
                 </div>
