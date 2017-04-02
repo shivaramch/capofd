@@ -53,6 +53,18 @@
                 <div class="form-horizontal">
                     <div class="row">
                         <div class="col-sm-4 form-group">
+                            {!! Form::label('dateofexposure', 'Date of Exposure', array('style'=>'padding-top:7px;','class' => 'col-sm-4 control-label')) !!}
+                            <div class="col-sm-6 ">
+                                {!! Form::text('dateofexposure', old('dateofexposure'), array('id'=>'datepicker1','class' => 'form-control datepicker','placeholder'=>'YYYY-MM-DD', 'required'=>'required'))!!}
+                                <p class="help-block"></p>
+                                @if($errors->has('dateofexposure'))
+                                    <p class="help-block">
+                                        {{ $errors->first('dateofexposure') }}
+                                    </p>
+                                @endif
+                            </div>
+                        </div>
+                        <div class="col-sm-4 form-group">
                             {!! Form::label('employeeid', 'Employee ID #', array('style'=>'padding-top:7px;','class' => 'col-sm-4 control-label')) !!}
                             <div class="col-sm-6 ">
                                 {!! Form::text('employeeid', old('employeeid'), ['class' => 'form-control', 'placeholder'=>'Enter Employee ID', 'required'=>'required'])!!}
@@ -76,18 +88,7 @@
                                 @endif
                             </div>
                         </div>
-                        <div class="col-sm-4 form-group">
-                            {!! Form::label('dateofexposure', 'Date of Exposure', array('style'=>'padding-top:7px;','class' => 'col-sm-4 control-label')) !!}
-                            <div class="col-sm-6 ">
-                                {!! Form::text('dateofexposure', old('dateofexposure'), array('id'=>'datepicker1','class' => 'form-control datepicker','placeholder'=>'YYYY-MM-DD', 'required'=>'required'))!!}
-                                <p class="help-block"></p>
-                                @if($errors->has('dateofexposure'))
-                                    <p class="help-block">
-                                        {{ $errors->first('dateofexposure') }}
-                                    </p>
-                                @endif
-                            </div>
-                        </div>
+
                     </div>
                     <div class="row">
                         <div class="col-sm-4 form-group">
