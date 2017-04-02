@@ -169,7 +169,7 @@ class BiologicalsController extends Controller
     public function store(Request $request)
     {
 
-        $this->validateRequest($request);
+      //  $this->validateRequest($request);
         $statusid = DB::table('status')->where('statustype', 'Application under Primary IDCO ')->value('statusid');
         $request->offsetSet('applicationstatus', $statusid);
         $request = $this->saveFiles($request);
