@@ -110,13 +110,7 @@
                                         <a href="{{ route('biologicals.show',[$biological->ofd6bid]) }}"
                                            class="btn btn-xs btn-info btn-block"><i
                                                     class="fa fa-eye" aria-hidden="true"></i> VIEW</a>
-                                        @if( $biological->applicationstatus == DB::table('status')->where('statustype','Draft')->value('statusid') || $biological->applicationstatus == DB::table('status')->where('statustype','Rejected')->value('statusid')
-)
-                                            <a href="{{ route('biologicals.edit',[$biological->ofd6bid]) }}"
-                                               class="btn btn-xs btn-warning btn-block"><i class="fa fa-pencil-square-o"
-                                                                                           aria-hidden="true"></i> EDIT</a>
-                                        @endif
-                                    </div>
+                                        </div>
                                 </td>
                             </tr>
                         @endif
