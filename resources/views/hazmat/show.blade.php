@@ -273,14 +273,14 @@
                     </div>
                 </div>
                 <div class="col-md-6 form-group">
-                    {{Form::label('exposureinjury','Do you have any symptoms of illness or injury and require
+                    {{Form::label('exposurehazmat','Do you have any symptoms of illness or injury and require
                        treatment?',['class'=> 'col-sm-10 control-label'] ) }}
                     <div class="col-sm-2">
-                        {!! Form::text('exposureinjury', old('exposureinjury'),array('class'=>'form-control','disabled'=>'disabled'))!!}
+                        {!! Form::text('exposurehazmat', old('exposurehazmat'),array('class'=>'form-control','disabled'=>'disabled'))!!}
                         <p class="help-block"></p>
-                        @if($errors->has('exposureinjury'))
+                        @if($errors->has('exposurehazmat'))
                             <p class="help-block">
-                                {{ $errors->first('exposureinjury') }}
+                                {{ $errors->first('exposurehazmat') }}
                             </p>
                         @endif
                     </div>

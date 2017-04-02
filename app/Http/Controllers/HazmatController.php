@@ -138,7 +138,7 @@ class HazmatController extends Controller
                 'shift' => $hazmat->shift,
                 'applicationstatus' => $statusid,
                 'corvelid' => $hazmat->corvelid,
-                //'exposurehazmat' => $hazmat->exposurehazmat
+                'exposurehazmat' => $hazmat->exposurehazmat
             ]
         );
 
@@ -315,7 +315,7 @@ class HazmatController extends Controller
                 'shift' => $hazmat->shift,
                 'applicationstatus' => $statusid,
                 'corvelid' => $hazmat->corvelid,
-                //'exposurehazmat' => $hazmat->exposurehazmat
+                'exposurehazmat' => $hazmat->exposurehazmat
         ]
         );
 

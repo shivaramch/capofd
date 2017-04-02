@@ -323,17 +323,17 @@
             </div>
             <div class="col-md-12">
                 <div class="form-group">
-                    {{Form::label('exposureinjury','Do you have any symptoms of illness or injury and require
+                    {{Form::label('exposurehazmat','Do you have any symptoms of illness or injury and require
                        treatment?')}}
-                    {!! Form::select('exposureinjury',[
+                    {!! Form::select('exposurehazmat',[
                       'Yes' => 'Yes',
                       'No' => 'No'],null,
-                    ['placeholder' => 'Choose one'],old('exposureinjury'),'required',
+                    ['placeholder' => 'Choose one'],old('exposurehazmat'),'required',
                     array('class' => 'form-control'))!!}
                     <p class="help-block"></p>
-                    @if($errors->has('exposureinjury'))
+                    @if($errors->has('exposurehazmat'))
                         <p class="help-block">
-                            {{ $errors->first('exposureinjury') }}
+                            {{ $errors->first('exposurehazmat') }}
                         </p>
                     @endif
                 </div>

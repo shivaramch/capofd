@@ -32,8 +32,9 @@ class UpdateHazmatRequest extends FormRequest
             'corvelid' => 'required|integer:hazmat,corvelid'. $this->route('hazmat'),
             'epcrincidentnum' => 'required|integer:hazmat,epcrincidentnum'. $this->route('hazmat'),
             'assignment' => 'required|string:hazmat,assignment'. $this->route('hazmat'),
-          //  'frmsincidentnum' => 'required|integer:hazmat,frmsincidentnum'. $this->route('hazmat'),
-            //'applicationstatus' =>'required|string:hazmat,applicationstatus'. $this->route('hazmat'),
+            'frmsincidentnum' => 'required|integer:hazmat,frmsincidentnum'. $this->route('hazmat'),
+            'applicationstatus' =>'required|string:hazmat,applicationstatus'. $this->route('hazmat'),
+            'exposurehazmat' => 'required|string:hazmat,exposurehazmat'.$this->route('hazmat'),
         ];
     }
 }
