@@ -61,7 +61,7 @@
                                 <td>{{ $accident->drivername }}</td>
                                 <td>{{ $accident->accidentdate }}</td>
                                 <td>{{ $accident->assignmentaccident }}</td>
-                                <td>{{ $accident->applicationstatus }}</td>
+                                <td>{{ DB::table('status')->where('statusid',$accident->applicationstatus)->value('statustype')}}</td>
                                 <td>
                                     <div>
                                         <a href="{{ route('accidents.show',[$accident->ofd6aid]) }}"
@@ -111,7 +111,7 @@
                                 <td>{{ $biological->ofd6bid }}</td>
                                 <td>{{ $biological->dateofexposure }}</td>
                                 <td>{{ $biological->assignmentbiological }}</td>
-                                <td>{{ $biological->status }}</td>
+                                <td>{{ DB::table('status')->where('statusid',$biological->applicationstatus)->value('statustype')}}</td>
                                 <td>
                                     <div>
                                         <a href="{{ route('biologicals.show',[$biological->ofd6bid]) }}"
@@ -163,6 +163,7 @@
                                 <td>{{ $hazmats->ofd6cid }}</td>
                                 <td>{{ $hazmats->dateofexposure }}</td>
                                 <td>{{ $hazmats->assignment }}</td>
+                                <td>{{ DB::table('status')->where('statusid',$hazmats->applicationstatus)->value('statustype')}}</td>
 
                                 <td>
                                     <div>
@@ -214,7 +215,7 @@
                                 <td>{{ $injury->ofd6id }}</td>
                                 <td>{{ $injury->injurydate }}</td>
                                 <td>{{ $injury->assignmentinjury }}</td>
-                                <td>{{ $injury->status1 }}</td>
+                                <td>{{ DB::table('status')->where('statusid',$injury->applicationstatus)->value('statustype')}}</td>
                                 <td>
                                     <div>
                                         <a href="{{ route('injuries.show',[$injury->ofd6id]) }}"
