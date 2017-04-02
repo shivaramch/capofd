@@ -188,8 +188,12 @@ class HazmatController extends Controller
         $attachments = Attachment::all();
         $hazmat = hazmat::findOrFail($id);
         $comments = Comment::all();
+        $rejectstatus = DB::table('status')->where('statustype', 'Rejected')->value('statusid');
+        $draftstatus = DB::table('status')->where('statustype', 'Rejected')->value('statusid');
+
         if (($hazmat->employeeid == Auth::user()->id &&
-                ($hazmat->applicationstatus == 1 || $hazmat->applicationstatus == 5)) ||
+                ($hazmat->applicationstatus == $rejectstatus
+                    || $hazmat->applicationstatus == $draftstatus)) ||
             Auth::user()->roleid == 1
         ) {
             return view('hazmat.edit', compact('hazmat', 'attachments','comments','users'));
@@ -206,9 +210,11 @@ class HazmatController extends Controller
         $attachments = Attachment::all();
         $comments = Comment::all();
         $users = User::all();
+        $applicationStatus = DB::table('status')->where('statustype', 'Application under Primary IDCO ')->value('statusid');
+
 
         if ($hazmat->employeeid == Auth::user()->id ||
-            ($hazmat->primaryidconumber == Auth::user()->id && $hazmat->applicationstatus == 2) ||
+            ($hazmat->primaryidconumber == Auth::user()->id && $hazmat->applicationstatus == $applicationStatus) ||
             Auth::user()->roleid == 1
         ) {
             return view('hazmat.show', compact('hazmat', 'attachments', 'comments', 'users'));

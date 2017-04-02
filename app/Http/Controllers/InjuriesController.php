@@ -261,9 +261,13 @@ class InjuriesController extends Controller
         $injury = Injury::findOrFail($id);
         $comments = Comment::all();
         $users = User::all();
+        $rejectstatus = DB::table('status')->where('statustype', 'Rejected')->value('statusid');
+        $draftstatus = DB::table('status')->where('statustype', 'Rejected')->value('statusid');
+
 
         if (($injury->injuredemployeeid == Auth::user()->id &&
-                ($injury->applicationstatus == 1 || $injury->applicationstatus == 5)) ||
+                ($injury->applicationstatus == $rejectstatus
+                    || $injury->applicationstatus == $draftstatus)) ||
             Auth::user()->roleid == 1
         ) {
             return view('injuries.edit', compact('injury', 'attachments', 'comments', 'users'));
@@ -289,14 +293,18 @@ class InjuriesController extends Controller
         $attachments = Attachment::all();
         $comments = Comment::all();
         $users = User::all();
+        $capstatus = DB::table('status')->where('statustype', 'Rejected')->value('Application under Captain');
+        $bcstatus = DB::table('status')->where('statustype', 'Rejected')->value('Application under Batallion Chief');
+        $acstatus = DB::table('status')->where('statustype', 'Rejected')->value('Application under Assistant Chief');
+
 
         //show history code start
         //below one line code is for storing all history related to the $id in variable, which is to be used to display in show page.
         //show history code end
         if ($injury->injuredemployeeid == Auth::user()->id ||
-            ($injury->captainid == Auth::user()->id && $injury->applicationstatus == 2) ||
-            ($injury->battalionchiefid == Auth::user()->id && $injury->applicationstatus == 3) ||
-            ($injury->aconduty == Auth::user()->id && $injury->applicationstatus == 4) ||
+            ($injury->captainid == Auth::user()->id && $injury->applicationstatus == $capstatus) ||
+            ($injury->battalionchiefid == Auth::user()->id && $injury->applicationstatus == $bcstatus) ||
+            ($injury->aconduty == Auth::user()->id && $injury->applicationstatus == $acstatus) ||
             Auth::user()->roleid == 1
         ) {
             return view('injuries.show', compact('injury', 'attachments', 'comments', 'users'));

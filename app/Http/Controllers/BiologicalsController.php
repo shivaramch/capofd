@@ -194,8 +194,20 @@ class BiologicalsController extends Controller
         $biological = Biological::findOrFail($id);
         $comments = Comment::all();
         $users = User::all();
+        $rejectstatus = DB::table('status')->where('statustype', 'Rejected')->value('statusid');
+        $draftstatus = DB::table('status')->where('statustype', 'Rejected')->value('statusid');
 
-        return view('biologicals.edit', compact('biological', 'attachments', 'comments', 'users'));
+        if (($biological->employeeid == Auth::user()->id
+                && ($biological->applicationstatus == $rejectstatus
+                    || $biological->applicationstatus == $draftstatus) )
+            || Auth::user()->roleid == 1)
+        {
+            return view('biologicals.edit', compact('biological', 'attachments', 'comments', 'users'));
+        }
+        else
+        {
+            return view('errors.access');
+        }
     }
 
     public function show($id)
