@@ -195,7 +195,7 @@ class BiologicalsController extends Controller
         $comments = Comment::all();
         $users = User::all();
         $rejectstatus = DB::table('status')->where('statustype', 'Rejected')->value('statusid');
-        $draftstatus = DB::table('status')->where('statustype', 'Rejected')->value('statusid');
+        $draftstatus = DB::table('status')->where('statustype', 'Draft')->value('statusid');
 
         if (($biological->employeeid == Auth::user()->id
                 && ($biological->applicationstatus == $rejectstatus
@@ -219,7 +219,7 @@ class BiologicalsController extends Controller
         //show history code start
         //below one line code is for storing all history related to the $id in variable, which is to be used to display in show page.
         //show history code end
-        $applicationStatus = DB::table('status')->where('statustype', 'Application under Primary IDCO ')->value('statusid');
+        $applicationStatus = DB::table('status')->where('statustype', 'Application under Primary IDCO')->value('statusid');
 
         if ($biological->employeeid == Auth::user()->id ||
             ($biological->primaryidconumber == Auth::user()->id && $biological->applicationstatus == $applicationStatus) ||
