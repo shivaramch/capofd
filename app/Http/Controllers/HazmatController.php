@@ -96,12 +96,37 @@ class HazmatController extends Controller
 
 
 
+    public function update( Request $requestSave,$id)
+    {
+        if (Input::get('store')) {
+            $this->updateRecord($requestSave,$id);
+            return redirect()->route('hazmat.index')->with('message', 'Form Submitted Successfully');
+        }
+
+        if (Input::get('partialSave')) {
+            $this->partialUpdate($requestSave, $id);
+            return redirect()->route('hazmat.index')->with('message', 'Form has been partially saved');
+        }
+
+    }
+
+
+
+    public function partialUpdate(Request $request, $id)
+    {
+
+    }
+
+
+
+
 
 
     public function save( Request $requestSave)
     {
         if(Input::get('store')) {
             $this->store($requestSave);
+            return redirect()->route('hazmat.index')->with('message', 'Form Submitted Successfully');
         }
 
         if(Input::get('partialSave')) {
@@ -226,12 +251,12 @@ class HazmatController extends Controller
 
     }
 
-    public function update(UpdateHazmatRequest $request, $id)
+    public function updateRecord(UpdateHazmatRequest $request, $id)
     {
         //$accident = $this->saveFiles($request);
 
-        $statusidraw=DB::table('status')->where('statustype','Application under Primary IDCO ')->pluck('statusid');
-        $statusid=str_replace (array('[', ']'), '', $statusidraw);
+        $statusid=DB::table('status')->where('statustype','Application under Primary IDCO ')->value('statusid');
+       
 
         $hazmat = hazmat::findOrFail($id);
 
