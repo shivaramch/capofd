@@ -189,7 +189,7 @@ class HazmatController extends Controller
         $hazmat = hazmat::findOrFail($id);
         $comments = Comment::all();
         $rejectstatus = DB::table('status')->where('statustype', 'Rejected')->value('statusid');
-        $draftstatus = DB::table('status')->where('statustype', 'Rejected')->value('statusid');
+        $draftstatus = DB::table('status')->where('statustype', 'Draft')->value('statusid');
 
         if (($hazmat->employeeid == Auth::user()->id &&
                 ($hazmat->applicationstatus == $rejectstatus
@@ -210,7 +210,7 @@ class HazmatController extends Controller
         $attachments = Attachment::all();
         $comments = Comment::all();
         $users = User::all();
-        $applicationStatus = DB::table('status')->where('statustype', 'Application under Primary IDCO ')->value('statusid');
+        $applicationStatus = DB::table('status')->where('statustype', 'Application under Primary IDCO')->value('statusid');
 
 
         if ($hazmat->employeeid == Auth::user()->id ||
