@@ -65,8 +65,8 @@ class BiologicalsController extends Controller
             ['ofd6bid', '=', $id],
         ])->pluck('primaryidconumber');
 
-        $statusidraw = DB::table('status')->where('statustype', 'Rejected')->pluck('statusid');
-        $statusid = str_replace(array('[', ']'), '', $statusidraw);
+        $statusid = DB::table('status')->where('statustype', 'Rejected')->value('statusid');
+
         if ($primaryidconumber) {
 
             $Biological = Biological::find($id);
@@ -98,7 +98,8 @@ class BiologicalsController extends Controller
     public function update(Request $requestSave,$id)
     {
         if (Input::get('store')) {
-            $this->updateRecord($requestSave,$id);
+           $this->updateRecord($requestSave,$id);
+            //$this->partialUpdate($requestSave, $id);
             return redirect()->route('biologicals.index')->with('message', 'Form Submitted Successfully');
         }
 
@@ -116,6 +117,8 @@ class BiologicalsController extends Controller
     {
         if (Input::get('store')) {
             $this->store($requestSave);
+            //$this->partialSave($requestSave);
+
             return redirect()->route('biologicals.index');
         }
 
@@ -150,17 +153,17 @@ class BiologicalsController extends Controller
 
     public function validateRequest(Request $request)
     {
-        $this->validate($request, ['employeeid' => 'required|integer:biological,employeeid'.$this->route('biological'),
-            'dateofexposure' => 'required|date:biological,dateofexposure'.$this->route('biological'),
-            'exposedemployeename' => 'required|alpha|string:biological,exposedemployeename'.$this->route('biological'),
-            //'dateofexposure' => 'required|before_or_equal:biological,dateofexposure'.$this->route('biological'),
-            'assignmentbiological' => 'required|string:biological,assignmentbiological'.$this->route('biological'),
-            'shift' => 'required|string:biological,shift'.$this->route('biological'),
-            'primaryidconumber' => 'required|integer:biological,primaryidconumber'.$this->route('biological'),
-            'epcrincidentnum' => 'required|numeric:biological,epcrincidentnum'.$this->route('biological'),
-            'frmsincidentnum' => 'required|string:biological,frmsincidentnumber'.$this->route('biological'),
-            'exposureinjury'=>'required|string:biological,exposureinjury'.$this->route('biological'),
-            'exposure'=>'required|string:biological,exposure'.$this->route('biological'),
+        $this->validate($request, ['employeeid' => 'required|integer:biological,employeeid',
+            'dateofexposure' => 'required|date:biological,dateofexposure',
+            'exposedemployeename' => 'required|alpha|string:biological,exposedemployeename',
+            //'dateofexposure' => 'required|before_or_equal:biological,dateofexposure',
+            'assignmentbiological' => 'required|string:biological,assignmentbiological',
+            'shift' => 'required|string:biological,shift',
+            'primaryidconumber' => 'required|integer:biological,primaryidconumber',
+            'epcrincidentnum' => 'required|numeric:biological,epcrincidentnum',
+            'frmsincidentnum' => 'required|string:biological,frmsincidentnumber',
+            'exposureinjury'=>'required|string:biological,exposureinjury',
+            'exposure'=>'required|string:biological,exposure',
 
 
         ]);
@@ -168,9 +171,8 @@ class BiologicalsController extends Controller
 
     public function store(Request $request)
     {
-
-      //  $this->validateRequest($request);
-        $statusid = DB::table('status')->where('statustype', 'Application under Primary IDCO ')->value('statusid');
+        $this->validateRequest($request);
+        $statusid = DB::table('status')->where('statustype', 'Application under Primary IDCO')->value('statusid');
         $request->offsetSet('applicationstatus', $statusid);
         $request = $this->saveFiles($request);
         Biological::create($request->all());
@@ -192,8 +194,20 @@ class BiologicalsController extends Controller
         $biological = Biological::findOrFail($id);
         $comments = Comment::all();
         $users = User::all();
+        $rejectstatus = DB::table('status')->where('statustype', 'Rejected')->value('statusid');
+        $draftstatus = DB::table('status')->where('statustype', 'Rejected')->value('statusid');
 
-        return view('biologicals.edit', compact('biological', 'attachments', 'comments', 'users'));
+        if (($biological->employeeid == Auth::user()->id
+                && ($biological->applicationstatus == $rejectstatus
+                    || $biological->applicationstatus == $draftstatus) )
+            || Auth::user()->roleid == 1)
+        {
+            return view('biologicals.edit', compact('biological', 'attachments', 'comments', 'users'));
+        }
+        else
+        {
+            return view('errors.access');
+        }
     }
 
     public function show($id)
@@ -266,7 +280,7 @@ class BiologicalsController extends Controller
         $this->validateRequest($request);
 
 
-        $statusid = DB::table('status')->where('statustype', 'Application under Primary IDCO ')->value('statusid');
+        $statusid = DB::table('status')->where('statustype', 'Application under Primary IDCO')->value('statusid');
 
 
         $biological = Biological::findOrFail($id);
