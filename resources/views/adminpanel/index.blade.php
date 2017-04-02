@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('crumbs')
     <ol class="breadcrumb">
-        <li class="active">Dashboard</li>
+        <li class="active">Admin Panel</li>
     </ol>
 @endsection
 
