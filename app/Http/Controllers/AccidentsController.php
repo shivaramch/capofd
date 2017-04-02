@@ -210,14 +210,8 @@ class AccidentsController extends EmailController
     }
 
 
-
-    public function store(Request $request)
-
+    public function validateRequest(Request $request)
     {
-
-
-        // 'applicationstatus' => $request->applicationstatus,
-
         $this->validate($request, [
             'accidentdate' => 'required|date:accidents,accidentdate,',
             'driverid' => 'required|integer:accidents,driverid,',
@@ -233,6 +227,18 @@ class AccidentsController extends EmailController
             'commemail' => 'required|integer:accidents,commemail',
         ]);//request will have all values filled by firefighter
         //check if the user*/
+    }
+
+
+
+    public function store(Request $request)
+
+    {
+
+$this->validateRequest($request);
+        // 'applicationstatus' => $request->applicationstatus,
+
+
 
 
         $statusid = DB::table('status')->where('statustype', 'Application under Captain')->value('statusid');
@@ -324,6 +330,8 @@ class AccidentsController extends EmailController
 
     public function updateRecords(Request $request, $id)
     {
+
+        $this->validateRequest();
 
         $statusid = DB::table('status')->where('statustype', 'Application under Captain')->value('statusid');
 
