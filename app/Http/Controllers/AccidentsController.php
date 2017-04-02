@@ -291,7 +291,7 @@ class AccidentsController extends EmailController
         $comments = Comment::all();
         $users = User::all();
         $rejectstatus = DB::table('status')->where('statustype', 'Rejected')->value('statusid');
-        $draftstatus = DB::table('status')->where('statustype', 'Rejected')->value('statusid');
+        $draftstatus = DB::table('status')->where('statustype', 'Draft')->value('statusid');
 
 
         if (($accident->driverid == Auth::user()->id &&
@@ -311,9 +311,9 @@ class AccidentsController extends EmailController
         $attachments = Attachment::where('ofd6aid', $id)->get();
         $comments = Comment::all();
         $users = User::all();
-        $capstatus = DB::table('status')->where('statustype', 'Rejected')->value('Application under Captain');
-        $bcstatus = DB::table('status')->where('statustype', 'Rejected')->value('Application under Batallion Chief');
-        $acstatus = DB::table('status')->where('statustype', 'Rejected')->value('Application under Assistant Chief');
+        $capstatus = DB::table('status')->where('statustype','Application under Captain')->value('statusid');
+        $bcstatus = DB::table('status')->where('statustype','Application under Batallion Chief')->value('statusid');
+        $acstatus = DB::table('status')->where('statustype', 'Application under Assistant Chief')->value('statusid');
         //show history code start
         //below one line code is for storing all history related to the $id in variable, which is to be used to display in show page.
         //show history code end
