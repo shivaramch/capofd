@@ -122,7 +122,7 @@ class HazmatController extends Controller
             // 'contactcorvel' => 'required|string:hazmat,contactcorvel',
         ]);
 
-        $statusid=DB::table('status')->where('statustype','Application under Primary IDCO')->value('statusid');
+        $statusid=DB::table('status')->where('statustype','Draft')->value('statusid');
 
 
         $hazmat = hazmat::findOrFail($id);

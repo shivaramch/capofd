@@ -10,7 +10,7 @@
     </ol>
 @endsection
 @section('content')
-    {!! Form::open(['method' => 'POST', 'url' => '/hazmat/save', 'files' => true,]) !!}
+    {!! Form::open(['method' => 'POST', 'url' => '/hazmat/save', 'files' => true,'novalidate' => 'novalidate']) !!}
     <input type="hidden" name="_token" value="{!!  'csrf_token()' !!}">
     {{ csrf_field() }}
     <style>
