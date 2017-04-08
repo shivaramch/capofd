@@ -346,7 +346,7 @@
                     <div class="btn-bottom">
                         {!! Form::submit('Save as Draft',['class' => 'btn btn-primary','name' => 'partialSave']) !!}
                         <button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal">
-                            Save
+                            Submit
                         </button>
                         <a href="{{ route('hazmat.index') }}" class="btn btn-danger">Cancel</a>
                     </div>
