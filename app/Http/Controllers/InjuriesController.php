@@ -361,7 +361,7 @@ class InjuriesController extends Controller
     public function partialUpdate(Request $request, $id)
     {
         $injury = Injury::findOrFail($id);
-        $statusid = DB::table('status')->where('statustype', 'Application under Captain')->value('statusid');
+        $statusid = DB::table('status')->where('statustype', 'Draft')->value('statusid');
         /*  $statusid = str_replace(array('[', ']'), '', $statusidraw);*/
         \DB::table('injuries')->where('ofd6id', $injury->ofd6id)->update([
                 'reportnum' => $injury->reportnum,
