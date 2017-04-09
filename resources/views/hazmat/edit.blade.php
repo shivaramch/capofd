@@ -11,7 +11,7 @@
 @endsection
 
 @section('content')
-    {!! Form::model($hazmat,['method' => 'PUT', 'route' => ['hazmat.update', $hazmat->ofd6cid], 'files' => true,]) !!}
+    {!! Form::model($hazmat,['method' => 'PUT', 'route' => ['hazmat.update', $hazmat->ofd6cid], 'files' => true,'novalidate' => 'novalidate']) !!}
     <input type="hidden" name="_token" value="{!!  'csrf_token()' !!}">
     {{ csrf_field() }}
 
@@ -53,6 +53,18 @@
                 <div class="form-horizontal">
                     <div class="row">
                         <div class="col-sm-4 form-group">
+                            {!! Form::label('dateofexposure', 'Date of Exposure', array('style'=>'padding-top:7px;','class' => 'col-sm-4 control-label')) !!}
+                            <div class="col-sm-6 ">
+                                {!! Form::text('dateofexposure', old('dateofexposure'), array('id'=>'datepicker1','class' => 'form-control datepicker','placeholder'=>'YYYY-MM-DD', 'required'=>'required'))!!}
+                                <p class="help-block"></p>
+                                @if($errors->has('dateofexposure'))
+                                    <p class="help-block">
+                                        {{ $errors->first('dateofexposure') }}
+                                    </p>
+                                @endif
+                            </div>
+                        </div>
+                        <div class="col-sm-4 form-group">
                             {!! Form::label('employeeid', 'Employee ID #', array('style'=>'padding-top:7px;','class' => 'col-sm-4 control-label')) !!}
                             <div class="col-sm-6 ">
                                 {!! Form::text('employeeid', old('employeeid'), ['class' => 'form-control', 'placeholder'=>'Enter Employee ID', 'required'=>'required'])!!}
@@ -76,18 +88,7 @@
                                 @endif
                             </div>
                         </div>
-                        <div class="col-sm-4 form-group">
-                            {!! Form::label('dateofexposure', 'Date of Exposure', array('style'=>'padding-top:7px;','class' => 'col-sm-4 control-label')) !!}
-                            <div class="col-sm-6 ">
-                                {!! Form::text('dateofexposure', old('dateofexposure'), array('id'=>'datepicker1','class' => 'form-control datepicker','placeholder'=>'YYYY-MM-DD', 'required'=>'required'))!!}
-                                <p class="help-block"></p>
-                                @if($errors->has('dateofexposure'))
-                                    <p class="help-block">
-                                        {{ $errors->first('dateofexposure') }}
-                                    </p>
-                                @endif
-                            </div>
-                        </div>
+
                     </div>
                     <div class="row">
                         <div class="col-sm-4 form-group">
@@ -323,17 +324,17 @@
             </div>
             <div class="col-md-12">
                 <div class="form-group">
-                    {{Form::label('exposureinjury','Do you have any symptoms of illness or injury and require
+                    {{Form::label('exposurehazmat','Do you have any symptoms of illness or injury and require
                        treatment?')}}
-                    {!! Form::select('exposureinjury',[
+                    {!! Form::select('exposurehazmat',[
                       'Yes' => 'Yes',
                       'No' => 'No'],null,
-                    ['placeholder' => 'Choose one'],old('exposureinjury'),'required',
+                    ['placeholder' => 'Choose one'],old('exposurehazmat'),'required',
                     array('class' => 'form-control'))!!}
                     <p class="help-block"></p>
-                    @if($errors->has('exposureinjury'))
+                    @if($errors->has('exposurehazmat'))
                         <p class="help-block">
-                            {{ $errors->first('exposureinjury') }}
+                            {{ $errors->first('exposurehazmat') }}
                         </p>
                     @endif
                 </div>
@@ -345,7 +346,7 @@
                     <div class="btn-bottom">
                         {!! Form::submit('Save as Draft',['class' => 'btn btn-primary','name' => 'partialSave']) !!}
                         <button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal">
-                            Save
+                            Submit
                         </button>
                         <a href="{{ route('hazmat.index') }}" class="btn btn-danger">Cancel</a>
                     </div>

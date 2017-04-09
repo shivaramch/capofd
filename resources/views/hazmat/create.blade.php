@@ -10,7 +10,7 @@
     </ol>
 @endsection
 @section('content')
-    {!! Form::open(['method' => 'POST', 'url' => '/hazmat/save', 'files' => true,]) !!}
+    {!! Form::open(['method' => 'POST', 'url' => '/hazmat/save', 'files' => true,'novalidate' => 'novalidate']) !!}
     <input type="hidden" name="_token" value="{!!  'csrf_token()' !!}">
     {{ csrf_field() }}
     <style>
@@ -256,17 +256,17 @@
             </div>
             <div class="col-md-12">
                 <div class="form-group">
-                    {{Form::label('exposureinjury','Do you have any symptoms of illness or injury and require
+                    {{Form::label('exposurehazmat','Do you have any symptoms of illness or injury and require
                        treatment?')}}
-                    {!! Form::select('exposureinjury',[
+                    {!! Form::select('exposurehazmat',[
                       'Yes' => 'Yes',
                       'No' => 'No'],null,
                     ['placeholder' => 'Choose one'],'required',
                     array('class' => 'form-control'))!!}
                     <p class="help-block"></p>
-                    @if($errors->has('exposureinjury'))
+                    @if($errors->has('exposurehazmat'))
                         <p class="help-block">
-                            {{ $errors->first('exposureinjury') }}
+                            {{ $errors->first('exposurehazmat') }}
                         </p>
                     @endif
                 </div>

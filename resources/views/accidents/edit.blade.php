@@ -11,7 +11,7 @@
 @endsection
 
 @section('content')
-    {!! Form::model($accident,['method' => 'PUT', 'route' => ['accidents.update', $accident->ofd6aid], 'files' => true,]) !!}
+    {!! Form::model($accident,['method' => 'PUT', 'route' => ['accidents.update', $accident->ofd6aid], 'files' => true,'novalidate' => 'novalidate']) !!}
     <input type="hidden" name="_token" value="{!!  'csrf_token()' !!}">
     {{ csrf_field() }}
 

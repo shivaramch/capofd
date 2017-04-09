@@ -11,7 +11,7 @@ class CreateHazmatTable extends Migration
     {
         Schema::create('hazmats', function (Blueprint $table) {
             $table->increments('ofd6cid');
-            $table->string('contactcorvel',256);
+            $table->string('contactcorvel',256)->nullable();
             $table->string('corvelid', 256);
             $table->string('frmsincidentnum', 256);
             $table->string('employeeid', 256);
@@ -24,7 +24,7 @@ class CreateHazmatTable extends Migration
             $table->integer('applicationstatus')->nullable();
             $table->string('checkbox1')->nullable();
             $table->string('checkbox2')->nullable();
-            //$table->string('exposurehazmat', 256) ->nullable();
+            $table->string('exposurehazmat', 256) ->nullable();
             $table->string('updatedby', 256)->nullable();
             $table->string('createdby', 256);
             $table->timestamps();
