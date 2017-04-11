@@ -218,7 +218,10 @@
                         {{Form::label('checkbox1','Complete LRS 101 City of Omaha Accident Report-Include RB#, Officer Name, Badge#')}}
                     </div>
                 </div>
-                {{--}} <label class="checkbox-inline col-sm-12">
+                
+				{{--}} 
+				<label class="checkbox-inline col-sm-12">
+				
                      <strong>Complete LRS 101 City of Omaha Accident Report-Include RB#, Officer Name, Badge#</strong>
                  </label> --}}
 
@@ -235,6 +238,8 @@
                     <span class="btn btn-info">
                         <i class="fa fa-cloud-upload" aria-hidden="true"></i> Upload<input type="file"
                                                                                            name="LRS101"
+																						   id="LRS101"
+																						   onchange="pressed()"
                                                                                            style="display: none;">
                     </span>
                             </label>
@@ -246,7 +251,7 @@
             <div class="row">
                 <div class="col-sm-12 form-group">
                     <div class="form-group">
-                        {{ Form::checkbox('checkbox2', 1, null, ['id'=>'checkbox2', 'class' => 'className' ]) }}
+                        {{ Form::checkbox('checkbox2', 1, null, ['id'=>'checkbox2', 'class' => 'check1' ]) }}
                         {{Form::label('checkbox2','Complete OFD 295
                             Vehicle Accident Witness Statement -This Report is for civilian statements
                         only')}}
@@ -266,12 +271,13 @@
                         <div class="input-group">
                             <label class="input-group-btn">
                     <span class="btn btn-info">
-                        <i class="fa fa-cloud-upload" aria-hidden="true"></i> Upload<input type="file"
+                        <i class="fa fa-cloud-upload check" aria-hidden="true"></i> Upload<input type="file"
                                                                                            name="OFD295"
+																						   
                                                                                            style="display: none;">
                     </span>
                             </label>
-                            <input type="text" id="upload-file-info" class="form-control" readonly>
+                            <input type="text" id="upload-file-info" class="form-control" onchange="pressed()" readonly>
                         </div>
                     </div>
                 </div>
