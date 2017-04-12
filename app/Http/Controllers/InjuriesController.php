@@ -162,6 +162,7 @@ class InjuriesController extends Controller
     {
         if (Input::get('store')) {
             $this->updateRecord($requestSave,$id);
+            return redirect()->route('injuries.index')->with('message', 'Form Submitted Successfully');
         }
 
         if (Input::get('partialSave')) {
@@ -177,6 +178,7 @@ class InjuriesController extends Controller
     {
         if (Input::get('store')) {
             $this->store($requestSave);
+            return redirect()->route('injuries.index')->with('message', 'Form Submitted Successfully');
         }
 
         if (Input::get('partialSave')) {
@@ -259,9 +261,13 @@ class InjuriesController extends Controller
         $injury = Injury::findOrFail($id);
         $comments = Comment::all();
         $users = User::all();
+        $rejectstatus = DB::table('status')->where('statustype', 'Rejected')->value('statusid');
+        $draftstatus = DB::table('status')->where('statustype', 'Draft')->value('statusid');
 
-        if (($injury->injuredemployeeid == Auth::user()->id &&
-                ($injury->applicationstatus == 1 || $injury->applicationstatus == 5)) ||
+
+        if (($injury->injuredemployeeid == Auth::user()->id  &&
+                ($injury->applicationstatus == $rejectstatus
+                    || $injury->applicationstatus == $draftstatus)) ||
             Auth::user()->roleid == 1
         ) {
             return view('injuries.edit', compact('injury', 'attachments', 'comments', 'users'));
@@ -271,6 +277,15 @@ class InjuriesController extends Controller
 
     }
 
+
+    public function retrieve($id)
+    {
+        $injury = Injury::findOrFail($id);
+        $attachments = Attachment::all();
+        $comments = Comment::all();
+        $users = User::all();
+    }
+
     public function show($id)
     {
 
@@ -278,14 +293,18 @@ class InjuriesController extends Controller
         $attachments = Attachment::all();
         $comments = Comment::all();
         $users = User::all();
+        $capstatus = DB::table('status')->where('statustype','Application under Captain')->value('statusid');
+        $bcstatus = DB::table('status')->where('statustype','Application under Batallion Chief')->value('statusid');
+        $acstatus = DB::table('status')->where('statustype','Application under Assistant Chief')->value('statusid');
+
 
         //show history code start
         //below one line code is for storing all history related to the $id in variable, which is to be used to display in show page.
         //show history code end
-        if ($injury->driverid == Auth::user()->id ||
-            ($injury->captainid == Auth::user()->id && $injury->applicationstatus == 2) ||
-            ($injury->battalionchiefid == Auth::user()->id && $injury->applicationstatus == 3) ||
-            ($injury->aconduty == Auth::user()->id && $injury->applicationstatus == 4) ||
+        if ($injury->injuredemployeeid == Auth::user()->id ||
+            ($injury->captainid == Auth::user()->id && $injury->applicationstatus == $capstatus) ||
+            ($injury->battalionchiefid == Auth::user()->id && $injury->applicationstatus == $bcstatus) ||
+            ($injury->aconduty == Auth::user()->id && $injury->applicationstatus == $acstatus) ||
             Auth::user()->roleid == 1
         ) {
             return view('injuries.show', compact('injury', 'attachments', 'comments', 'users'));
@@ -342,7 +361,7 @@ class InjuriesController extends Controller
     public function partialUpdate(Request $request, $id)
     {
         $injury = Injury::findOrFail($id);
-        $statusid = DB::table('status')->where('statustype', 'Application under Captain')->value('statusid');
+        $statusid = DB::table('status')->where('statustype', 'Draft')->value('statusid');
         /*  $statusid = str_replace(array('[', ']'), '', $statusidraw);*/
         \DB::table('injuries')->where('ofd6id', $injury->ofd6id)->update([
                 'reportnum' => $injury->reportnum,

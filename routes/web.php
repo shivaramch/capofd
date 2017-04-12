@@ -37,6 +37,7 @@ Route::group(['middleware' => 'auth'], function () {// Authentication Routes...
 
     Route::get('/', 'HomeController@index');
 
+    Route::get('search', array('as' => 'search', 'uses' => 'AdminpanelsController@search'));
 
     Route::resource('injuries', 'InjuriesController');
     Route::post('injuries/save', 'InjuriesController@save');

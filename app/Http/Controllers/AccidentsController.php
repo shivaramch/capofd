@@ -7,7 +7,6 @@ use App\Attachment;
 use App\Comment;
 use App\Http\Controllers\Traits\FileUploadTrait;
 use App\Http\Controllers\Traits\FormFileUploadTrait;
-use App\Http\Requests\UpdateAccidentsRequest;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -18,7 +17,6 @@ class AccidentsController extends EmailController
 {
     use FileUploadTrait;
     use FormFileUploadTrait;
-
 
 
     public function Approve($id)
@@ -169,7 +167,7 @@ class AccidentsController extends EmailController
     public function index()
     {
         $accidents = Accident::all();
-            return view('accidents.index', compact('accidents'));
+        return view('accidents.index', compact('accidents'));
     }
 
     public function create()
@@ -182,40 +180,36 @@ class AccidentsController extends EmailController
     {
         if (Input::get('store')) {
             $this->store($requestSave);
+            return redirect()->route('accidents.index')->with('message', 'Form Submitted Successfully');
         }
 
         if (Input::get('partialSave')) {
             $this->partialSave($requestSave);
-			return redirect()->route('accidents.index')->with('message', 'Form has been Partially saved');
+            return redirect()->route('accidents.index')->with('message', 'Form has been Partially Saved');
         }
-        
+
 
     }
 
 
-    public function update(Request $requestSave,$id)
+    public function update(Request $requestSave, $id)
     {
         if (Input::get('store')) {
-            $this->updateRecords($requestSave,$id);
+            $this->updateRecords($requestSave, $id);
+            return redirect()->route('accidents.index')->with('message', 'Form Submitted Successfully');
         }
 
         if (Input::get('partialSave')) {
             $this->partialUpdate($requestSave, $id);
-			return redirect()->route('accidents.index')->with('message', 'Form has been Partially saved');
+            return redirect()->route('accidents.index')->with('message', 'Form has been Partially Saved');
         }
 
-        
+
     }
 
 
-
-    public function store(Request $request)
-
+    public function validateRequest(Request $request)
     {
-
-
-        // 'applicationstatus' => $request->applicationstatus,
-
         $this->validate($request, [
             'accidentdate' => 'required|date:accidents,accidentdate,',
             'driverid' => 'required|integer:accidents,driverid,',
@@ -231,6 +225,15 @@ class AccidentsController extends EmailController
             'commemail' => 'required|integer:accidents,commemail',
         ]);//request will have all values filled by firefighter
         //check if the user*/
+    }
+
+
+    public function store(Request $request)
+
+    {
+
+        $this->validateRequest($request);
+        // 'applicationstatus' => $request->applicationstatus,
 
 
         $statusid = DB::table('status')->where('statustype', 'Application under Captain')->value('statusid');
@@ -249,7 +252,7 @@ class AccidentsController extends EmailController
 //   (new EmailController)->Email($accident, $rawlink,$formname,$statusid);
         (new EmailController)->Email($request, $link, $formname, $statusid);
         //$request->session()->flash('alert-success', 'User was successful added!');
-		return redirect()->route('accidents.index')->with('message', 'Form Submitted Successfully');
+        return redirect()->route('accidents.index')->with('message', 'Form Submitted Successfully');
     }
 
 
@@ -287,9 +290,13 @@ class AccidentsController extends EmailController
         $accident = Accident::findOrFail($id);
         $comments = Comment::all();
         $users = User::all();
+        $rejectstatus = DB::table('status')->where('statustype', 'Rejected')->value('statusid');
+        $draftstatus = DB::table('status')->where('statustype', 'Draft')->value('statusid');
+
 
         if (($accident->driverid == Auth::user()->id &&
-                ($accident->applicationstatus == 1 || $accident->applicationstatus == 5)) ||
+                ($accident->applicationstatus == $rejectstatus
+                    || $accident->applicationstatus == $draftstatus)) ||
             Auth::user()->roleid == 1
         ) {
             return view('accidents.edit', compact('accident', 'attachments', 'comments', 'users'));
@@ -304,24 +311,30 @@ class AccidentsController extends EmailController
         $attachments = Attachment::where('ofd6aid', $id)->get();
         $comments = Comment::all();
         $users = User::all();
+        $capstatus = DB::table('status')->where('statustype','Application under Captain')->value('statusid');
+        $bcstatus = DB::table('status')->where('statustype','Application under Batallion Chief')->value('statusid');
+        $acstatus = DB::table('status')->where('statustype', 'Application under Assistant Chief')->value('statusid');
         //show history code start
         //below one line code is for storing all history related to the $id in variable, which is to be used to display in show page.
         //show history code end
+
         if ($accident->driverid == Auth::user()->id ||
-        ($accident->captainid == Auth::user()->id && $accident->applicationstatus == 2) ||
-        ($accident->battalionchiefid == Auth::user()->id && $accident->applicationstatus == 3) ||
-        ($accident->aconduty == Auth::user()->id && $accident->applicationstatus == 4) ||
-        Auth::user()->roleid == 1
-    ) {
-        return view('accidents.show', compact('accident', 'attachments', 'comments', 'users'));
-    } else {
-        return view('errors.access');
-    }
+            ($accident->captainid == Auth::user()->id && $accident->applicationstatus == $capstatus) ||
+            ($accident->battalionchiefid == Auth::user()->id && $accident->applicationstatus == $bcstatus) ||
+            ($accident->aconduty == Auth::user()->id && $accident->applicationstatus == $acstatus) ||
+            Auth::user()->roleid == 1
+        ) {
+            return view('accidents.show', compact('accident', 'attachments', 'comments', 'users'));
+        } else {
+            return view('errors.access');
+        }
 
     }
 
     public function updateRecords(Request $request, $id)
     {
+
+        $this->validateRequest($request);
 
         $statusid = DB::table('status')->where('statustype', 'Application under Captain')->value('statusid');
 

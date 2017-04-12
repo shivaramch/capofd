@@ -5,6 +5,7 @@
            href="{{ route('fmlas.index') }}">
             <i class="fa fa-arrow-left" aria-hidden="true"></i> Back</a>
         <li><a href="{{ url('/') }}">Dashboard</a></li>
+        <li><a href="{{ route('adminpanel.index') }}">Admin panel</a></li>
         <li><a href="{{ route('fmlas.index') }}">FMLA Information</a></li>
         <li class="active">View Employee FMLA Information {{ $fmla->fmlaid }}</li>
     </ol>

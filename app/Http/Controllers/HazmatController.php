@@ -96,12 +96,72 @@ class HazmatController extends Controller
 
 
 
+    public function update( Request $requestSave,$id)
+    {
+        if (Input::get('store')) {
+            $this->updateRecord($requestSave,$id);
+            return redirect()->route('hazmat.index')->with('message', 'Form Submitted Successfully');
+        }
+
+        if (Input::get('partialSave')) {
+            $this->partialUpdate($requestSave, $id);
+            return redirect()->route('hazmat.index')->with('message', 'Form has been partially saved');
+        }
+
+    }
+
+
+
+    public function partialUpdate(Request $request, $id)
+    {
+
+
+        $this->validate($request, ['dateofexposure' => 'required|date:hazmat,dateofexposure,',
+            'employeeid' => 'required|integer:hazmat,employeeid,',
+            'corvelid' => 'required|integer:hazmat,corvelid',
+            // 'contactcorvel' => 'required|string:hazmat,contactcorvel',
+        ]);
+
+        $statusid=DB::table('status')->where('statustype','Draft')->value('statusid');
+
+
+        $hazmat = hazmat::findOrFail($id);
+
+        \DB::table('hazmats')->where('ofd6cid', $hazmat->ofd6cid)->update([
+                'employeeid' => $hazmat->employeeid,
+                'employeename' => $hazmat->employeename,
+                'dateofexposure' => $hazmat->dateofexposure,
+                'primaryidconumber' => $hazmat->primaryidconumber,
+                'epcrincidentnum' => $hazmat->epcrincidentnum,
+                'frmsincidentnum' => $hazmat->frmsincidentnum,
+                'assignment' => $hazmat->assignment,
+                'shift' => $hazmat->shift,
+                'applicationstatus' => $statusid,
+                'corvelid' => $hazmat->corvelid,
+                'exposurehazmat' => $hazmat->exposurehazmat
+            ]
+        );
+
+        //end history code
+        $request = $this->saveFiles($request);
+        $hazmat->update($request->all());
+
+        $this->HazmatUpload($request, $id);
+
+        $link=$request->url();
+
+    }
+
+
+
+
 
 
     public function save( Request $requestSave)
     {
         if(Input::get('store')) {
             $this->store($requestSave);
+            return redirect()->route('hazmat.index')->with('message', 'Form Submitted Successfully');
         }
 
         if(Input::get('partialSave')) {
@@ -123,8 +183,9 @@ class HazmatController extends Controller
 
 
             'dateofexposure' => 'required|date:hazmat,dateofexposure,',
+            'employeeid' => 'required|integer:hazmat,employeeid,',
             'corvelid' => 'required|integer:hazmat,corvelid',
-            'contactcorvel' => 'required|string:hazmat,contactcorvel',
+           // 'contactcorvel' => 'required|string:hazmat,contactcorvel',
             ]);
 
         $statusid=DB::table('status')->where('statustype','Draft')->value('statusid');
@@ -138,13 +199,10 @@ class HazmatController extends Controller
 
     }
 
-    public function store(Request $request)
+
+
+    public function validateRequest(Request $request)
     {
-
-
-
-
-
         $this->validate($request, [
 
 
@@ -158,7 +216,16 @@ class HazmatController extends Controller
             'assignment' => 'required|string:hazmat,assignment',
             'frmsincidentnum' => 'required|string:hazmat,frmsincidentnum',
             'shift' => 'required|string:hazmat,shift,',
-            ]);
+        ]);
+    }
+
+
+
+    public function store(Request $request)
+    {
+
+
+        $this->validateRequest($request);
 
 
         $statusid=DB::table('status')->where('statustype','Application under Primary IDCO')->value('statusid');
@@ -188,8 +255,12 @@ class HazmatController extends Controller
         $attachments = Attachment::all();
         $hazmat = hazmat::findOrFail($id);
         $comments = Comment::all();
+        $rejectstatus = DB::table('status')->where('statustype', 'Rejected')->value('statusid');
+        $draftstatus = DB::table('status')->where('statustype', 'Draft')->value('statusid');
+
         if (($hazmat->employeeid == Auth::user()->id &&
-                ($hazmat->applicationstatus == 1 || $hazmat->applicationstatus == 5)) ||
+                ($hazmat->applicationstatus == $rejectstatus
+                    || $hazmat->applicationstatus == $draftstatus)) ||
             Auth::user()->roleid == 1
         ) {
             return view('hazmat.edit', compact('hazmat', 'attachments','comments','users'));
@@ -206,9 +277,11 @@ class HazmatController extends Controller
         $attachments = Attachment::all();
         $comments = Comment::all();
         $users = User::all();
+        $applicationStatus = DB::table('status')->where('statustype', 'Application under Primary IDCO')->value('statusid');
+
 
         if ($hazmat->employeeid == Auth::user()->id ||
-            ($hazmat->primaryidconumber == Auth::user()->id && $hazmat->applicationstatus == 2) ||
+            ($hazmat->primaryidconumber == Auth::user()->id && $hazmat->applicationstatus == $applicationStatus) ||
             Auth::user()->roleid == 1
         ) {
             return view('hazmat.show', compact('hazmat', 'attachments', 'comments', 'users'));
@@ -220,12 +293,14 @@ class HazmatController extends Controller
 
     }
 
-    public function update(UpdateHazmatRequest $request, $id)
+    public function updateRecord(Request $request, $id)
     {
         //$accident = $this->saveFiles($request);
 
-        $statusidraw=DB::table('status')->where('statustype','Application under Primary IDCO ')->pluck('statusid');
-        $statusid=str_replace (array('[', ']'), '', $statusidraw);
+       $this-> validateRequest($request);
+
+        $statusid=DB::table('status')->where('statustype','Application under Primary IDCO')->value('statusid');
+
 
         $hazmat = hazmat::findOrFail($id);
 
@@ -240,7 +315,7 @@ class HazmatController extends Controller
                 'shift' => $hazmat->shift,
                 'applicationstatus' => $statusid,
                 'corvelid' => $hazmat->corvelid,
-                //'exposurehazmat' => $hazmat->exposurehazmat
+                'exposurehazmat' => $hazmat->exposurehazmat
         ]
         );
 

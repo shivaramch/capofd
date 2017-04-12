@@ -13,7 +13,7 @@
         <div class="row" style="margin: inherit">
             <a href="{{ route('injuries.index') }}">
                 <div class="col-md-3 large-category">
-                    <div class="thumbnail"  id="injuriesLink">
+                    <div class="thumbnail" id="injuriesLink">
                         <div class="thumbnail-dash">
                             <i class="fa fa-medkit fa-4x" aria-hidden="true"></i>
                         </div>
@@ -71,71 +71,6 @@
 
         </div>
     </div>
-    <!-- top navigation icons ends here-->
-
-    @if(Auth::user()->roleid == 1)
-    <!-- bottom navigation icons start here-->
-    <div class="col-md-12">
-        <div class="row" style="margin: inherit">
-
-            {{--<a href="{{ route('repairs.index') }}">--}}
-            <div class="col-md-3 large-category">
-                <div class="thumbnail">
-                    <div class="thumbnail-dash" id="corvelLink">
-                        <i class="fa fa-upload fa-4x" aria-hidden="true"></i>
-                    </div>
-                    <div class="caption">
-                        <h3>CorVel Uploads</h3>
-                    </div>
-                </div>
-            </div>
-            </a>
-
-            <a href="{{ route('fmlas.index') }}">
-            <div class="col-md-3 large-category">
-                <div class="thumbnail">
-                    <div class="thumbnail-dash" id="fmlaLink">
-                        <i class="fa fa-upload fa-4x" aria-hidden="true"></i>
-                    </div>
-                    <div class="caption">
-                        <h3>FMLA Uploads</h3>
-                    </div>
-                </div>
-            </div>
-            </a>
-
-            <a href="{{ route('limitedduties.index') }}">
-            <div class="col-md-3 large-category">
-                <div class="thumbnail">
-                    <div class="thumbnail-dash" id="limitedLink">
-                        <i class="fa fa-calendar fa-4x" aria-hidden="true"></i>
-                    </div>
-                    <div class="caption">
-                        <h3>Limited Duty</h3>
-                    </div>
-                </div>
-            </div>
-            </a>
-
-            <a href="{{ route('adminpanel.index') }}">
-            <div class="col-md-3 large-category">
-                <div class="thumbnail">
-                    <div class="thumbnail-dash" id="adminLink">
-                        <i class="fa fa-search fa-4x" aria-hidden="true"></i>
-                    </div>
-                    <div class="caption">
-                        <h3>Admin Search</h3>
-                    </div>
-                </div>
-            </div>
-            </a>
-
-
-
-        </div>
-    </div>
-    <!-- Bottom navigation icons ends here-->
-    @endif
 
 @endsection
 
@@ -160,9 +95,9 @@
             showExport: true,
             showColumns: true,
             exportTypes: ['csv', 'excel'],
-            pageList: ['10','25','50','100','150','200','500','1000'],
+            pageList: ['10', '25', '50', '100', '150', '200', '500', '1000'],
             exportOptions: {
-                fileName: 'assets-export-' + (new Date()).toISOString().slice(0,10),
+                fileName: 'assets-export-' + (new Date()).toISOString().slice(0, 10),
             },
             icons: {
                 paginationSwitchDown: 'fa-caret-square-o-down',

@@ -47,41 +47,12 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="alert alert-danger" align="center">
-                            <strong>COMPLETE ALL FORMS AND FORWARD VIA CHAIN-OF-COMMAND WITHIN 48 HOURS
+                            <strong>COMPLETE ALL FORMS AND FORWARD VIA CHAIN-OF-COMMAND WITHIN 24 HOURS
                             </strong>
                         </div>
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-sm-8 form-group">
-                        {!! Form::label('reportnum', 'Report #', ['class' => 'col-sm-2 control-label']) !!}
-                        <div class="col-sm-3">
-                            {!! Form::text('reportnum', old('reportnum'), array('class' => 'form-control','style' =>'margin-left:-7px;','placeholder'=>'Enter Report Number','required' => 'required','disabled'=>'disabled'))!!}
-                            <p class="help-block"></p>
-                            @if($errors->has('reportnum'))
-                                <p class="help-block">
-                                    {{ $errors->first('reportnum') }}
-                                </p>
-                            @endif
-                        </div>
-                        <div class='col-sm-6'>
-                            {!! Form::label('reportnum ', '(Obtain from SWD Office)', array('class' => 'col-sm-8 control-label','style' =>'margin-left:-70px;')) !!}
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-sm-4 form-group">
-                        {!! Form::label('createdate', 'Todays Date:', ['class' => 'col-sm-4 control-label']) !!}
-                        <div class="col-sm-6 ">
-                            {!! Form::text('createdate', old('createdate'), array('class'=>'datepicker form-control','placeholder'=>'MM/DD/YYYY','required' => 'required','disabled'=>'disabled'))!!}
-                            <p class="help-block"></p>
-                            @if($errors->has('createdate'))
-                                <p class="help-block">
-                                    {{ $errors->first('createdate') }}
-                                </p>
-                            @endif
-                        </div>
-                    </div>
                     <div class="col-sm-4 form-group">
                         {!! Form::label('injurydate', 'Date of Injury:', ['class' => 'col-sm-4 control-label']) !!}
                         <div class="col-sm-6 ">
@@ -214,9 +185,7 @@
         <div class="panel-heading">
             <div class="row">
                 <div class="col-sm-12" form-group>
-                    <h4 style="text-align:center;"><strong>All injuries must have FRMS incident ID#- if non-incident
-                            related,inform dispatch of your injury
-                            and need for an FRMS ID#</strong></h4>
+                    <h4><strong>Injury Checklist:</strong></h4>
                 </div>
             </div>
         </div>
@@ -227,7 +196,7 @@
             <div class="row">
                 <div class="col-sm-12">
                     {{ Form::checkbox('checkbox1', 1, null,['disabled'], ['id' => 'checkbox1', 'class'=>'className','readonly' => 'true']) }}
-                    {{Form::label('Checkbox1','CorVel Work Ability Report Form  - Only if seeking medical attention. Complete "Employee Section" and sign at bottom.')}}
+                    {{Form::label('Checkbox1','Complete CorVel Work Ability Report Form - Only if seeking medical attention. Complete "Employee Section" and sign at bottom.')}}
                     {{--}}  <label class="col-sm-12"><strong>CorVel Work Ability
                               Report</strong>
                           - Only if seeking medical attention. Complete "Employee Section" and sign at bottom.</label> --}}
@@ -269,8 +238,8 @@
             <div class="row">
                 <div class="col-sm-12">
                     {{ Form::checkbox('checkbox2', 1, null,['disabled'], ['id' => 'checkbox2', 'class'=>'className','readonly' => 'true']) }}
-                    {{Form::label('Checkbox2','Investigation Report for
-                    Occupational Injury or Illness- Both employee and supervisor must complete and sign.')}}
+                    {{Form::label('Checkbox2','Complete Investigation Report for
+                    Occupational Injury or Illness Form - Both employee and supervisor must complete and sign.')}}
                     {{--}}<label class="col-sm-12"><strong>Investigation Report for
                         Occupational Injury or Illness</strong>
                     - Both employee and supervisor must complete and sign.</label> --}}
@@ -310,8 +279,7 @@
             <div class="row">
                 <div class="col-sm-12">
                     {{ Form::checkbox('checkbox3', 1, null,['disabled'], ['id' => 'checkbox3', 'class'=>'className','readonly' => 'true']) }}
-                    {{Form::label('Checkbox3','Statement of Witness of
-                        Accident')}}
+                    {{Form::label('Checkbox3','Complete OFD 295a Injury Witness Statement Form')}}
                 </div>
                 {{--}} <label class="col-sm-12"><strong>Statement of Witness of
                          Accident</strong></label> --}}
@@ -350,8 +318,7 @@
             <div class="row">
                 <div class="col-sm-12">
                     {{ Form::checkbox('checkbox4', 1, null,['disabled'], ['id' => 'checkbox4', 'class'=>'className','readonly' => 'true']) }}
-                    {{Form::label('Checkbox4','Employees Choice of
-                        Physician or Doctor Form - Two signatures required - both section A & B.')}}
+                    {{Form::label('Checkbox4','Complete Employee’s Choice of Physician or Doctor Form - Two signatures required - both section A & B.')}}
                     {{--}} <label class="col-sm-12"><strong>Employee's Choice of
                              Physician or Doctor Form</strong>
                          - Two signatures required - both section A & B.</label> --}}
@@ -391,8 +358,7 @@
             <div class="row">
                 <div class="col-sm-12">
                     {{ Form::checkbox('checkbox5', 1, null,['disabled'], ['id' => 'checkbox5', 'class'=>'className','readonly' => 'true']) }}
-                    {{Form::label('Checkbox5','OFD - 25 Injury on
-                        Job - Send an attachment electronically to OmafIOD@cityofomaha.org')}}
+                    {{Form::label('Checkbox5','Complete OFD 25 Injury Intradepartmental Communication Form - Send an attachment electronically to OmafIOD@cityofomaha.org')}}
                     {{--}}  <label class="col-sm-12"><strong>OFD - 25 Injury on
                               Job</strong>
                           - Send an attachment electronically to OmafIOD@cityofomaha.org</label> --}}
