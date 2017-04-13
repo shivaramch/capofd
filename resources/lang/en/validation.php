@@ -110,10 +110,10 @@ return [
             'required' => '"Exposed Employee Name" field is required',
             'alpha' => '"Exposed Employee Name" can only have letters',
         ],
-//        'dateofexposure' => [
-//            'required' => '"Date of Exposure" field is required',
-//            'date' => '"Date of Exposure" should be a date',
-//        ],
+        'dateofexposure' => [
+            'required' => '"Date of Exposure" field is required',
+           'date' => '"Date of Exposure" should be a date',
+        ],
         'assignmentbiological' => [
             'required' => '"Assignment" field is required',
         ],
