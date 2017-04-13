@@ -126,7 +126,7 @@ return [
         ],
         'epcrincidentnum' => [
             'required' => '"EPCR Incident#" field is required',
-            'integer' => '"EPCR Incident#" field should be a number',
+            'integer' => '"EPCR Incident#" field should be a integer',
         ],
         'frmsincidentnum' => [
             'required' => '"FRMS Incident#" field is required',
@@ -140,7 +140,7 @@ return [
         ],
         'reportnum' => [
             'required' => '"Report#" field is required',
-            'integer' => '"Report#" field should be a number',
+            'integer' => '"Report#" field should be a integer',
         ],
         'injurydate' => [
             'required' => '"Date of Injury" field is required',
@@ -225,6 +225,10 @@ return [
         'contactcorvel' => [
             'required' => 'Check "Contact CorVel Enterprise Comp @ 877-764-3574" checkbox',
         ],
+        'exposurehazmat' => [
+            'required' => 'Select a value from "Do you have any symptoms of illness or injury and require treatment?" dropdown',
+        ],
+
 
     ],
 

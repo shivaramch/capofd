@@ -216,6 +216,7 @@ class HazmatController extends Controller
             'assignment' => 'required|string:hazmat,assignment',
             'frmsincidentnum' => 'required|string:hazmat,frmsincidentnum',
             'shift' => 'required|string:hazmat,shift,',
+            'exposurehazmat' => 'required:hazmat,shift,',
         ]);
     }
 
