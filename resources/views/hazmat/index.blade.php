@@ -43,6 +43,7 @@
                         <th data-sortable="true">Date of Exposure</th>
                         <th data-sortable="true">Assignment</th>
                         <th data-sortable="true">Status</th>
+                        <th data-sortable="true">Employee Name</th>
                         <th data-switchable="false" data-searchable="false" data-sortable="false">Action</th>
                     </tr>
                     </thead>
@@ -53,6 +54,7 @@
                                 <td>{{ $hazmats->ofd6cid }}</td>
                                 <td>{{ $hazmats->dateofexposure }}</td>
                                 <td>{{ $hazmats->assignment }}</td>
+                                <td>{{ $hazmats->employeename }}</td>
                                 <td>{{ DB::table('status')->where('statusid',$hazmats->applicationstatus)->value('statustype') }}</td>
 
                                 <td>
@@ -94,6 +96,7 @@
                         <th data-sortable="true">Date of Exposure</th>
                         <th data-sortable="true">Assignment</th>
                         <th data-sortable="true">Status</th>
+                        <th data-sortable="true">Employee Name</th>
                         <th data-switchable="false" data-searchable="false" data-sortable="false">Action</th>
                     </tr>
                     </thead>
@@ -104,6 +107,7 @@
                                 <td>{{ $hazmats->ofd6cid }}</td>
                                 <td>{{ $hazmats->dateofexposure }}</td>
                                 <td>{{ $hazmats->assignment }}</td>
+                                <td>{{ $hazmats->employeename }}</td>
                                 <td>{{DB::table('status')->where('statusid',$hazmats->applicationstatus)->value('statustype')}}</td>
 
                                 <td>
