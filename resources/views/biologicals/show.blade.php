@@ -2,7 +2,7 @@
 @section('crumbs')
     <ol class="breadcrumb">
         <a class="btn btn-default" type="button"
-           href="{{ route('biologicals.index') }}">
+           href="{{ URL::previous() }}">
             <i class="fa fa-arrow-left" aria-hidden="true"></i> Back</a>
         <li><a href="{{ url('/') }}">Dashboard</a></li>
         <li><a href="{{ route('biologicals.index') }}">OFD 6B Biologicals</a></li>
@@ -172,7 +172,7 @@
                     </div>
                 </div>
             </div>
-            <div id="Exposure0" class="desc" style="display: none;">
+            <div id="Exposure0" class="desc">
                 <div class="col-sm-12">
                     <div class="form-group">
                         {{ Form::checkbox('truedecontaminate', 1, null, ['id' => 'truedecontaminate', 'class'=>'className' , 'disabled' => "disabled"]) }}
@@ -209,13 +209,13 @@
                                     </tr>
                                     @if(count($attachments) > 0)
                                         @foreach($attachments as $attachment)
-                                            @if($attachment->attachmenttype == '6b1' && $attachment->ofd6bid == $biological->ofd6bid )
+                                            @if($attachment->attachmenttype == '6b1')
                                                 <tr>
                                                     <td>
                                                         <a href="{{ asset('uploads/'.$attachment->attachmentname) }}"> {{$attachment->attachmentname}}</a>
                                                     </td>
                                                     <td>
-                                                        <a>{{$attachment->created_at}}</a>
+                                                        {{$attachment->created_at}}
                                                     </td>
                                                 </tr>@endif
                                         @endforeach
@@ -250,13 +250,13 @@
 
                                     @if(count($attachments) > 0)
                                         @foreach($attachments as $attachment)
-                                            @if($attachment->attachmenttype == '6b3' && $attachment->createdby ==  Auth::user()->id && $attachment->ofd6bid == $biological->ofd6bid )
+                                            @if($attachment->attachmenttype == '6b3')
                                                 <tr>
                                                     <td>
                                                         <a href="{{ asset('uploads/'.$attachment->attachmentname) }}"> {{$attachment->attachmentname}}</a>
                                                     </td>
                                                     <td>
-                                                        <a>{{$attachment->created_at}}</a>
+                                                        {{$attachment->created_at}}
                                                     </td>
                                                 </tr>@endif
                                         @endforeach
@@ -312,7 +312,7 @@
                     </div>
                 </div>
             </div>
-            <div id="Exposure1" class="desc" style="display: none;">
+            <div id="Exposure1" class="desc">
                 <div class="col-sm-12">
                     <div class="form-group">
                         {{ Form::checkbox('potdecontaminate', 1, null, ['id' => 'potdecontaminate', 'class'=>'className','disabled' => "disabled" ]) }}
@@ -346,13 +346,13 @@
 
                                     @if(count($attachments) > 0)
                                         @foreach($attachments as $attachment)
-                                            @if($attachment->attachmenttype == '6b2' && $attachment->ofd6bid == $biological->ofd6bid )
+                                            @if($attachment->attachmenttype == '6b2')
                                                 <tr>
                                                     <td>
                                                         <a href="{{ asset('uploads/'.$attachment->attachmentname) }}"> {{$attachment->attachmentname}}</a>
                                                     </td>
                                                     <td>
-                                                        <a>{{$attachment->created_at}}</a>
+                                                        {{$attachment->created_at}}
                                                     </td>
                                                 </tr>@endif
                                         @endforeach
@@ -384,13 +384,13 @@
 
                                     @if(count($attachments) > 0)
                                         @foreach($attachments as $attachment)
-                                            @if($attachment->attachmenttype == '6b4' && $attachment->createdby ==  Auth::user()->id && $attachment->ofd6bid == $biological->ofd6bid )
+                                            @if($attachment->attachmenttype == '6b4')
                                                 <tr>
                                                     <td>
                                                         <a href="{{ asset('uploads/'.$attachment->attachmentname) }}"> {{$attachment->attachmentname}}</a>
                                                     </td>
                                                     <td>
-                                                        <a>{{$attachment->created_at}}</a>
+                                                        {{$attachment->created_at}}
                                                     </td>
                                                 </tr>@endif
                                         @endforeach
@@ -497,7 +497,7 @@
                 <div class="actionBox">
                     <ul class="commentList">
                         @foreach ($comments as $cm)
-                            @if(($cm->applicationid == $biological->ofd6bid && $cm->applicationtype == '6B')&&
+                            @if($cm->applicationtype == '6B'&&
                             (($biological->employeeid == Auth::user()->id && $cm->isvisible == 1) ||
                             $biological->primaryidconumber == Auth::user()->id || Auth::user()->roleid == 1))
                                 <div class="col-sm-8">
@@ -519,6 +519,19 @@
                                                             class="fa fa-clock-o"></i> {{$cm->created_at}}
                                                 </time>
                                             </div>
+                                            <div class="pull-right meta">
+                                                @if(Auth::user()->id == $cm->createdby )
+                                                    {!! Form::open(array(
+                'style' => 'display: inline-block;',
+                'method' => 'DELETE',
+                'onsubmit' => "return confirm('".trans("Are you sure?")."');",
+                'route' => ['comments.destroy', $cm->commentid])) !!}
+                                                    {!! Form::button('<i class="fa fa-trash-o"></i>', array('type' => 'submit', 'class' => ''))!!}
+                                                    {!! Form::close() !!}
+                                                @endif
+
+                                            </div>
+
                                         </div>
                                         <div class="post-description">
                                             <p>{{$cm->comment}}</p>
@@ -559,18 +572,32 @@
 @section('javascript')
     <script src="{{ ('js/extensions/cookie') }}/bootstrap-table-cookie.js"></script>
     <script src="{{ ('js/extensions/mobile') }}/bootstrap-table-mobile.js"></script>
-    <script src="{{ ('js/export') }}/bootstrap-table-export.js"></script>
-    <script src="{{ ('js/export') }}/tableExport.js"></script>
-    <script src="{{ ('js/export') }}/jquery.base64.js"></script>
-    <script type="text/javascript">
-        $(document).ready(function () {
-            $("input[name$='exposure']").click(function () {
-                var test = $(this).val();
 
-                $("div.desc").hide();
-                $("#Exposure" + test).show();
-            });
-        });
+    <script src="{{ ('js/export') }}/bootstrap-table-export.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+    <script type="text/javascript">
+
+
+        if ($('#exposure').val()==0 )
+        {
+
+            $('#Exposure0').show;
+            $('#Exposure1').hide;
+
+
+        }
+        else if ($('#exposure1').val()==1)
+        {
+
+            $('#Exposure0').hide;
+            $('#Exposure1').show;
+
+
+        }
+
+
+
     </script>
 
 @endsection

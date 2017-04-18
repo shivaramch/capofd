@@ -16,7 +16,15 @@ class CommentsController extends Controller
         Comment::create($request->all());
         $validation = array('Successfully added the Comment!');
 
-        return Redirect::back()
-            ->withErrors($validation);
+        return Redirect::back()->with('message', 'Successfully added the Comment!');
     }
+
+    public function destroy($id)
+    {
+        $cm = Comment::findOrFail($id);
+        $cm->delete();
+
+        return Redirect::back()->with('message', 'Successfully added the Comment!');
+    }
+
 }

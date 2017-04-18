@@ -207,7 +207,7 @@ class HazmatController extends Controller
 
 
             'employeeid' => 'required|integer:hazmat,employeeid,',
-            'employeename' => 'required|alpha|string:hazmat,employeename,' ,
+            'employeename' => 'required|regex:/^[\pL\s\-]+$/u|string:hazmat,employeename,' ,
             'dateofexposure' => 'required|date:hazmat,dateofexposure,',
             'primaryidconumber' => 'required|integer:hazmat,primaryidconumber',
             'contactcorvel' => 'required|string:hazmat,contactcorvel',
@@ -253,9 +253,9 @@ class HazmatController extends Controller
     public function edit($id)
     {
 
-        $attachments = Attachment::all();
         $hazmat = hazmat::findOrFail($id);
-        $comments = Comment::all();
+        $attachments = Attachment::where('ofd6cid', $id)->get();
+        $comments = Comment::where('applicationid', $id)->get();
         $rejectstatus = DB::table('status')->where('statustype', 'Rejected')->value('statusid');
         $draftstatus = DB::table('status')->where('statustype', 'Draft')->value('statusid');
 
@@ -275,8 +275,8 @@ class HazmatController extends Controller
     {
 
         $hazmat = hazmat::findOrFail($id);
-        $attachments = Attachment::all();
-        $comments = Comment::all();
+        $attachments = Attachment::where('ofd6cid', $id)->get();
+        $comments = Comment::where('applicationid', $id)->get();
         $users = User::all();
         $applicationStatus = DB::table('status')->where('statustype', 'Application under Primary IDCO')->value('statusid');
 

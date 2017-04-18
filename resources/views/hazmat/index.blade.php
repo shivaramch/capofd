@@ -42,6 +42,9 @@
                         <th data-sortable="true">OFD 6C ID</th>
                         <th data-sortable="true">Date of Exposure</th>
                         <th data-sortable="true">Assignment</th>
+                        <th data-sortable="true">Injured?</th>
+                        <th data-sortable="true">EPCR Incident Number</th>
+                        <th data-sortable="true">FRMS Incident Number</th>
                         <th data-sortable="true">Status</th>
                         <th data-switchable="false" data-searchable="false" data-sortable="false">Action</th>
                     </tr>
@@ -53,8 +56,10 @@
                                 <td>{{ $hazmats->ofd6cid }}</td>
                                 <td>{{ $hazmats->dateofexposure }}</td>
                                 <td>{{ $hazmats->assignment }}</td>
+                                <td>{{ $hazmats->exposurehazmat }}</td>
+                                <td>{{$hazmats->epcrincidentnum}}</td>
+                                <td>{{ $hazmats->frmsincidentnum }}</td>
                                 <td>{{ DB::table('status')->where('statusid',$hazmats->applicationstatus)->value('statustype') }}</td>
-
                                 <td>
                                     <div>
                                         <a href="{{ route('hazmat.show',[$hazmats->ofd6cid]) }}"
@@ -93,6 +98,9 @@
                         <th data-sortable="true">OFD 6C ID</th>
                         <th data-sortable="true">Date of Exposure</th>
                         <th data-sortable="true">Assignment</th>
+                        <th data-sortable="true">Injured?</th>
+                        <th data-sortable="true">EPCR Incident Number</th>
+                        <th data-sortable="true">FRMS Incident Number</th>
                         <th data-sortable="true">Status</th>
                         <th data-switchable="false" data-searchable="false" data-sortable="false">Action</th>
                     </tr>
@@ -104,6 +112,9 @@
                                 <td>{{ $hazmats->ofd6cid }}</td>
                                 <td>{{ $hazmats->dateofexposure }}</td>
                                 <td>{{ $hazmats->assignment }}</td>
+                                <td>{{ $hazmats->exposurehazmat }}</td>
+                                <td>{{$hazmats->epcrincidentnum}}</td>
+                                <td>{{ $hazmats->frmsincidentnum }}</td>
                                 <td>{{DB::table('status')->where('statusid',$hazmats->applicationstatus)->value('statustype')}}</td>
 
                                 <td>

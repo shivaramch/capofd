@@ -104,28 +104,8 @@
                         </div>
                     </div>
                 </div>
-
-                {{--<div class="col-sm-4 form-group">--}}
-                {{--{!! Form::label('incidenttype', 'Incident Type', ['class'=> 'col-sm-4 control-label'] ) !!}--}}
-                {{--<div class="col-sm-6">--}}
-                {{--{!! Form::select('incidenttype', ['ofd6' => 'IOD',--}}
-                {{--'ofd6a' => 'Accident',--}}
-                {{--'ofd6b' => 'Biological Exposure',--}}
-                {{--'ofd6c' => 'HazMat Exposure',--}}
-                {{--'offduty' => 'Off Duty'], null,--}}
-                {{--['placeholder' => 'Select One'],old('exposureinjury'),--}}
-                {{--['class' => 'form-control']) !!}--}}
-                {{--<p class="help-block"></p>--}}
-                {{--@if($errors->has('incidenttype'))--}}
-                {{--<p class="help-block">--}}
-                {{--{{ $errors->first('incidenttype') }}--}}
-                {{--</p>--}}
-                {{--@endif--}}
-                {{--</div>--}}
-                {{--</div>--}}
             </div>
         </div>
-    </div>
     </div>
     <div class="panel panel-default">
         <div class="panel-heading">
@@ -135,74 +115,64 @@
         <div class="panel-body">
             <div class="col-sm-12">
                 <div class="form-group">
-                    {{--{{ Form::checkbox('trueofd184', 1, null, ['id'=>'trueofd184', 'class' => 'className' ]) }}--}}
                     {{Form::label('fmla','Attachments')}}
                 </div>
-                <div class="col-sm-12 form-group well well-sm">
-                    <div class="col-sm-4">
-                        <div class="input-group">
-                            <label class="input-group-btn">
-                                            <span class="btn btn-info"><i class="fa fa-cloud-upload"
-                                                                          aria-hidden="true"></i> Upload<input
-                                                        type="file" name="fmla"
-                                                        style="display: none;"
-                                                        multiple>
-                                            </span>
-                            </label>
-                            <input type="text" id="upload-file-info" class="form-control" readonly>
-                        </div>
-                        <div class="col-sm-4">
-                            <a class="btn btn-primary dropdown-toggle col-sm-12" data-toggle="collapse"
-                               data-target="#fmla"><i class="fa fa-eye" aria-hidden="true"></i> View
-                                Previously
-                                uploaded
-                                file(s)
-                            </a>
-
-                            <div id="fmla" class="collapse">
-
-                                <table class="table table-striped">
-                                    <tr>
-                                        <th> File Name</th>
-                                        <th> File Uploaded At</th>
-                                    </tr>
-
-                                    @if(count($attachments) > 0)
-                                        @foreach($attachments as $attachment)
-                                            @if($attachment->attachmenttype == 'fmla' && $attachment->createdby ==  Auth::user()->id && $attachment->fmlaid == $fmla->fmlaid )
-                                                <tr>
-                                                    <td>
-                                                        <a href="{{ asset('uploads/'.$attachment->attachmentname) }}"> {{$attachment->attachmentname}}</a>
-                                                    </td>
-                                                    <td>
-                                                        <a>{{$attachment->created_at}}</a>
-                                                    </td>
-                                                </tr>@endif
-                                        @endforeach
-                                    @endif
-
-                                </table>
-                            </div>
-                        </div>
+            </div>
+            <div class="col-sm-12 form-group well well-sm">
+                <div class="col-sm-4">
+                    <div class="input-group">
+                        <label class="input-group-btn">
+                    <span class="btn btn-info">
+                        <i class="fa fa-cloud-upload" aria-hidden="true"></i> Upload<input type="file"
+                                                                                           name="fmla"
+                                                                                           style="display: none;">
+                    </span>
+                        </label>
+                        <input type="text" id="upload-file-info" class="form-control" readonly>
                     </div>
                 </div>
-
-                <div class="row">
-                    <div class="col-sm-12">
-                        {!! Form::label('comments', 'Comments', array('style'=>'padding-top:7px;','class'=> 'col-sm-4 control-label') ) !!}
-                    </div>
-                    <div class="col-sm-12 ">
-                        {!! Form::textarea('comments', old('comments'), array('class' => 'form-control','placeholder'=>'Enter Comments'))!!}
-                        <p class="help-block"></p>
-                        @if($errors->has('comments'))
-                            <p class="help-block">
-                                {{ $errors->first('comments') }}
-                            </p>
-                        @endif
+                <div class="col-sm-4">
+                    <a class="btn btn-primary dropdown-toggle col-sm-12" data-toggle="collapse"
+                       data-target="#fmla"><i class="fa fa-eye" aria-hidden="true"></i> View Previously uploaded
+                        file(s)
+                    </a>
+                    <div id="fmla" class="collapse">
+                        <table class="table table-striped">
+                            <tr>
+                                <th> File Name</th>
+                                <th> File Uploaded At</th>
+                            </tr>
+                            @if(count($attachments) > 0)
+                                @foreach($attachments as $attachment)
+                                    @if($attachment->attachmenttype == 'fmla')
+                                        <tr>
+                                            <td>
+                                                <a href="{{ asset('uploads/'.$attachment->attachmentname) }}"> {{$attachment->attachmentname}}</a>
+                                            </td>
+                                            <td>
+                                                {{$attachment->created_at}}
+                                            </td>
+                                        <tr>@endif
+                                @endforeach
+                            @endif
+                        </table>
                     </div>
                 </div>
             </div>
-
+            <div class="row">
+                <div class="col-sm-12">
+                    {!! Form::label('comments', 'Comments', array('style'=>'padding-top:7px;','class'=> 'col-sm-4 control-label') ) !!}
+                </div>
+                <div class="col-sm-12 ">
+                    {!! Form::textarea('comments', old('comments'), array('class' => 'form-control','placeholder'=>'Enter Comments'))!!}
+                    <p class="help-block"></p>
+                    @if($errors->has('comments'))
+                        <p class="help-block">
+                            {{ $errors->first('comments') }}
+                        </p>
+                    @endif
+                </div>
+            </div>
             <div class="row">
                 <div class="col-sm-12">
                     <label class="col-sm-5"></label>
@@ -214,8 +184,6 @@
                     </div>
                 </div>
             </div>
-
-
             <!-- Modal -->
             <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
                 <div class="modal-dialog" role="document">
@@ -232,14 +200,10 @@
                             {!! Form::submit('Yes',['class' => 'btn btn-success']) !!}
                             <button type="button" class=" btn btn-danger" data-dismiss="modal" aria-label="">No
                             </button>
-
-
                         </div>
-
                     </div>
                 </div>
             </div>
-
             {!! Form::close() !!}
             @stop
         </div>

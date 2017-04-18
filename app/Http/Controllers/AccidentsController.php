@@ -106,8 +106,6 @@ class AccidentsController extends EmailController
 
 
         return redirect()->route('accidents.index')->with('message', 'Form has been Approved');
-
-
     }
 
     public function Reject($id)
@@ -213,13 +211,13 @@ class AccidentsController extends EmailController
         $this->validate($request, [
             'accidentdate' => 'required|date:accidents,accidentdate,',
             'driverid' => 'required|integer:accidents,driverid,',
-            'drivername' => 'required|alpha|string:accidents,drivername,',
+            'drivername' => 'required|regex:/^[\pL\s\-]+$/u |string:accidents,drivername,',
             'assignmentaccident' => 'required|string:accidents,assignmentaccident',
             'apparatus' => 'required|string:accidents,apparatus',
             'captainid' => 'required|integer:accidents,captainid',
             'battalionchiefid' => 'required|integer:accidents,battalionchiefid',
             'aconduty' => 'required|integer:accidents,aconduty',
-            'frmsincidentnum' => 'required|string:accidents,frmsincidentnum',
+            'frmsincidentnum' => 'required|integer:accidents,frmsincidentnum',
             'calllaw' => 'required|integer:accidents,calllaw',
             'daybook' => 'required|integer:accidents,daybook',
             'commemail' => 'required|integer:accidents,commemail',
@@ -288,7 +286,7 @@ class AccidentsController extends EmailController
 
         $attachments = Attachment::where('ofd6aid', $id)->get();
         $accident = Accident::findOrFail($id);
-        $comments = Comment::all();
+        $comments = Comment::where('applicationid', $id)->get();
         $users = User::all();
         $rejectstatus = DB::table('status')->where('statustype', 'Rejected')->value('statusid');
         $draftstatus = DB::table('status')->where('statustype', 'Draft')->value('statusid');
@@ -309,10 +307,10 @@ class AccidentsController extends EmailController
     {
         $accident = Accident::findOrFail($id);
         $attachments = Attachment::where('ofd6aid', $id)->get();
-        $comments = Comment::all();
+        $comments = Comment::where('applicationid', $id)->get();
         $users = User::all();
-        $capstatus = DB::table('status')->where('statustype','Application under Captain')->value('statusid');
-        $bcstatus = DB::table('status')->where('statustype','Application under Batallion Chief')->value('statusid');
+        $capstatus = DB::table('status')->where('statustype', 'Application under Captain')->value('statusid');
+        $bcstatus = DB::table('status')->where('statustype', 'Application under Batallion Chief')->value('statusid');
         $acstatus = DB::table('status')->where('statustype', 'Application under Assistant Chief')->value('statusid');
         //show history code start
         //below one line code is for storing all history related to the $id in variable, which is to be used to display in show page.

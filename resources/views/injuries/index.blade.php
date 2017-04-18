@@ -65,13 +65,13 @@
                                 <td>
                                     <div>
                                         <a href="{{ route('injuries.show',[$injury->ofd6id]) }}"
-                                           class="btn btn-xs btn-info btn-block"><i
+                                           id="indexViewButton" class="btn btn-xs btn-info btn-block"><i
                                                     class="fa fa-eye" aria-hidden="true"></i> VIEW</a>
                                         @if($injury->applicationstatus == DB::table('status')->where('statustype','Draft')->value('statusid')
 || $injury->applicationstatus == DB::table('status')->where('statustype','Rejected')->value('statusid'))
                                             <a
                                                 href="{{ route('injuries.edit',[$injury->ofd6id]) }}"
-                                                class="btn btn-xs btn-warning btn-block"><i
+                                               id="indexEditButton" class="btn btn-xs btn-warning btn-block"><i
                                                     class="fa fa-pencil-square-o"
                                                     aria-hidden="true"></i> EDIT</a>
                                         @endif
@@ -119,7 +119,7 @@
                                 <td>
                                     <div>
                                         <a href="{{ route('injuries.show',[$injury->ofd6id]) }}"
-                                           class="btn btn-xs btn-info btn-block"><i
+                                           id="view_button1" class="btn btn-xs btn-info btn-block"><i
                                                     class="fa fa-eye" aria-hidden="true"></i> VIEW</a>
                                     </div>
                                 </td>
@@ -167,7 +167,7 @@
                                 <td>
                                     <div>
                                         <a href="{{ route('injuries.show',[$injury->ofd6id]) }}"
-                                           class="btn btn-xs btn-info btn-block"><i
+                                          id="view_button2" class="btn btn-xs btn-info btn-block"><i
                                                     class="fa fa-eye" aria-hidden="true"></i> VIEW</a>
                                     </div>
                                 </td>
@@ -212,7 +212,7 @@
                                 <td>
                                     <div>
                                         <a href="{{ route('injuries.show',[$injury->ofd6id]) }}"
-                                           class="btn btn-xs btn-info btn-block"><i
+                                           id="view_button3" class="btn btn-xs btn-info btn-block"><i
                                                     class="fa fa-eye" aria-hidden="true"></i> VIEW</a>
                                     </div>
                                 </td>

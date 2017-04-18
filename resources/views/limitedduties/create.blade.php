@@ -134,8 +134,8 @@
                             {!! Form::select('incidenttype', ['ofd6' => 'IOD',
                             'ofd6a' => 'Accident',
                             'ofd6b' => 'Biological Exposure',
-                            'ofd6c' => 'HazMat Exposure'], null,
-                            ['placeholder' => 'Select One'],'required',
+                            'ofd6c' => 'HazMat Exposure',
+                            'offduty' => 'Off Duty Incident'],'required',
                             ['class' => 'form-control']) !!}
                             <p class="help-block"></p>
                             @if($errors->has('incidenttype'))
@@ -190,19 +190,18 @@
                     @endif
                 </div>
             </div>
-        </div>
-        <div class="row">
-            <div class="col-sm-12">
-                <label class="col-sm-5"></label>
-                <div class="btn-bottom">
-                    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal">
-                        Save
-                    </button>
-                    <a href="{{ route('limitedduties.index') }}" class="btn btn-danger">Cancel</a>
+            <div class="row">
+                <div class="col-sm-12">
+                    <label class="col-sm-5"></label>
+                    <div class="btn-bottom">
+                        <button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal">
+                            Save
+                        </button>
+                        <a href="{{ route('limitedduties.index') }}" class="btn btn-danger">Cancel</a>
+                    </div>
                 </div>
             </div>
         </div>
-
 
         <!-- Modal -->
         <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">

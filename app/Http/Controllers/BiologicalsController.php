@@ -190,9 +190,9 @@ class BiologicalsController extends Controller
 
     public function edit($id)
     {
-        $attachments = Attachment::all();
         $biological = Biological::findOrFail($id);
-        $comments = Comment::all();
+        $attachments = Attachment::where('ofd6bid', $id)->get();
+        $comments = Comment::where('applicationid', $id)->get();
         $users = User::all();
         $rejectstatus = DB::table('status')->where('statustype', 'Rejected')->value('statusid');
         $draftstatus = DB::table('status')->where('statustype', 'Draft')->value('statusid');
@@ -213,8 +213,8 @@ class BiologicalsController extends Controller
     public function show($id)
     {
         $biological = Biological::findOrFail($id);
-        $attachments = Attachment::all();
-        $comments = Comment::all();
+        $attachments = Attachment::where('ofd6bid', $id)->get();
+        $comments = Comment::where('applicationid', $id)->get();
         $users = User::all();
         //show history code start
         //below one line code is for storing all history related to the $id in variable, which is to be used to display in show page.

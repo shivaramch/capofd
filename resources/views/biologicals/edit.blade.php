@@ -2,7 +2,7 @@
 @section('crumbs')
     <ol class="breadcrumb">
         <a class="btn btn-default" type="button"
-           href="{{ route('biologicals.index') }}">
+           href="{{ URL::previous() }}">
             <i class="fa fa-arrow-left" aria-hidden="true"></i> Back</a>
         <li><a href="{{ url('/') }}">Dashboard</a></li>
         <li><a href="{{ route('biologicals.index') }}">OFD 6B Biologicals</a></li>
@@ -180,7 +180,7 @@
                     </div>
                 </div>
             </div>
-            <div id="Exposure0" class="desc" style="display: none;">
+            <div id="Exposure0" class="desc" >
                 <div class="col-md-12">
                     <div class="alert alert-danger" align="left">
                         Definition of True Exposure:
@@ -266,15 +266,16 @@
 
                                     @if(count($attachments) > 0)
                                         @foreach($attachments as $attachment)
-                                            @if($attachment->attachmenttype == '6b1' && $attachment->createdby ==  Auth::user()->id && $attachment->ofd6bid == $biological->ofd6bid )
+                                            @if($attachment->attachmenttype == '6b1')
                                                 <tr>
                                                     <td>
                                                         <a href="{{ asset('uploads/'.$attachment->attachmentname) }}"> {{$attachment->attachmentname}}</a>
                                                     </td>
                                                     <td>
-                                                        <a>{{$attachment->created_at}}</a>
+                                                        {{$attachment->created_at}}
                                                     </td>
-                                                </tr>@endif
+                                                </tr>
+                                            @endif
                                         @endforeach
                                     @endif
 
@@ -319,13 +320,13 @@
 
                                     @if(count($attachments) > 0)
                                         @foreach($attachments as $attachment)
-                                            @if($attachment->attachmenttype == '6b3' && $attachment->createdby ==  Auth::user()->id && $attachment->ofd6bid == $biological->ofd6bid )
+                                            @if($attachment->attachmenttype == '6b3')
                                                 <tr>
                                                     <td>
                                                         <a href="{{ asset('uploads/'.$attachment->attachmentname) }}"> {{$attachment->attachmentname}}</a>
                                                     </td>
                                                     <td>
-                                                        <a>{{$attachment->created_at}}</a>
+                                                        {{$attachment->created_at}}
                                                     </td>
                                                 </tr>@endif
                                         @endforeach
@@ -376,7 +377,7 @@
                     </div>
                 </div>
             </div>
-            <div id="Exposure1" class="desc" style="display: none;">
+            <div id="Exposure1" class="desc" >
                 <div class="col-md-12">
                     <div class="alert alert-danger" align="left">
                         Contamination might be due to soiling or pollution, as by the introduction of blood
@@ -452,13 +453,13 @@
                                     </tr>
                                     @if(count($attachments) > 0)
                                         @foreach($attachments as $attachment)
-                                            @if($attachment->attachmenttype == '6b2' && $attachment->createdby ==  Auth::user()->id && $attachment->ofd6bid == $biological->ofd6bid )
+                                            @if($attachment->attachmenttype == '6b2' )
                                                 <tr>
                                                     <td>
                                                         <a href="{{ asset('uploads/'.$attachment->attachmentname) }}"> {{$attachment->attachmentname}}</a>
                                                     </td>
                                                     <td>
-                                                        <a>{{$attachment->created_at}}</a>
+                                                        {{$attachment->created_at}}
                                                     </td>
                                                 </tr>@endif
                                         @endforeach
@@ -502,13 +503,13 @@
                                     </tr>
                                     @if(count($attachments) > 0)
                                         @foreach($attachments as $attachment)
-                                            @if($attachment->attachmenttype == '6b4' && $attachment->createdby ==  Auth::user()->id && $attachment->ofd6bid == $biological->ofd6bid )
+                                            @if($attachment->attachmenttype == '6b4' )
                                                 <tr>
                                                     <td>
                                                         <a href="{{ asset('uploads/'.$attachment->attachmentname) }}"> {{$attachment->attachmentname}}</a>
                                                     </td>
                                                     <td>
-                                                        <a>{{$attachment->created_at}}</a>
+                                                        {{$attachment->created_at}}
                                                     </td>
                                                 </tr>@endif
                                         @endforeach
@@ -614,7 +615,7 @@
                 <div class="actionBox">
                     <ul class="commentList">
                         @foreach ($comments as $cm)
-                            @if(($cm->applicationid == $biological->ofd6bid && $cm->applicationtype == '6B')&&
+                            @if($cm->applicationtype == '6B'&&
                             ($biological->employeeid == Auth::user()->id && $cm->isvisible == 1))
                                 <div class="col-sm-8">
                                     <div class="panel panel-white post panel-shadow">
@@ -656,18 +657,30 @@
     <script src="{{ ('js/extensions/mobile') }}/bootstrap-table-mobile.js"></script>
 
     <script src="{{ ('js/export') }}/bootstrap-table-export.js"></script>
-    <script src="{{ ('js/export') }}/tableExport.js"></script>
-    <script src="{{ ('js/export') }}/jquery.base64.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
     <script type="text/javascript">
-        $(document).ready(function () {
-            $("input[name$='exposure']").click(function () {
-                var test = $(this).val();
 
-                $("div.desc").hide();
-                $("#Exposure" + test).show();
-            });
-        });
+
+            if ($('#exposure').val()==0 )
+            {
+
+                $('#Exposure0').show;
+                $('#Exposure1').hide;
+
+
+            }
+            else if ($('#exposure1').val()==1)
+            {
+
+                $('#Exposure0').hide;
+                $('#Exposure1').show;
+
+
+            }
+
+
+
     </script>
 
 @endsection

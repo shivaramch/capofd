@@ -2,7 +2,7 @@
 @section('crumbs')
     <ol class="breadcrumb">
         <a class="btn btn-default" type="button"
-           href="{{ route('accidents.index') }}">
+           href="{{ URL::previous() }}">
             <i class="fa fa-arrow-left" aria-hidden="true"></i> Back</a>
         <li><a href="{{ url('/') }}">Dashboard</a></li>
         <li><a href="{{ route('accidents.index') }}">OFD 6A Accidents</a></li>
@@ -55,7 +55,7 @@
                     <div class="col-md-12">
                         <div class="alert alert-danger" align="center">
                             <strong>
-                                COMPLETE ALL FORMS AND FORWARD VIA CHAIN-OF-COMMAND WITHIN 24 HOURS
+                                COMPLETE ALL FORMS AND SUBMIT WITHIN 24 HOURS
                             </strong>
                         </div>
                     </div>
@@ -214,7 +214,7 @@
                 <div class="col-sm-12">
                     <div class="form-group">
                         {{ Form::checkbox('commemail', 1, null, ['id' => 'commemail', 'class'=>'className']) }}
-                        {{Form::label('Checkbox5','Generate OFD 025 Intradepartmental Communicatio-Email to omafaccident_ofd25@cityofomaha.org')}}
+                        {{Form::label('Checkbox5','Generate OFD 025 Intradepartmental Communication - Email to omafaccident_ofd25@cityofomaha.org')}}
                     </div>
                 </div>
             </div>
@@ -262,13 +262,13 @@
                                 </tr>
                                 @if(count($attachments) > 0)
                                     @foreach($attachments as $attachment)
-                                        @if($attachment->attachmenttype == '6a1' && $attachment->ofd6aid == $accident->ofd6aid )
+                                        @if($attachment->attachmenttype == '6a1')
                                             <tr>
                                                 <td>
                                                     <a href="{{ asset('uploads/'.$attachment->attachmentname) }}"> {{$attachment->attachmentname}}</a>
                                                 </td>
                                                 <td>
-                                                    {{$attachment->created_at}}</a>
+                                                    {{$attachment->created_at}}
                                                 </td>
                                             <tr>@endif
                                     @endforeach
@@ -322,13 +322,13 @@
                                 </tr>
                                 @if(count($attachments) > 0)
                                     @foreach($attachments as $attachment)
-                                        @if($attachment->attachmenttype == '6a2' && $attachment->ofd6aid == $accident->ofd6aid )
+                                        @if($attachment->attachmenttype == '6a2')
                                             <tr>
                                                 <td>
                                                     <a href="{{ asset('uploads/'.$attachment->attachmentname) }}"> {{$attachment->attachmentname}}</a>
                                                 </td>
                                                 <td>
-                                                    {{$attachment->created_at}}</a>
+                                                    {{$attachment->created_at}}
                                                 </td>
                                             <tr>@endif
                                     @endforeach
@@ -380,13 +380,13 @@
                                 </tr>
                                 @if(count($attachments) > 0)
                                     @foreach($attachments as $attachment)
-                                        @if($attachment->attachmenttype == '6a3'  && $attachment->ofd6aid == $accident->ofd6aid )
+                                        @if($attachment->attachmenttype == '6a3')
                                             <tr>
                                                 <td>
                                                     <a href="{{ asset('uploads/'.$attachment->attachmentname) }}"> {{$attachment->attachmentname}}</a>
                                                 </td>
                                                 <td>
-                                                    {{$attachment->created_at}}</a>
+                                                    {{$attachment->created_at}}
                                                 </td>
                                             <tr>@endif
                                     @endforeach
@@ -437,13 +437,13 @@
                                 </tr>
                                 @if(count($attachments) > 0)
                                     @foreach($attachments as $attachment)
-                                        @if($attachment->attachmenttype == '6a4' && $attachment->ofd6aid == $accident->ofd6aid )
+                                        @if($attachment->attachmenttype == '6a4')
                                             <tr>
                                                 <td>
                                                     <a href="{{ asset('uploads/'.$attachment->attachmentname) }}"> {{$attachment->attachmentname}}</a>
                                                 </td>
                                                 <td>
-                                                    {{$attachment->created_at}}</a>
+                                                    {{$attachment->created_at}}
                                                 </td>
                                             <tr>@endif
                                     @endforeach
@@ -495,13 +495,13 @@
                                 <tr>
                                 @if(count($attachments) > 0)
                                     @foreach($attachments as $attachment)
-                                        @if($attachment->attachmenttype == '6a5' && $attachment->ofd6aid == $accident->ofd6aid )
+                                        @if($attachment->attachmenttype == '6a5')
                                             <tr>
                                                 <td>
                                                     <a href="{{ asset('uploads/'.$attachment->attachmentname) }}"> {{$attachment->attachmentname}}</a>
                                                 </td>
                                                 <td>
-                                                    {{$attachment->created_at}}</a>
+                                                    {{$attachment->created_at}}
                                                 </td>
                                             <tr>@endif
                                                 @endforeach
@@ -517,7 +517,7 @@
                     <div class="form-group">
                         {{ Form::checkbox('checkbox6', 1, null, ['id'=>'checkbox5', 'class' => 'className' ]) }}
                         {{Form::label('Checkbox6','Complete OFD 31-OFD
-                        Damaged, Lost, Stolen Equipment Report')}}
+                        Lost, Damaged or Stolen Equipment Report')}}
                     </div>
                 </div>
                 {{--}}<label class="checkbox-inline col-sm-12"><strong> Complete OFD 31-OFD
@@ -554,13 +554,13 @@
                                 <tr>
                                 @if(count($attachments) > 0)
                                     @foreach($attachments as $attachment)
-                                        @if($attachment->attachmenttype == '6a6' && $attachment->ofd6aid == $accident->ofd6aid )
+                                        @if($attachment->attachmenttype == '6a6')
                                             <tr>
                                                 <td>
                                                     <a href="{{ asset('uploads/'.$attachment->attachmentname) }}"> {{$attachment->attachmentname}}</a>
                                                 </td>
                                                 <td>
-                                                    {{$attachment->created_at}}</a>
+                                                    {{$attachment->created_at}}
                                                 </td>
                                             <tr>@endif
                                                 @endforeach
@@ -613,13 +613,13 @@
                                 <tr>
                                 @if(count($attachments) > 0)
                                     @foreach($attachments as $attachment)
-                                        @if($attachment->attachmenttype == '6a7'&& $attachment->ofd6aid == $accident->ofd6aid )
+                                        @if($attachment->attachmenttype == '6a7')
                                             <tr>
                                                 <td>
                                                     <a href="{{ asset('uploads/'.$attachment->attachmentname) }}"> {{$attachment->attachmentname}}</a>
                                                 </td>
                                                 <td>
-                                                    {{$attachment->created_at}}</a>
+                                                    {{$attachment->created_at}}
                                                 </td>
                                             <tr>@endif
                                                 @endforeach
@@ -628,6 +628,27 @@
                             </table>
                         </div>
                     </div>
+                </div>
+            </div>
+
+
+            <div class="row">
+                <div class="col-sm-12 form-group">
+                    {{ Form::checkbox('calllaw', 1, null, ['id' => 'calllaw', 'class'=>'className']) }}
+                    <label><strong>
+                            Call Law Department
+                            Investigator</strong>- Call 444-5131- Request report be faxed to
+                        SWD fax # 444-6378. You can
+                        leave a message with rig # address of incident, date, time and
+                        RB#</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12 form-group">
+                    {{ Form::checkbox('daybook', 1, null, ['id' => 'daybook', 'class'=>'className']) }}
+                    <label><strong>
+                            Enter in Company Day
+                            Book</strong></label>
                 </div>
             </div>
             <div class="row">
@@ -672,13 +693,13 @@
                                 <tr>
                                 @if(count($attachments) > 0)
                                     @foreach($attachments as $attachment)
-                                        @if($attachment->attachmenttype == '6a8'  && $attachment->ofd6aid == $accident->ofd6aid )
+                                        @if($attachment->attachmenttype == '6a8')
                                             <tr>
                                                 <td>
                                                     <a href="{{ asset('uploads/'.$attachment->attachmentname) }}"> {{$attachment->attachmentname}}</a>
                                                 </td>
                                                 <td>
-                                                    {{$attachment->created_at}}</a>
+                                                    {{$attachment->created_at}}
                                                 </td>
                                             <tr>
                                                 @endif
@@ -724,13 +745,13 @@
                                 <tr>
                                 @if(count($attachments) > 0)
                                     @foreach($attachments as $attachment)
-                                        @if($attachment->attachmenttype == '6a9' && $attachment->ofd6aid == $accident->ofd6aid )
+                                        @if($attachment->attachmenttype == '6a9')
                                             <tr>
                                                 <td>
                                                     <a href="{{ asset('uploads/'.$attachment->attachmentname) }}"> {{$attachment->attachmentname}}</a>
                                                 </td>
                                                 <td>
-                                                    {{$attachment->created_at}}</a>
+                                                    {{$attachment->created_at}}
                                                 </td>
                                             <tr>
                                                 @endif
@@ -740,26 +761,6 @@
                             </table>
                         </div>
                     </div>
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="col-sm-12 form-group">
-                    {{ Form::checkbox('calllaw', 1, null, ['id' => 'calllaw', 'class'=>'className']) }}
-                    <label><strong>
-                            Call Law Department
-                            Investigator</strong>- Call 444-5131- Request report be faxed to
-                        SWD fax # 444-6378. You can
-                        leave a message with rig # address of incident, date, time and
-                        RB#</label>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-sm-12 form-group">
-                    {{ Form::checkbox('daybook', 1, null, ['id' => 'daybook', 'class'=>'className']) }}
-                    <label><strong>
-                            Enter in Company Day
-                            Book</strong></label>
                 </div>
             </div>
             <label class="col-sm-5"></label>
@@ -782,7 +783,7 @@
                 <div class="actionBox">
                     <ul class="commentList">
                         @foreach ($comments as $cm)
-                            @if(($cm->applicationid == $accident->ofd6aid && $cm->applicationtype == '6A')&&
+                            @if($cm->applicationtype == '6A'&&
                             ($accident->driverid == Auth::user()->id && $cm->isvisible == 1))
                                 <div class="col-sm-8">
                                     <div class="panel panel-white post panel-shadow">

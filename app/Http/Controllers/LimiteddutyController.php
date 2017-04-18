@@ -45,21 +45,14 @@ class LimiteddutyController extends Controller
         Limitedduty::create($request->all());
         $last_insert_id = DB::getPdo()->lastInsertId();
         $this->LimiteddutyUpload($request, $last_insert_id);
-        $link = $request->url() . "/$last_insert_id";
-//write code for email notification here
-        //$formname="limitedduties";
-        //$rawlink=request()->headers->get('referer');
-        //$link=preg_replace('#\/[^/]*$#', '', $rawlink)."/$last_insert_id";
 
-        //$numsent = (new EmailController)->Email($request, $link,$formname);
-
-            return redirect()->route('limitedduties.index');
+        return redirect()->route('limitedduties.index')->with('message', 'Form Submitted Successfully');
 
     }
 
     public function edit($id)
     {
-        $attachments = Attachment::all();
+        $attachments = Attachment::where('limiteddutyid', $id)->get();
         $limitedduty = Limitedduty::findOrFail($id);
         if (Auth::user()->roleid == 1) {
             return view('limitedduties.edit', compact('limitedduty', 'attachments'));
@@ -72,10 +65,8 @@ class LimiteddutyController extends Controller
     public function show($id)
     {
         $limitedduty = Limitedduty::findOrFail($id);
-        $attachments = Attachment::all();
-        //show history code start
-        //below one line code is for storing all history related to the $id in variable, which is to be used to display in show page.
-        //show history code end
+        $attachments = Attachment::where('limiteddutyid', $id)->get();
+
         if (Auth::user()->roleid == 1) {
             return view('limitedduties.show', compact('limitedduty', 'attachments'));
         }
@@ -97,15 +88,11 @@ class LimiteddutyController extends Controller
                 'todate' => $limitedduty->todate,
                 'comments' => $limitedduty->comments]
         );
-        //end history code
+
         $request = $this->saveFiles($request);
         $limitedduty->update($request->all());
         $this->LimiteddutyUpload($request, $id);
-        //email notification-start
-        //$link = $request->url();
-        //$formname="limitedduties";
-        //$numsent = (new EmailController)->Email($request, $link,$formname);
-        //email notification-end
+
         return redirect()->route('limitedduties.index');
     }
 }
