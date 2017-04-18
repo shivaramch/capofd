@@ -133,8 +133,9 @@
                             {!! Form::select('incidenttype', ['ofd6' => 'IOD',
                             'ofd6a' => 'Accident',
                             'ofd6b' => 'Biological Exposure',
-                            'ofd6c' => 'HazMat Exposure'], null,
-                            ['placeholder' => 'Select One'],old('exposureinjury'),
+                            'ofd6c' => 'HazMat Exposure',
+                            'offduty' => 'Off Duty Incident']
+                            ,old('exposureinjury'),
                             ['class' => 'form-control']) !!}
                             <p class="help-block"></p>
                             @if($errors->has('incidenttype'))
@@ -148,7 +149,6 @@
             </div>
         </div>
     </div>
-
     <div class="panel panel-default">
         <div class="panel-heading">
             <div><h4 style="padding-left:12px;"><strong>Please Enter Additional Information Below</strong></h4>
@@ -157,73 +157,64 @@
         <div class="panel-body">
             <div class="col-sm-12">
                 <div class="form-group">
-                    {{Form::label('limitedduty','Attachments')}}
+                    {{Form::label('fmla','Attachments')}}
                 </div>
-                <div class="col-sm-12 form-group well well-sm">
-                    <div class="col-sm-4">
-                        <div class="input-group">
-                            <label class="input-group-btn">
-                                            <span class="btn btn-info"><i class="fa fa-cloud-upload"
-                                                                          aria-hidden="true"></i> Upload<input
-                                                        type="file" name="limitedduty"
-                                                        style="display: none;"
-                                                        multiple>
-                                            </span>
-                            </label>
-                            <input type="text" id="upload-file-info" class="form-control" readonly>
-                        </div>
-                        <div class="col-sm-4">
-                            <a class="btn btn-primary dropdown-toggle col-sm-12" data-toggle="collapse"
-                               data-target="#ltdduty"><i class="fa fa-eye" aria-hidden="true"></i> View
-                                Previously
-                                uploaded
-                                file(s)
-                            </a>
-
-                            <div id="ltdduty" class="collapse">
-
-                                <table class="table table-striped">
-                                    <tr>
-                                        <th> File Name</th>
-                                        <th> File Uploaded At</th>
-                                    </tr>
-
-                                    @if(count($attachments) > 0)
-                                        @foreach($attachments as $attachment)
-                                            @if($attachment->attachmenttype == 'ltdduty' && $attachment->createdby ==  Auth::user()->id && $attachment->limiteddutyid == $limitedduty->limiteddutyid )
-                                                <tr>
-                                                    <td>
-                                                        <a href="{{ asset('uploads/'.$attachment->attachmentname) }}"> {{$attachment->attachmentname}}</a>
-                                                    </td>
-                                                    <td>
-                                                        <a>{{$attachment->created_at}}</a>
-                                                    </td>
-                                                </tr>@endif
-                                        @endforeach
-                                    @endif
-
-                                </table>
-                            </div>
-                        </div>
+            </div>
+            <div class="col-sm-12 form-group well well-sm">
+                <div class="col-sm-4">
+                    <div class="input-group">
+                        <label class="input-group-btn">
+                    <span class="btn btn-info">
+                        <i class="fa fa-cloud-upload" aria-hidden="true"></i> Upload<input type="file"
+                                                                                           name="fmla"
+                                                                                           style="display: none;">
+                    </span>
+                        </label>
+                        <input type="text" id="upload-file-info" class="form-control" readonly>
                     </div>
                 </div>
-
-                <div class="row">
-                    <div class="col-sm-12">
-                        {!! Form::label('comments', 'Comments', array('style'=>'padding-top:7px;','class'=> 'col-sm-4 control-label') ) !!}
-                    </div>
-                    <div class="col-sm-12 ">
-                        {!! Form::textarea('comments', old('comments'), array('class' => 'form-control','placeholder'=>'Enter Comments'))!!}
-                        <p class="help-block"></p>
-                        @if($errors->has('comments'))
-                            <p class="help-block">
-                                {{ $errors->first('comments') }}
-                            </p>
-                        @endif
+                <div class="col-sm-4">
+                    <a class="btn btn-primary dropdown-toggle col-sm-12" data-toggle="collapse"
+                       data-target="#ltdduty"><i class="fa fa-eye" aria-hidden="true"></i> View Previously uploaded
+                        file(s)
+                    </a>
+                    <div id="ltdduty" class="collapse">
+                        <table class="table table-striped">
+                            <tr>
+                                <th> File Name</th>
+                                <th> File Uploaded At</th>
+                            </tr>
+                            @if(count($attachments) > 0)
+                                @foreach($attachments as $attachment)
+                                    @if($attachment->attachmenttype == 'ltdduty' && $attachment->limiteddutyid == $limitedduty->limiteddutyid )
+                                        <tr>
+                                            <td>
+                                                <a href="{{ asset('uploads/'.$attachment->attachmentname) }}"> {{$attachment->attachmentname}}</a>
+                                            </td>
+                                            <td>
+                                                {{$attachment->created_at}}</a>
+                                            </td>
+                                        <tr>@endif
+                                @endforeach
+                            @endif
+                        </table>
                     </div>
                 </div>
             </div>
-
+            <div class="row">
+                <div class="col-sm-12">
+                    {!! Form::label('comments', 'Comments', array('style'=>'padding-top:7px;','class'=> 'col-sm-4 control-label') ) !!}
+                </div>
+                <div class="col-sm-12 ">
+                    {!! Form::textarea('comments', old('comments'), array('class' => 'form-control','placeholder'=>'Enter Comments'))!!}
+                    <p class="help-block"></p>
+                    @if($errors->has('comments'))
+                        <p class="help-block">
+                            {{ $errors->first('comments') }}
+                        </p>
+                    @endif
+                </div>
+            </div>
             <div class="row">
                 <div class="col-sm-12">
                     <label class="col-sm-5"></label>
@@ -235,32 +226,27 @@
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
-
-    <!-- Modal -->
-    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
-                                aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title" id="myModalLabel"></h4>
+            <!-- Modal -->
+            <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                        aria-hidden="true">&times;</span></button>
+                            <h4 class="modal-title" id="myModalLabel"></h4>
+                        </div>
+                        <div class="modal-body">
+                            Are you sure you want to Submit?
+                        </div>
+                        <div class="modal-footer">
+                            {!! Form::submit('Yes',['class' => 'btn btn-success']) !!}
+                            <button type="button" class=" btn btn-danger" data-dismiss="modal" aria-label="">No
+                            </button>
+                        </div>
+                    </div>
                 </div>
-                <div class="modal-body">
-                    Are you sure you want to Submit?
-                </div>
-                <div class="modal-footer">
-                    {!! Form::submit('Yes',['class' => 'btn btn-success']) !!}
-                    <button type="button" class=" btn btn-danger" data-dismiss="modal" aria-label="">No
-                    </button>
-
-
-                </div>
-
             </div>
+            {!! Form::close() !!}
+            @stop
         </div>
     </div>
-    {!! Form::close() !!}
-
-@stop

@@ -35,12 +35,9 @@ class Limitedduty extends Model
         'incidenttype',
         'fromdate',
         'todate',
-        'commments',
+        'comments',
         ];
     public function attachment(){
         return $this->hasMany(\App\Attachment::class);
     }
-    //public function incident(){
-        //return $this->hasMany(\App\Incident::class);
-    //}
 }

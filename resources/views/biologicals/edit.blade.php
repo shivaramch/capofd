@@ -180,7 +180,7 @@
                     </div>
                 </div>
             </div>
-            <div id="Exposure0" class="desc" style="display: none;">
+            <div id="Exposure0" class="desc" >
                 <div class="col-md-12">
                     <div class="alert alert-danger" align="left">
                         Definition of True Exposure:
@@ -376,7 +376,7 @@
                     </div>
                 </div>
             </div>
-            <div id="Exposure1" class="desc" style="display: none;">
+            <div id="Exposure1" class="desc" >
                 <div class="col-md-12">
                     <div class="alert alert-danger" align="left">
                         Contamination might be due to soiling or pollution, as by the introduction of blood
@@ -656,18 +656,30 @@
     <script src="{{ ('js/extensions/mobile') }}/bootstrap-table-mobile.js"></script>
 
     <script src="{{ ('js/export') }}/bootstrap-table-export.js"></script>
-    <script src="{{ ('js/export') }}/tableExport.js"></script>
-    <script src="{{ ('js/export') }}/jquery.base64.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
     <script type="text/javascript">
-        $(document).ready(function () {
-            $("input[name$='exposure']").click(function () {
-                var test = $(this).val();
 
-                $("div.desc").hide();
-                $("#Exposure" + test).show();
-            });
-        });
+
+            if ($('#exposure').val()==0 )
+            {
+
+                $('#Exposure0').show;
+                $('#Exposure1').hide;
+
+
+            }
+            else if ($('#exposure1').val()==1)
+            {
+
+                $('#Exposure0').hide;
+                $('#Exposure1').show;
+
+
+            }
+
+
+
     </script>
 
 @endsection

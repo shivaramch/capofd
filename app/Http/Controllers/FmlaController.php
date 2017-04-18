@@ -45,14 +45,16 @@ class FmlaController extends Controller
         Fmla::create($request->all());
         $last_insert_id = DB::getPdo()->lastInsertId();
         $this->FmlaUpload($request, $last_insert_id);
-        $link = $request->url() . "/$last_insert_id";
-//write code for email notification here
+        //$link = $request->url() . "/$last_insert_id";
+        //write code for email notification here
         //$formname="limitedduties";
         //$rawlink=request()->headers->get('referer');
         //$link=preg_replace('#\/[^/]*$#', '', $rawlink)."/$last_insert_id";
 
         //$numsent = (new EmailController)->Email($request, $link,$formname);
         //return redirect()->route('biologicals.index');
+
+        return view('fmlas.index');
     }
 
     public function edit($id)
@@ -60,7 +62,7 @@ class FmlaController extends Controller
         $attachments = Attachment::all();
         $fmla = Fmla::findOrFail($id);
         if (Auth::user()->roleid == 1) {
-            return view('limitedduties.edit', compact('limitedduty', 'attachments'));
+            return view('fmlas.edit', compact('fmla', 'attachments'));
         }
         else {
             return view('errors.access');
@@ -88,12 +90,8 @@ class FmlaController extends Controller
         \DB::table('fmlas')->where('fmlaid', $fmla->fmlaid)->update([
                 'employeename' => $fmla->employeename,
                 'employeeid' => $fmla->employeeid,
-//                'corvelid' => $fmla->corvelid,
-//                'incidentid' => $fmla->incidentid,
- //               'incidenttype' => $fmla->incidenttype,
                 'fromdate' => $fmla->fromdate,
                 'todate' => $fmla->todate,
-                //'todaysdate' => $biological->todaysdate,
                 'comments' => $fmla->comments]
         );
         //end history code

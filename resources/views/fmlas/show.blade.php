@@ -56,7 +56,7 @@
                     <div class="col-sm-6 form-group">
                         {!! Form::label('employeename', 'Employee Name',array('style'=>'padding-top:7px;','class'=> 'col-sm-4 control-label') ) !!}
                         <div class="col-sm-6 ">
-                            {!! Form::text('employeename', old('employeename'),['disabled'], array('class'=>'form-control'))!!}
+                            {!! Form::text('employeename', old('employeename'), array('class'=>'form-control', 'disabled' => 'disabled'))!!}
                             <p class="help-block"></p>
                             @if($errors->has('employeename'))
                                 <p class="help-block">
@@ -68,7 +68,7 @@
                     <div class="col-sm-6 form-group">
                         {!! Form::label('employeeid', 'Employee ID#', array('style'=>'padding-top:7px;','class'=> 'col-sm-4 control-label') ) !!}
                         <div class="col-sm-6 ">
-                            {!! Form::text('employeeid', old('employeeid'),['disabled'], array('class'=> 'form-control','placeholder'=>'Enter Badge ID'))!!}
+                            {!! Form::text('employeeid', old('employeeid'),array('class'=>'form-control', 'disabled' => 'disabled'))!!}
                             <p class="help-block"></p>
                             @if($errors->has('employeeid'))
                                 <p class="help-block">
@@ -82,7 +82,7 @@
                     <div class="col-sm-6 form-group">
                         {!! Form::label('fromdate', 'From Date', array('style'=>'padding-top:7px;','class'=> 'col-sm-4 control-label') ) !!}
                         <div class="col-sm-6 ">
-                            {!! Form::text('fromdate', old('fromdate'),['disabled'], array('id'=>'datepicker','class' => 'form-control datepicker', 'placeholder' => 'MM-DD-YYYY','required' => 'required'))!!}
+                            {!! Form::text('fromdate', old('fromdate'), array('id'=>'datepicker','class' => 'form-control datepicker', 'disabled'=>'disabled'))!!}
                             <p class="help-block"></p>
                             @if($errors->has('fromdate'))
                                 <p class="help-block">
@@ -94,26 +94,11 @@
                     <div class="col-sm-6 form-group">
                         {!! Form::label('todate', 'To Date', array('style'=>'padding-top:7px;','class'=> 'col-sm-4 control-label') ) !!}
                         <div class="col-sm-6 ">
-                            {!! Form::text('todate', old('todate'),['disabled'], array('id'=>'datepicker','class' => 'form-control datepicker', 'placeholder' => 'MM-DD-YYYY','required' => 'required'))!!}
+                            {!! Form::text('todate', old('todate'),array('id'=>'datepicker','class' => 'form-control datepicker', 'disabled'=>'disabled'))!!}
                             <p class="help-block"></p>
                             @if($errors->has('todate'))
                                 <p class="help-block">
                                     {{ $errors->first('todate') }}
-                                </p>
-                            @endif
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-sm-4 form-group">
-                        {!! Form::label('incidenttype', 'Incident Type', ['class'=> 'col-sm-4 control-label'] ) !!}
-                        <div class="col-sm-6">
-                            {!! Form::text('incidenttype',old('incidenttype'),['disabled'],
-                            ['class' => 'form-control']) !!}
-                            <p class="help-block"></p>
-                            @if($errors->has('incidenttype'))
-                                <p class="help-block">
-                                    {{ $errors->first('incidenttype') }}
                                 </p>
                             @endif
                         </div>
@@ -135,72 +120,53 @@
                 </div>
                 <div class="col-sm-12 form-group well well-sm">
                     <div class="col-sm-4">
-                        <div class="input-group">
-                            <label class="input-group-btn">
-                                            <span class="btn btn-info"><i class="fa fa-cloud-upload"
-                                                                          aria-hidden="true"></i> Upload<input
-                                                        type="file" name="fmla"
-                                                        style="display: none;"
-                                                        multiple>
-                                            </span>
-                            </label>
-                            <input type="text" id="upload-file-info" class="form-control" readonly>
+                        <a class="btn btn-primary dropdown-toggle col-sm-12" data-toggle="collapse"
+                           data-target="#fmla"><i class="fa fa-eye" aria-hidden="true"></i> View
+                            Previously
+                            uploaded
+                            file(s)
+                        </a>
+                        <div id="fmla" class="collapse">
+                            <table class="table table-striped">
+                                <tr>
+                                    <th> File Name</th>
+                                    <th> File Uploaded At</th>
+                                </tr>
+                                @if(count($attachments) > 0)
+                                    @foreach($attachments as $attachment)
+                                        @if($attachment->attachmenttype == 'fmla' && $attachment->fmlaid == $fmla->fmlaid )
+                                            <tr>
+                                                <td>
+                                                    <a href="{{ asset('uploads/'.$attachment->attachmentname) }}"> {{$attachment->attachmentname}}</a>
+                                                </td>
+                                                <td>
+                                                    <a>{{$attachment->created_at}}</a>
+                                                </td>
+                                            </tr>@endif
+                                    @endforeach
+                                @endif
+                            </table>
                         </div>
-                        <div class="col-sm-4">
-                            <a class="btn btn-primary dropdown-toggle col-sm-12" data-toggle="collapse"
-                               data-target="#fmla"><i class="fa fa-eye" aria-hidden="true"></i> View
-                                Previously
-                                uploaded
-                                file(s)
-                            </a>
-
-                            <div id="fmla" class="collapse">
-
-                                <table class="table table-striped">
-                                    <tr>
-                                        <th> File Name</th>
-                                        <th> File Uploaded At</th>
-                                    </tr>
-
-                                    @if(count($attachments) > 0)
-                                        @foreach($attachments as $attachment)
-                                            @if($attachment->attachmenttype == 'fmla' && $attachment->fmlaid == $fmla->fmlaid )
-                                                <tr>
-                                                    <td>
-                                                        <a href="{{ asset('uploads/'.$attachment->attachmentname) }}"> {{$attachment->attachmentname}}</a>
-                                                    </td>
-                                                    <td>
-                                                        <a>{{$attachment->created_at}}</a>
-                                                    </td>
-                                                </tr>@endif
-                                        @endforeach
-                                    @endif
-
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="col-sm-12">
-                        {!! Form::label('comments', 'Comments', array('style'=>'padding-top:7px;','class'=> 'col-sm-4 control-label') ) !!}
-                    </div>
-                    <div class="col-sm-12 ">
-                        {!! Form::textarea('comments', old('comments'), ['disabled'],array('class' => 'form-control','placeholder'=>'Enter Comments'))!!}
-                        <p class="help-block"></p>
-                        @if($errors->has('comments'))
-                            <p class="help-block">
-                                {{ $errors->first('comments') }}
-                            </p>
-                        @endif
                     </div>
                 </div>
             </div>
-
+            <div class="row">
+                <div class="col-sm-12">
+                    {!! Form::label('comments', 'Comments', array('style'=>'padding-top:7px;','class'=> 'col-sm-4 control-label') ) !!}
+                </div>
+                <div class="col-sm-12 ">
+                    {!! Form::textarea('comments', old('comments'),array('class' => 'form-control','disabled'=>'disabled'))!!}
+                    <p class="help-block"></p>
+                    @if($errors->has('comments'))
+                        <p class="help-block">
+                            {{ $errors->first('comments') }}
+                        </p>
+                    @endif
+                </div>
+            </div>
             <div class="col-sm-12 panel-heading" align="center">
                 <div class="btn-bottom ">
-                    <a href="{{ route('fmlas.index') }}" class="btn btn-default">Return</a>
+                    <a href="{{ route('fmlas.index') }}" class="btn btn-danger">Return</a>
                 </div>
             </div>
         </div>

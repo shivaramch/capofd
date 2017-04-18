@@ -76,7 +76,7 @@
 
         <div class="panel panel-default panel-shadow " hidden>
             <div class="panel-heading">
-                Search Previously filled as Primary IDCO
+                Assgined to Primary IDCO
             </div>
             <div class="panel-body">
                 <table data-toolbar="#toolbar"

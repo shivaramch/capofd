@@ -19,9 +19,6 @@ class CreateFmlasTable extends Migration
             $table->date('fromdate')->nullable();
             $table->date('todate')->nullable();
             $table->string('employeeid', 256)->nullable();
-//            $table->string('corvelid', 256)->nullable();
-//            $table->string('incidentid', 256)->nullable();
-            $table->string('incidenttype', 256)->nullable();
             $table->string('comments', 256)->nullable();
             $table->timestamps();
             $table->ipAddress('ip_address', 45)->nullable();
