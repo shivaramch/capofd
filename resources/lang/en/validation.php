@@ -149,7 +149,7 @@ return [
         ],
         'injuredemployeename' => [
             'required' => '"Injured Name" field is required',
-            'alpha' => '"Injured Name" field can only have letters',
+            'string' => '"Injured Name" field can only have letters',
         ],
         'injuredemployeeid' => [
         'required' => '"Personnel ID #" field is required',

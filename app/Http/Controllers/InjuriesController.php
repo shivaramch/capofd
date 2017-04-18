@@ -236,7 +236,7 @@ class InjuriesController extends Controller
     {
         $this->validate($request, [
             'injurydate' => 'required|date:injury,injurydate,',
-            //'injuredemployeename' => 'required|alpha|string:injuries,injuredemployeename,',
+            'injuredemployeename' => 'required|string:injuries,injuredemployeename,',
             'injuredemployeeid' => 'required|integer:injury,injuredemployeeid,',
             'assignmentinjury' => 'required|string:injury,assignmentinjury,',
             'corvelid' => 'required|integer:injury,corvelid,',

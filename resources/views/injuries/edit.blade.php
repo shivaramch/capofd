@@ -58,7 +58,7 @@
                         <div class="col-sm-4 form-group">
                             {!! Form::label('injurydate', 'Date of Injury:', ['class' => 'col-sm-4 control-label']) !!}
                             <div class="col-sm-6 ">
-                                {!! Form::text('injurydate', old('injurydate'), array('class'=>'datepicker form-control','id' => 'injurydate','placeholder'=>'MM/DD/YYYY','required' => 'required'))!!}
+                                {!! Form::text('injurydate', old('injurydate'), array('class'=>'datepicker form-control','id' => 'injurydate','placeholder'=>'YYYY-MM-DD','required' => 'required'))!!}
                                 <p class="help-block"></p>
                                 @if($errors->has('injurydate'))
                                     <p class="help-block">

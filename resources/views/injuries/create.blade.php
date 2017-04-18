@@ -50,11 +50,11 @@
                 <div class="col-sm-4 form-group">
                     {!! Form::label('injuryDate', 'Date of Injury:', ['class' => 'col-sm-4 control-label']) !!}
                     <div class="col-sm-6 ">
-                        {!! Form::text('injurydate', old('injurydate'), array('class'=>'datepicker form-control','id' => 'injurydate','placeholder'=>'MM/DD/YYYY'))!!}
+                        {!! Form::text('injurydate', old('injurydate'), array('class'=>'datepicker form-control','id' => 'injurydate','placeholder'=>'YYYY-MM-DD'))!!}
                         <p class="help-block"></p>
-                        @if($errors->has('injuryDate'))
+                        @if($errors->has('injurydate'))
                             <p class="help-block">
-                                {{ $errors->first('injuryDate') }}
+                                {{ $errors->first('injurydate') }}
                             </p>
                         @endif
                     </div>
@@ -64,9 +64,9 @@
                     <div class="col-sm-6 ">
                         {!! Form::text('assignmentinjury', old('assignmentinjury'), array('class' => 'form-control', 'id' => 'assignmentinjury','placeholder'=>'Enter Assignment'))!!}
                         <p class="help-block"></p>
-                        @if($errors->has('assignmentInjury'))
+                        @if($errors->has('assignmentinjury'))
                             <p class="help-block">
-                                {{ $errors->first('assignmentInjury') }}
+                                {{ $errors->first('assignmentinjury') }}
                             </p>
                         @endif
                     </div>
@@ -78,9 +78,9 @@
                     <div class="col-sm-6 ">
                         {!! Form::text('injuredemployeename', old('injuredemployeename'), array('class' => 'form-control','id' => 'injuredemployeename','placeholder'=>'Enter Injured Name'))!!}
                         <p class="help-block"></p>
-                        @if($errors->has('injuredEmployeeName'))
+                        @if($errors->has('injuredemployeename'))
                             <p class="help-block">
-                                {{ $errors->first('injuredEmployeeName') }}
+                                {{ $errors->first('injuredemployeename') }}
                             </p>
                         @endif
                     </div>
@@ -90,9 +90,9 @@
                     <div class="col-sm-6 ">
                         {!! Form::text('injuredemployeeid', old('injuredemployeeid'), array('class' => 'form-control','id' => 'injuredemployeeid','placeholder'=>'Enter Badge Id'))!!}
                         <p class="help-block"></p>
-                        @if($errors->has('injuredEmployeeID'))
+                        @if($errors->has('injuredemployeeid'))
                             <p class="help-block">
-                                {{ $errors->first('injuredEmployeeID') }}
+                                {{ $errors->first('injuredemployeeid') }}
                             </p>
                         @endif
                     </div>
@@ -121,9 +121,9 @@
                     <div class="col-sm-6 ">
                         {!! Form::text('captainid', old('captainid'), array('class' => 'form-control','id' => 'captainid', 'placeholder'=>'Enter Badge Id'))!!}
                         <p class="help-block"></p>
-                        @if($errors->has('captainID'))
+                        @if($errors->has('captainid'))
                             <p class="help-block">
-                                {{ $errors->first('captainID') }}
+                                {{ $errors->first('captainid') }}
                             </p>
                         @endif
                     </div>
@@ -189,9 +189,9 @@
                     <div class="col-sm-3">
                         {!! Form::text('captainID', old('captainID'), array('class' => 'form-control','id'=>'captainID', 'placeholder'=>'Enter EPCR Number'))!!}
                         <p class="help-block"></p>
-                        @if($errors->has('captainID'))
+                        @if($errors->has('captainid'))
                             <p class="help-block">
-                                {{ $errors->first('captainID') }}
+                                {{ $errors->first('captainid') }}
                             </p>
                         @endif
                     </div>
