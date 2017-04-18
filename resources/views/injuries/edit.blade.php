@@ -58,7 +58,7 @@
                         <div class="col-sm-4 form-group">
                             {!! Form::label('injurydate', 'Date of Injury:', ['class' => 'col-sm-4 control-label']) !!}
                             <div class="col-sm-6 ">
-                                {!! Form::text('injurydate', old('injurydate'), array('class'=>'datepicker form-control','placeholder'=>'MM/DD/YYYY','required' => 'required'))!!}
+                                {!! Form::text('injurydate', old('injurydate'), array('class'=>'datepicker form-control','id' => 'injurydate','placeholder'=>'MM/DD/YYYY','required' => 'required'))!!}
                                 <p class="help-block"></p>
                                 @if($errors->has('injurydate'))
                                     <p class="help-block">
@@ -70,7 +70,7 @@
                         <div class="col-sm-4 form-group">
                             {!! Form::label('assignmentinjury', 'Assignment', ['class' => 'col-sm-4 control-label']) !!}
                             <div class="col-sm-6 ">
-                                {!! Form::text('assignmentinjury', old('assignmentinjury'), array('class' => 'form-control','required' => 'required'))!!}
+                                {!! Form::text('assignmentinjury', old('assignmentinjury'), array('class' => 'form-control','id' => 'assignmentinjury', 'required' => 'required'))!!}
                                 <p class="help-block"></p>
                                 @if($errors->has('assignmentinjury'))
                                     <p class="help-block">
@@ -84,7 +84,7 @@
                         <div class="col-sm-4 form-group">
                             {!! Form::label('injuredemployeename', 'Injured Name', ['class' => 'col-sm-4 control-label']) !!}
                             <div class="col-sm-6 ">
-                                {!! Form::text('injuredemployeename', old('injuredemployeename'), array('class' => 'form-control','placeholder'=>'Enter Injured Name','required' => 'required'))!!}
+                                {!! Form::text('injuredemployeename', old('injuredemployeename'), array('class' => 'form-control','id' => 'injuredemployeename', 'placeholder'=>'Enter Injured Name','required' => 'required'))!!}
                                 <p class="help-block"></p>
                                 @if($errors->has('injuredemployeename'))
                                     <p class="help-block">
@@ -96,7 +96,7 @@
                         <div class="col-sm-4 form-group">
                             {!! Form::label('injuredemployeeid', 'Personnel ID #', ['class' => 'col-sm-4 control-label']) !!}
                             <div class="col-sm-6 ">
-                                {!! Form::text('injuredemployeeid', old('injuredemployeeid'), array('class' => 'form-control','placeholder'=>'Enter Badge Id','required' => 'required'))!!}
+                                {!! Form::text('injuredemployeeid', old('injuredemployeeid'), array('class' => 'form-control','id' => 'injuredemployeeid', 'placeholder'=>'Enter Badge Id','required' => 'required'))!!}
                                 <p class="help-block"></p>
                                 @if($errors->has('injuredemployeeid'))
                                     <p class="help-block">
@@ -112,7 +112,7 @@
                               'A' => 'A',
                               'B' => 'B',
                               'C' => 'C',
-                              'DIV' => 'DIV'], array('class' => 'form-control','required' => 'required'))!!}
+                              'DIV' => 'DIV'], array('class' => 'form-control','id' => 'shift', 'required' => 'required'))!!}
                                 <p class="help-block"></p>
                                 @if($errors->has('shift'))
                                     <p class="help-block">
@@ -126,7 +126,7 @@
                         <div class="col-sm-4 form-group">
                             {!! Form::label('captainid', 'Captain #', ['class' => 'col-sm-4 control-label']) !!}
                             <div class="col-sm-6 ">
-                                {!! Form::text('captainid', old('captainid'), array('class' => 'form-control','placeholder'=>'Enter Badge Id','required' => 'required'))!!}
+                                {!! Form::text('captainid', old('captainid'), array('class' => 'form-control','id' => 'captainid', 'placeholder'=>'Enter Badge Id','required' => 'required'))!!}
                                 <p class="help-block"></p>
                                 @if($errors->has('captainid'))
                                     <p class="help-block">
@@ -138,7 +138,7 @@
                         <div class="col-sm-4 form-group">
                             {!! Form::label('battalionchiefid', 'Battalion Chief #', ['class' => 'col-sm-4 control-label']) !!}
                             <div class="col-sm-6 ">
-                                {!! Form::text('battalionchiefid', old('battalionchiefid'), array('class' => 'form-control','placeholder'=>'Enter Badge Id','required' => 'required'))!!}
+                                {!! Form::text('battalionchiefid', old('battalionchiefid'), array('class' => 'form-control','id' => 'battalionchiefid', 'placeholder'=>'Enter Badge Id','required' => 'required'))!!}
                                 <p class="help-block"></p>
                                 @if($errors->has('battalionchiefid'))
                                     <p class="help-block">
@@ -150,7 +150,7 @@
                         <div class="col-sm-4 form-group">
                             {!! Form::label('aconduty', 'Assistant Chief #', ['class' => 'col-sm-4 control-label']) !!}
                             <div class="col-sm-6 ">
-                                {!! Form::text('aconduty', old('aconduty'), array('class' => 'form-control','placeholder'=>'Enter Badge Id','required' => 'required'))!!}
+                                {!! Form::text('aconduty', old('aconduty'), array('class' => 'form-control','id' => 'aconduty', 'placeholder'=>'Enter Badge Id','required' => 'required'))!!}
                                 <p class="help-block"></p>
                                 @if($errors->has('aconduty'))
                                     <p class="help-block">
@@ -164,7 +164,7 @@
                         <div class="col-sm-4 form-group">
                             {!! Form::label('frmsincidentnum', 'FRMS Incident #', ['class' => 'col-sm-4 control-label']) !!}
                             <div class="col-sm-6 ">
-                                {!! Form::text('frmsincidentnum', old('frmsIncidentNum'), array('class' => 'form-control','required' => 'required'))!!}
+                                {!! Form::text('frmsincidentnum', old('frmsIncidentNum'), array('class' => 'form-control','id' => 'frmsID', 'required' => 'required'))!!}
                                 <p class="help-block"></p>
                                 @if($errors->has('frmsincidentnum'))
                                     <p class="help-block">
@@ -176,7 +176,7 @@
                         <div class="col-sm-8 form-group">
                             {!! Form::label('corvelid', 'CorVel ID #', ['class' => 'col-sm-2 control-label']) !!}
                             <div class="col-sm-3">
-                                {!! Form::text('corvelid', old('corVelID'), array('class' => 'form-control','required' => 'required','style' =>'margin-left:-7px;'))!!}
+                                {!! Form::text('corvelid', old('corVelID'), array('class' => 'form-control','id' => 'corvelID','required' => 'required','style' =>'margin-left:-7px;'))!!}
                                 <p class="help-block"></p>
                                 @if($errors->has('corvelid'))
                                     <p class="help-block">
@@ -219,7 +219,7 @@
 
                     <div class="col-sm-12 form-group well well-sm">
                         <div class="col-sm-4">
-                            <a class="btn btn-success dropdown-toggle col-sm-12" type="button"
+                            <a class="btn btn-success dropdown-toggle col-sm-12" id="corvelDownload" type="button"
                                href="{{ asset('Fillable PDFs\Injury Module\(Injury PDF) CorVel Work Ability Report.pdf') }}"
                                download="(Injury PDF) CorVel Work Ability Report.pdf">
                                 <i class="fa fa-download" aria-hidden="true"></i> Download</a>
@@ -228,7 +228,7 @@
                             <div class="input-group">
                                 <label class="input-group-btn">
                     <span class="btn btn-info">
-                        <i class="fa fa-cloud-upload" aria-hidden="true"></i> Upload<input type="file"
+                        <i class="fa fa-cloud-upload" aria-hidden="true"></i> Upload<input type="file" id="corvelUpload"
                                                                                            name="CorvelAttachmentName"
                                                                                            style="display: none;">
                     </span>
@@ -237,7 +237,7 @@
                             </div>
                         </div>
                         <div class="col-sm-4">
-                            <a class="btn btn-primary dropdown-toggle col-sm-12" data-toggle="collapse"
+                            <a class="btn btn-primary dropdown-toggle col-sm-12" data-toggle="collapse" id="corvelPrevious"
                                data-target="#611"><i class="fa fa-eye" aria-hidden="true"></i> View Previously uploaded
                                 file(s)
                             </a>
@@ -253,7 +253,7 @@
                                             @if($attachment->attachmenttype == '611' && $attachment->createdby ==  Auth::user()->id && $attachment->ofd6id == $injury->ofd6id )
                                                 <tr>
                                                     <td>
-                                                        <a href="{{ asset('uploads/'.$attachment->attachmentname) }}"> {{$attachment->attachmentname}}</a>
+                                                        <a href="{{ asset('uploads/'.$attachment->attachmentname) }}" id="corvelAttachment"> {{$attachment->attachmentname}}</a>
                                                     </td>
                                                     <td>
                                                         {{$attachment->created_at}}</a>
@@ -281,7 +281,7 @@
                         - Both employee and supervisor must complete and sign.</label> --}}
                     <div class="col-sm-12 form-group well well-sm">
                         <div class="col-sm-4">
-                            <a class="btn btn-success dropdown-toggle col-sm-12" type="button"
+                            <a class="btn btn-success dropdown-toggle col-sm-12" type="button" id="reportDownload"
                                href="{{ asset('Fillable PDFs\Injury Module\(Injury PDF) OFD Investigation Report for Occupational Injury or Illness.pdf') }}"
                                download="(Injury PDF) OFD Investigation Report for Occupational Injury or Illness.pdf">
                                 <i class="fa fa-download" aria-hidden="true"></i> Download</a>
@@ -290,7 +290,7 @@
                             <div class="input-group">
                                 <label class="input-group-btn">
                     <span class="btn btn-info">
-                        <i class="fa fa-cloud-upload" aria-hidden="true"></i> Upload<input type="file"
+                        <i class="fa fa-cloud-upload" aria-hidden="true"></i> Upload<input type="file" id="reportUpload"
                                                                                            name="InvestigationAttachment"
                                                                                            style="display: none;">
                     </span>
@@ -299,7 +299,7 @@
                             </div>
                         </div>
                         <div class="col-sm-4">
-                            <a class="btn btn-primary dropdown-toggle col-sm-12" data-toggle="collapse"
+                            <a class="btn btn-primary dropdown-toggle col-sm-12" data-toggle="collapse" id="reportPrevious"
                                data-target="#612"><i class="fa fa-eye" aria-hidden="true"></i> View Previously uploaded
                                 file(s)
                             </a>
@@ -315,7 +315,7 @@
                                             @if($attachment->attachmenttype == '612' && $attachment->createdby ==  Auth::user()->id && $attachment->ofd6id == $injury->ofd6id )
                                                 <tr>
                                                     <td>
-                                                        <a href="{{ asset('uploads/'.$attachment->attachmentname) }}"> {{$attachment->attachmentname}}</a>
+                                                        <a href="{{ asset('uploads/'.$attachment->attachmentname) }}" id="reportAttachment"> {{$attachment->attachmentname}}</a>
                                                     </td>
                                                     <td>
                                                         {{$attachment->created_at}}</a>
@@ -341,7 +341,7 @@
                             Accident</strong></label> --}}
                     <div class="col-sm-12 form-group well well-sm">
                         <div class="col-sm-4">
-                            <a class="btn btn-success dropdown-toggle col-sm-12" type="button"
+                            <a class="btn btn-success dropdown-toggle col-sm-12" type="button"  id="witnessDownload"
                                href="{{ asset('Fillable PDFs\Injury Module\(Injury PDF) OFD 295a Injury Witness Statement.pdf') }}"
                                download="(Injury PDF) OFD 295a Injury Witness Statement.pdf">
                                 <i class="fa fa-download" aria-hidden="true"></i> Download</a>
@@ -351,7 +351,7 @@
                             <div class="input-group">
                                 <label class="input-group-btn">
                     <span class="btn btn-info">
-                        <i class="fa fa-cloud-upload" aria-hidden="true"></i> Upload<input type="file"
+                        <i class="fa fa-cloud-upload" aria-hidden="true"></i> Upload<input type="file" id="witnessUpload"
                                                                                            name="StatementAttachment"
                                                                                            style="display: none;">
                     </span>
@@ -360,7 +360,7 @@
                             </div>
                         </div>
                         <div class="col-sm-4">
-                            <a class="btn btn-primary dropdown-toggle col-sm-12" data-toggle="collapse"
+                            <a class="btn btn-primary dropdown-toggle col-sm-12" data-toggle="collapse" id="witnessPrevious"
                                data-target="#613"><i class="fa fa-eye" aria-hidden="true"></i> View Previously uploaded
                                 file(s)
                             </a>
@@ -376,7 +376,7 @@
                                             @if($attachment->attachmenttype == '613' && $attachment->createdby ==  Auth::user()->id && $attachment->ofd6id == $injury->ofd6id )
                                                 <tr>
                                                     <td>
-                                                        <a href="{{ asset('uploads/'.$attachment->attachmentname) }}"> {{$attachment->attachmentname}}</a>
+                                                        <a href="{{ asset('uploads/'.$attachment->attachmentname) }}" id="witnessAttachment"> {{$attachment->attachmentname}}</a>
                                                     </td>
                                                     <td>
                                                         {{$attachment->created_at}}</a>
@@ -402,7 +402,7 @@
                         - Two signatures required - both section A & B.</label> --}}
                     <div class="col-sm-12 form-group well well-sm">
                         <div class="col-sm-4">
-                            <a class="btn btn-success dropdown-toggle col-sm-12" type="button"
+                            <a class="btn btn-success dropdown-toggle col-sm-12" type="button" id="employeeDownload"
                                href="{{ asset('Fillable PDFs\Injury Module\(Injury PDF) OFD Employee Choice of Physician or Doctor.pdf') }}"
                                download="(Injury PDF) OFD Employee Choice of Physician or Doctor.pdf">
                                 <i class="fa fa-download" aria-hidden="true"></i> Download</a>
@@ -411,7 +411,7 @@
                             <div class="input-group">
                                 <label class="input-group-btn">
                     <span class="btn btn-info">
-                        <i class="fa fa-cloud-upload" aria-hidden="true"></i> Upload<input type="file"
+                        <i class="fa fa-cloud-upload" aria-hidden="true"></i> Upload<input type="file" id="employeeUpload"
                                                                                            name="EmployeeAttachment"
                                                                                            style="display: none;">
                     </span>
@@ -420,7 +420,7 @@
                             </div>
                         </div>
                         <div class="col-sm-4">
-                            <a class="btn btn-primary dropdown-toggle col-sm-12" data-toggle="collapse"
+                            <a class="btn btn-primary dropdown-toggle col-sm-12" data-toggle="collapse" id="employeePrevious"
                                data-target="#614"><i class="fa fa-eye" aria-hidden="true"></i> View Previously uploaded
                                 file(s)
                             </a>
@@ -436,7 +436,7 @@
                                             @if($attachment->attachmenttype == '614' && $attachment->createdby ==  Auth::user()->id && $attachment->ofd6id == $injury->ofd6id )
                                                 <tr>
                                                     <td>
-                                                        <a href="{{ asset('uploads/'.$attachment->attachmentname) }}"> {{$attachment->attachmentname}}</a>
+                                                        <a href="{{ asset('uploads/'.$attachment->attachmentname) }}" id="employeeAttachment"> {{$attachment->attachmentname}}</a>
                                                     </td>
                                                     <td>
                                                         {{$attachment->created_at}}</a>
@@ -463,7 +463,7 @@
                         - Send an attachment electronically to OmafIOD@cityofomaha.org</label> --}}
                     <div class="col-sm-12 form-group well well-sm">
                         <div class="col-sm-4">
-                            <a class="btn btn-success dropdown-toggle col-sm-12" type="button"
+                            <a class="btn btn-success dropdown-toggle col-sm-12" type="button" id="ofd25Download"
                                href="{{ asset('Fillable PDFs\Injury Module\(Injury PDF) OFD 025 Injury Intradepartmental Communication.pdf') }}"
                                download="(Injury PDF) OFD 025 Injury Intradepartmental Communication.pdf">
                                 <i class="fa fa-download" aria-hidden="true"></i> Download</a>
@@ -472,7 +472,7 @@
                             <div class="input-group">
                                 <label class="input-group-btn">
                     <span class="btn btn-info">
-                        <i class="fa fa-cloud-upload" aria-hidden="true"></i> Upload<input type="file"
+                        <i class="fa fa-cloud-upload" aria-hidden="true"></i> Upload<input type="file" id="ofd25Upload"
                                                                                            name="Ofd25Attachment"
                                                                                            style="display: none;">
                     </span>
@@ -481,7 +481,7 @@
                             </div>
                         </div>
                         <div class="col-sm-4">
-                            <a class="btn btn-primary dropdown-toggle col-sm-12" data-toggle="collapse"
+                            <a class="btn btn-primary dropdown-toggle col-sm-12" data-toggle="collapse" id="ofd25Previous"
                                data-target="#615"><i class="fa fa-eye" aria-hidden="true"></i> View Previously uploaded
                                 file(s)
                             </a>
@@ -497,7 +497,7 @@
                                             @if($attachment->attachmenttype == '615' && $attachment->createdby ==  Auth::user()->id && $attachment->ofd6id == $injury->ofd6id )
                                                 <tr>
                                                     <td>
-                                                        <a href="{{ asset('uploads/'.$attachment->attachmentname) }}"> {{$attachment->attachmentname}}</a>
+                                                        <a href="{{ asset('uploads/'.$attachment->attachmentname) }}" id="ofd25Attachment"> {{$attachment->attachmentname}}</a>
                                                     </td>
                                                     <td>
                                                         {{$attachment->created_at}}</a>
@@ -524,7 +524,7 @@
                             <div class="input-group">
                                 <label class="input-group-btn">
                     <span class="btn btn-info">
-                        <i class="fa fa-cloud-upload" aria-hidden="true"></i> Upload<input type="file"
+                        <i class="fa fa-cloud-upload" aria-hidden="true"></i> Upload<input type="file" id="miscDocsUpload"
                                                                                            name="miscinjuries"
                                                                                            style="display: none;">
                     </span>
@@ -533,7 +533,7 @@
                             </div>
                         </div>
                         <div class="col-sm-4">
-                            <a class="btn btn-primary dropdown-toggle col-sm-12" data-toggle="collapse"
+                            <a class="btn btn-primary dropdown-toggle col-sm-12" data-toggle="collapse" id="miscDocsPrevious"
                                data-target="#616"><i class="fa fa-eye" aria-hidden="true"></i> View Previously uploaded
                                 file(s)
                             </a>
@@ -549,7 +549,7 @@
                                             @if($attachment->attachmenttype == '616' && $attachment->createdby ==  Auth::user()->id && $attachment->ofd6id == $injury->ofd6id )
                                                 <tr>
                                                     <td>
-                                                        <a href="{{ asset('uploads/'.$attachment->attachmentname) }}"> {{$attachment->attachmentname}}</a>
+                                                        <a href="{{ asset('uploads/'.$attachment->attachmentname) }}" id="miscAttachments"> {{$attachment->attachmentname}}</a>
                                                     </td>
                                                     <td>
                                                         {{$attachment->created_at}}</a>
@@ -568,7 +568,7 @@
                     <div class="col-sm-6 form-group">
                         {!! Form::label('captainid', 'Complete FRMS Casuality & Narrative Tab - Fire service and Fire Service Injury', ['class' => 'col-sm-6 control-label']) !!}
                         <div class="col-sm-6 ">
-                            {!! Form::text('captainid', old('captainid'), array('class' => 'form-control','placeholder'=>'Enter FRMS Number here','required' => 'required'))!!}
+                            {!! Form::text('captainid', old('captainid'), array('class' => 'form-control','id'=>'narrativeId', 'placeholder'=>'Enter FRMS Number here','required' => 'required'))!!}
                             <p class="help-block"></p>
                             @if($errors->has('captainid'))
                                 <p class="help-block">
@@ -583,7 +583,7 @@
                     <div class="col-sm-6 form-group">
                         {!! Form::label('captainid', 'Complete in EPCR - All Cases', ['class' => 'col-sm-6 control-label']) !!}
                         <div class="col-sm-6 ">
-                            {!! Form::text('captainid', old('captainid'), array('class' => 'form-control','placeholder'=>'Enter EPCR Number here','required' => 'required'))!!}
+                            {!! Form::text('captainid', old('captainid'), array('class' => 'form-control','id'=>'allcasesId', 'placeholder'=>'Enter EPCR Number here','required' => 'required'))!!}
                             <p class="help-block"></p>
                             @if($errors->has('captainid'))
                                 <p class="help-block">
@@ -619,7 +619,7 @@
                             {{ Form::select('trainingassigned', [
                             'yes' => 'YES',
                             'no' => 'NO']
-                            ), array('class'=>'btn btn-primary dropdown-toggle col-sm-12') }}
+                            ), array('class'=>'btn btn-primary dropdown-toggle col-sm-12', 'id'=>'trainingId') }}
                         </div>
                     </div>
                 </div>
@@ -654,11 +654,11 @@
                         <br>
                         <label class="col-sm-5"></label>
                         <div class="btn-bottom ">
-                            {!! Form::submit('Save as Draft',['class' => 'btn btn-primary','name' => 'partialSave']) !!}
+                            {!! Form::submit('Save as Draft',['class' => 'btn btn-primary','id'=>'draftButton', 'name' => 'partialSave']) !!}
                             <button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal">
                                 Submit
                             </button>
-                            <a href="{{ route('injuries.index') }}" class="btn btn-danger">Cancel</a>
+                            <a href="{{ route('injuries.index') }}" class="btn btn-danger" id="cancelButton">Cancel</a>
                         </div>
                         <br>
                     </div>
@@ -713,7 +713,7 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                    <button type="button" class="close" data-dismiss="modal" id="closeButton" aria-label="Close"><span
                                 aria-hidden="true">&times;</span></button>
                     <h4 class="modal-title" id="myModalLabel"></h4>
                 </div>
@@ -722,8 +722,8 @@
                     Are you sure want to submit the form?
                 </div>
                 <div class="modal-footer">
-                    {!! Form::submit('Yes',['class' => 'btn btn-success','name'=> 'store']) !!}
-                    <button type="button" class="btn btn-danger" data-dismiss="modal">No</button>
+                    {!! Form::submit('Yes',['class' => 'btn btn-success','name'=> 'store', 'id'=>'submitButton']) !!}
+                    <button type="button" class="btn btn-danger" data-dismiss="modal" id="cancelButton">No</button>
                 </div>
             </div>
         </div>
