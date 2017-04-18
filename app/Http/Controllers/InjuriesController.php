@@ -248,8 +248,8 @@ class InjuriesController extends Controller
             'shift' => 'required|string:injury,shift,',
             'trainingassigned' => 'required|string:injury,shift,',
             'frmsincidentnum' => 'required|string:injury,frmsincidentnum',
-            'policeofficercompletesign' => 'required',
-            'callsupervisor' => 'required',
+            'policeofficercompletesign' => 'required:injury,policeofficercompletesign',
+            'callsupervisor' => 'required:injury,callsupervisor',
 
         ]);
 
