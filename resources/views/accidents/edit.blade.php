@@ -214,7 +214,7 @@
                 <div class="col-sm-12">
                     <div class="form-group">
                         {{ Form::checkbox('commemail', 1, null, ['id' => 'commemail', 'class'=>'className']) }}
-                        {{Form::label('Checkbox5','Generate OFD 025 Intradepartmental Communicatio-Email to omafaccident_ofd25@cityofomaha.org')}}
+                        {{Form::label('Checkbox5','Generate OFD 025 Intradepartmental Communication - Email to omafaccident_ofd25@cityofomaha.org')}}
                     </div>
                 </div>
             </div>
@@ -517,7 +517,7 @@
                     <div class="form-group">
                         {{ Form::checkbox('checkbox6', 1, null, ['id'=>'checkbox5', 'class' => 'className' ]) }}
                         {{Form::label('Checkbox6','Complete OFD 31-OFD
-                        Damaged, Lost, Stolen Equipment Report')}}
+                        Lost, Damaged or Stolen Equipment Report')}}
                     </div>
                 </div>
                 {{--}}<label class="checkbox-inline col-sm-12"><strong> Complete OFD 31-OFD
@@ -630,6 +630,27 @@
                     </div>
                 </div>
             </div>
+
+
+            <div class="row">
+                <div class="col-sm-12 form-group">
+                    {{ Form::checkbox('calllaw', 1, null, ['id' => 'calllaw', 'class'=>'className']) }}
+                    <label><strong>
+                            Call Law Department
+                            Investigator</strong>- Call 444-5131- Request report be faxed to
+                        SWD fax # 444-6378. You can
+                        leave a message with rig # address of incident, date, time and
+                        RB#</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12 form-group">
+                    {{ Form::checkbox('daybook', 1, null, ['id' => 'daybook', 'class'=>'className']) }}
+                    <label><strong>
+                            Enter in Company Day
+                            Book</strong></label>
+                </div>
+            </div>
             <div class="row">
                 <div class="col-sm-12 form-group">
                     <div class="form-group">
@@ -740,26 +761,6 @@
                             </table>
                         </div>
                     </div>
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="col-sm-12 form-group">
-                    {{ Form::checkbox('calllaw', 1, null, ['id' => 'calllaw', 'class'=>'className']) }}
-                    <label><strong>
-                            Call Law Department
-                            Investigator</strong>- Call 444-5131- Request report be faxed to
-                        SWD fax # 444-6378. You can
-                        leave a message with rig # address of incident, date, time and
-                        RB#</label>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-sm-12 form-group">
-                    {{ Form::checkbox('daybook', 1, null, ['id' => 'daybook', 'class'=>'className']) }}
-                    <label><strong>
-                            Enter in Company Day
-                            Book</strong></label>
                 </div>
             </div>
             <label class="col-sm-5"></label>

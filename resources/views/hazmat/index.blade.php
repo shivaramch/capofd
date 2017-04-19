@@ -42,8 +42,8 @@
                         <th data-sortable="true">OFD 6C ID</th>
                         <th data-sortable="true">Date of Exposure</th>
                         <th data-sortable="true">Assignment</th>
-                        <th data-sortable="true">Status</th>
                         <th data-sortable="true">Employee Name</th>
+                        <th data-sortable="true">Status</th>
                         <th data-switchable="false" data-searchable="false" data-sortable="false">Action</th>
                     </tr>
                     </thead>
@@ -56,7 +56,6 @@
                                 <td>{{ $hazmats->assignment }}</td>
                                 <td>{{ $hazmats->employeename }}</td>
                                 <td>{{ DB::table('status')->where('statusid',$hazmats->applicationstatus)->value('statustype') }}</td>
-
                                 <td>
                                     <div>
                                         <a href="{{ route('hazmat.show',[$hazmats->ofd6cid]) }}"
@@ -95,8 +94,8 @@
                         <th data-sortable="true">OFD 6C ID</th>
                         <th data-sortable="true">Date of Exposure</th>
                         <th data-sortable="true">Assignment</th>
-                        <th data-sortable="true">Status</th>
                         <th data-sortable="true">Employee Name</th>
+                        <th data-sortable="true">Status</th>
                         <th data-switchable="false" data-searchable="false" data-sortable="false">Action</th>
                     </tr>
                     </thead>

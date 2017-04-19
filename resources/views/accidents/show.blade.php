@@ -3,7 +3,7 @@
     <ol class="breadcrumb">
         <a class="btn btn-default" type="button"
            href="{{ URL::previous() }}">
-            <i class="fa fa-arrow-left" aria-hidden="true"></i> back</a>
+            <i class="fa fa-arrow-left" aria-hidden="true"></i> Back</a>
         <li><a href="{{ url('/') }}">Dashboard</a></li>
         <li><a href="{{ route('accidents.index') }}">OFD 6A Accidents</a></li>
         <li class="active">View OFD 6A Form {{ $accident->ofd6aid }}</li>
@@ -206,7 +206,7 @@
                 <div class="col-sm-12">
                     <div class="form-group">
                         {{ form::checkbox('commemail', 1, null,['disabled'], ['id' => 'commemail', 'class'=>'classname','readonly' => 'true']) }}
-                        {{Form::label('Checkbox5','Generate OFD 025 Intradepartmental Communicatio-Email to omafaccident_ofd25@cityofomaha.org')}}
+                        {{Form::label('Checkbox5','Generate OFD 025 Intradepartmental Communication - Email to omafaccident_ofd25@cityofomaha.org')}}
                     </div>
                 </div>
             </div>
@@ -214,8 +214,8 @@
             <div class="row">
                 <div class="col-sm-12">
                     {{ Form::checkbox('checkbox1', 1, null,['disabled'], ['id' => 'checkbox1', 'class'=>'className','readonly' => 'true']) }}
-                    {{Form::label('Checkbox1','Complete lrs 101 city of omaha accident report-include rb#, officer name,
-                        badge#')}}
+                    {{Form::label('Checkbox1','Complete LRS 101 City of Omaha Accident Report - Include RB#, Officer name,
+                        Badge#')}}
                 </div>
                 {{--}} <label class="checkbox-inline col-sm-12">
                      <strong>complete lrs 101 city of omaha accident report-include rb#, officer name,
@@ -256,7 +256,7 @@
                 <div class="col-sm-12">
                     {{ Form::checkbox('checkbox2', 1, null,['disabled'], ['id' => 'checkbox2', 'class'=>'className','readonly' => 'true']) }}
                     {{Form::label('Checkbox2','Complete OFD 295
-                            vehicle accident witness statement -this report is for civilian statements
+                            Vehicle Accident Witness Statement - This report is for civilian statements
                         only')}}
                 </div>
                 {{--}} <label class="col-sm-12"><strong><strong>complete ofd 295
@@ -412,8 +412,7 @@
             <div class="row">
                 <div class="col-sm-12">
                     {{ Form::checkbox('checkbox6', 1, null,['disabled'], ['id' => 'checkbox6', 'class'=>'className','readonly' => 'true']) }}
-                    {{Form::label('Checkbox6','Complete OFD 31-ofd
-                        damaged, lost, stolen equipment report')}}
+                    {{Form::label('Checkbox6','Complete OFD 31- Lost, Damaged or Stolen Equipment Report')}}
                 </div>
                 {{--}} <label class="checkbox-inline col-sm-12"><strong> complete ofd 31-ofd
                          damaged, lost, stolen equipment report</strong></label> --}}
@@ -452,8 +451,8 @@
             <div class="row">
                 <div class="col-sm-12">
                     {{ Form::checkbox('checkbox7', 1, null,['disabled'], ['id' => 'checkbox7', 'class'=>'className','readonly' => 'true']) }}
-                    {{Form::label('Checkbox7','Complete OFD 127 request for
-                        services form')}}
+                    {{Form::label('Checkbox7','Complete OFD 127 Request for
+                        Services Form')}}
                 </div>
                 {{--}}  <label class="checkbox-inline col-sm-12"><strong> complete ofd 127 request for
                           services form</strong></label> --}}
@@ -489,83 +488,6 @@
                     </div>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-sm-12">
-                    {{ Form::checkbox('checkbox8', 1, null,['disabled'], ['id' => 'checkbox8', 'class'=>'className','readonly' => 'true']) }}
-                    {{Form::label('Checkbox8','Complete DR 41 State
-                            of Nebraska DMV Vehicle Accident Report')}}
-                </div>
-                {{--}} <label class="checkbox-inline col-sm-12"><strong><strong> complete dr 41 state
-                             of nebraska dmv vehicle accident report</strong></strong></label> --}}
-                <div class="col-sm-12 form-group well well-sm">
-                    <div class="col-sm-4">
-                        <a class="btn btn-primary dropdown-toggle col-sm-12" data-toggle="collapse"
-                           data-target="#6a8"><i class="fa fa-eye" aria-hidden="true"></i> View previously uploaded
-                            file(s)
-                        </a>
-                        <div id="6a8" class="collapse">
-                            <table class="table table-striped">
-                                <tr>
-                                    <th> File Name</th>
-                                    <th> File Uploaded At</th>
-                                </tr>
-                                <tr>
-                                @if(count($attachments) > 0)
-                                    @foreach($attachments as $attachment)
-                                        @if($attachment->attachmenttype == '6a8' && $attachment->ofd6aid == $accident->ofd6aid )
-                                            <tr>
-                                                <td>
-                                                    <a href="{{ asset('uploads/'.$attachment->attachmentname) }}"> {{$attachment->attachmentname}}</a>
-                                                </td>
-                                                <td>
-                                                    {{$attachment->created_at}}</a>
-                                                </td>
-                                            <tr>@endif
-                                                @endforeach
-                                                @endif
-                                            </tr>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-sm-12">
-                    {{ Form::checkbox('checkbox9', 1, null,['disabled'], ['id' => 'checkbox9', 'class'=>'className','readonly' => 'true']) }}
-                    {{Form::label('Checkbox9','Miscellaneous Documents')}}
-                </div>
-                <div class="col-sm-12 form-group well well-sm">
-                    <div class="col-sm-4">
-                        <a class="btn btn-primary dropdown-toggle col-sm-12" data-toggle="collapse"
-                           data-target="#6a9"><i class="fa fa-eye" aria-hidden="true"></i> View previously uploaded
-                            file(s)
-                        </a>
-                        <div id="6a9" class="collapse">
-                            <table class="table table-striped">
-                                <tr>
-                                    <th> File Name</th>
-                                    <th> File Uploaded At</th>
-                                </tr>
-                                <tr>
-                                @if(count($attachments) > 0)
-                                    @foreach($attachments as $attachment)
-                                        @if($attachment->attachmenttype == '6a9' && $attachment->ofd6aid == $accident->ofd6aid )
-                                            <tr>
-                                                <td>
-                                                    <a href="{{ asset('uploads/'.$attachment->attachmentname) }}"> {{$attachment->attachmentname}}</a>
-                                                </td>
-                                                <td>
-                                                    {{$attachment->created_at}}</a>
-                                                </td>
-                                            <tr>@endif
-                                                @endforeach
-                                                @endif
-                                            </tr>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-            </div>
 
             <div class="row">
                 <div class="col-sm-12 form-group">
@@ -584,6 +506,83 @@
                     <label><strong>
                             Enter in Company Day
                             Book</strong></label>
+                </div>
+            </div>
+
+        <div class="row">
+            <div class="col-sm-12">
+                {{ Form::checkbox('checkbox8', 1, null,['disabled'], ['id' => 'checkbox8', 'class'=>'className','readonly' => 'true']) }}
+                {{Form::label('Checkbox8','Complete DR 41 State
+                        of Nebraska DMV Vehicle Accident Report')}}
+            </div>
+            {{--}} <label class="checkbox-inline col-sm-12"><strong><strong> complete dr 41 state
+                         of nebraska dmv vehicle accident report</strong></strong></label> --}}
+            <div class="col-sm-12 form-group well well-sm">
+                <div class="col-sm-4">
+                    <a class="btn btn-primary dropdown-toggle col-sm-12" data-toggle="collapse"
+                       data-target="#6a8"><i class="fa fa-eye" aria-hidden="true"></i> View previously uploaded
+                        file(s)
+                    </a>
+                    <div id="6a8" class="collapse">
+                        <table class="table table-striped">
+                            <tr>
+                                <th> File Name</th>
+                                <th> File Uploaded At</th>
+                            </tr>
+                            <tr>
+                            @if(count($attachments) > 0)
+                                @foreach($attachments as $attachment)
+                                    @if($attachment->attachmenttype == '6a8' && $attachment->ofd6aid == $accident->ofd6aid )
+                                        <tr>
+                                            <td>
+                                                <a href="{{ asset('uploads/'.$attachment->attachmentname) }}"> {{$attachment->attachmentname}}</a>
+                                            </td>
+                                            <td>
+                                                {{$attachment->created_at}}</a>
+                                            </td>
+                                        <tr>@endif
+                                            @endforeach
+                                            @endif
+                                        </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12">
+                {{ Form::checkbox('checkbox9', 1, null,['disabled'], ['id' => 'checkbox9', 'class'=>'className','readonly' => 'true']) }}
+                {{Form::label('Checkbox9','Miscellaneous Documents')}}
+            </div>
+            <div class="col-sm-12 form-group well well-sm">
+                <div class="col-sm-4">
+                    <a class="btn btn-primary dropdown-toggle col-sm-12" data-toggle="collapse"
+                       data-target="#6a9"><i class="fa fa-eye" aria-hidden="true"></i> View previously uploaded
+                        file(s)
+                    </a>
+                    <div id="6a9" class="collapse">
+                        <table class="table table-striped">
+                            <tr>
+                                <th> File Name</th>
+                                <th> File Uploaded At</th>
+                            </tr>
+                            <tr>
+                            @if(count($attachments) > 0)
+                                @foreach($attachments as $attachment)
+                                    @if($attachment->attachmenttype == '6a9' && $attachment->ofd6aid == $accident->ofd6aid )
+                                        <tr>
+                                            <td>
+                                                <a href="{{ asset('uploads/'.$attachment->attachmentname) }}"> {{$attachment->attachmentname}}</a>
+                                            </td>
+                                            <td>
+                                                {{$attachment->created_at}}</a>
+                                            </td>
+                                        <tr>@endif
+                                            @endforeach
+                                            @endif
+                                        </tr>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>

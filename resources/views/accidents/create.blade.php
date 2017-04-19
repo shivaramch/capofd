@@ -207,7 +207,7 @@
                 <div class="col-sm-12">
                     <div class="form-group">
                         {{ Form::checkbox('commemail', 1, null, ['id' => 'commemail', 'class'=>'className']) }}
-                        {{Form::label('commemail','Generate OFD 025 Intradepartmental Communicatio-Email to omafaccident_ofd25@cityofomaha.org')}}
+                        {{Form::label('commemail','Generate OFD 025 Intradepartmental Communication - Email to omafaccident_ofd25@cityofomaha.org')}}
                     </div>
                 </div>
             </div>
@@ -377,7 +377,7 @@
                     <div class="form-group">
                         {{ Form::checkbox('checkbox6', 1, null, ['id'=>'checkbox6', 'class' => 'className' ]) }}
                         {{Form::label('checkbox6','Complete OFD 31-OFD
-                            Damaged, Lost, Stolen Equipment Report')}}
+                            Lost, Damaged or Stolen Equipment Report')}}
                     </div>
                 </div>
                 {{--}}<label class="checkbox-inline col-sm-12"><strong> Complete OFD 31-OFD
@@ -435,6 +435,25 @@
 
             <div class="row">
                 <div class="col-sm-12 form-group">
+                    {{ Form::checkbox('calllaw', 1, null, ['id' => 'calllaw', 'class'=>'className']) }}
+					{{Form::label('calllaw','Call Law Department
+                            Investigator - Call 444-5131- Request report be faxed to
+                        SWD fax # 444-6378. You can
+                        leave a message with rig # address of incident, date, time and
+                        RB#')}}
+                    
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12 form-group">
+                    {{ Form::checkbox('daybook', 1, null, ['id' => 'daybook', 'class'=>'className']) }}
+                    {{Form::label('daybook','Enter in Company Day
+                            Book')}}
+					
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12 form-group">
                     <div class="form-group">
                         {{ Form::checkbox('checkbox8', 1, null, ['id'=>'checkbox8', 'class' => 'className' ]) }}
                         {{Form::label('checkbox8','Complete DR 41 State
@@ -483,26 +502,6 @@
                             <input type="text" id="upload-file-info" class="form-control" readonly>
                         </div>
                     </div>
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="col-sm-12 form-group">
-                    {{ Form::checkbox('calllaw', 1, null, ['id' => 'calllaw', 'class'=>'className']) }}
-					{{Form::label('calllaw','Call Law Department
-                            Investigator - Call 444-5131- Request report be faxed to
-                        SWD fax # 444-6378. You can
-                        leave a message with rig # address of incident, date, time and
-                        RB#')}}
-                    
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-sm-12 form-group">
-                    {{ Form::checkbox('daybook', 1, null, ['id' => 'daybook', 'class'=>'className']) }}
-                    {{Form::label('daybook','Enter in Company Day
-                            Book')}}
-					
                 </div>
             </div>
             <br>
