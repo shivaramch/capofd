@@ -45,7 +45,7 @@ class LimiteddutyController extends Controller
         Limitedduty::create($request->all());
         $last_insert_id = DB::getPdo()->lastInsertId();
         $this->LimiteddutyUpload($request, $last_insert_id);
-        $link = $request->url() . "/$last_insert_id";
+        //$link = $request->url() . "/$last_insert_id";
 //write code for email notification here
         //$formname="limitedduties";
         //$rawlink=request()->headers->get('referer');

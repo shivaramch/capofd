@@ -105,27 +105,8 @@
                         </div>
                     </div>
                 </div>
-                {{--<div class="col-sm-4 form-group">--}}
-                {{--{!! Form::label('incidenttype', 'Incident Type', ['class'=> 'col-sm-4 control-label'] ) !!}--}}
-                {{--<div class="col-sm-6">--}}
-                {{--{!! Form::select('incidenttype', ['ofd6' => 'IOD',--}}
-                {{--'ofd6a' => 'Accident',--}}
-                {{--'ofd6b' => 'Biological Exposure',--}}
-                {{--'ofd6c' => 'HazMat Exposure',--}}
-                {{--'offduty' => 'Off Duty'], null,--}}
-                {{--['placeholder' => 'Select One'],'required',--}}
-                {{--['class' => 'form-control']) !!}--}}
-                {{--<p class="help-block"></p>--}}
-                {{--@if($errors->has('incidenttype'))--}}
-                {{--<p class="help-block">--}}
-                {{--{{ $errors->first('incidenttype') }}--}}
-                {{--</p>--}}
-                {{--@endif--}}
-                {{--</div>--}}
-                {{--</div>--}}
             </div>
         </div>
-    </div>
     </div>
     <div class="panel panel-default">
         <div class="panel-heading">
@@ -168,20 +149,18 @@
                     @endif
                 </div>
             </div>
-        </div>
-        <div class="row">
-            <div class="col-sm-12">
-                <label class="col-sm-5"></label>
-                <div class="btn-bottom">
-                    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal">
-                        Save
-                    </button>
-                    <a href="{{ route('fmlas.index') }}" class="btn btn-danger">Cancel</a>
+            <div class="row">
+                <div class="col-sm-12">
+                    <label class="col-sm-5"></label>
+                    <div class="btn-bottom">
+                        <button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal">
+                            Save
+                        </button>
+                        <a href="{{ route('fmlas.index') }}" class="btn btn-danger">Cancel</a>
+                    </div>
                 </div>
             </div>
         </div>
-
-
         <!-- Modal -->
         <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
             <div class="modal-dialog" role="document">
@@ -197,14 +176,10 @@
                     <div class="modal-footer">
                         {!! Form::submit('Yes',['class' => 'btn btn-success']) !!}
                         <button type="button" class=" btn btn-danger" data-dismiss="modal" aria-label="">No</button>
-
-
                     </div>
-
                 </div>
             </div>
         </div>
-
         {!! Form::close() !!}
         @stop
     </div>
