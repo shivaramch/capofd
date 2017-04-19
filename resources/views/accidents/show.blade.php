@@ -47,7 +47,7 @@
                     <div class="col-md-12">
                         <div class="alert alert-danger" align="center">
                             <strong>
-                                Complete all forms and forward via chain-of-command within 24 hours
+                                COMPLETE ALL FORMS AND SUBMIT WITHIN 24 HOURS
                             </strong>
                         </div>
                     </div>
