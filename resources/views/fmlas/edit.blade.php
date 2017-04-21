@@ -150,7 +150,7 @@
                                                 <a href="{{ asset('uploads/'.$attachment->attachmentname) }}"> {{$attachment->attachmentname}}</a>
                                             </td>
                                             <td>
-                                                {{$attachment->created_at}}</a>
+                                                {{$attachment->created_at}}
                                             </td>
                                         <tr>@endif
                                 @endforeach
