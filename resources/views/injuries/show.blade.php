@@ -581,7 +581,7 @@
                     <ul class="commentList">
                         @if (!empty($comments))
                             @foreach ($comments as $cm)
-                                @if(($cm->applicationid == $injury->ofd6id && $cm->applicationtype == '6')&&
+                                @if( $cm->applicationtype == '6' &&
                                 (($injury->injuredemployeeid == Auth::user()->id && $cm->isvisible == 1)  ||
                                 $injury->captainid == Auth::user()->id ||
                                 $injury->battalionchiefid == Auth::user()->id ||

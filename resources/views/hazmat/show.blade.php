@@ -344,7 +344,7 @@
                 <ul class="commentList">
                     @if (!empty($comments))
                         @foreach ($comments as $cm)
-                            @if(($cm->applicationid == $hazmat->ofd6cid && $cm->applicationtype == '6C')&&
+                            @if( $cm->applicationtype == '6C' &&
                             (($hazmat->employeeid == Auth::user()->id && $cm->isvisible == 1) ||
                             $hazmat->primaryidconumber == Auth::user()->id ||
                             Auth::user()->roleid == 1))

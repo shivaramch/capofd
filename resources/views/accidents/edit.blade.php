@@ -783,7 +783,7 @@
                 <div class="actionBox">
                     <ul class="commentList">
                         @foreach ($comments as $cm)
-                            @if(($cm->applicationid == $accident->ofd6aid && $cm->applicationtype == '6A')&&
+                            @if($cm->applicationtype == '6A'&&
                             ($accident->driverid == Auth::user()->id && $cm->isvisible == 1))
                                 <div class="col-sm-8">
                                     <div class="panel panel-white post panel-shadow">

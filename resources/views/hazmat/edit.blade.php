@@ -359,7 +359,7 @@
                         <div class="actionBox">
                             <ul class="commentList">
                                 @foreach ($comments as $cm)
-                                    @if(($cm->applicationid == $hazmat->ofd6aid && $cm->applicationtype == '6C')&&
+                                    @if($cm->applicationtype == '6C' &&
                                     ($hazmat->employeeid == Auth::user()->id && $cm->isvisible == 1))
                                         <div class="col-sm-8">
                                             <div class="panel panel-white post panel-shadow">
