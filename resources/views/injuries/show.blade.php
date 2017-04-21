@@ -605,6 +605,18 @@
                                                                 class="fa fa-clock-o"></i> {{$cm->created_at}}
                                                     </time>
                                                 </div>
+                                                <div class="pull-right meta">
+                                                    @if(Auth::user()->id == $cm->createdby )
+                                                        {!! Form::open(array(
+                    'style' => 'display: inline-block;',
+                    'method' => 'DELETE',
+                    'onsubmit' => "return confirm('".trans("Are you sure?")."');",
+                    'route' => ['comments.destroy', $cm->commentid])) !!}
+                                                        {!! Form::button('<i class="fa fa-trash-o"></i>', array('type' => 'submit', 'class' => ''))!!}
+                                                        {!! Form::close() !!}
+                                                    @endif
+
+                                                </div>
                                             </div>
                                             <div class="post-description">
                                                 <p>{{$cm->comment}}</p>
