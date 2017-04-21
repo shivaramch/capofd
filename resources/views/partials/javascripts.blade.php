@@ -108,19 +108,7 @@ $(function addZero() {
 
     });
 </script>
-<script>
-window.pressed = function(){
-    var a = document.getElementById('LRS101');
-    if(a.value == "")
-    {
-        
-    }
-    else
-    {
-       document.getElementById("checkbox1").checked = true;
-    }
-};
-</script>
+
 <script>
     setTimeout(function() {
         $('.flash').fadeOut('fast');

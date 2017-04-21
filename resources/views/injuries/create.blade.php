@@ -253,10 +253,11 @@
                     <span class="btn btn-info">
                         <i class="fa fa-cloud-upload" aria-hidden="true"></i> Upload<input type="file" id="corvelUpload"
                                                                                            name="CorvelAttachmentName"
-                                                                                           style="display: none;">
+                                                                                           style="display: none;"
+																						   >
                     </span>
                         </label>
-                        <input type="text" id="upload-file-info" class="form-control" readonly>
+                        <input type="text" id="upload-file-info1" class="form-control" readonly onchange="pressed()">
                     </div>
                 </div>
             </div>
@@ -501,5 +502,29 @@
         </div>
     </div>
 </div>
+<script>
 
+window.pressed = function(){
+    var a = document.getElementById('lrsdownload');
+    if(a.value == "")
+    {
+        
+    }
+    else
+    {
+       document.getElementById("checkbox1").checked = true;
+    }
+};
+window.pressed1 = function(){
+    var a = document.getElementById('295upload');
+    if(a.value == "")
+    {
+        
+    }
+    else
+    {
+       document.getElementById("checkbox2").checked = true;
+    }
+};
+</script>
 @stop

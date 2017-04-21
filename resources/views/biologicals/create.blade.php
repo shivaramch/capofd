@@ -507,4 +507,31 @@
             });
         });
     </script>
+	<script>
+	
+	var i = document.getElementById('exposure');
+	window.alert(i.value);
+	</script>
+	<script>
+	
+	$(function(){
+   
+    if ($('#exposure').val()==1 && $('#exposure1').val()==0);
+	{
+		$('#Exposure0').show;
+		$('#Exposure1').hide;
+		
+		
+	}
+	else if ($('#exposure').val()==0 && $('#exposure1').val()==1);
+	{
+		$('#Exposure0').hide;
+		$('#Exposure1').show;
+		
+		
+	}
+	
+   
+});
+	</script>
 @endsection
