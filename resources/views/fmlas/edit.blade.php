@@ -144,13 +144,13 @@
                             </tr>
                             @if(count($attachments) > 0)
                                 @foreach($attachments as $attachment)
-                                    @if($attachment->attachmenttype == 'fmla' && $attachment->fmlaid == $fmla->fmlaid )
+                                    @if($attachment->attachmenttype == 'fmla')
                                         <tr>
                                             <td>
                                                 <a href="{{ asset('uploads/'.$attachment->attachmentname) }}"> {{$attachment->attachmentname}}</a>
                                             </td>
                                             <td>
-                                                {{$attachment->created_at}}</a>
+                                                {{$attachment->created_at}}
                                             </td>
                                         <tr>@endif
                                 @endforeach

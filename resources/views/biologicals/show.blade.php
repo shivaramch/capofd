@@ -209,13 +209,13 @@
                                     </tr>
                                     @if(count($attachments) > 0)
                                         @foreach($attachments as $attachment)
-                                            @if($attachment->attachmenttype == '6b1' && $attachment->ofd6bid == $biological->ofd6bid )
+                                            @if($attachment->attachmenttype == '6b1')
                                                 <tr>
                                                     <td>
                                                         <a href="{{ asset('uploads/'.$attachment->attachmentname) }}"> {{$attachment->attachmentname}}</a>
                                                     </td>
                                                     <td>
-                                                        <a>{{$attachment->created_at}}</a>
+                                                        {{$attachment->created_at}}
                                                     </td>
                                                 </tr>@endif
                                         @endforeach
@@ -250,13 +250,13 @@
 
                                     @if(count($attachments) > 0)
                                         @foreach($attachments as $attachment)
-                                            @if($attachment->attachmenttype == '6b3' && $attachment->createdby ==  Auth::user()->id && $attachment->ofd6bid == $biological->ofd6bid )
+                                            @if($attachment->attachmenttype == '6b3')
                                                 <tr>
                                                     <td>
                                                         <a href="{{ asset('uploads/'.$attachment->attachmentname) }}"> {{$attachment->attachmentname}}</a>
                                                     </td>
                                                     <td>
-                                                        <a>{{$attachment->created_at}}</a>
+                                                        {{$attachment->created_at}}
                                                     </td>
                                                 </tr>@endif
                                         @endforeach
@@ -346,13 +346,13 @@
 
                                     @if(count($attachments) > 0)
                                         @foreach($attachments as $attachment)
-                                            @if($attachment->attachmenttype == '6b2' && $attachment->ofd6bid == $biological->ofd6bid )
+                                            @if($attachment->attachmenttype == '6b2')
                                                 <tr>
                                                     <td>
                                                         <a href="{{ asset('uploads/'.$attachment->attachmentname) }}"> {{$attachment->attachmentname}}</a>
                                                     </td>
                                                     <td>
-                                                        <a>{{$attachment->created_at}}</a>
+                                                        {{$attachment->created_at}}
                                                     </td>
                                                 </tr>@endif
                                         @endforeach
@@ -384,13 +384,13 @@
 
                                     @if(count($attachments) > 0)
                                         @foreach($attachments as $attachment)
-                                            @if($attachment->attachmenttype == '6b4' && $attachment->createdby ==  Auth::user()->id && $attachment->ofd6bid == $biological->ofd6bid )
+                                            @if($attachment->attachmenttype == '6b4')
                                                 <tr>
                                                     <td>
                                                         <a href="{{ asset('uploads/'.$attachment->attachmentname) }}"> {{$attachment->attachmentname}}</a>
                                                     </td>
                                                     <td>
-                                                        <a>{{$attachment->created_at}}</a>
+                                                        {{$attachment->created_at}}
                                                     </td>
                                                 </tr>@endif
                                         @endforeach
@@ -497,7 +497,7 @@
                 <div class="actionBox">
                     <ul class="commentList">
                         @foreach ($comments as $cm)
-                            @if(($cm->applicationid == $biological->ofd6bid && $cm->applicationtype == '6B')&&
+                            @if($cm->applicationtype == '6B'&&
                             (($biological->employeeid == Auth::user()->id && $cm->isvisible == 1) ||
                             $biological->primaryidconumber == Auth::user()->id || Auth::user()->roleid == 1))
                                 <div class="col-sm-8">
@@ -519,6 +519,19 @@
                                                             class="fa fa-clock-o"></i> {{$cm->created_at}}
                                                 </time>
                                             </div>
+                                            <div class="pull-right meta">
+                                                @if(Auth::user()->id == $cm->createdby )
+                                                    {!! Form::open(array(
+                'style' => 'display: inline-block;',
+                'method' => 'DELETE',
+                'onsubmit' => "return confirm('".trans("Are you sure?")."');",
+                'route' => ['comments.destroy', $cm->commentid])) !!}
+                                                    {!! Form::button('<i class="fa fa-trash-o"></i>', array('type' => 'submit', 'class' => ''))!!}
+                                                    {!! Form::close() !!}
+                                                @endif
+
+                                            </div>
+
                                         </div>
                                         <div class="post-description">
                                             <p>{{$cm->comment}}</p>

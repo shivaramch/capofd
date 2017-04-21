@@ -205,13 +205,13 @@
 
                             @if(count($attachments) > 0)
                                 @foreach($attachments as $attachment)
-                                    @if($attachment->attachmenttype == '6c' && $attachment->ofd6cid == $hazmat->ofd6cid)
+                                    @if($attachment->attachmenttype == '6c')
                                         <tr>
                                             <td>
                                                 <a href="{{ asset('uploads/'.$attachment->attachmentname) }}"> {{$attachment->attachmentname}}</a>
                                             </td>
                                             <td>
-                                                {{$attachment->created_at}}</a>
+                                                {{$attachment->created_at}}
                                             </td>
                                         <tr>@endif
                                 @endforeach
@@ -244,13 +244,13 @@
 
                             @if(count($attachments) > 0)
                                 @foreach($attachments as $attachment)
-                                    @if($attachment->attachmenttype == '6c1' && $attachment->ofd6cid == $hazmat->ofd6cid)
+                                    @if($attachment->attachmenttype == '6c1')
                                         <tr>
                                             <td>
                                                 <a href="{{ asset('uploads/'.$attachment->attachmentname) }}"> {{$attachment->attachmentname}}</a>
                                             </td>
                                             <td>
-                                                {{$attachment->created_at}}</a>
+                                                {{$attachment->created_at}}
                                             </td>
                                         <tr>@endif
                                 @endforeach
@@ -344,7 +344,7 @@
                 <ul class="commentList">
                     @if (!empty($comments))
                         @foreach ($comments as $cm)
-                            @if(($cm->applicationid == $hazmat->ofd6cid && $cm->applicationtype == '6C')&&
+                            @if( $cm->applicationtype == '6C' &&
                             (($hazmat->employeeid == Auth::user()->id && $cm->isvisible == 1) ||
                             $hazmat->primaryidconumber == Auth::user()->id ||
                             Auth::user()->roleid == 1))
@@ -367,6 +367,19 @@
                                                             class="fa fa-clock-o"></i> {{$cm->created_at}}
                                                 </time>
                                             </div>
+                                            <div class="pull-right meta">
+                                                @if(Auth::user()->id == $cm->createdby )
+                                                    {!! Form::open(array(
+                'style' => 'display: inline-block;',
+                'method' => 'DELETE',
+                'onsubmit' => "return confirm('".trans("Are you sure?")."');",
+                'route' => ['comments.destroy', $cm->commentid])) !!}
+                                                    {!! Form::button('<i class="fa fa-trash-o"></i>', array('type' => 'submit', 'class' => ''))!!}
+                                                    {!! Form::close() !!}
+                                                @endif
+
+                                            </div>
+
                                         </div>
                                         <div class="post-description">
                                             <p>{{$cm->comment}}</p>
