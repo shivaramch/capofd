@@ -45,6 +45,7 @@ Route::group(['middleware' => 'auth'], function () {// Authentication Routes...
     Route::resource('comments', 'CommentsController');
 
     Route::resource('accidents', 'AccidentsController');
+
     Route::post('accidents/save', 'AccidentsController@save');
 
     Route::resource('biologicals', 'BiologicalsController');
