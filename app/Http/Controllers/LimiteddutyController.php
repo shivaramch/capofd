@@ -52,7 +52,7 @@ class LimiteddutyController extends Controller
 
     public function edit($id)
     {
-        $attachments = Attachment::all();
+        $attachments = Attachment::where('limiteddutyid', $id)->get();
         $limitedduty = Limitedduty::findOrFail($id);
         if (Auth::user()->roleid == 1) {
             return view('limitedduties.edit', compact('limitedduty', 'attachments'));
@@ -65,7 +65,7 @@ class LimiteddutyController extends Controller
     public function show($id)
     {
         $limitedduty = Limitedduty::findOrFail($id);
-        $attachments = Attachment::all();
+        $attachments = Attachment::where('limiteddutyid', $id)->get();
 
         if (Auth::user()->roleid == 1) {
             return view('limitedduties.show', compact('limitedduty', 'attachments'));

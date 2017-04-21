@@ -51,7 +51,7 @@ class FmlaController extends Controller
 
     public function edit($id)
     {
-        $attachments = Attachment::all();
+        $attachments = Attachment::where('fmlaid', $id)->get();
         $fmla = Fmla::findOrFail($id);
         if (Auth::user()->roleid == 1) {
             return view('fmlas.edit', compact('fmla', 'attachments'));
@@ -64,7 +64,7 @@ class FmlaController extends Controller
     public function show($id)
     {
         $fmla = Fmla::findOrFail($id);
-        $attachments = Attachment::all();
+        $attachments = Attachment::where('fmlaid', $id)->get();
 
         if (Auth::user()->roleid == 1) {
             return view('fmlas.show', compact('fmla', 'attachments'));

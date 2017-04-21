@@ -257,9 +257,9 @@ class InjuriesController extends Controller
 
     public function edit($id)
     {
-        $attachments = Attachment::all();
         $injury = Injury::findOrFail($id);
-        $comments = Comment::all();
+        $attachments = Attachment::where('ofd6id', $id)->get();
+        $comments = Comment::where('applicationid', $id)->get();
         $users = User::all();
         $rejectstatus = DB::table('status')->where('statustype', 'Rejected')->value('statusid');
         $draftstatus = DB::table('status')->where('statustype', 'Draft')->value('statusid');
@@ -290,8 +290,8 @@ class InjuriesController extends Controller
     {
 
         $injury = Injury::findOrFail($id);
-        $attachments = Attachment::all();
-        $comments = Comment::all();
+        $attachments = Attachment::where('ofd6id', $id)->get();
+        $comments = Comment::where('applicationid', $id)->get();
         $users = User::all();
         $capstatus = DB::table('status')->where('statustype','Application under Captain')->value('statusid');
         $bcstatus = DB::table('status')->where('statustype','Application under Batallion Chief')->value('statusid');

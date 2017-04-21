@@ -106,8 +106,6 @@ class AccidentsController extends EmailController
 
 
         return redirect()->route('accidents.index')->with('message', 'Form has been Approved');
-
-
     }
 
     public function Reject($id)
@@ -288,7 +286,7 @@ class AccidentsController extends EmailController
 
         $attachments = Attachment::where('ofd6aid', $id)->get();
         $accident = Accident::findOrFail($id);
-        $comments = Comment::all();
+        $comments = Comment::where('applicationid', $id)->get();
         $users = User::all();
         $rejectstatus = DB::table('status')->where('statustype', 'Rejected')->value('statusid');
         $draftstatus = DB::table('status')->where('statustype', 'Draft')->value('statusid');
@@ -309,10 +307,10 @@ class AccidentsController extends EmailController
     {
         $accident = Accident::findOrFail($id);
         $attachments = Attachment::where('ofd6aid', $id)->get();
-        $comments = Comment::all();
+        $comments = Comment::where('applicationid', $id)->get();
         $users = User::all();
-        $capstatus = DB::table('status')->where('statustype','Application under Captain')->value('statusid');
-        $bcstatus = DB::table('status')->where('statustype','Application under Batallion Chief')->value('statusid');
+        $capstatus = DB::table('status')->where('statustype', 'Application under Captain')->value('statusid');
+        $bcstatus = DB::table('status')->where('statustype', 'Application under Batallion Chief')->value('statusid');
         $acstatus = DB::table('status')->where('statustype', 'Application under Assistant Chief')->value('statusid');
         //show history code start
         //below one line code is for storing all history related to the $id in variable, which is to be used to display in show page.
