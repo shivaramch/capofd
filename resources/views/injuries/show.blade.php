@@ -217,7 +217,7 @@
                                 </tr>
                                 @if(count($attachments) > 0)
                                     @foreach($attachments as $attachment)
-                                        @if($attachment->attachmenttype == '611' && $attachment->ofd6id == $injury->ofd6id )
+                                        @if($attachment->attachmenttype == '611' )
                                             <tr>
                                                 <td>
                                                     <a href="{{ asset('uploads/'.$attachment->attachmentname) }}" id="attachments1"> {{$attachment->attachmentname}}</a>
@@ -259,7 +259,7 @@
                                 </tr>
                                 @if(count($attachments) > 0)
                                     @foreach($attachments as $attachment)
-                                        @if($attachment->attachmenttype == '612' && $attachment->ofd6id == $injury->ofd6id )
+                                        @if($attachment->attachmenttype == '612' )
                                             <tr>
                                                 <td>
                                                     <a href="{{ asset('uploads/'.$attachment->attachmentname) }}" id="attachments2"> {{$attachment->attachmentname}}</a>
@@ -298,7 +298,7 @@
                                 </tr>
                                 @if(count($attachments) > 0)
                                     @foreach($attachments as $attachment)
-                                        @if($attachment->attachmenttype == '613' && $attachment->ofd6id == $injury->ofd6id )
+                                        @if($attachment->attachmenttype == '613')
                                             <tr>
                                                 <td>
                                                     <a href="{{ asset('uploads/'.$attachment->attachmentname) }}" id="attachments3"> {{$attachment->attachmentname}}</a>
@@ -338,7 +338,7 @@
                                 </tr>
                                 @if(count($attachments) > 0)
                                     @foreach($attachments as $attachment)
-                                        @if($attachment->attachmenttype == '614' && $attachment->ofd6id == $injury->ofd6id )
+                                        @if($attachment->attachmenttype == '614' )
                                             <tr>
                                                 <td>
                                                     <a href="{{ asset('uploads/'.$attachment->attachmentname) }}" id="attachments4"> {{$attachment->attachmentname}}</a>
@@ -378,7 +378,7 @@
                                 </tr>
                                 @if(count($attachments) > 0)
                                     @foreach($attachments as $attachment)
-                                        @if($attachment->attachmenttype == '615' && $attachment->ofd6id == $injury->ofd6id )
+                                        @if($attachment->attachmenttype == '615')
                                             <tr>
                                                 <td>
                                                     <a href="{{ asset('uploads/'.$attachment->attachmentname) }}" id="attachments5"> {{$attachment->attachmentname}}</a>
@@ -415,7 +415,7 @@
                                 </tr>
                                 @if(count($attachments) > 0)
                                     @foreach($attachments as $attachment)
-                                        @if($attachment->attachmenttype == '616' && $attachment->ofd6id == $injury->ofd6id )
+                                        @if($attachment->attachmenttype == '616')
                                             <tr>
                                                 <td>
                                                     <a href="{{ asset('uploads/'.$attachment->attachmentname) }}" id="attachments6"> {{$attachment->attachmentname}}</a>

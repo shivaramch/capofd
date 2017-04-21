@@ -250,7 +250,7 @@
                                     </tr>
                                     @if(count($attachments) > 0)
                                         @foreach($attachments as $attachment)
-                                            @if($attachment->attachmenttype == '611' && $attachment->createdby ==  Auth::user()->id && $attachment->ofd6id == $injury->ofd6id )
+                                            @if($attachment->attachmenttype == '611')
                                                 <tr>
                                                     <td>
                                                         <a href="{{ asset('uploads/'.$attachment->attachmentname) }}" id="corvelAttachment"> {{$attachment->attachmentname}}</a>
@@ -312,7 +312,7 @@
                                     </tr>
                                     @if(count($attachments) > 0)
                                         @foreach($attachments as $attachment)
-                                            @if($attachment->attachmenttype == '612' && $attachment->createdby ==  Auth::user()->id && $attachment->ofd6id == $injury->ofd6id )
+                                            @if($attachment->attachmenttype == '612')
                                                 <tr>
                                                     <td>
                                                         <a href="{{ asset('uploads/'.$attachment->attachmentname) }}" id="reportAttachment"> {{$attachment->attachmentname}}</a>
@@ -373,7 +373,7 @@
                                     </tr>
                                     @if(count($attachments) > 0)
                                         @foreach($attachments as $attachment)
-                                            @if($attachment->attachmenttype == '613' && $attachment->createdby ==  Auth::user()->id && $attachment->ofd6id == $injury->ofd6id )
+                                            @if($attachment->attachmenttype == '613')
                                                 <tr>
                                                     <td>
                                                         <a href="{{ asset('uploads/'.$attachment->attachmentname) }}" id="witnessAttachment"> {{$attachment->attachmentname}}</a>
@@ -433,7 +433,7 @@
                                     </tr>
                                     @if(count($attachments) > 0)
                                         @foreach($attachments as $attachment)
-                                            @if($attachment->attachmenttype == '614' && $attachment->createdby ==  Auth::user()->id && $attachment->ofd6id == $injury->ofd6id )
+                                            @if($attachment->attachmenttype == '614')
                                                 <tr>
                                                     <td>
                                                         <a href="{{ asset('uploads/'.$attachment->attachmentname) }}" id="employeeAttachment"> {{$attachment->attachmentname}}</a>
@@ -494,7 +494,7 @@
                                     </tr>
                                     @if(count($attachments) > 0)
                                         @foreach($attachments as $attachment)
-                                            @if($attachment->attachmenttype == '615' && $attachment->createdby ==  Auth::user()->id && $attachment->ofd6id == $injury->ofd6id )
+                                            @if($attachment->attachmenttype == '615')
                                                 <tr>
                                                     <td>
                                                         <a href="{{ asset('uploads/'.$attachment->attachmentname) }}" id="ofd25Attachment"> {{$attachment->attachmentname}}</a>
@@ -546,7 +546,7 @@
                                     </tr>
                                     @if(count($attachments) > 0)
                                         @foreach($attachments as $attachment)
-                                            @if($attachment->attachmenttype == '616' && $attachment->createdby ==  Auth::user()->id && $attachment->ofd6id == $injury->ofd6id )
+                                            @if($attachment->attachmenttype == '616')
                                                 <tr>
                                                     <td>
                                                         <a href="{{ asset('uploads/'.$attachment->attachmentname) }}" id="miscAttachments"> {{$attachment->attachmentname}}</a>
