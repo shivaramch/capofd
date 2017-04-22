@@ -21,13 +21,11 @@ class UpdateFmlasRequest extends FormRequest
     public function rules()
     {
         return [
-            'employeeid' => 'required|integer:limitedduty,employeeid'.$this->route('limitedduty'),
-            'employeename' => 'required|string:limitedduty,exposedemployeename'.$this->route('limitedduty'),
-            'fromdate' => 'required|date_format:Y-m-d,fromdate'.$this->route('limitedduty'),
-            'todate' => 'required|date_format:Y-m-d,todate'.$this->route('limitedduty'),
-            'corvelid' => 'required|string:limitedduty,assignmentbiological'.$this->route('limitedduty'),
-            'incidenttype' => 'required|string:limitedduty,incidenttype'.$this->route('limitedduty'),
-            'incidentid' => 'required|integer:limitedduty,incidentid'.$this->route('limitedduty'),
+            'employeeid' => 'required|integer:fmla,employeeid'.$this->route('fmlas'),
+            'employeename' => 'required|string:fmla,exposedemployeename'.$this->route('fmlas'),
+            'fromdate' => 'required|date_format:Y-m-d,fromdate'.$this->route('fmlas'),
+            'todate' => 'required|date_format:Y-m-d,todate'.$this->route('fmlas'),
+            'comments'=>'string:fmla,comments'.$this->route('fmlas'),
         ];
     }
 }

@@ -56,7 +56,7 @@
                     <div class="col-sm-6 form-group">
                         {!! Form::label('employeename', 'Employee Name',array('style'=>'padding-top:7px;','class'=> 'col-sm-4 control-label') ) !!}
                         <div class="col-sm-6 ">
-                            {!! Form::text('employeename', old('employeename'),['disabled'], array('class'=>'form-control'))!!}
+                            {!! Form::text('employeename', old('employeename'),array('class'=>'form-control','disabled'=>'disabled'))!!}
                             <p class="help-block"></p>
                             @if($errors->has('employeename'))
                                 <p class="help-block">
@@ -68,7 +68,7 @@
                     <div class="col-sm-6 form-group">
                         {!! Form::label('employeeid', 'Employee ID#', array('style'=>'padding-top:7px;','class'=> 'col-sm-4 control-label') ) !!}
                         <div class="col-sm-6 ">
-                            {!! Form::text('employeeid', old('employeeid'),['disabled'], array('class'=> 'form-control','placeholder'=>'Enter Badge ID'))!!}
+                            {!! Form::text('employeeid', old('employeeid'), array('class'=> 'form-control','disabled'=>'disabled'))!!}
                             <p class="help-block"></p>
                             @if($errors->has('employeeid'))
                                 <p class="help-block">
@@ -82,7 +82,7 @@
                     <div class="col-sm-6 form-group">
                         {!! Form::label('fromdate', 'From Date', array('style'=>'padding-top:7px;','class'=> 'col-sm-4 control-label') ) !!}
                         <div class="col-sm-6 ">
-                            {!! Form::text('fromdate', old('fromdate'),['disabled'], array('id'=>'datepicker','class' => 'form-control datepicker', 'placeholder' => 'MM-DD-YYYY','required' => 'required'))!!}
+                            {!! Form::text('fromdate', old('fromdate'), array('id'=>'datepicker','class' => 'form-control datepicker', 'disabled'=>'disabled'))!!}
                             <p class="help-block"></p>
                             @if($errors->has('fromdate'))
                                 <p class="help-block">
@@ -94,7 +94,7 @@
                     <div class="col-sm-6 form-group">
                         {!! Form::label('todate', 'To Date', array('style'=>'padding-top:7px;','class'=> 'col-sm-4 control-label') ) !!}
                         <div class="col-sm-6 ">
-                            {!! Form::text('todate', old('todate'),['disabled'], array('id'=>'datepicker','class' => 'form-control datepicker', 'placeholder' => 'MM-DD-YYYY','required' => 'required'))!!}
+                            {!! Form::text('todate', old('todate'), array('id'=>'datepicker','class' => 'form-control datepicker', 'disabled'=>'disabled'))!!}
                             <p class="help-block"></p>
                             @if($errors->has('todate'))
                                 <p class="help-block">
@@ -108,7 +108,7 @@
                     <div class="col-sm-4 form-group">
                         {!! Form::label('corvelid', 'CorVel ID', array('style'=>'padding-top:7px;','class'=> 'col-sm-4 control-label') ) !!}
                         <div class="col-sm-6 ">
-                            {!! Form::text('corvelid', old('corvelid'),['disabled'], array('class' => 'form-control', 'placeholder' => 'Enter CorVel ID Here'))!!}
+                            {!! Form::text('corvelid', old('corvelid'), array('class' => 'form-control', 'disabled'=>'disabled'))!!}
                             <p class="help-block"></p>
                             @if($errors->has('corvelid'))
                                 <p class="help-block">
@@ -120,7 +120,7 @@
                     <div class="col-sm-4 form-group">
                         {!! Form::label('incidentid', 'EPCR Incident#', array('style'=>'padding-top:7px;','class'=> 'col-sm-4 control-label') ) !!}
                         <div class="col-sm-6 ">
-                            {!! Form::text('incidentid', old('incidentid'),['disabled'], array('class' => 'form-control','placeholder'=>'Enter Incident Num'))!!}
+                            {!! Form::text('incidentid', old('incidentid'), array('class' => 'form-control','disabled'=>'disabled'))!!}
                             <p class="help-block"></p>
                             @if($errors->has('incidentid'))
                                 <p class="help-block">
@@ -132,8 +132,8 @@
                     <div class="col-sm-4 form-group">
                         {!! Form::label('incidenttype', 'Incident Type', ['class'=> 'col-sm-4 control-label'] ) !!}
                         <div class="col-sm-6">
-                            {!! Form::text('incidenttype',old('incidenttype'),['disabled'],
-                            ['class' => 'form-control']) !!}
+                            {!! Form::text('incidenttype',old('incidenttype'),
+                            ['class' => 'form-control','disabled'=>'disabled']) !!}
                             <p class="help-block"></p>
                             @if($errors->has('incidenttype'))
                                 <p class="help-block">
@@ -176,13 +176,13 @@
 
                                     @if(count($attachments) > 0)
                                         @foreach($attachments as $attachment)
-                                            @if($attachment->attachmenttype == 'ltdduty' && $attachment->createdby ==  Auth::user()->id && $attachment->limiteddutyid == $limitedduty->limiteddutyid )
+                                            @if($attachment->attachmenttype == 'ltdduty')
                                                 <tr>
                                                     <td>
                                                         <a href="{{ asset('uploads/'.$attachment->attachmentname) }}"> {{$attachment->attachmentname}}</a>
                                                     </td>
                                                     <td>
-                                                        <a>{{$attachment->created_at}}</a>
+                                                        {{$attachment->created_at}}
                                                     </td>
                                                 </tr>@endif
                                         @endforeach
@@ -199,7 +199,7 @@
                         {!! Form::label('comments', 'Comments', array('style'=>'padding-top:7px;','class'=> 'col-sm-4 control-label') ) !!}
                     </div>
                     <div class="col-sm-12 ">
-                        {!! Form::textarea('comments', old('comments'), ['disabled'],array('class' => 'form-control','placeholder'=>'Enter Comments'))!!}
+                        {!! Form::textarea('comments', old('comments'),array('class' => 'form-control','disabled'=>'disabled'))!!}
                         <p class="help-block"></p>
                         @if($errors->has('comments'))
                             <p class="help-block">
@@ -208,73 +208,13 @@
                         @endif
                     </div>
                 </div>
-            </div>
-
-            <div class="panel-body">
-                <div class="titleBox">
-                    <label>Comments </label>
-                </div>
-                {!! Form::open(['method' => 'POST', 'route' => ['comments.store'],]) !!}
-                <div class="row">
-                    <div class="col-sm-12">
-                        <div class="form-group">
-                            <div class="form-group" style="width:100%; position:relative">
-                                {{ Form::textarea('comment', null, ['class' => 'form-control', 'placeholder' => 'Add your comment', 'rows' => '4']) }}
-                            </div>
-                            {{ Form::hidden('applicationtype', 'LD') }}
-                            {{ Form::hidden('applicationid', $limitedduty->limiteddutyid) }}
-                            {{ Form::checkbox('isvisible', 1, null, ['id' => 'daybook', 'class'=>'className']) }}
-                            <label><strong>
-                                    Visible to applicant</strong></label>
-                            <div class="form-group">
-                                {{ Form::submit('Post Comment', array('class' => 'btn btn-block btn-primary' , 'style' => 'width:220px')) }}
-                            </div>
-                        </div>
+                <div class="col-sm-12 panel-heading" align="center">
+                    <div class="btn-bottom ">
+                        <a href="{{ route('limitedduties.index') }}" class="btn btn-danger">Return</a>
                     </div>
-                </div>
-                {!! form::close() !!}
-
-                <div class="actionBox">
-                    <ul class="commentList">
-                        @if (!empty($comments))
-                            @foreach ($comments as $cm)
-                                @if(($cm->applicationid == $limitedduty->limiteddutyid && $cm->applicationtype == 'LD')&&
-                                (($biological->employeeid == Auth::user()->id && $cm->isvisible == 1) ||
-                                $biological->primaryidconumber == Auth::user()->id ||
-                                Auth::user()->roleid == 1))
-                                    <div class="col-sm-8">
-                                        <div class="panel panel-white post panel-shadow">
-                                            <div class="post-heading">
-                                                <div class="pull-left meta">
-                                                    <div class="title h5">
-                                                        @foreach ($users as $user)
-                                                            @if($user->id == $cm->createdby )
-
-                                                                <b><i class="fa fa-user"></i> {{$user->name}}
-                                                                </b>
-                                                            @endif
-                                                        @endforeach
-                                                        made a Comment.
-                                                    </div>
-                                                    <time class="comment-date text-muted time"
-                                                          datetime="{{$cm->created_at}}"><i
-                                                                class="fa fa-clock-o"></i> {{$cm->created_at}}
-                                                    </time>
-                                                </div>
-                                            </div>
-                                            <div class="post-description">
-                                                <p>{{$cm->comment}}</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                @endif
-                            @endforeach
-                        @endif
-                    </ul>
                 </div>
             </div>
         </div>
-    </div>
     </div>
     {!! Form::close() !!}
 @stop

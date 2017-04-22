@@ -28,8 +28,7 @@ class UpdateLimiteddutiesRequest extends FormRequest
             'corvelid' => 'required|string:limitedduty,corvelid'.$this->route('limitedduty'),
             'incidenttype' => 'required|string:limitedduty,incidenttype'.$this->route('limitedduty'),
             'incidentid' => 'required|integer:limitedduty,incidentid'.$this->route('limitedduty'),
-            //'commments'=>'required|array:limitedduty,commments'.$this->route('limitedduty'),
-            //'exposure'=>'required|string:biological,exposure'.$this->route('biological'),
+            'comments'=>'required|string:limitedduty,comments'.$this->route('limitedduty'),
         ];
     }
 }

@@ -2,7 +2,7 @@
 @section('crumbs')
     <ol class="breadcrumb">
         <a class="btn btn-default" type="button"
-           href="{{ route('injuries.index') }}">
+           href="{{ URL::previous() }}">
             <i class="fa fa-arrow-left" aria-hidden="true"></i> Back</a>
         <li><a href="{{ url('/') }}">Dashboard</a></li>
         <li><a href="{{ route('injuries.index') }}">OFD 6 Injuries</a></li>
@@ -47,7 +47,7 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="alert alert-danger" align="center">
-                            <strong>COMPLETE ALL FORMS AND FORWARD VIA CHAIN-OF-COMMAND WITHIN 24 HOURS
+                            <strong>COMPLETE ALL FORMS AND SUBMIT WITHIN 24 HOURS
                             </strong>
                         </div>
                     </div>
@@ -56,7 +56,7 @@
                     <div class="col-sm-4 form-group">
                         {!! Form::label('injurydate', 'Date of Injury:', ['class' => 'col-sm-4 control-label']) !!}
                         <div class="col-sm-6 ">
-                            {!! Form::text('injurydate', old('injurydate'), array('class'=>'datepicker form-control','placeholder'=>'MM/DD/YYYY','required' => 'required','disabled'=>'disabled'))!!}
+                            {!! Form::text('injurydate', old('injurydate'), array('class'=>'datepicker form-control', 'id' => 'injurydate', 'placeholder'=>'MM/DD/YYYY','required' => 'required','disabled'=>'disabled'))!!}
                             <p class="help-block"></p>
                             @if($errors->has('injurydate'))
                                 <p class="help-block">
@@ -68,7 +68,7 @@
                     <div class="col-sm-4 form-group">
                         {!! Form::label('assignmentinjury', 'Assignment', ['class' => 'col-sm-4 control-label']) !!}
                         <div class="col-sm-6 ">
-                            {!! Form::text('assignmentinjury', old('assignmentinjury'), array('class' => 'form-control','required' => 'required','disabled'=>'disabled'))!!}
+                            {!! Form::text('assignmentinjury', old('assignmentinjury'), array('class' => 'form-control','id' => 'assignmentinjury','required' => 'required','disabled'=>'disabled'))!!}
                             <p class="help-block"></p>
                             @if($errors->has('assignmentinjury'))
                                 <p class="help-block">
@@ -82,7 +82,7 @@
                     <div class="col-sm-4 form-group">
                         {!! Form::label('injuredemployeename', 'Injured Name', ['class' => 'col-sm-4 control-label']) !!}
                         <div class="col-sm-6 ">
-                            {!! Form::text('injuredemployeename', old('injuredemployeename'), array('class' => 'form-control','placeholder'=>'Enter Injured Name','required' => 'required','disabled'=>'disabled'))!!}
+                            {!! Form::text('injuredemployeename', old('injuredemployeename'), array('class' => 'form-control','id' => 'injuredemployeename','placeholder'=>'Enter Injured Name','required' => 'required','disabled'=>'disabled'))!!}
                             <p class="help-block"></p>
                             @if($errors->has('injuredemployeename'))
                                 <p class="help-block">
@@ -94,7 +94,7 @@
                     <div class="col-sm-4 form-group">
                         {!! Form::label('injuredemployeeid', 'Personnel ID #', ['class' => 'col-sm-4 control-label']) !!}
                         <div class="col-sm-6 ">
-                            {!! Form::text('injuredemployeeid', old('injuredemployeeid'), array('class' => 'form-control','placeholder'=>'Enter Badge Id','required' => 'required','disabled'=>'disabled'))!!}
+                            {!! Form::text('injuredemployeeid', old('injuredemployeeid'), array('class' => 'form-control','id' => 'injuredemployeeid','placeholder'=>'Enter Badge Id','required' => 'required','disabled'=>'disabled'))!!}
                             <p class="help-block"></p>
                             @if($errors->has('injuredemployeeid'))
                                 <p class="help-block">
@@ -106,7 +106,7 @@
                     <div class="col-sm-4 form-group">
                         {!! Form::label('shift', 'Shift', array('class' => 'col-sm-4 control-label','disabled'=>'disabled')) !!}
                         <div class="col-sm-6">
-                            {!! Form::text('shift',$injury->shift ,['disabled'],array('class' => 'form-control'))!!}
+                            {!! Form::text('shift',$injury->shift ,['disabled'],array('class' => 'form-control','id' => 'shift'))!!}
                         </div>
                     </div>
                 </div>
@@ -114,7 +114,7 @@
                     <div class="col-sm-4 form-group">
                         {!! Form::label('captainid', 'Captain #', ['class' => 'col-sm-4 control-label']) !!}
                         <div class="col-sm-6 ">
-                            {!! Form::text('captainid', old('captainid'), array('class' => 'form-control','placeholder'=>'Enter Badge Id','required' => 'required','disabled'=>'disabled'))!!}
+                            {!! Form::text('captainid', old('captainid'), array('class' => 'form-control','id' => 'captainid','placeholder'=>'Enter Badge Id','required' => 'required','disabled'=>'disabled'))!!}
                             <p class="help-block"></p>
                             @if($errors->has('captainid'))
                                 <p class="help-block">
@@ -126,7 +126,7 @@
                     <div class="col-sm-4 form-group">
                         {!! Form::label('battalionchiefid', 'Battalion Chief #', ['class' => 'col-sm-4 control-label']) !!}
                         <div class="col-sm-6 ">
-                            {!! Form::text('battalionchiefid', old('battalionchiefid'), array('class' => 'form-control','placeholder'=>'Enter Badge Id','required' => 'required','disabled'=>'disabled'))!!}
+                            {!! Form::text('battalionchiefid', old('battalionchiefid'), array('class' => 'form-control','id' => 'battalionchiefid','placeholder'=>'Enter Badge Id','required' => 'required','disabled'=>'disabled'))!!}
                             <p class="help-block"></p>
                             @if($errors->has('battalionchiefid'))
                                 <p class="help-block">
@@ -138,7 +138,7 @@
                     <div class="col-sm-4 form-group">
                         {!! Form::label('aconduty', 'Assistant Chief #', ['class' => 'col-sm-4 control-label']) !!}
                         <div class="col-sm-6 ">
-                            {!! Form::text('aconduty', old('aconduty'), array('class' => 'form-control','placeholder'=>'Enter Badge Id','required' => 'required','disabled'=>'disabled'))!!}
+                            {!! Form::text('aconduty', old('aconduty'), array('class' => 'form-control','id' => 'aconduty','placeholder'=>'Enter Badge Id','required' => 'required','disabled'=>'disabled'))!!}
                             <p class="help-block"></p>
                             @if($errors->has('aconduty'))
                                 <p class="help-block">
@@ -152,7 +152,7 @@
                     <div class="col-sm-4 form-group">
                         {!! Form::label('frmsincidentnum', 'FRMS Incident #', ['class' => 'col-sm-4 control-label']) !!}
                         <div class="col-sm-6 ">
-                            {!! Form::text('frmsincidentnum', old('frmsIncidentNum'), array('class' => 'form-control','required' => 'required','disabled'=>'disabled'))!!}
+                            {!! Form::text('frmsincidentnum', old('frmsIncidentNum'), array('class' => 'form-control','id' => 'frmsID','required' => 'required','disabled'=>'disabled'))!!}
                             <p class="help-block"></p>
                             @if($errors->has('frmsincidentnum'))
                                 <p class="help-block">
@@ -164,7 +164,7 @@
                     <div class="col-sm-8 form-group">
                         {!! Form::label('corvelid', 'Corvel ID #', ['class' => 'col-sm-2 control-label']) !!}
                         <div class="col-sm-3">
-                            {!! Form::text('corvelid', old('corvelid'), array('class' => 'form-control','required' => 'required','style' =>'margin-left:-7px;','disabled'=>'disabled'))!!}
+                            {!! Form::text('corvelid', old('corvelid'), array('class' => 'form-control','id' => 'corvelID','required' => 'required','style' =>'margin-left:-7px;','disabled'=>'disabled'))!!}
                             <p class="help-block"></p>
                             @if($errors->has('corvelid'))
                                 <p class="help-block">
@@ -204,7 +204,7 @@
                 <div class="col-sm-12 form-group well well-sm">
                     <div class="col-sm-4">
                         <a class="btn btn-primary dropdown-toggle col-sm-12" data-toggle="collapse"
-                           data-target="#611"><i class="fa fa-eye" aria-hidden="true"></i> View Previously uploaded
+                           data-target="#611" id="previousButton1"><i class="fa fa-eye" aria-hidden="true"></i> View Previously uploaded
                             file(s)
                         </a>
 
@@ -217,13 +217,13 @@
                                 </tr>
                                 @if(count($attachments) > 0)
                                     @foreach($attachments as $attachment)
-                                        @if($attachment->attachmenttype == '611' && $attachment->ofd6id == $injury->ofd6id )
+                                        @if($attachment->attachmenttype == '611' )
                                             <tr>
                                                 <td>
-                                                    <a href="{{ asset('uploads/'.$attachment->attachmentname) }}"> {{$attachment->attachmentname}}</a>
+                                                    <a href="{{ asset('uploads/'.$attachment->attachmentname) }}" id="attachments1"> {{$attachment->attachmentname}}</a>
                                                 </td>
                                                 <td>
-                                                    {{$attachment->created_at}}</a>
+                                                    {{$attachment->created_at}}
                                                 </td>
                                             </tr>
                                         @endif
@@ -247,7 +247,7 @@
                 <div class="col-sm-12 form-group well well-sm">
                     <div class="col-sm-4">
                         <a class="btn btn-primary dropdown-toggle col-sm-12" data-toggle="collapse"
-                           data-target="#612"><i class="fa fa-eye" aria-hidden="true"></i> View Previously uploaded
+                           data-target="#612" id="previousButton2"><i class="fa fa-eye" aria-hidden="true"></i> View Previously uploaded
                             file(s)
                         </a>
                         <div id="612" class="collapse">
@@ -259,13 +259,13 @@
                                 </tr>
                                 @if(count($attachments) > 0)
                                     @foreach($attachments as $attachment)
-                                        @if($attachment->attachmenttype == '612' && $attachment->ofd6id == $injury->ofd6id )
+                                        @if($attachment->attachmenttype == '612' )
                                             <tr>
                                                 <td>
-                                                    <a href="{{ asset('uploads/'.$attachment->attachmentname) }}"> {{$attachment->attachmentname}}</a>
+                                                    <a href="{{ asset('uploads/'.$attachment->attachmentname) }}" id="attachments2"> {{$attachment->attachmentname}}</a>
                                                 </td>
                                                 <td>
-                                                    {{$attachment->created_at}}</a>
+                                                    {{$attachment->created_at}}
                                                 </td>
                                             </tr>
                                         @endif
@@ -286,7 +286,7 @@
                 <div class="col-sm-12 form-group well well-sm">
                     <div class="col-sm-4">
                         <a class="btn btn-primary dropdown-toggle col-sm-12" data-toggle="collapse"
-                           data-target="#613"><i class="fa fa-eye" aria-hidden="true"></i> View Previously uploaded
+                           data-target="#613" id="previousButton3"><i class="fa fa-eye" aria-hidden="true"></i> View Previously uploaded
                             file(s)
                         </a>
                         <div id="613" class="collapse">
@@ -298,13 +298,13 @@
                                 </tr>
                                 @if(count($attachments) > 0)
                                     @foreach($attachments as $attachment)
-                                        @if($attachment->attachmenttype == '613' && $attachment->ofd6id == $injury->ofd6id )
+                                        @if($attachment->attachmenttype == '613')
                                             <tr>
                                                 <td>
-                                                    <a href="{{ asset('uploads/'.$attachment->attachmentname) }}"> {{$attachment->attachmentname}}</a>
+                                                    <a href="{{ asset('uploads/'.$attachment->attachmentname) }}" id="attachments3"> {{$attachment->attachmentname}}</a>
                                                 </td>
                                                 <td>
-                                                    {{$attachment->created_at}}</a>
+                                                    {{$attachment->created_at}}
                                                 </td>
                                             </tr>
                                         @endif
@@ -326,7 +326,7 @@
                 <div class="col-sm-12 form-group well well-sm">
                     <div class="col-sm-4">
                         <a class="btn btn-primary dropdown-toggle col-sm-12" data-toggle="collapse"
-                           data-target="#614"><i class="fa fa-eye" aria-hidden="true"></i> View Previously uploaded
+                           data-target="#614" id="previousButton4"><i class="fa fa-eye" aria-hidden="true"></i> View Previously uploaded
                             file(s)
                         </a>
                         <div id="614" class="collapse">
@@ -338,13 +338,13 @@
                                 </tr>
                                 @if(count($attachments) > 0)
                                     @foreach($attachments as $attachment)
-                                        @if($attachment->attachmenttype == '614' && $attachment->ofd6id == $injury->ofd6id )
+                                        @if($attachment->attachmenttype == '614' )
                                             <tr>
                                                 <td>
-                                                    <a href="{{ asset('uploads/'.$attachment->attachmentname) }}"> {{$attachment->attachmentname}}</a>
+                                                    <a href="{{ asset('uploads/'.$attachment->attachmentname) }}" id="attachments4"> {{$attachment->attachmentname}}</a>
                                                 </td>
                                                 <td>
-                                                    {{$attachment->created_at}}</a>
+                                                    {{$attachment->created_at}}
                                                 </td>
                                             </tr>
                                         @endif
@@ -366,7 +366,7 @@
                 <div class="col-sm-12 form-group well well-sm">
                     <div class="col-sm-4">
                         <a class="btn btn-primary dropdown-toggle col-sm-12" data-toggle="collapse"
-                           data-target="#615"><i class="fa fa-eye" aria-hidden="true"></i> View Previously uploaded
+                           data-target="#615" id="previousButton5"><i class="fa fa-eye" aria-hidden="true"></i> View Previously uploaded
                             file(s)
                         </a>
                         <div id="615" class="collapse">
@@ -378,13 +378,13 @@
                                 </tr>
                                 @if(count($attachments) > 0)
                                     @foreach($attachments as $attachment)
-                                        @if($attachment->attachmenttype == '615' && $attachment->ofd6id == $injury->ofd6id )
+                                        @if($attachment->attachmenttype == '615')
                                             <tr>
                                                 <td>
-                                                    <a href="{{ asset('uploads/'.$attachment->attachmentname) }}"> {{$attachment->attachmentname}}</a>
+                                                    <a href="{{ asset('uploads/'.$attachment->attachmentname) }}" id="attachments5"> {{$attachment->attachmentname}}</a>
                                                 </td>
                                                 <td>
-                                                    {{$attachment->created_at}}</a>
+                                                    {{$attachment->created_at}}
                                                 </td>
                                             </tr>
                                         @endif
@@ -403,7 +403,7 @@
                 <div class="col-sm-12 form-group well well-sm">
                     <div class="col-sm-4">
                         <a class="btn btn-primary dropdown-toggle col-sm-12" data-toggle="collapse"
-                           data-target="#616"><i class="fa fa-eye" aria-hidden="true"></i> View Previously uploaded
+                           data-target="#616" id="previousButton6"><i class="fa fa-eye" aria-hidden="true"></i> View Previously uploaded
                             file(s)
                         </a>
                         <div id="616" class="collapse">
@@ -415,13 +415,13 @@
                                 </tr>
                                 @if(count($attachments) > 0)
                                     @foreach($attachments as $attachment)
-                                        @if($attachment->attachmenttype == '616' && $attachment->ofd6id == $injury->ofd6id )
+                                        @if($attachment->attachmenttype == '616')
                                             <tr>
                                                 <td>
-                                                    <a href="{{ asset('uploads/'.$attachment->attachmentname) }}"> {{$attachment->attachmentname}}</a>
+                                                    <a href="{{ asset('uploads/'.$attachment->attachmentname) }}" id="attachments6"> {{$attachment->attachmentname}}</a>
                                                 </td>
                                                 <td>
-                                                    {{$attachment->created_at}}</a>
+                                                    {{$attachment->created_at}}
                                                 </td>
                                             </tr>
                                         @endif
@@ -438,7 +438,7 @@
                 <div class="col-sm-6 form-group">
                     {!! Form::label('captainid', 'Complete FRMS Casuality & Narrative Tab - Fire service and Fire Service Injury', ['class' => 'col-sm-6 control-label']) !!}
                     <div class="col-sm-6 ">
-                        {!! Form::text('captainid', old('captainid'), array('class' => 'form-control','placeholder'=>'Enter FRMS Number here','required' => 'required','disabled'=>'disabled'))!!}
+                        {!! Form::text('captainid', old('captainid'), array('class' => 'form-control','id' => 'captainid','placeholder'=>'Enter FRMS Number here','required' => 'required','disabled'=>'disabled'))!!}
                         <p class="help-block"></p>
                         @if($errors->has('captainid'))
                             <p class="help-block">
@@ -453,7 +453,7 @@
                 <div class="col-sm-6 form-group">
                     {!! Form::label('captainid', 'Complete in EPCR - All Cases', ['class' => 'col-sm-6 control-label']) !!}
                     <div class="col-sm-6 ">
-                        {!! Form::text('captainid', old('captainID'), array('class' => 'form-control','placeholder'=>'Enter EPCR Number here','required' => 'required','disabled'=>'disabled')) !!}
+                        {!! Form::text('captainid', old('captainID'), array('class' => 'form-control','id'=>'epcrID','placeholder'=>'Enter EPCR Number here','required' => 'required','disabled'=>'disabled')) !!}
                         <p class="help-block"></p>
                         @if($errors->has('captainid'))
                             <p class="help-block">
@@ -486,7 +486,7 @@
                 <div class="col-sm-12 form-group">
                     {!! Form::label('trainingassigned', 'In case attend Omaha Police Academy - Training Assigned', array('class' => 'col-sm-4 control-label','disabled'=>'disabled')) !!}
                     <div class="col-sm-6">
-                        {!! Form::text('trainingassigned',$injury->trainingassigned ,['disabled'],array('class' => 'form-control'))!!}
+                        {!! Form::text('trainingassigned',$injury->trainingassigned ,['disabled'],array('class' => 'form-control', 'id'=>'trainingText'))!!}
                         <p class="help-block"></p>
                         @if($errors->has('shift'))
                             <p class="help-block">
@@ -524,7 +524,7 @@
             </div>
             <div class="col-sm-12 panel-heading" align="center">
                 <div class="btn-bottom ">
-                    <a href="{{ route('injuries.index') }}" class="btn btn-danger">Cancel</a>
+                    <a href="{{ route('injuries.index') }}" class="btn btn-danger" id="cancelButton">Cancel</a>
                 </div>
             </div>
         </div>
@@ -533,18 +533,18 @@
         <div class="panel panel-default">
             <div class="panel-body">
                 <div class="titleBox">
-                    <label>Comments </label>
+                    <label>Comments</label>
                 </div>
                 @if($injury->captainid == Auth::user()->id ||
                 $injury->battalionchiefid == Auth::user()->id ||
                 $injury->aconduty == Auth::user()->id ||
                 Auth::user()->roleid == 1)
-                    {!! Form::open(['method' => 'POST', 'route' => ['comments.store'],]) !!}
+                    {!! Form::open(['method' => 'POST', 'route' => ['comments.store']]) !!}
                     <div class="row">
                         <div class="col-sm-12">
                             <div class="form-group">
                                 <div class="form-group" style="width:100%; position:relative">
-                                    {{ Form::textarea('comment', null, ['class' => 'form-control', 'placeholder' => 'Add your comment', 'rows' => '4']) }}
+                                    {{ Form::textarea('comment', null, ['class' => 'form-control', 'id'=>'commentsBox', 'placeholder' => 'Add your comment', 'rows' => '4']) }}
                                 </div>
                                 {{ Form::hidden('applicationtype', '6') }}
                                 {{ Form::hidden('applicationid', $injury->ofd6id) }}
@@ -553,7 +553,7 @@
                                         Visible to applicant</strong></label>
                                 <div class="col-sm-12" align="center">
                                     <div class="col-sm-4">
-                                        {{ Form::submit('Post Comment', array('class' => 'btn btn-block btn-primary')) }}
+                                        {{ Form::submit('Post Comment', array('class' => 'btn btn-block btn-primary', 'id' => 'commentButton')) }}
                                     </div>
                                     @if($injury->captainid == Auth::user()->id && $injury->applicationstatus ==        DB::table('status')->where('statustype','Application under Captain')->value('statusid') ||
                                     $injury->battalionchiefid == Auth::user()->id&&$injury->applicationstatus ==       DB::table('status')->where('statustype','Application under Batallion Chief')->value('statusid')||
@@ -561,11 +561,11 @@
 )
                                         <div class="col-sm-4">
                                             <a href="{{ url('/injuries/'.$injury->ofd6id .'/Approve') }}"
-                                               class="btn btn-block btn-success">Approve</a>
+                                               class="btn btn-block btn-success" id="approveButton">Approve</a>
                                         </div>
                                         <div class="col-sm-4">
                                             <button type="button" class="btn btn-block btn-danger" data-toggle="modal"
-                                                    data-target="#myModal">
+                                                    data-target="#myModal" id="rejectButton">
                                                 Reject
                                             </button>
                                         </div>
@@ -581,7 +581,7 @@
                     <ul class="commentList">
                         @if (!empty($comments))
                             @foreach ($comments as $cm)
-                                @if(($cm->applicationid == $injury->ofd6id && $cm->applicationtype == '6')&&
+                                @if( $cm->applicationtype == '6' &&
                                 (($injury->injuredemployeeid == Auth::user()->id && $cm->isvisible == 1)  ||
                                 $injury->captainid == Auth::user()->id ||
                                 $injury->battalionchiefid == Auth::user()->id ||
@@ -604,6 +604,18 @@
                                                           datetime="{{$cm->created_at}}"><i
                                                                 class="fa fa-clock-o"></i> {{$cm->created_at}}
                                                     </time>
+                                                </div>
+                                                <div class="pull-right meta">
+                                                    @if(Auth::user()->id == $cm->createdby )
+                                                        {!! Form::open(array(
+                    'style' => 'display: inline-block;',
+                    'method' => 'DELETE',
+                    'onsubmit' => "return confirm('".trans("Are you sure?")."');",
+                    'route' => ['comments.destroy', $cm->commentid])) !!}
+                                                        {!! Form::button('<i class="fa fa-trash-o"></i>', array('type' => 'submit', 'class' => ''))!!}
+                                                        {!! Form::close() !!}
+                                                    @endif
+
                                                 </div>
                                             </div>
                                             <div class="post-description">
@@ -635,7 +647,7 @@
                 <div class="modal-footer">
                     <a href="{{ url('/injuries/'.$injury->ofd6id .'/Reject') }}"
                        class="btn btn-success">Yes</a>
-                    <button type="button" class=" btn btn-danger" data-dismiss="modal" aria-label="">No</button>
+                    <button type="button" class=" btn btn-danger" data-dismiss="modal" id="noButton" aria-label="">No</button>
                 </div>
 
             </div>

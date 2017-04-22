@@ -19,18 +19,18 @@
             <ul class="nav navbar-nav">
                 <li><a href="{{ url('/') }}"><strong>OMAHA FIRE DEPARTMENT</strong></a></li>
                 <li data-toggle="tooltip" class="tip nav-icon" data-placement="bottom" title="Home"><a
-                            href="{{ url('/') }}"><i class="fa fa-home fa-lg" aria-hidden="true"></i></a></li>
+                            href="{{ url('/') }}" id="homeButton"><i class="fa fa-home fa-lg" aria-hidden="true"></i></a></li>
                 <li data-toggle="tooltip" class="tip nav-icon" data-placement="bottom" title="OFD 6"><a
-                            href="{{ route('injuries.index') }}"><i class="fa fa-medkit fa-lg"
+                            href="{{ route('injuries.index') }}" id="injuriesButton"><i class="fa fa-medkit fa-lg"
                                                                     aria-hidden="true"></i></a></li>
                 <li data-toggle="tooltip" class="tip nav-icon" data-placement="bottom" title="OFD 6A"><a
-                            href="{{ route('accidents.index') }}"><i class="fa fa-ambulance fa-lg"
+                            href="{{ route('accidents.index') }}" id="accidentsButton"><i class="fa fa-ambulance fa-lg"
                                                                      aria-hidden="true"></i></a></li>
                 <li data-toggle="tooltip" class="tip nav-icon" data-placement="bottom" title="OFD 6B"><a
-                            href="{{ route('biologicals.index') }}"><i class="fa fa-exclamation-triangle fa-lg"
+                            href="{{ route('biologicals.index') }}"  id="biologicalsButton"><i class="fa fa-exclamation-triangle fa-lg"
                                                                        aria-hidden="true"></i></a></li>
                 <li data-toggle="tooltip" class="tip nav-icon" data-placement="bottom" title="OFD 6C"><a
-                            href="{{ route('hazmat.index') }}"><i class="fa fa-plus-square fa-tags"
+                            href="{{ route('hazmat.index') }}"  id="hazmatsButton"><i class="fa fa-plus-square fa-tags"
                                                                   aria-hidden="true"></i></a></li>
             </ul>
 
