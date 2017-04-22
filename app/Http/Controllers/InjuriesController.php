@@ -247,7 +247,7 @@ class InjuriesController extends Controller
             'documentoperationalday' => 'required',
             'shift' => 'required|string:injury,shift,',
             'trainingassigned' => 'required|string:injury,shift,',
-            'frmsincidentnum' => 'required|string:injury,frmsincidentnum',
+            'frmsincidentnum1' => 'required|integer:injury,frmsincidentnum',
             'policeofficercompletesign' => 'required',
             'callsupervisor' => 'required',
 

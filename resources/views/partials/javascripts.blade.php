@@ -49,31 +49,31 @@ $(function addZero() {
         
         if($('#text1').val().length == 7)
         {
-        text2.val((text1.val()));   
+        text2.val(parseInt(text1.val()));   
         }
 		else if($('#text1').val().length == 6)
         {
-        text2.val('0' + text1.val());   
+        text2.val(parseInt('0' + text1.val()));   
         }
        else if($('#text1').val().length == 5)
         {
-        text2.val('00' + text1.val());   
+        text2.val(parseInt('00' + text1.val()));   
         }
 		else if($('#text1').val().length == 4)
         {
-        text2.val('000' + text1.val());   
+        text2.val(parseInt('000' + text1.val()));   
         }
 		else if($('#text1').val().length == 3)
 		{
-        text2.val('0000' + text1.val());   
+        text2.val(parseInt('0000' + text1.val()));   
         }
 		else if($('#text1').val().length == 2)
         {
-        text2.val('00000' + text1.val());   
+        text2.val(parseInt('00000' + text1.val()));   
         }
 		else if($('#text1').val().length == 1)
         {
-        text2.val('000000' + text1.val());   
+        text2.val(parseInt('000000' + text1.val()));   
         }
     });
 });

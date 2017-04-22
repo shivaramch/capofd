@@ -117,7 +117,7 @@
                         <div class="col-sm-4 form-group">
                             {!! Form::label('frmsincidentnum', 'FRMS Incident#', array('style'=>'padding-top:7px;','class' => 'col-sm-4 control-label')) !!}
                             <div class="col-sm-6 ">
-                                {!! Form::text('frmsincidentnum12', old('frmsincidentnum12'), array('id'=>'text1', 'class' => 'form-control','placeholder'=>'Enter FRMS Number'))!!}
+                                {!! Form::text('frmsincidentnum1', old('frmsincidentnum1'), array('id'=>'text1', 'class' => 'form-control','placeholder'=>'Enter FRMS Number'))!!}
                                 {!! Form::text('frmsincidentnum', old('frmsincidentnum'), array('id'=>'text2', 'class' => 'form-control','placeholder'=>'Enter FRMS Number', 'style'=>'display:none;'))!!}
                                 <p class="help-block"></p>
                                 @if($errors->has('frmsincidentnum'))
@@ -196,7 +196,7 @@
             </div>
             <div class="col-sm-12 form-group">
                 <div class="form-group">
-                    {{ Form::checkbox('checkbox1', 1, null, ['id'=>'checkbox1', 'class' => 'className' ]) }}
+                    {{ Form::checkbox('checkbox1', 1, null, ['id'=>'checkbox1', 'class' => 'className', 'disabled']) }}
                     {{Form::label('checkbox1','Fill out OFD-025 Hazmat Exposure Report form')}}
                 </div>
                 {{--}}  <label class="col-sm-4">
@@ -214,7 +214,9 @@
                             <label class="input-group-btn">
                     <span class="btn btn-info">
                         <i class="fa fa-cloud-upload" aria-hidden="true"></i> Upload<input type="file" name="OFD025"
-                                                                                           style="display: none;">
+						                                                                    id="ofd25Upload"
+                                                                                           style="display: none;"
+																						   onchange="pressed()">
                     </span>
                             </label>
                             <input type="text" id="upload-file-info" class="form-control" readonly>
@@ -224,7 +226,7 @@
             </div>
             <div class="col-sm-12 form-group">
                 <div class="form-group">
-                    {{ Form::checkbox('checkbox2', 1, null, ['id'=>'checkbox2', 'class' => 'className' ]) }}
+                    {{ Form::checkbox('checkbox2', 1, null, ['id'=>'checkbox2', 'class' => 'className', 'disabled']) }}
                     {{Form::label('checkbox2','Miscellaneous Documents')}}
                 </div>
                 <div class="col-sm-12 form-group well well-sm">
@@ -233,7 +235,9 @@
                             <label class="input-group-btn">
                     <span class="btn btn-info">
                         <i class="fa fa-cloud-upload" aria-hidden="true"></i> Upload<input type="file" name="mischazmat"
-                                                                                           style="display: none;">
+						                                                                    id="miscUpload"
+                                                                                           style="display: none;"
+																						   onchange="pressed1()">
                     </span>
                             </label>
                             <input type="text" id="upload-file-info" class="form-control" readonly>
@@ -301,4 +305,28 @@
         </div>
     </div>
     {!! Form::close() !!}
+	<script>
+window.pressed = function(){
+    var a = document.getElementById('ofd25Upload');
+    if(a.value == "")
+    {
+        
+    }
+    else
+    {
+       document.getElementById("checkbox1").checked = true;
+    }
+};
+window.pressed1 = function(){
+    var a = document.getElementById('miscUpload');
+    if(a.value == "")
+    {
+        
+    }
+    else
+    {
+       document.getElementById("checkbox2").checked = true;
+    }
+};
+</script>
 @stop
