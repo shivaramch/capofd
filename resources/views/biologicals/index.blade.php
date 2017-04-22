@@ -39,6 +39,9 @@
                         <th data-sortable="true">OFD 6B ID</th>
                         <th data-sortable="true">Date of Exposure</th>
                         <th data-sortable="true">Assignment</th>
+                        <th data-sortable="true">Type of Exposure</th>
+                        <th data-sortable="true">Injured?</th>
+                        <th data-sortable="true">FRMS Incident Number</th>
                         <th data-sortable="true">Status</th>
                         <th data-switchable="false" data-searchable="false" data-sortable="false">Action</th>
                     </tr>
@@ -50,6 +53,15 @@
                                 <td>{{ $biological->ofd6bid }}</td>
                                 <td>{{ $biological->dateofexposure }}</td>
                                 <td>{{ $biological->assignmentbiological }}</td>
+                                @if($biological->exposure == 0)
+                                    <td>True Exposure
+                                </td>
+                                @else
+                                    <td>Contamination
+                                    </td>
+                                @endif
+                                <td>{{ $biological->exposureinjury }}</td>
+                                <td>{{ $biological->frmsincidentnum }}</td>
                                 <td>{{ DB::table('status')->where('statusid',$biological->applicationstatus)->value('statustype') }}</td>
                                 <td>
                                     <div>
@@ -92,6 +104,9 @@
                         <th data-sortable="true">OFD 6B ID</th>
                         <th data-sortable="true">Date of Exposure</th>
                         <th data-sortable="true">Assignment</th>
+                        <th data-sortable="true">Type of Exposure</th>
+                        <th data-sortable="true">Injured?</th>
+                        <th data-sortable="true">FRMS Incident Number</th>
                         <th data-sortable="true">Status</th>
                         <th data-switchable="false" data-searchable="false" data-sortable="false">Action</th>
                     </tr>
@@ -104,6 +119,9 @@
                                 <td>{{ $biological->ofd6bid }}</td>
                                 <td>{{ $biological->dateofexposure }}</td>
                                 <td>{{ $biological->assignmentbiological }}</td>
+                                <td>{{ $biological->exposure }}</td>
+                                <td>{{ $biological->exposureinjury }}</td>
+                                <td>{{ $biological->frmsincidentnum }}</td>
                                 <td>{{ DB::table('status')->where('statusid',$biological->applicationstatus)->value('statustype') }}</td>
                                 <td>
                                     <div>

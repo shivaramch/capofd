@@ -400,12 +400,12 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-12">
-                    <div class="form-group">
-                        {{ Form::checkbox('potbagtag', 1, null, ['id' => 'potbagtag', 'class'=>'className']) }}
-                        {{Form::label('potbagtag','Bag & Tag clothing if applicable - send email to PSS with pick-up location ')}}
-                    </div>
-                </div>
+                {{--<div class="col-sm-12">--}}
+                    {{--<div class="form-group">--}}
+                        {{--{{ Form::checkbox('potbagtag', 1, null, ['id' => 'potbagtag', 'class'=>'className']) }}--}}
+                        {{--{{Form::label('potbagtag','Bag & Tag clothing if applicable - send email to PSS with pick-up location ')}}--}}
+                    {{--</div>--}}
+                {{--</div>--}}
                 <div class="col-sm-12">
                     <div class="form-group">
                         {{ Form::checkbox('potppe', 1, null, ['id' => 'potppe', 'class'=>'className']) }}
@@ -440,7 +440,8 @@
                 <div class="col-sm-2">
                     {!! Form::select('exposureinjury',[
                       'Yes' => 'Yes',
-                      'No' => 'No'],'required',
+                      'No' => 'No'],null,
+                      ['placeholder' => 'Choose One'],'required',
                     ['class' => 'form-control'])!!}
                     <p class="help-block"></p>
                     @if($errors->has('exposureinjury'))
