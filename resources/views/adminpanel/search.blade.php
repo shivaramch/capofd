@@ -182,7 +182,7 @@
         {{--end OFD 6b--}}
 
         {{--start OFD 6c--}}
-        <div class="panel panel-default panel-shadow Search" id="create-4" hidden>
+        <div class="panel panel-default Search" id="create-4" hidden>
             <div class="panel-heading">
                 Previously filled OFD 6C
             </div>
@@ -200,7 +200,7 @@
                         <th data-sortable="true">OFD 6C ID</th>
                         <th data-sortable="true">Date of Exposure</th>
                         <th data-sortable="true">Assignment</th>
-
+                        <th data-sortable="true">Status</th>
                         <th data-switchable="false" data-searchable="false" data-sortable="false">Action</th>
                     </tr>
                     </thead>

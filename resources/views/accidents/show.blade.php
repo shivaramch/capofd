@@ -588,7 +588,7 @@
             </div>
             <div class="col-sm-12 panel-heading" align="center">
                 <div class="btn-bottom ">
-                    <a href="{{ route('accidents.index') }}" class="btn btn-danger">Cancel</a>
+                    <a href="{{ route(URL::previous()) }}" class="btn btn-danger">Cancel</a>
                 </div>
             </div>
         </div>

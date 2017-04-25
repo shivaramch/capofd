@@ -348,7 +348,7 @@
                         <button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal">
                             Submit
                         </button>
-                        <a href="{{ route('hazmat.index') }}" class="btn btn-danger">Cancel</a>
+                        <a href="{{ URL::previous() }}" class="btn btn-danger">Cancel</a>
                     </div>
                 </div>
             </div>

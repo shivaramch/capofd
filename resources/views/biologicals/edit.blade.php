@@ -574,7 +574,7 @@
                                 data-target="#myModal">
                             Submit
                         </button>
-                        <a href="{{ route('biologicals.index') }}"
+                        <a href="{{ URL::previous() }}"
                            class="btn btn-danger">Cancel</a>
                     </div>
                 </div>

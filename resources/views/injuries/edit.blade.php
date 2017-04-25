@@ -658,7 +658,7 @@
                             <button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal">
                                 Submit
                             </button>
-                            <a href="{{ route('injuries.index') }}" class="btn btn-danger" id="cancelButton">Cancel</a>
+                            <a href="{{ URL::previous() }}" class="btn btn-danger" id="cancelButton">Cancel</a>
                         </div>
                         <br>
                     </div>
