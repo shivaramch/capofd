@@ -1,6 +1,26 @@
 @extends('layouts.app')
 @section('content')
+    <script>
+        $(document).ready(function() {
+            src = "{{ route('searchajax') }}";
+            $("#assignmentinjury").autocomplete({
+                source: function(request, response) {
+                    $.ajax({
+                        url: src,
+                        dataType: "json",
+                        data: {
+                            term : request.term
+                        },
+                        success: function(data) {
+                            response(data);
 
+                        }
+                    });
+                },
+                minLength: 1,
+            });
+        });
+    </script>
 @section('crumbs')
     <ol class="breadcrumb">
         <a class="btn btn-default" type="button"
@@ -14,7 +34,6 @@
 {!! Form::open(['method' => 'POST', 'url' => '/injuries/save', 'files' => true,]) !!}
 <input type="hidden" name="_token" value="{!!  'csrf_token()' !!}">
 {{ csrf_field() }}
-
 <div class="panel panel-default">
     <div class="panel-heading">
         <div class="jumbotron" style="margin-bottom: 5px; ">
