@@ -186,13 +186,13 @@
                             </tr>
                             @if(count($attachments) > 0)
                                 @foreach($attachments as $attachment)
-                                    @if($attachment->attachmenttype == 'ltdduty' && $attachment->limiteddutyid == $limitedduty->limiteddutyid )
+                                    @if($attachment->attachmenttype == 'ltdduty' )
                                         <tr>
                                             <td>
                                                 <a href="{{ asset('uploads/'.$attachment->attachmentname) }}"> {{$attachment->attachmentname}}</a>
                                             </td>
                                             <td>
-                                                {{$attachment->created_at}}</a>
+                                                {{$attachment->created_at}}
                                             </td>
                                         <tr>@endif
                                 @endforeach

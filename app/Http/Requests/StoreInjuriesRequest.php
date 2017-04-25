@@ -56,7 +56,7 @@ class StoreInjuriesRequest extends FormRequest
             'documentoperationalday' => 'required',
             'shift' => 'required|string:injury,shift,'. $this->route('injury'),
             'trainingassigned' => 'required|string:injury,shift,'. $this->route('injury'),
-            'frmsincidentnum' => 'required|string:injury,frmsincidentnum'. $this->route('injury'),
+            'frmsincidentnum1' => 'required|integer:injury,frmsincidentnum'. $this->route('injury'),
             'policeofficercompletesign' => 'required',
             'callsupervisor' => 'required',
         ];

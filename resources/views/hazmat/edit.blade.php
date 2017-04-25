@@ -241,13 +241,13 @@
 
                                 @if(count($attachments) > 0)
                                     @foreach($attachments as $attachment)
-                                        @if($attachment->attachmenttype == '6c' && $attachment->createdby ==  Auth::user()->id && $attachment->ofd6cid == $hazmat->ofd6cid )
+                                        @if($attachment->attachmenttype == '6c')
                                             <tr>
                                                 <td>
                                                     <a href="{{ asset('uploads/'.$attachment->attachmentname) }}"> {{$attachment->attachmentname}}</a>
                                                 </td>
                                                 <td>
-                                                    {{$attachment->created_at}}</a>
+                                                    {{$attachment->created_at}}
                                                 </td>
                                             </tr>
                                         @endif
@@ -292,13 +292,13 @@
 
                                 @if(count($attachments) > 0)
                                     @foreach($attachments as $attachment)
-                                        @if($attachment->attachmenttype == '6c1' && $attachment->createdby ==  Auth::user()->id && $attachment->ofd6cid == $hazmat->ofd6cid )
+                                        @if($attachment->attachmenttype == '6c1')
                                             <tr>
                                                 <td>
                                                     <a href="{{ asset('uploads/'.$attachment->attachmentname) }}"> {{$attachment->attachmentname}}</a>
                                                 </td>
                                                 <td>
-                                                    {{$attachment->created_at}}</a>
+                                                    {{$attachment->created_at}}
                                                 </td>
                                             </tr>
                                         @endif
@@ -359,7 +359,7 @@
                         <div class="actionBox">
                             <ul class="commentList">
                                 @foreach ($comments as $cm)
-                                    @if(($cm->applicationid == $hazmat->ofd6aid && $cm->applicationtype == '6C')&&
+                                    @if($cm->applicationtype == '6C' &&
                                     ($hazmat->employeeid == Auth::user()->id && $cm->isvisible == 1))
                                         <div class="col-sm-8">
                                             <div class="panel panel-white post panel-shadow">
