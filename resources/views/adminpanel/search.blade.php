@@ -28,7 +28,56 @@
                 </div>
             </div>
         </div>
+        {{-- start OFD 6--}}
+        <div class="panel panel-default panel-shadow Search" id="create-1" hidden>
+            <div class="panel-heading">
+                Previously filled OFD 6
+            </div>
+            <div class="panel-body">
+                <table data-toolbar="#toolbar"
+                       data-toggle="table"
+                       data-search="true"
+                       data-cookie="true"
+                       data-click-to-select="true"
+                       data-cookie-id-table="station-index-v1.1-1"
+                       data-show-columns="true"
+                       class="table">
+                    <thead>
+                    <tr>
+                        <th data-sortable="true">OFD 6 ID</th>
+                        <th data-sortable="true">Date of Injury</th>
+                        <th data-sortable="true">Assignment</th>
+                        <th data-sortable="true">Status</th>
+                        <th data-switchable="false" data-searchable="false" data-sortable="false">Action</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    @if(count($injuries) > 0)
+                        @foreach($injuries as $injury)
+                            <tr>
+                                <td>{{ $injury->ofd6id }}</td>
+                                <td>{{ $injury->injurydate }}</td>
+                                <td>{{ $injury->assignmentinjury }}</td>
+                                <td>{{ DB::table('status')->where('statusid',$injury->applicationstatus)->value('statustype')}}</td>
+                                <td>
+                                    <div>
+                                        <a href="{{ route('injuries.show',[$injury->ofd6id]) }}"
+                                           class="btn btn-xs btn-info btn-block"><i
+                                                    class="fa fa-eye" aria-hidden="true"></i> VIEW</a>
+                                        <a href="{{ route('injuries.edit',[$injury->ofd6id]) }}"
+                                           class="btn btn-xs btn-warning btn-block"><i class="fa fa-pencil-square-o"
+                                                                                       aria-hidden="true"></i> EDIT</a>
+                                    </div>
+                                </td>
+                            </tr>
+                        @endforeach
+                    @endif
+                    </tbody>
+                </table>
+            </div>
+        </div>
 
+        {{--END OFD 6--}}
         {{--start OFD 6a--}}
         <div class="panel panel-default Search" id="create-2" hidden>
             <div class="panel-heading">
@@ -133,7 +182,6 @@
         {{--end OFD 6b--}}
 
         {{--start OFD 6c--}}
-
         <div class="panel panel-default panel-shadow Search" id="create-4" hidden>
             <div class="panel-heading">
                 Previously filled OFD 6C
@@ -185,56 +233,7 @@
         </div>
         {{--end OFD 6c--}}
 
-        {{-- start OFD 6--}}
-        <div class="panel panel-default panel-shadow Search" id="create-1" hidden>
-            <div class="panel-heading">
-                Previously filled OFD 6
-            </div>
-            <div class="panel-body">
-                <table data-toolbar="#toolbar"
-                       data-toggle="table"
-                       data-search="true"
-                       data-cookie="true"
-                       data-click-to-select="true"
-                       data-cookie-id-table="station-index-v1.1-1"
-                       data-show-columns="true"
-                       class="table">
-                    <thead>
-                    <tr>
-                        <th data-sortable="true">OFD 6 ID</th>
-                        <th data-sortable="true">Date of Injury</th>
-                        <th data-sortable="true">Assignment</th>
-                        <th data-sortable="true">Status</th>
-                        <th data-switchable="false" data-searchable="false" data-sortable="false">Action</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    @if(count($injuries) > 0)
-                        @foreach($injuries as $injury)
-                            <tr>
-                                <td>{{ $injury->ofd6id }}</td>
-                                <td>{{ $injury->injurydate }}</td>
-                                <td>{{ $injury->assignmentinjury }}</td>
-                                <td>{{ DB::table('status')->where('statusid',$injury->applicationstatus)->value('statustype')}}</td>
-                                <td>
-                                    <div>
-                                        <a href="{{ route('injuries.show',[$injury->ofd6id]) }}"
-                                           class="btn btn-xs btn-info btn-block"><i
-                                                    class="fa fa-eye" aria-hidden="true"></i> VIEW</a>
-                                        <a href="{{ route('injuries.edit',[$injury->ofd6id]) }}"
-                                           class="btn btn-xs btn-warning btn-block"><i class="fa fa-pencil-square-o"
-                                                                                       aria-hidden="true"></i> EDIT</a>
-                                    </div>
-                                </td>
-                            </tr>
-                        @endforeach
-                    @endif
-                    </tbody>
-                </table>
-            </div>
-        </div>
 
-        {{--END OFD 6--}}
     @else
         <div class="panel-body">
             <div class="form-horizontal">
