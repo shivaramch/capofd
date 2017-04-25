@@ -56,7 +56,7 @@
                     <div class="col-sm-4 form-group">
                         {!! form::label('accidentdate', 'Date of Accident:',array('style'=>'padding-top:7px;','class'=> 'col-sm-4 control-label') )!!}
                         <div class="col-sm-6 ">
-                            {!! form::text('accidentdate', old('accidentdate'), ['disabled'],array('id'=>'datepicker1','class' => 'form-control datepicker', 'placeholder' => 'yyyy-mm-dd'))!!}
+                            {!! form::text('accidentdate', old('accidentdate'),array('id'=>'datepicker1','class' => 'form-control datepicker', 'disabled' => "disabled"))!!}
                             <p class="help-block"></p>
                             @if($errors->has('accidentdate'))
                                 <p class="help-block">
@@ -68,7 +68,7 @@
                     <div class="col-sm-4 form-group">
                         {!! form::label('driverid', 'Driver id#', array('style'=>'padding-top:7px;','class' => 'col-sm-4 control-label')) !!}
                         <div class="col-sm-6 ">
-                            {!! form::text('driverid', old('driverid'), ['disabled'],array('class'=>'form-control'))!!}
+                            {!! form::text('driverid', old('driverid'),array('class'=>'form-control','disabled' => "disabled"))!!}
                             <p class="help-block"></p>
                             @if($errors->has('driverid'))
                                 <p class="help-block">
@@ -80,7 +80,7 @@
                     <div class="col-sm-4 form-group">
                         {!! form::label('drivername', 'Driver name',array( 'style'=>'padding-top:7px;','class' => 'col-sm-4 control-label')) !!}
                         <div class="col-sm-6 ">
-                            {!! form::text('drivername', old('drivername'),['disabled'], array('class'=>'form-control'))!!}
+                            {!! form::text('drivername', old('drivername'),array('class'=>'form-control','disabled' => "disabled"))!!}
                             <p class="help-block"></p>
                             @if($errors->has('drivername'))
                                 <p class="help-block">
@@ -94,7 +94,7 @@
                     <div class="col-sm-4 form-group">
                         {!! form::label('frmsincidentnum', 'FRMS Incident #', array('style'=>'padding-top:7px;','class' => 'col-sm-4 control-label')) !!}
                         <div class="col-sm-6 ">
-                            {!! form::text('frmsincidentnum', old('frmsincidentnum'),['disabled'], ['class' => 'form-control'])!!}
+                            {!! form::text('frmsincidentnum', old('frmsincidentnum'), ['class' => 'form-control','disabled' => "disabled"])!!}
                             <p class="help-block"></p>
                             @if($errors->has('frmsincidentnum'))
                                 <p class="help-block">
@@ -106,7 +106,7 @@
                     <div class="col-sm-4 form-group">
                         {!! form::label('assignmentaccident', 'Assignment', array('style'=>'padding-top:7px;','class' => 'col-sm-4 control-label')) !!}
                         <div class="col-sm-6 ">
-                            {!! form::text('assignmentaccident', old('assignmentaccident'),['disabled'], ['class' => 'form-control'])!!}
+                            {!! form::text('assignmentaccident', old('assignmentaccident'), ['class' => 'form-control','disabled' => "disabled"])!!}
                             <p class="help-block"></p>
                             @if($errors->has('assignmentaccident'))
                                 <p class="help-block">
@@ -118,7 +118,7 @@
                     <div class="col-sm-4 form-group">
                         {!! form::label('apparatus', 'Apparatus', array('style'=>'padding-top:7px;','class' => 'col-sm-4 control-label')) !!}
                         <div class="col-sm-6 ">
-                            {!! form::text('apparatus', old('apparatus'),['disabled'], ['class' => 'form-control'])!!}
+                            {!! form::text('apparatus', old('apparatus'), ['class' => 'form-control','disabled' => "disabled"])!!}
                             <p class="help-block"></p>
                             @if($errors->has('apparatus'))
                                 <p class="help-block">
@@ -132,7 +132,7 @@
                     <div class="col-sm-4 form-group">
                         {!! form::label('captainid', 'Captain #', array('style'=>'padding-top:7px;','class' => 'col-sm-4 control-label')) !!}
                         <div class="col-sm-6 ">
-                            {!! form::text('captainid', old('captainid'), ['disabled'],array('class' => 'form-control',))!!}
+                            {!! form::text('captainid', old('captainid'),array('class' => 'form-control','disabled' => "disabled"))!!}
                             <p class="help-block"></p>
                             @if($errors->has('captainid'))
                                 <p class="help-block">
@@ -144,7 +144,7 @@
                     <div class="col-sm-4 form-group">
                         {!! form::label('battalionchiefid', 'Battalion Chief #', array('style'=>'padding-top:7px;','class' => 'col-sm-4 control-label')) !!}
                         <div class="col-sm-6 ">
-                            {!! form::text('battalionchiefid', old('battalionchiefid'),['disabled'], array('class' => 'form-control'))!!}
+                            {!! form::text('battalionchiefid', old('battalionchiefid'), array('class' => 'form-control','disabled' => "disabled"))!!}
                             <p class="help-block"></p>
                             @if($errors->has('battalionchiefid'))
                                 <p class="help-block">
@@ -156,7 +156,7 @@
                     <div class="col-sm-4 form-group">
                         {!! form::label('aconduty', 'Assistant Chief #', array('style'=>'padding-top:7px;','class' => 'col-sm-4 control-label')) !!}
                         <div class="col-sm-6 ">
-                            {!! form::text('aconduty', old('aconduty'), ['disabled'],array('class' => 'form-control'))!!}
+                            {!! form::text('aconduty', old('aconduty'),array('class' => 'form-control','disabled' => "disabled"))!!}
                             <p class="help-block"></p>
                             @if($errors->has('aconduty'))
                                 <p class="help-block">
