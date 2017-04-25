@@ -1,6 +1,26 @@
 @extends('layouts.app')
 @section('content')
+    <script>
+        $(document).ready(function() {
+            src = "{{ route('searchajax') }}";
+            $("#assignmentinjury").autocomplete({
+                source: function(request, response) {
+                    $.ajax({
+                        url: src,
+                        dataType: "json",
+                        data: {
+                            term : request.term
+                        },
+                        success: function(data) {
+                            response(data);
 
+                        }
+                    });
+                },
+                minLength: 1,
+            });
+        });
+    </script>
 @section('crumbs')
     <ol class="breadcrumb">
         <a class="btn btn-default" type="button"
@@ -14,7 +34,6 @@
 {!! Form::open(['method' => 'POST', 'url' => '/injuries/save', 'files' => true,]) !!}
 <input type="hidden" name="_token" value="{!!  'csrf_token()' !!}">
 {{ csrf_field() }}
-
 <div class="panel panel-default">
     <div class="panel-heading">
         <div class="jumbotron" style="margin-bottom: 5px; ">
@@ -157,7 +176,7 @@
                 <div class="col-sm-4 form-group">
                     {!! Form::label('frmsincidentnum', 'FRMS Incident #', ['class' => 'col-sm-4 control-label']) !!}
                     <div class="col-sm-6 ">
-					{!! Form::text('frmsincidentnum12', old('frmsincidentnum12'), array('id'=>'text1', 'class' => 'form-control','placeholder'=>'Enter FRMS Number'))!!}
+					{!! Form::text('frmsincidentnum1', old('frmsincidentnum1'), array('id'=>'text1', 'class' => 'form-control','placeholder'=>'Enter FRMS Number'))!!}
                         {!! Form::text('frmsincidentnum', old('frmsincidentnum'), array('id'=>'text2', 'class' => 'form-control','placeholder'=>'Enter FRMS Number', 'style'=>'display:none;'))!!}
                         <p class="help-block"></p>
                         @if($errors->has('frmsincidentnum'))
@@ -234,7 +253,7 @@
         <div class="row">
             <div class="col-sm-12 form-group">
                 <div class="form-group">
-                    {{ Form::checkbox('checkbox1', 1, null, ['id' => 'corvelAbilityReport', 'class' => 'className' ]) }}
+                    {{ Form::checkbox('checkbox1', 1, null, ['id' => 'corvelAbilityReport', 'class' => 'className' , 'disabled']) }}
                     {{Form::label('corvelAbilityReport','Complete CorVel Work Ability Report Form - Only if seeking medical attention. Complete "Employee Section" and sign at bottom.')}}
 					
 					
@@ -253,10 +272,12 @@
                     <span class="btn btn-info">
                         <i class="fa fa-cloud-upload" aria-hidden="true"></i> Upload<input type="file" id="corvelUpload"
                                                                                            name="CorvelAttachmentName"
-                                                                                           style="display: none;">
+                                                                                           style="display: none;"
+																						   onchange="pressed()"
+																						   >
                     </span>
                         </label>
-                        <input type="text" id="upload-file-info" class="form-control" readonly>
+                        <input type="text" id="upload-file-info1" class="form-control" readonly>
                     </div>
                 </div>
             </div>
@@ -265,7 +286,7 @@
         <div class="row">
             <div class="col-sm-12 form-group">
                 <div class="form-group">
-                    {{ Form::checkbox('checkbox2', 1, null, ['id'=>'investigationReport', 'class' => 'className' ]) }}
+                    {{ Form::checkbox('checkbox2', 1, null, ['id'=>'investigationReport', 'class' => 'className' , 'disabled']) }}
                     {{Form::label('investigationReport','Complete Investigation Report for
                     Occupational Injury or Illness Form - Both employee and supervisor must complete and sign.')}}
                 </div>
@@ -286,7 +307,8 @@
                     <span class="btn btn-info">
                         <i class="fa fa-cloud-upload" aria-hidden="true"></i> Upload<input type="file" id="reportUpload"
                                                                                            name="InvestigationAttachment"
-                                                                                           style="display: none;">
+                                                                                           style="display: none;"
+																						   onchange="pressed1()">
                     </span>
                         </label>
                         <input type="text" id="upload-file-info" class="form-control" readonly>
@@ -298,7 +320,7 @@
         <div class="row">
             <div class="col-sm-12 form-group">
                 <div class="form-group">
-                    {{ Form::checkbox('checkbox3', 1, null, ['id'=>'witnessStatement', 'class' => 'className' ]) }}
+                    {{ Form::checkbox('checkbox3', 1, null, ['id'=>'witnessStatement', 'class' => 'className' , 'disabled']) }}
                     {{Form::label('witnessStatement','Complete OFD 295a Injury Witness Statement Form')}}
                 </div>
             </div>
@@ -316,7 +338,8 @@
                     <span class="btn btn-info">
                         <i class="fa fa-cloud-upload" aria-hidden="true"></i> Upload<input type="file" id="witnessUpload"
                                                                                            name="StatementAttachment"
-                                                                                           style="display: none;">
+                                                                                           style="display: none;"
+																						   onchange="pressed2()">
                     </span>
                         </label>
                         <input type="text" id="upload-file-info" class="form-control" readonly>
@@ -327,7 +350,7 @@
         <div class="row">
             <div class="col-sm-12 form-group">
                 <div class="form-group">
-                    {{ Form::checkbox('checkbox4', 1, null, ['id'=>'employeeChoice', 'class' => 'className' ]) }}
+                    {{ Form::checkbox('checkbox4', 1, null, ['id'=>'employeeChoice', 'class' => 'className' , 'disabled']) }}
                     {{Form::label('employeeChoice','Complete Employee’s Choice of Physician or Doctor Form - Two signatures required - both section A & B')}}
                 </div>
             </div>
@@ -349,7 +372,8 @@
                     <span class="btn btn-info">
                         <i class="fa fa-cloud-upload" aria-hidden="true"></i> Upload<input type="file" id="employeeUpload"
                                                                                            name="EmployeeAttachment"
-                                                                                           style="display: none;">
+                                                                                           style="display: none;"
+																						   onchange="pressed3()">
                     </span>
                         </label>
                         <input type="text" id="upload-file-info" class="form-control" readonly>
@@ -360,7 +384,7 @@
         <div class="row">
             <div class="col-sm-12 form-group">
                 <div class="form-group">
-                    {{ Form::checkbox('checkbox5', 1, null, ['id'=>'ofd25', 'class' => 'className' ]) }}
+                    {{ Form::checkbox('checkbox5', 1, null, ['id'=>'ofd25', 'class' => 'className', 'disabled']) }}
                     {{Form::label('ofd25','Complete OFD 25 Injury Intradepartmental Communication Form - Send an attachment electronically to OmafIOD@cityofomaha.org')}}
                 </div>
             </div>
@@ -377,7 +401,8 @@
                     <span class="btn btn-info">
                         <i class="fa fa-cloud-upload" aria-hidden="true"></i> Upload<input type="file" id="ofd25Upload"
                                                                                            name="Ofd25Attachment"
-                                                                                           style="display: none;">
+                                                                                           style="display: none;"
+																						   onchange="pressed4()">
                     </span>
                         </label>
                         <input type="text" id="upload-file-info" class="form-control" readonly>
@@ -389,7 +414,7 @@
         <div class="row">
             <div class="col-sm-12 form-group">
                 <div class="form-group">
-                    {{ Form::checkbox('checkbox6', 1, null, ['id'=>'miscDocs', 'class' => 'className' ]) }}
+                    {{ Form::checkbox('checkbox6', 1, null, ['id'=>'miscDocs', 'class' => 'className', 'disabled' ]) }}
                     {{Form::label('miscDocs','Miscellaneous Documents')}}
                 </div>
             </div>
@@ -400,7 +425,8 @@
                     <span class="btn btn-info">
                         <i class="fa fa-cloud-upload" aria-hidden="true"></i> Upload<input type="file" id="miscDocsUpload"
                                                                                            name="miscinjuries"
-                                                                                           style="display: none;">
+                                                                                           style="display: none;"
+																						   onchange="pressed5()">
                     </span>
                         </label>
                         <input type="text" id="upload-file-info" class="form-control" readonly>
@@ -501,5 +527,72 @@
         </div>
     </div>
 </div>
-
+<script>
+window.pressed = function(){
+    var a = document.getElementById('corvelUpload');
+    if(a.value == "")
+    {
+        
+    }
+    else
+    {
+       document.getElementById("corvelAbilityReport").checked = true;
+    }
+};
+window.pressed1 = function(){
+    var a = document.getElementById('reportUpload');
+    if(a.value == "")
+    {
+        
+    }
+    else
+    {
+       document.getElementById("investigationReport").checked = true;
+    }
+};
+window.pressed2 = function(){
+    var a = document.getElementById('witnessUpload');
+    if(a.value == "")
+    {
+        
+    }
+    else
+    {
+       document.getElementById("witnessStatement").checked = true;
+    }
+};
+window.pressed3 = function(){
+    var a = document.getElementById('employeeUpload');
+    if(a.value == "")
+    {
+        
+    }
+    else
+    {
+       document.getElementById("employeeChoice").checked = true;
+    }
+};
+window.pressed4 = function(){
+    var a = document.getElementById('ofd25Upload');
+    if(a.value == "")
+    {
+        
+    }
+    else
+    {
+       document.getElementById("ofd25").checked = true;
+    }
+};
+window.pressed5 = function(){
+    var a = document.getElementById('miscDocsUpload');
+    if(a.value == "")
+    {
+        
+    }
+    else
+    {
+       document.getElementById("miscDocs").checked = true;
+    }
+};
+</script>
 @stop

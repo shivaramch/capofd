@@ -228,7 +228,7 @@
 
                 <div class="col-sm-12">
                     <div class="form-group">
-                        {{ Form::checkbox('trueofd184', 1, null, ['id'=>'trueofd184', 'class' => 'className' ]) }}
+                        {{ Form::checkbox('trueofd184', 1, null, ['id'=>'trueofd184', 'class' => 'className',  'disabled']) }}
                         {{Form::label('trueofd184','Complete OFD 184')}}
                     </div>
                     <div class="col-sm-12 form-group well well-sm">
@@ -244,7 +244,9 @@
                                             <span class="btn btn-info"><i class="fa fa-cloud-upload"
                                                                           aria-hidden="true"></i> Upload<input
                                                         type="file" name="trueofd184"
+														id="trueofd184"
                                                         style="display: none;"
+														onchange="pressed()"
                                                         multiple>
                                             </span>
                                 </label>
@@ -255,7 +257,7 @@
                 </div>
                 <div class="col-sm-12">
                     <div class="form-group">
-                        {{ Form::checkbox('miscbiological1', 1, null, ['id'=>'miscbiological1', 'class' => 'className' ]) }}
+                        {{ Form::checkbox('miscbiological1', 1, null, ['id'=>'miscbiological1', 'class' => 'className', 'disabled']) }}
                         {{Form::label('miscbiological1','Miscellaneous Documents')}}
                     </div>
                     <div class="col-sm-12 form-group well well-sm">
@@ -265,7 +267,9 @@
                                             <span class="btn btn-info"><i class="fa fa-cloud-upload"
                                                                           aria-hidden="true"></i> Upload<input
                                                         type="file" name="miscbiological1"
+														id="miscbiological1"
                                                         style="display: none;"
+														onchange="pressed3()"
                                                         multiple>
                                             </span>
                                 </label>
@@ -354,7 +358,7 @@
                 </div>
                 <div class="col-sm-12">
                     <div class="form-group">
-                        {{ Form::checkbox('potofd184', 1, null, ['id'=>'potofd184', 'class' => 'className' ]) }}
+                        {{ Form::checkbox('potofd184', 1, null, ['id'=>'potofd184', 'class' => 'className', 'disabled' ]) }}
                         {{Form::label('potofd184','Complete OFD 184')}}
                     </div>
                     <div class="col-sm-12 form-group well well-sm">
@@ -370,7 +374,9 @@
                                             <span class="btn btn-info"><i class="fa fa-cloud-upload"
                                                                           aria-hidden="true"></i> Upload<input
                                                         type="file" name="potofd184"
+														id="potofd184"
                                                         style="display: none;"
+														onchange="pressed1()"
                                                         multiple>
                                             </span>
                                 </label>
@@ -381,7 +387,7 @@
                 </div>
                 <div class="col-sm-12">
                     <div class="form-group">
-                        {{ Form::checkbox('miscbiological2', 1, null, ['id'=>'miscbiological2', 'class' => 'className' ]) }}
+                        {{ Form::checkbox('miscbiological2', 1, null, ['id'=>'miscbiological2', 'class' => 'className', 'disabled' ]) }}
                         {{Form::label('miscbiological2','Miscellaneous Documents')}}
                     </div>
                     <div class="col-sm-12 form-group well well-sm">
@@ -391,7 +397,10 @@
                                             <span class="btn btn-info"><i class="fa fa-cloud-upload"
                                                                           aria-hidden="true"></i> Upload<input
                                                         type="file" name="miscbiological2"
+														id="miscbiological2"
                                                         style="display: none;"
+														onchange="pressed2()"
+														
                                                         multiple>
                                             </span>
                                 </label>
@@ -508,4 +517,50 @@
             });
         });
     </script>
+	<script>
+	window.pressed = function(){
+    var a = document.getElementById('trueofd184');
+    if(a.value == "")
+    {
+        
+    }
+    else
+    {
+       document.getElementById("trueofd184").checked = true;
+    }
+};
+window.pressed1 = function(){
+    var a = document.getElementById('potofd184');
+    if(a.value == "")
+    {
+        
+    }
+    else
+    {
+       document.getElementById("potofd184").checked = true;
+    }
+};
+window.pressed2 = function(){
+    var a = document.getElementById('miscbiological2');
+    if(a.value == "")
+    {
+        
+    }
+    else
+    {
+       document.getElementById("miscbiological2").checked = true;
+    }
+};
+window.pressed3 = function(){
+    var a = document.getElementById('miscbiological1');
+    if(a.value == "")
+    {
+        
+    }
+    else
+    {
+       document.getElementById("miscbiological1").checked = true;
+    }
+};
+</script>
 @endsection
