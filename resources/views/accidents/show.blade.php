@@ -493,10 +493,14 @@
             </div>
 
             <div class="row">
-                <div class="col-sm-12">
-                    {{ Form::checkbox('checkbox8', 1, null,['disabled'], ['id' => 'checkbox8', 'class'=>'className','readonly' => 'true']) }}
-                    {{Form::label('Checkbox8','Complete DR 41 State
-                            of Nebraska DMV Vehicle Accident Report')}}
+                <div class="form-group">
+                    {{ Form::checkbox('checkbox8', 1, null, ['id'=>'checkbox8', 'class' => 'className', 'disabled' ]) }}
+                    {{Form::label('checkbox8','State Law requires every operator of a motor vehicle involved in an accident
+                    resulting in either injury, death, or damages over $1,000.00 to the property of any one person
+                    ')}}
+                    {{Form::label('checkbox8','(including the operator).')}}
+                    {{--{{Form::label('checkbox8','To complete the State of Nebraska "DR Form 41" and return within 10 days--}}
+                    {{--following the accident to the State of Nebraska. Click on Download to access the document')}}--}}
                 </div>
                 {{--}} <label class="checkbox-inline col-sm-12"><strong><strong> complete dr 41 state
                              of nebraska dmv vehicle accident report</strong></strong></label> --}}

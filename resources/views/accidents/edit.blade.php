@@ -638,8 +638,13 @@
             <div class="row">
                 <div class="col-sm-12 form-group">
                     <div class="form-group">
-                        {{ Form::checkbox('checkbox8', 1, null, ['id'=>'checkbox8', 'class' => 'className' ]) }}
-                        {{Form::label('Checkbox8','State Law requires every operator of a motor vehicle involved in an accident resulting in either injury, death, or damages over $1,000.00 to the property of any one person (including the operator) to complete the State of Nebraska "DR Form 41" and return within 10 days following the accident to the State of Nebraska. Click on Donwload to access the document')}}
+                        {{ Form::checkbox('checkbox8', 1, null, ['id'=>'checkbox8', 'class' => 'className', 'disabled' ]) }}
+                        {{Form::label('checkbox8','State Law requires every operator of a motor vehicle involved in an accident
+                        resulting in either injury, death, or damages over $1,000.00 to the property of any one person
+                        ')}}
+                        {{Form::label('checkbox8','(including the operator).')}}
+                        {{Form::label('checkbox8','To complete the State of Nebraska "DR Form 41" and return within 10 days
+                        following the accident to the State of Nebraska. Click on Download to access the document')}}
                     </div>
                 </div>
                 {{--}} <label class="checkbox-inline col-sm-12"><strong><strong> Complete DR 41 State
@@ -647,7 +652,7 @@
                 <div class="col-sm-12 form-group well well-sm">
                     <div class="col-sm-4">
                         <a class="btn btn-success dropdown-toggle col-sm-12" type="button"
-                           href="{{ url('http://roads.nebraska.gov/media/3337/dr41-no-fill.pdf') }}">
+                           href="{{ url('http://roads.nebraska.gov/media/3337/dr41-no-fill.pdf') }}" target="blank">
                             {{--download="(Accident PDF) DR 41 State of Nebraska DMV Vehicle Accident Report.pdf">--}}
                             <i class="fa fa-download" aria-hidden="true"></i> Download</a>
                     </div>
