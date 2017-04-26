@@ -9,6 +9,7 @@ use App\Http\Controllers\Traits\FormFileUploadTrait;
 use App\Http\Requests\UpdateInjuriesRequest;
 use App\Injury;
 use App\User;
+use App\Assignment;
 use Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -148,7 +149,8 @@ class InjuriesController extends Controller
     {
         $injuries = Injury::all();
         $attachments = Attachment::all();
-        return view('injuries.index', compact('injuries', 'attachments'));
+        $assignments = Assignment::all();
+        return view('injuries.index', compact('injuries', 'attachments', 'assignments'));
     }
 
     public function create()
@@ -235,7 +237,7 @@ class InjuriesController extends Controller
   public  function requestValidation(Request $request)
     {
         $this->validate($request, [
-            'injurydate' => 'required|date:injury,injurydate,',
+            'injurydate' => 'required|date:before_or_equal:today',
             //'injuredemployeename' => 'required|alpha|string:injuries,injuredemployeename,',
             'injuredemployeeid' => 'required|integer:injury,injuredemployeeid,',
             'assignmentinjury' => 'required|string:injury,assignmentinjury,',
@@ -393,5 +395,4 @@ class InjuriesController extends Controller
 
         return redirect()->route('injuries.index');
     }
-
 }

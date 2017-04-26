@@ -34,9 +34,6 @@
                                 <h3><strong>I.O.D. Report Tracking Document (OFD-6)</strong></h3>
                             </div>
                         </div>
-                        <div class="col-md-12">
-                            <h6><i><strong>Used for future tracking purposes only</strong></i></h6>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -47,7 +44,7 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="alert alert-danger" align="center">
-                            <strong>COMPLETE ALL FORMS AND SUBMIT WITHIN 24 HOURS
+                            <strong>COMPLETE AND SUBMIT ALL FORMS WITHIN 24 HOURS
                             </strong>
                         </div>
                     </div>
@@ -104,9 +101,9 @@
                         </div>
                     </div>
                     <div class="col-sm-4 form-group">
-                        {!! Form::label('shift', 'Shift', array('class' => 'col-sm-4 control-label','disabled'=>'disabled')) !!}
+                        {!! Form::label('shift', 'Shift', array('class' => 'col-sm-4 control-label')) !!}
                         <div class="col-sm-6">
-                            {!! Form::text('shift',$injury->shift ,['disabled'],array('class' => 'form-control','id' => 'shift'))!!}
+                            {!! Form::text('shift',$injury->shift,array('class' => 'form-control','id' => 'shift','disabled'=>'disabled'))!!}
                         </div>
                     </div>
                 </div>
@@ -196,15 +193,27 @@
             <div class="row">
                 <div class="col-sm-12">
                     {{ Form::checkbox('checkbox1', 1, null,['disabled'], ['id' => 'checkbox1', 'class'=>'className','readonly' => 'true']) }}
-                    {{Form::label('Checkbox1','Complete CorVel Work Ability Report Form - Only if seeking medical attention. Complete "Employee Section" and sign at bottom.')}}
+                    {{Form::label('Checkbox1','Complete CorVel Work Ability Report Form - Only if seeking medical attention. Complete "Employee Section", print, and sign.')}}
                     {{--}}  <label class="col-sm-12"><strong>CorVel Work Ability
                               Report</strong>
                           - Only if seeking medical attention. Complete "Employee Section" and sign at bottom.</label> --}}
+                    <div class="col-md-12" style="text-align:left">
+                        <strong>
+                            Please Follow These Instructions:
+                            <ol start="1">
+                                <li>Give form to Treating Physician.</li>
+                                <li>Have Treating Physician complete "Provider Section" and sign.</li>
+                                <li>Fax completed form to CorVel and FSPM.</li>
+                                <li>FSPM will then Upload form.</li>
+                            </ol>
+                        </strong>
+                    </div>
                 </div>
                 <div class="col-sm-12 form-group well well-sm">
                     <div class="col-sm-4">
                         <a class="btn btn-primary dropdown-toggle col-sm-12" data-toggle="collapse"
-                           data-target="#611" id="previousButton1"><i class="fa fa-eye" aria-hidden="true"></i> View Previously uploaded
+                           data-target="#611" id="previousButton1"><i class="fa fa-eye" aria-hidden="true"></i> View
+                            Previously uploaded
                             file(s)
                         </a>
 
@@ -220,7 +229,8 @@
                                         @if($attachment->attachmenttype == '611' )
                                             <tr>
                                                 <td>
-                                                    <a href="{{ asset('uploads/'.$attachment->attachmentname) }}" id="attachments1"> {{$attachment->attachmentname}}</a>
+                                                    <a href="{{ asset('uploads/'.$attachment->attachmentname) }}"
+                                                       id="attachments1"> {{$attachment->attachmentname}}</a>
                                                 </td>
                                                 <td>
                                                     {{$attachment->created_at}}
@@ -247,7 +257,8 @@
                 <div class="col-sm-12 form-group well well-sm">
                     <div class="col-sm-4">
                         <a class="btn btn-primary dropdown-toggle col-sm-12" data-toggle="collapse"
-                           data-target="#612" id="previousButton2"><i class="fa fa-eye" aria-hidden="true"></i> View Previously uploaded
+                           data-target="#612" id="previousButton2"><i class="fa fa-eye" aria-hidden="true"></i> View
+                            Previously uploaded
                             file(s)
                         </a>
                         <div id="612" class="collapse">
@@ -262,7 +273,8 @@
                                         @if($attachment->attachmenttype == '612' )
                                             <tr>
                                                 <td>
-                                                    <a href="{{ asset('uploads/'.$attachment->attachmentname) }}" id="attachments2"> {{$attachment->attachmentname}}</a>
+                                                    <a href="{{ asset('uploads/'.$attachment->attachmentname) }}"
+                                                       id="attachments2"> {{$attachment->attachmentname}}</a>
                                                 </td>
                                                 <td>
                                                     {{$attachment->created_at}}
@@ -286,7 +298,8 @@
                 <div class="col-sm-12 form-group well well-sm">
                     <div class="col-sm-4">
                         <a class="btn btn-primary dropdown-toggle col-sm-12" data-toggle="collapse"
-                           data-target="#613" id="previousButton3"><i class="fa fa-eye" aria-hidden="true"></i> View Previously uploaded
+                           data-target="#613" id="previousButton3"><i class="fa fa-eye" aria-hidden="true"></i> View
+                            Previously uploaded
                             file(s)
                         </a>
                         <div id="613" class="collapse">
@@ -301,7 +314,8 @@
                                         @if($attachment->attachmenttype == '613')
                                             <tr>
                                                 <td>
-                                                    <a href="{{ asset('uploads/'.$attachment->attachmentname) }}" id="attachments3"> {{$attachment->attachmentname}}</a>
+                                                    <a href="{{ asset('uploads/'.$attachment->attachmentname) }}"
+                                                       id="attachments3"> {{$attachment->attachmentname}}</a>
                                                 </td>
                                                 <td>
                                                     {{$attachment->created_at}}
@@ -326,7 +340,8 @@
                 <div class="col-sm-12 form-group well well-sm">
                     <div class="col-sm-4">
                         <a class="btn btn-primary dropdown-toggle col-sm-12" data-toggle="collapse"
-                           data-target="#614" id="previousButton4"><i class="fa fa-eye" aria-hidden="true"></i> View Previously uploaded
+                           data-target="#614" id="previousButton4"><i class="fa fa-eye" aria-hidden="true"></i> View
+                            Previously uploaded
                             file(s)
                         </a>
                         <div id="614" class="collapse">
@@ -341,7 +356,8 @@
                                         @if($attachment->attachmenttype == '614' )
                                             <tr>
                                                 <td>
-                                                    <a href="{{ asset('uploads/'.$attachment->attachmentname) }}" id="attachments4"> {{$attachment->attachmentname}}</a>
+                                                    <a href="{{ asset('uploads/'.$attachment->attachmentname) }}"
+                                                       id="attachments4"> {{$attachment->attachmentname}}</a>
                                                 </td>
                                                 <td>
                                                     {{$attachment->created_at}}
@@ -358,15 +374,14 @@
             <div class="row">
                 <div class="col-sm-12">
                     {{ Form::checkbox('checkbox5', 1, null,['disabled'], ['id' => 'checkbox5', 'class'=>'className','readonly' => 'true']) }}
-                    {{Form::label('Checkbox5','Complete OFD 25 Injury Intradepartmental Communication Form - Send an attachment electronically to OmafIOD@cityofomaha.org')}}
-                    {{--}}  <label class="col-sm-12"><strong>OFD - 25 Injury on
-                              Job</strong>
-                          - Send an attachment electronically to OmafIOD@cityofomaha.org</label> --}}
+                    {{Form::label('Checkbox5','Complete OFD25 Injury Intradepartmental Communication Form - In addition to Uploading form, send an attachment electronically to')}}
+                    <a href="OmafIOD@cityofomaha.org">OmafIOD@cityofomaha.org</a>
                 </div>
                 <div class="col-sm-12 form-group well well-sm">
                     <div class="col-sm-4">
                         <a class="btn btn-primary dropdown-toggle col-sm-12" data-toggle="collapse"
-                           data-target="#615" id="previousButton5"><i class="fa fa-eye" aria-hidden="true"></i> View Previously uploaded
+                           data-target="#615" id="previousButton5"><i class="fa fa-eye" aria-hidden="true"></i> View
+                            Previously uploaded
                             file(s)
                         </a>
                         <div id="615" class="collapse">
@@ -381,7 +396,8 @@
                                         @if($attachment->attachmenttype == '615')
                                             <tr>
                                                 <td>
-                                                    <a href="{{ asset('uploads/'.$attachment->attachmentname) }}" id="attachments5"> {{$attachment->attachmentname}}</a>
+                                                    <a href="{{ asset('uploads/'.$attachment->attachmentname) }}"
+                                                       id="attachments5"> {{$attachment->attachmentname}}</a>
                                                 </td>
                                                 <td>
                                                     {{$attachment->created_at}}
@@ -403,7 +419,8 @@
                 <div class="col-sm-12 form-group well well-sm">
                     <div class="col-sm-4">
                         <a class="btn btn-primary dropdown-toggle col-sm-12" data-toggle="collapse"
-                           data-target="#616" id="previousButton6"><i class="fa fa-eye" aria-hidden="true"></i> View Previously uploaded
+                           data-target="#616" id="previousButton6"><i class="fa fa-eye" aria-hidden="true"></i> View
+                            Previously uploaded
                             file(s)
                         </a>
                         <div id="616" class="collapse">
@@ -418,7 +435,8 @@
                                         @if($attachment->attachmenttype == '616')
                                             <tr>
                                                 <td>
-                                                    <a href="{{ asset('uploads/'.$attachment->attachmentname) }}" id="attachments6"> {{$attachment->attachmentname}}</a>
+                                                    <a href="{{ asset('uploads/'.$attachment->attachmentname) }}"
+                                                       id="attachments6"> {{$attachment->attachmentname}}</a>
                                                 </td>
                                                 <td>
                                                     {{$attachment->created_at}}
@@ -524,7 +542,7 @@
             </div>
             <div class="col-sm-12 panel-heading" align="center">
                 <div class="btn-bottom ">
-                    <a href="{{ route('injuries.index') }}" class="btn btn-danger" id="cancelButton">Cancel</a>
+                    <a href="{{ URL::previous() }}" class="btn btn-danger" id="cancelButton">Cancel</a>
                 </div>
             </div>
         </div>
@@ -647,7 +665,8 @@
                 <div class="modal-footer">
                     <a href="{{ url('/injuries/'.$injury->ofd6id .'/Reject') }}"
                        class="btn btn-success">Yes</a>
-                    <button type="button" class=" btn btn-danger" data-dismiss="modal" id="noButton" aria-label="">No</button>
+                    <button type="button" class=" btn btn-danger" data-dismiss="modal" id="noButton" aria-label="">No
+                    </button>
                 </div>
 
             </div>

@@ -34,9 +34,6 @@
                                 <h3><strong>Vehicle Accident Report Tracking Document (OFD-6A)</strong></h3>
                             </div>
                         </div>
-                        <div class="col-md-12">
-                            <h6><i><strong>Used for future tracking purposes only</strong></i></h6>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -47,7 +44,7 @@
                     <div class="col-md-12">
                         <div class="alert alert-danger" align="center">
                             <strong>
-                                COMPLETE ALL FORMS AND SUBMIT WITHIN 24 HOURS
+                                COMPLETE AND SUBMIT ALL FORMS WITHIN 24 HOURS
                             </strong>
                         </div>
                     </div>
@@ -56,7 +53,7 @@
                     <div class="col-sm-4 form-group">
                         {!! form::label('accidentdate', 'Date of Accident:',array('style'=>'padding-top:7px;','class'=> 'col-sm-4 control-label') )!!}
                         <div class="col-sm-6 ">
-                            {!! form::text('accidentdate', old('accidentdate'), ['disabled'],array('id'=>'datepicker1','class' => 'form-control datepicker', 'placeholder' => 'yyyy-mm-dd'))!!}
+                            {!! form::text('accidentdate', old('accidentdate'),array('id'=>'datepicker1','class' => 'form-control datepicker', 'disabled' => "disabled"))!!}
                             <p class="help-block"></p>
                             @if($errors->has('accidentdate'))
                                 <p class="help-block">
@@ -68,7 +65,7 @@
                     <div class="col-sm-4 form-group">
                         {!! form::label('driverid', 'Driver id#', array('style'=>'padding-top:7px;','class' => 'col-sm-4 control-label')) !!}
                         <div class="col-sm-6 ">
-                            {!! form::text('driverid', old('driverid'), ['disabled'],array('class'=>'form-control'))!!}
+                            {!! form::text('driverid', old('driverid'),array('class'=>'form-control','disabled' => "disabled"))!!}
                             <p class="help-block"></p>
                             @if($errors->has('driverid'))
                                 <p class="help-block">
@@ -80,7 +77,7 @@
                     <div class="col-sm-4 form-group">
                         {!! form::label('drivername', 'Driver name',array( 'style'=>'padding-top:7px;','class' => 'col-sm-4 control-label')) !!}
                         <div class="col-sm-6 ">
-                            {!! form::text('drivername', old('drivername'),['disabled'], array('class'=>'form-control'))!!}
+                            {!! form::text('drivername', old('drivername'),array('class'=>'form-control','disabled' => "disabled"))!!}
                             <p class="help-block"></p>
                             @if($errors->has('drivername'))
                                 <p class="help-block">
@@ -94,7 +91,7 @@
                     <div class="col-sm-4 form-group">
                         {!! form::label('frmsincidentnum', 'FRMS Incident #', array('style'=>'padding-top:7px;','class' => 'col-sm-4 control-label')) !!}
                         <div class="col-sm-6 ">
-                            {!! form::text('frmsincidentnum', old('frmsincidentnum'),['disabled'], ['class' => 'form-control'])!!}
+                            {!! form::text('frmsincidentnum', old('frmsincidentnum'), ['class' => 'form-control','disabled' => "disabled"])!!}
                             <p class="help-block"></p>
                             @if($errors->has('frmsincidentnum'))
                                 <p class="help-block">
@@ -106,7 +103,7 @@
                     <div class="col-sm-4 form-group">
                         {!! form::label('assignmentaccident', 'Assignment', array('style'=>'padding-top:7px;','class' => 'col-sm-4 control-label')) !!}
                         <div class="col-sm-6 ">
-                            {!! form::text('assignmentaccident', old('assignmentaccident'),['disabled'], ['class' => 'form-control'])!!}
+                            {!! form::text('assignmentaccident', old('assignmentaccident'), ['class' => 'form-control','disabled' => "disabled"])!!}
                             <p class="help-block"></p>
                             @if($errors->has('assignmentaccident'))
                                 <p class="help-block">
@@ -118,7 +115,7 @@
                     <div class="col-sm-4 form-group">
                         {!! form::label('apparatus', 'Apparatus', array('style'=>'padding-top:7px;','class' => 'col-sm-4 control-label')) !!}
                         <div class="col-sm-6 ">
-                            {!! form::text('apparatus', old('apparatus'),['disabled'], ['class' => 'form-control'])!!}
+                            {!! form::text('apparatus', old('apparatus'), ['class' => 'form-control','disabled' => "disabled"])!!}
                             <p class="help-block"></p>
                             @if($errors->has('apparatus'))
                                 <p class="help-block">
@@ -132,7 +129,7 @@
                     <div class="col-sm-4 form-group">
                         {!! form::label('captainid', 'Captain #', array('style'=>'padding-top:7px;','class' => 'col-sm-4 control-label')) !!}
                         <div class="col-sm-6 ">
-                            {!! form::text('captainid', old('captainid'), ['disabled'],array('class' => 'form-control',))!!}
+                            {!! form::text('captainid', old('captainid'),array('class' => 'form-control','disabled' => "disabled"))!!}
                             <p class="help-block"></p>
                             @if($errors->has('captainid'))
                                 <p class="help-block">
@@ -144,7 +141,7 @@
                     <div class="col-sm-4 form-group">
                         {!! form::label('battalionchiefid', 'Battalion Chief #', array('style'=>'padding-top:7px;','class' => 'col-sm-4 control-label')) !!}
                         <div class="col-sm-6 ">
-                            {!! form::text('battalionchiefid', old('battalionchiefid'),['disabled'], array('class' => 'form-control'))!!}
+                            {!! form::text('battalionchiefid', old('battalionchiefid'), array('class' => 'form-control','disabled' => "disabled"))!!}
                             <p class="help-block"></p>
                             @if($errors->has('battalionchiefid'))
                                 <p class="help-block">
@@ -156,7 +153,7 @@
                     <div class="col-sm-4 form-group">
                         {!! form::label('aconduty', 'Assistant Chief #', array('style'=>'padding-top:7px;','class' => 'col-sm-4 control-label')) !!}
                         <div class="col-sm-6 ">
-                            {!! form::text('aconduty', old('aconduty'), ['disabled'],array('class' => 'form-control'))!!}
+                            {!! form::text('aconduty', old('aconduty'),array('class' => 'form-control','disabled' => "disabled"))!!}
                             <p class="help-block"></p>
                             @if($errors->has('aconduty'))
                                 <p class="help-block">
@@ -170,21 +167,7 @@
                     <div class="row">
                         <div class="col-md-12" style="text-align:left">
                             <strong>
-                                Please Follow These Instructions:
-                                <ol start="1">
-                                    <li>B/C shall ensure all reports are properly completed within 24 hours.</li>
-                                    <li>If an employee receives an injury from this incident, the employee shall
-                                        complete an OFD6 and designate whether treatment is being requested in the
-                                        OFD-25 IOD.
-                                    </li>
-                                    <li>City of Omaha policy REQUIRES a Police Report and DR41 State Form on all
-                                        City
-                                        vehicles involved in an accident OR property damage whether on public
-                                        streets,
-                                        private property, or at the Fire Station.
-                                    </li>
-                                    <li>DR41 is also submitted to the State if damage is over $1000.00</li>
-                                </ol>
+                                If an employee receives an injury from this incident, the employee shall complete an OFD6 and designate whether treatment is being requested in the OFD-25 IOD
                             </strong>
                         </div>
                     </div>
@@ -588,7 +571,7 @@
             </div>
             <div class="col-sm-12 panel-heading" align="center">
                 <div class="btn-bottom ">
-                    <a href="{{ route('accidents.index') }}" class="btn btn-danger">Cancel</a>
+                    <a href="{{ route(URL::previous()) }}" class="btn btn-danger">Cancel</a>
                 </div>
             </div>
         </div>

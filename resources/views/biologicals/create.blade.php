@@ -40,9 +40,6 @@
                                 <h3><strong>Biological Exposure Tracking Document (OFD-006B)</strong></h3>
                             </div>
                         </div>
-                        <div class="col-md-12">
-                            <h5><i><strong>Used for future tracking purposes only</strong></i></h5>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -77,7 +74,7 @@
                     <div class="col-sm-4 form-group">
                         {!! Form::label('exposedemployeename', 'Exposed Employee Name',array('style'=>'padding-top:7px;','class'=> 'col-sm-4 control-label') ) !!}
                         <div class="col-sm-6 ">
-                            {!! Form::text('exposedemployeename', old('exposedemployeename'), array('class'=>'form-control'))!!}
+                            {!! Form::text('exposedemployeename', old('exposedemployeename'), array('class'=>'form-control','placeholder'=>'Enter Exposed Employee Name'))!!}
                             <p class="help-block"></p>
                             @if($errors->has('exposedemployeename'))
                                 <p class="help-block">
@@ -91,12 +88,7 @@
                     <div class="col-sm-4 form-group">
                         {!! Form::label('assignmentbiological', 'Assignment', ['class'=> 'col-sm-4 control-label'] ) !!}
                         <div class="col-sm-6">
-                            {!! Form::select('assignmentbiological',['A' => 'A',
-                            'B' => 'B',
-                            'C' => 'C',
-                            'DIV' => 'DIV'],
-                            'required',
-                            ['class' => 'form-control']) !!}
+                            {!! Form::text('assignmentbiological', old('assignmentbiological'), array('class' => 'form-control', 'id' => 'assignmentinjury','placeholder'=>'Enter Assignment'))!!}
                             <p class="help-block"></p>
                             @if($errors->has('assignmentbiological'))
                                 <p class="help-block">
@@ -177,8 +169,8 @@
                         {{ Form::radio('exposure', 0 , null, ['id'=>'exposure', 'class' => 'className']) }}
                         {{ Form::label('exposure', 'True Exposure') }}
 
-                        {{ Form::radio('exposure',1 , null, ['id'=>'exposure1', 'class' => 'className']) }}
-                        {{ Form::label('exposure1', 'Contamination') }}
+                        {{ Form::radio('exposure',1 , null, ['id'=>'exposure', 'class' => 'className']) }}
+                        {{ Form::label('exposure', 'Contamination') }}
                     </div>
                 </div>
             </div>
@@ -244,9 +236,9 @@
                                             <span class="btn btn-info"><i class="fa fa-cloud-upload"
                                                                           aria-hidden="true"></i> Upload<input
                                                         type="file" name="trueofd184"
-														id="trueofd184"
+                                                        id="trueofd184"
                                                         style="display: none;"
-														onchange="pressed()"
+                                                        onchange="pressed()"
                                                         multiple>
                                             </span>
                                 </label>
@@ -267,9 +259,9 @@
                                             <span class="btn btn-info"><i class="fa fa-cloud-upload"
                                                                           aria-hidden="true"></i> Upload<input
                                                         type="file" name="miscbiological1"
-														id="miscbiological1"
+                                                        id="miscbiological1"
                                                         style="display: none;"
-														onchange="pressed3()"
+                                                        onchange="pressed3()"
                                                         multiple>
                                             </span>
                                 </label>
@@ -374,9 +366,9 @@
                                             <span class="btn btn-info"><i class="fa fa-cloud-upload"
                                                                           aria-hidden="true"></i> Upload<input
                                                         type="file" name="potofd184"
-														id="potofd184"
+                                                        id="potofd184"
                                                         style="display: none;"
-														onchange="pressed1()"
+                                                        onchange="pressed1()"
                                                         multiple>
                                             </span>
                                 </label>
@@ -397,10 +389,10 @@
                                             <span class="btn btn-info"><i class="fa fa-cloud-upload"
                                                                           aria-hidden="true"></i> Upload<input
                                                         type="file" name="miscbiological2"
-														id="miscbiological2"
+                                                        id="miscbiological2"
                                                         style="display: none;"
-														onchange="pressed2()"
-														
+                                                        onchange="pressed2()"
+
                                                         multiple>
                                             </span>
                                 </label>
@@ -410,10 +402,10 @@
                     </div>
                 </div>
                 {{--<div class="col-sm-12">--}}
-                    {{--<div class="form-group">--}}
-                        {{--{{ Form::checkbox('potbagtag', 1, null, ['id' => 'potbagtag', 'class'=>'className']) }}--}}
-                        {{--{{Form::label('potbagtag','Bag & Tag clothing if applicable - send email to PSS with pick-up location ')}}--}}
-                    {{--</div>--}}
+                {{--<div class="form-group">--}}
+                {{--{{ Form::checkbox('potbagtag', 1, null, ['id' => 'potbagtag', 'class'=>'className']) }}--}}
+                {{--{{Form::label('potbagtag','Bag & Tag clothing if applicable - send email to PSS with pick-up location ')}}--}}
+                {{--</div>--}}
                 {{--</div>--}}
                 <div class="col-sm-12">
                     <div class="form-group">
@@ -517,50 +509,42 @@
             });
         });
     </script>
-	<script>
-	window.pressed = function(){
-    var a = document.getElementById('trueofd184');
-    if(a.value == "")
-    {
-        
-    }
-    else
-    {
-       document.getElementById("trueofd184").checked = true;
-    }
-};
-window.pressed1 = function(){
-    var a = document.getElementById('potofd184');
-    if(a.value == "")
-    {
-        
-    }
-    else
-    {
-       document.getElementById("potofd184").checked = true;
-    }
-};
-window.pressed2 = function(){
-    var a = document.getElementById('miscbiological2');
-    if(a.value == "")
-    {
-        
-    }
-    else
-    {
-       document.getElementById("miscbiological2").checked = true;
-    }
-};
-window.pressed3 = function(){
-    var a = document.getElementById('miscbiological1');
-    if(a.value == "")
-    {
-        
-    }
-    else
-    {
-       document.getElementById("miscbiological1").checked = true;
-    }
-};
-</script>
+    <script>
+        window.pressed = function () {
+            var a = document.getElementById('trueofd184');
+            if (a.value == "") {
+
+            }
+            else {
+                document.getElementById("trueofd184").checked = true;
+            }
+        };
+        window.pressed1 = function () {
+            var a = document.getElementById('potofd184');
+            if (a.value == "") {
+
+            }
+            else {
+                document.getElementById("potofd184").checked = true;
+            }
+        };
+        window.pressed2 = function () {
+            var a = document.getElementById('miscbiological2');
+            if (a.value == "") {
+
+            }
+            else {
+                document.getElementById("miscbiological2").checked = true;
+            }
+        };
+        window.pressed3 = function () {
+            var a = document.getElementById('miscbiological1');
+            if (a.value == "") {
+
+            }
+            else {
+                document.getElementById("miscbiological1").checked = true;
+            }
+        };
+    </script>
 @endsection

@@ -38,9 +38,6 @@
                                     <h3><strong>HAZARDOUS MATERIAL EXPOSURE REPORTING INSTRUCTIONS</strong></h3>
                                 </div>
                             </div>
-                            <div class="col-md-12">
-                                <h6><i><strong>Used for future tracking purposes only</strong></i></h6>
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -132,7 +129,7 @@
                         <div class="col-sm-4 form-group">
                             {!! Form::label('assignment', 'Assignment', array('style'=>'padding-top:7px;','class' => 'col-sm-4 control-label')) !!}
                             <div class="col-sm-6 ">
-                                {!! Form::text('assignment', old('assignment'), ['class' => 'form-control'])!!}
+                                {!! Form::text('assignment', old('assignment'), array('class' => 'form-control', 'id' => 'assignmentinjury','placeholder'=>'Enter Assignment'))!!}
                                 <p class="help-block"></p>
                                 @if($errors->has('assignment'))
                                     <p class="help-block">

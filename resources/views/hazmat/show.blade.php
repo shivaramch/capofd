@@ -34,9 +34,6 @@
                                 <h3><strong>HAZARDOUS MATERIAL EXPOSURE REPORTING INSTRUCTIONS</strong></h3>
                             </div>
                         </div>
-                        <div class="col-md-12">
-                            <h6><i><strong>Used for future tracking purposes only</strong></i></h6>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -290,7 +287,7 @@
 
             <div class="col-sm-12 panel-heading" align="center">
                 <div class="btn-bottom ">
-                    <a href="{{ route('hazmat.index') }}" class="btn btn-danger">Cancel</a>
+                    <a href="{{ URL::previous() }}" class="btn btn-danger">Cancel</a>
                 </div>
             </div>
         </div>
