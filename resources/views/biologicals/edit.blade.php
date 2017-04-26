@@ -40,9 +40,6 @@
                                 <h3><strong>Biological Exposure Tracking Document (OFD-006B)</strong></h3>
                             </div>
                         </div>
-                        <div class="col-md-12">
-                            <h6><i><strong>Used for future tracking purposes only</strong></i></h6>
-                        </div>
                     </div>
                 </div>
             </div>
