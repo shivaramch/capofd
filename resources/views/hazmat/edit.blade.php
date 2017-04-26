@@ -220,6 +220,11 @@
                             </label>
                             <input type="text" id="upload-file-info" class="form-control" readonly>
                         </div>
+                        @if($errors->has('OFD025'))
+                            <p class="help-block">
+                                {{ $errors->first('OFD025') }}
+                            </p>
+                        @endif
                     </div>
                     <div class="col-sm-4">
                         <a class="btn btn-primary dropdown-toggle col-sm-12" data-toggle="collapse"

@@ -261,6 +261,11 @@
                         </label>
                         <input type="text" id="upload-file-info1" class="form-control" readonly>
                     </div>
+                    @if($errors->has('CorvelAttachmentName'))
+                        <p class="help-block">
+                            {{ $errors->first('CorvelAttachmentName') }}
+                        </p>
+                    @endif
                 </div>
             </div>
         </div>
@@ -295,6 +300,11 @@
                         </label>
                         <input type="text" id="upload-file-info" class="form-control" readonly>
                     </div>
+                    @if($errors->has('InvestigationAttachment'))
+                        <p class="help-block">
+                            {{ $errors->first('InvestigationAttachment') }}
+                        </p>
+                    @endif
                 </div>
             </div>
         </div>
@@ -327,6 +337,11 @@
                         </label>
                         <input type="text" id="upload-file-info" class="form-control" readonly>
                     </div>
+                    @if($errors->has('StatementAttachment'))
+                        <p class="help-block">
+                            {{ $errors->first('StatementAttachment') }}
+                        </p>
+                    @endif
                 </div>
             </div>
         </div>
@@ -360,6 +375,11 @@
                         </label>
                         <input type="text" id="upload-file-info" class="form-control" readonly>
                     </div>
+                    @if($errors->has('EmployeeAttachment'))
+                        <p class="help-block">
+                            {{ $errors->first('EmployeeAttachment') }}
+                        </p>
+                    @endif
                 </div>
             </div>
         </div>
@@ -390,6 +410,11 @@
                         </label>
                         <input type="text" id="upload-file-info" class="form-control" readonly>
                     </div>
+                    @if($errors->has('Ofd25Attachment'))
+                        <p class="help-block">
+                            {{ $errors->first('Ofd25Attachment') }}
+                        </p>
+                    @endif
                 </div>
             </div>
         </div>

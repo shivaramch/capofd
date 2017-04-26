@@ -15,67 +15,69 @@ use Illuminate\Http\Request;
 use App\Http\Requests\StoreHazmatRequest;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Redirect;
 
 class HazmatController extends Controller
 {
     use FileUploadTrait;
     use FormFileUploadTrait;
+
     public function Approve($id)
     {
 
         //$hazmat->ofd6cid
 
-        $hazmat=DB::table('hazmats')->where('ofd6cid',$id)->first();
-        $formname="hazmat";
+        $hazmat = DB::table('hazmats')->where('ofd6cid', $id)->first();
+        $formname = "hazmat";
 
-        $rawlink=request()->headers->get('referer');
-        $link=preg_replace('#\/[^/]*$#', '', $rawlink);
+        $rawlink = request()->headers->get('referer');
+        $link = preg_replace('#\/[^/]*$#', '', $rawlink);
         $currentuserid = Auth::user()->id;
-        $primaryidconumber=DB::table('hazmats')->where ([
+        $primaryidconumber = DB::table('hazmats')->where([
             ['primaryidconumber', '=', $currentuserid],
             ['ofd6cid', '=', $id],
         ])->pluck('primaryidconumber');
-        $Finalapprovalstatusidraw=DB::table('status')->where('statustype','Approved')->pluck('statusid');
-        $Finalpprovalstatusid=str_replace (array('[', ']'), '',$Finalapprovalstatusidraw);
+        $Finalapprovalstatusidraw = DB::table('status')->where('statustype', 'Approved')->pluck('statusid');
+        $Finalpprovalstatusid = str_replace(array('[', ']'), '', $Finalapprovalstatusidraw);
 
-        if($primaryidconumber){
+        if ($primaryidconumber) {
 
             $hazmat = hazmat::find($id);
 
-            $hazmat->applicationstatus =$Finalpprovalstatusid ;
+            $hazmat->applicationstatus = $Finalpprovalstatusid;
 
             $hazmat->save();
-            (new EmailController)->Email($hazmat, $rawlink,$formname,$Finalpprovalstatusid);
+            (new EmailController)->Email($hazmat, $rawlink, $formname, $Finalpprovalstatusid);
         }
 
         return redirect()->route('hazmat.index')->with('message', 'Form has been Approved');
     }
 
-    public  function Reject($id)
+    public function Reject($id)
     {
-        $hazmat=DB::table('hazmats')->where('ofd6cid',$id)->first();
-        $formname="hazmat";
+        $hazmat = DB::table('hazmats')->where('ofd6cid', $id)->first();
+        $formname = "hazmat";
 
-        $rawlink=request()->headers->get('referer');
-        $link=preg_replace('#\/[^/]*$#', '', $rawlink);
+        $rawlink = request()->headers->get('referer');
+        $link = preg_replace('#\/[^/]*$#', '', $rawlink);
 
         $currentuserid = Auth::user()->id;
-        $primaryidconumber=DB::table('hazmats')->where ([
+        $primaryidconumber = DB::table('hazmats')->where([
             ['primaryidconumber', '=', $currentuserid],
             ['ofd6cid', '=', $id],
         ])->pluck('primaryidconumber');
 
-        $statusidraw=DB::table('status')->where('statustype','Rejected')->pluck('statusid');
-        $statusid=str_replace (array('[', ']'), '', $statusidraw);
-        if($primaryidconumber) {
+        $statusidraw = DB::table('status')->where('statustype', 'Rejected')->pluck('statusid');
+        $statusid = str_replace(array('[', ']'), '', $statusidraw);
+        if ($primaryidconumber) {
 
             $hazmat = hazmat::find($id);
 
-            $hazmat->applicationstatus =$statusid ;
+            $hazmat->applicationstatus = $statusid;
 
             $hazmat->save();
 
-            (new EmailController)->Email( $hazmat, $rawlink,$formname,$statusid);
+            (new EmailController)->Email($hazmat, $rawlink, $formname, $statusid);
         }
 
         return redirect()->route('hazmat.index')->with('message', 'Form has been Rejected');
@@ -94,12 +96,10 @@ class HazmatController extends Controller
         return view('hazmat.create');
     }
 
-
-
-    public function update( Request $requestSave,$id)
+    public function update(Request $requestSave, $id)
     {
         if (Input::get('store')) {
-            $this->updateRecord($requestSave,$id);
+            $this->updateRecord($requestSave, $id);
             return redirect()->route('hazmat.index')->with('message', 'Form Submitted Successfully');
         }
 
@@ -109,7 +109,6 @@ class HazmatController extends Controller
         }
 
     }
-
 
 
     public function partialUpdate(Request $request, $id)
@@ -122,7 +121,7 @@ class HazmatController extends Controller
             // 'contactcorvel' => 'required|string:hazmat,contactcorvel',
         ]);
 
-        $statusid=DB::table('status')->where('statustype','Draft')->value('statusid');
+        $statusid = DB::table('status')->where('statustype', 'Draft')->value('statusid');
 
 
         $hazmat = hazmat::findOrFail($id);
@@ -148,30 +147,24 @@ class HazmatController extends Controller
 
         $this->HazmatUpload($request, $id);
 
-        $link=$request->url();
+        $link = $request->url();
 
     }
 
 
-
-
-
-
-    public function save( Request $requestSave)
+    public function save(Request $requestSave)
     {
-        if(Input::get('store')) {
+        if (Input::get('store')) {
             $this->store($requestSave);
-            return redirect()->route('hazmat.index')->with('message', 'Form Submitted Successfully');
+
+            return redirect()->route('hazmat.index')->with('message', 'Form submitted Successfully');
         }
 
-        if(Input::get('partialSave')) {
+        if (Input::get('partialSave')) {
             $this->partialSave($requestSave);
-			return redirect()->route('hazmat.index')->with('message', 'Form has been partially saved');
+            return redirect()->route('hazmat.index')->with('message', 'Form has been partially saved');
         }
-        
-
     }
-
 
 
     public function partialSave(Request $request)
@@ -181,15 +174,14 @@ class HazmatController extends Controller
         $this->validate($request, [
 
 
-
             'dateofexposure' => 'required|date:hazmat,dateofexposure,',
             'employeeid' => 'required|integer:hazmat,employeeid,',
             'corvelid' => 'required|integer:hazmat,corvelid',
-           // 'contactcorvel' => 'required|string:hazmat,contactcorvel',
-            ]);
+            // 'contactcorvel' => 'required|string:hazmat,contactcorvel',
+        ]);
 
-        $statusid=DB::table('status')->where('statustype','Draft')->value('statusid');
-        $request->offsetSet('applicationstatus',$statusid);
+        $statusid = DB::table('status')->where('statustype', 'Draft')->value('statusid');
+        $request->offsetSet('applicationstatus', $statusid);
         $request = $this->saveFiles($request);
         hazmat::create($request->all());
         $last_insert_id = DB::getPdo()->lastInsertId();
@@ -200,14 +192,13 @@ class HazmatController extends Controller
     }
 
 
-
     public function validateRequest(Request $request)
     {
         $this->validate($request, [
 
 
             'employeeid' => 'required|integer:hazmat,employeeid,',
-            'employeename' => 'required|regex:/^[\pL\s\-]+$/u|string:hazmat,employeename,' ,
+            'employeename' => 'required|regex:/^[\pL\s\-]+$/u|string:hazmat,employeename,',
             'dateofexposure' => 'required|date:hazmat,dateofexposure,',
             'primaryidconumber' => 'required|integer:hazmat,primaryidconumber',
             'contactcorvel' => 'required|string:hazmat,contactcorvel',
@@ -216,9 +207,10 @@ class HazmatController extends Controller
             'assignment' => 'required|string:hazmat,assignment',
             'frmsincidentnum' => 'required|string:hazmat,frmsincidentnum',
             'shift' => 'required|string:hazmat,shift,',
+            'OFD025' => 'required|file:hazmat,OFD025|mimes:pdf|max:10000',
+
         ]);
     }
-
 
 
     public function store(Request $request)
@@ -228,11 +220,12 @@ class HazmatController extends Controller
         $this->validateRequest($request);
 
 
-        $statusid=DB::table('status')->where('statustype','Application under Primary IDCO')->value('statusid');
+        $statusid = DB::table('status')->where('statustype', 'Application under Primary IDCO')->value('statusid');
 
-        $request->offsetSet('applicationstatus',$statusid);
+        $request->offsetSet('applicationstatus', $statusid);
 
         $request = $this->saveFiles($request);
+
         hazmat::create($request->all());
         $last_insert_id = DB::getPdo()->lastInsertId();
         $this->HazmatUpload($request, $last_insert_id);
@@ -240,13 +233,14 @@ class HazmatController extends Controller
         $link = $request->url() . "/$last_insert_id";
 //write code for email notification here
         //email notification-start
-        $formname="hazmat";
-        $rawlink=request()->headers->get('referer');
-        $link=preg_replace('#\/[^/]*$#', '', $rawlink)."/$last_insert_id";
+        $formname = "hazmat";
+        $rawlink = request()->headers->get('referer');
+        $link = preg_replace('#\/[^/]*$#', '', $rawlink) . "/$last_insert_id";
 
-        (new EmailController)->Email($request, $link,$formname,$statusid);
+        (new EmailController)->Email($request, $link, $formname, $statusid);
         //email notification-end
         return redirect()->route('hazmat.index')->with('message', 'Form Submitted Successfully');
+
     }
 
     public function edit($id)
@@ -263,8 +257,8 @@ class HazmatController extends Controller
                     || $hazmat->applicationstatus == $draftstatus)) ||
             Auth::user()->roleid == 1
         ) {
-            return view('hazmat.edit', compact('hazmat', 'attachments','comments','users'));
-        }else {
+            return view('hazmat.edit', compact('hazmat', 'attachments', 'comments', 'users'));
+        } else {
             return view('errors.access');
         }
 
@@ -297,9 +291,9 @@ class HazmatController extends Controller
     {
         //$accident = $this->saveFiles($request);
 
-       $this-> validateRequest($request);
+        $this->validateRequest($request);
 
-        $statusid=DB::table('status')->where('statustype','Application under Primary IDCO')->value('statusid');
+        $statusid = DB::table('status')->where('statustype', 'Application under Primary IDCO')->value('statusid');
 
 
         $hazmat = hazmat::findOrFail($id);
@@ -316,7 +310,7 @@ class HazmatController extends Controller
                 'applicationstatus' => $statusid,
                 'corvelid' => $hazmat->corvelid,
                 'exposurehazmat' => $hazmat->exposurehazmat
-        ]
+            ]
         );
 
         //end history code
@@ -325,13 +319,13 @@ class HazmatController extends Controller
 
         $this->HazmatUpload($request, $id);
 
-        $link=$request->url();
+        $link = $request->url();
 
         //email notification-start
-        $formname="hazmat";
-        $rawlink=request()->headers->get('referer');
-        $link=preg_replace('#\/[^/]*$#', '', $rawlink);
-    (new EmailController)->Email($request, $link,$formname,$statusid);
+        $formname = "hazmat";
+        $rawlink = request()->headers->get('referer');
+        $link = preg_replace('#\/[^/]*$#', '', $rawlink);
+        (new EmailController)->Email($request, $link, $formname, $statusid);
 
         //email notification-end
 

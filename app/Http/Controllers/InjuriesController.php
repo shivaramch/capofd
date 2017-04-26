@@ -252,6 +252,11 @@ class InjuriesController extends Controller
             'frmsincidentnum1' => 'required|integer:injury,frmsincidentnum',
             'policeofficercompletesign' => 'required',
             'callsupervisor' => 'required',
+            'CorvelAttachmentName' => 'required|file:injury,CorvelAttachmentName|mimes:pdf|max:10000',
+            'InvestigationAttachment' => 'required|file:injury,InvestigationAttachment|mimes:pdf|max:10000',
+            'StatementAttachment' => 'required|file:injury,StatementAttachment|mimes:pdf|max:10000',
+            'EmployeeAttachment' => 'required|file:injury,EmployeeAttachment|mimes:pdf|max:10000',
+            'Ofd25Attachment' => 'required|file:injury,Ofd25Attachment|mimes:pdf|max:10000',
 
         ]);
 

@@ -232,6 +232,11 @@
                             </label>
                             <input type="text" id="upload-file-info" class="form-control" readonly>
                         </div>
+                        @if($errors->has('LRS101'))
+                            <p class="help-block">
+                                {{ $errors->first('LRS101') }}
+                            </p>
+                        @endif
                     </div>
                     <div class="col-sm-4">
                         <a class="btn btn-primary dropdown-toggle col-sm-12" data-toggle="collapse"
@@ -292,6 +297,11 @@
                             </label>
                             <input type="text" id="upload-file-info" class="form-control" readonly>
                         </div>
+                        @if($errors->has('OFD295'))
+                            <p class="help-block">
+                                {{ $errors->first('OFD295') }}
+                            </p>
+                        @endif
                     </div>
                     <div class="col-sm-4">
                         <a class="btn btn-primary dropdown-toggle col-sm-12" data-toggle="collapse"
@@ -350,6 +360,11 @@
                             </label>
                             <input type="text" id="upload-file-info" class="form-control" readonly>
                         </div>
+                        @if($errors->has('OFD025a'))
+                            <p class="help-block">
+                                {{ $errors->first('OFD025a') }}
+                            </p>
+                        @endif
                     </div>
                     <div class="col-sm-4">
                         <a class="btn btn-primary dropdown-toggle col-sm-12" data-toggle="collapse"
@@ -407,6 +422,11 @@
                             </label>
                             <input type="text" id="upload-file-info" class="form-control" readonly>
                         </div>
+                        @if($errors->has('OFD025b'))
+                            <p class="help-block">
+                                {{ $errors->first('OFD025b') }}
+                            </p>
+                        @endif
                     </div>
                     <div class="col-sm-4">
                         <a class="btn btn-primary dropdown-toggle col-sm-12" data-toggle="collapse"
@@ -464,6 +484,11 @@
                             </label>
                             <input type="text" id="upload-file-info" class="form-control" readonly>
                         </div>
+                        @if($errors->has('OFD025c'))
+                            <p class="help-block">
+                                {{ $errors->first('OFD025c') }}
+                            </p>
+                        @endif
                     </div>
                     <div class="col-sm-4">
                         <a class="btn btn-primary dropdown-toggle col-sm-12" data-toggle="collapse"
@@ -523,6 +548,11 @@
                             </label>
                             <input type="text" id="upload-file-info" class="form-control" readonly>
                         </div>
+                        @if($errors->has('OFD31'))
+                            <p class="help-block">
+                                {{ $errors->first('OFD31') }}
+                            </p>
+                        @endif
                     </div>
                     <div class="col-sm-4">
                         <a class="btn btn-primary dropdown-toggle col-sm-12" data-toggle="collapse"
@@ -582,6 +612,11 @@
                             </label>
                             <input type="text" id="upload-file-info" class="form-control" readonly>
                         </div>
+                        @if($errors->has('OFD127'))
+                            <p class="help-block">
+                                {{ $errors->first('OFD127') }}
+                            </p>
+                        @endif
                     </div>
                     <div class="col-sm-4">
                         <a class="btn btn-primary dropdown-toggle col-sm-12" data-toggle="collapse"
@@ -661,6 +696,11 @@
                             </label>
                             <input type="text" id="upload-file-info" class="form-control" readonly>
                         </div>
+                        @if($errors->has('DR41'))
+                            <p class="help-block">
+                                {{ $errors->first('DR41') }}
+                            </p>
+                        @endif
                     </div>
                     <div class="col-sm-4">
                         <a class="btn btn-primary dropdown-toggle col-sm-12" data-toggle="collapse"
@@ -713,6 +753,11 @@
                             </label>
                             <input type="text" id="upload-file-info" class="form-control" readonly>
                         </div>
+                        @if($errors->has('LRS101'))
+                            <p class="help-block">
+                                {{ $errors->first('LRS101') }}
+                            </p>
+                        @endif
                     </div>
                     <div class="col-sm-4">
                         <a class="btn btn-primary dropdown-toggle col-sm-12" data-toggle="collapse"
