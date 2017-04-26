@@ -226,7 +226,7 @@
                     <div class="col-sm-12 form-group well well-sm">
                         <div class="col-sm-4">
                             <a class="btn btn-success dropdown-toggle col-sm-12" type="button"
-                               href="{{ asset('Fillable PDFs\Exposure Complete\(Exposure PDF) OFD 184 State Infectious Disease Exposure Report.pdf')}}"
+                               href="{{ asset('Fillable PDFs\Biological Module\(Exposure PDF) OFD 184 State Infectious Disease Exposure Report.pdf')}}"
                                download="(Exposure PDF) OFD 184 State Infectious Disease Exposure Report.pdf">
                                 <i class="fa fa-download" aria-hidden="true"></i> Download</a>
                         </div>
@@ -356,7 +356,7 @@
                     <div class="col-sm-12 form-group well well-sm">
                         <div class="col-sm-4">
                             <a class="btn btn-success dropdown-toggle col-sm-12" type="button"
-                               href="{{ asset('Fillable PDFs\Exposure Complete\(Exposure PDF) OFD 184 State Infectious Disease Exposure Report.pdf')}}"
+                               href="{{ asset('Fillable PDFs\Biological Module\(Exposure PDF) OFD 184 State Infectious Disease Exposure Report.pdf')}}"
                                download="(Exposure PDF) OFD 184 State Infectious Disease Exposure Report.pdf">
                                 <i class="fa fa-download" aria-hidden="true"></i> Download</a>
                         </div>
