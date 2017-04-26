@@ -34,9 +34,6 @@
                                 <h3><strong>Vehicle Accident Report Tracking Document (OFD-6A)</strong></h3>
                             </div>
                         </div>
-                        <div class="col-md-12">
-                            <h5><i><strong>Used for future tracking purposes only</strong></i></h5>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -47,7 +44,7 @@
                     <div class="col-md-12">
                         <div class="alert alert-danger" align="center">
                             <strong>
-                                COMPLETE ALL FORMS AND SUBMIT WITHIN 24 HOURS
+                                COMPLETE AND SUBMIT ALL FORMS WITHIN 24 HOURS
                             </strong>
                         </div>
                     </div>
@@ -173,19 +170,8 @@
                     <div class="row">
                         <div class="col-md-12" style="text-align:left">
                             <strong>
-                                Please Follow These Instructions:
-                                <ol start="1">
-                                    <li>B/C shall ensure all reports are properly completed within 24 hours.</li>
-                                    <li>If an employee receives an injury from this incident, the employee shall
-                                        complete an OFD6 and designate whether treatment is being requested in the
-                                        OFD-25 IOD.
-                                    </li>
-                                    <li>City of Omaha policy REQUIRES a Police Report and DR41 State Form on all City
-                                        vehicles involved in an accident OR property damage whether on public streets,
-                                        private property, or at the Fire Station.
-                                    </li>
-                                    <li>DR41 is also submitted to the State if damage is over $1000.00</li>
-                                </ol>
+                                If an employee receives an injury from this incident, the employee shall complete an
+                                OFD6 and designate whether treatment is being requested in the OFD-25 IOD.
                             </strong>
                         </div>
                     </div>
@@ -237,7 +223,7 @@
                                                                                            name="LRS101"
                                                                                            id="lrsdownload"
                                                                                            style="display: none;"
-																						   onchange="pressed()">
+                                                                                           onchange="pressed()">
                     </span>
                             </label>
                             <input type="text" id="upload-file-info" class="form-control" readonly>
@@ -272,7 +258,7 @@
                                                                                            name="OFD295"
                                                                                            id="295upload"
                                                                                            style="display: none;"
-																						   onchange="pressed1()">
+                                                                                           onchange="pressed1()">
                     </span>
                             </label>
                             <input type="text" id="upload-file-info" class="form-control" readonly>
@@ -305,7 +291,7 @@
                                                                                            name="OFD025a"
                                                                                            id="25aUpload"
                                                                                            style="display: none;"
-																						   onchange="pressed2()">
+                                                                                           onchange="pressed2()">
                     </span>
                             </label>
                             <input type="text" id="upload-file-info" class="form-control" readonly>
@@ -335,9 +321,10 @@
                         <div class="input-group">
                             <label class="input-group-btn">
                     <span class="btn btn-info">
-                        <i class="fa fa-cloud-upload" aria-hidden="true"></i> Upload<input type="file" name="OFD025b" id="25bUpload"
+                        <i class="fa fa-cloud-upload" aria-hidden="true"></i> Upload<input type="file" name="OFD025b"
+                                                                                           id="25bUpload"
                                                                                            style="display: none;"
-																						   onchange="pressed3()">
+                                                                                           onchange="pressed3()">
                     </span>
                             </label>
                             <input type="text" id="upload-file-info" class="form-control" readonly>
@@ -367,9 +354,10 @@
                         <div class="input-group">
                             <label class="input-group-btn">
                     <span class="btn btn-info">
-                        <i class="fa fa-cloud-upload" aria-hidden="true"></i> Upload<input type="file" name="OFD025c" id="25cUpload"
+                        <i class="fa fa-cloud-upload" aria-hidden="true"></i> Upload<input type="file" name="OFD025c"
+                                                                                           id="25cUpload"
                                                                                            style="display: none;"
-																						   onchange="pressed4()">
+                                                                                           onchange="pressed4()">
                     </span>
                             </label>
                             <input type="text" id="upload-file-info" class="form-control" readonly>
@@ -398,9 +386,10 @@
                         <div class="input-group">
                             <label class="input-group-btn">
                     <span class="btn btn-info">
-                        <i class="fa fa-cloud-upload" aria-hidden="true"></i> Upload<input type="file" name="OFD31" id="31Upload"
+                        <i class="fa fa-cloud-upload" aria-hidden="true"></i> Upload<input type="file" name="OFD31"
+                                                                                           id="31Upload"
                                                                                            style="display: none;"
-																						   onchange="pressed5()">
+                                                                                           onchange="pressed5()">
                     </span>
                             </label>
                             <input type="text" id="upload-file-info" class="form-control" readonly>
@@ -429,9 +418,10 @@
                         <div class="input-group">
                             <label class="input-group-btn">
                     <span class="btn btn-info">
-                        <i class="fa fa-cloud-upload" aria-hidden="true"></i> Upload<input type="file" name="OFD127" id="127Upload"
+                        <i class="fa fa-cloud-upload" aria-hidden="true"></i> Upload<input type="file" name="OFD127"
+                                                                                           id="127Upload"
                                                                                            style="display: none;"
-																						   onchange="pressed6()">
+                                                                                           onchange="pressed6()">
                     </span>
                             </label>
                             <input type="text" id="upload-file-info" class="form-control" readonly>
@@ -443,12 +433,12 @@
             <div class="row">
                 <div class="col-sm-12 form-group">
                     {{ Form::checkbox('calllaw', 1, null, ['id' => 'calllaw', 'class'=>'className']) }}
-					{{Form::label('calllaw','Call Law Department
+                    {{Form::label('calllaw','Call Law Department
                             Investigator - Call 444-5131- Request report be faxed to
                         SWD fax # 444-6378. You can
                         leave a message with rig # address of incident, date, time and
                         RB#')}}
-                    
+
                 </div>
             </div>
             <div class="row">
@@ -456,33 +446,36 @@
                     {{ Form::checkbox('daybook', 1, null, ['id' => 'daybook', 'class'=>'className']) }}
                     {{Form::label('daybook','Enter in Company Day
                             Book')}}
-					
+
                 </div>
             </div>
             <div class="row">
                 <div class="col-sm-12 form-group">
                     <div class="form-group">
                         {{ Form::checkbox('checkbox8', 1, null, ['id'=>'checkbox8', 'class' => 'className', 'disabled' ]) }}
-                        {{Form::label('checkbox8','Complete DR 41 State
-                                of Nebraska DMV Vehicle Accident Report')}}
+                        {{Form::label('checkbox8','State Law requires every operator of a motor vehicle involved in an accident
+                        resulting in either injury, death, or damages over $1,000.00 to the property of any one person
+                        (including the operator) to complete the State of Nebraska "DR Form 41" and return within 10 days
+                        following the accident to the State of Nebraska. Click on Download to access the document')}}
                     </div>
                 </div>
                 {{--}} <label class="checkbox-inline col-sm-12"><strong><strong> Complete DR 41 State
                              of Nebraska DMV Vehicle Accident Report</strong></strong></label> --}}
                 <div class="col-sm-12 form-group well well-sm">
                     <div class="col-sm-4">
-                        <a class="btn btn-success dropdown-toggle col-sm-12" type="button" id="41Download"
-                           href="{{ asset('Fillable PDFs\Accident Module\(Accident PDF) DR 41 State of Nebraska DMV Vehicle Accident Report.pdf') }}"
-                           download="(Accident PDF) DR 41 State of Nebraska DMV Vehicle Accident Report.pdf">
+                        <a class="btn btn-success dropdown-toggle col-sm-12" type="button"
+                           href="{{ url('http://roads.nebraska.gov/media/3337/dr41-no-fill.pdf') }}">
+                            {{--download="(Accident PDF) DR 41 State of Nebraska DMV Vehicle Accident Report.pdf">--}}
                             <i class="fa fa-download" aria-hidden="true"></i> Download</a>
                     </div>
                     <div class="col-sm-3">
                         <div class="input-group">
                             <label class="input-group-btn">
                     <span class="btn btn-info">
-                        <i class="fa fa-cloud-upload" aria-hidden="true"></i> Upload<input type="file" name="DR41" id="41Upload"
+                        <i class="fa fa-cloud-upload" aria-hidden="true"></i> Upload<input type="file" name="DR41"
+                                                                                           id="41Upload"
                                                                                            style="display: none;"
-																						   onchange="pressed7()">
+                                                                                           onchange="pressed7()">
                     </span>
                             </label>
                             <input type="text" id="upload-file-info" class="form-control" readonly>
@@ -505,7 +498,7 @@
                         <i class="fa fa-cloud-upload" aria-hidden="true"></i> Upload<input type="file" id="miscUplaods"
                                                                                            name="miscaccidents"
                                                                                            style="display: none;"
-																						   onchange="pressed8()">
+                                                                                           onchange="pressed8()">
                     </span>
                             </label>
                             <input type="text" id="upload-file-info" class="form-control" readonly>
@@ -538,7 +531,9 @@
                 </div>
                 <div class="modal-footer">
                     {!! Form::submit('Yes',['class' => 'btn btn-success','name'=> 'store', 'id' => 'modalSubmit']) !!}
-                    <button type="button" class=" btn btn-danger" data-dismiss="modal" id="modalDismiss" aria-label="">No</button>
+                    <button type="button" class=" btn btn-danger" data-dismiss="modal" id="modalDismiss" aria-label="">
+                        No
+                    </button>
 
 
                 </div>
@@ -549,103 +544,85 @@
     {!! Form::close() !!}
 @stop
 <script>
-window.pressed = function(){
-    var a = document.getElementById('lrsdownload');
-    if(a.value == "")
-    {
-        
-    }
-    else
-    {
-       document.getElementById("checkbox1").checked = true;
-    }
-};
-window.pressed1 = function(){
-    var a = document.getElementById('295upload');
-    if(a.value == "")
-    {
-        
-    }
-    else
-    {
-       document.getElementById("checkbox2").checked = true;
-    }
-};
-window.pressed2 = function(){
-    var a = document.getElementById('25aUpload');
-    if(a.value == "")
-    {
-        
-    }
-    else
-    {
-       document.getElementById("checkbox3").checked = true;
-    }
-};
-window.pressed3 = function(){
-    var a = document.getElementById('25bUpload');
-    if(a.value == "")
-    {
-        
-    }
-    else
-    {
-       document.getElementById("checkbox4").checked = true;
-    }
-};
-window.pressed4 = function(){
-    var a = document.getElementById('25cUpload');
-    if(a.value == "")
-    {
-        
-    }
-    else
-    {
-       document.getElementById("checkbox5").checked = true;
-    }
-};
-window.pressed5 = function(){
-    var a = document.getElementById('31Upload');
-    if(a.value == "")
-    {
-        
-    }
-    else
-    {
-       document.getElementById("checkbox6").checked = true;
-    }
-};
-window.pressed6 = function(){
-    var a = document.getElementById('127Upload');
-    if(a.value == "")
-    {
-        
-    }
-    else
-    {
-       document.getElementById("checkbox7").checked = true;
-    }
-};
-window.pressed7 = function(){
-    var a = document.getElementById('41Upload');
-    if(a.value == "")
-    {
-        
-    }
-    else
-    {
-       document.getElementById("checkbox8").checked = true;
-    }
-};
-window.pressed8 = function(){
-    var a = document.getElementById('miscUplaods');
-    if(a.value == "")
-    {
-        
-    }
-    else
-    {
-       document.getElementById("checkbox9").checked = true;
-    }
-};
+    window.pressed = function () {
+        var a = document.getElementById('lrsdownload');
+        if (a.value == "") {
+
+        }
+        else {
+            document.getElementById("checkbox1").checked = true;
+        }
+    };
+    window.pressed1 = function () {
+        var a = document.getElementById('295upload');
+        if (a.value == "") {
+
+        }
+        else {
+            document.getElementById("checkbox2").checked = true;
+        }
+    };
+    window.pressed2 = function () {
+        var a = document.getElementById('25aUpload');
+        if (a.value == "") {
+
+        }
+        else {
+            document.getElementById("checkbox3").checked = true;
+        }
+    };
+    window.pressed3 = function () {
+        var a = document.getElementById('25bUpload');
+        if (a.value == "") {
+
+        }
+        else {
+            document.getElementById("checkbox4").checked = true;
+        }
+    };
+    window.pressed4 = function () {
+        var a = document.getElementById('25cUpload');
+        if (a.value == "") {
+
+        }
+        else {
+            document.getElementById("checkbox5").checked = true;
+        }
+    };
+    window.pressed5 = function () {
+        var a = document.getElementById('31Upload');
+        if (a.value == "") {
+
+        }
+        else {
+            document.getElementById("checkbox6").checked = true;
+        }
+    };
+    window.pressed6 = function () {
+        var a = document.getElementById('127Upload');
+        if (a.value == "") {
+
+        }
+        else {
+            document.getElementById("checkbox7").checked = true;
+        }
+    };
+    window.pressed7 = function () {
+        var a = document.getElementById('41Upload');
+        if (a.value == "") {
+
+        }
+        else {
+            document.getElementById("checkbox8").checked = true;
+        }
+    };
+    window.pressed8 = function () {
+        var a = document.getElementById('miscUplaods');
+        if (a.value == "") {
+
+        }
+        else {
+            document.getElementById("checkbox9").checked = true;
+        }
+    };
 </script>

@@ -42,9 +42,6 @@
                                 <h3><strong>Vehicle Accident Report Tracking Document (OFD-6A)</strong></h3>
                             </div>
                         </div>
-                        <div class="col-md-12">
-                            <h6><i><strong>Used for future tracking purposes only</strong></i></h6>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -55,7 +52,7 @@
                     <div class="col-md-12">
                         <div class="alert alert-danger" align="center">
                             <strong>
-                                COMPLETE ALL FORMS AND SUBMIT WITHIN 24 HOURS
+                                COMPLETE AND SUBMIT ALL FORMS WITHIN 24 HOURS
                             </strong>
                         </div>
                     </div>
@@ -178,21 +175,8 @@
                     <div class="row">
                         <div class="col-md-12" style="text-align:left">
                             <strong>
-                                Please Follow These Instructions:
-                                <ol start="1">
-                                    <li>B/C shall ensure all reports are properly completed within 24 hours.</li>
-                                    <li>If an employee receives an injury from this incident, the employee shall
-                                        complete an OFD6 and designate whether treatment is being requested in the
-                                        OFD-25 IOD.
-                                    </li>
-                                    <li>City of Omaha policy REQUIRES a Police Report and DR41 State Form on all
-                                        City
-                                        vehicles involved in an accident OR property damage whether on public
-                                        streets,
-                                        private property, or at the Fire Station.
-                                    </li>
-                                    <li>DR41 is also submitted to the State if damage is over $1000.00</li>
-                                </ol>
+                                If an employee receives an injury from this incident, the employee shall complete an
+                                OFD6 and designate whether treatment is being requested in the OFD-25 IOD.
                             </strong>
                         </div>
                     </div>
@@ -655,8 +639,7 @@
                 <div class="col-sm-12 form-group">
                     <div class="form-group">
                         {{ Form::checkbox('checkbox8', 1, null, ['id'=>'checkbox8', 'class' => 'className' ]) }}
-                        {{Form::label('Checkbox8','Complete DR 41 State
-                            of Nebraska DMV Vehicle Accident Report')}}
+                        {{Form::label('Checkbox8','State Law requires every operator of a motor vehicle involved in an accident resulting in either injury, death, or damages over $1,000.00 to the property of any one person (including the operator) to complete the State of Nebraska "DR Form 41" and return within 10 days following the accident to the State of Nebraska. Click on Donwload to access the document')}}
                     </div>
                 </div>
                 {{--}} <label class="checkbox-inline col-sm-12"><strong><strong> Complete DR 41 State
@@ -664,8 +647,8 @@
                 <div class="col-sm-12 form-group well well-sm">
                     <div class="col-sm-4">
                         <a class="btn btn-success dropdown-toggle col-sm-12" type="button"
-                           href="{{ asset('Fillable PDFs\Accident Module\(Accident PDF) DR 41 State of Nebraska DMV Vehicle Accident Report.pdf') }}"
-                           download="(Accident PDF) DR 41 State of Nebraska DMV Vehicle Accident Report.pdf">
+                           href="{{ url('http://roads.nebraska.gov/media/3337/dr41-no-fill.pdf') }}">
+                            {{--download="(Accident PDF) DR 41 State of Nebraska DMV Vehicle Accident Report.pdf">--}}
                             <i class="fa fa-download" aria-hidden="true"></i> Download</a>
                     </div>
                     <div class="col-sm-3">
