@@ -640,8 +640,8 @@
                         'yes' => 'YES',
                         'no' => 'NO']
                         ), old('trainingassigned'),
-                        ['placeholder' => 'Choose one', 'id' => 'trainingassigned', 'onchange' =>"pressed()"],
-                        array('class'=>'btn btn-primary dropdown-toggle col-sm-12', 'id'=>'trainingId') }}
+
+                        array('placeholder' => 'Choose one', 'id' => 'trainingassigned', 'onchange' =>"pressed()",'class'=>'form-control') }}
                     </div>
                 </div>
             </div>

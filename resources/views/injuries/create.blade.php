@@ -99,8 +99,8 @@
                       'A' => 'A',
                       'B' => 'B',
                       'C' => 'C',
-                      'DIV' => 'DIV'],null,
-                                ['placeholder' => 'Choose one'], array('class' => 'form-control','id' => 'shift','required' => 'required'))!!}
+                      'DIV' => 'DIV'],null
+                                , array('placeholder' => 'Choose one','class' => 'form-control','id' => 'shift','required' => 'required'))!!}
                         <p class="help-block"></p>
                         @if($errors->has('shift'))
                             <p class="help-block">
@@ -445,8 +445,7 @@
                     {{ Form::select('trainingassigned', [
                     'yes' => 'YES',
                     'no' => 'NO'],null,
-                                ['placeholder' => 'Choose one', 'id' => 'trainingassigned', 'onchange' =>"pressed6()"],
-                     array('class'=>'btn btn-primary dropdown-toggle col-sm-12')) }}
+                     array('placeholder' => 'Choose one', 'id' => 'trainingassigned', 'onchange' =>"pressed6()",'class'=>'form-control')) }}
                 </div>
             </div>
         </div>

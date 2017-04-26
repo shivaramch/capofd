@@ -104,7 +104,7 @@
                             'B' => 'B',
                             'C' => 'C',
                             'DIV' => 'DIV'], old('shift'),
-                            ['class' => 'form-control']) !!}
+                            array('placeholder'=>'Select one','id'=>'shift','class' => 'form-control')) !!}
                             <p class="help-block"></p>
                             @if($errors->has('shift'))
                                 <p class="help-block">
@@ -549,7 +549,7 @@
                     {!! Form::select('exposureinjury',[
                       'Yes' => 'Yes',
                       'No' => 'No'],old('exposureinjury'),
-                    ['class' => 'form-control'])!!}
+                     array('placeholder'=>'Select one','id'=>'exposureinjury','class' => 'form-control')) !!}
                     <p class="help-block"></p>
                     @if($errors->has('exposureinjury'))
                         <p class="help-block">

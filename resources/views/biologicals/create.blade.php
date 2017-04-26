@@ -99,13 +99,13 @@
                     </div>
                     <div class="col-sm-4 form-group">
                         {!! Form::label('shift', 'Shift', ['class'=> 'col-sm-4 control-label'] ) !!}
-                        <div class="col-sm-4">
+                        <div class="col-sm-6">
                             {!! Form::select('shift', ['A' => 'A',
                             'B' => 'B',
                             'C' => 'C',
                             'DIV' => 'DIV'],
                             'required',
-                            ['class' => 'form-control']) !!}
+                            array('placeholder'=>'Select one','id'=>'shift','class' => 'form-control')) !!}
                             <p class="help-block"></p>
                             @if($errors->has('shift'))
                                 <p class="help-block">
@@ -438,12 +438,11 @@
             <div class="col-md-6 form-group">
                 {{Form::label('exposureinjury','Do you have any symptoms of illness or injury and require
                    treatment?',['class'=> 'col-sm-10 control-label'] ) }}
-                <div class="col-sm-2">
+                <div class="col-sm-4">
                     {!! Form::select('exposureinjury',[
                       'Yes' => 'Yes',
-                      'No' => 'No'],null,
-                      ['placeholder' => 'Choose One'],'required',
-                    ['class' => 'form-control'])!!}
+                      'No' => 'No'],'required',
+                    array('placeholder'=>'Select one','id'=>'exposureinjury','class' => 'form-control')) !!}
                     <p class="help-block"></p>
                     @if($errors->has('exposureinjury'))
                         <p class="help-block">

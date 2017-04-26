@@ -136,7 +136,7 @@
                             'ofd6c' => 'HazMat Exposure',
                             'offduty' => 'Off Duty Incident']
                             ,old('exposureinjury'),
-                            ['class' => 'form-control']) !!}
+                            array('placeholder'=>'Select One','class' => 'form-control','id'=>'incidentype')) !!}
                             <p class="help-block"></p>
                             @if($errors->has('incidenttype'))
                                 <p class="help-block">
