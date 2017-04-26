@@ -175,10 +175,10 @@
             </div>
             <div class="row">
                 <div class="col-sm-12">
-                    {!! Form::label('comments', 'Comments', array('style'=>'padding-top:7px;','class'=> 'col-sm-4 control-label') ) !!}
+                    {!! Form::label('comments', 'Notes', array('style'=>'padding-top:7px;','class'=> 'col-sm-4 control-label') ) !!}
                 </div>
                 <div class="col-sm-12 ">
-                    {!! Form::textarea('comments', old('comments'), array('class' => 'form-control','placeholder'=>'Enter Comments'))!!}
+                    {!! Form::textarea('comments', old('comments'), array('class' => 'form-control','placeholder'=>'Enter Notes'))!!}
                     <p class="help-block"></p>
                     @if($errors->has('comments'))
                         <p class="help-block">
@@ -210,7 +210,7 @@
                         <h4 class="modal-title" id="myModalLabel"></h4>
                     </div>
                     <div class="modal-body">
-                        Are you sure you want to Submit?
+                        Are you sure you want to Save?
                     </div>
                     <div class="modal-footer">
                         {!! Form::submit('Yes',['class' => 'btn btn-success']) !!}

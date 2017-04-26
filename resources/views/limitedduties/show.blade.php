@@ -196,7 +196,7 @@
 
                 <div class="row">
                     <div class="col-sm-12">
-                        {!! Form::label('comments', 'Comments', array('style'=>'padding-top:7px;','class'=> 'col-sm-4 control-label') ) !!}
+                        {!! Form::label('comments', 'Notes', array('style'=>'padding-top:7px;','class'=> 'col-sm-4 control-label') ) !!}
                     </div>
                     <div class="col-sm-12 ">
                         {!! Form::textarea('comments', old('comments'),array('class' => 'form-control','disabled'=>'disabled'))!!}
