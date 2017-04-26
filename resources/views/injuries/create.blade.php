@@ -1,26 +1,5 @@
 @extends('layouts.app')
 @section('content')
-    <script>
-        $(document).ready(function () {
-            src = "{{ route('searchajax') }}";
-            $("#assignmentinjury").autocomplete({
-                source: function (request, response) {
-                    $.ajax({
-                        url: src,
-                        dataType: "json",
-                        data: {
-                            term: request.term
-                        },
-                        success: function (data) {
-                            response(data);
-
-                        }
-                    });
-                },
-                minLength: 1,
-            });
-        });
-    </script>
 @section('crumbs')
     <ol class="breadcrumb">
         <a class="btn btn-default" type="button"
