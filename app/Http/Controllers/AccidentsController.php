@@ -221,6 +221,15 @@ class AccidentsController extends EmailController
             'calllaw' => 'required|integer:accidents,calllaw',
             'daybook' => 'required|integer:accidents,daybook',
             'commemail' => 'required|integer:accidents,commemail',
+            'LRS101' => 'required|file:accidents,LRS101|mimes:pdf|max:10000',
+            'OFD295' => 'required|file:accidents,OFD295|mimes:pdf|max:10000',
+            'OFD025a' => 'required|file:accidents,OFD025a|mimes:pdf|max:10000',
+            'OFD025b' => 'required|file:accidents,OFD025b|mimes:pdf|max:10000',
+            'OFD025c' => 'required|file:accidents,OFD025c|mimes:pdf|max:10000',
+            'OFD31' => 'required|file:accidents,OFD31|mimes:pdf|max:10000',
+            'OFD127' => 'required|file:accidents,OFD127|mimes:pdf|max:10000',
+            'DR41' => 'required|file:accidents,DR41|mimes:pdf|max:10000',
+
         ]);//request will have all values filled by firefighter
         //check if the user*/
     }
@@ -239,6 +248,7 @@ class AccidentsController extends EmailController
         $request->offsetSet('applicationstatus', $statusid);
 
         $request = $this->saveFiles($request);
+
         Accident::create($request->all());
         $last_insert_id = DB::getPdo()->lastInsertId();
         $this->AccidentUpload($request, $last_insert_id);
@@ -251,6 +261,8 @@ class AccidentsController extends EmailController
         (new EmailController)->Email($request, $link, $formname, $statusid);
         //$request->session()->flash('alert-success', 'User was successful added!');
         return redirect()->route('accidents.index')->with('message', 'Form Submitted Successfully');
+
+
     }
 
 

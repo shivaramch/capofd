@@ -244,6 +244,11 @@
                                 </label>
                                 <input type="text" id="upload-file-info" class="form-control" readonly>
                             </div>
+                            @if($errors->has('trueofd184'))
+                                <p class="help-block">
+                                    {{ $errors->first('trueofd184') }}
+                                </p>
+                            @endif
                         </div>
                     </div>
                 </div>
@@ -374,6 +379,11 @@
                                 </label>
                                 <input type="text" id="upload-file-info" class="form-control" readonly>
                             </div>
+                            @if($errors->has('potofd184'))
+                                <p class="help-block">
+                                    {{ $errors->first('potofd184') }}
+                                </p>
+                            @endif
                         </div>
                     </div>
                 </div>

@@ -13,11 +13,8 @@
  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
 
-
 <script src="//cdn.datatables.net/1.10.9/js/jquery.dataTables.min.js"></script>
 <link href="http://demo.expertphp.in/css/jquery.ui.autocomplete.css" rel="stylesheet">
-<script src="http://demo.expertphp.in/js/jquery.js"></script>
-<script src="http://demo.expertphp.in/js/jquery-ui.min.js"></script >
 
 <script src="{{ url ('js') }}/bootstrap.min.js"></script>
 

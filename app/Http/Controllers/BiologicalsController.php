@@ -95,10 +95,10 @@ class BiologicalsController extends Controller
     }
 
 
-    public function update(Request $requestSave,$id)
+    public function update(Request $requestSave, $id)
     {
         if (Input::get('store')) {
-           $this->updateRecord($requestSave,$id);
+            $this->updateRecord($requestSave, $id);
             //$this->partialUpdate($requestSave, $id);
             return redirect()->route('biologicals.index')->with('message', 'Form Submitted Successfully');
         }
@@ -112,13 +112,10 @@ class BiologicalsController extends Controller
     }
 
 
-
     public function save(Request $requestSave)
     {
         if (Input::get('store')) {
             $this->store($requestSave);
-            //$this->partialSave($requestSave);
-
             return redirect()->route('biologicals.index')->with('message', 'Form Submitted Successfully');
         }
 
@@ -146,7 +143,7 @@ class BiologicalsController extends Controller
         $last_insert_id = DB::getPdo()->lastInsertId();
         $this->BiologicalUpload($request, $last_insert_id);
         $link = $request->url() . "/$last_insert_id";
-        return redirect()->route('biologicals.index');
+        return redirect()->route('biologicals.index')->with('message', 'Form Saved Successfully');;
 
     }
 
@@ -162,8 +159,10 @@ class BiologicalsController extends Controller
             'primaryidconumber' => 'required|integer:biological,primaryidconumber',
             'epcrincidentnum' => 'required|numeric:biological,epcrincidentnum',
             'frmsincidentnum' => 'required|string:biological,frmsincidentnumber',
-            'exposureinjury'=>'required|string:biological,exposureinjury',
-            'exposure'=>'required|string:biological,exposure',
+            'exposureinjury' => 'required|string:biological,exposureinjury',
+            'exposure' => 'required|string:biological,exposure',
+            'trueofd184' => 'file:biological,trueofd184|mimes:pdf|max:10000',
+            'potofd184' => 'file:biological,potofd184|mimes:pdf|max:10000',
 
 
         ]);
@@ -199,13 +198,11 @@ class BiologicalsController extends Controller
 
         if (($biological->employeeid == Auth::user()->id
                 && ($biological->applicationstatus == $rejectstatus
-                    || $biological->applicationstatus == $draftstatus) )
-            || Auth::user()->roleid == 1)
-        {
+                    || $biological->applicationstatus == $draftstatus))
+            || Auth::user()->roleid == 1
+        ) {
             return view('biologicals.edit', compact('biological', 'attachments', 'comments', 'users'));
-        }
-        else
-        {
+        } else {
             return view('errors.access');
         }
     }
@@ -223,16 +220,13 @@ class BiologicalsController extends Controller
 
         if ($biological->employeeid == Auth::user()->id ||
             ($biological->primaryidconumber == Auth::user()->id && $biological->applicationstatus == $applicationStatus) ||
-            Auth::user()->roleid == 1)
-        {
+            Auth::user()->roleid == 1
+        ) {
             return view('biologicals.show', compact('biological', 'attachments', 'comments', 'users'));
-        }
-        else
-        {
+        } else {
             return view('errors.access');
         }
     }
-
 
 
     public function partialUpdate(Request $request, $id)
@@ -266,12 +260,10 @@ class BiologicalsController extends Controller
 
 
         //email notification-end
-        return redirect()->route('biologicals.index');
+        return redirect()->route('biologicals.index')->with('message', 'Form Saved Successfully');;
 
 
     }
-
-
 
 
     public function updateRecord(Request $request, $id)
@@ -310,6 +302,6 @@ class BiologicalsController extends Controller
         $formname = "biologicals";
         (new EmailController)->Email($request, $link, $formname, $statusid);
         //email notification-end
-        return redirect()->route('biologicals.index')>with('message', 'Form Updated Successfully');
+        return redirect()->route('biologicals.index')->with('message', 'Form Updated Successfully');
     }
 }
