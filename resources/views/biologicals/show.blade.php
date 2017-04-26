@@ -172,248 +172,251 @@
                     </div>
                 </div>
             </div>
-            <div id="Exposure0" class="desc">
-                <div class="col-sm-12">
-                    <div class="form-group">
-                        {{ Form::checkbox('truedecontaminate', 1, null, ['id' => 'truedecontaminate', 'class'=>'className' , 'disabled' => "disabled"]) }}
-                        {{Form::label('truedecontaminate','Decontaminate self- wash, flush as soon as possible  ')}}
+            @if($biological->exposure == 0)
+                <div id="Exposure0" class="desc">
+                    <div class="col-sm-12">
+                        <div class="form-group">
+                            {{ Form::checkbox('truedecontaminate', 1, null, ['id' => 'truedecontaminate', 'class'=>'className' , 'disabled' => "disabled"]) }}
+                            {{Form::label('truedecontaminate','Decontaminate self- wash, flush as soon as possible  ')}}
+                        </div>
                     </div>
-                </div>
-                <div class="col-sm-12">
-                    <div class="form-group">
-                        {{ Form::checkbox('confirmsource', 1, null, ['id'=>'confirmsource', 'class' => 'className','disabled' => "disabled" ]) }}
-                        {{ Form::label('confirmsource', 'Confirm Source - Patient blood draw with OUCH Nurse') }}
+                    <div class="col-sm-12">
+                        <div class="form-group">
+                            {{ Form::checkbox('confirmsource', 1, null, ['id'=>'confirmsource', 'class' => 'className','disabled' => "disabled" ]) }}
+                            {{ Form::label('confirmsource', 'Confirm Source - Patient blood draw with OUCH Nurse') }}
+                        </div>
                     </div>
-                </div>
 
-                <div class="col-sm-12">
-                    <div class="form-group">
-                        {{ Form::checkbox('trueofd184', 1, null, ['id'=>'trueofd184', 'class' => 'className','disabled' => "disabled" ]) }}
-                        {{Form::label('trueofd184','Complete OFD 184')}}
-                    </div>
-                    <div class="col-sm-12 form-group well well-sm">
-                        <div class="col-sm-4">
-                            <a class="btn btn-primary dropdown-toggle col-sm-12" data-toggle="collapse"
-                               data-target="#6b1"><i class="fa fa-eye" aria-hidden="true"></i> View
-                                Previously
-                                uploaded
-                                file(s)
-                            </a>
+                    <div class="col-sm-12">
+                        <div class="form-group">
+                            {{ Form::checkbox('trueofd184', 1, null, ['id'=>'trueofd184', 'class' => 'className','disabled' => "disabled" ]) }}
+                            {{Form::label('trueofd184','Complete OFD 184')}}
+                        </div>
+                        <div class="col-sm-12 form-group well well-sm">
+                            <div class="col-sm-4">
+                                <a class="btn btn-primary dropdown-toggle col-sm-12" data-toggle="collapse"
+                                   data-target="#6b1"><i class="fa fa-eye" aria-hidden="true"></i> View
+                                    Previously
+                                    uploaded
+                                    file(s)
+                                </a>
 
-                            <div id="6b1" class="collapse">
+                                <div id="6b1" class="collapse">
 
-                                <table class="table table-striped">
-                                    <tr>
-                                        <th> File Name</th>
-                                        <th> File Uploaded At</th>
-                                    </tr>
-                                    @if(count($attachments) > 0)
-                                        @foreach($attachments as $attachment)
-                                            @if($attachment->attachmenttype == '6b1')
-                                                <tr>
-                                                    <td>
-                                                        <a href="{{ asset('uploads/'.$attachment->attachmentname) }}"> {{$attachment->attachmentname}}</a>
-                                                    </td>
-                                                    <td>
-                                                        {{$attachment->created_at}}
-                                                    </td>
-                                                </tr>@endif
-                                        @endforeach
-                                    @endif
+                                    <table class="table table-striped">
+                                        <tr>
+                                            <th> File Name</th>
+                                            <th> File Uploaded At</th>
+                                        </tr>
+                                        @if(count($attachments) > 0)
+                                            @foreach($attachments as $attachment)
+                                                @if($attachment->attachmenttype == '6b1')
+                                                    <tr>
+                                                        <td>
+                                                            <a href="{{ asset('uploads/'.$attachment->attachmentname) }}"> {{$attachment->attachmentname}}</a>
+                                                        </td>
+                                                        <td>
+                                                            {{$attachment->created_at}}
+                                                        </td>
+                                                    </tr>@endif
+                                            @endforeach
+                                        @endif
 
-                                </table>
+                                    </table>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-sm-12">
-                    <div class="form-group">
-                        {{ Form::checkbox('miscbiological1', 1, null, ['id'=>'miscbiological1', 'class' => 'className','disabled'=>'disabled' ]) }}
-                        {{Form::label('miscbiological1','Miscellaneous Documents')}}
-                    </div>
-                    <div class="col-sm-12 form-group well well-sm">
-                        <div class="col-sm-4">
-                            <a class="btn btn-primary dropdown-toggle col-sm-12" data-toggle="collapse"
-                               data-target="#6b3"><i class="fa fa-eye" aria-hidden="true"></i> View
-                                Previously
-                                uploaded
-                                file(s)
-                            </a>
+                    <div class="col-sm-12">
+                        <div class="form-group">
+                            {{ Form::checkbox('miscbiological1', 1, null, ['id'=>'miscbiological1', 'class' => 'className','disabled'=>'disabled' ]) }}
+                            {{Form::label('miscbiological1','Miscellaneous Documents')}}
+                        </div>
+                        <div class="col-sm-12 form-group well well-sm">
+                            <div class="col-sm-4">
+                                <a class="btn btn-primary dropdown-toggle col-sm-12" data-toggle="collapse"
+                                   data-target="#6b3"><i class="fa fa-eye" aria-hidden="true"></i> View
+                                    Previously
+                                    uploaded
+                                    file(s)
+                                </a>
 
-                            <div id="6b3" class="collapse">
+                                <div id="6b3" class="collapse">
 
-                                <table class="table table-striped">
-                                    <tr>
-                                        <th> File Name</th>
-                                        <th> File Uploaded At</th>
-                                    </tr>
+                                    <table class="table table-striped">
+                                        <tr>
+                                            <th> File Name</th>
+                                            <th> File Uploaded At</th>
+                                        </tr>
 
-                                    @if(count($attachments) > 0)
-                                        @foreach($attachments as $attachment)
-                                            @if($attachment->attachmenttype == '6b3')
-                                                <tr>
-                                                    <td>
-                                                        <a href="{{ asset('uploads/'.$attachment->attachmentname) }}"> {{$attachment->attachmentname}}</a>
-                                                    </td>
-                                                    <td>
-                                                        {{$attachment->created_at}}
-                                                    </td>
-                                                </tr>@endif
-                                        @endforeach
-                                    @endif
+                                        @if(count($attachments) > 0)
+                                            @foreach($attachments as $attachment)
+                                                @if($attachment->attachmenttype == '6b3')
+                                                    <tr>
+                                                        <td>
+                                                            <a href="{{ asset('uploads/'.$attachment->attachmentname) }}"> {{$attachment->attachmentname}}</a>
+                                                        </td>
+                                                        <td>
+                                                            {{$attachment->created_at}}
+                                                        </td>
+                                                    </tr>@endif
+                                            @endforeach
+                                        @endif
 
-                                </table>
+                                    </table>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
 
-                <div class="col-sm-12">
-                    <div class="form-group">
-                        {{ Form::checkbox('bloodreport', 1, null, ['id' => 'bloodreport', 'class'=>'className','disabled' => "disabled" ]) }}
-                        {{Form::label('bloodreport','Report for blood draw as directed by OUCH Nurse')}}
+                    <div class="col-sm-12">
+                        <div class="form-group">
+                            {{ Form::checkbox('bloodreport', 1, null, ['id' => 'bloodreport', 'class'=>'className','disabled' => "disabled" ]) }}
+                            {{Form::label('bloodreport','Report for blood draw as directed by OUCH Nurse')}}
 
+                        </div>
                     </div>
-                </div>
 
-                <div class="col-sm-12">
-                    <div class="form-group">
-                        {{ Form::checkbox('exposuretab', 1, null, ['id' => 'exposuretab', 'class'=>'className','disabled' => "disabled" ]) }}
-                        {{Form::label('exposuretab','Complete Exposure tab in ePCR ')}}
+                    <div class="col-sm-12">
+                        <div class="form-group">
+                            {{ Form::checkbox('exposuretab', 1, null, ['id' => 'exposuretab', 'class'=>'className','disabled' => "disabled" ]) }}
+                            {{Form::label('exposuretab','Complete Exposure tab in ePCR ')}}
 
+                        </div>
                     </div>
-                </div>
 
-                <div class="col-sm-12">
-                    <div class="form-group">
-                        {{ Form::checkbox('truebagtag', 1, null, ['id' => 'truebagtag', 'class'=>'className','disabled' => "disabled" ]) }}
-                        {{Form::label('truebagtag','Bag & Tag clothing if applicable - send email to PSS with pick-up location ')}}
+                    <div class="col-sm-12">
+                        <div class="form-group">
+                            {{ Form::checkbox('truebagtag', 1, null, ['id' => 'truebagtag', 'class'=>'className','disabled' => "disabled" ]) }}
+                            {{Form::label('truebagtag','Bag & Tag clothing if applicable - send email to PSS with pick-up location ')}}
 
+                        </div>
                     </div>
-                </div>
-                <div class="col-sm-12">
-                    <div class="form-group">
-                        {{ Form::checkbox('notifypss', 1, null, ['id' => 'notifypss', 'class'=>'className','disabled' => "disabled" ]) }}
-                        {{Form::label('notifypss','Notify the on-duty PSS via phone at 402-660-1060 ')}}
+                    <div class="col-sm-12">
+                        <div class="form-group">
+                            {{ Form::checkbox('notifypss', 1, null, ['id' => 'notifypss', 'class'=>'className','disabled' => "disabled" ]) }}
+                            {{Form::label('notifypss','Notify the on-duty PSS via phone at 402-660-1060 ')}}
 
+                        </div>
                     </div>
-                </div>
-                <div class="col-sm-12">
-                    <div class="form-group">
-                        {{ Form::checkbox('trueppe', 1, null, ['id' => 'trueppe', 'class'=>'className','disabled' => "disabled" ]) }}
-                        {{Form::label('trueppe','PPE has been cleaned per SOP SWD 1-0  ')}}
+                    <div class="col-sm-12">
+                        <div class="form-group">
+                            {{ Form::checkbox('trueppe', 1, null, ['id' => 'trueppe', 'class'=>'className','disabled' => "disabled" ]) }}
+                            {{Form::label('trueppe','PPE has been cleaned per SOP SWD 1-0  ')}}
 
+                        </div>
                     </div>
-                </div>
-                <div class="col-sm-12">
-                    <div class="form-group">
-                        {{ Form::checkbox('truedocumentdaybook', 1, null, ['id' => 'truedocumentdaybook', 'class'=>'className','disabled' => "disabled" ]) }}
-                        {{Form::label('truedocumentdaybook','Document in Company Day Book and on your Personnel Record')}}
-                    </div>
-                </div>
-            </div>
-            <div id="Exposure1" class="desc">
-                <div class="col-sm-12">
-                    <div class="form-group">
-                        {{ Form::checkbox('potdecontaminate', 1, null, ['id' => 'potdecontaminate', 'class'=>'className','disabled' => "disabled" ]) }}
-                        {{Form::label('potdecontaminate','Decontaminate self- wash, flush as soon as possible  ')}}
-                    </div>
-                </div>
-                <div class="col-sm-12">
-                    <div class="form-group">
-                        {{ Form::checkbox('potbagtag', 1, null, ['id' => 'potbagtag', 'class'=>'className','disabled' => "disabled" ]) }}
-                        {{Form::label('potbagtag','Bag & Tag clothing if applicable - send email to PSS with pick-up location')}}
-                    </div>
-                </div>
-                <div class="col-sm-12">
-                    <div class="form-group">
-                        {{ Form::checkbox('potofd184', 1, null, ['id' => 'potofd184', 'class'=>'className','disabled' => "disabled" ]) }}
-                        {{Form::label('potofd184','Complete OFD 184')}}
-                    </div>
-                    <div class="col-sm-12 form-group well well-sm">
-                        <div class="col-sm-4">
-                            <a class="btn btn-primary dropdown-toggle col-sm-12" data-toggle="collapse"
-                               data-target="#6b2"><i class="fa fa-eye" aria-hidden="true"></i> View Previously
-                                uploaded
-                                file(s)
-                            </a>
-                            <div id="6b2" class="collapse">
-                                <table class="table table-striped">
-                                    <tr>
-                                        <th> File Name</th>
-                                        <th> File Uploaded At</th>
-                                    </tr>
-
-                                    @if(count($attachments) > 0)
-                                        @foreach($attachments as $attachment)
-                                            @if($attachment->attachmenttype == '6b2')
-                                                <tr>
-                                                    <td>
-                                                        <a href="{{ asset('uploads/'.$attachment->attachmentname) }}"> {{$attachment->attachmentname}}</a>
-                                                    </td>
-                                                    <td>
-                                                        {{$attachment->created_at}}
-                                                    </td>
-                                                </tr>@endif
-                                        @endforeach
-                                    @endif
-                                </table>
-                            </div>
+                    <div class="col-sm-12">
+                        <div class="form-group">
+                            {{ Form::checkbox('truedocumentdaybook', 1, null, ['id' => 'truedocumentdaybook', 'class'=>'className','disabled' => "disabled" ]) }}
+                            {{Form::label('truedocumentdaybook','Document in Company Day Book and on your Personnel Record')}}
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-12">
-                    <div class="form-group">
-                        {{ Form::checkbox('miscbiological2', 1, null, ['id'=>'miscbiological2', 'class' => 'className','disabled'=>'disabled' ]) }}
-                        {{Form::label('miscbiological2','Miscellaneous Documents')}}
+            @else
+                <div id="Exposure1" class="desc">
+                    <div class="col-sm-12">
+                        <div class="form-group">
+                            {{ Form::checkbox('potdecontaminate', 1, null, ['id' => 'potdecontaminate', 'class'=>'className','disabled' => "disabled" ]) }}
+                            {{Form::label('potdecontaminate','Decontaminate self- wash, flush as soon as possible  ')}}
+                        </div>
                     </div>
-                    <div class="col-sm-12 form-group well well-sm">
-                        <div class="col-sm-4">
-                            <a class="btn btn-primary dropdown-toggle col-sm-12" data-toggle="collapse"
-                               data-target="#6b4"><i class="fa fa-eye" aria-hidden="true"></i> View
-                                Previously
-                                uploaded
-                                file(s)
-                            </a>
-                            <div id="6b4" class="collapse">
-                                <table class="table table-striped">
-                                    <tr>
-                                        <th> File Name</th>
-                                        <th> File Uploaded At</th>
-                                    </tr>
+                    <div class="col-sm-12">
+                        <div class="form-group">
+                            {{ Form::checkbox('potbagtag', 1, null, ['id' => 'potbagtag', 'class'=>'className','disabled' => "disabled" ]) }}
+                            {{Form::label('potbagtag','Bag & Tag clothing if applicable - send email to PSS with pick-up location')}}
+                        </div>
+                    </div>
+                    <div class="col-sm-12">
+                        <div class="form-group">
+                            {{ Form::checkbox('potofd184', 1, null, ['id' => 'potofd184', 'class'=>'className','disabled' => "disabled" ]) }}
+                            {{Form::label('potofd184','Complete OFD 184')}}
+                        </div>
+                        <div class="col-sm-12 form-group well well-sm">
+                            <div class="col-sm-4">
+                                <a class="btn btn-primary dropdown-toggle col-sm-12" data-toggle="collapse"
+                                   data-target="#6b2"><i class="fa fa-eye" aria-hidden="true"></i> View Previously
+                                    uploaded
+                                    file(s)
+                                </a>
+                                <div id="6b2" class="collapse">
+                                    <table class="table table-striped">
+                                        <tr>
+                                            <th> File Name</th>
+                                            <th> File Uploaded At</th>
+                                        </tr>
 
-                                    @if(count($attachments) > 0)
-                                        @foreach($attachments as $attachment)
-                                            @if($attachment->attachmenttype == '6b4')
-                                                <tr>
-                                                    <td>
-                                                        <a href="{{ asset('uploads/'.$attachment->attachmentname) }}"> {{$attachment->attachmentname}}</a>
-                                                    </td>
-                                                    <td>
-                                                        {{$attachment->created_at}}
-                                                    </td>
-                                                </tr>@endif
-                                        @endforeach
-                                    @endif
-                                </table>
+                                        @if(count($attachments) > 0)
+                                            @foreach($attachments as $attachment)
+                                                @if($attachment->attachmenttype == '6b2')
+                                                    <tr>
+                                                        <td>
+                                                            <a href="{{ asset('uploads/'.$attachment->attachmentname) }}"> {{$attachment->attachmentname}}</a>
+                                                        </td>
+                                                        <td>
+                                                            {{$attachment->created_at}}
+                                                        </td>
+                                                    </tr>@endif
+                                            @endforeach
+                                        @endif
+                                    </table>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-sm-12">
-                    <div class="form-group">
-                        {{ Form::checkbox('potppe', 1, null, ['id' => 'potppe', 'class'=>'className','disabled' => "disabled" ]) }}
-                        {{Form::label('potppe','PPE has been cleaned per SOP SWD 1-0')}}
+                    <div class="col-sm-12">
+                        <div class="form-group">
+                            {{ Form::checkbox('miscbiological2', 1, null, ['id'=>'miscbiological2', 'class' => 'className','disabled'=>'disabled' ]) }}
+                            {{Form::label('miscbiological2','Miscellaneous Documents')}}
+                        </div>
+                        <div class="col-sm-12 form-group well well-sm">
+                            <div class="col-sm-4">
+                                <a class="btn btn-primary dropdown-toggle col-sm-12" data-toggle="collapse"
+                                   data-target="#6b4"><i class="fa fa-eye" aria-hidden="true"></i> View
+                                    Previously
+                                    uploaded
+                                    file(s)
+                                </a>
+                                <div id="6b4" class="collapse">
+                                    <table class="table table-striped">
+                                        <tr>
+                                            <th> File Name</th>
+                                            <th> File Uploaded At</th>
+                                        </tr>
 
+                                        @if(count($attachments) > 0)
+                                            @foreach($attachments as $attachment)
+                                                @if($attachment->attachmenttype == '6b4')
+                                                    <tr>
+                                                        <td>
+                                                            <a href="{{ asset('uploads/'.$attachment->attachmentname) }}"> {{$attachment->attachmentname}}</a>
+                                                        </td>
+                                                        <td>
+                                                            {{$attachment->created_at}}
+                                                        </td>
+                                                    </tr>@endif
+                                            @endforeach
+                                        @endif
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-12">
+                        <div class="form-group">
+                            {{ Form::checkbox('potppe', 1, null, ['id' => 'potppe', 'class'=>'className','disabled' => "disabled" ]) }}
+                            {{Form::label('potppe','PPE has been cleaned per SOP SWD 1-0')}}
+
+                        </div>
+                    </div>
+                    <div class="col-sm-12">
+                        <div class="form-group">
+                            {{ Form::checkbox('potdocumentdaybook', 1, null, ['id' => 'potdocumentdaybook', 'class'=>'className','disabled' => "disabled" ]) }}
+                            {{Form::label('potdocumentdaybook','Document in Company Day Book and on your Personnel Record   ')}}
+                        </div>
                     </div>
                 </div>
-                <div class="col-sm-12">
-                    <div class="form-group">
-                        {{ Form::checkbox('potdocumentdaybook', 1, null, ['id' => 'potdocumentdaybook', 'class'=>'className','disabled' => "disabled" ]) }}
-                        {{Form::label('potdocumentdaybook','Document in Company Day Book and on your Personnel Record   ')}}
-                    </div>
-                </div>
-            </div>
+            @endif
             <div class="form-horizontal">
                 <div class="row">
                     <div class="col-md-12">
@@ -440,7 +443,7 @@
             </div>
             <div class="col-sm-12 panel-heading" align="center">
                 <div class="btn-bottom ">
-                    <a href="{{ route('biologicals.index') }}" class="btn btn-danger">Cancel</a>
+                    <a href="{{ URL::previous() }}" class="btn btn-danger">Cancel</a>
                 </div>
             </div>
         </div>
@@ -579,23 +582,20 @@
     <script type="text/javascript">
 
 
-        if ($('#exposure').val()==0 )
-        {
+        if ($('#exposure').val() == 0) {
 
             $('#Exposure0').show;
             $('#Exposure1').hide;
 
 
         }
-        else if ($('#exposure1').val()==1)
-        {
+        else if ($('#exposure').val() == 1) {
 
             $('#Exposure0').hide;
             $('#Exposure1').show;
 
 
         }
-
 
 
     </script>

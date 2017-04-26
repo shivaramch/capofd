@@ -177,8 +177,8 @@
                         {{ Form::radio('exposure', 0 , null, ['id'=>'exposure', 'class' => 'className']) }}
                         {{ Form::label('exposure', 'True Exposure') }}
 
-                        {{ Form::radio('exposure',1 , null, ['id'=>'exposure1', 'class' => 'className']) }}
-                        {{ Form::label('exposure1', 'Contamination') }}
+                        {{ Form::radio('exposure',1 , null, ['id'=>'exposure', 'class' => 'className']) }}
+                        {{ Form::label('exposure', 'Contamination') }}
                     </div>
                 </div>
             </div>
