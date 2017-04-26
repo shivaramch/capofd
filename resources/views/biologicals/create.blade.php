@@ -91,7 +91,7 @@
                     <div class="col-sm-4 form-group">
                         {!! Form::label('assignmentbiological', 'Assignment', ['class'=> 'col-sm-4 control-label'] ) !!}
                         <div class="col-sm-6">
-                            {!! Form::text('assignmentinjury', old('assignmentinjury'), array('class' => 'form-control', 'id' => 'assignmentinjury','placeholder'=>'Enter Assignment'))!!}
+                            {!! Form::text('assignmentbiological', old('assignmentbiological'), array('class' => 'form-control', 'id' => 'assignmentinjury','placeholder'=>'Enter Assignment'))!!}
                             <p class="help-block"></p>
                             @if($errors->has('assignmentbiological'))
                                 <p class="help-block">
