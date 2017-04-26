@@ -166,7 +166,7 @@
                         <label class="input-group-btn">
                     <span class="btn btn-info">
                         <i class="fa fa-cloud-upload" aria-hidden="true"></i> Upload<input type="file"
-                                                                                           name="fmla"
+                                                                                           name="limitedduty"
                                                                                            style="display: none;">
                     </span>
                         </label>
