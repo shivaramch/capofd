@@ -330,9 +330,9 @@
                        treatment?')}}
                     {!! Form::select('exposurehazmat',[
                       'Yes' => 'Yes',
-                      'No' => 'No'],null,
-                    ['placeholder' => 'Choose one'],old('exposurehazmat'),'required',
-                    array('class' => 'form-control'))!!}
+                      'No' => 'No']
+                    ,old('exposurehazmat'),
+                    array('placeholder' => 'Choose one','class' => 'form-control','id'=>'exposurehazmat'))!!}
                     <p class="help-block"></p>
                     @if($errors->has('exposurehazmat'))
                         <p class="help-block">

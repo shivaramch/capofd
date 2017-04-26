@@ -17,9 +17,11 @@
         #padtop {
             padding-top: 7px;
         }
+
         table {
             border-collapse: collapse;
         }
+
         table, td, th {
             border: 1px solid black;
         }
@@ -144,9 +146,9 @@
                                 {!! Form::select('shift', ['A' => 'A',
                                 'B' => 'B',
                                 'C' => 'C',
-                                'DIV' => 'DIV'], null,
-                                ['placeholder' => 'Select your Shift'],'required',
-                                ['class' => 'form-control']) !!}
+                                'DIV' => 'DIV']
+                                ,'required',
+                                array('placeholder' => 'Select your Shift','id'=>'shift','class' => 'form-control')) !!}
                                 <p class="help-block"></p>
                                 @if($errors->has('shift'))
                                     <p class="help-block">
@@ -211,9 +213,9 @@
                             <label class="input-group-btn">
                     <span class="btn btn-info">
                         <i class="fa fa-cloud-upload" aria-hidden="true"></i> Upload<input type="file" name="OFD025"
-						                                                                    id="ofd25Upload"
+                                                                                           id="ofd25Upload"
                                                                                            style="display: none;"
-																						   onchange="pressed()">
+                                                                                           onchange="pressed()">
                     </span>
                             </label>
                             <input type="text" id="upload-file-info" class="form-control" readonly>
@@ -237,9 +239,9 @@
                             <label class="input-group-btn">
                     <span class="btn btn-info">
                         <i class="fa fa-cloud-upload" aria-hidden="true"></i> Upload<input type="file" name="mischazmat"
-						                                                                    id="miscUpload"
+                                                                                           id="miscUpload"
                                                                                            style="display: none;"
-																						   onchange="pressed1()">
+                                                                                           onchange="pressed1()">
                     </span>
                             </label>
                             <input type="text" id="upload-file-info" class="form-control" readonly>
@@ -260,15 +262,14 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-12">
-                <div class="form-group">
-                    {{Form::label('exposurehazmat','Do you have any symptoms of illness or injury and require
-                       treatment?')}}
+            <div class="col-md-6 form-group">
+                {{Form::label('exposurehazmat','Do you have any symptoms of illness or injury and require
+                   treatment?',['class'=> 'col-sm-10 control-label'] ) }}
+                <div class="col-sm-4">
                     {!! Form::select('exposurehazmat',[
                       'Yes' => 'Yes',
-                      'No' => 'No'],null,
-                    ['placeholder' => 'Choose one'],'required',
-                    array('class' => 'form-control'))!!}
+                      'No' => 'No'],'required',
+                    array('placeholder'=>'Select one','id'=>'exposurehazmat','class' => 'form-control')) !!}
                     <p class="help-block"></p>
                     @if($errors->has('exposurehazmat'))
                         <p class="help-block">
@@ -277,13 +278,21 @@
                     @endif
                 </div>
             </div>
-            <label class="col-sm-5"></label>
-            <div class="btn-bottom ">
-                {!! Form::submit('Save as Draft',['class' => 'btn btn-primary','name' => 'partialSave']) !!}
-                <button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal">
-                    Submit
-                </button>
-                <a href="{{ route('hazmat.index') }}" class="btn btn-danger">Cancel</a>
+            <br>
+            <br>
+            <br>
+            <br>
+            <div class="row">
+                <div class="col-sm-12">
+                    <label class="col-sm-5"></label>
+                    <div class="btn-bottom">
+                        {!! Form::submit('Save as Draft',['class' => 'btn btn-primary','name' => 'partialSave']) !!}
+                        <button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal">
+                            Submit
+                        </button>
+                        <a href="{{ route('hazmat.index') }}" class="btn btn-danger">Cancel</a>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -307,28 +316,24 @@
         </div>
     </div>
     {!! Form::close() !!}
-	<script>
-window.pressed = function(){
-    var a = document.getElementById('ofd25Upload');
-    if(a.value == "")
-    {
-        
-    }
-    else
-    {
-       document.getElementById("checkbox1").checked = true;
-    }
-};
-window.pressed1 = function(){
-    var a = document.getElementById('miscUpload');
-    if(a.value == "")
-    {
-        
-    }
-    else
-    {
-       document.getElementById("checkbox2").checked = true;
-    }
-};
-</script>
+    <script>
+        window.pressed = function () {
+            var a = document.getElementById('ofd25Upload');
+            if (a.value == "") {
+
+            }
+            else {
+                document.getElementById("checkbox1").checked = true;
+            }
+        };
+        window.pressed1 = function () {
+            var a = document.getElementById('miscUpload');
+            if (a.value == "") {
+
+            }
+            else {
+                document.getElementById("checkbox2").checked = true;
+            }
+        };
+    </script>
 @stop

@@ -42,9 +42,6 @@
                                 <h3><strong>Employee Limited Duty Information</strong></h3>
                             </div>
                         </div>
-                        <div class="col-md-12">
-                            <h6><i><strong>Used for future tracking purposes only</strong></i></h6>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -136,7 +133,7 @@
                             'ofd6b' => 'Biological Exposure',
                             'ofd6c' => 'HazMat Exposure',
                             'offduty' => 'Off Duty Incident'],'required',
-                            ['class' => 'form-control']) !!}
+                            array('placeholder'=>'Select One','class' => 'form-control','id'=>'incidentype')) !!}
                             <p class="help-block"></p>
                             @if($errors->has('incidenttype'))
                                 <p class="help-block">
