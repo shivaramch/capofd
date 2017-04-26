@@ -120,7 +120,7 @@
                     <div class="col-sm-4 form-group">
                         {!! Form::label('apparatus', 'Apparatus', array('style'=>'padding-top:7px;','class' => 'col-sm-4 control-label')) !!}
                         <div class="col-sm-6 ">
-                            {!! Form::text('apparatus', old('apparatus'), ['class' => 'form-control', 'id' => 'apparatus'])!!}
+                            {!! Form::text('apparatus', old('apparatus'), ['class' => 'form-control', 'id' => 'apparatus','placeholder'=>'Enter Apparatus'])!!}
                             <p class="help-block"></p>
                             @if($errors->has('apparatus'))
                                 <p class="help-block">
