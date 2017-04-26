@@ -24,7 +24,7 @@ class CommentsController extends Controller
         $cm = Comment::findOrFail($id);
         $cm->delete();
 
-        return Redirect::back()->with('message', 'Successfully added the Comment!');
+        return Redirect::back()->with('message', 'Successfully Deleted the Comment!');
     }
 
 }
