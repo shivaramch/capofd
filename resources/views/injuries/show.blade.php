@@ -104,9 +104,9 @@
                         </div>
                     </div>
                     <div class="col-sm-4 form-group">
-                        {!! Form::label('shift', 'Shift', array('class' => 'col-sm-4 control-label','disabled'=>'disabled')) !!}
+                        {!! Form::label('shift', 'Shift', array('class' => 'col-sm-4 control-label')) !!}
                         <div class="col-sm-6">
-                            {!! Form::text('shift',$injury->shift ,['disabled'],array('class' => 'form-control','id' => 'shift'))!!}
+                            {!! Form::text('shift',$injury->shift,array('class' => 'form-control','id' => 'shift','disabled'=>'disabled'))!!}
                         </div>
                     </div>
                 </div>

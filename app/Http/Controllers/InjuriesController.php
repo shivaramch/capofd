@@ -237,7 +237,7 @@ class InjuriesController extends Controller
   public  function requestValidation(Request $request)
     {
         $this->validate($request, [
-            'injurydate' => 'required|date:injury,injurydate,',
+            'injurydate' => 'required|date:before_or_equal:today',
             //'injuredemployeename' => 'required|alpha|string:injuries,injuredemployeename,',
             'injuredemployeeid' => 'required|integer:injury,injuredemployeeid,',
             'assignmentinjury' => 'required|string:injury,assignmentinjury,',
@@ -395,20 +395,4 @@ class InjuriesController extends Controller
 
         return redirect()->route('injuries.index');
     }
-
-    public function autoComplete(Request $request) {
-        $query = $request->get('term','');
-        $assignments=Assignment::where('assignment','LIKE','%'.$query.'%')->get();
-        $data = array();
-
-        foreach($assignments as $assignment){
-            $data[]=array('value'=>$assignment->assignment);
-        }
-        if(count($data))
-            return $data;
-
-        else
-            return ['value'=>'No Result Found'];
-    }
-
 }

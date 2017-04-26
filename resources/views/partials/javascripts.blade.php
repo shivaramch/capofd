@@ -15,6 +15,9 @@
 
 
 <script src="//cdn.datatables.net/1.10.9/js/jquery.dataTables.min.js"></script>
+<link href="http://demo.expertphp.in/css/jquery.ui.autocomplete.css" rel="stylesheet">
+<script src="http://demo.expertphp.in/js/jquery.js"></script>
+<script src="http://demo.expertphp.in/js/jquery-ui.min.js"></script >
 
 <script src="{{ url ('js') }}/bootstrap.min.js"></script>
 
@@ -119,5 +122,28 @@ $(function addZero() {
     $('.datepicker').datepicker({
         autoclose: true,
         dateFormat: "yy-mm-dd"
+    });
+</script>
+
+
+<script>
+    $(document).ready(function() {
+        src = "{{ route('searchajax') }}";
+        $("#assignmentinjury").autocomplete({
+            source: function(request, response) {
+                $.ajax({
+                    url: src,
+                    dataType: "json",
+                    data: {
+                        term : request.term
+                    },
+                    success: function(data) {
+                        response(data);
+
+                    }
+                });
+            },
+            minLength: 1,
+        });
     });
 </script>

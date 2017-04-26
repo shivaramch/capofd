@@ -80,7 +80,7 @@ Route::group(['middleware' => 'auth'], function () {// Authentication Routes...
 
     Route::get('hazmat/{id}/Reject', 'HazmatController@Reject');
 
-    Route::get('searchajax',array('as'=>'searchajax','uses'=>'InjuriesController@autoComplete'));
+    Route::get('searchajax',array('as'=>'searchajax','uses'=>'AutoCompleteController@autoComplete'));
 });
 
 Auth::routes();
