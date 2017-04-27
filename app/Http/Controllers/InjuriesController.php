@@ -2,13 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Assignment;
 use App\Attachment;
 use App\Comment;
 use App\Http\Controllers\Traits\FileUploadTrait;
 use App\Http\Controllers\Traits\FormFileUploadTrait;
+use App\Http\Requests\UpdateInjuriesRequest;
 use App\Injury;
 use App\User;
+use App\Assignment;
 use Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -171,6 +172,8 @@ class InjuriesController extends Controller
                 'frmsincidentnum' => $injury->frmsincidentnum,
                 'policeofficercompletesign' => $injury->policeofficercompletesign,
                 'callsupervisor' => $injury->callsupervisor,
+                'completeepcr' => $injury->completeepcr,
+                'completefrms' => $injury->completefrms,
                 'applicationstatus' => $statusid,
                 'createdby' => $injury->createdby,
                 'updatedby' => $injury->updatedby]
@@ -214,6 +217,8 @@ class InjuriesController extends Controller
                 'policeofficercompletesign' => $injury->policeofficercompletesign,
                 'callsupervisor' => $injury->callsupervisor,
                 'applicationstatus' => $statusid,
+                'completeepcr' => $injury->completeepcr,
+                'completefrms' => $injury->completefrms,
                 'createdby' => $injury->createdby,
                 'updatedby' => $injury->updatedby]
         );
@@ -243,6 +248,8 @@ class InjuriesController extends Controller
             'documentworkforce' => 'required',
             'documentoperationalday' => 'required',
             'shift' => 'required|string:injury,shift,',
+            'completeepcr' => 'required|string:injury,completeepcr',
+            'completefrms' => 'required|string:injury,completefrms',
             'trainingassigned' => 'required|string:injury,shift,',
             'frmsincidentnum1' => 'required|integer:injury,frmsincidentnum',
             'epcrincidentnum' => 'required|integer:injury,epcrincidentnum',

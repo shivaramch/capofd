@@ -9,7 +9,6 @@
         <li class="active">Edit OFD 6 Form {{ $injury->ofd6ID }}</li>
     </ol>
 @endsection
-
 @section('content')
     {!! Form::model($injury,['method' => 'PUT', 'route' => ['injuries.update', $injury->ofd6id], 'files' => true,'novalidate' => 'novalidate']) !!}
     <input type="hidden" name="_token" value="{!!  'csrf_token()' !!}">
@@ -50,18 +49,18 @@
                             </strong>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col-sm-4 form-group">
-                            {!! Form::label('injurydate', 'Date of Injury:', ['class' => 'col-sm-4 control-label']) !!}
-                            <div class="col-sm-6 ">
-                                {!! Form::text('injurydate', old('injurydate'), array('class'=>'datepicker form-control','id' => 'injurydate','placeholder'=>'YYYY-MM-DD','required' => 'required'))!!}
-                                <p class="help-block"></p>
-                                @if($errors->has('injurydate'))
-                                    <p class="help-block">
-                                        {{ $errors->first('injurydate') }}
-                                    </p>
-                                @endif
-                            </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-4 form-group">
+                        {!! Form::label('injurydate', 'Date of Injury', ['class' => 'col-sm-4 control-label']) !!}
+                        <div class="col-sm-6 ">
+                            {!! Form::text('injurydate', old('injurydate'), array('class'=>'datepicker form-control','id' => 'injurydate','placeholder'=>'YYYY-MM-DD','required' => 'required'))!!}
+                            <p class="help-block"></p>
+                            @if($errors->has('injurydate'))
+                                <p class="help-block">
+                                    {{ $errors->first('injurydate') }}
+                                </p>
+                            @endif
                         </div>
                     </div>
                     <div class="col-sm-4 form-group">
@@ -161,7 +160,7 @@
                     <div class="col-sm-4 form-group">
                         {!! Form::label('frmsincidentnum', 'FRMS Incident #', ['class' => 'col-sm-4 control-label']) !!}
                         <div class="col-sm-6 ">
-                            {!! Form::text('frmsincidentnum', old('frmsIncidentNum'), array('class' => 'form-control','id' => 'frmsID', 'required' => 'required'))!!}
+                            {!! Form::text('frmsincidentnum', old('frmsincidentnum'), array('class' => 'form-control','id' => 'frmsincidentnum', 'required' => 'required'))!!}
                             <p class="help-block"></p>
                             @if($errors->has('frmsincidentnum'))
                                 <p class="help-block">
@@ -182,14 +181,47 @@
                             @endif
                         </div>
                         <div class='col-sm-7'>
-                            {!! Form::label('corvelid ', '(Corvel TMC will initiate at time of call)', array('class' => 'col-sm-7 control-label','style' =>'margin-left:-50px;')) !!}
+                            {!! Form::label('corvelid ', '(Corvel TMC will initiate at time of call)', array('class' => 'col-sm-8 control-label','style' =>'margin-left:-50px;')) !!}
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-8 form-group">
+                        {!! Form::label('epcrincidentnum', 'Enter EPCR #', ['class' => 'col-sm-2 control-label']) !!}
+                        <div class="col-sm-3">
+                            {!! Form::text('epcrincidentnum', old('epcrincidentnum'), array('class' => 'form-control','id'=>'epcrincidentnum', 'placeholder'=>'Enter EPCR Number'))!!}
+                            <p class="help-block"></p>
+                            @if($errors->has('epcrincidentnum'))
+                                <p class="help-block">
+                                    {{ $errors->first('epcrincidentnum') }}
+                                </p>
+                            @endif
+                        </div>
+                    </div>
+                </div>
+                <div class="alert alert-danger" align="center">
+                    <div class="row">
+                        <div class="col-md-12" style="text-align:left">
+                            <strong>
+                                Please Follow These Instructions:
+                                <ol start="1">
+                                    <li>All injuries must have an FRMS and ePCR incident ID#.</li>
+                                    <li>If your injury is not related to an incident, the Captain shall call dispatch,
+                                        explain that an injury
+                                        has occurred and request an FRMS ID#. The FRMS will automatically generate an
+                                        ePCR#.
+                                    </li>
+                                    <li>The employee shall designate whether treatment is being requested in the OFD-25
+                                        IOD.
+                                    </li>
+                                </ol>
+                            </strong>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
     <div class="panel panel-default">
         <div class="panel-heading">
             <div class="row">
@@ -198,10 +230,7 @@
                 </div>
             </div>
         </div>
-
         <div class="panel-body">
-
-
             <div class="row">
                 <div class="col-sm-12 form-group">
                     <div class="form-group">
@@ -239,7 +268,7 @@
                         <i class="fa fa-cloud-upload" aria-hidden="true"></i> Upload<input type="file" id="corvelUpload"
                                                                                            name="CorvelAttachmentName"
                                                                                            style="display: none;"
-																						   onchange="pressed()">
+                                                                                           onchange="pressed()">
                     </span>
                             </label>
                             <input type="text" id="upload-file-info" class="form-control" readonly>
@@ -308,7 +337,7 @@
                         <i class="fa fa-cloud-upload" aria-hidden="true"></i> Upload<input type="file" id="reportUpload"
                                                                                            name="InvestigationAttachment"
                                                                                            style="display: none;"
-																						   onchange="pressed1()">
+                                                                                           onchange="pressed1()">
                     </span>
                             </label>
                             <input type="text" id="upload-file-info" class="form-control" readonly>
@@ -377,7 +406,7 @@
                                                                                            id="witnessUpload"
                                                                                            name="StatementAttachment"
                                                                                            style="display: none;"
-																						   onchange="pressed2()">
+                                                                                           onchange="pressed2()">
                     </span>
                             </label>
                             <input type="text" id="upload-file-info" class="form-control" readonly>
@@ -445,7 +474,7 @@
                                                                                            id="employeeUpload"
                                                                                            name="EmployeeAttachment"
                                                                                            style="display: none;"
-																						   onchange="pressed3()">
+                                                                                           onchange="pressed3()">
                     </span>
                             </label>
                             <input type="text" id="upload-file-info" class="form-control" readonly>
@@ -515,7 +544,7 @@
                         <i class="fa fa-cloud-upload" aria-hidden="true"></i> Upload<input type="file" id="ofd25Upload"
                                                                                            name="Ofd25Attachment"
                                                                                            style="display: none;"
-																						   onchange="pressed4()">
+                                                                                           onchange="pressed4()">
                     </span>
                             </label>
                             <input type="text" id="upload-file-info" class="form-control" readonly>
@@ -575,7 +604,7 @@
                                                                                            id="miscDocsUpload"
                                                                                            name="miscinjuries"
                                                                                            style="display: none;"
-																						   onchange="pressed5()">
+                                                                                           onchange="pressed5()">
                     </span>
                             </label>
                             <input type="text" id="upload-file-info" class="form-control" readonly>
@@ -616,31 +645,19 @@
             </div>
 
             <div class="row">
-                <div class="col-sm-6 form-group">
-                    {!! Form::label('captainid', 'Complete FRMS Casuality & Narrative Tab - Fire service and Fire Service Injury', ['class' => 'col-sm-6 control-label']) !!}
-                    <div class="col-sm-6 ">
-                        {!! Form::text('captainid', old('captainid'), array('class' => 'form-control','id'=>'narrativeId', 'placeholder'=>'Enter FRMS Number here','required' => 'required'))!!}
-                        <p class="help-block"></p>
-                        @if($errors->has('captainid'))
-                            <p class="help-block">
-                                {{ $errors->first('captainid') }}
-                            </p>
-                        @endif
+                <div class="col-sm-12">
+                    <div class="form-group">
+                        {{ Form::checkbox('completeepcr', 1, null, ['id' => 'completeepcr', 'class'=>'className']) }}
+                        {{Form::label('completeepcr','Complete in EPCR - All Cases')}}
                     </div>
                 </div>
             </div>
-
             <div class="row">
-                <div class="col-sm-6 form-group">
-                    {!! Form::label('captainid', 'Complete in EPCR - All Cases', ['class' => 'col-sm-6 control-label']) !!}
-                    <div class="col-sm-6 ">
-                        {!! Form::text('captainid', old('captainid'), array('class' => 'form-control','id'=>'allcasesId', 'placeholder'=>'Enter EPCR Number here','required' => 'required'))!!}
-                        <p class="help-block"></p>
-                        @if($errors->has('captainid'))
-                            <p class="help-block">
-                                {{ $errors->first('captainid') }}
-                            </p>
-                        @endif
+                <div class="col-sm-12">
+                    <div class="form-group">
+                        {{ Form::checkbox('completefrms', 1, null, ['id' => 'completefrms', 'class'=>'className']) }}
+                        {{Form::label('completefrms','Complete FRMS Casuality & Narrative Tab - Fire service and Fire Service Injury')}}
+
                     </div>
                 </div>
             </div>
@@ -668,41 +685,45 @@
                     <label class="col-sm-4">Are you attending the Omaha Police Academy?</label>
                     <div class="col-sm-3">
                         {{ Form::select('trainingassigned', [
-                        'yes' => 'Yes',
-                        'no' => 'No']
+                        'Yes' => 'Yes',
+                        'No' => 'No']
                         , old('trainingassigned'),
                         array('id' => 'trainingassigned', 'onchange' =>"pressed6()",'class'=>'form-control')) }}
                     </div>
                 </div>
             </div>
-            <div id="police" style="display:none;">
-                <div class="row">
-                    <div class="col-sm-12 form-group">
-                        <label class="checkbox-inline col-sm-12"><u>For Fire Omaha Police Recruits: Use normal
-                                Chain-of-Command for Tracking
-                                Document</u></label>
+            @if($injury->trainingassigned == "Yes")
+
+                <div id="police">
+                    <div class="row">
+                        <div class="col-sm-12 form-group">
+                            <label class="checkbox-inline col-sm-12"><u>For Fire Omaha Police Recruits: Use normal
+                                    Chain-of-Command for Tracking
+                                    Document</u></label>
+                        </div>
                     </div>
-                </div>
-                <div class="row">
-                    <div class="col-sm-12">
-                        <div class="form-group">
-                            {{ Form::checkbox('policeofficercompletesign', 1, null, ['id' => 'policeofficercompletesign', 'class'=>'className']) }}
-                            <label><strong>Have Police Supervisor Complete and Sign
-                                    Supervisor section on Investigation Report
-                                    and Witness Statement</strong></label>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                                {{ Form::checkbox('policeofficercompletesign', 1, null, ['id' => 'policeofficercompletesign', 'class'=>'className']) }}
+                                <label><strong>Have Police Supervisor Complete and Sign
+                                        Supervisor section on Investigation Report
+                                        and Witness Statement</strong></label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                                {{ Form::checkbox('callsupervisor', 1, null, ['id' => 'callsupervisor', 'class'=>'className']) }}
+                                <label><strong>Call Fire Supervisor or SWD B/C immediately
+                                        and notify CorVel by phone</strong></label>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-sm-12">
-                        <div class="form-group">
-                            {{ Form::checkbox('callsupervisor', 1, null, ['id' => 'callsupervisor', 'class'=>'className']) }}
-                            <label><strong>Call Fire Supervisor or SWD B/C immediately
-                                    and notify CorVel by phone</strong></label>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            @endif
+
             <div class="row">
                 <div class="col-sm-12 panel-headinzzzzg">
                     <br>
@@ -786,72 +807,72 @@
 
 
     <script>
-	
-    window.pressed = function () {
-        var a = document.getElementById('corvelUpload');
-        if (a.value == "") {
 
-        }
-        else {
-            document.getElementById("corvelAbilityReport").checked = true;
-        }
-    };
-    window.pressed1 = function () {
-        var a = document.getElementById('reportUpload');
-        if (a.value == "") {
+        window.pressed = function () {
+            var a = document.getElementById('corvelUpload');
+            if (a.value == "") {
 
-        }
-        else {
-            document.getElementById("investigationReport").checked = true;
-        }
-    };
-    window.pressed2 = function () {
-        var a = document.getElementById('witnessUpload');
-        if (a.value == "") {
+            }
+            else {
+                document.getElementById("corvelAbilityReport").checked = true;
+            }
+        };
+        window.pressed1 = function () {
+            var a = document.getElementById('reportUpload');
+            if (a.value == "") {
 
-        }
-        else {
-            document.getElementById("witnessStatement").checked = true;
-        }
-    };
-    window.pressed3 = function () {
-        var a = document.getElementById('employeeUpload');
-        if (a.value == "") {
+            }
+            else {
+                document.getElementById("investigationReport").checked = true;
+            }
+        };
+        window.pressed2 = function () {
+            var a = document.getElementById('witnessUpload');
+            if (a.value == "") {
 
-        }
-        else {
-            document.getElementById("employeeChoice").checked = true;
-        }
-    };
-    window.pressed4 = function () {
-        var a = document.getElementById('ofd25Upload');
-        if (a.value == "") {
+            }
+            else {
+                document.getElementById("witnessStatement").checked = true;
+            }
+        };
+        window.pressed3 = function () {
+            var a = document.getElementById('employeeUpload');
+            if (a.value == "") {
 
-        }
-        else {
-            document.getElementById("ofd25").checked = true;
-        }
-    };
-    window.pressed5 = function () {
-        var a = document.getElementById('miscDocsUpload');
-        if (a.value == "") {
+            }
+            else {
+                document.getElementById("employeeChoice").checked = true;
+            }
+        };
+        window.pressed4 = function () {
+            var a = document.getElementById('ofd25Upload');
+            if (a.value == "") {
 
-        }
-        else {
-            document.getElementById("miscDocs").checked = true;
-        }
-    };
-    window.pressed6 = function () {
-        var dropdown = document.getElementById("trainingassigned");
-        var current_value = dropdown.options[dropdown.selectedIndex].value;
+            }
+            else {
+                document.getElementById("ofd25").checked = true;
+            }
+        };
+        window.pressed5 = function () {
+            var a = document.getElementById('miscDocsUpload');
+            if (a.value == "") {
 
-        if (current_value == "yes") {
-            document.getElementById("police").style.display = "block";
+            }
+            else {
+                document.getElementById("miscDocs").checked = true;
+            }
+        };
+        window.pressed6 = function () {
+            var dropdown = document.getElementById("trainingassigned");
+            var current_value = dropdown.options[dropdown.selectedIndex].value;
+
+            if (current_value == "Yes") {
+                document.getElementById("police").style.display = "block";
+            }
+            else if (current_value == "No") {
+                document.getElementById("police").style.display = "none";
+            }
         }
-        else if (current_value == "no") {
-            document.getElementById("police").style.display = "none";
-        }
-    }
-</script>
-       
+    </script>
+
 @stop

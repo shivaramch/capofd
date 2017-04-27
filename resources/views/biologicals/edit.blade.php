@@ -237,7 +237,7 @@
                                                                           aria-hidden="true"></i> Upload<input
                                                         type="file" name="trueofd184" id="trueofd184"
                                                         style="display: none;"
-														onchange="pressed()"
+                                                        onchange="pressed()"
                                                         multiple>
                                             </span>
                                 </label>
@@ -681,7 +681,7 @@
             });
         });
     </script>
-	 <script>
+    <script>
         window.pressed = function () {
             var a = document.getElementById('trueofd184');
             if (a.value == "") {

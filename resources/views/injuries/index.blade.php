@@ -13,10 +13,6 @@
 
 
 @section('content')
-
-
-
-
     <div class="panel panel-default panel-shadow ">
         <div class="panel-heading">
             <div class="row">
@@ -27,8 +23,6 @@
             </div>
         </div>
     </div>
-
-
     @if(count($injuries) > 0)
         <div class="panel panel-default panel-shadow " hidden>
             <div class="panel-heading">
@@ -48,7 +42,8 @@
                         <th data-sortable="true">OFD 6 ID</th>
                         <th data-sortable="true">Date of Injury</th>
                         <th data-sortable="true">Assignment</th>
-                        <th data-sortable="true">Employee Name</th>
+                        <th data-sortable="true">FRMS Incident #</th>
+                        <th data-sortable="true">EPCR Incident #</th>
                         <th data-sortable="true">Status</th>
                         <th data-switchable="false" data-searchable="false" data-sortable="false">Action</th>
                     </tr>
@@ -60,7 +55,8 @@
                                 <td>{{ $injury->ofd6id }}</td>
                                 <td>{{ $injury->injurydate }}</td>
                                 <td>{{ $injury->assignmentinjury }}</td>
-                                <td>{{ $injury->injuredemployeename }}</td>
+                                <td>{{ $injury->frmsincidentnum }}</td>
+                                <td>{{ $injury->frmsincidentnum }}</td>
                                 <td>{{DB::table('status')->where('statusid',$injury->applicationstatus)->value('statustype')}}</td>
 
 

@@ -81,7 +81,7 @@
                 </div>
                 <div class="row">
                     <div class="col-sm-4 form-group">
-                        {!! Form::label('primaryidconumber', 'Primary IDCO OFD ID#', array('style'=>'padding-top:7px;', 'class' => 'col-sm-4 control-label') ) !!}
+                        {!! Form::label('primaryidconumber', 'Primary IDCO ID#', array('style'=>'padding-top:7px;', 'class' => 'col-sm-4 control-label') ) !!}
                         <div class="col-sm-6 ">
                             {!! Form::text('primaryidconumber', old('primaryidconumber'),array('class'=>'form-control','disabled'=>'disabled'))!!}
                             <p class="help-block"></p>
