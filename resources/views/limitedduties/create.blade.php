@@ -128,11 +128,11 @@
                     <div class="col-sm-4 form-group">
                         {!! Form::label('incidenttype', 'Incident Type', ['class'=> 'col-sm-4 control-label'] ) !!}
                         <div class="col-sm-6">
-                            {!! Form::select('incidenttype', ['ofd6' => 'IOD',
-                            'ofd6a' => 'Accident',
-                            'ofd6b' => 'Biological Exposure',
-                            'ofd6c' => 'HazMat Exposure',
-                            'offduty' => 'Off Duty Incident'],'required',
+                            {!! Form::select('incidenttype', ['IOD' => 'IOD',
+                            'Accident' => 'Accident',
+                            'Biological Exposure' => 'Biological Exposure',
+                            'HazMat Exposure' => 'HazMat Exposure',
+                            'Off Duty Incident' => 'Off Duty Incident'],'required',
                             array('placeholder'=>'Select One','class' => 'form-control','id'=>'incidentype')) !!}
                             <p class="help-block"></p>
                             @if($errors->has('incidenttype'))

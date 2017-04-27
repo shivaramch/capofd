@@ -310,6 +310,13 @@ return [
             'required' => '"FRMS Incident#" field is required',
             'integer' => '"FRMS Incident#" field should be a integer',
         ],
+        'incidentid' => [
+            'required' => '"EPCR Incident#" field is required',
+            'integer' => '"EPCR Incident#" field should be a integer',
+        ],
+        'incidenttype' => [
+            'required' => '"Incident Type" field is required',
+        ],
 
     ],
 
