@@ -100,7 +100,7 @@
                       'B' => 'B',
                       'C' => 'C',
                       'DIV' => 'DIV'],null
-                                , array('placeholder' => 'Choose one','class' => 'form-control','id' => 'shift','required' => 'required'))!!}
+                                , array('placeholder' => 'Choose one','class' => 'form-control','id' => 'shift'))!!}
                         <p class="help-block"></p>
                         @if($errors->has('shift'))
                             <p class="help-block">
