@@ -22,7 +22,7 @@ class UpdateLimiteddutiesRequest extends FormRequest
     {
         return [
             'employeeid' => 'required|integer:limitedduty,employeeid'.$this->route('limitedduty'),
-            'employeename' => 'required|string:limitedduty,exposedemployeename'.$this->route('limitedduty'),
+            'employeename' => 'required|regex:/^[a-zA-Z\s]+$/|string:limitedduty,exposedemployeename'.$this->route('limitedduty'),
             'fromdate' => 'required|date_format:Y-m-d,fromdate'.$this->route('limitedduty'),
             'todate' => 'required|date_format:Y-m-d,todate'.$this->route('limitedduty'),
             'corvelid' => 'required|string:limitedduty,corvelid'.$this->route('limitedduty'),
