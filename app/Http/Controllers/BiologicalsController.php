@@ -246,7 +246,25 @@ class BiologicalsController extends Controller
         ]);
     }
 
-    public function Approve($id)
+    public function requestPratialValidation(Request $request)
+    {
+        $this->validate($request, ['employeeid' => 'required|integer:biological,employeeid',
+            'dateofexposure' => 'required|date:biological,dateofexposure',
+            'exposedemployeename' => 'required|alpha|string:biological,exposedemployeename',
+            //'dateofexposure' => 'required|before_or_equal:biological,dateofexposure',
+            'assignmentbiological' => 'required|string:biological,assignmentbiological',
+            'shift' => 'required|string:biological,shift',
+            'primaryidconumber' => 'required|integer:biological,primaryidconumber',
+            'epcrincidentnum' => 'required|numeric:biological,epcrincidentnum',
+            'frmsincidentnum' => 'required|string:biological,frmsincidentnumber',
+            'exposureinjury' => 'required|string:biological,exposureinjury',
+            'exposure' => 'required|string:biological,exposure',
+            'trueofd184' => 'file:biological,trueofd184|mimes:pdf|max:10000',
+            'potofd184' => 'file:biological,potofd184|mimes:pdf|max:10000',
+        ]);
+    }
+
+        public function Approve($id)
     {
 
         $biological = DB::table('biologicals')->where('ofd6bid', $id)->first();

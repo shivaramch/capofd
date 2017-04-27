@@ -1,5 +1,4 @@
 @extends('layouts.app')
-@section('content')
 @section('crumbs')
     <ol class="breadcrumb">
         <a class="btn btn-default" type="button"
@@ -10,6 +9,7 @@
         <li class="active">New Form</li>
     </ol>
 @endsection
+@section('content')
 {!! Form::open(['method' => 'POST', 'url' => '/injuries/save', 'files' => true,]) !!}
 <input type="hidden" name="_token" value="{!!  'csrf_token()' !!}">
 {{ csrf_field() }}
