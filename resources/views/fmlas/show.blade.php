@@ -2,7 +2,7 @@
 @section('crumbs')
     <ol class="breadcrumb">
         <a class="btn btn-default" type="button"
-           href="{{ RL::previous() }}">
+           href="{{ URL::previous() }}">
             <i class="fa fa-arrow-left" aria-hidden="true"></i> Back</a>
         <li><a href="{{ url('/') }}">Dashboard</a></li>
         <li><a href="{{ route('adminpanel.index') }}">Admin panel</a></li>
