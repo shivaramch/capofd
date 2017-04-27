@@ -21,7 +21,7 @@ class StoreAccidentsRequest extends FormRequest
     public function rules()
     {
         return [
-            'accidentdate' => 'required|date:accidents,accidentdate,'. $this->route('accident'),
+            'accidentdate' => 'required|date:accidents,accidentdate|before_or_equal:today'. $this->route('accident'),
             'driverid' => 'required|integer:accidents,driverid,' . $this->route('accident'),
             'drivername' => 'required|alpha|string:accidents,drivername,'. $this->route('accident'),
             'assignmentaccident' => 'required|string:accidents,assignmentaccident'. $this->route('accident'),

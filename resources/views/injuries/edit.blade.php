@@ -205,7 +205,7 @@
             <div class="row">
                 <div class="col-sm-12 form-group">
                     <div class="form-group">
-                        {{ Form::checkbox('checkbox1', 1, null, ['id'=>'checkbox1', 'class' => 'className', 'disabled' ]) }}
+                        {{ Form::checkbox('checkbox1', 1, null, ['id'=>'corvelAbilityReport', 'class' => 'className', 'disabled' ]) }}
                         {{Form::label('Checkbox1','Complete CorVel Work Ability Report Form - Only if seeking medical attention. Complete "Employee Section", print, and sign.')}}
                     </div>
                     <div class="col-md-12" style="text-align:left">
@@ -286,7 +286,7 @@
             <div class="row">
                 <div class="col-sm-12 form-group">
                     <div class="form-group">
-                        {{ Form::checkbox('checkbox2', 1, null, ['id'=>'checkbox2', 'class' => 'className', 'disabled' ]) }}
+                        {{ Form::checkbox('checkbox2', 1, null, ['id'=>'investigationReport', 'class' => 'className', 'disabled' ]) }}
                         {{Form::label('Checkbox2','Complete Investigation Report for
                 Occupational Injury or Illness Form - Both employee and supervisor must complete and sign.')}}
                     </div>
@@ -354,7 +354,7 @@
             <div class="row">
                 <div class="col-sm-12 form-group">
                     <div class="form-group">
-                        {{ Form::checkbox('checkbox3', 1, null, ['id'=>'checkbox3', 'class' => 'className', 'disabled' ]) }}
+                        {{ Form::checkbox('checkbox3', 1, null, ['id'=>'witnessStatement', 'class' => 'className', 'disabled' ]) }}
                         {{Form::label('Checkbox3','Complete OFD 295a Injury Witness Statement Form')}}
                     </div>
                 </div>
@@ -423,7 +423,7 @@
             <div class="row">
                 <div class="col-sm-12 form-group">
                     <div class="form-group">
-                        {{ Form::checkbox('checkbox4', 1, null, ['id'=>'checkbox4', 'class' => 'className', 'disabled']) }}
+                        {{ Form::checkbox('checkbox4', 1, null, ['id'=>'employeeChoice', 'class' => 'className', 'disabled']) }}
                         {{Form::label('Checkbox4','Complete Employee’s Choice of Physician or Doctor Form - Two signatures required - both section A & B.')}}
                     </div>
                 </div>
@@ -492,7 +492,7 @@
             <div class="row">
                 <div class="col-sm-12 form-group">
                     <div class="form-group">
-                        {{ Form::checkbox('checkbox5', 1, null, ['id'=>'checkbox5', 'class' => 'className', 'disabled' ]) }}
+                        {{ Form::checkbox('checkbox5', 1, null, ['id'=>'ofd25', 'class' => 'className', 'disabled' ]) }}
                         {{Form::label('Checkbox5','Complete OFD25 Injury Intradepartmental Communication Form - In addition to Uploading form, send an attachment electronically to')}}
                         <a href="OmafIOD@cityofomaha.org">OmafIOD@cityofomaha.org</a>
                     </div>
@@ -562,7 +562,7 @@
             <div class="row">
                 <div class="col-sm-12 form-group">
                     <div class="form-group">
-                        {{ Form::checkbox('checkbox6', 1, null, ['id'=>'checkbox6', 'class' => 'className', 'disabled' ]) }}
+                        {{ Form::checkbox('checkbox6', 1, null, ['id'=>'miscDocs', 'class' => 'className', 'disabled' ]) }}
                         {{Form::label('Checkbox5','Miscellaneous Documents - Upload any additional documents related to this incident if necessary.')}}
                     </div>
                 </div>
@@ -784,8 +784,8 @@
         </div>
     </div>
     {!! Form::close() !!}
-@stop
-@section('script')
+
+
     <script>
 	
     window.pressed = function () {

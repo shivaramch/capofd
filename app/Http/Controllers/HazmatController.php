@@ -253,7 +253,7 @@ class HazmatController extends Controller
 
             'employeeid' => 'required|integer:hazmat,employeeid,',
             'employeename' => 'required|regex:/^[\pL\s\-]+$/u|string:hazmat,employeename,',
-            'dateofexposure' => 'required|date:hazmat,dateofexposure,',
+            'dateofexposure' => 'required|date:hazmat,dateofexposure|before_or_equal:today',
             'primaryidconumber' => 'required|integer:hazmat,primaryidconumber',
             'contactcorvel' => 'required|string:hazmat,contactcorvel',
             'corvelid' => 'required|integer:hazmat,corvelid',
