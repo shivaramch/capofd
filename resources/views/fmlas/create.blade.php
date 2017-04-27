@@ -80,7 +80,7 @@
                     <div class="col-sm-6 form-group">
                         {!! Form::label('fromdate', 'From Date', array('style'=>'padding-top:7px;','class'=> 'col-sm-4 control-label') ) !!}
                         <div class="col-sm-6 ">
-                            {!! Form::text('fromdate', old('fromdate'), array('class' => 'form-control datepicker', 'placeholder' => 'YYYY-MM-DD','required' => 'required'))!!}
+                            {!! Form::text('fromdate', old('fromdate'), array('class' => 'datepicker form-control ', 'placeholder' => 'YYYY-MM-DD','required' => 'required'))!!}
                             <p class="help-block"></p>
                             @if($errors->has('fromdate'))
                                 <p class="help-block">
