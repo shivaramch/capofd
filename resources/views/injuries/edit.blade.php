@@ -50,18 +50,18 @@
                             </strong>
                         </div>
                     </div>
-                </div>
-                <div class="row">
-                    <div class="col-sm-4 form-group">
-                        {!! Form::label('injurydate', 'Date of Injury:', ['class' => 'col-sm-4 control-label']) !!}
-                        <div class="col-sm-6 ">
-                            {!! Form::text('injurydate', old('injurydate'), array('class'=>'datepicker form-control','id' => 'injurydate','placeholder'=>'MM/DD/YYYY','required' => 'required'))!!}
-                            <p class="help-block"></p>
-                            @if($errors->has('injurydate'))
-                                <p class="help-block">
-                                    {{ $errors->first('injurydate') }}
-                                </p>
-                            @endif
+                    <div class="row">
+                        <div class="col-sm-4 form-group">
+                            {!! Form::label('injurydate', 'Date of Injury:', ['class' => 'col-sm-4 control-label']) !!}
+                            <div class="col-sm-6 ">
+                                {!! Form::text('injurydate', old('injurydate'), array('class'=>'datepicker form-control','id' => 'injurydate','placeholder'=>'YYYY-MM-DD','required' => 'required'))!!}
+                                <p class="help-block"></p>
+                                @if($errors->has('injurydate'))
+                                    <p class="help-block">
+                                        {{ $errors->first('injurydate') }}
+                                    </p>
+                                @endif
+                            </div>
                         </div>
                     </div>
                     <div class="col-sm-4 form-group">
@@ -794,4 +794,3 @@
         }
     </script>
 @stop
-
