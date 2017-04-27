@@ -14,7 +14,7 @@
 
 
 <script src="//cdn.datatables.net/1.10.9/js/jquery.dataTables.min.js"></script>
-<link href="http://demo.expertphp.in/css/jquery.ui.autocomplete.css" rel="stylesheet">
+<link href="https://demo.expertphp.in/css/jquery.ui.autocomplete.css" rel="stylesheet">
 
 <script src="{{ url ('js') }}/bootstrap.min.js"></script>
 
