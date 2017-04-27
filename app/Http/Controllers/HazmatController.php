@@ -257,12 +257,11 @@ class HazmatController extends Controller
             'dateofexposure' => 'required|date:hazmat,dateofexposure|before_or_equal:today',
             'primaryidconumber' => 'required|integer:hazmat,primaryidconumber',
             'contactcorvel' => 'string:hazmat,contactcorvel',
-            'corvelid' => 'required|integer:hazmat,corvelid',
+            'corvelid' => 'integer:hazmat,corvelid',
             'epcrincidentnum' => 'required|integer:hazmat,epcrincidentnum',
             'assignment' => 'required|string:hazmat,assignment',
             'frmsincidentnum1' => 'integer:hazmat,frmsincidentnum',
             'shift' => 'required|string:hazmat,shift,',
-            'exposurehazmat' => 'required',
             'OFD025' => 'file:biological,OFD025|mimes:pdf|max:10000',
         ]);
     }
