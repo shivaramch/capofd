@@ -98,6 +98,7 @@
                     <thead>
                     <tr >
                         <th data-sortable="true">OFD 6A ID</th>
+                        <th data-sortable="true">Driver ID</th>
                         <th data-sortable="true">Driver Name</th>
                         <th data-sortable="true">Date of Accident</th>
                         <th data-sortable="true">Assignment</th>
@@ -111,6 +112,7 @@
                             @if($accident->captainid == Auth::user()->id && $accident->applicationstatus ==  DB::table('status')->where('statustype','Application under Captain')->value('statusid'))
                                 <tr>
                                     <td>{{ $accident->ofd6aid }}</td>
+                                    <td>{{ $accident->driverid }}</td>
                                     <td>{{ $accident->drivername }}</td>
                                     <td>{{ $accident->accidentdate }}</td>
                                     <td>{{ $accident->assignmentaccident }}</td>
@@ -133,7 +135,7 @@
 
         <div class="panel panel-default panel-shadow " hidden>
             <div class="panel-heading">
-                In your Queue For Approval as battalion chief
+                In your Queue For Approval as Battalion Chief
             </div>
             <div class="panel-body">
                 <table data-toolbar="#toolbar"
@@ -147,6 +149,7 @@
                     <thead>
                     <tr>
                         <th data-sortable="true">OFD 6A ID</th>
+                        <th data-sortable="true">Driver ID</th>
                         <th data-sortable="true">Driver Name</th>
                         <th data-sortable="true">Date of Accident</th>
                         <th data-sortable="true">Assignment</th>
@@ -160,6 +163,7 @@
                             @if($accident->battalionchiefid == Auth::user()->id && $accident->applicationstatus == DB::table('status')->where('statustype','Application under Batallion Chief')->value('statusid'))
                                 <tr>
                                     <td>{{ $accident->ofd6aid }}</td>
+                                    <td>{{ $accident->driverid }}</td>
                                     <td>{{ $accident->drivername }}</td>
                                     <td>{{ $accident->accidentdate }}</td>
                                     <td>{{ $accident->assignmentaccident }}</td>
@@ -198,6 +202,7 @@
                     <thead>
                     <tr>
                         <th data-sortable="true">OFD 6A ID</th>
+                        <th data-sortable="true">Driver ID</th>
                         <th data-sortable="true">Driver Name</th>
                         <th data-sortable="true">Date of Accident</th>
                         <th data-sortable="true">Assignment</th>
@@ -211,6 +216,7 @@
                             @if($accident->aconduty == Auth::user()->id && $accident->applicationstatus ==   DB::table('status')->where('statustype','Application under Assistant Chief')->value('statusid'))
                                 <tr>
                                     <td>{{ $accident->ofd6aid }}</td>
+                                    <td>{{ $accident->driverid }}</td>
                                     <td>{{ $accident->drivername }}</td>
                                     <td>{{ $accident->accidentdate }}</td>
                                     <td>{{ $accident->assignmentaccident }}</td>
