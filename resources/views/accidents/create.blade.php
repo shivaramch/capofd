@@ -53,7 +53,7 @@
                     <div class="col-sm-4 form-group">
                         {!! Form::label('accidentdate', 'Date of Accident:',array('style'=>'padding-top:7px;','class'=> 'col-sm-4 control-label') )!!}
                         <div class="col-sm-6 ">
-                            {!! Form::text('accidentdate', old('accidentdate'), array('class' => 'form-control datepicker', 'id' => 'accidentdate','placeholder' => 'MM-DD-YYYY'))!!}
+                            {!! Form::text('accidentdate', old('accidentdate'), array('class' => 'datepicker form-control', 'id' => 'accidentdate','placeholder' => 'MM-DD-YYYY'))!!}
 
                             <p class="help-block"></p>
                             @if($errors->has('accidentdate'))

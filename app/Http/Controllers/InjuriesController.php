@@ -126,10 +126,8 @@ class InjuriesController extends Controller
 
     public function partialSave(Request $request)
     {
-        $this->validate($request, [
-            'injurydate' => 'required|date:injury,injurydate,',
-        ]);
 
+        $this->requestPratialValidation($request);
 
         $statusid = DB::table('status')->where('statustype', 'Draft')->value('statusid');
         $request->offsetSet('applicationstatus', $statusid);
@@ -158,7 +156,7 @@ class InjuriesController extends Controller
     public function updateRecord(Request $request, $id)
     {
 
-        $this-> requestValidation($request);
+        $this->requestPratialValidation($request);
         $injury = Injury::findOrFail($id);
        $statusid = DB::table('status')->where('statustype', 'Application under Captain')->value('statusid');
       /*  $statusid = str_replace(array('[', ']'), '', $statusidraw);*/
@@ -200,6 +198,8 @@ class InjuriesController extends Controller
 
     public function partialUpdate(Request $request, $id)
     {
+
+        $this->requestPratialValidation($request);
         $injury = Injury::findOrFail($id);
         $statusid = DB::table('status')->where('statustype', 'Draft')->value('statusid');
         /*  $statusid = str_replace(array('[', ']'), '', $statusidraw);*/
@@ -229,8 +229,6 @@ class InjuriesController extends Controller
         $this->InjuriesUpload($request, $id);
         //$request->session()->flash('alert-success', 'Form was successfully Submitted!');
 
-
-
         return redirect()->route('injuries.index');
     }
 
@@ -238,7 +236,7 @@ class InjuriesController extends Controller
     {
         $this->validate($request, [
             'injurydate' => 'required|date:before_or_equal:today',
-            //'injuredemployeename' => 'required|alpha|string:injuries,injuredemployeename,',
+            'injuredemployeename' => 'required|regex:/^[\pL\s\-]+$/u |string:injuries,injuredemployeename,',
             'injuredemployeeid' => 'required|integer:injury,injuredemployeeid,',
             'assignmentinjury' => 'required|string:injury,assignmentinjury,',
             'corvelid' => 'required|integer:injury,corvelid,',
@@ -260,6 +258,28 @@ class InjuriesController extends Controller
 
         ]);
 
+    }
+
+    public  function requestPratialValidation(Request $request)
+    {
+        $this->validate($request, [
+            'injurydate' => 'required|date:before_or_equal:today',
+            'injuredemployeename' => 'required|alpha|string:injuries,injuredemployeename,',
+            'injuredemployeeid' => 'required|integer:injury,injuredemployeeid,',
+            'assignmentinjury' => 'required|string:injury,assignmentinjury,',
+            'corvelid' => 'required|integer:injury,corvelid,',
+            'captainid' => 'required|integer:injury,captainid',
+            'battalionchiefid' => 'required|integer:injury,battalionchiefid',
+            'aconduty' => 'required|integer:injury,aconduty',
+            'shift' => 'string:injury,shift,',
+            'trainingassigned' => 'required|string:injury,shift,',
+            'frmsincidentnum1' => 'required|integer:injury,frmsincidentnum',
+            'CorvelAttachmentName' => 'file:injury,CorvelAttachmentName|mimes:pdf|max:10000',
+            'InvestigationAttachment' => 'file:injury,InvestigationAttachment|mimes:pdf|max:10000',
+            'StatementAttachment' => 'file:injury,StatementAttachment|mimes:pdf|max:10000',
+            'EmployeeAttachment' => 'file:injury,EmployeeAttachment|mimes:pdf|max:10000',
+            'Ofd25Attachment' => 'file:injury,Ofd25Attachment|mimes:pdf|max:10000',
+        ]);
     }
 
     public function Approve($id)

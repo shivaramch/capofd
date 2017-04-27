@@ -120,9 +120,8 @@ class AccidentsController extends EmailController
 
     public function partialSave(Request $request)
     {
-        $this->validate($request, [
-            'accidentdate' => 'required|date:accidents,accidentdate,',
-        ]);
+        $this->requestPratialValidation($request);
+
         $statusid = DB::table('status')->where('statustype', 'Draft')->value('statusid');
 
         $request->offsetSet('applicationstatus', $statusid);
@@ -152,7 +151,7 @@ class AccidentsController extends EmailController
     public function updateRecords(Request $request, $id)
     {
 
-        $this->validateRequest($request);
+        $this->requestPratialValidation($request);
 
         $statusid = DB::table('status')->where('statustype', 'Application under Captain')->value('statusid');
 
@@ -192,8 +191,9 @@ class AccidentsController extends EmailController
     public function partialUpdate(Request $request, $id)
     {
 
-        $statusid = DB::table('status')->where('statustype', 'Draft')->value('statusid');
+        $this->requestPratialValidation($request);
 
+        $statusid = DB::table('status')->where('statustype', 'Draft')->value('statusid');
 
         $accident = Accident::findOrFail($id);
         \DB::table('accidents')->where('ofd6aid', $accident->ofd6aid)->update([
@@ -245,6 +245,32 @@ class AccidentsController extends EmailController
         ]);
     }
 
+    public function requestPratialValidation(Request $request)
+    {
+        $this->validate($request, [
+            'accidentdate' => 'required|date:accidents,accidentdate,',
+            'driverid' => 'required|integer:accidents,driverid,',
+            'drivername' => 'required|regex:/^[\pL\s\-]+$/u |string:accidents,drivername,',
+            'assignmentaccident' => 'required|string:accidents,assignmentaccident',
+            'apparatus' => 'required|string:accidents,apparatus',
+            'captainid' => 'required|integer:accidents,captainid',
+            'battalionchiefid' => 'required|integer:accidents,battalionchiefid',
+            'aconduty' => 'required|integer:accidents,aconduty',
+            'frmsincidentnum1' => 'required|integer:accidents,frmsincidentnum',
+            'calllaw' => 'integer:accidents,calllaw',
+            'daybook' => 'integer:accidents,daybook',
+            'commemail' => 'integer:accidents,commemail',
+            'LRS101' => 'file:accidents,LRS101|mimes:pdf|max:10000',
+            'OFD295' => 'file:accidents,OFD295|mimes:pdf|max:10000',
+            'OFD025a' => 'file:accidents,OFD025a|mimes:pdf|max:10000',
+            'OFD025b' => 'file:accidents,OFD025b|mimes:pdf|max:10000',
+            'OFD025c' => 'file:accidents,OFD025c|mimes:pdf|max:10000',
+            'OFD31' => 'file:accidents,OFD31|mimes:pdf|max:10000',
+            'OFD127' => 'file:accidents,OFD127|mimes:pdf|max:10000',
+            'DR41' => 'file:accidents,DR41|mimes:pdf|max:10000',
+
+        ]);
+    }
     public function Approve($id)
     {
         $accident = DB::table('accidents')->where('ofd6aid', $id)->first();
