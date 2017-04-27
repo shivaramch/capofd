@@ -24,7 +24,7 @@
           content="text/html; charset=utf-8">
     <!-- Styles -->
 
-    <link rel="stylesheet" href="{{ url('css') }}/login.css"/>
+    <link rel="stylesheet" href="{{ secure_url('css') }}/login.css"/>
 
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700&subset=all"
           rel="stylesheet"
@@ -36,9 +36,9 @@
 
     <link rel="stylesheet" href="https://code.jquery.com/ui/1.11.3/themes/smoothness/jquery-ui.css"/>
 
-    <link rel="stylesheet" href="{{ url ('css') }}/bootstrap.min.css"/>
-    <link rel="stylesheet" href="{{ url ('css') }}/bootstrap-table.min.css"/>
-    <link rel="stylesheet" href="{{ url ('css') }}/dashboard.css"/>
+    <link rel="stylesheet" href="{{ secure_url('css') }}/bootstrap.min.css"/>
+    <link rel="stylesheet" href="{{ secure_url('css') }}/bootstrap-table.min.css"/>
+    <link rel="stylesheet" href="{{ secure_url('css') }}/dashboard.css"/>
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <style>
