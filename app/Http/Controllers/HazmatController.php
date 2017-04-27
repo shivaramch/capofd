@@ -125,15 +125,7 @@ class HazmatController extends Controller
     public function partialSave(Request $request)
     {
 
-
-        $this->validate($request, [
-
-
-            'dateofexposure' => 'required|date:hazmat,dateofexposure,',
-            'employeeid' => 'required|integer:hazmat,employeeid,',
-            'corvelid' => 'required|integer:hazmat,corvelid',
-            // 'contactcorvel' => 'required|string:hazmat,contactcorvel',
-        ]);
+        $this->requestPratialValidation($request);
 
         $statusid = DB::table('status')->where('statustype', 'Draft')->value('statusid');
         $request->offsetSet('applicationstatus', $statusid);
@@ -141,8 +133,6 @@ class HazmatController extends Controller
         hazmat::create($request->all());
         $last_insert_id = DB::getPdo()->lastInsertId();
         $this->HazmatUpload($request, $last_insert_id);
-
-        $link = $request->url() . "/$last_insert_id";
 
     }
 
@@ -163,12 +153,7 @@ class HazmatController extends Controller
     public function partialUpdate(Request $request, $id)
     {
 
-
-        $this->validate($request, ['dateofexposure' => 'required|date:hazmat,dateofexposure,',
-            'employeeid' => 'required|integer:hazmat,employeeid,',
-            'corvelid' => 'required|integer:hazmat,corvelid',
-            // 'contactcorvel' => 'required|string:hazmat,contactcorvel',
-        ]);
+        $this->requestPratialValidation($request);
 
         $statusid = DB::table('status')->where('statustype', 'Draft')->value('statusid');
 
@@ -204,7 +189,7 @@ class HazmatController extends Controller
     {
         //$accident = $this->saveFiles($request);
 
-        $this->validateRequest($request);
+        $this->requestPratialValidation($request);
 
         $statusid = DB::table('status')->where('statustype', 'Application under Primary IDCO')->value('statusid');
 
@@ -249,22 +234,38 @@ class HazmatController extends Controller
     public function validateRequest(Request $request)
     {
         $this->validate($request, [
-
-
             'employeeid' => 'required|integer:hazmat,employeeid,',
-            'employeename' => 'required|regex:/^[\pL\s\-]+$/u|string:hazmat,employeename,',
+            'employeename' => 'required|regex:/^[a-zA-Z\s,.\'-\pL]+$/u |string:hazmat,employeename,',
             'dateofexposure' => 'required|date:hazmat,dateofexposure|before_or_equal:today',
             'primaryidconumber' => 'required|integer:hazmat,primaryidconumber',
             'contactcorvel' => 'required|string:hazmat,contactcorvel',
             'corvelid' => 'required|integer:hazmat,corvelid',
             'epcrincidentnum' => 'required|integer:hazmat,epcrincidentnum',
             'assignment' => 'required|string:hazmat,assignment',
-            'frmsincidentnum' => 'required|string:hazmat,frmsincidentnum',
+            'frmsincidentnum1' => 'required|integer:hazmat,frmsincidentnum',
             'shift' => 'required|string:hazmat,shift,',
-            'exposurehazmat' => 'required:hazmat,shift,',
+            'exposurehazmat' => 'required',
+            'OFD025' => 'required|file:biological,OFD025|mimes:pdf|max:10000',
         ]);
     }
 
+    public function requestPratialValidation(Request $request)
+    {
+        $this->validate($request, [
+            'employeeid' => 'required|integer:hazmat,employeeid,',
+            'employeename' => 'required|regex:/^[a-zA-Z\s,.\'-\pL]+$/u |string:hazmat,employeename,',
+            'dateofexposure' => 'required|date:hazmat,dateofexposure|before_or_equal:today',
+            'primaryidconumber' => 'required|integer:hazmat,primaryidconumber',
+            'contactcorvel' => 'string:hazmat,contactcorvel',
+            'corvelid' => 'required|integer:hazmat,corvelid',
+            'epcrincidentnum' => 'required|integer:hazmat,epcrincidentnum',
+            'assignment' => 'required|string:hazmat,assignment',
+            'frmsincidentnum1' => 'required|integer:hazmat,frmsincidentnum',
+            'shift' => 'required|string:hazmat,shift,',
+            'exposurehazmat' => 'required',
+            'OFD025' => 'file:biological,OFD025|mimes:pdf|max:10000',
+        ]);
+    }
     public function Approve($id)
     {
 

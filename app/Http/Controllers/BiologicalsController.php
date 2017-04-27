@@ -2,15 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Biological;
 use App\Attachment;
-use App\Http\Requests\UpdateBiologicalsRequest;
-use App\Http\Requests\StoreBiologicalsRequest;
+use App\Biological;
+use App\Comment;
 use App\Http\Controllers\Traits\FileUploadTrait;
 use App\Http\Controllers\Traits\FormFileUploadTrait;
-
 use App\User;
-use App\Comment;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -91,6 +88,7 @@ class BiologicalsController extends Controller
     public function store(Request $request)
     {
         $this->validateRequest($request);
+
         $statusid = DB::table('status')->where('statustype', 'Application under Primary IDCO')->value('statusid');
         $request->offsetSet('applicationstatus', $statusid);
         $request = $this->saveFiles($request);
@@ -109,22 +107,7 @@ class BiologicalsController extends Controller
 
     public function partialSave(Request $request)
     {
-        $this->validate($request, ['employeeid' => 'required|integer:biological,employeeid',
-            'dateofexposure' => 'required|date:biological,dateofexposure',
-            'exposedemployeename' => 'required|alpha|string:biological,exposedemployeename',
-            //'dateofexposure' => 'required|before_or_equal:biological,dateofexposure',
-            'assignmentbiological' => 'required|string:biological,assignmentbiological',
-            'shift' => 'required|string:biological,shift',
-            'primaryidconumber' => 'required|integer:biological,primaryidconumber',
-            'epcrincidentnum' => 'required|numeric:biological,epcrincidentnum',
-            'frmsincidentnum' => 'required|string:biological,frmsincidentnum',
-            'exposureinjury'=>'required|string:biological,exposureinjury',
-            'exposure'=>'required|string:biological,exposure',
-
-
-            'dateofexposure' => 'required|date:biological,todaysdate,',
-        ]);
-
+        $this->requestPratialValidation($request);
 
         $statusid = DB::table('status')->where('statustype', 'Draft')->value('statusid');
         $request->offsetSet('applicationstatus', $statusid);
@@ -156,8 +139,9 @@ class BiologicalsController extends Controller
 
     public function partialUpdate(Request $request, $id)
     {
-        $statusid = DB::table('status')->where('statustype', 'Draft')->value('statusid');
+        $this->requestPratialValidation($request);
 
+        $statusid = DB::table('status')->where('statustype', 'Draft')->value('statusid');
 
         $biological = Biological::findOrFail($id);
         \DB::table('biologicals')->where('ofd6bid', $biological->ofd6bid)->update([
@@ -174,8 +158,7 @@ class BiologicalsController extends Controller
                 'applicationstatus' => $statusid,
                 'frmsincidentnum' => $biological->frmsincidentnum,
                 'exposureinjury' => $biological->exposureinjury,
-                'miscbiological1' => 'max:20480|mimes:pdf',
-                'miscbiological2' => 'max:20480|mimes:pdf']
+                ]
         );
         //end history code
         $request = $this->saveFiles($request);
@@ -193,7 +176,7 @@ class BiologicalsController extends Controller
     public function updateRecord(Request $request, $id)
     {
 
-        $this->validateRequest($request);
+        $this->requestPratialValidation($request);
 
         $statusid = DB::table('status')->where('statustype', 'Application under Primary IDCO')->value('statusid');
 
@@ -213,8 +196,7 @@ class BiologicalsController extends Controller
                 'applicationstatus' => $statusid,
                 'frmsincidentnum' => $biological->frmsincidentnum,
                 'exposureinjury' => $biological->exposureinjury,
-                'miscbiological1' => 'max:20480|mimes:pdf',
-                'miscbiological2' => 'max:20480|mimes:pdf']
+                ]
         );
         //end history code
         $request = $this->saveFiles($request);
@@ -230,17 +212,17 @@ class BiologicalsController extends Controller
 
     public function validateRequest(Request $request)
     {
-        $this->validate($request, ['employeeid' => 'required|integer:biological,employeeid',
-            'dateofexposure' => 'required|date:biological,dateofexposure',
-            'exposedemployeename' => 'required|alpha|string:biological,exposedemployeename',
-            //'dateofexposure' => 'required|before_or_equal:biological,dateofexposure',
+        $this->validate($request, [
+            'employeeid' => 'required|integer:biological,employeeid',
+            'dateofexposure' => 'required|date:biological,dateofexposure|before_or_equal:today',
+            'exposedemployeename' => 'required|regex:/^[a-zA-Z\s,.\'-\pL]+$/u |string:biological,exposedemployeename',
             'assignmentbiological' => 'required|string:biological,assignmentbiological',
             'shift' => 'required|string:biological,shift',
             'primaryidconumber' => 'required|integer:biological,primaryidconumber',
-            'epcrincidentnum' => 'required|numeric:biological,epcrincidentnum',
-            'frmsincidentnum' => 'required|string:biological,frmsincidentnumber',
+            'epcrincidentnum' => 'required|integer:biological,epcrincidentnum',
+            'frmsincidentnum1' => 'required|integer:biological,frmsincidentnumber',
             'exposureinjury' => 'required|string:biological,exposureinjury',
-            'exposure' => 'required|string:biological,exposure',
+            'exposure' => 'required|integer:biological,exposure',
             'trueofd184' => 'file:biological,trueofd184|mimes:pdf|max:10000',
             'potofd184' => 'file:biological,potofd184|mimes:pdf|max:10000',
         ]);
@@ -248,23 +230,23 @@ class BiologicalsController extends Controller
 
     public function requestPratialValidation(Request $request)
     {
-        $this->validate($request, ['employeeid' => 'required|integer:biological,employeeid',
+        $this->validate($request, [
+            'employeeid' => 'required|integer:biological,employeeid',
             'dateofexposure' => 'required|date:biological,dateofexposure|before_or_equal:today',
-            'exposedemployeename' => 'required|alpha|string:biological,exposedemployeename',
-            //'dateofexposure' => 'required|before_or_equal:biological,dateofexposure',
+            'exposedemployeename' => 'required|regex:/^[a-zA-Z\s,.\'-\pL]+$/u |string:biological,exposedemployeename',
             'assignmentbiological' => 'required|string:biological,assignmentbiological',
             'shift' => 'required|string:biological,shift',
             'primaryidconumber' => 'required|integer:biological,primaryidconumber',
-            'epcrincidentnum' => 'required|numeric:biological,epcrincidentnum',
-            'frmsincidentnum' => 'required|string:biological,frmsincidentnumber',
-            'exposureinjury' => 'required|string:biological,exposureinjury',
-            'exposure' => 'required|string:biological,exposure',
+            'epcrincidentnum' => 'required|integer:biological,epcrincidentnum',
+            'frmsincidentnum1' => 'required|integer:biological,frmsincidentnumber',
+            'exposureinjury' => 'string:biological,exposureinjury',
+            'exposure' => 'integer:biological,exposure',
             'trueofd184' => 'file:biological,trueofd184|mimes:pdf|max:10000',
             'potofd184' => 'file:biological,potofd184|mimes:pdf|max:10000',
         ]);
     }
 
-        public function Approve($id)
+    public function Approve($id)
     {
 
         $biological = DB::table('biologicals')->where('ofd6bid', $id)->first();

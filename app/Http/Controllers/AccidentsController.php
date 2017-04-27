@@ -214,6 +214,7 @@ class AccidentsController extends EmailController
         //end history code
         $request = $this->saveFiles($request);
         $accident->update($request->all());
+        $this->AccidentUpload($request, $id);
 
         return redirect()->route('accidents.index');
     }
@@ -223,7 +224,7 @@ class AccidentsController extends EmailController
         $this->validate($request, [
             'accidentdate' => 'required|date:accidents,accidentdate|before_or_equal:today',
             'driverid' => 'required|integer:accidents,driverid,',
-            'drivername' => 'required|regex:/^[\pL\s\-]+$/u |string:accidents,drivername,',
+            'drivername' => 'required|regex:/^[a-zA-Z\s,.\'-\pL]+$/u |string:accidents,drivername,',
             'assignmentaccident' => 'required|string:accidents,assignmentaccident',
             'apparatus' => 'required|string:accidents,apparatus',
             'captainid' => 'required|integer:accidents,captainid',
@@ -250,7 +251,7 @@ class AccidentsController extends EmailController
         $this->validate($request, [
             'accidentdate' => 'required|date:accidents,accidentdate,',
             'driverid' => 'required|integer:accidents,driverid,',
-            'drivername' => 'required|regex:/^[\pL\s\-]+$/u |string:accidents,drivername,',
+            'drivername' => 'required|regex:/^[a-zA-Z\s,.\'-\pL]+$/u |string:accidents,drivername,',
             'assignmentaccident' => 'required|string:accidents,assignmentaccident',
             'apparatus' => 'required|string:accidents,apparatus',
             'captainid' => 'required|integer:accidents,captainid',

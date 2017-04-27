@@ -95,9 +95,9 @@
                             {!! Form::text('frmsincidentnum1', old('frmsincidentnum1'), array('id'=>'text1', 'class' => 'form-control', 'placeholder'=>'Enter FRMS Number'))!!}
                             {!! Form::text('frmsincidentnum', old('frmsincidentnum'), array('id'=>'text2', 'class' => 'form-control', 'style'=>'display: none;'))!!}
                             <p class="help-block"></p>
-                            @if($errors->has('frmsincidentnum'))
+                            @if($errors->has('frmsincidentnum1'))
                                 <p class="help-block">
-                                    {{ $errors->first('frmsincidentnum') }}
+                                    {{ $errors->first('frmsincidentnum1') }}
                                 </p>
                             @endif
                         </div>
