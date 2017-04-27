@@ -161,11 +161,13 @@
             <div class="row">
                 <div class="col-sm-12 form-group">
                     <div class="col-sm-6">
-                        {{ Form::radio('exposure', 0 , null, ['id'=>'exposure', 'class' => 'className' ]) }}
-                        {{ Form::label('exposure', 'True Exposure') }}
-
-                        {{ Form::radio('exposure',1 , null, ['id'=>'exposure1', 'class' => 'className' ]) }}
-                        {{ Form::label('exposure', 'Potential Exposure') }}
+                        @if($biological->exposure == 0)
+                            {{ Form::radio('exposure', 0 , null, ['id'=>'exposure', 'class' => 'className' ]) }}
+                            {{ Form::label('exposure', 'True Exposure') }}
+                        @else
+                            {{ Form::radio('exposure',1 , null, ['id'=>'exposure1', 'class' => 'className' ]) }}
+                            {{ Form::label('exposure', 'Contamination') }}
+                        @endif
                     </div>
                 </div>
             </div>

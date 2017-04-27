@@ -328,15 +328,14 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-12">
-                <div class="form-group">
-                    {{Form::label('exposurehazmat','Do you have any symptoms of illness or injury and require
-                       treatment?')}}
+            <div class="col-md-6 form-group">
+                {{Form::label('exposurehazmat','Do you have any symptoms of illness or injury and require
+                   treatment?',['class'=> 'col-sm-10 control-label'] ) }}
+                <div class="col-sm-4">
                     {!! Form::select('exposurehazmat',[
                       'Yes' => 'Yes',
-                      'No' => 'No']
-                    ,old('exposurehazmat'),
-                    array('placeholder' => 'Choose one','class' => 'form-control','id'=>'exposurehazmat'))!!}
+                      'No' => 'No'],old('exposurehazmat'),
+                    array('placeholder'=>'Select one','id'=>'exposurehazmat','class' => 'form-control','required'=>'required')) !!}
                     <p class="help-block"></p>
                     @if($errors->has('exposurehazmat'))
                         <p class="help-block">
