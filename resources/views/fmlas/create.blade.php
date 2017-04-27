@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('content')
+
 @section('crumbs')
     <ol class="breadcrumb">
         <a class="btn btn-default" type="button"
@@ -13,7 +13,7 @@
     </ol>
 @endsection
 
-
+@section('content')
     {!! Form::open(['method' => 'POST', 'route' => ['fmlas.store'], 'files' => true,]) !!}
     <input type="hidden" name="_token" value="{!!  'csrf_token()' !!}">
     {{ csrf_field() }}
@@ -49,7 +49,6 @@
             </div>
         </div>
         <div class="panel-body">
-            <br>
             <div class="form-horizontal">
                 <div class="row">
                     <div class="col-sm-6 form-group">
@@ -81,7 +80,7 @@
                     <div class="col-sm-6 form-group">
                         {!! Form::label('fromdate', 'From Date', array('style'=>'padding-top:7px;','class'=> 'col-sm-4 control-label') ) !!}
                         <div class="col-sm-6 ">
-                            {!! Form::text('fromdate', old('fromdate'), array('class' => 'form-control datepicker','id' =>'fromdate', 'placeholder' => 'YYYY-MM-DD','required' => 'required'))!!}
+                            {!! Form::text('fromdate', old('fromdate'), array('class' => 'datepicker form-control ', 'placeholder' => 'YYYY-MM-DD','required' => 'required'))!!}
                             <p class="help-block"></p>
                             @if($errors->has('fromdate'))
                                 <p class="help-block">
@@ -93,7 +92,7 @@
                     <div class="col-sm-6 form-group">
                         {!! Form::label('todate', 'To Date', array('style'=>'padding-top:7px;','class'=> 'col-sm-4 control-label') ) !!}
                         <div class="col-sm-6 ">
-                            {!! Form::text('todate', old('todate'), array('class' => 'datepicker form-control', 'placeholder' => 'YYYY-MM-DD','required' => 'required'))!!}
+                            {!! Form::text('todate', old('todate'), array('class' => 'form-control datepicker', 'placeholder' => 'YYYY-MM-DD','required' => 'required'))!!}
                             <p class="help-block"></p>
                             @if($errors->has('todate'))
                                 <p class="help-block">
@@ -105,16 +104,13 @@
                 </div>
             </div>
         </div>
-        <br>
     </div>
-<br>
     <div class="panel panel-default">
         <div class="panel-heading">
             <div><h4 style="padding-left:12px;"><strong>Please Enter Additional Information Below</strong></h4>
             </div>
         </div>
         <div class="panel-body">
-            <br>
             <div class="col-sm-12">
                 <div class="form-group">
                     {{--{{ Form::checkbox('trueofd184', 1, null, ['id'=>'trueofd184', 'class' => 'className' ]) }}--}}

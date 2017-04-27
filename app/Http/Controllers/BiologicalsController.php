@@ -109,7 +109,18 @@ class BiologicalsController extends Controller
 
     public function partialSave(Request $request)
     {
-        $this->validate($request, [
+        $this->validate($request, ['employeeid' => 'required|integer:biological,employeeid',
+            'dateofexposure' => 'required|date:biological,dateofexposure',
+            'exposedemployeename' => 'required|alpha|string:biological,exposedemployeename',
+            //'dateofexposure' => 'required|before_or_equal:biological,dateofexposure',
+            'assignmentbiological' => 'required|string:biological,assignmentbiological',
+            'shift' => 'required|string:biological,shift',
+            'primaryidconumber' => 'required|integer:biological,primaryidconumber',
+            'epcrincidentnum' => 'required|numeric:biological,epcrincidentnum',
+            'frmsincidentnum' => 'required|string:biological,frmsincidentnum',
+            'exposureinjury'=>'required|string:biological,exposureinjury',
+            'exposure'=>'required|string:biological,exposure',
+
 
             'dateofexposure' => 'required|date:biological,todaysdate,',
         ]);
