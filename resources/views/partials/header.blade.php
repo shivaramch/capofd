@@ -25,7 +25,6 @@
     <!-- Styles -->
 
     <link rel="stylesheet" href="{{ url('css') }}/login.css"/>
-    <link rel="stylesheet" href="{{ url('css') }}/comment.css">
 
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700&subset=all"
           rel="stylesheet"
