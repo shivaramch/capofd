@@ -453,31 +453,19 @@
 
 
             <div class="row">
-                <div class="col-sm-6 form-group">
-                    {!! Form::label('captainid', 'Complete FRMS Casuality & Narrative Tab - Fire service and Fire Service Injury', ['class' => 'col-sm-6 control-label']) !!}
-                    <div class="col-sm-6 ">
-                        {!! Form::text('captainid', old('captainid'), array('class' => 'form-control','id' => 'captainid','placeholder'=>'Enter FRMS Number here','required' => 'required','disabled'=>'disabled'))!!}
-                        <p class="help-block"></p>
-                        @if($errors->has('captainid'))
-                            <p class="help-block">
-                                {{ $errors->first('captainid') }}
-                            </p>
-                        @endif
+                <div class="col-sm-12">
+                    <div class="form-group">
+                        {{ Form::checkbox('completeepcr', 1, null, ['id' => 'completeepcr', 'class'=>'className','readonly' => 'true','disabled'=>'disabled']) }}
+                        {{Form::label('completeepcr','Complete in EPCR - All Cases')}}
                     </div>
                 </div>
             </div>
-
             <div class="row">
-                <div class="col-sm-6 form-group">
-                    {!! Form::label('captainid', 'Complete in EPCR - All Cases', ['class' => 'col-sm-6 control-label']) !!}
-                    <div class="col-sm-6 ">
-                        {!! Form::text('captainid', old('captainID'), array('class' => 'form-control','id'=>'epcrID','placeholder'=>'Enter EPCR Number here','required' => 'required','disabled'=>'disabled')) !!}
-                        <p class="help-block"></p>
-                        @if($errors->has('captainid'))
-                            <p class="help-block">
-                                {{ $errors->first('captainid') }}
-                            </p>
-                        @endif
+                <div class="col-sm-12">
+                    <div class="form-group">
+                        {{ Form::checkbox('completefrms', 1, null, ['id' => 'completefrms', 'class'=>'className','readonly' => 'true','disabled'=>'disabled']) }}
+                        {{Form::label('completefrms','Complete FRMS Casuality & Narrative Tab - Fire service and Fire Service Injury')}}
+
                     </div>
                 </div>
             </div>
@@ -514,32 +502,34 @@
                     </div>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-sm-12 form-group">
-                    <label class="checkbox-inline col-sm-12"><u>For Fire Omaha Police Recruits: Use normal
-                            Chain-of-Command for Tracking
-                            Document</u></label>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-sm-12">
-                    <div class="form-group">
-                        {{ Form::checkbox('policeofficercompletesign', 1, null, ['id' => 'policeofficercompletesign', 'class'=>'className', 'readonly' => 'true','disabled'=>'disabled' ]) }}
-                        <label><strong>Have Police Supervisor Complete and Sign
-                                Supervisor section on Investigation Report
-                                and Witness Statement</strong></label>
+            @if($injury->trainingassigned == "Yes")
+                <div class="row">
+                    <div class="col-sm-12 form-group">
+                        <label class="checkbox-inline col-sm-12"><u>For Fire Omaha Police Recruits: Use normal
+                                Chain-of-Command for Tracking
+                                Document</u></label>
                     </div>
                 </div>
-            </div>
-            <div class="row">
-                <div class="col-sm-12">
-                    <div class="form-group">
-                        {{ Form::checkbox('callsupervisor', 1, null, ['id' => 'callsupervisor', 'class'=>'className', 'readonly' => 'true','disabled'=>'disabled']) }}
-                        <label><strong>Call Fire Supervisor or SWD B/C immediately
-                                and notify CorVel by phone</strong></label>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="form-group">
+                            {{ Form::checkbox('policeofficercompletesign', 1, null, ['id' => 'policeofficercompletesign', 'class'=>'className', 'readonly' => 'true','disabled'=>'disabled' ]) }}
+                            <label><strong>Have Police Supervisor Complete and Sign
+                                    Supervisor section on Investigation Report
+                                    and Witness Statement</strong></label>
+                        </div>
                     </div>
                 </div>
-            </div>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="form-group">
+                            {{ Form::checkbox('callsupervisor', 1, null, ['id' => 'callsupervisor', 'class'=>'className', 'readonly' => 'true','disabled'=>'disabled']) }}
+                            <label><strong>Call Fire Supervisor or SWD B/C immediately
+                                    and notify CorVel by phone</strong></label>
+                        </div>
+                    </div>
+                </div>
+            @endif
             <div class="col-sm-12 panel-heading" align="center">
                 <div class="btn-bottom ">
                     <a href="{{ URL::previous() }}" class="btn btn-danger" id="cancelButton">Cancel</a>

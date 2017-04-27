@@ -176,7 +176,9 @@ class InjuriesController extends Controller
                 'frmsincidentnum' => $injury->frmsincidentnum,
                 'policeofficercompletesign' => $injury->policeofficercompletesign,
                 'callsupervisor' => $injury->callsupervisor,
-              'applicationstatus' => $statusid,
+                'completeepcr' => $injury->completeepcr,
+                'completefrms' => $injury->completefrms,
+                'applicationstatus' => $statusid,
                 'createdby' => $injury->createdby,
                 'updatedby' => $injury->updatedby]
         );
@@ -218,6 +220,8 @@ class InjuriesController extends Controller
                 'policeofficercompletesign' => $injury->policeofficercompletesign,
                 'callsupervisor' => $injury->callsupervisor,
                 'applicationstatus' => $statusid,
+                'completeepcr' => $injury->completeepcr,
+                'completefrms' => $injury->completefrms,
                 'createdby' => $injury->createdby,
                 'updatedby' => $injury->updatedby]
         );
@@ -248,6 +252,8 @@ class InjuriesController extends Controller
             'documentworkforce' => 'required',
             'documentoperationalday' => 'required',
             'shift' => 'required|string:injury,shift,',
+            'completeepcr' => 'required|string:injury,completeepcr',
+            'completefrms' => 'required|string:injury,completefrms',
             'trainingassigned' => 'required|string:injury,shift,',
             'frmsincidentnum1' => 'required|integer:injury,frmsincidentnum',
             'policeofficercompletesign' => 'required',

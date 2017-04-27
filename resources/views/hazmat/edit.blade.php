@@ -89,7 +89,7 @@
                     </div>
                     <div class="row">
                         <div class="col-sm-4 form-group">
-                            {!! Form::label('primaryidconumber', 'Primary IDCO OFD ID#', array('style'=>'padding-top:7px;','class' => 'col-sm-4 control-label')) !!}
+                            {!! Form::label('primaryidconumber', 'Primary IDCO ID#', array('style'=>'padding-top:7px;','class' => 'col-sm-4 control-label')) !!}
                             <div class="col-sm-6 ">
                                 {!! Form::text('primaryidconumber', old('primaryidconumber'), ['class' => 'form-control','placeholder'=>'Enter IDCO Badge ID', 'required'=>'required'])!!}
                                 <p class="help-block"></p>
