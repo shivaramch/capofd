@@ -176,7 +176,8 @@ class InjuriesController extends Controller
                 'completefrms' => $injury->completefrms,
                 'applicationstatus' => $statusid,
                 'createdby' => $injury->createdby,
-                'updatedby' => $injury->updatedby]
+                'updatedby' => $injury->updatedby,
+                'epcrincidentnum'=> $injury->epcrincidentnum,]
         );
 
         $request = $this->saveFiles($request);
@@ -220,7 +221,8 @@ class InjuriesController extends Controller
                 'completeepcr' => $injury->completeepcr,
                 'completefrms' => $injury->completefrms,
                 'createdby' => $injury->createdby,
-                'updatedby' => $injury->updatedby]
+                'updatedby' => $injury->updatedby,
+                'epcrincidentnum'=> $injury->epcrincidentnum,]
         );
 
         $request = $this->saveFiles($request);
