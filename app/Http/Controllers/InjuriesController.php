@@ -237,7 +237,7 @@ class InjuriesController extends Controller
     public  function requestValidation(Request $request)
     {
         $this->validate($request, [
-            'injurydate' => 'required|date:before_or_equal:today',
+            'injurydate' => 'required|date:injury,injurydate|before_or_equal:today',
             //'injuredemployeename' => 'required|alpha|string:injuries,injuredemployeename,',
             'injuredemployeeid' => 'required|integer:injury,injuredemployeeid,',
             'assignmentinjury' => 'required|string:injury,assignmentinjury,',
