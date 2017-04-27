@@ -40,6 +40,7 @@
                     <thead>
                     <tr>
                         <th data-sortable="true">OFD 6C ID</th>
+                        <th data-sortable="true">Employee Name</th>
                         <th data-sortable="true">Date of Exposure</th>
                         <th data-sortable="true">Assignment</th>
                         <th data-sortable="true">Injured?</th>
@@ -54,6 +55,7 @@
                         @if($hazmats->employeeid == Auth::user()->id )
                             <tr>
                                 <td>{{ $hazmats->ofd6cid }}</td>
+                                <td>{{ $hazmats->employeename }}</td>
                                 <td>{{ $hazmats->dateofexposure }}</td>
                                 <td>{{ $hazmats->assignment }}</td>
                                 <td>{{ $hazmats->exposurehazmat }}</td>
@@ -96,6 +98,7 @@
                     <thead>
                     <tr>
                         <th data-sortable="true">OFD 6C ID</th>
+                        <th data-sortable="true">Employee Name</th>
                         <th data-sortable="true">Date of Exposure</th>
                         <th data-sortable="true">Assignment</th>
                         <th data-sortable="true">Injured?</th>
@@ -110,6 +113,7 @@
                         @if($hazmats->primaryidconumber == Auth::user()->id  && $hazmats->applicationstatus==DB::table('status')->where('statustype','Application under Primary IDCO')->value('statusid'))
                             <tr>
                                 <td>{{ $hazmats->ofd6cid }}</td>
+                                <td>{{ $hazmats->employeename }}</td>
                                 <td>{{ $hazmats->dateofexposure }}</td>
                                 <td>{{ $hazmats->assignment }}</td>
                                 <td>{{ $hazmats->exposurehazmat }}</td>
