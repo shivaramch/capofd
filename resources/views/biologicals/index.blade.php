@@ -19,7 +19,6 @@
             </div>
         </div>
     </div>
-
     @if(count($biologicals) > 0)
         <div class="panel panel-default panel-shadow " hidden>
             <div class="panel-heading">
@@ -37,10 +36,10 @@
                     <thead>
                     <tr>
                         <th data-sortable="true">OFD 6B ID</th>
+                        <th data-sortable="true">Employee Name</th>
                         <th data-sortable="true">Date of Exposure</th>
                         <th data-sortable="true">Assignment</th>
                         <th data-sortable="true">Type of Exposure</th>
-                        <th data-sortable="true">Injured?</th>
                         <th data-sortable="true">FRMS Incident Number</th>
                         <th data-sortable="true">Status</th>
                         <th data-switchable="false" data-searchable="false" data-sortable="false">Action</th>
@@ -51,16 +50,16 @@
                         @if($biological->employeeid == Auth::user()->id)
                             <tr>
                                 <td>{{ $biological->ofd6bid }}</td>
+                                <td>{{ $biological->exposedemployeename }}</td>
                                 <td>{{ $biological->dateofexposure }}</td>
                                 <td>{{ $biological->assignmentbiological }}</td>
                                 @if($biological->exposure == 0)
                                     <td>True Exposure
-                                </td>
+                                    </td>
                                 @else
                                     <td>Contamination
                                     </td>
                                 @endif
-                                <td>{{ $biological->exposureinjury }}</td>
                                 <td>{{ $biological->frmsincidentnum }}</td>
                                 <td>{{ DB::table('status')->where('statusid',$biological->applicationstatus)->value('statustype') }}</td>
                                 <td>
@@ -84,8 +83,6 @@
                 </table>
             </div>
         </div>
-
-
         <div class="panel panel-default panel-shadow " hidden>
             <div class="panel-heading">
                 Assgined to Primary IDCO
@@ -101,11 +98,11 @@
                        id="table">
                     <thead>
                     <tr>
-                        <th data-sortable="true">OFD 6B ID</th>
+                        <th data-sortable="true">Badge ID</th>
+                        <th data-sortable="true">Employee Name</th>
                         <th data-sortable="true">Date of Exposure</th>
                         <th data-sortable="true">Assignment</th>
                         <th data-sortable="true">Type of Exposure</th>
-                        <th data-sortable="true">Injured?</th>
                         <th data-sortable="true">FRMS Incident Number</th>
                         <th data-sortable="true">Status</th>
                         <th data-switchable="false" data-searchable="false" data-sortable="false">Action</th>
@@ -116,11 +113,17 @@
                         @if($biological->primaryidconumber== Auth::user()->id && $biological->applicationstatus==DB::table('status')->where('statustype','Application under Primary IDCO')->value('statusid')
 )
                             <tr>
-                                <td>{{ $biological->ofd6bid }}</td>
+                                <td>{{ $biological->employeeid }}</td>
+                                <td>{{ $biological->exposedemployeename }}</td>
                                 <td>{{ $biological->dateofexposure }}</td>
                                 <td>{{ $biological->assignmentbiological }}</td>
-                                <td>{{ $biological->exposure }}</td>
-                                <td>{{ $biological->exposureinjury }}</td>
+                                @if($biological->exposure == 0)
+                                    <td>True Exposure
+                                    </td>
+                                @else
+                                    <td>Contamination
+                                    </td>
+                                @endif
                                 <td>{{ $biological->frmsincidentnum }}</td>
                                 <td>{{ DB::table('status')->where('statusid',$biological->applicationstatus)->value('statustype') }}</td>
                                 <td>
@@ -128,7 +131,7 @@
                                         <a href="{{ route('biologicals.show',[$biological->ofd6bid]) }}"
                                            class="btn btn-xs btn-info btn-block"><i
                                                     class="fa fa-eye" aria-hidden="true"></i> VIEW</a>
-                                        </div>
+                                    </div>
                                 </td>
                             </tr>
                         @endif
@@ -138,7 +141,6 @@
             </div>
         </div>
     @endif
-
 @stop
 @section('javascript')
     <script src="{{ url('js/extensions/cookie') }}/bootstrap-table-cookie.js"></script>

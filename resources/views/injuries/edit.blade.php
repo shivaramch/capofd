@@ -668,11 +668,10 @@
                     <label class="col-sm-4">Are you attending the Omaha Police Academy?</label>
                     <div class="col-sm-3">
                         {{ Form::select('trainingassigned', [
-                        'yes' => 'YES',
-                        'no' => 'NO']
-                        ), old('trainingassigned'),
-
-                        array('placeholder' => 'Choose one', 'id' => 'trainingassigned', 'onchange' =>"pressed6()",'class'=>'form-control') }}
+                        'yes' => 'Yes',
+                        'no' => 'No']
+                        , old('trainingassigned'),
+                        array('id' => 'trainingassigned', 'onchange' =>"pressed6()",'class'=>'form-control')) }}
                     </div>
                 </div>
             </div>
@@ -849,7 +848,7 @@
         if (current_value == "yes") {
             document.getElementById("police").style.display = "block";
         }
-        else {
+        else if (current_value == "no") {
             document.getElementById("police").style.display = "none";
         }
     }

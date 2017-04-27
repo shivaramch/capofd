@@ -468,8 +468,8 @@
                 <label class="col-sm-4">Are you attending the Omaha Police Academy?</label>
                 <div class="col-sm-3">
                     {{ Form::select('trainingassigned', [
-                    'yes' => 'YES',
-                    'no' => 'NO'],null,
+                    'yes' => 'Yes',
+                    'no' => 'No'],null,
                      array('placeholder' => 'Choose one', 'id' => 'trainingassigned', 'onchange' =>"pressed6()",'class'=>'form-control')) }}
                 </div>
             </div>

@@ -502,9 +502,9 @@
             </div>
             <div class="row">
                 <div class="col-sm-12 form-group">
-                    {!! Form::label('trainingassigned', 'In case attend Omaha Police Academy - Training Assigned', array('class' => 'col-sm-4 control-label','disabled'=>'disabled')) !!}
-                    <div class="col-sm-6">
-                        {!! Form::text('trainingassigned',$injury->trainingassigned ,['disabled'],array('class' => 'form-control', 'id'=>'trainingText'))!!}
+                    {!! Form::label('trainingassigned', 'In case attend Omaha Police Academy - Training Assigned', array('class' => 'col-sm-4 control-label',)) !!}
+                    <div class="col-sm-2">
+                        {!! Form::text('trainingassigned',old('trainingassigned') ,array('class' => 'form-control', 'id'=>'trainingText','disabled'=>'disabled'))!!}
                         <p class="help-block"></p>
                         @if($errors->has('shift'))
                             <p class="help-block">

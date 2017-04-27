@@ -48,6 +48,7 @@
                     <th data-sortable="true">Driver Name</th>
                     <th data-sortable="true">Date of Accident</th>
                     <th data-sortable="true">Assignment</th>
+                    <th data-sortable="true">Driver Name</th>
                     <th data-sortable="true">Status</th>
                     <th data-switchable="false" data-searchable="false" data-sortable="false">Action</th>
                 </tr>
@@ -60,6 +61,7 @@
                             <td>{{ $accident->drivername }}</td>
                             <td>{{ $accident->accidentdate }}</td>
                             <td>{{ $accident->assignmentaccident }}</td>
+                            <td>{{ $accident->drivername }}</td>
                             <td>{{ DB::table('status')->where('statusid',$accident->applicationstatus)->value('statustype')}}</td>
                             <td>
                                 <div>
@@ -99,6 +101,7 @@
                     <th data-sortable="true">OFD 6B ID</th>
                     <th data-sortable="true">Date of Exposure</th>
                     <th data-sortable="true">Assignment</th>
+                    <th data-sortable="true">Employee Name</th>
                     <th data-sortable="true">Status</th>
                     <th data-switchable="false" data-searchable="false" data-sortable="false">Action</th>
                 </tr>
@@ -110,6 +113,7 @@
                             <td>{{ $biological->ofd6bid }}</td>
                             <td>{{ $biological->dateofexposure }}</td>
                             <td>{{ $biological->assignmentbiological }}</td>
+                            <td>{{ $biological->exposedemployeename }}</td>
                             <td>{{ DB::table('status')->where('statusid',$biological->applicationstatus)->value('statustype')}}</td>
                             <td>
                                 <div>
@@ -151,6 +155,8 @@
                     <th data-sortable="true">OFD 6C ID</th>
                     <th data-sortable="true">Date of Exposure</th>
                     <th data-sortable="true">Assignment</th>
+                    <th data-sortable="true">Employee Name</th>
+                    <th data-sortable="true">Status</th>
 
                     <th data-switchable="false" data-searchable="false" data-sortable="false">Action</th>
                 </tr>
@@ -162,6 +168,7 @@
                             <td>{{ $hazmats->ofd6cid }}</td>
                             <td>{{ $hazmats->dateofexposure }}</td>
                             <td>{{ $hazmats->assignment }}</td>
+                            <td>{{ $hazmats->employeename }}</td>
                             <td>{{ DB::table('status')->where('statusid',$hazmats->applicationstatus)->value('statustype')}}</td>
 
                             <td>
@@ -203,6 +210,7 @@
                     <th data-sortable="true">OFD 6 ID</th>
                     <th data-sortable="true">Date of Injury</th>
                     <th data-sortable="true">Assignment</th>
+                    <th data-sortable="true">Employee Name</th>
                     <th data-sortable="true">Status</th>
                     <th data-switchable="false" data-searchable="false" data-sortable="false">Action</th>
                 </tr>
@@ -214,6 +222,7 @@
                             <td>{{ $injury->ofd6id }}</td>
                             <td>{{ $injury->injurydate }}</td>
                             <td>{{ $injury->assignmentinjury }}</td>
+                            <td>{{ $injury->injuredemployeename }}</td>
                             <td>{{ DB::table('status')->where('statusid',$injury->applicationstatus)->value('statustype')}}</td>
                             <td>
                                 <div>
