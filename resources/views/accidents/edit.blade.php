@@ -814,7 +814,7 @@
                 Submit
             </button>
 
-            <a href="{{ route(URL::previous()) }}" class="btn btn-danger">Cancel</a>
+            <a href="{{ URL::previous() }}" class="btn btn-danger">Cancel</a>
             <br>
 
         </div>
