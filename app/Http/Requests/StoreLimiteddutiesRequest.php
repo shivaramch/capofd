@@ -28,7 +28,7 @@ class StoreLimiteddutiesRequest extends FormRequest
             'corvelid' => 'required|string:limitedduty,corvelid'.$this->route('limitedduty'),
             'incidenttype' => 'required|string:limitedduty,incidenttype'.$this->route('limitedduty'),
             'incidentid' => 'required|integer:limitedduty,incidentid'.$this->route('limitedduty'),
-            'comments'=>'required|string:limitedduty,comments'.$this->route('limitedduty'),
+            'comments'=>'string:limitedduty,comments'.$this->route('limitedduty'),
         ];
     }
 }
