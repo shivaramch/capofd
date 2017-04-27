@@ -15,4 +15,3 @@ npm-debug.log
 .vscode/
 /vendor/
 /.env
-!/.env
