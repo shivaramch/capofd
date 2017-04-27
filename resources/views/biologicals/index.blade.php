@@ -36,6 +36,7 @@
                     <thead>
                     <tr>
                         <th data-sortable="true">OFD 6B ID</th>
+                        <th data-sortable="true">Employee Name</th>
                         <th data-sortable="true">Date of Exposure</th>
                         <th data-sortable="true">Assignment</th>
                         <th data-sortable="true">Type of Exposure</th>
@@ -49,6 +50,7 @@
                         @if($biological->employeeid == Auth::user()->id)
                             <tr>
                                 <td>{{ $biological->ofd6bid }}</td>
+                                <td>{{ $biological->exposedemployeename }}</td>
                                 <td>{{ $biological->dateofexposure }}</td>
                                 <td>{{ $biological->assignmentbiological }}</td>
                                 @if($biological->exposure == 0)
