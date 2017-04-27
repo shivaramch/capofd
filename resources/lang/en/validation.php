@@ -111,10 +111,10 @@ return [
             'required' => '"Exposed Employee Name" field is required',
             'alpha' => '"Exposed Employee Name" can only have letters',
         ],
-//        'dateofexposure' => [
-//            'required' => '"Date of Exposure" field is required',
-//            'date' => '"Date of Exposure" should be a date',
-//        ],
+        'dateofexposure' => [
+            'required' => '"Date of Exposure" field is required',
+           'date' => '"Date of Exposure" should be a date',
+        ],
         'assignmentbiological' => [
             'required' => '"Assignment" field is required',
         ],
@@ -127,7 +127,7 @@ return [
         ],
         'epcrincidentnum' => [
             'required' => '"EPCR Incident#" field is required',
-            'integer' => '"EPCR Incident#" field should be a number',
+            'integer' => '"EPCR Incident#" field should be a integer',
         ],
         'frmsincidentnum' => [
             'required' => '"FRMS Incident#" field is required',
@@ -141,7 +141,7 @@ return [
         ],
         'reportnum' => [
             'required' => '"Report#" field is required',
-            'integer' => '"Report#" field should be a number',
+            'integer' => '"Report#" field should be a integer',
         ],
         'injurydate' => [
             'required' => '"Date of Injury" field is required',
@@ -150,7 +150,7 @@ return [
         ],
         'injuredemployeename' => [
             'required' => '"Injured Name" field is required',
-            'alpha' => '"Injured Name" field can only have letters',
+            'string' => '"Injured Name" field can only have letters',
         ],
         'injuredemployeeid' => [
         'required' => '"Personnel ID #" field is required',
@@ -228,70 +228,10 @@ return [
         'contactcorvel' => [
             'required' => 'Check "Contact CorVel Enterprise Comp @ 877-764-3574" checkbox',
         ],
-        'CorvelAttachmentName' => [
-            'required' => 'Please upload "CorVel Work Ability Report Form"',
-            'mimes' => 'Uploaded "CorVel Work Ability Report Form" can only be a PDF format',
+        'exposurehazmat' => [
+            'required' => 'Select a value from "Do you have any symptoms of illness or injury and require treatment?" dropdown',
         ],
-        'InvestigationAttachment' => [
-            'required' => 'Please upload "Investigation Report for Occupational Injury or Illness Form"',
-            'mimes' => 'Uploaded "Investigation Report for Occupational Injury or Illness Form" can only be a PDF format',
-        ],
-        'StatementAttachment' => [
-            'required' => 'Please upload "OFD 295a Injury Witness Statement Form"',
-            'mimes' => 'Uploaded "OFD 295a Injury Witness Statement Form" can only be a PDF format',
-        ],
-        'EmployeeAttachment' => [
-            'required' => 'Please upload "employee’s Choice of Physician or Doctor Form"',
-            'mimes' => 'Uploaded "employee’s Choice of Physician or Doctor Form" can only be a PDF format',
-        ],
-        'Ofd25Attachment' => [
-            'required' => 'Please upload " OFD25 Injury Intradepartmental Communication Form"',
-            'mimes' => 'Uploaded " OFD25 Injury Intradepartmental Communication Form" can only be a PDF format',
-        ],
-        'LRS101' => [
-            'required' => 'Please upload "LRS 101 City of Omaha Accident Report"',
-            'mimes' => 'Uploaded "LRS 101 City of Omaha Accident Report" can only be a PDF format',
-        ],
-        'OFD295' => [
-            'required' => 'Please upload "OFD 295 Vehicle Accident Witness Statement"',
-            'mimes' => 'Uploaded "OFD 295 Vehicle Accident Witness Statement" can only be a PDF format',
-        ],
-        'OFD025a' => [
-            'required' => 'Please upload "OFD 25a Accident Intradepartmental Communication"',
-            'mimes' => 'Uploaded "OFD 25a Accident Intradepartmental Communication" can only be a PDF format',
-        ],
-        'OFD025b' => [
-            'required' => 'Please upload "OFD 25b Accident Intradepartmental Communication"',
-            'mimes' => 'Uploaded "OFD 25b Accident Intradepartmental Communication" can only be a PDF format',
-        ],
-        'OFD025c' => [
-            'required' => 'Please upload "OFD 25b Accident Intradepartmental Communication"',
-            'mimes' => 'Uploaded "OFD 25b Accident Intradepartmental Communication" can only be a PDF format',
-        ],
-        'OFD31' => [
-            'required' => 'Please upload "OFD 31-OFD Lost, Damaged or Stolen Equipment Report"',
-            'mimes' => 'Uploaded "OFD 31-OFD Lost, Damaged or Stolen Equipment Report" can only be a PDF format',
-        ],
-        'OFD127' => [
-            'required' => 'Please upload "OFD 127 Request for Services Form"',
-            'mimes' => 'Uploaded "OFD 127 Request for Services Form" can only be a PDF format',
-        ],
-        'DR41' => [
-            'required' => 'Please upload "State of Nebraska "DR Form 41""',
-            'mimes' => 'Uploaded "State of Nebraska "DR Form 41"" can only be a PDF format',
-        ],
-        'trueofd184' => [
-            'required' => 'Please upload "OFD 184 Form"',
-            'mimes' => 'Uploaded "OFD 184 Form" can only be a PDF format',
-        ],
-        'potofd184' => [
-            'required' => 'Please upload "OFD 184 Form"',
-            'mimes' => 'Uploaded "OFD 184 Form" can only be a PDF format',
-        ],
-        'OFD025' => [
-            'required' => 'Please upload "OFD-025 Hazmat Exposure Report form"',
-            'mimes' => 'Uploaded "OFD-025 Hazmat Exposure Report form" can only be a PDF format',
-        ],
+
 
     ],
 

@@ -20,22 +20,7 @@
 
 <script type="text/javascript">$('.tip').tooltip()</script>
 
-<script>
-    $(document).ready(function () {
-        $(".datepicker1").datepicker({
-            onClose: function () {
-                var date2 = $('.datepicker1').datepicker('getDate');
-                date2.setDate(date2.getDate() + 30)
-                $(".datepicker2").datepicker("setDate", date2);
-                var date3 = $('.datepicker1').datepicker('getDate');
-                date3.setDate(date3.getDate() + 0)
-                $(".datepicker32").datepicker("setDate", date3);
-            }
-        });
-        $(".datepicker2").datepicker();
-        $(".datepicker32").datepicker();
-    });
-</script> 
+
 
 <script>
 $(function addZero() {
@@ -49,31 +34,31 @@ $(function addZero() {
         
         if($('#text1').val().length == 7)
         {
-        text2.val(parseInt(text1.val()));   
+            parseInt(text2.val( text1.val()));
         }
 		else if($('#text1').val().length == 6)
         {
-        text2.val(parseInt('0' + text1.val()));   
+            parseInt(text2.val(('0' + text1.val())));
         }
        else if($('#text1').val().length == 5)
         {
-        text2.val(parseInt('00' + text1.val()));   
+        parseInt(text2.val(('00' + text1.val())));
         }
 		else if($('#text1').val().length == 4)
         {
-        text2.val(parseInt('000' + text1.val()));   
+            parseInt(text2.val(('000' + text1.val())));
         }
 		else if($('#text1').val().length == 3)
 		{
-        text2.val(parseInt('0000' + text1.val()));   
+            parseInt(text2.val(('0000' + text1.val())));
         }
 		else if($('#text1').val().length == 2)
         {
-        text2.val(parseInt('00000' + text1.val()));   
+            parseInt(text2.val(('00000' + text1.val())));
         }
 		else if($('#text1').val().length == 1)
         {
-        text2.val(parseInt('000000' + text1.val()));   
+            parseInt(text2.val(('000000' + text1.val())));
         }
     });
 });
