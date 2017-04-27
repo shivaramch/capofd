@@ -136,7 +136,7 @@
                             'ofd6c' => 'HazMat Exposure',
                             'offduty' => 'Off Duty Incident']
                             ,old('exposureinjury'),
-                            ['class' => 'form-control']) !!}
+                            array('placeholder'=>'Select One','class' => 'form-control','id'=>'incidentype')) !!}
                             <p class="help-block"></p>
                             @if($errors->has('incidenttype'))
                                 <p class="help-block">
@@ -166,7 +166,7 @@
                         <label class="input-group-btn">
                     <span class="btn btn-info">
                         <i class="fa fa-cloud-upload" aria-hidden="true"></i> Upload<input type="file"
-                                                                                           name="fmla"
+                                                                                           name="limitedduty"
                                                                                            style="display: none;">
                     </span>
                         </label>
@@ -203,10 +203,10 @@
             </div>
             <div class="row">
                 <div class="col-sm-12">
-                    {!! Form::label('comments', 'Comments', array('style'=>'padding-top:7px;','class'=> 'col-sm-4 control-label') ) !!}
+                    {!! Form::label('comments', 'Notes', array('style'=>'padding-top:7px;','class'=> 'col-sm-4 control-label') ) !!}
                 </div>
                 <div class="col-sm-12 ">
-                    {!! Form::textarea('comments', old('comments'), array('class' => 'form-control','placeholder'=>'Enter Comments'))!!}
+                    {!! Form::textarea('comments', old('comments'), array('class' => 'form-control','placeholder'=>'Enter Notes'))!!}
                     <p class="help-block"></p>
                     @if($errors->has('comments'))
                         <p class="help-block">
@@ -236,7 +236,8 @@
                             <h4 class="modal-title" id="myModalLabel"></h4>
                         </div>
                         <div class="modal-body">
-                            Are you sure you want to Submit?
+                            <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
+                            Are you sure you want to Save?
                         </div>
                         <div class="modal-footer">
                             {!! Form::submit('Yes',['class' => 'btn btn-success']) !!}

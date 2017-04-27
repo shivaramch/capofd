@@ -181,6 +181,7 @@
             </div>
         </div>
 
+		@if(count($accidents) > 0)
         <div class="panel panel-default panel-shadow " hidden>
             <div class="panel-heading">
                 In your Queue For Approval as Assistant chief
@@ -230,6 +231,7 @@
                 </table>
             </div>
         </div>
+		@endif
     @endif
 
 @stop

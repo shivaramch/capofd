@@ -9,6 +9,7 @@ use App\Http\Controllers\Traits\FormFileUploadTrait;
 use App\Http\Requests\UpdateInjuriesRequest;
 use App\Injury;
 use App\User;
+use App\Assignment;
 use Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -19,240 +20,18 @@ class InjuriesController extends Controller
     use FileUploadTrait;
     use FormFileUploadTrait;
 
-    public function Approve($id)
-    {
-
-        $injury = DB::table('injuries')->where('ofd6id', $id)->first();
-        $formname = "injuries";
-
-        $rawlink = request()->headers->get('referer');
-        $link = preg_replace('#\/[^/]*$#', '', $rawlink);
-
-        $currentuserid = Auth::user()->id;
-        $captainid = DB::table('injuries')->where([
-            ['captainid', '=', $currentuserid],
-            ['ofd6id', '=', $id],
-        ])->value('captainid');
-
-
-        $BCid = DB::table('injuries')->where([
-            ['battalionchiefid', '=', $currentuserid],
-            ['ofd6id', '=', $id],
-        ])->value('battalionchiefid');
-
-        $ACid = DB::table('injuries')->where([
-            ['aconduty', '=', $currentuserid],
-            ['ofd6id', '=', $id],
-        ])->value('aconduty');
-
-        $currentapplicationstatus = DB::table('injuries')->where('ofd6id', $id)->value('applicationstatus');
-
-        $captainapprovalstatusid = DB::table('status')->where('statustype', 'Application under Captain')->value('statusid');
-
-
-        $BCapprovalstatusid = DB::table('status')->where('statustype', 'Application under Batallion Chief')->value('statusid');
-
-        $ACapprovalstatusid = DB::table('status')->where('statustype', 'Application under Assistant Chief')->value('statusid');
-
-
-        $Finalapprovalstatusid = DB::table('status')->where('statustype', 'Approved')->value('statusid');
-
-
-        if ($captainid) {
-            if ($currentapplicationstatus == $captainapprovalstatusid) {
-
-                $injury = Injury::find($id);
-
-                $injury->applicationstatus = $BCapprovalstatusid;
-
-                $injury->save();
-                (new EmailController)->Email($injury, $rawlink, $formname, $BCapprovalstatusid);
-            }
-        }
-
-
-        if ($BCid) {
-            if ($currentapplicationstatus == $BCapprovalstatusid) {
-                $injury = Injury::find($id);
-
-                $injury->applicationstatus = $ACapprovalstatusid;
-
-                $injury->save();
-                (new EmailController)->Email($injury, $rawlink, $formname, $ACapprovalstatusid);
-            }
-        }
-        if ($ACid) {
-            if ($currentapplicationstatus == $ACapprovalstatusid) {
-                $injury = Injury::find($id);
-
-                $injury->applicationstatus = $Finalapprovalstatusid;
-
-                $injury->save();
-
-                (new EmailController)->Email($injury, $rawlink, $formname, $Finalapprovalstatusid);
-            }
-        }
-
-        return redirect()->route('injuries.index')->with('message', 'Form has been Approved');
-
-
-    }
-
-
-    public function Reject($id)
-    {
-
-        $injury = DB::table('injuries')->where('ofd6id', $id)->first();
-
-        $formname = "injuries";
-
-        $rawlink = request()->headers->get('referer');
-        $link = preg_replace('#\/[^/]*$#', '', $rawlink);
-
-        $currentuserid = Auth::user()->id;
-        $captainid = DB::table('injuries')->where([
-            ['captainid', '=', $currentuserid],
-            ['ofd6id', '=', $id],
-        ])->value('captainid');
-        //  $captainid=DB::table('injuries')->where('captainid',$currentuserid)->pluck('captainid');
-
-        $BCid = DB::table('injuries')->where([
-            ['battalionchiefid', '=', $currentuserid],
-            ['ofd6id', '=', $id],
-        ])->value('battalionchiefid');
-
-        //      $BCid=DB::table('injuries')->where('battalionchiefid',$currentuserid)->pluck('battalionchiefid');
-        //   $ACid=DB::table('injuries')->where('aconduty',$currentuserid)->pluck('aconduty');
-        $ACid = DB::table('injuries')->where([
-            ['aconduty', '=', $currentuserid],
-            ['ofd6id', '=', $id],
-        ])->value('aconduty');
-
-        $statusid = DB::table('status')->where('statustype', 'Rejected')->value('statusid');
-        //  $statusid=str_replace (array('[', ']'), '', $statusidraw);
-        if ($captainid || $BCid || $ACid) {
-            $injury = Injury::find($id);
-
-            $injury->applicationstatus = $statusid;
-
-            $injury->save();
-        }
-
-        (new EmailController)->Email($injury, $rawlink, $formname, $statusid);
-
-        return redirect()->route('injuries.index')->with('message', 'Form has been Rejected');
-
-    }
-
     public function index()
     {
         $injuries = Injury::all();
         $attachments = Attachment::all();
-        return view('injuries.index', compact('injuries', 'attachments'));
+        $assignments = Assignment::all();
+        return view('injuries.index', compact('injuries', 'attachments', 'assignments'));
     }
 
     public function create()
     {
 
         return view('injuries.create');
-    }
-
-
-    public function update(Request $requestSave,$id)
-    {
-        if (Input::get('store')) {
-            $this->updateRecord($requestSave,$id);
-            return redirect()->route('injuries.index')->with('message', 'Form Submitted Successfully');
-        }
-
-        if (Input::get('partialSave')) {
-            $this->partialUpdate($requestSave, $id);
-			return redirect()->route('injuries.index')->with('message', 'Form has been partially saved');
-        }
-        
-
-    }
-
-
-    public function save(Request $requestSave)
-    {
-        if (Input::get('store')) {
-            $this->store($requestSave);
-            return redirect()->route('injuries.index')->with('message', 'Form Submitted Successfully');
-        }
-
-        if (Input::get('partialSave')) {
-            $this->partialSave($requestSave);
-			return redirect()->route('injuries.index')->with('message', 'Form has been partially saved');
-        }
-        
-
-    }
-
-
-    public function partialSave(Request $request)
-    {
-        $this->validate($request, [
-            'injurydate' => 'required|date:injury,injurydate,',
-        ]);
-
-
-        $statusid = DB::table('status')->where('statustype', 'Draft')->value('statusid');
-        $request->offsetSet('applicationstatus', $statusid);
-        $request = $this->saveFiles($request);
-        Injury::create($request->all());
-        $last_insert_id = DB::getPdo()->lastInsertId();
-        $this->InjuriesUpload($request, $last_insert_id);
-
-    }
-
-
-    public function store(Request $request)
-    {
-
-        $this-> requestValidation($request);
-
-        $statusid = DB::table('status')->where('statustype', 'Application under Captain')->value('statusid');
-
-        $request->offsetSet('applicationstatus', $statusid);
-
-        $request = $this->saveFiles($request);
-        Injury::create($request->all());
-        $last_insert_id = DB::getPdo()->lastInsertId();
-        $this->InjuriesUpload($request, $last_insert_id);
-        //$request->session()->flash('alert-success', 'Form was successfully Submitted!');
-
-        //email notification-start
-        $formname = "injuries";
-        $rawlink = request()->headers->get('referer');
-        $link = preg_replace('#\/[^/]*$#', '', $rawlink) . "/$last_insert_id";
-
-        (new EmailController)->Email($request, $link, $formname, $statusid);
-        //email notification-end
-        return redirect()->route('injuries.index')->with('message', 'Form Submitted Successfully');
-    }
-
-  public  function requestValidation(Request $request)
-    {
-        $this->validate($request, [
-            'injurydate' => 'required|date:injury,injurydate,',
-            'injuredemployeename' => 'required|string:injuries,injuredemployeename,',
-            'injuredemployeeid' => 'required|integer:injury,injuredemployeeid,',
-            'assignmentinjury' => 'required|string:injury,assignmentinjury,',
-            'corvelid' => 'required|integer:injury,corvelid,',
-            'captainid' => 'required|integer:injury,captainid',
-            'battalionchiefid' => 'required|integer:injury,battalionchiefid',
-            'aconduty' => 'required|integer:injury,aconduty',
-            'documentworkforce' => 'required',
-            'documentoperationalday' => 'required',
-            'shift' => 'required|string:injury,shift,',
-            'trainingassigned' => 'required|string:injury,shift,',
-            'frmsincidentnum' => 'required|string:injury,frmsincidentnum',
-            'policeofficercompletesign' => 'required:injury,policeofficercompletesign',
-            'callsupervisor' => 'required:injury,callsupervisor',
-
-        ]);
-
     }
 
     public function edit($id)
@@ -275,15 +54,6 @@ class InjuriesController extends Controller
             return view('errors.access');
         }
 
-    }
-
-
-    public function retrieve($id)
-    {
-        $injury = Injury::findOrFail($id);
-        $attachments = Attachment::all();
-        $comments = Comment::all();
-        $users = User::all();
     }
 
     public function show($id)
@@ -314,6 +84,91 @@ class InjuriesController extends Controller
         }
     }
 
+    public function save(Request $requestSave)
+    {
+        if (Input::get('store')) {
+            $this->store($requestSave);
+            return redirect()->route('injuries.index')->with('message', 'Form Submitted Successfully');
+        }
+
+        if (Input::get('partialSave')) {
+            $this->partialSave($requestSave);
+			return redirect()->route('injuries.index')->with('message', 'Form has been partially saved');
+        }
+        
+
+    }
+
+    public function store(Request $request)
+    {
+
+        $this-> requestValidation($request);
+
+        $statusid = DB::table('status')->where('statustype', 'Application under Captain')->value('statusid');
+
+        $request->offsetSet('applicationstatus', $statusid);
+
+        $request = $this->saveFiles($request);
+        Injury::create($request->all());
+        $last_insert_id = DB::getPdo()->lastInsertId();
+        $this->InjuriesUpload($request, $last_insert_id);
+        //$request->session()->flash('alert-success', 'Form was successfully Submitted!');
+
+        //email notification-start
+        $formname = "injuries";
+        $rawlink = request()->headers->get('referer');
+        $link = preg_replace('#\/[^/]*$#', '', $rawlink) . "/$last_insert_id";
+
+        (new EmailController)->Email($request, $link, $formname, $statusid);
+        //email notification-end
+        return redirect()->route('injuries.index')->with('message', 'Form Submitted Successfully');
+    }
+
+    public function partialSave(Request $request)
+    {
+        $this->validate($request, [
+            'injurydate' => 'required|date:injury,injurydate,',
+            'injuredemployeename' => 'required|string:injuries,injuredemployeename,',
+            'injuredemployeeid' => 'required|integer:injury,injuredemployeeid,',
+            'assignmentinjury' => 'required|string:injury,assignmentinjury,',
+            'corvelid' => 'required|integer:injury,corvelid,',
+            'captainid' => 'required|integer:injury,captainid',
+            'battalionchiefid' => 'required|integer:injury,battalionchiefid',
+            'aconduty' => 'required|integer:injury,aconduty',
+            'documentworkforce' => 'required',
+            'documentoperationalday' => 'required',
+            'shift' => 'required|string:injury,shift,',
+            'trainingassigned' => 'required|string:injury,shift,',
+            'frmsincidentnum' => 'required|string:injury,frmsincidentnum',
+            'policeofficercompletesign' => 'required:injury,policeofficercompletesign',
+            'callsupervisor' => 'required:injury,callsupervisor',
+
+        ]);
+
+
+        $statusid = DB::table('status')->where('statustype', 'Draft')->value('statusid');
+        $request->offsetSet('applicationstatus', $statusid);
+        $request = $this->saveFiles($request);
+        Injury::create($request->all());
+        $last_insert_id = DB::getPdo()->lastInsertId();
+        $this->InjuriesUpload($request, $last_insert_id);
+
+    }
+
+    public function update(Request $requestSave,$id)
+    {
+        if (Input::get('store')) {
+            $this->updateRecord($requestSave,$id);
+            return redirect()->route('injuries.index')->with('message', 'Form Submitted Successfully');
+        }
+
+        if (Input::get('partialSave')) {
+            $this->partialUpdate($requestSave, $id);
+            return redirect()->route('injuries.index')->with('message', 'Form has been partially saved');
+        }
+
+
+    }
 
     public function updateRecord(Request $request, $id)
     {
@@ -394,4 +249,155 @@ class InjuriesController extends Controller
         return redirect()->route('injuries.index');
     }
 
+    public  function requestValidation(Request $request)
+    {
+        $this->validate($request, [
+            'injurydate' => 'required|date:before_or_equal:today',
+            //'injuredemployeename' => 'required|alpha|string:injuries,injuredemployeename,',
+            'injuredemployeeid' => 'required|integer:injury,injuredemployeeid,',
+            'assignmentinjury' => 'required|string:injury,assignmentinjury,',
+            'corvelid' => 'required|integer:injury,corvelid,',
+            'captainid' => 'required|integer:injury,captainid',
+            'battalionchiefid' => 'required|integer:injury,battalionchiefid',
+            'aconduty' => 'required|integer:injury,aconduty',
+            'documentworkforce' => 'required',
+            'documentoperationalday' => 'required',
+            'shift' => 'required|string:injury,shift,',
+            'trainingassigned' => 'required|string:injury,shift,',
+            'frmsincidentnum1' => 'required|integer:injury,frmsincidentnum',
+            'policeofficercompletesign' => 'required',
+            'callsupervisor' => 'required',
+            'CorvelAttachmentName' => 'required|file:injury,CorvelAttachmentName|mimes:pdf|max:10000',
+            'InvestigationAttachment' => 'required|file:injury,InvestigationAttachment|mimes:pdf|max:10000',
+            'StatementAttachment' => 'required|file:injury,StatementAttachment|mimes:pdf|max:10000',
+            'EmployeeAttachment' => 'required|file:injury,EmployeeAttachment|mimes:pdf|max:10000',
+            'Ofd25Attachment' => 'required|file:injury,Ofd25Attachment|mimes:pdf|max:10000',
+
+        ]);
+
+    }
+
+    public function Approve($id)
+    {
+
+        $injury = DB::table('injuries')->where('ofd6id', $id)->first();
+        $formname = "injuries";
+
+        $rawlink = request()->headers->get('referer');
+        $link = preg_replace('#\/[^/]*$#', '', $rawlink);
+
+        $currentuserid = Auth::user()->id;
+        $captainid = DB::table('injuries')->where([
+            ['captainid', '=', $currentuserid],
+            ['ofd6id', '=', $id],
+        ])->value('captainid');
+
+
+        $BCid = DB::table('injuries')->where([
+            ['battalionchiefid', '=', $currentuserid],
+            ['ofd6id', '=', $id],
+        ])->value('battalionchiefid');
+
+        $ACid = DB::table('injuries')->where([
+            ['aconduty', '=', $currentuserid],
+            ['ofd6id', '=', $id],
+        ])->value('aconduty');
+
+        $currentapplicationstatus = DB::table('injuries')->where('ofd6id', $id)->value('applicationstatus');
+
+        $captainapprovalstatusid = DB::table('status')->where('statustype', 'Application under Captain')->value('statusid');
+
+
+        $BCapprovalstatusid = DB::table('status')->where('statustype', 'Application under Batallion Chief')->value('statusid');
+
+        $ACapprovalstatusid = DB::table('status')->where('statustype', 'Application under Assistant Chief')->value('statusid');
+
+
+        $Finalapprovalstatusid = DB::table('status')->where('statustype', 'Approved')->value('statusid');
+
+
+        if ($captainid) {
+            if ($currentapplicationstatus == $captainapprovalstatusid) {
+
+                $injury = Injury::find($id);
+
+                $injury->applicationstatus = $BCapprovalstatusid;
+
+                $injury->save();
+                (new EmailController)->Email($injury, $rawlink, $formname, $BCapprovalstatusid);
+            }
+        }
+
+
+        if ($BCid) {
+            if ($currentapplicationstatus == $BCapprovalstatusid) {
+                $injury = Injury::find($id);
+
+                $injury->applicationstatus = $ACapprovalstatusid;
+
+                $injury->save();
+                (new EmailController)->Email($injury, $rawlink, $formname, $ACapprovalstatusid);
+            }
+        }
+        if ($ACid) {
+            if ($currentapplicationstatus == $ACapprovalstatusid) {
+                $injury = Injury::find($id);
+
+                $injury->applicationstatus = $Finalapprovalstatusid;
+
+                $injury->save();
+
+                (new EmailController)->Email($injury, $rawlink, $formname, $Finalapprovalstatusid);
+            }
+        }
+
+        return redirect()->route('injuries.index')->with('message', 'Form has been Approved');
+
+
+    }
+
+    public function Reject($id)
+    {
+
+        $injury = DB::table('injuries')->where('ofd6id', $id)->first();
+
+        $formname = "injuries";
+
+        $rawlink = request()->headers->get('referer');
+        $link = preg_replace('#\/[^/]*$#', '', $rawlink);
+
+        $currentuserid = Auth::user()->id;
+        $captainid = DB::table('injuries')->where([
+            ['captainid', '=', $currentuserid],
+            ['ofd6id', '=', $id],
+        ])->value('captainid');
+        //  $captainid=DB::table('injuries')->where('captainid',$currentuserid)->pluck('captainid');
+
+        $BCid = DB::table('injuries')->where([
+            ['battalionchiefid', '=', $currentuserid],
+            ['ofd6id', '=', $id],
+        ])->value('battalionchiefid');
+
+        //      $BCid=DB::table('injuries')->where('battalionchiefid',$currentuserid)->pluck('battalionchiefid');
+        //   $ACid=DB::table('injuries')->where('aconduty',$currentuserid)->pluck('aconduty');
+        $ACid = DB::table('injuries')->where([
+            ['aconduty', '=', $currentuserid],
+            ['ofd6id', '=', $id],
+        ])->value('aconduty');
+
+        $statusid = DB::table('status')->where('statustype', 'Rejected')->value('statusid');
+        //  $statusid=str_replace (array('[', ']'), '', $statusidraw);
+        if ($captainid || $BCid || $ACid) {
+            $injury = Injury::find($id);
+
+            $injury->applicationstatus = $statusid;
+
+            $injury->save();
+        }
+
+        (new EmailController)->Email($injury, $rawlink, $formname, $statusid);
+
+        return redirect()->route('injuries.index')->with('message', 'Form has been Rejected');
+
+    }
 }

@@ -40,9 +40,6 @@
                                 <h3><strong>Biological Exposure Tracking Document (OFD-006B)</strong></h3>
                             </div>
                         </div>
-                        <div class="col-md-12">
-                            <h6><i><strong>Used for future tracking purposes only</strong></i></h6>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -77,7 +74,7 @@
                     <div class="col-sm-4 form-group">
                         {!! Form::label('exposedemployeename', 'Exposed Employee Name',array('style'=>'padding-top:7px;','class'=> 'col-sm-4 control-label') ) !!}
                         <div class="col-sm-6 ">
-                            {!! Form::text('exposedemployeename', old('exposedemployeename'), array('class'=>'form-control'))!!}
+                            {!! Form::text('exposedemployeename', old('exposedemployeename'), array('class'=>'form-control', 'placeholder'=>'Enter Exposed Employee Name'))!!}
                             <p class="help-block"></p>
                             @if($errors->has('exposedemployeename'))
                                 <p class="help-block">
@@ -91,11 +88,7 @@
                     <div class="col-sm-4 form-group">
                         {!! Form::label('assignmentbiological', 'Assignment', ['class'=> 'col-sm-4 control-label'] ) !!}
                         <div class="col-sm-6">
-                            {!! Form::select('assignmentbiological', ['A' => 'A',
-                            'B' => 'B',
-                            'C' => 'C',
-                            'DIV' => 'DIV'], old('assignmentbiological'),
-                            ['class' => 'form-control']) !!}
+                            {!! Form::text('assignmentbiological', old('assignmentbiological'), array('class' => 'form-control', 'id' => 'assignmentinjury','placeholder'=>'Enter Assignment'))!!}
                             <p class="help-block"></p>
                             @if($errors->has('assignmentbiological'))
                                 <p class="help-block">
@@ -111,7 +104,7 @@
                             'B' => 'B',
                             'C' => 'C',
                             'DIV' => 'DIV'], old('shift'),
-                            ['class' => 'form-control']) !!}
+                            array('placeholder'=>'Select one','id'=>'shift','class' => 'form-control')) !!}
                             <p class="help-block"></p>
                             @if($errors->has('shift'))
                                 <p class="help-block">
@@ -175,12 +168,13 @@
                         {{ Form::radio('exposure', 0 , null, ['id'=>'exposure', 'class' => 'className']) }}
                         {{ Form::label('exposure', 'True Exposure') }}
 
-                        {{ Form::radio('exposure',1 , null, ['id'=>'exposure', 'class' => 'className']) }}
-                        {{ Form::label('exposure', 'Contamination') }}
+                        {{ Form::radio('exposure',1 , null, ['id'=>'exposure1', 'class' => 'className']) }}
+                        {{ Form::label('exposure1', 'Contamination') }}
                     </div>
                 </div>
             </div>
-            <div id="Exposure0" class="desc" >
+
+            <div id="Exposure0" class="desc" style="display: none;">
                 <div class="col-md-12">
                     <div class="alert alert-danger" align="left">
                         Definition of True Exposure:
@@ -232,7 +226,7 @@
                     <div class="col-sm-12 form-group well well-sm">
                         <div class="col-sm-4">
                             <a class="btn btn-success dropdown-toggle col-sm-12" type="button"
-                               href="{{ asset('Fillable PDFs\Exposure Complete\(Exposure PDF) OFD 184 State Infectious Disease Exposure Report.pdf')}}"
+                               href="{{ asset('Fillable PDFs\Biological Module\(Exposure PDF) OFD 184 State Infectious Disease Exposure Report.pdf')}}"
                                download="(Exposure PDF) OFD 184 State Infectious Disease Exposure Report.pdf">
                                 <i class="fa fa-download" aria-hidden="true"></i> Download</a>
                         </div>
@@ -248,6 +242,11 @@
                                 </label>
                                 <input type="text" id="upload-file-info" class="form-control" readonly>
                             </div>
+                            @if($errors->has('trueofd184'))
+                                <p class="help-block">
+                                    {{ $errors->first('trueofd184') }}
+                                </p>
+                            @endif
                         </div>
                         <div class="col-sm-4">
                             <a class="btn btn-primary dropdown-toggle col-sm-12" data-toggle="collapse"
@@ -377,7 +376,8 @@
                     </div>
                 </div>
             </div>
-            <div id="Exposure1" class="desc" >
+
+            <div id="Exposure1" class="desc" style="display: none;">
                 <div class="col-md-12">
                     <div class="alert alert-danger" align="left">
                         Contamination might be due to soiling or pollution, as by the introduction of blood
@@ -420,7 +420,7 @@
                     <div class="col-sm-12 form-group well well-sm">
                         <div class="col-sm-4">
                             <a class="btn btn-success dropdown-toggle col-sm-12" type="button"
-                               href="{{ asset('Fillable PDFs\Exposure Complete\(Exposure PDF) OFD 184 State Infectious Disease Exposure Report.pdf')}}"
+                               href="{{ asset('Fillable PDFs\Biological Module\(Exposure PDF) OFD 184 State Infectious Disease Exposure Report.pdf')}}"
                                download="(Exposure PDF) OFD 184 State Infectious Disease Exposure Report.pdf">
                                 <i class="fa fa-download" aria-hidden="true"></i> Download</a>
                         </div>
@@ -436,6 +436,11 @@
                                 </label>
                                 <input type="text" id="upload-file-info" class="form-control" readonly>
                             </div>
+                            @if($errors->has('potofd184'))
+                                <p class="help-block">
+                                    {{ $errors->first('potofd184') }}
+                                </p>
+                            @endif
                         </div>
                         <div class="col-sm-4">
                             <a class="btn btn-primary dropdown-toggle col-sm-12" data-toggle="collapse"
@@ -554,7 +559,7 @@
                     {!! Form::select('exposureinjury',[
                       'Yes' => 'Yes',
                       'No' => 'No'],old('exposureinjury'),
-                    ['class' => 'form-control'])!!}
+                     array('placeholder'=>'Select one','id'=>'exposureinjury','class' => 'form-control')) !!}
                     <p class="help-block"></p>
                     @if($errors->has('exposureinjury'))
                         <p class="help-block">
@@ -572,7 +577,7 @@
                                 data-target="#myModal">
                             Submit
                         </button>
-                        <a href="{{ route('biologicals.index') }}"
+                        <a href="{{ URL::previous() }}"
                            class="btn btn-danger">Cancel</a>
                     </div>
                 </div>
@@ -595,6 +600,7 @@
                         id="myModalLabel"></h4>
                 </div>
                 <div class="modal-body">
+                    <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
                     Are you sure you want to Submit?
                 </div>
                 <div class="modal-footer">
@@ -655,32 +661,17 @@
 @section('javascript')
     <script src="{{ ('js/extensions/cookie') }}/bootstrap-table-cookie.js"></script>
     <script src="{{ ('js/extensions/mobile') }}/bootstrap-table-mobile.js"></script>
-
     <script src="{{ ('js/export') }}/bootstrap-table-export.js"></script>
-    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-
+    <script src="{{ ('js/export') }}/tableExport.js"></script>
+    <script src="{{ ('js/export') }}/jquery.base64.js"></script>
     <script type="text/javascript">
+        $(document).ready(function () {
+            $("input[name$='exposure']").click(function () {
+                var test = $(this).val();
 
-
-            if ($('#exposure').val()==0 )
-            {
-
-                $('#Exposure0').show;
-                $('#Exposure1').hide;
-
-
-            }
-            else if ($('#exposure1').val()==1)
-            {
-
-                $('#Exposure0').hide;
-                $('#Exposure1').show;
-
-
-            }
-
-
-
+                $("div.desc").hide();
+                $("#Exposure" + test).show();
+            });
+        });
     </script>
-
 @endsection

@@ -34,9 +34,6 @@
                                 <h3><strong>Vehicle Accident Report Tracking Document (OFD-6A)</strong></h3>
                             </div>
                         </div>
-                        <div class="col-md-12">
-                            <h5><i><strong>Used for future tracking purposes only</strong></i></h5>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -47,7 +44,7 @@
                     <div class="col-md-12">
                         <div class="alert alert-danger" align="center">
                             <strong>
-                                COMPLETE ALL FORMS AND SUBMIT WITHIN 24 HOURS
+                                COMPLETE AND SUBMIT ALL FORMS WITHIN 24 HOURS
                             </strong>
                         </div>
                     </div>
@@ -95,8 +92,8 @@
                     <div class="col-sm-4 form-group">
                         {!! Form::label('frmsincidentnum', 'FRMS Incident #', array('style'=>'padding-top:7px;','class' => 'col-sm-4 control-label')) !!}
                         <div class="col-sm-6 ">
-                            {!! Form::text('frmsincidentnum12', old('frmsincidentnum12'), array('id'=>'text1', 'class' => 'form-control', 'placeholder'=>'Enter FRMS Number'))!!}
-                            {!! Form::text('frmsincidentnum', old('frmsincidentnum'), array('id'=>'text2', 'class' => 'form-control',  'placeholder'=>'Enter FRMS Number', 'style'=>'display: none;'))!!}
+                            {!! Form::text('frmsincidentnum1', old('frmsincidentnum1'), array('id'=>'text1', 'class' => 'form-control', 'placeholder'=>'Enter FRMS Number'))!!}
+                            {!! Form::text('frmsincidentnum', old('frmsincidentnum'), array('id'=>'text2', 'class' => 'form-control', 'style'=>'display: none;'))!!}
                             <p class="help-block"></p>
                             @if($errors->has('frmsincidentnum'))
                                 <p class="help-block">
@@ -173,19 +170,8 @@
                     <div class="row">
                         <div class="col-md-12" style="text-align:left">
                             <strong>
-                                Please Follow These Instructions:
-                                <ol start="1">
-                                    <li>B/C shall ensure all reports are properly completed within 24 hours.</li>
-                                    <li>If an employee receives an injury from this incident, the employee shall
-                                        complete an OFD6 and designate whether treatment is being requested in the
-                                        OFD-25 IOD.
-                                    </li>
-                                    <li>City of Omaha policy REQUIRES a Police Report and DR41 State Form on all City
-                                        vehicles involved in an accident OR property damage whether on public streets,
-                                        private property, or at the Fire Station.
-                                    </li>
-                                    <li>DR41 is also submitted to the State if damage is over $1000.00</li>
-                                </ol>
+                                If an employee receives an injury from this incident, the employee shall complete an
+                                OFD6 and designate whether treatment is being requested in the OFD-25 IOD.
                             </strong>
                         </div>
                     </div>
@@ -214,7 +200,7 @@
             <div class="row">
                 <div class="col-sm-12 form-group">
                     <div class="form-group">
-                        {{ Form::checkbox('checkbox1', 1, null, ['id'=>'checkbox1', 'class' => 'className' ]) }}
+                        {{ Form::checkbox('checkbox1', 1, null, array('id'=>'checkbox1', 'class' => 'className', 'disabled')) }}
                         {{Form::label('checkbox1','Complete LRS 101 City of Omaha Accident Report-Include RB#, Officer Name, Badge#')}}
                     </div>
                 </div>
@@ -236,18 +222,24 @@
                         <i class="fa fa-cloud-upload" aria-hidden="true"></i> Upload<input type="file"
                                                                                            name="LRS101"
                                                                                            id="lrsdownload"
-                                                                                           style="display: none;">
+                                                                                           style="display: none;"
+                                                                                           onchange="pressed()">
                     </span>
                             </label>
                             <input type="text" id="upload-file-info" class="form-control" readonly>
                         </div>
+                        @if($errors->has('LRS101'))
+                            <p class="help-block">
+                                {{ $errors->first('LRS101') }}
+                            </p>
+                        @endif
                     </div>
                 </div>
             </div>
             <div class="row">
                 <div class="col-sm-12 form-group">
                     <div class="form-group">
-                        {{ Form::checkbox('checkbox2', 1, null, ['id'=>'checkbox2', 'class' => 'className' ]) }}
+                        {{ Form::checkbox('checkbox2', 1, null, ['id'=>'checkbox2', 'class' => 'className', 'disabled' ]) }}
                         {{Form::label('checkbox2','Complete OFD 295
                             Vehicle Accident Witness Statement -This Report is for civilian statements
                         only')}}
@@ -270,18 +262,24 @@
                         <i class="fa fa-cloud-upload" aria-hidden="true"></i> Upload<input type="file"
                                                                                            name="OFD295"
                                                                                            id="295upload"
-                                                                                           style="display: none;">
+                                                                                           style="display: none;"
+                                                                                           onchange="pressed1()">
                     </span>
                             </label>
                             <input type="text" id="upload-file-info" class="form-control" readonly>
                         </div>
+                        @if($errors->has('OFD295'))
+                            <p class="help-block">
+                                {{ $errors->first('OFD295') }}
+                            </p>
+                        @endif
                     </div>
                 </div>
             </div>
             <div class="row">
                 <div class="col-sm-12 form-group">
                     <div class="form-group">
-                        {{ Form::checkbox('checkbox3', 1, null, ['id'=>'checkbox3', 'class' => 'className' ]) }}
+                        {{ Form::checkbox('checkbox3', 1, null, ['id'=>'checkbox3', 'class' => 'className' , 'disabled']) }}
                         {{Form::label('checkbox3','Complete OFD 25a Accident
                         Intradepartmental Communication - Driver')}}
                     </div>
@@ -302,18 +300,24 @@
                         <i class="fa fa-cloud-upload" aria-hidden="true"></i> Upload<input type="file"
                                                                                            name="OFD025a"
                                                                                            id="25aUpload"
-                                                                                           style="display: none;">
+                                                                                           style="display: none;"
+                                                                                           onchange="pressed2()">
                     </span>
                             </label>
                             <input type="text" id="upload-file-info" class="form-control" readonly>
                         </div>
+                        @if($errors->has('OFD025a'))
+                            <p class="help-block">
+                                {{ $errors->first('OFD025a') }}
+                            </p>
+                        @endif
                     </div>
                 </div>
             </div>
             <div class="row">
                 <div class="col-sm-12 form-group">
                     <div class="form-group">
-                        {{ Form::checkbox('checkbox4', 1, null, ['id'=>'checkbox4', 'class' => 'className' ]) }}
+                        {{ Form::checkbox('checkbox4', 1, null, ['id'=>'checkbox4', 'class' => 'className', 'disabled' ]) }}
                         {{Form::label('checkbox4','Complete OFD 25b Accident
                         Intradepartmental Communication - Supervisor')}}
                     </div>
@@ -332,19 +336,26 @@
                         <div class="input-group">
                             <label class="input-group-btn">
                     <span class="btn btn-info">
-                        <i class="fa fa-cloud-upload" aria-hidden="true"></i> Upload<input type="file" name="OFD025b" id="25bUpload"
-                                                                                           style="display: none;">
+                        <i class="fa fa-cloud-upload" aria-hidden="true"></i> Upload<input type="file" name="OFD025b"
+                                                                                           id="25bUpload"
+                                                                                           style="display: none;"
+                                                                                           onchange="pressed3()">
                     </span>
                             </label>
                             <input type="text" id="upload-file-info" class="form-control" readonly>
                         </div>
+                        @if($errors->has('OFD025b'))
+                            <p class="help-block">
+                                {{ $errors->first('OFD025b') }}
+                            </p>
+                        @endif
                     </div>
                 </div>
             </div>
             <div class="row">
                 <div class="col-sm-12 form-group">
                     <div class="form-group">
-                        {{ Form::checkbox('checkbox5', 1, null, ['id'=>'checkbox5', 'class' => 'className' ]) }}
+                        {{ Form::checkbox('checkbox5', 1, null, ['id'=>'checkbox5', 'class' => 'className', 'disabled' ]) }}
                         {{Form::label('checkbox5','Complete OFD 25b Accident
                         Intradepartmental Communication - Other Personnel')}}
                     </div>
@@ -363,19 +374,26 @@
                         <div class="input-group">
                             <label class="input-group-btn">
                     <span class="btn btn-info">
-                        <i class="fa fa-cloud-upload" aria-hidden="true"></i> Upload<input type="file" name="OFD025c" id="25cUpload"
-                                                                                           style="display: none;">
+                        <i class="fa fa-cloud-upload" aria-hidden="true"></i> Upload<input type="file" name="OFD025c"
+                                                                                           id="25cUpload"
+                                                                                           style="display: none;"
+                                                                                           onchange="pressed4()">
                     </span>
                             </label>
                             <input type="text" id="upload-file-info" class="form-control" readonly>
                         </div>
+                        @if($errors->has('OFD025c'))
+                            <p class="help-block">
+                                {{ $errors->first('OFD025c') }}
+                            </p>
+                        @endif
                     </div>
                 </div>
             </div>
             <div class="row">
                 <div class="col-sm-12 form-group">
                     <div class="form-group">
-                        {{ Form::checkbox('checkbox6', 1, null, ['id'=>'checkbox6', 'class' => 'className' ]) }}
+                        {{ Form::checkbox('checkbox6', 1, null, ['id'=>'checkbox6', 'class' => 'className' , 'disabled']) }}
                         {{Form::label('checkbox6','Complete OFD 31-OFD
                             Lost, Damaged or Stolen Equipment Report')}}
                     </div>
@@ -393,19 +411,26 @@
                         <div class="input-group">
                             <label class="input-group-btn">
                     <span class="btn btn-info">
-                        <i class="fa fa-cloud-upload" aria-hidden="true"></i> Upload<input type="file" name="OFD31" id="31Upload"
-                                                                                           style="display: none;">
+                        <i class="fa fa-cloud-upload" aria-hidden="true"></i> Upload<input type="file" name="OFD31"
+                                                                                           id="31Upload"
+                                                                                           style="display: none;"
+                                                                                           onchange="pressed5()">
                     </span>
                             </label>
                             <input type="text" id="upload-file-info" class="form-control" readonly>
                         </div>
+                        @if($errors->has('OFD31'))
+                            <p class="help-block">
+                                {{ $errors->first('OFD31') }}
+                            </p>
+                        @endif
                     </div>
                 </div>
             </div>
             <div class="row">
                 <div class="col-sm-12 form-group">
                     <div class="form-group">
-                        {{ Form::checkbox('checkbox7', 1, null, ['id'=>'checkbox7', 'class' => 'className' ]) }}
+                        {{ Form::checkbox('checkbox7', 1, null, ['id'=>'checkbox7', 'class' => 'className', 'disabled' ]) }}
                         {{Form::label('checkbox7','Complete OFD 127 Request for
                             Services Form')}}
                     </div>
@@ -423,12 +448,19 @@
                         <div class="input-group">
                             <label class="input-group-btn">
                     <span class="btn btn-info">
-                        <i class="fa fa-cloud-upload" aria-hidden="true"></i> Upload<input type="file" name="OFD127" id="127Upload"
-                                                                                           style="display: none;">
+                        <i class="fa fa-cloud-upload" aria-hidden="true"></i> Upload<input type="file" name="OFD127"
+                                                                                           id="127Upload"
+                                                                                           style="display: none;"
+                                                                                           onchange="pressed6()">
                     </span>
                             </label>
                             <input type="text" id="upload-file-info" class="form-control" readonly>
                         </div>
+                        @if($errors->has('OFD127'))
+                            <p class="help-block">
+                                {{ $errors->first('OFD127') }}
+                            </p>
+                        @endif
                     </div>
                 </div>
             </div>
@@ -436,12 +468,12 @@
             <div class="row">
                 <div class="col-sm-12 form-group">
                     {{ Form::checkbox('calllaw', 1, null, ['id' => 'calllaw', 'class'=>'className']) }}
-					{{Form::label('calllaw','Call Law Department
+                    {{Form::label('calllaw','Call Law Department
                             Investigator - Call 444-5131- Request report be faxed to
                         SWD fax # 444-6378. You can
                         leave a message with rig # address of incident, date, time and
                         RB#')}}
-                    
+
                 </div>
             </div>
             <div class="row">
@@ -449,43 +481,54 @@
                     {{ Form::checkbox('daybook', 1, null, ['id' => 'daybook', 'class'=>'className']) }}
                     {{Form::label('daybook','Enter in Company Day
                             Book')}}
-					
+
                 </div>
             </div>
             <div class="row">
                 <div class="col-sm-12 form-group">
                     <div class="form-group">
-                        {{ Form::checkbox('checkbox8', 1, null, ['id'=>'checkbox8', 'class' => 'className' ]) }}
-                        {{Form::label('checkbox8','Complete DR 41 State
-                                of Nebraska DMV Vehicle Accident Report')}}
+                        {{ Form::checkbox('checkbox8', 1, null, ['id'=>'checkbox8', 'class' => 'className', 'disabled' ]) }}
+                        {{Form::label('checkbox8','State Law requires every operator of a motor vehicle involved in an accident
+                        resulting in either injury, death, or damages over $1,000.00 to the property of any one person
+                        ')}}
+                        {{Form::label('checkbox8','(including the operator).')}}
+                        {{Form::label('checkbox8','To complete the State of Nebraska "DR Form 41" and return within 10 days
+                        following the accident to the State of Nebraska. Click on Download to access the document')}}
                     </div>
                 </div>
                 {{--}} <label class="checkbox-inline col-sm-12"><strong><strong> Complete DR 41 State
                              of Nebraska DMV Vehicle Accident Report</strong></strong></label> --}}
                 <div class="col-sm-12 form-group well well-sm">
                     <div class="col-sm-4">
-                        <a class="btn btn-success dropdown-toggle col-sm-12" type="button" id="41Download"
-                           href="{{ asset('Fillable PDFs\Accident Module\(Accident PDF) DR 41 State of Nebraska DMV Vehicle Accident Report.pdf') }}"
-                           download="(Accident PDF) DR 41 State of Nebraska DMV Vehicle Accident Report.pdf">
+                        <a class="btn btn-success dropdown-toggle col-sm-12" type="button"
+                           href="{{ url('http://roads.nebraska.gov/media/3337/dr41-no-fill.pdf') }}" target="blank" >
+                            {{--download="(Accident PDF) DR 41 State of Nebraska DMV Vehicle Accident Report.pdf">--}}
                             <i class="fa fa-download" aria-hidden="true"></i> Download</a>
                     </div>
                     <div class="col-sm-3">
                         <div class="input-group">
                             <label class="input-group-btn">
                     <span class="btn btn-info">
-                        <i class="fa fa-cloud-upload" aria-hidden="true"></i> Upload<input type="file" name="DR41" id="41Upload"
-                                                                                           style="display: none;">
+                        <i class="fa fa-cloud-upload" aria-hidden="true"></i> Upload<input type="file" name="DR41"
+                                                                                           id="41Upload"
+                                                                                           style="display: none;"
+                                                                                           onchange="pressed7()">
                     </span>
                             </label>
                             <input type="text" id="upload-file-info" class="form-control" readonly>
                         </div>
+                        @if($errors->has('DR41'))
+                            <p class="help-block">
+                                {{ $errors->first('DR41') }}
+                            </p>
+                        @endif
                     </div>
                 </div>
             </div>
             <div class="row">
                 <div class="col-sm-12 form-group">
                     <div class="form-group">
-                        {{ Form::checkbox('checkbox9', 1, null, ['id'=>'checkbox9', 'class' => 'className' ]) }}
+                        {{ Form::checkbox('checkbox9', 1, null, ['id'=>'checkbox9', 'class' => 'className' , 'disabled']) }}
                         {{Form::label('checkbox9','Miscellaneous Documents')}}
                     </div>
                 </div>
@@ -496,7 +539,8 @@
                     <span class="btn btn-info">
                         <i class="fa fa-cloud-upload" aria-hidden="true"></i> Upload<input type="file" id="miscUplaods"
                                                                                            name="miscaccidents"
-                                                                                           style="display: none;">
+                                                                                           style="display: none;"
+                                                                                           onchange="pressed8()">
                     </span>
                             </label>
                             <input type="text" id="upload-file-info" class="form-control" readonly>
@@ -525,11 +569,14 @@
                     <h4 class="modal-title" id="myModalLabel"></h4>
                 </div>
                 <div class="modal-body">
+                    <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
                     Are you sure you want to Submit?
                 </div>
                 <div class="modal-footer">
                     {!! Form::submit('Yes',['class' => 'btn btn-success','name'=> 'store', 'id' => 'modalSubmit']) !!}
-                    <button type="button" class=" btn btn-danger" data-dismiss="modal" id="modalDismiss" aria-label="">No</button>
+                    <button type="button" class=" btn btn-danger" data-dismiss="modal" id="modalDismiss" aria-label="">
+                        No
+                    </button>
 
 
                 </div>
@@ -539,3 +586,86 @@
     </div>
     {!! Form::close() !!}
 @stop
+<script>
+    window.pressed = function () {
+        var a = document.getElementById('lrsdownload');
+        if (a.value == "") {
+
+        }
+        else {
+            document.getElementById("checkbox1").checked = true;
+        }
+    };
+    window.pressed1 = function () {
+        var a = document.getElementById('295upload');
+        if (a.value == "") {
+
+        }
+        else {
+            document.getElementById("checkbox2").checked = true;
+        }
+    };
+    window.pressed2 = function () {
+        var a = document.getElementById('25aUpload');
+        if (a.value == "") {
+
+        }
+        else {
+            document.getElementById("checkbox3").checked = true;
+        }
+    };
+    window.pressed3 = function () {
+        var a = document.getElementById('25bUpload');
+        if (a.value == "") {
+
+        }
+        else {
+            document.getElementById("checkbox4").checked = true;
+        }
+    };
+    window.pressed4 = function () {
+        var a = document.getElementById('25cUpload');
+        if (a.value == "") {
+
+        }
+        else {
+            document.getElementById("checkbox5").checked = true;
+        }
+    };
+    window.pressed5 = function () {
+        var a = document.getElementById('31Upload');
+        if (a.value == "") {
+
+        }
+        else {
+            document.getElementById("checkbox6").checked = true;
+        }
+    };
+    window.pressed6 = function () {
+        var a = document.getElementById('127Upload');
+        if (a.value == "") {
+
+        }
+        else {
+            document.getElementById("checkbox7").checked = true;
+        }
+    };
+    window.pressed7 = function () {
+        var a = document.getElementById('41Upload');
+        if (a.value == "") {
+
+        }
+        else {
+            document.getElementById("checkbox8").checked = true;
+        }
+    };
+    window.pressed8 = function () {
+        var a = document.getElementById('miscUplaods');
+        if (a.value == "") {
+
+        }
+        else {
+            document.getElementById("checkbox9").checked = true;
+        }
+    };
+</script>

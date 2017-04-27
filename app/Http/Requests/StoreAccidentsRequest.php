@@ -29,7 +29,7 @@ class StoreAccidentsRequest extends FormRequest
             'captainid' => 'required|integer:accidents,captainid'. $this->route('accident'),
             'battalionchiefid' => 'required|integer:accidents,battalionchiefid'. $this->route('accident'),
             'aconduty' => 'required|integer:accidents,aconduty'. $this->route('accident'),
-            'frmsincidentnum' => 'required|integer:accidents,frmsincidentnum'. $this->route('accident'),
+            'frmsincidentnum1' => 'required|integer:accidents,frmsincidentnum'. $this->route('accident'),
             'calllaw' =>'required|integer:accidents,calllaw'. $this->route('accident'),
             'daybook' =>'required|integer:accidents,daybook'. $this->route('accident'),
             'commemail' =>'required|integer:accidents,commemail'. $this->route('accident'),

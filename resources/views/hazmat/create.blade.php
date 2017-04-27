@@ -17,9 +17,11 @@
         #padtop {
             padding-top: 7px;
         }
+
         table {
             border-collapse: collapse;
         }
+
         table, td, th {
             border: 1px solid black;
         }
@@ -37,9 +39,6 @@
                                 <div class="page-header1">
                                     <h3><strong>HAZARDOUS MATERIAL EXPOSURE REPORTING INSTRUCTIONS</strong></h3>
                                 </div>
-                            </div>
-                            <div class="col-md-12">
-                                <h6><i><strong>Used for future tracking purposes only</strong></i></h6>
                             </div>
                         </div>
                     </div>
@@ -117,7 +116,7 @@
                         <div class="col-sm-4 form-group">
                             {!! Form::label('frmsincidentnum', 'FRMS Incident#', array('style'=>'padding-top:7px;','class' => 'col-sm-4 control-label')) !!}
                             <div class="col-sm-6 ">
-                                {!! Form::text('frmsincidentnum12', old('frmsincidentnum12'), array('id'=>'text1', 'class' => 'form-control','placeholder'=>'Enter FRMS Number'))!!}
+                                {!! Form::text('frmsincidentnum1', old('frmsincidentnum1'), array('id'=>'text1', 'class' => 'form-control','placeholder'=>'Enter FRMS Number'))!!}
                                 {!! Form::text('frmsincidentnum', old('frmsincidentnum'), array('id'=>'text2', 'class' => 'form-control','placeholder'=>'Enter FRMS Number', 'style'=>'display:none;'))!!}
                                 <p class="help-block"></p>
                                 @if($errors->has('frmsincidentnum'))
@@ -132,7 +131,7 @@
                         <div class="col-sm-4 form-group">
                             {!! Form::label('assignment', 'Assignment', array('style'=>'padding-top:7px;','class' => 'col-sm-4 control-label')) !!}
                             <div class="col-sm-6 ">
-                                {!! Form::text('assignment', old('assignment'), ['class' => 'form-control'])!!}
+                                {!! Form::text('assignment', old('assignment'), array('class' => 'form-control', 'id' => 'assignmentinjury','placeholder'=>'Enter Assignment'))!!}
                                 <p class="help-block"></p>
                                 @if($errors->has('assignment'))
                                     <p class="help-block">
@@ -147,9 +146,9 @@
                                 {!! Form::select('shift', ['A' => 'A',
                                 'B' => 'B',
                                 'C' => 'C',
-                                'DIV' => 'DIV'], null,
-                                ['placeholder' => 'Select your Shift'],'required',
-                                ['class' => 'form-control']) !!}
+                                'DIV' => 'DIV']
+                                ,'required',
+                                array('placeholder' => 'Select your Shift','id'=>'shift','class' => 'form-control')) !!}
                                 <p class="help-block"></p>
                                 @if($errors->has('shift'))
                                     <p class="help-block">
@@ -196,7 +195,7 @@
             </div>
             <div class="col-sm-12 form-group">
                 <div class="form-group">
-                    {{ Form::checkbox('checkbox1', 1, null, ['id'=>'checkbox1', 'class' => 'className' ]) }}
+                    {{ Form::checkbox('checkbox1', 1, null, ['id'=>'checkbox1', 'class' => 'className', 'disabled']) }}
                     {{Form::label('checkbox1','Fill out OFD-025 Hazmat Exposure Report form')}}
                 </div>
                 {{--}}  <label class="col-sm-4">
@@ -214,17 +213,24 @@
                             <label class="input-group-btn">
                     <span class="btn btn-info">
                         <i class="fa fa-cloud-upload" aria-hidden="true"></i> Upload<input type="file" name="OFD025"
-                                                                                           style="display: none;">
+                                                                                           id="ofd25Upload"
+                                                                                           style="display: none;"
+                                                                                           onchange="pressed()">
                     </span>
                             </label>
                             <input type="text" id="upload-file-info" class="form-control" readonly>
                         </div>
+                        @if($errors->has('OFD025'))
+                            <p class="help-block">
+                                {{ $errors->first('OFD025') }}
+                            </p>
+                        @endif
                     </div>
                 </div>
             </div>
             <div class="col-sm-12 form-group">
                 <div class="form-group">
-                    {{ Form::checkbox('checkbox2', 1, null, ['id'=>'checkbox2', 'class' => 'className' ]) }}
+                    {{ Form::checkbox('checkbox2', 1, null, ['id'=>'checkbox2', 'class' => 'className', 'disabled']) }}
                     {{Form::label('checkbox2','Miscellaneous Documents')}}
                 </div>
                 <div class="col-sm-12 form-group well well-sm">
@@ -233,7 +239,9 @@
                             <label class="input-group-btn">
                     <span class="btn btn-info">
                         <i class="fa fa-cloud-upload" aria-hidden="true"></i> Upload<input type="file" name="mischazmat"
-                                                                                           style="display: none;">
+                                                                                           id="miscUpload"
+                                                                                           style="display: none;"
+                                                                                           onchange="pressed1()">
                     </span>
                             </label>
                             <input type="text" id="upload-file-info" class="form-control" readonly>
@@ -254,15 +262,14 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-12">
-                <div class="form-group">
-                    {{Form::label('exposurehazmat','Do you have any symptoms of illness or injury and require
-                       treatment?')}}
+            <div class="col-md-6 form-group">
+                {{Form::label('exposurehazmat','Do you have any symptoms of illness or injury and require
+                   treatment?',['class'=> 'col-sm-10 control-label'] ) }}
+                <div class="col-sm-4">
                     {!! Form::select('exposurehazmat',[
                       'Yes' => 'Yes',
-                      'No' => 'No'],null,
-                    ['placeholder' => 'Choose one'],'required',
-                    array('class' => 'form-control'))!!}
+                      'No' => 'No'],'required',
+                    array('placeholder'=>'Select one','id'=>'exposurehazmat','class' => 'form-control')) !!}
                     <p class="help-block"></p>
                     @if($errors->has('exposurehazmat'))
                         <p class="help-block">
@@ -271,13 +278,21 @@
                     @endif
                 </div>
             </div>
-            <label class="col-sm-5"></label>
-            <div class="btn-bottom ">
-                {!! Form::submit('Save as Draft',['class' => 'btn btn-primary','name' => 'partialSave']) !!}
-                <button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal">
-                    Submit
-                </button>
-                <a href="{{ route('hazmat.index') }}" class="btn btn-danger">Cancel</a>
+            <br>
+            <br>
+            <br>
+            <br>
+            <div class="row">
+                <div class="col-sm-12">
+                    <label class="col-sm-5"></label>
+                    <div class="btn-bottom">
+                        {!! Form::submit('Save as Draft',['class' => 'btn btn-primary','name' => 'partialSave']) !!}
+                        <button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal">
+                            Submit
+                        </button>
+                        <a href="{{ route('hazmat.index') }}" class="btn btn-danger">Cancel</a>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -291,6 +306,7 @@
                     <h4 class="modal-title" id="myModalLabel"></h4>
                 </div>
                 <div class="modal-body">
+                    <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
                     Are you sure you want to Submit?
                 </div>
                 <div class="modal-footer">
@@ -301,4 +317,24 @@
         </div>
     </div>
     {!! Form::close() !!}
+    <script>
+        window.pressed = function () {
+            var a = document.getElementById('ofd25Upload');
+            if (a.value == "") {
+
+            }
+            else {
+                document.getElementById("checkbox1").checked = true;
+            }
+        };
+        window.pressed1 = function () {
+            var a = document.getElementById('miscUpload');
+            if (a.value == "") {
+
+            }
+            else {
+                document.getElementById("checkbox2").checked = true;
+            }
+        };
+    </script>
 @stop

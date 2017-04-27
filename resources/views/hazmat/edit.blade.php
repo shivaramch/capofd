@@ -42,9 +42,6 @@
                                     <h3><strong>HAZARDOUS MATERIAL EXPOSURE REPORTING INSTRUCTIONS</strong></h3>
                                 </div>
                             </div>
-                            <div class="col-md-12">
-                                <h6><i><strong>Used for future tracking purposes only</strong></i></h6>
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -132,7 +129,7 @@
                         <div class="col-sm-4 form-group">
                             {!! Form::label('assignment', 'Assignment', array('style'=>'padding-top:7px;','class' => 'col-sm-4 control-label')) !!}
                             <div class="col-sm-6 ">
-                                {!! Form::text('assignment', old('assignment'), ['class' => 'form-control', 'required'=>'required'])!!}
+                                {!! Form::text('assignment', old('assignment'), array('class' => 'form-control', 'id' => 'assignmentinjury','placeholder'=>'Enter Assignment'))!!}
                                 <p class="help-block"></p>
                                 @if($errors->has('assignment'))
                                     <p class="help-block">
@@ -223,6 +220,11 @@
                             </label>
                             <input type="text" id="upload-file-info" class="form-control" readonly>
                         </div>
+                        @if($errors->has('OFD025'))
+                            <p class="help-block">
+                                {{ $errors->first('OFD025') }}
+                            </p>
+                        @endif
                     </div>
                     <div class="col-sm-4">
                         <a class="btn btn-primary dropdown-toggle col-sm-12" data-toggle="collapse"
@@ -328,9 +330,9 @@
                        treatment?')}}
                     {!! Form::select('exposurehazmat',[
                       'Yes' => 'Yes',
-                      'No' => 'No'],null,
-                    ['placeholder' => 'Choose one'],old('exposurehazmat'),'required',
-                    array('class' => 'form-control'))!!}
+                      'No' => 'No']
+                    ,old('exposurehazmat'),
+                    array('placeholder' => 'Choose one','class' => 'form-control','id'=>'exposurehazmat'))!!}
                     <p class="help-block"></p>
                     @if($errors->has('exposurehazmat'))
                         <p class="help-block">
@@ -348,7 +350,7 @@
                         <button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal">
                             Submit
                         </button>
-                        <a href="{{ route('hazmat.index') }}" class="btn btn-danger">Cancel</a>
+                        <a href="{{ URL::previous() }}" class="btn btn-danger">Cancel</a>
                     </div>
                 </div>
             </div>
@@ -404,6 +406,7 @@
                                 <h4 class="modal-title" id="myModalLabel"></h4>
                             </div>
                             <div class="modal-body">
+                                <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
                                 Are you sure you want to Submit?
                             </div>
                             <div class="modal-footer">

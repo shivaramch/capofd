@@ -14,7 +14,6 @@ use Illuminate\Database\Eloquent\Model;
 use App\Injury;
 use App\user_login;
 
-use App\Http\Requests\StoreStationsRequest;
 use App\Http\Controllers\Traits\FileUploadTrait;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Input;

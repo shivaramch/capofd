@@ -40,9 +40,6 @@
                                 <h3><strong>Biological Exposure Tracking Document (OFD-006B)</strong></h3>
                             </div>
                         </div>
-                        <div class="col-md-12">
-                            <h5><i><strong>Used for future tracking purposes only</strong></i></h5>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -77,7 +74,7 @@
                     <div class="col-sm-4 form-group">
                         {!! Form::label('exposedemployeename', 'Exposed Employee Name',array('style'=>'padding-top:7px;','class'=> 'col-sm-4 control-label') ) !!}
                         <div class="col-sm-6 ">
-                            {!! Form::text('exposedemployeename', old('exposedemployeename'), array('class'=>'form-control'))!!}
+                            {!! Form::text('exposedemployeename', old('exposedemployeename'), array('class'=>'form-control','placeholder'=>'Enter Exposed Employee Name'))!!}
                             <p class="help-block"></p>
                             @if($errors->has('exposedemployeename'))
                                 <p class="help-block">
@@ -91,12 +88,7 @@
                     <div class="col-sm-4 form-group">
                         {!! Form::label('assignmentbiological', 'Assignment', ['class'=> 'col-sm-4 control-label'] ) !!}
                         <div class="col-sm-6">
-                            {!! Form::select('assignmentbiological',['A' => 'A',
-                            'B' => 'B',
-                            'C' => 'C',
-                            'DIV' => 'DIV'],
-                            'required',
-                            ['class' => 'form-control']) !!}
+                            {!! Form::text('assignmentbiological', old('assignmentbiological'), array('class' => 'form-control', 'id' => 'assignmentinjury','placeholder'=>'Enter Assignment'))!!}
                             <p class="help-block"></p>
                             @if($errors->has('assignmentbiological'))
                                 <p class="help-block">
@@ -107,13 +99,13 @@
                     </div>
                     <div class="col-sm-4 form-group">
                         {!! Form::label('shift', 'Shift', ['class'=> 'col-sm-4 control-label'] ) !!}
-                        <div class="col-sm-4">
+                        <div class="col-sm-6">
                             {!! Form::select('shift', ['A' => 'A',
                             'B' => 'B',
                             'C' => 'C',
                             'DIV' => 'DIV'],
                             'required',
-                            ['class' => 'form-control']) !!}
+                            array('placeholder'=>'Select one','id'=>'shift','class' => 'form-control')) !!}
                             <p class="help-block"></p>
                             @if($errors->has('shift'))
                                 <p class="help-block">
@@ -228,13 +220,13 @@
 
                 <div class="col-sm-12">
                     <div class="form-group">
-                        {{ Form::checkbox('trueofd184', 1, null, ['id'=>'trueofd184', 'class' => 'className' ]) }}
+                        {{ Form::checkbox('trueofd184', 1, null, ['id'=>'trueofd184', 'class' => 'className',  'disabled']) }}
                         {{Form::label('trueofd184','Complete OFD 184')}}
                     </div>
                     <div class="col-sm-12 form-group well well-sm">
                         <div class="col-sm-4">
                             <a class="btn btn-success dropdown-toggle col-sm-12" type="button"
-                               href="{{ asset('Fillable PDFs\Exposure Complete\(Exposure PDF) OFD 184 State Infectious Disease Exposure Report.pdf')}}"
+                               href="{{ asset('Fillable PDFs\Biological Module\(Exposure PDF) OFD 184 State Infectious Disease Exposure Report.pdf')}}"
                                download="(Exposure PDF) OFD 184 State Infectious Disease Exposure Report.pdf">
                                 <i class="fa fa-download" aria-hidden="true"></i> Download</a>
                         </div>
@@ -244,18 +236,25 @@
                                             <span class="btn btn-info"><i class="fa fa-cloud-upload"
                                                                           aria-hidden="true"></i> Upload<input
                                                         type="file" name="trueofd184"
+                                                        id="trueofd184"
                                                         style="display: none;"
+                                                        onchange="pressed()"
                                                         multiple>
                                             </span>
                                 </label>
                                 <input type="text" id="upload-file-info" class="form-control" readonly>
                             </div>
+                            @if($errors->has('trueofd184'))
+                                <p class="help-block">
+                                    {{ $errors->first('trueofd184') }}
+                                </p>
+                            @endif
                         </div>
                     </div>
                 </div>
                 <div class="col-sm-12">
                     <div class="form-group">
-                        {{ Form::checkbox('miscbiological1', 1, null, ['id'=>'miscbiological1', 'class' => 'className' ]) }}
+                        {{ Form::checkbox('miscbiological1', 1, null, ['id'=>'miscbiological1', 'class' => 'className', 'disabled']) }}
                         {{Form::label('miscbiological1','Miscellaneous Documents')}}
                     </div>
                     <div class="col-sm-12 form-group well well-sm">
@@ -265,7 +264,9 @@
                                             <span class="btn btn-info"><i class="fa fa-cloud-upload"
                                                                           aria-hidden="true"></i> Upload<input
                                                         type="file" name="miscbiological1"
+                                                        id="miscbiological1"
                                                         style="display: none;"
+                                                        onchange="pressed3()"
                                                         multiple>
                                             </span>
                                 </label>
@@ -354,13 +355,13 @@
                 </div>
                 <div class="col-sm-12">
                     <div class="form-group">
-                        {{ Form::checkbox('potofd184', 1, null, ['id'=>'potofd184', 'class' => 'className' ]) }}
+                        {{ Form::checkbox('potofd184', 1, null, ['id'=>'potofd184', 'class' => 'className', 'disabled' ]) }}
                         {{Form::label('potofd184','Complete OFD 184')}}
                     </div>
                     <div class="col-sm-12 form-group well well-sm">
                         <div class="col-sm-4">
                             <a class="btn btn-success dropdown-toggle col-sm-12" type="button"
-                               href="{{ asset('Fillable PDFs\Exposure Complete\(Exposure PDF) OFD 184 State Infectious Disease Exposure Report.pdf')}}"
+                               href="{{ asset('Fillable PDFs\Biological Module\(Exposure PDF) OFD 184 State Infectious Disease Exposure Report.pdf')}}"
                                download="(Exposure PDF) OFD 184 State Infectious Disease Exposure Report.pdf">
                                 <i class="fa fa-download" aria-hidden="true"></i> Download</a>
                         </div>
@@ -370,18 +371,25 @@
                                             <span class="btn btn-info"><i class="fa fa-cloud-upload"
                                                                           aria-hidden="true"></i> Upload<input
                                                         type="file" name="potofd184"
+                                                        id="potofd184"
                                                         style="display: none;"
+                                                        onchange="pressed1()"
                                                         multiple>
                                             </span>
                                 </label>
                                 <input type="text" id="upload-file-info" class="form-control" readonly>
                             </div>
+                            @if($errors->has('potofd184'))
+                                <p class="help-block">
+                                    {{ $errors->first('potofd184') }}
+                                </p>
+                            @endif
                         </div>
                     </div>
                 </div>
                 <div class="col-sm-12">
                     <div class="form-group">
-                        {{ Form::checkbox('miscbiological2', 1, null, ['id'=>'miscbiological2', 'class' => 'className' ]) }}
+                        {{ Form::checkbox('miscbiological2', 1, null, ['id'=>'miscbiological2', 'class' => 'className', 'disabled' ]) }}
                         {{Form::label('miscbiological2','Miscellaneous Documents')}}
                     </div>
                     <div class="col-sm-12 form-group well well-sm">
@@ -391,7 +399,10 @@
                                             <span class="btn btn-info"><i class="fa fa-cloud-upload"
                                                                           aria-hidden="true"></i> Upload<input
                                                         type="file" name="miscbiological2"
+                                                        id="miscbiological2"
                                                         style="display: none;"
+                                                        onchange="pressed2()"
+
                                                         multiple>
                                             </span>
                                 </label>
@@ -401,10 +412,10 @@
                     </div>
                 </div>
                 {{--<div class="col-sm-12">--}}
-                    {{--<div class="form-group">--}}
-                        {{--{{ Form::checkbox('potbagtag', 1, null, ['id' => 'potbagtag', 'class'=>'className']) }}--}}
-                        {{--{{Form::label('potbagtag','Bag & Tag clothing if applicable - send email to PSS with pick-up location ')}}--}}
-                    {{--</div>--}}
+                {{--<div class="form-group">--}}
+                {{--{{ Form::checkbox('potbagtag', 1, null, ['id' => 'potbagtag', 'class'=>'className']) }}--}}
+                {{--{{Form::label('potbagtag','Bag & Tag clothing if applicable - send email to PSS with pick-up location ')}}--}}
+                {{--</div>--}}
                 {{--</div>--}}
                 <div class="col-sm-12">
                     <div class="form-group">
@@ -437,12 +448,11 @@
             <div class="col-md-6 form-group">
                 {{Form::label('exposureinjury','Do you have any symptoms of illness or injury and require
                    treatment?',['class'=> 'col-sm-10 control-label'] ) }}
-                <div class="col-sm-2">
+                <div class="col-sm-4">
                     {!! Form::select('exposureinjury',[
                       'Yes' => 'Yes',
-                      'No' => 'No'],null,
-                      ['placeholder' => 'Choose One'],'required',
-                    ['class' => 'form-control'])!!}
+                      'No' => 'No'],'required',
+                    array('placeholder'=>'Select one','id'=>'exposureinjury','class' => 'form-control')) !!}
                     <p class="help-block"></p>
                     @if($errors->has('exposureinjury'))
                         <p class="help-block">
@@ -479,6 +489,7 @@
                     <h4 class="modal-title" id="myModalLabel"></h4>
                 </div>
                 <div class="modal-body">
+                    <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
                     Are you sure you want to Submit?
                 </div>
                 <div class="modal-footer">
@@ -507,5 +518,43 @@
                 $("#Exposure" + test).show();
             });
         });
+    </script>
+    <script>
+        window.pressed = function () {
+            var a = document.getElementById('trueofd184');
+            if (a.value == "") {
+
+            }
+            else {
+                document.getElementById("trueofd184").checked = true;
+            }
+        };
+        window.pressed1 = function () {
+            var a = document.getElementById('potofd184');
+            if (a.value == "") {
+
+            }
+            else {
+                document.getElementById("potofd184").checked = true;
+            }
+        };
+        window.pressed2 = function () {
+            var a = document.getElementById('miscbiological2');
+            if (a.value == "") {
+
+            }
+            else {
+                document.getElementById("miscbiological2").checked = true;
+            }
+        };
+        window.pressed3 = function () {
+            var a = document.getElementById('miscbiological1');
+            if (a.value == "") {
+
+            }
+            else {
+                document.getElementById("miscbiological1").checked = true;
+            }
+        };
     </script>
 @endsection

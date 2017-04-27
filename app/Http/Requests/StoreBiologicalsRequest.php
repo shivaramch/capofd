@@ -33,7 +33,7 @@ class StoreBiologicalsRequest extends FormRequest
             'shift' => 'required|string:biological,shift'.$this->route('biological'),
             'primaryidconumber' => 'required|integer:biological,primaryidconumber'.$this->route('biological'),
             'epcrincidentnum' => 'required|numeric:biological,epcrincidentnum'.$this->route('biological'),
-            'frmsincidentnum' => 'required|numeric:biological,frmsincidentnumber'.$this->route('biological'),
+            'frmsincidentnum1' => 'required|numeric:biological,frmsincidentnumber'.$this->route('biological'),
             'exposureinjury'=>'required|string:biological,exposureinjury'.$this->route('biological'),
             'exposure'=>'required|string:biological,exposure'.$this->route('biological'),
             ];

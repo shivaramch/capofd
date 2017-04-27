@@ -44,7 +44,7 @@ class StoreInjuriesRequest extends FormRequest
     {
         return [
           
-            'injurydate' => 'required|date:injury,injurydate,'. $this->route('injury'),
+            'injurydate' => 'required|date:before_or_equal:today'. $this->route('injury'),
             'injuredemployeename' => 'required|alpha|string:injuries,injuredemployeename,'. $this->route('injury'),
             'injuredemployeeid' => 'required|integer:injury,injuredemployeeid,' . $this->route('injury'),
             'assignmentinjury' => 'required|string:injury,assignmentinjury,'. $this->route('injury'),
@@ -56,7 +56,7 @@ class StoreInjuriesRequest extends FormRequest
             'documentoperationalday' => 'required',
             'shift' => 'required|string:injury,shift,'. $this->route('injury'),
             'trainingassigned' => 'required|string:injury,shift,'. $this->route('injury'),
-            'frmsincidentnum' => 'required|string:injury,frmsincidentnum'. $this->route('injury'),
+            'frmsincidentnum1' => 'required|integer:injury,frmsincidentnum'. $this->route('injury'),
             'policeofficercompletesign' => 'required',
             'callsupervisor' => 'required',
         ];

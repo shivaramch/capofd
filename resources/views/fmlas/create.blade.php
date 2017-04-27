@@ -44,9 +44,6 @@
                                 <h3><strong>Employee FMLA</strong></h3>
                             </div>
                         </div>
-                        <div class="col-md-12">
-                            <h6><i><strong>Used for future tracking purposes only</strong></i></h6>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -83,7 +80,7 @@
                     <div class="col-sm-6 form-group">
                         {!! Form::label('fromdate', 'From Date', array('style'=>'padding-top:7px;','class'=> 'col-sm-4 control-label') ) !!}
                         <div class="col-sm-6 ">
-                            {!! Form::text('fromdate', old('fromdate'), array('class' => 'form-control datepicker', 'placeholder' => 'MM-DD-YYYY','required' => 'required'))!!}
+                            {!! Form::text('fromdate', old('fromdate'), array('class' => 'form-control datepicker', 'placeholder' => 'YYYY-MM-DD','required' => 'required'))!!}
                             <p class="help-block"></p>
                             @if($errors->has('fromdate'))
                                 <p class="help-block">
@@ -95,7 +92,7 @@
                     <div class="col-sm-6 form-group">
                         {!! Form::label('todate', 'To Date', array('style'=>'padding-top:7px;','class'=> 'col-sm-4 control-label') ) !!}
                         <div class="col-sm-6 ">
-                            {!! Form::text('todate', old('todate'), array('class' => 'form-control datepicker', 'placeholder' => 'MM-DD-YYYY','required' => 'required'))!!}
+                            {!! Form::text('todate', old('todate'), array('class' => 'form-control datepicker', 'placeholder' => 'YYYY-MM-DD','required' => 'required'))!!}
                             <p class="help-block"></p>
                             @if($errors->has('todate'))
                                 <p class="help-block">
@@ -137,10 +134,10 @@
             </div>
             <div class="row">
                 <div class="col-sm-12">
-                    {!! Form::label('comments', 'Comments', array('style'=>'padding-top:7px;','class'=> 'col-sm-4 control-label') ) !!}
+                    {!! Form::label('comments', 'Notes', array('style'=>'padding-top:7px;','class'=> 'col-sm-4 control-label') ) !!}
                 </div>
                 <div class="col-sm-12 ">
-                    {!! Form::textarea('comments', old('comments'), array('class' => 'form-control','placeholder'=>'Enter Comments'))!!}
+                    {!! Form::textarea('comments', old('comments'), array('class' => 'form-control','placeholder'=>'Enter Notes'))!!}
                     <p class="help-block"></p>
                     @if($errors->has('comments'))
                         <p class="help-block">
@@ -171,7 +168,8 @@
                         <h4 class="modal-title" id="myModalLabel"></h4>
                     </div>
                     <div class="modal-body">
-                        Are you sure you want to Submit?
+                        <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
+                        Are you sure you want to Save?
                     </div>
                     <div class="modal-footer">
                         {!! Form::submit('Yes',['class' => 'btn btn-success']) !!}

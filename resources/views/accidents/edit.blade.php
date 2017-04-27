@@ -42,9 +42,6 @@
                                 <h3><strong>Vehicle Accident Report Tracking Document (OFD-6A)</strong></h3>
                             </div>
                         </div>
-                        <div class="col-md-12">
-                            <h6><i><strong>Used for future tracking purposes only</strong></i></h6>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -55,7 +52,7 @@
                     <div class="col-md-12">
                         <div class="alert alert-danger" align="center">
                             <strong>
-                                COMPLETE ALL FORMS AND SUBMIT WITHIN 24 HOURS
+                                COMPLETE AND SUBMIT ALL FORMS WITHIN 24 HOURS
                             </strong>
                         </div>
                     </div>
@@ -114,7 +111,7 @@
                     <div class="col-sm-4 form-group">
                         {!! Form::label('assignmentaccident', 'Assignment', array('style'=>'padding-top:7px;','class' => 'col-sm-4 control-label')) !!}
                         <div class="col-sm-6 ">
-                            {!! Form::text('assignmentaccident', old('assignmentaccident'), ['class' => 'form-control'])!!}
+                            {!! Form::text('assignmentaccident', old('assignmentaccident'), ['class' => 'form-control', 'id'=>'assignmentinjury', 'placeholder'=>'Enter Assignment'])!!}
                             <p class="help-block"></p>
                             @if($errors->has('assignmentaccident'))
                                 <p class="help-block">
@@ -126,7 +123,7 @@
                     <div class="col-sm-4 form-group">
                         {!! Form::label('apparatus', 'Apparatus', array('style'=>'padding-top:7px;','class' => 'col-sm-4 control-label')) !!}
                         <div class="col-sm-6 ">
-                            {!! Form::text('apparatus', old('apparatus'), ['class' => 'form-control'])!!}
+                            {!! Form::text('apparatus', old('apparatus'), ['class' => 'form-control', 'placeholder'=>'Enter Apparatus'])!!}
                             <p class="help-block"></p>
                             @if($errors->has('apparatus'))
                                 <p class="help-block">
@@ -178,21 +175,8 @@
                     <div class="row">
                         <div class="col-md-12" style="text-align:left">
                             <strong>
-                                Please Follow These Instructions:
-                                <ol start="1">
-                                    <li>B/C shall ensure all reports are properly completed within 24 hours.</li>
-                                    <li>If an employee receives an injury from this incident, the employee shall
-                                        complete an OFD6 and designate whether treatment is being requested in the
-                                        OFD-25 IOD.
-                                    </li>
-                                    <li>City of Omaha policy REQUIRES a Police Report and DR41 State Form on all
-                                        City
-                                        vehicles involved in an accident OR property damage whether on public
-                                        streets,
-                                        private property, or at the Fire Station.
-                                    </li>
-                                    <li>DR41 is also submitted to the State if damage is over $1000.00</li>
-                                </ol>
+                                If an employee receives an injury from this incident, the employee shall complete an
+                                OFD6 and designate whether treatment is being requested in the OFD-25 IOD.
                             </strong>
                         </div>
                     </div>
@@ -248,6 +232,11 @@
                             </label>
                             <input type="text" id="upload-file-info" class="form-control" readonly>
                         </div>
+                        @if($errors->has('LRS101'))
+                            <p class="help-block">
+                                {{ $errors->first('LRS101') }}
+                            </p>
+                        @endif
                     </div>
                     <div class="col-sm-4">
                         <a class="btn btn-primary dropdown-toggle col-sm-12" data-toggle="collapse"
@@ -308,6 +297,11 @@
                             </label>
                             <input type="text" id="upload-file-info" class="form-control" readonly>
                         </div>
+                        @if($errors->has('OFD295'))
+                            <p class="help-block">
+                                {{ $errors->first('OFD295') }}
+                            </p>
+                        @endif
                     </div>
                     <div class="col-sm-4">
                         <a class="btn btn-primary dropdown-toggle col-sm-12" data-toggle="collapse"
@@ -366,6 +360,11 @@
                             </label>
                             <input type="text" id="upload-file-info" class="form-control" readonly>
                         </div>
+                        @if($errors->has('OFD025a'))
+                            <p class="help-block">
+                                {{ $errors->first('OFD025a') }}
+                            </p>
+                        @endif
                     </div>
                     <div class="col-sm-4">
                         <a class="btn btn-primary dropdown-toggle col-sm-12" data-toggle="collapse"
@@ -423,6 +422,11 @@
                             </label>
                             <input type="text" id="upload-file-info" class="form-control" readonly>
                         </div>
+                        @if($errors->has('OFD025b'))
+                            <p class="help-block">
+                                {{ $errors->first('OFD025b') }}
+                            </p>
+                        @endif
                     </div>
                     <div class="col-sm-4">
                         <a class="btn btn-primary dropdown-toggle col-sm-12" data-toggle="collapse"
@@ -480,6 +484,11 @@
                             </label>
                             <input type="text" id="upload-file-info" class="form-control" readonly>
                         </div>
+                        @if($errors->has('OFD025c'))
+                            <p class="help-block">
+                                {{ $errors->first('OFD025c') }}
+                            </p>
+                        @endif
                     </div>
                     <div class="col-sm-4">
                         <a class="btn btn-primary dropdown-toggle col-sm-12" data-toggle="collapse"
@@ -539,6 +548,11 @@
                             </label>
                             <input type="text" id="upload-file-info" class="form-control" readonly>
                         </div>
+                        @if($errors->has('OFD31'))
+                            <p class="help-block">
+                                {{ $errors->first('OFD31') }}
+                            </p>
+                        @endif
                     </div>
                     <div class="col-sm-4">
                         <a class="btn btn-primary dropdown-toggle col-sm-12" data-toggle="collapse"
@@ -598,6 +612,11 @@
                             </label>
                             <input type="text" id="upload-file-info" class="form-control" readonly>
                         </div>
+                        @if($errors->has('OFD127'))
+                            <p class="help-block">
+                                {{ $errors->first('OFD127') }}
+                            </p>
+                        @endif
                     </div>
                     <div class="col-sm-4">
                         <a class="btn btn-primary dropdown-toggle col-sm-12" data-toggle="collapse"
@@ -654,9 +673,13 @@
             <div class="row">
                 <div class="col-sm-12 form-group">
                     <div class="form-group">
-                        {{ Form::checkbox('checkbox8', 1, null, ['id'=>'checkbox8', 'class' => 'className' ]) }}
-                        {{Form::label('Checkbox8','Complete DR 41 State
-                            of Nebraska DMV Vehicle Accident Report')}}
+                        {{ Form::checkbox('checkbox8', 1, null, ['id'=>'checkbox8', 'class' => 'className', 'disabled' ]) }}
+                        {{Form::label('checkbox8','State Law requires every operator of a motor vehicle involved in an accident
+                        resulting in either injury, death, or damages over $1,000.00 to the property of any one person
+                        ')}}
+                        {{Form::label('checkbox8','(including the operator).')}}
+                        {{Form::label('checkbox8','To complete the State of Nebraska "DR Form 41" and return within 10 days
+                        following the accident to the State of Nebraska. Click on Download to access the document')}}
                     </div>
                 </div>
                 {{--}} <label class="checkbox-inline col-sm-12"><strong><strong> Complete DR 41 State
@@ -664,8 +687,8 @@
                 <div class="col-sm-12 form-group well well-sm">
                     <div class="col-sm-4">
                         <a class="btn btn-success dropdown-toggle col-sm-12" type="button"
-                           href="{{ asset('Fillable PDFs\Accident Module\(Accident PDF) DR 41 State of Nebraska DMV Vehicle Accident Report.pdf') }}"
-                           download="(Accident PDF) DR 41 State of Nebraska DMV Vehicle Accident Report.pdf">
+                           href="{{ url('http://roads.nebraska.gov/media/3337/dr41-no-fill.pdf') }}" target="blank">
+                            {{--download="(Accident PDF) DR 41 State of Nebraska DMV Vehicle Accident Report.pdf">--}}
                             <i class="fa fa-download" aria-hidden="true"></i> Download</a>
                     </div>
                     <div class="col-sm-3">
@@ -678,6 +701,11 @@
                             </label>
                             <input type="text" id="upload-file-info" class="form-control" readonly>
                         </div>
+                        @if($errors->has('DR41'))
+                            <p class="help-block">
+                                {{ $errors->first('DR41') }}
+                            </p>
+                        @endif
                     </div>
                     <div class="col-sm-4">
                         <a class="btn btn-primary dropdown-toggle col-sm-12" data-toggle="collapse"
@@ -730,6 +758,11 @@
                             </label>
                             <input type="text" id="upload-file-info" class="form-control" readonly>
                         </div>
+                        @if($errors->has('LRS101'))
+                            <p class="help-block">
+                                {{ $errors->first('LRS101') }}
+                            </p>
+                        @endif
                     </div>
                     <div class="col-sm-4">
                         <a class="btn btn-primary dropdown-toggle col-sm-12" data-toggle="collapse"
@@ -771,7 +804,7 @@
                 Submit
             </button>
 
-            <a href="{{ route('accidents.index') }}" class="btn btn-danger">Cancel</a>
+            <a href="{{ route(URL::previous()) }}" class="btn btn-danger">Cancel</a>
             <br>
 
         </div>
@@ -828,6 +861,7 @@
                     <h4 class="modal-title" id="myModalLabel"></h4>
                 </div>
                 <div class="modal-body">
+                    <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
                     Are you sure you want to Submit?
                 </div>
                 <div class="modal-footer">

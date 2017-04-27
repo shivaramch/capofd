@@ -51,8 +51,6 @@
                     </div>
                 </a>
 
-
-
             </div>
         </div>
         <!-- Bottom navigation icons ends here-->
