@@ -238,7 +238,7 @@ class BiologicalsController extends Controller
             'shift' => 'required|string:biological,shift',
             'primaryidconumber' => 'required|integer:biological,primaryidconumber',
             'epcrincidentnum' => 'required|integer:biological,epcrincidentnum',
-            'frmsincidentnum1' => 'required|integer:biological,frmsincidentnumber',
+            'frmsincidentnum1' => 'integer:biological,frmsincidentnumber',
             'exposureinjury' => 'string:biological,exposureinjury',
             'exposure' => 'integer:biological,exposure',
             'trueofd184' => 'file:biological,trueofd184|mimes:pdf|max:10000',

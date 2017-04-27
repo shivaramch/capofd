@@ -260,7 +260,7 @@ class HazmatController extends Controller
             'corvelid' => 'required|integer:hazmat,corvelid',
             'epcrincidentnum' => 'required|integer:hazmat,epcrincidentnum',
             'assignment' => 'required|string:hazmat,assignment',
-            'frmsincidentnum1' => 'required|integer:hazmat,frmsincidentnum',
+            'frmsincidentnum1' => 'integer:hazmat,frmsincidentnum',
             'shift' => 'required|string:hazmat,shift,',
             'exposurehazmat' => 'required',
             'OFD025' => 'file:biological,OFD025|mimes:pdf|max:10000',
