@@ -146,6 +146,7 @@ return [
         'injurydate' => [
             'required' => '"Date of Injury" field is required',
             'date' => '"Date of Injury" field should be a valid date',
+            'before_or_equal' => '"Date of Injury" field should be a Today or a past date - No future dates are allowed',
         ],
         'injuredemployeename' => [
             'required' => '"Injured Name" field is required',
@@ -192,6 +193,7 @@ return [
         'accidentdate' => [
             'required' => '"Date of Accident" field is required',
             'date' => '"Date of Accident" field should be a valid date',
+            'before_or_equal' => '"Accident Date" field should be a Today or a past date - No future dates are allowed',
         ],
         'driverid' => [
             'required' => '"Driver ID#" field is required',

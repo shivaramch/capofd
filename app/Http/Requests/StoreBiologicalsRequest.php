@@ -26,7 +26,7 @@ class StoreBiologicalsRequest extends FormRequest
             'miscbiological1' => 'max:20480|mimes:pdf'.$this->route('biological'),
             'miscbiological2' => 'max:20480|mimes:pdf'.$this->route('biological'),
             'employeeid' => 'required|integer:biological,employeeid'.$this->route('biological'),
-            'dateofexposure' => 'required|date:biological,dateofexposure'.$this->route('biological'),
+            'dateofexposure' => 'required|date:biological,dateofexposure|before_or_equal:today'.$this->route('biological'),
             'exposedemployeename' => 'required|alpha|string:biological,exposedemployeename'.$this->route('biological'),
             //'dateofexposure' => 'required|before_or_equal:biological,dateofexposure'.$this->route('biological'),
             'assignmentbiological' => 'required|string:biological,assignmentbiological'.$this->route('biological'),
