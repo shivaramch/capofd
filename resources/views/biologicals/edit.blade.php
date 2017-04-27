@@ -173,7 +173,13 @@
                     </div>
                 </div>
             </div>
-
+            {{--@if($biological->exposure == 0)--}}
+            {{--Exposure0.show();--}}
+            {{--Exposure1.hide();--}}
+            {{--@else--}}
+            {{--Exposure1.show();--}}
+            {{--Exposure0.hide();--}}
+            {{--@endif--}}
             <div id="Exposure0" class="desc" style="display: none;">
                 <div class="col-md-12">
                     <div class="alert alert-danger" align="left">
@@ -379,7 +385,7 @@
                     </div>
                 </div>
             </div>
-
+            {{--@if($biological->exposure == 1)--}}
             <div id="Exposure1" class="desc" style="display: none;">
                 <div class="col-md-12">
                     <div class="alert alert-danger" align="left">
@@ -544,6 +550,7 @@
                     </div>
                 </div>
             </div>
+
             <div class="panel-body">
                 <div class="form-horizontal">
                     <div class="row">
@@ -559,14 +566,14 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-6 form-group">
+            <div class="col-md-10 form-group">
                 {{Form::label('exposureinjury','Do you have any symptoms of illness or injury and require
-                   treatment?',['class'=> 'col-sm-10 control-label'] ) }}
+                   treatment?',['class'=> 'col-sm-6 control-label'] ) }}
                 <div class="col-sm-2">
                     {!! Form::select('exposureinjury',[
                       'Yes' => 'Yes',
                       'No' => 'No'],old('exposureinjury'),
-                     array('placeholder'=>'Select one','id'=>'exposureinjury','class' => 'form-control')) !!}
+                     array('placeholder'=>'Select One','id'=>'exposureinjury','class' => 'form-control')) !!}
                     <p class="help-block"></p>
                     @if($errors->has('exposureinjury'))
                         <p class="help-block">
