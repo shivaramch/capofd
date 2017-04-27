@@ -206,7 +206,7 @@
             <div class="row">
                 <div class="col-sm-12 form-group">
                     <div class="form-group">
-                        {{ Form::checkbox('checkbox1', 1, null, ['id'=>'checkbox1', 'class' => 'className' ]) }}
+                        {{ Form::checkbox('checkbox1', 1, null, ['id'=>'checkbox1', 'class' => 'className', 'disabled' ]) }}
                         {{Form::label('Checkbox1','Complete LRS 101 City of Omaha Accident Report-Include RB#, Officer Name, Badge#')}}
                     </div>
                 </div>
@@ -226,8 +226,9 @@
                             <label class="input-group-btn">
                     <span class="btn btn-info">
                         <i class="fa fa-cloud-upload" aria-hidden="true"></i> Upload<input type="file"
-                                                                                           name="LRS101"
-                                                                                           style="display: none;">
+                                                                                           name="LRS101"  id="lrsdownload"
+                                                                                           style="display: none;"
+																						   onchange="pressed()">
                     </span>
                             </label>
                             <input type="text" id="upload-file-info" class="form-control" readonly>
@@ -270,7 +271,7 @@
             <div class="row">
                 <div class="col-sm-12 form-group">
                     <div class="form-group">
-                        {{ Form::checkbox('checkbox2', 1, null, ['id'=>'checkbox2', 'class' => 'className' ]) }}
+                        {{ Form::checkbox('checkbox2', 1, null, ['id'=>'checkbox2', 'class' => 'className', 'disabled' ]) }}
                         {{Form::label('Checkbox2','Complete OFD 295
                             Vehicle Accident Witness Statement -This Report is for civilian statements
                         only')}}
@@ -291,8 +292,9 @@
                             <label class="input-group-btn">
                     <span class="btn btn-info">
                         <i class="fa fa-cloud-upload" aria-hidden="true"></i> Upload<input type="file"
-                                                                                           name="OFD295"
-                                                                                           style="display: none;">
+                                                                                           name="OFD295" id="295upload"
+                                                                                           style="display: none;"
+																						   onchange="pressed1()">
                     </span>
                             </label>
                             <input type="text" id="upload-file-info" class="form-control" readonly>
@@ -335,7 +337,7 @@
             <div class="row">
                 <div class="col-sm-12 form-group">
                     <div class="form-group">
-                        {{ Form::checkbox('checkbox3', 1, null, ['id'=>'checkbox3', 'class' => 'className' ]) }}
+                        {{ Form::checkbox('checkbox3', 1, null, ['id'=>'checkbox3', 'class' => 'className' , 'disabled']) }}
                         {{Form::label('Checkbox3','Complete OFD 25a Accident
                         Intradepartmental Communication - Driver')}}
                     </div>
@@ -354,8 +356,9 @@
                             <label class="input-group-btn">
                     <span class="btn btn-info">
                         <i class="fa fa-cloud-upload" aria-hidden="true"></i> Upload<input type="file"
-                                                                                           name="OFD025a"
-                                                                                           style="display: none;">
+                                                                                           name="OFD025a" id="25aUpload"
+                                                                                           style="display: none;"
+																						   onchange="pressed2()">
                     </span>
                             </label>
                             <input type="text" id="upload-file-info" class="form-control" readonly>
@@ -398,7 +401,7 @@
             <div class="row">
                 <div class="col-sm-12 form-group">
                     <div class="form-group">
-                        {{ Form::checkbox('checkbox4', 1, null, ['id'=>'checkbox4', 'class' => 'className' ]) }}
+                        {{ Form::checkbox('checkbox4', 1, null, ['id'=>'checkbox4', 'class' => 'className', 'disabled' ]) }}
                         {{Form::label('Checkbox4','Complete OFD 25a Accident
                         Intradepartmental Communication - Supervisor')}}
                     </div>
@@ -416,8 +419,9 @@
                         <div class="input-group">
                             <label class="input-group-btn">
                     <span class="btn btn-info">
-                        <i class="fa fa-cloud-upload" aria-hidden="true"></i> Upload<input type="file" name="OFD025b"
-                                                                                           style="display: none;">
+                        <i class="fa fa-cloud-upload" aria-hidden="true"></i> Upload<input type="file" name="OFD025b" id="25bUpload"
+                                                                                           style="display: none;"
+																						   onchange="pressed3()">
                     </span>
                             </label>
                             <input type="text" id="upload-file-info" class="form-control" readonly>
@@ -460,7 +464,7 @@
             <div class="row">
                 <div class="col-sm-12 form-group">
                     <div class="form-group">
-                        {{ Form::checkbox('checkbox5', 1, null, ['id'=>'checkbox5', 'class' => 'className' ]) }}
+                        {{ Form::checkbox('checkbox5', 1, null, ['id'=>'checkbox5', 'class' => 'className' , 'disabled']) }}
                         {{Form::label('Checkbox5','Complete OFD 25a Accident
                         Intradepartmental Communication - Other Personnel')}}
                     </div>
@@ -478,8 +482,9 @@
                         <div class="input-group">
                             <label class="input-group-btn">
                     <span class="btn btn-info">
-                        <i class="fa fa-cloud-upload" aria-hidden="true"></i> Upload<input type="file" name="OFD025c"
-                                                                                           style="display: none;">
+                        <i class="fa fa-cloud-upload" aria-hidden="true"></i> Upload<input type="file" name="OFD025c" id="25cUpload"
+                                                                                           style="display: none;"
+																						   onchange="pressed4()">
                     </span>
                             </label>
                             <input type="text" id="upload-file-info" class="form-control" readonly>
@@ -524,7 +529,7 @@
             <div class="row">
                 <div class="col-sm-12 form-group">
                     <div class="form-group">
-                        {{ Form::checkbox('checkbox6', 1, null, ['id'=>'checkbox5', 'class' => 'className' ]) }}
+                        {{ Form::checkbox('checkbox6', 1, null, ['id'=>'checkbox5', 'class' => 'className', 'disabled' ]) }}
                         {{Form::label('Checkbox6','Complete OFD 31-OFD
                         Lost, Damaged or Stolen Equipment Report')}}
                     </div>
@@ -543,7 +548,9 @@
                             <label class="input-group-btn">
                     <span class="btn btn-info">
                         <i class="fa fa-cloud-upload" aria-hidden="true"></i> Upload<input type="file" name="OFD31"
-                                                                                           style="display: none;">
+						                                                                    id="31Upload"
+                                                                                           style="display: none;"
+																						   onchange="pressed5()">
                     </span>
                             </label>
                             <input type="text" id="upload-file-info" class="form-control" readonly>
@@ -588,7 +595,7 @@
             <div class="row">
                 <div class="col-sm-12 form-group">
                     <div class="form-group">
-                        {{ Form::checkbox('checkbox7', 1, null, ['id'=>'checkbox7', 'class' => 'className' ]) }}
+                        {{ Form::checkbox('checkbox7', 1, null, ['id'=>'checkbox7', 'class' => 'className', 'disabled' ]) }}
                         {{Form::label('Checkbox7','Complete OFD 127 Request for
                         Services Form')}}
                     </div>
@@ -606,8 +613,9 @@
                         <div class="input-group">
                             <label class="input-group-btn">
                     <span class="btn btn-info">
-                        <i class="fa fa-cloud-upload" aria-hidden="true"></i> Upload<input type="file" name="OFD127"
-                                                                                           style="display: none;">
+                        <i class="fa fa-cloud-upload" aria-hidden="true"></i> Upload<input type="file" name="OFD127" id="127Upload"
+                                                                                           style="display: none;"
+																						   onchange="pressed6()">
                     </span>
                             </label>
                             <input type="text" id="upload-file-info" class="form-control" readonly>
@@ -695,8 +703,9 @@
                         <div class="input-group">
                             <label class="input-group-btn">
                     <span class="btn btn-info">
-                        <i class="fa fa-cloud-upload" aria-hidden="true"></i> Upload<input type="file" name="DR41"
-                                                                                           style="display: none;">
+                        <i class="fa fa-cloud-upload" aria-hidden="true"></i> Upload<input type="file" name="DR41" id="41Upload"
+                                                                                           style="display: none;"
+																						   onchange="pressed7()">
                     </span>
                             </label>
                             <input type="text" id="upload-file-info" class="form-control" readonly>
@@ -742,7 +751,7 @@
             <div class="row">
                 <div class="col-sm-12 form-group">
                     <div class="form-group">
-                        {{ Form::checkbox('checkbox9', 1, null, ['id'=>'checkbox9', 'class' => 'className' ]) }}
+                        {{ Form::checkbox('checkbox9', 1, null, ['id'=>'checkbox9', 'class' => 'className', 'disabled']) }}
                         {{Form::label('Checkbox9','Miscellaneous Documents')}}
                     </div>
                 </div>
@@ -751,9 +760,10 @@
                         <div class="input-group">
                             <label class="input-group-btn">
                     <span class="btn btn-info">
-                        <i class="fa fa-cloud-upload" aria-hidden="true"></i> Upload<input type="file"
+                        <i class="fa fa-cloud-upload" aria-hidden="true"></i> Upload<input type="file" id="miscUplaods"
                                                                                            name="miscaccidents"
-                                                                                           style="display: none;">
+                                                                                           style="display: none;"
+																						   onchange="pressed8()">
                     </span>
                             </label>
                             <input type="text" id="upload-file-info" class="form-control" readonly>
@@ -876,3 +886,86 @@
     </div>
     {!! Form::close() !!}
 @stop
+<script>
+    window.pressed = function () {
+        var a = document.getElementById('lrsdownload');
+        if (a.value == "") {
+
+        }
+        else {
+            document.getElementById("checkbox1").checked = true;
+        }
+    };
+    window.pressed1 = function () {
+        var a = document.getElementById('295upload');
+        if (a.value == "") {
+
+        }
+        else {
+            document.getElementById("checkbox2").checked = true;
+        }
+    };
+    window.pressed2 = function () {
+        var a = document.getElementById('25aUpload');
+        if (a.value == "") {
+
+        }
+        else {
+            document.getElementById("checkbox3").checked = true;
+        }
+    };
+    window.pressed3 = function () {
+        var a = document.getElementById('25bUpload');
+        if (a.value == "") {
+
+        }
+        else {
+            document.getElementById("checkbox4").checked = true;
+        }
+    };
+    window.pressed4 = function () {
+        var a = document.getElementById('25cUpload');
+        if (a.value == "") {
+
+        }
+        else {
+            document.getElementById("checkbox5").checked = true;
+        }
+    };
+    window.pressed5 = function () {
+        var a = document.getElementById('31Upload');
+        if (a.value == "") {
+
+        }
+        else {
+            document.getElementById("checkbox6").checked = true;
+        }
+    };
+    window.pressed6 = function () {
+        var a = document.getElementById('127Upload');
+        if (a.value == "") {
+
+        }
+        else {
+            document.getElementById("checkbox7").checked = true;
+        }
+    };
+    window.pressed7 = function () {
+        var a = document.getElementById('41Upload');
+        if (a.value == "") {
+
+        }
+        else {
+            document.getElementById("checkbox8").checked = true;
+        }
+    };
+    window.pressed8 = function () {
+        var a = document.getElementById('miscUplaods');
+        if (a.value == "") {
+
+        }
+        else {
+            document.getElementById("checkbox9").checked = true;
+        }
+    };
+</script>

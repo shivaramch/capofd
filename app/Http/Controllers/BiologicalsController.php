@@ -249,7 +249,7 @@ class BiologicalsController extends Controller
     public function requestPratialValidation(Request $request)
     {
         $this->validate($request, ['employeeid' => 'required|integer:biological,employeeid',
-            'dateofexposure' => 'required|date:biological,dateofexposure',
+            'dateofexposure' => 'required|date:biological,dateofexposure|before_or_equal:today',
             'exposedemployeename' => 'required|alpha|string:biological,exposedemployeename',
             //'dateofexposure' => 'required|before_or_equal:biological,dateofexposure',
             'assignmentbiological' => 'required|string:biological,assignmentbiological',

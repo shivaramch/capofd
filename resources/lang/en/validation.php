@@ -232,6 +232,17 @@ return [
             'required' => 'Select a value from "Do you have any symptoms of illness or injury and require treatment?" dropdown',
         ],
 
+        'fromdate' => [
+            'required' => '"From Date Field is Required"',
+            'date' => 'From Date is not a valid date',
+        ],
+
+        'todate' => [
+            'required' => '"To Date Field is Required"',
+            'date' => 'To Date is not a valid date',
+            'after_or_equal' => 'To Date cannot be before From Date',
+        ],
+
 
     ],
 

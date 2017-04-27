@@ -196,7 +196,7 @@
 
                 <div class="col-sm-12 form-group">
                     <div class="form-group">
-                        {{ Form::checkbox('checkbox1', 1, null, ['id'=>'checkbox1', 'class' => 'className' ]) }}
+                        {{ Form::checkbox('checkbox1', 1, null, ['id'=>'checkbox1', 'class' => 'className', 'disabled']) }}
                         {{Form::label('Checkbox1','Fill out OFD-025 Hazmat Exposure Report form')}}
                     </div>
                 </div>
@@ -215,7 +215,9 @@
                             <label class="input-group-btn">
                     <span class="btn btn-info">
                         <i class="fa fa-cloud-upload" aria-hidden="true"></i> Upload<input type="file" name="OFD025"
-                                                                                           style="display: none;">
+                                                                                           id="ofd25Upload"
+                                                                                           style="display: none;"
+                                                                                           onchange="pressed()">
                     </span>
                             </label>
                             <input type="text" id="upload-file-info" class="form-control" readonly>
@@ -261,7 +263,7 @@
                 </div>
                 <div class="col-sm-12 form-group">
                     <div class="form-group">
-                        {{ Form::checkbox('checkbox2', 1, null, ['id'=>'checkbox2', 'class' => 'className' ]) }}
+                        {{ Form::checkbox('checkbox2', 1, null, ['id'=>'checkbox2', 'class' => 'className', 'disabled' ]) }}
                         {{Form::label('Checkbox2','Miscellaneous Documents')}}
                     </div>
                 </div>
@@ -271,7 +273,9 @@
                             <label class="input-group-btn">
                     <span class="btn btn-info">
                         <i class="fa fa-cloud-upload" aria-hidden="true"></i> Upload<input type="file" name="mischazmat"
-                                                                                           style="display: none;">
+                                                                                           id="miscUpload"
+                                                                                           style="display: none;"
+                                                                                           onchange="pressed1()">
                     </span>
                             </label>
                             <input type="text" id="upload-file-info" class="form-control" readonly>
@@ -418,6 +422,26 @@
                     </div>
                 </div>
                 {!! Form::close() !!}
+				<script>
+        window.pressed = function () {
+            var a = document.getElementById('ofd25Upload');
+            if (a.value == "") {
+
+            }
+            else {
+                document.getElementById("checkbox1").checked = true;
+            }
+        };
+        window.pressed1 = function () {
+            var a = document.getElementById('miscUpload');
+            if (a.value == "") {
+
+            }
+            else {
+                document.getElementById("checkbox2").checked = true;
+            }
+        };
+    </script>
                 @stop
         </div>
 

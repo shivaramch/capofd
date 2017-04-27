@@ -221,7 +221,7 @@ class AccidentsController extends EmailController
     public function validateRequest(Request $request)
     {
         $this->validate($request, [
-            'accidentdate' => 'required|date:accidents,accidentdate,',
+            'accidentdate' => 'required|date:accidents,accidentdate|before_or_equal:today',
             'driverid' => 'required|integer:accidents,driverid,',
             'drivername' => 'required|regex:/^[\pL\s\-]+$/u |string:accidents,drivername,',
             'assignmentaccident' => 'required|string:accidents,assignmentaccident',
