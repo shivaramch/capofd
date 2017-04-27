@@ -215,7 +215,7 @@ class BiologicalsController extends Controller
         $this->validate($request, [
             'employeeid' => 'required|integer:biological,employeeid',
             'dateofexposure' => 'required|date:biological,dateofexposure|before_or_equal:today',
-            'exposedemployeename' => 'required|regex:/^[a-zA-Z\s,.\'-\pL]+$/u |string:biological,exposedemployeename',
+            'exposedemployeename' => 'required|regex:/^[a-zA-Z\s]+$/ |string:biological,exposedemployeename',
             'assignmentbiological' => 'required|string:biological,assignmentbiological',
             'shift' => 'required|string:biological,shift',
             'primaryidconumber' => 'required|integer:biological,primaryidconumber',
@@ -233,7 +233,7 @@ class BiologicalsController extends Controller
         $this->validate($request, [
             'employeeid' => 'required|integer:biological,employeeid',
             'dateofexposure' => 'required|date:biological,dateofexposure|before_or_equal:today',
-            'exposedemployeename' => 'required|regex:/^[a-zA-Z\s,.\'-\pL]+$/u |string:biological,exposedemployeename',
+            'exposedemployeename' => 'required|regex:/^[a-zA-Z\s]+$/ |string:biological,exposedemployeename',
             'assignmentbiological' => 'required|string:biological,assignmentbiological',
             'shift' => 'required|string:biological,shift',
             'primaryidconumber' => 'required|integer:biological,primaryidconumber',

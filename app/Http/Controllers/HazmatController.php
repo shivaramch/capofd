@@ -235,7 +235,7 @@ class HazmatController extends Controller
     {
         $this->validate($request, [
             'employeeid' => 'required|integer:hazmat,employeeid,',
-            'employeename' => 'required|regex:/^[a-zA-Z\s,.\'-\pL]+$/u |string:hazmat,employeename,',
+            'employeename' => 'required|regex:/^[a-zA-Z\s]+$/|string:hazmat,employeename,',
             'dateofexposure' => 'required|date:hazmat,dateofexposure|before_or_equal:today',
             'primaryidconumber' => 'required|integer:hazmat,primaryidconumber',
             'contactcorvel' => 'required|string:hazmat,contactcorvel',
@@ -253,7 +253,7 @@ class HazmatController extends Controller
     {
         $this->validate($request, [
             'employeeid' => 'required|integer:hazmat,employeeid,',
-            'employeename' => 'required|regex:/^[a-zA-Z\s,.\'-\pL]+$/u |string:hazmat,employeename,',
+            'employeename' => 'required|regex:/^[a-zA-Z\s]+$/ |string:hazmat,employeename,',
             'dateofexposure' => 'required|date:hazmat,dateofexposure|before_or_equal:today',
             'primaryidconumber' => 'required|integer:hazmat,primaryidconumber',
             'contactcorvel' => 'string:hazmat,contactcorvel',

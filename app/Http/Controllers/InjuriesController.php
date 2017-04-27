@@ -240,7 +240,7 @@ class InjuriesController extends Controller
     {
         $this->validate($request, [
             'injurydate' => 'required|date:injury,injurydate|before_or_equal:today',
-            'injuredemployeename' => 'required|regex:/^[a-zA-Z\s,.\'-\pL]+$/u |string:injuries,injuredemployeename,',
+            'injuredemployeename' => 'required|regex:/^[a-zA-Z\s]+$/ |string:injuries,injuredemployeename,',
             'injuredemployeeid' => 'required|integer:injury,injuredemployeeid,',
             'assignmentinjury' => 'required|string:injury,assignmentinjury,',
             'corvelid' => 'required|integer:injury,corvelid,',
@@ -269,7 +269,7 @@ class InjuriesController extends Controller
     {
         $this->validate($request, [
             'injurydate' => 'required|date:injury,injurydate|before_or_equal:today',
-            'injuredemployeename' => 'required|regex:/^[a-zA-Z\s,.\'-\pL]+$/u |string:injuries,injuredemployeename,',
+            'injuredemployeename' => 'required|regex:/^[a-zA-Z\s]+$/ |string:injuries,injuredemployeename,',
             'injuredemployeeid' => 'required|integer:injury,injuredemployeeid,',
             'assignmentinjury' => 'required|string:injury,assignmentinjury,',
             'corvelid' => 'required|integer:injury,corvelid,',

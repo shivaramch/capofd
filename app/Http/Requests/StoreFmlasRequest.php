@@ -22,7 +22,7 @@ class StoreFmlasRequest extends FormRequest
     {
         return [
             'employeeid' => 'required|integer:fmla,employeeid'.$this->route('fmlas'),
-            'employeename' => 'required|string:fmla,exposedemployeename'.$this->route('fmlas'),
+            'employeename' => 'required|regex:/^[a-zA-Z\s]+$/|string:fmla,exposedemployeename'.$this->route('fmlas'),
             'fromdate' => 'required|date:fmla,fromdate'.$this->route('fmlas'),
             'todate' => 'required|date:fmla,todate|after_or_equal:fromdate'.$this->route('fmlas'),
         ];
