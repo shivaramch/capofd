@@ -548,7 +548,7 @@
                 </div>
             </div>
         </div>
-
+    </div>
         {!! form::close() !!}
         <div class="panel panel-default">
             <div class="panel-body">
@@ -594,63 +594,63 @@
                             </div>
                         </div>
                     </div>
-                    {!! form::close() !!}
-                @endif
-
-                <div class="actionBox">
-                    <ul class="commentList">
-                        @if (!empty($comments))
-                            @foreach ($comments as $cm)
-                                @if( $cm->applicationtype == '6' &&
-                                (($injury->injuredemployeeid == Auth::user()->id && $cm->isvisible == 1)  ||
-                                $injury->captainid == Auth::user()->id ||
-                                $injury->battalionchiefid == Auth::user()->id ||
-                                $injury->aconduty == Auth::user()->id ||
-                                Auth::user()->roleid == 1))
-                                    <div class="col-sm-8">
-                                        <div class="panel panel-white post panel-shadow">
-                                            <div class="post-heading">
-                                                <div class="pull-left meta">
-                                                    <div class="title h5">
-                                                        @foreach ($users as $user)
-                                                            @if($user->id == $cm->createdby )
-                                                                <b><i class="fa fa-user"></i> {{$user->name}}
-                                                                </b>
-                                                            @endif
-                                                        @endforeach
-                                                        made a Comment.
-                                                    </div>
-                                                    <time class="comment-date text-muted time"
-                                                          datetime="{{$cm->created_at}}"><i
-                                                                class="fa fa-clock-o"></i> {{$cm->created_at}}
-                                                    </time>
-                                                </div>
-                                                <div class="pull-right meta">
-                                                    @if(Auth::user()->id == $cm->createdby )
-                                                        {!! Form::open(array(
-                    'style' => 'display: inline-block;',
-                    'method' => 'DELETE',
-                    'onsubmit' => "return confirm('".trans("Are you sure?")."');",
-                    'route' => ['comments.destroy', $cm->commentid])) !!}
-                                                        {!! Form::button('<i class="fa fa-trash-o"></i>', array('type' => 'submit', 'class' => ''))!!}
-                                                        {!! Form::close() !!}
-                                                    @endif
-
-                                                </div>
-                                            </div>
-                                            <div class="post-description">
-                                                <p>{{$cm->comment}}</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                @endif
-                            @endforeach
-                        @endif
-                    </ul>
-                </div>
             </div>
         </div>
+    {!! form::close() !!}
+    @endif
+
+    <div class="actionBox">
+        <ul class="commentList">
+            @if (!empty($comments))
+                @foreach ($comments as $cm)
+                    @if( $cm->applicationtype == '6' &&
+                    (($injury->injuredemployeeid == Auth::user()->id && $cm->isvisible == 1)  ||
+                    $injury->captainid == Auth::user()->id ||
+                    $injury->battalionchiefid == Auth::user()->id ||
+                    $injury->aconduty == Auth::user()->id ||
+                    Auth::user()->roleid == 1))
+                        <div class="col-sm-8">
+                            <div class="panel panel-white post panel-shadow">
+                                <div class="post-heading">
+                                    <div class="pull-left meta">
+                                        <div class="title h5">
+                                            @foreach ($users as $user)
+                                                @if($user->id == $cm->createdby )
+                                                    <b><i class="fa fa-user"></i> {{$user->name}}
+                                                    </b>
+                                                @endif
+                                            @endforeach
+                                            made a Comment.
+                                        </div>
+                                        <time class="comment-date text-muted time"
+                                              datetime="{{$cm->created_at}}"><i
+                                                    class="fa fa-clock-o"></i> {{$cm->created_at}}
+                                        </time>
+                                    </div>
+                                    <div class="pull-right meta">
+                                        @if(Auth::user()->id == $cm->createdby )
+                                            {!! Form::open(array(
+        'style' => 'display: inline-block;',
+        'method' => 'DELETE',
+        'onsubmit' => "return confirm('".trans("Are you sure?")."');",
+        'route' => ['comments.destroy', $cm->commentid])) !!}
+                                            {!! Form::button('<i class="fa fa-trash-o"></i>', array('type' => 'submit', 'class' => ''))!!}
+                                            {!! Form::close() !!}
+                                        @endif
+
+                                    </div>
+                                </div>
+                                <div class="post-description">
+                                    <p>{{$cm->comment}}</p>
+                                </div>
+                            </div>
+                        </div>
+                    @endif
+                @endforeach
+            @endif
+        </ul>
     </div>
+
     <!-- Modal -->
     <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
         <div class="modal-dialog" role="document">
