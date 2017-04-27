@@ -277,12 +277,12 @@ class InjuriesController extends Controller
             'battalionchiefid' => 'required|integer:injury,battalionchiefid',
             'aconduty' => 'required|integer:injury,aconduty',
             'shift' => 'required|string:injury,shift,',
-            'frmsincidentnum1' => 'required|integer:injury,frmsincidentnum',
+            'frmsincidentnum1' => 'integer:injury,frmsincidentnum',
             'epcrincidentnum' => 'required|integer:injury,epcrincidentnum',
-            'CorvelAttachmentName' => 'file:injury,CorvelAttachmentName|mimes:pdf|max:10000',
-            'InvestigationAttachment' => 'file:injury,InvestigationAttachment|mimes:pdf|max:10000',
-            'StatementAttachment' => 'file:injury,StatementAttachment|mimes:pdf|max:10000',
-            'EmployeeAttachment' => 'file:injury,EmployeeAttachment|mimes:pdf|max:10000',
+            'CorvelAttachmentName' => 'mimes:pdf|max:10000',
+            'InvestigationAttachment' => 'mimes:pdf|max:10000',
+            'StatementAttachment' => 'mimes:pdf|max:10000',
+            'EmployeeAttachment' => 'mimes:pdf|max:10000',
             'Ofd25Attachment' => 'file:injury,Ofd25Attachment|mimes:pdf|max:10000',
         ]);
     }
