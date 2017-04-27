@@ -17,7 +17,8 @@
         <div class="panel-heading">
             <div class="row">
                 <div class="col-md-offset-3 col-md-6">
-                    <a class="btn btn-success btn-lg btn-block" href="{{ route('injuries.create') }}" id="fillNew">Fill a New OFD
+                    <a class="btn btn-success btn-lg btn-block" href="{{ route('injuries.create') }}" id="fillNew">Fill
+                        a New OFD
                         6</a>
                 </div>
             </div>
@@ -56,7 +57,7 @@
                                 <td>{{ $injury->injurydate }}</td>
                                 <td>{{ $injury->assignmentinjury }}</td>
                                 <td>{{ $injury->frmsincidentnum }}</td>
-                                <td>{{ $injury->frmsincidentnum }}</td>
+                                <td>{{ $injury->epcrincidentnum }}</td>
                                 <td>{{DB::table('status')->where('statusid',$injury->applicationstatus)->value('statustype')}}</td>
 
 
@@ -68,10 +69,10 @@
                                         @if($injury->applicationstatus == DB::table('status')->where('statustype','Draft')->value('statusid')
 || $injury->applicationstatus == DB::table('status')->where('statustype','Rejected')->value('statusid'))
                                             <a
-                                                href="{{ route('injuries.edit',[$injury->ofd6id]) }}"
-                                               id="indexEditButton" class="btn btn-xs btn-warning btn-block"><i
-                                                    class="fa fa-pencil-square-o"
-                                                    aria-hidden="true"></i> EDIT</a>
+                                                    href="{{ route('injuries.edit',[$injury->ofd6id]) }}"
+                                                    id="indexEditButton" class="btn btn-xs btn-warning btn-block"><i
+                                                        class="fa fa-pencil-square-o"
+                                                        aria-hidden="true"></i> EDIT</a>
                                         @endif
                                     </div>
                                 </td>
@@ -101,8 +102,11 @@
                     <tr>
                         <th data-sortable="true">OFD 6 ID</th>
                         <th data-sortable="true">Date of Injury</th>
-                        <th data-sortable="true">Assignment</th>
+                        <th data-sortable="true">Badge ID</th>
                         <th data-sortable="true">Employee Name</th>
+                        {{--<th data-sortable="true">Assignment</th>--}}
+                        {{--<th data-sortable="true">FRMS Incident #</th>--}}
+                        <th data-sortable="true">EPCR Incident #</th>
                         <th data-sortable="true">Status</th>
                         <th data-switchable="false" data-searchable="false" data-sortable="false">Action</th>
                     </tr>
@@ -113,8 +117,11 @@
                             <tr>
                                 <td>{{ $injury->ofd6id }}</td>
                                 <td>{{ $injury->injurydate }}</td>
-                                <td>{{ $injury->assignmentinjury }}</td>
+                                <td>{{ $injury->injuredemployeeid }}</td>
                                 <td>{{ $injury->injuredemployeename }}</td>
+                                {{--<td>{{ $injury->assignmentinjury }}</td>--}}
+                                {{--<td>{{ $injury->frmsincidentnum }}</td>--}}
+                                <td>{{ $injury->epcrincidentnum }}</td>
                                 <td>{{ DB::table('status')->where('statusid',$injury->applicationstatus)->value('statustype')}}</td>
                                 <td>
                                     <div>
@@ -133,7 +140,7 @@
 
         <div class="panel panel-default panel-shadow " hidden>
             <div class="panel-heading">
-                Search Previously filled as Battalion Chief
+                In your Queue For Approval as Battalion Chief
             </div>
             <div class="panel-body">
                 <table data-toolbar="#toolbar"
@@ -148,8 +155,11 @@
                     <tr>
                         <th data-sortable="true">OFD 6 ID</th>
                         <th data-sortable="true">Date of Injury</th>
-                        <th data-sortable="true">Assignment</th>
+                        <th data-sortable="true">Badge ID</th>
                         <th data-sortable="true">Employee Name</th>
+                        {{--<th data-sortable="true">Assignment</th>--}}
+                        {{--<th data-sortable="true">FRMS Incident #</th>--}}
+                        <th data-sortable="true">EPCR Incident #</th>
                         <th data-sortable="true">Status</th>
 
                         <th data-switchable="false" data-searchable="false" data-sortable="false">Action</th>
@@ -163,13 +173,16 @@
                             <tr>
                                 <td>{{ $injury->ofd6id }}</td>
                                 <td>{{ $injury->injurydate }}</td>
-                                <td>{{ $injury->assignmentinjury }}</td>
+                                <td>{{ $injury->injuredemployeeid }}</td>
                                 <td>{{ $injury->injuredemployeename }}</td>
+                                {{--<td>{{ $injury->assignmentinjury }}</td>--}}
+                                {{--<td>{{ $injury->frmsincidentnum }}</td>--}}
+                                <td>{{ $injury->epcrincidentnum }}</td>
                                 <td>{{ DB::table('status')->where('statusid',$injury->applicationstatus)->value('statustype') }}</td>
                                 <td>
                                     <div>
                                         <a href="{{ route('injuries.show',[$injury->ofd6id]) }}"
-                                          id="view_button2" class="btn btn-xs btn-info btn-block"><i
+                                           id="view_button2" class="btn btn-xs btn-info btn-block"><i
                                                     class="fa fa-eye" aria-hidden="true"></i> VIEW</a>
                                     </div>
                                 </td>
@@ -183,7 +196,7 @@
 
         <div class="panel panel-default panel-shadow " hidden>
             <div class="panel-heading">
-                Search Previously filled as Assistant chief
+                In your Queue For Approval as Assistant chief
             </div>
             <div class="panel-body">
                 <table data-toolbar="#toolbar"
@@ -198,8 +211,11 @@
                     <tr>
                         <th data-sortable="true">OFD 6 ID</th>
                         <th data-sortable="true">Date of Injury</th>
-                        <th data-sortable="true">Assignment</th>
+                        <th data-sortable="true">Badge ID</th>
                         <th data-sortable="true">Employee Name</th>
+                        {{--<th data-sortable="true">Assignment</th>--}}
+                        {{--<th data-sortable="true">FRMS Incident #</th>--}}
+                        <th data-sortable="true">EPCR Incident #</th>
                         <th data-sortable="true">Status</th>
                         <th data-switchable="false" data-searchable="false" data-sortable="false">Action</th>
                     </tr>
@@ -210,8 +226,11 @@
                             <tr>
                                 <td>{{ $injury->ofd6id }}</td>
                                 <td>{{ $injury->injurydate }}</td>
-                                <td>{{ $injury->assignmentinjury }}</td>
+                                <td>{{ $injury->injuredemployeeid }}</td>
                                 <td>{{ $injury->injuredemployeename }}</td>
+                                {{--<td>{{ $injury->assignmentinjury }}</td>--}}
+                                {{--<td>{{ $injury->frmsincidentnum }}</td>--}}
+                                <td>{{ $injury->epcrincidentnum }}</td>
                                 <td>{{DB::table('status')->where('statusid',$injury->applicationstatus)->value('statustype') }}</td>
                                 <td>
                                     <div>

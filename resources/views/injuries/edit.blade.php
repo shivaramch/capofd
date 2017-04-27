@@ -172,7 +172,7 @@
                     <div class="col-sm-8 form-group">
                         {!! Form::label('corvelid', 'CorVel ID #', ['class' => 'col-sm-2 control-label']) !!}
                         <div class="col-sm-3">
-                            {!! Form::text('corvelid', old('corVelID'), array('class' => 'form-control','id' => 'corvelID','required' => 'required','style' =>'margin-left:-7px;'))!!}
+                            {!! Form::text('corvelid', old('corvelid'), array('class' => 'form-control','id' => 'corvelID','required' => 'required','style' =>'margin-left:-7px;'))!!}
                             <p class="help-block"></p>
                             @if($errors->has('corvelid'))
                                 <p class="help-block">

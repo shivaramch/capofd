@@ -40,6 +40,7 @@ class Injury extends Model
         'aconduty',
         'shift',
         'frmsincidentnum',
+        'epcrincidentnum',
         'trainingassigned',
         'documentworkforce',
         'documentoperationalday',

@@ -173,6 +173,18 @@
                             {!! Form::label('corvelid ', '(Corvel TMC will initiate at time of call)', array('class' => 'col-sm-7 control-label','style' =>'margin-left:-50px;')) !!}
                         </div>
                     </div>
+                    <div class="col-sm-4 form-group">
+                        {!! Form::label('epcrincidentnum', 'EPCR Incident #', ['class' => 'col-sm-4 control-label']) !!}
+                        <div class="col-sm-6 ">
+                            {!! Form::text('epcrincidentnum', old('epcrincidentnum'), array('class' => 'form-control','required' => 'required','disabled'=>'disabled'))!!}
+                            <p class="help-block"></p>
+                            @if($errors->has('epcrincidentnum'))
+                                <p class="help-block">
+                                    {{ $errors->first('epcrincidentnum') }}
+                                </p>
+                            @endif
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

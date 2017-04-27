@@ -614,7 +614,7 @@
             var dropdown = document.getElementById("trainingassigned");
             var current_value = dropdown.options[dropdown.selectedIndex].value;
 
-            if (current_value == "yes") {
+            if (current_value == "Yes") {
                 document.getElementById("police").style.display = "block";
             }
             else {
