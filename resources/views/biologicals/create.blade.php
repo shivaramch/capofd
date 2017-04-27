@@ -74,7 +74,7 @@
                     <div class="col-sm-4 form-group">
                         {!! Form::label('exposedemployeename', 'Exposed Employee Name',array('style'=>'padding-top:7px;','class'=> 'col-sm-4 control-label') ) !!}
                         <div class="col-sm-6 ">
-                            {!! Form::text('exposedemployeename', old('exposedemployeename'), array('class'=>'form-control','placeholder'=>'Enter Exposed Employee Name'))!!}
+                            {!! Form::text('exposedemployeename', old('exposedemployeename'), array('class'=>'form-control'))!!}
                             <p class="help-block"></p>
                             @if($errors->has('exposedemployeename'))
                                 <p class="help-block">
