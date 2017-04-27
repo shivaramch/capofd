@@ -96,7 +96,7 @@
                        data-show-columns="true"
                        id="table">
                     <thead>
-                    <tr>
+                    <tr >
                         <th data-sortable="true">OFD 6A ID</th>
                         <th data-sortable="true">Driver Name</th>
                         <th data-sortable="true">Date of Accident</th>
