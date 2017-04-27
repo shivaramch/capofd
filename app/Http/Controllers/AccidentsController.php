@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Assignment;
 use App\Accident;
 use App\Attachment;
 use App\Comment;
@@ -46,6 +47,7 @@ class AccidentsController extends EmailController
             Auth::user()->roleid == 1
         ) {
             return view('accidents.edit', compact('accident', 'attachments', 'comments', 'users'));
+
         } else {
             return view('errors.access');
         }
