@@ -1,11 +1,10 @@
 @extends('layouts.app')
 
-@section('content')
 
 @section('crumbs')
     <ol class="breadcrumb">
         <a class="btn btn-default" type="button"
-           href="{{ route('fmlas.index') }}">
+           href="{{ RL::previous() }}">
             <i class="fa fa-arrow-left" aria-hidden="true"></i> Back</a>
         <li><a href="{{ url('/') }}">Dashboard</a></li>
         <li><a href="{{ route('adminpanel.index') }}">Admin panel</a></li>
@@ -13,6 +12,8 @@
         <li class="active">New Request</li>
     </ol>
 @endsection
+@section('content')
+
 
     {!! Form::open(['method' => 'POST', 'route' => ['fmlas.store'], 'files' => true,]) !!}
     <input type="hidden" name="_token" value="{!!  'csrf_token()' !!}">
@@ -153,11 +154,12 @@
                         <button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal">
                             Save
                         </button>
-                        <a href="{{ route('fmlas.index') }}" class="btn btn-danger">Cancel</a>
+                        <a href="{{ RL::previous() }}" class="btn btn-danger">Cancel</a>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
         <!-- Modal -->
         <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
             <div class="modal-dialog" role="document">
@@ -180,4 +182,3 @@
         </div>
         {!! Form::close() !!}
         @stop
-    </div>

@@ -3,7 +3,7 @@
 @section('crumbs')
     <ol class="breadcrumb">
         <a class="btn btn-default" type="button"
-           href="{{ route('accidents.index') }}">
+           href="{{ URL::previous() }}">
             <i class="fa fa-arrow-left" aria-hidden="true"></i> Back</a>
         <li><a href="{{ url('/') }}">Dashboard</a></li>
         <li><a href="{{ route('accidents.index') }}">OFD 6A Accidents</a></li>
@@ -555,7 +555,7 @@
                 Submit
             </button>
 
-            <a href="{{ route('accidents.index') }}" id="cancelButton" class="btn btn-danger">Cancel</a>
+            <a href="{{URL::previous() }}" id="cancelButton" class="btn btn-danger">Cancel</a>
             <br>
         </div>
     </div>

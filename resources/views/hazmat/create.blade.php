@@ -2,7 +2,7 @@
 @section('crumbs')
     <ol class="breadcrumb">
         <a class="btn btn-default" type="button"
-           href="{{ route('hazmat.index') }}">
+           href="{{ URL::previous() }}">
             <i class="fa fa-arrow-left" aria-hidden="true"></i> Back</a>
         <li><a href="{{ url('/') }}">Dashboard</a></li>
         <li><a href="{{ route('hazmat.index') }}">OFD 6C Hazmat</a></li>
@@ -290,7 +290,7 @@
                         <button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal">
                             Submit
                         </button>
-                        <a href="{{ route('hazmat.index') }}" class="btn btn-danger">Cancel</a>
+                        <a href="{{ URL::previous() }}" class="btn btn-danger">Cancel</a>
                     </div>
                 </div>
             </div>

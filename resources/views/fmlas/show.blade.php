@@ -2,7 +2,7 @@
 @section('crumbs')
     <ol class="breadcrumb">
         <a class="btn btn-default" type="button"
-           href="{{ route('fmlas.index') }}">
+           href="{{ RL::previous() }}">
             <i class="fa fa-arrow-left" aria-hidden="true"></i> Back</a>
         <li><a href="{{ url('/') }}">Dashboard</a></li>
         <li><a href="{{ route('adminpanel.index') }}">Admin panel</a></li>
@@ -28,9 +28,7 @@
             border: 1px solid black;
         }
     </style>
-    {{--@if($limitedduty->employeeid == Auth::user()->id ||--}}
-    {{--($limitedduty->primaryidconumber == Auth::user()->id && $biological->applicationstatus == 2) ||--}}
-    {{--Auth::user()->roleid == 1)--}}
+
     <div class="panel panel-default">
         <div class="panel-heading">
             <div class="jumbotron" style="margin-bottom: 5px; ">
@@ -166,7 +164,7 @@
             </div>
             <div class="col-sm-12 panel-heading" align="center">
                 <div class="btn-bottom ">
-                    <a href="{{ route('fmlas.index') }}" class="btn btn-danger">Return</a>
+                    <a href="{{ URL::previous() }}" class="btn btn-danger">Cancel</a>
                 </div>
             </div>
         </div>

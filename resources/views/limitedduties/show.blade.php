@@ -2,7 +2,7 @@
 @section('crumbs')
     <ol class="breadcrumb">
         <a class="btn btn-default" type="button"
-           href="{{ route('limitedduties.index') }}">
+           href="{{ URL::previous() }}">
             <i class="fa fa-arrow-left" aria-hidden="true"></i> Back</a>
         <li><a href="{{ url('/') }}">Dashboard</a></li>
         <li><a href="{{ route('adminpanel.index') }}">Admin panel</a></li>
@@ -210,7 +210,7 @@
                 </div>
                 <div class="col-sm-12 panel-heading" align="center">
                     <div class="btn-bottom ">
-                        <a href="{{ route('limitedduties.index') }}" class="btn btn-danger">Return</a>
+                        <a href="{{ URL::previous() }}" class="btn btn-danger">Cancel</a>
                     </div>
                 </div>
             </div>
