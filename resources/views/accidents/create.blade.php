@@ -356,7 +356,7 @@
                 <div class="col-sm-12 form-group">
                     <div class="form-group">
                         {{ Form::checkbox('checkbox5', 1, null, ['id'=>'checkbox5', 'class' => 'className', 'disabled' ]) }}
-                        {{Form::label('checkbox5','Complete OFD 25b Accident
+                        {{Form::label('checkbox5','Complete OFD 25c Accident
                         Intradepartmental Communication - Other Personnel')}}
                     </div>
                 </div>
@@ -529,7 +529,7 @@
                 <div class="col-sm-12 form-group">
                     <div class="form-group">
                         {{ Form::checkbox('checkbox9', 1, null, ['id'=>'checkbox9', 'class' => 'className' , 'disabled']) }}
-                        {{Form::label('checkbox9','Miscellaneous Documents')}}
+                        {{Form::label('checkbox9','Miscellaneous Documents - Upload any additional documents related to this incident if necessary.')}}
                     </div>
                 </div>
                 <div class="col-sm-12 form-group well well-sm">
