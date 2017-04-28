@@ -255,8 +255,6 @@ class InjuriesController extends Controller
             'trainingassigned' => 'required|string:injury,shift,',
             'frmsincidentnum1' => 'required|integer:injury,frmsincidentnum',
             'epcrincidentnum' => 'required|integer:injury,epcrincidentnum',
-            'policeofficercompletesign' => 'required',
-            'callsupervisor' => 'required',
             'CorvelAttachmentName' => 'required|file:injury,CorvelAttachmentName|mimes:pdf|max:10000',
             'InvestigationAttachment' => 'required|file:injury,InvestigationAttachment|mimes:pdf|max:10000',
             'StatementAttachment' => 'required|file:injury,StatementAttachment|mimes:pdf|max:10000',
@@ -279,10 +277,10 @@ class InjuriesController extends Controller
             'shift' => 'required|string:injury,shift,',
             'frmsincidentnum1' => 'integer:injury,frmsincidentnum',
             'epcrincidentnum' => 'required|integer:injury,epcrincidentnum',
-            'CorvelAttachmentName' => 'mimes:pdf|max:10000',
-            'InvestigationAttachment' => 'mimes:pdf|max:10000',
-            'StatementAttachment' => 'mimes:pdf|max:10000',
-            'EmployeeAttachment' => 'mimes:pdf|max:10000',
+            'CorvelAttachmentName' => 'file:injury,CorvelAttachmentName|mimes:pdf|max:10000',
+            'InvestigationAttachment' => 'file:injury,InvestigationAttachment|mimes:pdf|max:10000',
+            'StatementAttachment' => 'file:injury,StatementAttachment|mimes:pdf|max:10000',
+            'EmployeeAttachment' => 'file:injury,EmployeeAttachment|mimes:pdf|max:10000',
             'Ofd25Attachment' => 'file:injury,Ofd25Attachment|mimes:pdf|max:10000',
         ]);
     }
