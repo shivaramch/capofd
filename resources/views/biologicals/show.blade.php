@@ -366,7 +366,7 @@
                     <div class="col-sm-12">
                         <div class="form-group">
                             {{ Form::checkbox('miscbiological2', 1, null, ['id'=>'miscbiological2', 'class' => 'className','disabled'=>'disabled' ]) }}
-                            {{Form::label('miscbiological2','Miscellaneous Documents')}}
+                            {{Form::label('miscbiological2','Miscellaneous Documents - Upload any additional documents related to this incident if necessary.')}}
                         </div>
                         <div class="col-sm-12 form-group well well-sm">
                             <div class="col-sm-4">

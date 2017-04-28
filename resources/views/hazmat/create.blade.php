@@ -231,7 +231,7 @@
             <div class="col-sm-12 form-group">
                 <div class="form-group">
                     {{ Form::checkbox('checkbox2', 1, null, ['id'=>'checkbox2', 'class' => 'className', 'disabled']) }}
-                    {{Form::label('checkbox2','Miscellaneous Documents')}}
+                    {{Form::label('checkbox2','Miscellaneous Documents - Upload any additional documents related to this incident if necessary.')}}
                 </div>
                 <div class="col-sm-12 form-group well well-sm">
                     <div class="col-sm-4">
