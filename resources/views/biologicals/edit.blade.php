@@ -385,7 +385,8 @@
                     </div>
                 </div>
             </div>
-            {{--@if($biological->exposure == 1)--}}
+
+
             <div id="Exposure1" class="desc" style="display: none;">
                 <div class="col-md-12">
                     <div class="alert alert-danger" align="left">
@@ -688,6 +689,23 @@
             });
         });
     </script>
+<script>
+
+    var value = "<?php echo ($biological->exposure); ?>";
+
+
+    if( value ==0) {
+
+        $("#Exposure0").show();
+        $("#Exposure1").hide();
+    }
+
+    if( value ==1)
+    {
+        $("#Exposure0").hide();
+        $("#Exposure1").show();
+    }
+</script>
     <script>
         window.pressed = function () {
             var a = document.getElementById('trueofd184');
